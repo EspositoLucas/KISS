@@ -3,7 +3,6 @@
 int main(int argcv, char **argv)
 {
     /*---------------------------------------------------PARTE 2-------------------------------------------------------------*/
-    int tamanio_proceso;
     int conexion;
     char *ip_kernel;
     char *puerto_kernel;
@@ -32,7 +31,7 @@ int main(int argcv, char **argv)
 
     conexion = crear_conexion(ip_kernel, puerto_kernel);
 
-    enviar_mensaje(valor, conexion);
+    enviar_mensaje(instrucciones, conexion);
 
     paquete(conexion);
 
@@ -71,44 +70,44 @@ t_config *iniciar_config(void)
     return nuevo_config;
 }
 
-char *leer_archivo(char *unPath)
-{
+// char *leer_archivo(char *unPath) // para usar el path, ver funcion split
+// {
 
-    // char instrucciones[100];
+//     // char instrucciones[100];
 
-    // strcpy(instrucciones, "../shared/TP 1c2022/consola");
+//     // strcpy(instrucciones, "../shared/TP 1c2022/consola");
 
-    // strcat(instrucciones, unPath);
+//     // strcat(instrucciones, unPath);
 
-    FILE *archivo = fopen(instrucciones, "r");
+//     FILE *archivo = fopen(instrucciones, "r");
 
-    if (archivo == NULL)
-    {
-        perror("Error al abrir el archivo");
-        return 1;
-    }
+//     if (archivo == NULL)
+//     {
+//         perror("Error al abrir el archivo");
+//         return 1;
+//     }
 
-    fseek(archivo, 0, SEEK_END);         // mover el archivo al final
-    int cant_elementos = ftell(archivo); // cantidad total de elementos que tiene el archivo
-    rewind(file);                        //mover archivo al inicio del txt
+//     fseek(archivo, 0, SEEK_END);         // mover el archivo al final
+//     int cant_elementos = ftell(archivo); // cantidad total de elementos que tiene el archivo
+//     rewind(file);                        //mover archivo al inicio del txt
 
-    char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
-    if (cadena == NULL)
-    {
-        perror("Error en la reserva de memoria") return 2;
-    }
-    int cant_elementos_leidos = fread(cadena, sizeof(char), cant_elementos, archivo);
-    if (cant_elementos_leidos != cant_elementos)
-    {
-        perror("Error leyendo el archivo") return 3;
-    }
+//     char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
+//     if (cadena == NULL)
+//     {
+//         perror("Error en la reserva de memoria") return 2;
+//     }
+//     int cant_elementos_leidos = fread(cadena, sizeof(char), cant_elementos, archivo);
+//     if (cant_elementos_leidos != cant_elementos)
+//     {
+//         perror("Error leyendo el archivo") return 3;
+//     }
 
-    printf("&s", cadena);
-    free(cadena);
-    fclose(archivo);
-    printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
-    return cadena;
-}
+//     printf("&s", cadena);
+//     free(cadena);
+//     fclose(archivo);
+//     printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
+//     return cadena;
+// }
 
 // void leer_consola(t_log *logger)
 // {
@@ -132,20 +131,17 @@ void paquete(int conexion)
 {
 
     // char *leido = readline("> ");
-    char *leido = leer_archivo()
-        t_paquete *paquete = crear_paquete();
-
-    // Leemos y esta vez agregamos las lineas al paquete
+    char *leido = leer_archivo(split[2]);
+    int tamanio_proceso = sizeof(char); // Cual seria el tamanio del proceso, el de tipo leido o el de todo el archivo ?
+    t_paquete *paquete = crear_paquete();
 
     while (strcmp(leido, "") != 0)
     {
         agregar_a_paquete(paquete, leido, strlen(leido) + 1);
+        agregar_a_paquete(paquete, tamanio_proceso, );
         free(leido);
-        leido = readline("> ");
     }
 
-    // ¡No te olvides de liberar las líneas y el paquete antes de regresar!
-    free(leido);
     enviar_paquete(paquete, conexion);
     eliminar_paquete(paquete);
 }
