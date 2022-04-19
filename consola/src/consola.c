@@ -25,13 +25,13 @@ int main(int argcv, char **argv)
 
     /* ---------------- LEER ARCHIVO DE PSEUDOCODIGO ---------------- */
 
-    char *instrucciones = leer_archivo(logger);
+//    char *instrucciones = leer_archivo(logger);
 
     // Conexión hacia el servidor
 
     conexion = crear_conexion(ip_kernel, puerto_kernel);
 
-    enviar_mensaje(instrucciones, conexion);
+//    enviar_mensaje(instrucciones, conexion);
 
     paquete(conexion);
 
@@ -109,36 +109,19 @@ t_config *iniciar_config(void)
 //     return cadena;
 // }
 
-// void leer_consola(t_log *logger)
-// {
-//     char *leido;
-
-//     // La primera te la dejo de yapa
-//     leido = readline("> ");
-
-//     // El resto, las vamos leyendo y logueando hasta recibir un string vacío
-//     while (strcmp(leido, "") != 0)
-//     {
-//         leido = readline("> ");
-//         log_info(logger, "Lei las lineas  %d\n", strlen(leido) + 1);
-//     }
-
-//     // ¡No te olvides de liberar las lineas antes de regresar!
-//     free(leido);
-// }
 
 void paquete(int conexion)
 {
 
-    // char *leido = readline("> ");
-    char *leido = leer_archivo(split[2]);
-    int tamanio_proceso = sizeof(char); // Cual seria el tamanio del proceso, el de tipo leido o el de todo el archivo ?
+    char *leido = readline("> ");
+    //    char *leido = leer_archivo(split[2]);
+//    int tamanio_proceso = sizeof(char); // Cual seria el tamanio del proceso, el de tipo leido o el de todo el archivo ?
     t_paquete *paquete = crear_paquete();
 
     while (strcmp(leido, "") != 0)
     {
         agregar_a_paquete(paquete, leido, strlen(leido) + 1);
-        agregar_a_paquete(paquete, tamanio_proceso, );
+//        agregar_a_paquete(paquete, tamanio_proceso, );
         free(leido);
     }
 
