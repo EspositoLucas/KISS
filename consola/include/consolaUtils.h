@@ -10,14 +10,12 @@
 #include<commons/log.h>
 #include<commons/string.h>
 #include<commons/config.h>
+#include<kernelUtils.h>
 
 typedef enum
 {
     MENSAJE,
-    PAQUETE,
-    NO_OP,
-    IO,
-    EXIT
+    PAQUETE
 } op_code;
 
 typedef struct

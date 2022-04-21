@@ -1,5 +1,5 @@
-#ifndef SERVER_H_
-#define SERVER_H_
+#ifndef KERNEL_H_
+#define KERNEL_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,6 +7,8 @@
 #include <commons/log.h>
 #include "kernelUtils.h"
 
+
+
 void iterator(char *value);
 
-#endif /* SERVER_H_ */
+#endif 

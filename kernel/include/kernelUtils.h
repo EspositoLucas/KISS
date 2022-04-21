@@ -11,20 +11,39 @@
 #include<string.h>
 #include<assert.h>
 
-#define IP "127.0.0.1"
-#define PUERTO "4444"
+#define IP_KERNEL "127.0.0.1"
+#define PUERTO_KERNEL 8000
+
+#define NEW 
+#define READY 
+#define EXEC 
+#define BLOCK 
+#define SUSPENDED_BLOCK
+#define SUSPENDED_READY
+#define EXIT
 
 typedef enum
 {
     MENSAJE,
     PAQUETE,
-    NO_OP,
-    IO,
-    READ,
-    WRITE,
-    COPY,
-    EXIT
+    // NO_OP,
+    // IO,
+    // READ,
+    // WRITE,
+    // COPY,
+    // EXIT
 } op_code;
+
+typedef struct
+{
+    //char* ruta_logger;
+
+    char* ip_kernel;
+    char *puerto_kernel;
+
+} Arch_config;
+
+Arch_config config_valores;
 
 t_log *logger;
 
