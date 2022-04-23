@@ -3,6 +3,10 @@
 int main(int argcv, char **argv)
 {
 
+// ./consola 10000 /C:\Users\esposito\Carpetas Compartidas SO\TP\tp-2022-1c-Ubunteam\consola\instrucciones.txt
+    
+    int tamanio_proceso = atoi(argv[2]) ; 
+    
     t_log *logger;
     t_config *config;
 
@@ -27,7 +31,7 @@ int main(int argcv, char **argv)
 
     conexion_consola = crear_conexion(ip_kernel, puerto_kernel);
 
-//    enviar_mensaje(instrucciones, conexion);
+    enviar_mensaje(tamanio_proceso, conexion);
 
     paquete_proceso(conexion_consola);
 
@@ -108,6 +112,8 @@ t_config *iniciar_config(void)
 // }
 
 
+
+
 void paquete_proceso(int conexion)
 {
 
@@ -118,20 +124,59 @@ void paquete_proceso(int conexion)
     t_paquete *paquete = crear_paquete();
 
     while (1) {
-	  char* leido = leer_archivo();
+    char* leido = leer_archivo();
 
-	  char** split = string_split(leido, "\n");
-      int tamanio_instrucciones = string_arr_size(split);
-     if(string_equals_ignore_case(split[0], "NO_OP") )
-	   	    	{
-                    parametro_especial = list_get(split[0],)
-                   for(int i=0; i<  ; i++)
+	char** split = string_split(leido, "\n");
+
+    int longitud_instrucciones = string_arr_size(split);
+
+    if(string_contains(split[0], "NO_OP"); ) {
+        char** split_NO_OP = string_split(split[0], " ");
+                    if(string_contains(split_NO_OP[1], "5")) {
+                        int parametro_NO_OP = atoi(split_NO_OP[1]);
+                        for(int i=0; i< parametro_NO_OP  ; i++)
 					{
-						imprimirTripulante(list_get(tripulantesNuevos,i));
+						printf("NO_OP %d ", parametro_NO_OP);
+
 					}    
-	   	    	}
-       agregar_a_paquete(paquete, split, tamanio_instrucciones + 1);
-       agregar_entero_a_paquete(paquete, tamanio_instrucciones) ;
+                    }   
+                
+	   	    	}else if (string_contains(split[1], "I/O"){
+                        
+                        char** split_IO = string_split(split[1], " ");
+                            if(string_contains(split_IO[1], "3000")) {
+                            int parametro_IO = atoi(split_IO[1]);
+                            printf("I/O %d ", parametro_IO);
+					}    
+                    }   
+
+                   }else if (string_contains(split[2], "READ"){
+                            char** split_READ = string_split(split[2], " ");
+                            if(string_contains(split_READ[1], "0")) {
+                            int parametro_READ = atoi(split_READ[1]);
+                            printf("READ %d ", parametro_READ);
+
+                   }else if (string_contains(split[3], "WRITE") {
+                            char** split_WRITE = string_split(split[3], " ");
+                            if(string_contains(split_WRITE[1], "4") && string_contains(split_WRITE[2], "42")) {
+                                int parametro1_WRITE = atoi(split_WRITE[1]);
+                                int parametro2_WRITE = atoi(split_WRITE[2]);
+                            printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
+
+                   }else if (string_contains(split[4], "COPY"){
+                            char** split_COPY = string_split(split[4], " ");
+                            if(string_contains(split_COPY[1], "0") && string_contains(split_COPY[2], "4")) {
+                                int parametro_COPY = atoi(split_COPY[1]);
+                                int parametro_COPY = atoi(split_COPY[2]);
+
+                            printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
+
+                   }else if (string_contains(split[5], "EXIT"){
+
+                            printf("EXIT");
+                   }
+
+        agregar_a_paquete(paquete, split, longitud_instrucciones + 1);
         free(leido);
         free(split);
  }
@@ -155,73 +200,77 @@ void terminar_programa(int conexion, t_log *logger, t_config *config)
 
     liberar_conexion(conexion);
 }
+// // VERSION 1 - leer_archivo()
+//  char *leer_archivo() 
+//  {
+//        char cadena[100] ;
+//     FILE *archivo, salida ;
+//     archivo = fopen("argv[2]", "r");
+//       salida = fopen(instrucciones, "r");
+//     if (archivo == NULL)
+//      {
+//          perror("Error al abrir el archivo");
+//          return 1;
+//     }
+//  if (salida == NULL)
+//      {
+//          perror("Error al abrir el archivo");
+//          return 1;
+//     }
+// while(fgets(cadena,100,archivo)) {
+//     fputs(cadena,salida);
+// }
+
+//     printf("&s", cadena);
+//      fclose(archivo);
+//      fclose(salida);
+//     printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
+//     return cadena;
+//  }
 
 
 // VERSION 2 - leer_archivo()
 
-char *leer_archivo(char *unPath) // para usar el path, ver funcion split
-{
+// char *leer_archivo(char *unPath) // para usar el path, ver funcion split
+// {
 
-    // char instrucciones[100];
+//     // char instrucciones[100];
 
-    // strcpy(instrucciones, "../shared/TP 1c2022/consola");
+//     // strcpy(instrucciones, "../shared/TP 1c2022/consola");
 
-    // strcat(instrucciones, unPath);
+//     // strcat(instrucciones, unPath);
 
-    FILE *archivo = fopen(instrucciones, "r");
+//     FILE *archivo = fopen(instrucciones, "r");
 
-    if (archivo == NULL)
-    {
-        perror("Error al abrir el archivo");
-        return 1;
-    }
+//     if (archivo == NULL)
+//     {
+//         perror("Error al abrir el archivo");
+//         return 1;
+//     }
 
-    fseek(archivo, 0, SEEK_END);         // mover el archivo al final
-    int cant_elementos = ftell(archivo); // cantidad total de elementos que tiene el archivo
-    rewind(file);                        //mover archivo al inicio del txt
+//     fseek(archivo, 0, SEEK_END);         // mover el archivo al final
+//     int cant_elementos = ftell(archivo); // cantidad total de elementos que tiene el archivo
+//     rewind(file);                        //mover archivo al inicio del txt
 
-    char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
-    if (cadena == NULL)
-    {
-        perror("Error en la reserva de memoria") return 2;
-    }
-    int cant_elementos_leidos = fread(cadena, sizeof(char), cant_elementos, archivo);
-    if (cant_elementos_leidos != cant_elementos)
-    {
-        perror("Error leyendo el archivo") return 3;
-    }
+//     char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
+//     if (cadena == NULL)
+//     {
+//         perror("Error en la reserva de memoria") return 2;
+//     }
+//     int cant_elementos_leidos = fread(cadena, sizeof(char), cant_elementos, archivo);
+//     if (cant_elementos_leidos != cant_elementos)
+//     {
+//         perror("Error leyendo el archivo") return 3;
+//     }
 
-    printf("&s", cadena);
-    free(cadena);
-    fclose(archivo);
-    printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
-    return cadena;
-}
+//     printf("&s", cadena);
+//     free(cadena);
+//     fclose(archivo);
+//     printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
+//     return cadena;
+// }
 
-void manejarConsola(void){
-
-	log_info(logger,"INICIANDO CONSOLA");
-	
-    while (1) {
-	  printf("ingrese un comando: \n");
-	  char* leido = readline(">");
-
-	  char** split = string_split(leido, " ");
-      int tamanio_proceso = string_arr_size(split);
-
-	 
+// 
 
 
-		   	   			free(split);
-		   	   			free(leido);
-						// BORRAR PAQUETE
-						eliminar_paquete(nuevoPaquete);
-						// LIBERAR CONEXION
-						liberar_conexion(socket_cliente);
-		   	   	   //}
-
-	          }
-	  
-}
-
-
+// Argumentos en Eclipse : Run ConfiguarAtions - arguments y poner argumentos por espaciso : 10000  /C:\Users\esposito\Carpetas Compartidas SO\TP\tp-2022-1c-Ubunteam\consola\instrucciones.txt

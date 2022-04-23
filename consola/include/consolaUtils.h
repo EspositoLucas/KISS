@@ -10,7 +10,7 @@
 #include<commons/log.h>
 #include<commons/string.h>
 #include<commons/config.h>
-#include<kernelUtils.h>
+
 
 typedef enum
 {
@@ -29,6 +29,16 @@ typedef struct
     op_code codigo_operacion;
     t_buffer *buffer;
 } t_paquete;
+
+typedef struct
+{
+
+    char* ip_kernel;
+    char *puerto_kernel;
+
+} arch_config;
+
+arch_config config_valores;
 
 int crear_conexion(char *ip, char *puerto);
 void enviar_mensaje(char *mensaje, int socket_cliente);

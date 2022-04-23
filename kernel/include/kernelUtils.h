@@ -36,14 +36,12 @@ typedef enum
 
 typedef struct
 {
-    //char* ruta_logger;
-
     char* ip_kernel;
     char *puerto_kernel;
 
-} Arch_config;
+} arch_config;
 
-Arch_config config_valores;
+arch_config config_valores ;
 
 t_log *logger;
 
