@@ -19,4 +19,11 @@
 
 #include "consolaUtils.h"
 
+t_log* iniciar_logger(void);
+t_config* iniciar_config(void);
+char *leer_archivo();
+void paquete_proceso(int);
+void terminar_programa(int, t_log*, t_config*);
+
+
 #endif

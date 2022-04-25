@@ -39,6 +39,32 @@ void iterator(char *value)
     log_info(logger, "%s", value);
 }
 
+//void cargar_configuracion(void) // configuraciones kernel
+//{
+//	t_config* config = config_create("/cfg/kernel.config"); //Leo el archivo de configuracion
+//
+//	if (config == NULL) {
+//		perror("Archivo de configuracion de kernel no encontrado");
+//		return;
+//	}
+//
+//	config_valores.ip_memoria = 			config_get_string_value(config, "IP_MEMORIA");
+//	config_valores.ip_cpu = 		    config_get_string_value(config, "IP_CPU");
+//	config_valores.algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
+//
+//	config_valores.puerto_memoria =	config_get_int_value(config, 	"PUERTO_MEMORIA");
+//	config_valores.puerto_cpu_dispatch = config_get_int_value(config, 	"PUERTO_CPU_DISPATCH");
+//	config_valores.puerto_cpu_interrupt = config_get_int_value(config, "PUERTO_CPU_INTERRUPT");
+//	config_valores.puerto_escucha = config_get_int_value(config, 	"PUERTO_ESCUCHA");
+//	config_valores.estimacion_inicial = config_get_int_value(config, 	"GRADO_MULTIPROGRAMACION");
+//    config_valores.grado_multiprogramacion = config_get_int_value(config, 	"ESTIMACION_INICIAL");
+//    config_valores.tiempo_maximo_bloqueado = config_get_int_value(config, 	"TIEMPO_MAXIMO_BLOQUEADO");
+//
+//    config_valores.alfa = config_get_double_value(config, 	"ALFA");
+//	//config_destroy(config);
+//}
+
+
 //void iterar_lista(t_list* lista, t_log* logger) {
 //    void iterator(char* value) {
 //	printf("Valor: %s\n", value);

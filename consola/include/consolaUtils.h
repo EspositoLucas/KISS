@@ -1,4 +1,4 @@
-#ifndef CONOLA_UTILS_H_
+#ifndef CONSOLA_UTILS_H_
 #define CONSOLA_UTILS_H_
 
 #include <stdio.h>
@@ -30,11 +30,11 @@ typedef struct
     t_buffer *buffer;
 } t_paquete;
 
-typedef struct
+typedef struct // archivo de configuracion consola
 {
 
     char* ip_kernel;
-    char *puerto_kernel;
+    int puerto_kernel;
 
 } arch_config;
 
