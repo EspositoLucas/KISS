@@ -1,12 +1,15 @@
 #include "consola.h"
 #include "consolaUtils.h"
 
-int main(int argcv, char **argv)
+int main(int argc, char **argv)
 {
 
 // ./consola 10000 /C:\Users\esposito\Carpetas Compartidas SO\TP\tp-2022-1c-Ubunteam\consola\instrucciones.txt
-    
-    int tamanio_proceso = atoi(argv[2]) ; 
+     if(argc < 3) {
+        return EXIT_FAILURE;
+    }
+
+    int tamanio_proceso = atoi(argv[1]) ; 
     int conexion_consola;
 
     t_log *logger;
@@ -89,38 +92,34 @@ void paquete_proceso(int conexion)
 
     if(string_contains(split[0], "NO_OP") ) {
         			char** split_NO_OP = string_split(split[0], " ");
-                    if(string_contains(split_NO_OP[1], "5")) {
+
                     int parametro_NO_OP = atoi(split_NO_OP[1]);
-                    for(int i=0; i< parametro_NO_OP  ; i++)
+                    	for(int i=0; i< parametro_NO_OP  ; i++)
 					{
 						printf("NO_OP %d ", parametro_NO_OP);
 
 					}    
-                    }   
+
                 
-	   	    	}else if (string_contains(split[1], "I/O")){
+    }else if (string_contains(split[1], "I/O")){
                         
                         	char** split_IO = string_split(split[1], " ");
-                            if(string_contains(split_IO[1], "3000")) {
                             int parametro_IO = atoi(split_IO[1]);
                             printf("I/O %d ", parametro_IO);
-					}    
+
                     }else if (string_contains(split[2], "READ")){
                             char** split_READ = string_split(split[2], " ");
-                            if(string_contains(split_READ[1], "0")) {
                             int parametro_READ = atoi(split_READ[1]);
                             printf("READ %d ", parametro_READ);
 
                    }else if (string_contains(split[3], "WRITE")) {
                             char** split_WRITE = string_split(split[3], " ");
-                            if(string_contains(split_WRITE[1], "4") && string_contains(split_WRITE[2], "42")) {
                                 int parametro1_WRITE = atoi(split_WRITE[1]);
                                 int parametro2_WRITE = atoi(split_WRITE[2]);
-                            printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE); }
+                            printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
 
                    }else if (string_contains(split[4], "COPY")){
-                            char** split_COPY = string_split(split[4], " ");
-                            if(string_contains(split_COPY[1], "0") && string_contains(split_COPY[2], "4")) {
+                            	char** split_COPY = string_split(split[4], " ");
                                 int parametro1_COPY = atoi(split_COPY[1]);
                                 int parametro2_COPY = atoi(split_COPY[2]);
 
@@ -164,7 +163,7 @@ void terminar_programa(int conexion, t_log *logger, t_config *config)
         char cadena[100] ;
      FILE *archivo, *salida ;
      archivo = fopen("argv[2]", "r");
-     salida = fopen("instrucciones.txt", "r");
+     salida = fopen("instrucciones_parseadas.txt", "r");
      if (archivo == NULL)
       {
           perror("Error al abrir el archivo");

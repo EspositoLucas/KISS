@@ -8,20 +8,22 @@
 #include<netdb.h>
 #include<commons/log.h>
 #include<commons/collections/list.h>
+#include<commons/string.h>
+#include<commons/config.h>
 #include<string.h>
 #include<assert.h>
 #include <pthread.h>
 
-// #define IP_KERNEL "127.0.0.1"
-// #define PUERTO_KERNEL 8000
+ #define IP_KERNEL "127.0.0.1"
+ #define PUERTO_KERNEL 8000
 
-#define NEW 
-#define READY 
-#define EXEC 
-#define BLOCK 
-#define SUSPENDED_BLOCK
-#define SUSPENDED_READY
-#define EXIT
+//#define NEW
+//#define READY
+//#define EXEC
+//#define BLOCK
+//#define SUSPENDED_BLOCK
+//#define SUSPENDED_READY
+//#define EXIT
 
 typedef enum
 {
@@ -30,9 +32,9 @@ typedef enum
 } op_code;
 
 typedef struct {
-    int id ;
+    int id_proceso ;
     const int tamanio_proceso ;
-    char* instrucciones [100] ;
+    t_list* instrucciones ;
     int pc;
     double estimacion_rafaga ;
 
@@ -54,6 +56,15 @@ typedef struct  // archivo de configuracion kernel
 } arch_config;
 
 arch_config config_valores ;
+
+typedef struct
+{
+    int socket;
+    int socket_anterior;
+} t_conexiones;
+
+
+
 
 t_log *logger;
 
