@@ -251,5 +251,6 @@ char *leer_archivo(){
 //     return cadena;
 // }
 
+//comment
 
 // Argumentos en Eclipse : Run ConfiguarAtions - arguments y poner argumentos por espaciso : 10000  /C:\Users\esposito\Carpetas Compartidas SO\TP\tp-2022-1c-Ubunteam\consola\instrucciones.txt
