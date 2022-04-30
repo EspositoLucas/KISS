@@ -1,6 +1,7 @@
 #include "consola.h"
 #include "consolaUtils.h"
 
+
 int main(int argc, char **argv){
 
 // ./consola 10000 /C:\Users\esposito\Carpetas Compartidas SO\TP\tp-2022-1c-Ubunteam\consola\instrucciones.txt
@@ -32,7 +33,7 @@ int main(int argc, char **argv){
 
     conexion_consola = crear_conexion(config_valores.ip_kernel, config_valores.puerto_kernel);
 
-    enviar_mensaje(tamanio_proceso, conexion_consola);
+    enviar_mensaje("Envio a kernel la info del proceso", conexion_consola);
 
     paquete_proceso(conexion_consola);
 
@@ -80,7 +81,7 @@ void paquete_proceso(int conexion){
     t_paquete *paquete = crear_paquete();
 
     while (1) {
-    	char* leido = leer_archivo();
+    	char* leido = leer_archivo("instrucciones.txt");
 
     	char** split = string_split(leido, "\n");
 
@@ -142,71 +143,68 @@ void terminar_programa(int conexion, t_log *logger, t_config *config){
     liberar_conexion(conexion);
 }
 
-// // VERSION 1 - leer_archivo()
-char *leer_archivo(){
-	char cadena[100] ;
-	FILE *archivo, *salida ;
-	archivo = fopen("argv[2]", "r");
-	salida = fopen("instrucciones_parseadas.txt", "r");
-	if (archivo == NULL){
-        perror("Error al abrir el archivo");
-        return 1;
-	}
-	if (salida == NULL){
-        perror("Error al abrir el archivo");
-        return 1;
-	}
-	while(fgets(cadena,100,archivo)) {
-		fputs(cadena,salida);
-	}
-	printf("%s", cadena);
-	fclose(archivo);
-	fclose(salida);
-	printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
-	return cadena;
-}
+// // // VERSION 1 - leer_archivo()
+// char *leer_archivo(){
+// 	char cadena[100] ;
+// 	FILE *archivo ;
+// 	archivo = fopen("argv[2]", "r");
+// //	salida = fopen("instrucciones_parseadas.txt", "r");
+// 	if (archivo == NULL){
+//         perror("Error al abrir el archivo");
+// 	}
+// //	if (salida == NULL){
+// //        perror("Error al abrir el archivo");
+// //	}
+// //	while(fgets(cadena,100,archivo)) {
+// //		fputs(cadena,salida);
+// //	}
+// 	fgets(cadena,100,archivo);
+// //	printf("%s", *cadena);
+// 	fclose(archivo);
+// //	fclose(salida);
+// 	printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
+// 	return cadena;
+// }
 
 
 // VERSION 2 - leer_archivo()
 
-// char *leer_archivo(char *unPath) // para usar el path, ver funcion split
-// {
+char *leer_archivo(char *unPath)
+{
 
-//     // char instrucciones[100];
+    char instrucciones[100];
 
-//     // strcpy(instrucciones, "../shared/TP 1c2022/consola");
+    strcpy(instrucciones, "../instrucciones/");
+    strcat(instrucciones, unPath);
 
-//     // strcat(instrucciones, unPath);
+    FILE *archivo = fopen(instrucciones, "r");
 
-//     FILE *archivo = fopen(instrucciones, "r");
+    if (archivo == NULL)
+    {
+        perror("Error al abrir el archivo");
+    }
 
-//     if (archivo == NULL)
-//     {
-//         perror("Error al abrir el archivo");
-//         return 1;
-//     }
+    fseek(archivo, 0, SEEK_END);         // mover el archivo al final
+    int cant_elementos = ftell(archivo); // cantidad total de elementos que tiene el archivo
+    rewind(archivo);                        //mover archivo al inicio del txt
 
-//     fseek(archivo, 0, SEEK_END);         // mover el archivo al final
-//     int cant_elementos = ftell(archivo); // cantidad total de elementos que tiene el archivo
-//     rewind(file);                        //mover archivo al inicio del txt
+    char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
+    if (cadena == NULL)
+    {
+        perror("Error en la reserva de memoria") ;
+    }
+    int cant_elementos_leidos = fread(cadena, sizeof(char), cant_elementos, archivo);
+    if (cant_elementos_leidos != cant_elementos)
+    {
+        perror("Error leyendo el archivo") ;
+    }
 
-//     char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
-//     if (cadena == NULL)
-//     {
-//         perror("Error en la reserva de memoria") return 2;
-//     }
-//     int cant_elementos_leidos = fread(cadena, sizeof(char), cant_elementos, archivo);
-//     if (cant_elementos_leidos != cant_elementos)
-//     {
-//         perror("Error leyendo el archivo") return 3;
-//     }
-
-//     printf("&s", cadena);
-//     free(cadena);
-//     fclose(archivo);
-//     printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
-//     return cadena;
-// }
+    printf("&s", cadena);
+    free(cadena);
+    fclose(archivo);
+    printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
+    return cadena;
+}
 
 // 
 
