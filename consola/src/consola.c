@@ -167,7 +167,7 @@ void terminar_programa(int conexion, t_log *logger, t_config *config){
 // }
 
 
-// VERSION 2 - leer_archivo()
+// VERSION 2 - leer_archivo() -
 
 char *leer_archivo(char *unPath)
 {
@@ -199,7 +199,7 @@ char *leer_archivo(char *unPath)
         perror("Error leyendo el archivo") ;
     }
 
-    printf("&s", cadena);
+    printf("%s", cadena); //
     free(cadena);
     fclose(archivo);
     printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
