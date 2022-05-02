@@ -34,7 +34,7 @@ typedef struct // archivo de configuracion consola
 {
 
     char* ip_kernel;
-    int puerto_kernel;
+    char* puerto_kernel;
 
 } arch_config;
 

@@ -14,8 +14,8 @@
 #include<assert.h>
 #include <pthread.h>
 
- #define IP_KERNEL "127.0.0.1"
- #define PUERTO_KERNEL 8000
+#define IP_KERNEL "127.0.0.1"
+#define PUERTO_KERNEL "8000"
 
 //#define NEW
 //#define READY
@@ -37,6 +37,7 @@ typedef struct {
     t_list* instrucciones ;
     int pc;
     double estimacion_rafaga ;
+    char* estado ;
 
 }t_pcb ;
 typedef struct  // archivo de configuracion kernel

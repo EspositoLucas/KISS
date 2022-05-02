@@ -14,6 +14,7 @@ int main(int argc, char **argv){
 
     t_log *logger;
     t_config *config;
+    t_paquete* paquete = crear_paquete() ;
 
     /* ---------------- LOGGING CONSOLA  ---------------- */
 
@@ -26,18 +27,20 @@ int main(int argc, char **argv){
     config = iniciar_config();
 
     config_valores.ip_kernel = config_get_string_value(config, "IP_KERNEL");
-    config_valores.puerto_kernel = config_get_int_value(config, "PUERTO_KERNEL");
+    config_valores.puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
 
     // Conexión hacia el kernel
 
     conexion_consola = crear_conexion(config_valores.ip_kernel, config_valores.puerto_kernel);
 
-    enviar_mensaje("Envio a kernel la info del proceso", conexion_consola);
+    enviar_mensaje(" Info del proceso", conexion_consola);
+
+    agregar_entero_a_paquete(paquete, tamanio_proceso);
 
     paquete_proceso(conexion_consola);
 
-//    enviar_paquete(paquete, conexion_consola);
+    enviar_paquete(paquete, conexion_consola);
 
     terminar_programa(conexion_consola, logger, config);
 }
@@ -79,13 +82,13 @@ void paquete_proceso(int conexion){
 //    int tamanio_proceso = sizeof(char); // Cual seria el tamanio del proceso, el de tipo leido o el de todo el archivo ?
    
     t_paquete *paquete = crear_paquete();
+    char* leido = leer_archivo("instrucciones.txt");
+    char** split = string_split(leido, "\n");
+
+    int longitud_instrucciones = string_array_size(split);
 
     while (1) {
-    	char* leido = leer_archivo("instrucciones.txt");
 
-    	char** split = string_split(leido, "\n");
-
-    	int longitud_instrucciones = string_array_size(split);
 
     	if(string_contains(split[0], "NO_OP") ) {
     		char** split_NO_OP = string_split(split[0], " ");
@@ -97,8 +100,8 @@ void paquete_proceso(int conexion){
     		char** split_IO = string_split(split[1], " ");
             int parametro_IO = atoi(split_IO[1]);
             printf("I/O %d ", parametro_IO);
-
-    	} else if (string_contains(split[2], "READ")){
+    	}
+    	 else if (string_contains(split[2], "READ")){
     		char** split_READ = string_split(split[2], " ");
             int parametro_READ = atoi(split_READ[1]);
             printf("READ %d ", parametro_READ);
@@ -120,10 +123,14 @@ void paquete_proceso(int conexion){
     		printf("EXIT");
     	}
 
-        agregar_a_paquete(paquete, split, longitud_instrucciones + 1);
-        free(leido);
-        free(split);
     }
+
+
+
+
+    agregar_a_paquete(paquete, split, longitud_instrucciones + 1);
+    free(leido);
+    free(split);
     enviar_paquete(paquete, conexion);
     eliminar_paquete(paquete);
 }
@@ -173,9 +180,7 @@ char *leer_archivo(char *unPath)
 {
 
     char instrucciones[100];
-
-    strcpy(instrucciones, "../instrucciones/");
-    strcat(instrucciones, unPath);
+    strcpy(instrucciones, unPath);
 
     FILE *archivo = fopen(instrucciones, "r");
 
@@ -199,7 +204,7 @@ char *leer_archivo(char *unPath)
         perror("Error leyendo el archivo") ;
     }
 
-    printf("%s", cadena); //
+    printf("%s", cadena);
     free(cadena);
     fclose(archivo);
     printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");

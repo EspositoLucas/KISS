@@ -7,16 +7,16 @@
 
 #include<commons/collections/list.h>
 
-sem_t planificacion;
-sem_t operacionesProcesos;
-sem_t planificacionPausada;
-sem_t sincroProcesPlanif;
-sem_t sincroProcesPlanif2;
+//sem_t planificacion;
+//sem_t operacionesProcesos;
+//sem_t planificacionPausada;
+//sem_t sincroProcesPlanif;
+//sem_t sincroProcesPlanif2;
 
-typedef struct {
-    t_pcb pcb ;
-    char* estado ;
-}t_proceso 
+// typedef struct {
+//     t_pcb pcb ;
+//     char* estado ;
+// }t_proceso 
 
 void planificador_crearTripulantes(int  ,char*,int  );
 void planificacionFIFO();

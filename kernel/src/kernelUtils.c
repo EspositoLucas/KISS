@@ -3,7 +3,7 @@
 int iniciar_servidor(void)
 {
 
-    struct addrinfo hints, *servinfo, *p;
+    struct addrinfo hints, *servinfo;
 
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET;
