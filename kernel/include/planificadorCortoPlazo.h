@@ -21,6 +21,9 @@
 void planificador_crearTripulantes(int  ,char*,int  );
 void planificacionFIFO();
 void planificacionSRT();
+void agregarAReady(t_pcb* proceso);
+void agregarABlock(t_pcb* proceso);
+void sacarDeBlock(t_pcb* proceso);
 
 
 

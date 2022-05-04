@@ -34,7 +34,7 @@ int main(int argc, char **argv){
 
     conexion_consola = crear_conexion(config_valores.ip_kernel, config_valores.puerto_kernel);
 
-    enviar_mensaje(" Info del proceso", conexion_consola);
+    enviar_mensaje("Envio a kernel la info del proceso", conexion_consola);
 
     agregar_entero_a_paquete(paquete, tamanio_proceso);
 
@@ -122,17 +122,16 @@ void paquete_proceso(int conexion){
 
     		printf("EXIT");
     	}
+    	agregar_a_paquete(paquete, split, longitud_instrucciones + 1);
+    	free(leido);
+    	free(split);
 
     }
 
 
-
-
-    agregar_a_paquete(paquete, split, longitud_instrucciones + 1);
-    free(leido);
-    free(split);
     enviar_paquete(paquete, conexion);
     eliminar_paquete(paquete);
+
 }
 
 

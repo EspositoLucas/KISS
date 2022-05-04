@@ -35,7 +35,7 @@ int main(void)
 
 void iterator(char *value)
 {
-    printf("Valor: %s\n", value);
+    // printf("Valor: %s\n", value);
     log_info(logger, "%s", value);
 }
 
@@ -153,7 +153,7 @@ void iterator(char *value)
 
 // 	//crear conexion
 // 	//conexion= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
-// 	//enviar CLAVE al servirdor
+// 	//enviar CLAVE al servidor
 // 	//enviar_mensaje("DISCORDIADOR" ,conexion);
 
 // 	//liberar_conexion(conexion);
