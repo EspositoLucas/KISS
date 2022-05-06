@@ -148,7 +148,7 @@
 
 // void inicializar_planificacion(){
    
-//     pthread_create(&hiloQueDesuspende, NULL, (void*)hiloSuspensionAReady,(void*)server_fd);
+//  pthread_create(&hiloQueDesuspende, NULL, (void*)hiloSuspensionAReady,(void*)server_fd);
 // 	pthread_create(&hiloMedianoPlazo, NULL, (void*)hiloBlockASuspension, (void*)server_fd);
 // 	pthread_detach(hiloQueDesuspende);
 // 	pthread_detach(hiloMedianoPlazo);
@@ -163,7 +163,7 @@
 
 // void manejo_recepcion() {
 
-//     int server_fd = iniciar_servidor();
+//  int server_fd = iniciar_servidor();
 // 	pthread_t manejo_recepcion;
 // 	pthread_create(&manejo_recepcion, NULL, (void*) manejar_clientes, (void*)server_fd);
 // 	pthread_detach(manejo_recepcion);

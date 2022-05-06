@@ -1,34 +1,34 @@
-// //#include "planificadorCortoPlazo.h"
-// //
-// //
-// //
-// //void enviarPcbACpu(int id,char* estado){
-// //	//CREAR CONEXION
-// //		int socket_cliente;
-// //		socket_cliente= crear_conexion(config_valores.ip_cpu,config_valores.puerto_cpu_dispatch);
-// //	//CREAR PAQUETE
-// //		t_paquete* nuevoPaquete = crear_paquete_con_codigo_op(CAMBIAR_ESTADO);
-// //	//AGREGAR A PAQUETE
-// //		agregar_entero_a_paquete(nuevoPaquete, id);
-// //		agregar_a_paquete(nuevoPaquete,estado,(strlen(estado) + 1));
-// //
-// //	//ENVIAR PAQUETE
-// //
-// //		enviar_paquete(nuevoPaquete, socket_cliente);
-// //
-// //	// BORRAR PAQUETE
-// //	eliminar_paquete(nuevoPaquete);
-// //
-// //	int codCpu = recibir_operacion(socket_cliente);
-// //
-// //	if(codCpu == OK){
-// //		log_info(logger, "Recibi Pcb OK");
-// //	}
-// //
-// //	// LIBERAR CONEXION
-// //	liberar_conexion(socket_cliente);
-// //
-// //}
+// #include "planificadorCortoPlazo.h"
+// // //
+// // //
+// // //
+// void enviarPcbACpu(int id,char* estado){
+// 	//CREAR CONEXION
+// 		int socket_cliente;
+// 		socket_cliente= crear_conexion(config_valores.ip_cpu,config_valores.puerto_cpu_dispatch);
+// 	//CREAR PAQUETE
+// 		t_paquete* nuevoPaquete = crear_paquete();
+// 	//AGREGAR A PAQUETE
+// 		agregar_entero_a_paquete(nuevoPaquete, id);
+// 		agregar_a_paquete(nuevoPaquete,estado,(strlen(estado) + 1));
+
+// 	//ENVIAR PAQUETE
+
+// 		enviar_paquete(nuevoPaquete, socket_cliente);
+
+// 	// BORRAR PAQUETE
+// 	eliminar_paquete(nuevoPaquete);
+
+// 	int codCpu = recibir_operacion(socket_cliente);
+
+// 	if(codCpu == OK){
+// 		log_info(logger, "Recibi Pcb OK");
+// 	}
+
+// 	// LIBERAR CONEXION
+// 	liberar_conexion(socket_cliente);
+
+// }
 // //
 // //void planificacionFIFO(){
 // //	log_info(logger,"Se inicio la planificacion FIFO");

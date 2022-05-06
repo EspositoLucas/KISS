@@ -14,7 +14,7 @@
 #include<assert.h>
 #include <pthread.h>
 
-#define IP_KERNEL "127.0.0.1"
+#define IP_KERNEL "0.0.0.0"
 #define PUERTO_KERNEL "8000"
 
 //#define NEW
@@ -36,7 +36,7 @@ typedef struct {
     const int tamanio_proceso ;
     t_list* instrucciones ;
     int valor_tabla_paginas ;
-    int pc;
+    int program_counter;
     double estimacion_rafaga ;
     char* estado ;
 
@@ -65,10 +65,11 @@ typedef struct
     int socket_anterior;
 } t_conexiones;
 
-pthread_t hiloNewReady;
-pthread_t hiloReady_Exec;
-pthread_t hiloMedianoPlazo;
-pthread_t hiloQueDesuspende;
+//HILOS PARA PLANIFICACION
+//pthread_t hiloNewReady;
+//pthread_t hiloReady_Exec;
+//pthread_t hiloMedianoPlazo;
+//pthread_t hiloQueDesuspende;
 
 
 
