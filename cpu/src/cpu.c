@@ -4,13 +4,39 @@
 
 int main(int argc, char *argv[])
 {
-    t_list *names = list_create();
-    list_add(names, "Mick");
-    list_add(names, "Keith");
-    list_add(names, "Ronnie");
-    list_add(names, "Charlie");
+	logger = log_create("log.log", "Servidor CPU", 1, LOG_LEVEL_DEBUG);
 
-    list_iterate(names, (void *)puts);
+	    int server_fd = iniciar_servidor();
+	    log_info(logger, "CPU listo para recibir al modulo cliente");
+	    int cliente_fd = esperar_cliente(server_fd);
 
-    return 0;
+	    t_list *lista;
+	    while (1)
+	    {
+	        int cod_op = recibir_operacion(cliente_fd);
+	        switch (cod_op)
+	        {
+	        case MENSAJE:
+	            recibir_mensaje(cliente_fd);
+	            break;
+	        case PCB:
+	            lista = recibir_paquete(cliente_fd);
+	            log_info(logger, "Me llegaron los mensajes:\n");
+	            list_iterate(lista, (void *)iterator);
+	            break;
+	        case -1:
+	            log_error(logger, "Fallo la comunicacion. Abortando");
+	            return EXIT_FAILURE;
+	        default:
+	            log_warning(logger, "Operacion desconocida");
+	            break;
+	        }
+	    }
+	    return EXIT_SUCCESS;
+}
+
+void iterator(char *value)
+{
+    // printf("Valor: %s\n", value);
+    log_info(logger, "%s", value);
 }
