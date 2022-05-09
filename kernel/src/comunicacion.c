@@ -147,7 +147,7 @@
 // // HILOS 
 
 // void inicializar_planificacion(){
-   
+
 //  pthread_create(&hiloQueDesuspende, NULL, (void*)hiloSuspensionAReady,(void*)server_fd);
 // 	pthread_create(&hiloMedianoPlazo, NULL, (void*)hiloBlockASuspension, (void*)server_fd);
 // 	pthread_detach(hiloQueDesuspende);

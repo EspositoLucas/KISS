@@ -48,5 +48,6 @@ void agregar_entero_a_paquete(t_paquete *paquete, int entero);
 void enviar_paquete(t_paquete *paquete, int socket_cliente);
 void liberar_conexion(int socket_cliente);
 void eliminar_paquete(t_paquete *paquete);
+void *serializar_paquete(t_paquete *, int );
 
 #endif

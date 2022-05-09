@@ -38,9 +38,10 @@ int main(int argc, char **argv){
 
     agregar_entero_a_paquete(paquete, tamanio_proceso);
 
+    enviar_paquete(paquete, conexion_consola);
+
     paquete_proceso(conexion_consola);
 
-    enviar_paquete(paquete, conexion_consola);
 
     terminar_programa(conexion_consola, logger, config);
 }
@@ -74,70 +75,122 @@ t_config *iniciar_config(void){
     return nuevo_config;
 }
 
-// VERSION 1 PAQUETE
+//  //VERSION 1 PAQUETE
+
+//  void paquete_proceso(int conexion){
+
+   
+//      t_paquete *paquete = crear_paquete();
+//      char* leido = leer_archivo("instrucciones.txt");
+//      char** split = string_split(leido, "\n");
+
+//      int longitud_instrucciones = string_array_size(split);
+
+//      while (1) {
+
+
+//      	if(string_contains(split[0], "NO_OP") ) {
+//      		char** split_NO_OP = string_split(split[0], " ");
+//      		int parametro_NO_OP = atoi(split_NO_OP[1]);
+//              for(int i=0; i< parametro_NO_OP  ; i++){
+//              	agregar_a_paquete(paquete, split_NO_OP[0], longitud_instrucciones + 1);
+//              	printf("NO_OP %d ", parametro_NO_OP);
+
+//              }
+
+//      	} else if (string_contains(split[1], "I/O")){
+//      		char** split_IO = string_split(split[1], " ");
+//              int parametro_IO = atoi(split_IO[1]);
+//              printf("I/O %d ", parametro_IO);
+//              agregar_a_paquete(paquete, split[1], longitud_instrucciones + 1);
+//      	}
+//      	 else if (string_contains(split[2], "READ")){
+//      		char** split_READ = string_split(split[2], " ");
+//              int parametro_READ = atoi(split_READ[1]);
+//              printf("READ %d ", parametro_READ);
+//              agregar_a_paquete(paquete, split[2], longitud_instrucciones + 1);
+
+//      	} else if (string_contains(split[3], "WRITE")) {
+//      		char** split_WRITE = string_split(split[3], " ");
+//              int parametro1_WRITE = atoi(split_WRITE[1]);
+//              int parametro2_WRITE = atoi(split_WRITE[2]);
+//              printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
+//              agregar_a_paquete(paquete, split[3], longitud_instrucciones + 1);
+
+//      	} else if (string_contains(split[4], "COPY")){
+//      		char** split_COPY = string_split(split[4], " ");
+//              int parametro1_COPY = atoi(split_COPY[1]);
+//              int parametro2_COPY = atoi(split_COPY[2]);
+//              printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
+//              agregar_a_paquete(paquete, split[4], longitud_instrucciones + 1);
+
+//      	} else if (string_contains(split[5], "EXIT")){
+
+//      		printf("EXIT");
+//      		agregar_a_paquete(paquete, split[5], longitud_instrucciones + 1);
+//      	}
+//  //    	agregar_a_paquete(paquete, split, longitud_instrucciones + 1);
+//  //    	free(leido);
+//  //    	free(split);
+
+//      }
+
+
+//      enviar_paquete(paquete, conexion);
+//      eliminar_paquete(paquete);
+//      free(leido);
+//      free(split);
+
+//  }
+
+// // VERSION 2 PAQUETE - Serializar en consola
 
 // void paquete_proceso(int conexion){
 
-//     // char *leido = readline("> ");
-//     //    char *leido = leer_archivo(split[2]);
-// //    int tamanio_proceso = sizeof(char); // Cual seria el tamanio del proceso, el de tipo leido o el de todo el archivo ?
    
 //     t_paquete *paquete = crear_paquete();
 //     char* leido = leer_archivo("instrucciones.txt");
 //     char** split = string_split(leido, "\n");
+//     int longitud_instrucciones = string_array_size(split_una_vez_separado);
+//     int indice_split = 0 ;
 
-//     int longitud_instrucciones = string_array_size(split);
+//     while (split[indice_split] != NULL) {
 
-//     while (1) {
+//     	char* palabras = string_split(split[indice_split], " ") ;
 
-
-//     	if(string_(split[0], "NO_OP") ) {
-//     		char** split_NO_OP = string_split(split[0], " ");
-//     		int parametro_NO_OP = atoi(split_NO_OP[1]);
+//     	if(string_contains(palabras[0], "NO_OP") ) {
+//     		int parametro_NO_OP = atoi(palabras[1]);
 //             for(int i=0; i< parametro_NO_OP  ; i++){
-//             	agregar_a_paquete(paquete, split_NO_OP[0], longitud_instrucciones + 1);
 //             	printf("NO_OP %d ", parametro_NO_OP);
 
 //             }
 
-//     	} else if (string_contains(split[1], "I/O")){
-//     		char** split_IO = string_split(split[1], " ");
-//             int parametro_IO = atoi(split_IO[1]);
+//     	} else if (string_contains(palabras[0], "I/O")){
+//             int parametro_IO = atoi(palabras[1]);
 //             printf("I/O %d ", parametro_IO);
-//             agregar_a_paquete(paquete, split[1], longitud_instrucciones + 1);
 //     	}
-//     	 else if (string_contains(split[2], "READ")){
-//     		char** split_READ = string_split(split[2], " ");
-//             int parametro_READ = atoi(split_READ[1]);
+//     	 else if (string_contains(palabras[0], "READ")){
+//             int parametro_READ = atoi(palabras[1]);
 //             printf("READ %d ", parametro_READ);
-//             agregar_a_paquete(paquete, split[2], longitud_instrucciones + 1);
 
-//     	} else if (string_contains(split[3], "WRITE")) {
-//     		char** split_WRITE = string_split(split[3], " ");
-//             int parametro1_WRITE = atoi(split_WRITE[1]);
-//             int parametro2_WRITE = atoi(split_WRITE[2]);
+//     	} else if (string_contains(palabras[0], "WRITE")) {
+//             int parametro1_WRITE = atoi(palabras[1]);
+//             int parametro2_WRITE = atoi(palabras[2]);
 //             printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
-//             agregar_a_paquete(paquete, split[3], longitud_instrucciones + 1);
 
-//     	} else if (string_contains(split[4], "COPY")){
-//     		char** split_COPY = string_split(split[4], " ");
-//             int parametro1_COPY = atoi(split_COPY[1]);
-//             int parametro2_COPY = atoi(split_COPY[2]);
+//     	} else if (string_contains(palabras[0], "COPY")){
+//             int parametro1_COPY = atoi(palabras[1]);
+//             int parametro2_COPY = atoi(palabras[2]);
 //             printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
-//             agregar_a_paquete(paquete, split[4], longitud_instrucciones + 1);
 
-//     	} else if (string_contains(split[5], "EXIT")){
+//     	} else if (string_contains(palabras[0], "EXIT")){
 
 //     		printf("EXIT");
-//     		agregar_a_paquete(paquete, split[5], longitud_instrucciones + 1);
 //     	}
-// //    	agregar_a_paquete(paquete, split, longitud_instrucciones + 1);
+//       	agregar_a_paquete(paquete, split_una_vez_separado, longitud_instrucciones + 1);
 // //    	free(leido);
-// //    	free(split);
-
+// //    	free(palabras);
 //     }
-
-
 //     enviar_paquete(paquete, conexion);
 //     eliminar_paquete(paquete);
 //     free(leido);
@@ -145,61 +198,24 @@ t_config *iniciar_config(void){
 
 // }
 
-// VERSION 2 PAQUETE
+// VERSION 3 PAQUETE - Sin serializar en consola 
 
 void paquete_proceso(int conexion){
 
-    // char *leido = readline("> ");
-    //    char *leido = leer_archivo(split[2]);
-//    int tamanio_proceso = sizeof(char); // Cual seria el tamanio del proceso, el de tipo leido o el de todo el archivo ?
    
     t_paquete *paquete = crear_paquete();
     char* leido = leer_archivo("instrucciones.txt");
-    char** split = string_split(leido, "\n");
-    char** split_una_vez_separado = string_split(leido, " ");
-    int longitud_instrucciones = string_array_size(split_una_vez_separado);
+//    char** split = string_split(leido, "\n");
+//    int longitud_instrucciones = string_array_size(split);
+//    int indice_split = 0 ;
 
-    while (1) {
-
-
-    	if(string_contains(split_una_vez_separado[0], "NO_OP") ) {
-    		int parametro_NO_OP = atoi(split_una_vez_separado[1]);
-            for(int i=0; i< parametro_NO_OP  ; i++){
-            	printf("NO_OP %d ", parametro_NO_OP);
-
-            }
-
-    	} else if (string_contains(split_una_vez_separado[2], "I/O")){
-            int parametro_IO = atoi(split_una_vez_separado[3]);
-            printf("I/O %d ", parametro_IO);
-    	}
-    	 else if (string_contains(split_una_vez_separado[4], "READ")){
-            int parametro_READ = atoi(split_una_vez_separado[5]);
-            printf("READ %d ", parametro_READ);
-
-    	} else if (string_contains(split_una_vez_separado[6], "WRITE")) {
-            int parametro1_WRITE = atoi(split_una_vez_separado[7]);
-            int parametro2_WRITE = atoi(split_una_vez_separado[8]);
-            printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
-
-    	} else if (string_contains(split_una_vez_separado[9], "COPY")){
-            int parametro1_COPY = atoi(split_una_vez_separado[10]);
-            int parametro2_COPY = atoi(split_una_vez_separado[11]);
-            printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
-
-    	} else if (string_contains(split_una_vez_separado[13], "EXIT")){
-
-    		printf("EXIT");
-    	}
-      	agregar_a_paquete(paquete, split_una_vez_separado, longitud_instrucciones + 1);
+      	agregar_a_paquete(paquete, leido, strlen(leido)+1 );
 //    	free(leido);
-//    	free(split);
 
     enviar_paquete(paquete, conexion);
     eliminar_paquete(paquete);
-    free(leido);
-    free(split);
-    }
+//    free(leido);
+
 }
 
 

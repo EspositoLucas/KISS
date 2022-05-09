@@ -9,6 +9,7 @@ int main(void)
     int cliente_fd = esperar_cliente(server_fd);
 
     t_list *lista;
+    
     while (1)
     {
         int cod_op = recibir_operacion(cliente_fd);
@@ -18,10 +19,17 @@ int main(void)
             recibir_mensaje(cliente_fd);
             break;
         case PAQUETE:
-            lista = recibir_paquete(cliente_fd);
+            lista = recibir_paquete_instrucciones(cliente_fd);
             log_info(logger, "Me llegaron los mensajes:\n");
             list_iterate(lista, (void *)iterator);
             break;
+        
+        // case TABLA_PAGINAS:   // PARA MEMORIA
+        //     lista = recibir_paquete(cliente_fd);
+        //     log_info(logger, "Me llego el valor de la tabla de paginas:\n");
+        //     list_iterate(lista, (void *)iterator);
+        //     break;
+
         case -1:
             log_error(logger, "Fallo la comunicacion. Abortando");
             return EXIT_FAILURE;

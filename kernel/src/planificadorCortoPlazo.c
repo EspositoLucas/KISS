@@ -2,7 +2,7 @@
 // // //
 // // //
 // // //
-// void enviarPcbACpu(int id,char* estado){
+// void enviarPcbACpu(pcb pcb){
 // 	//CREAR CONEXION
 // 		int socket_cliente;
 // 		socket_cliente= crear_conexion(config_valores.ip_cpu,config_valores.puerto_cpu_dispatch);

@@ -99,3 +99,104 @@ t_list *recibir_paquete(int socket_cliente)
     free(buffer);
     return valores;
 }
+
+// t_list *recibir_paquete_instrucciones(int socket_cliente) // Para deserializar las instrucciones de consola
+// {
+//     int size;
+//     int desplazamiento = 0;
+//     void *buffer;
+//     t_list *valores = list_create();
+//     int tamanio;
+//     int indice_split = 0 ;
+
+//     buffer = recibir_buffer(&size, socket_cliente);
+//     char** split_buffer = string_split(buffer, "\n");
+
+//     while (desplazamiento < size && split_buffer[indice_split] != NULL)
+//     {
+//         memcpy(&tamanio, split_buffer + desplazamiento, sizeof(int));
+//         desplazamiento += sizeof(int);
+        
+//         char** palabras = string_split(split_buffer[indice_split], " ") ;
+
+//         if(string_contains(palabras[0], "NO_OP") ) {
+//     		int parametro_NO_OP = atoi(palabras[1]);
+//             for(int i=0; i< parametro_NO_OP  ; i++){
+//             	printf("NO_OP %d ", parametro_NO_OP);
+//                 list_add(proceso.instrucciones) ; // Para agregar a lista a medida quese vaya parseando
+
+//             }
+
+//     	} else if (string_contains(palabras[0], "I/O")){
+//             int parametro_IO = atoi(palabras[1]);
+//             printf("I/O %d ", parametro_IO);
+//     	}
+//     	 else if (string_contains(palabras[0], "READ")){
+//             int parametro_READ = atoi(palabras[1]);
+//             printf("READ %d ", parametro_READ);
+
+//     	} else if (string_contains(palabras[0], "WRITE")) {
+//             int parametro1_WRITE = atoi(palabras[1]);
+//             int parametro2_WRITE = atoi(palabras[2]);
+//             printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
+
+//     	} else if (string_contains(palabras[0], "COPY")){
+//             int parametro1_COPY = atoi(palabras[1]);
+//             int parametro2_COPY = atoi(palabras[2]);
+//             printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
+
+//     	} else if (string_contains(palabras[0], "EXIT")){
+
+//     		printf("EXIT");
+//     	}
+//         memcpy(palabras, split_buffer + desplazamiento, tamanio);
+//         desplazamiento += tamanio;
+//         list_add(valores, palabras);
+//         free(palabras) ;
+//     }
+        	
+//     free(split_buffer);
+//     return valores;
+// }
+
+void enviar_mensaje(char *mensaje, int socket_cliente)
+{
+    t_paquete *paquete = malloc(sizeof(t_paquete));
+
+    paquete->codigo_operacion = MENSAJE;
+    paquete->buffer = malloc(sizeof(t_buffer));
+    paquete->buffer->size = strlen(mensaje) + 1;
+    paquete->buffer->stream = malloc(paquete->buffer->size);
+    memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
+
+    int bytes = paquete->buffer->size + 2 * sizeof(int);
+
+    void *a_enviar = serializar_paquete(paquete, bytes);
+
+    send(socket_cliente, a_enviar, bytes, 0);
+
+    free(a_enviar);
+    eliminar_paquete(paquete);
+}
+
+void *serializar_paquete(t_paquete *paquete, int bytes)
+{
+    void *magic = malloc(bytes);
+    int desplazamiento = 0;
+
+    memcpy(magic + desplazamiento, &(paquete->codigo_operacion), sizeof(int));
+    desplazamiento += sizeof(int);
+    memcpy(magic + desplazamiento, &(paquete->buffer->size), sizeof(int));
+    desplazamiento += sizeof(int);
+    memcpy(magic + desplazamiento, paquete->buffer->stream, paquete->buffer->size);
+    desplazamiento += paquete->buffer->size;
+
+    return magic;
+}
+
+void eliminar_paquete(t_paquete *paquete)
+{
+    free(paquete->buffer->stream);
+    free(paquete->buffer);
+    free(paquete);
+}

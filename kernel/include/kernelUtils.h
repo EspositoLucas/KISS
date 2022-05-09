@@ -13,6 +13,7 @@
 #include<string.h>
 #include<assert.h>
 #include <pthread.h>
+#include <signal.h>
 
 #define IP_KERNEL "0.0.0.0"
 #define PUERTO_KERNEL "8000"
@@ -34,13 +35,17 @@ typedef enum
 typedef struct {
     int id_proceso ;
     const int tamanio_proceso ;
-    t_list* instrucciones ;
+    t_list* instrucciones ; 
     int valor_tabla_paginas ;
     int program_counter;
-    double estimacion_rafaga ;
+    float rafaga_real_anterior ;
+    float estimacion_recalculada ;
     char* estado ;
+    int tiempoEspera ;
+    bool suspendido;
 
-}t_pcb ;
+}pcb ;
+pcb proceso ;
 typedef struct  // archivo de configuracion kernel
 {
    char* ip_memoria;
@@ -50,8 +55,8 @@ typedef struct  // archivo de configuracion kernel
    int puerto_cpu_interrupt;
    int puerto_escucha;
    char* algoritmo_planificacion;
-   int estimacion_inicial ;
-   double alfa;
+   float estimacion_inicial ;
+   float alfa;
    int grado_multiprogramacion ;
    int tiempo_maximo_bloqueado;
 
@@ -75,6 +80,18 @@ typedef struct
 
 t_log *logger;
 
+typedef struct
+{
+    int size;
+    void *stream;
+} t_buffer;
+
+typedef struct
+{
+    op_code codigo_operacion;
+    t_buffer *buffer;
+}t_paquete;
+
 void *recibir_buffer(int *, int);
 void cargar_configuracion();
 
@@ -84,5 +101,8 @@ int esperar_cliente(int);
 t_list *recibir_paquete(int);
 void recibir_mensaje(int);
 int recibir_operacion(int);
+void enviar_mensaje(char *, int );
+void *serializar_paquete(t_paquete *, int );
+void eliminar_paquete(t_paquete *paquete);
 
 #endif
