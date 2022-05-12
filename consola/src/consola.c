@@ -209,7 +209,7 @@ void paquete_proceso(int conexion){
 //    int longitud_instrucciones = string_array_size(split);
 //    int indice_split = 0 ;
 
-      	agregar_a_paquete(paquete, leido, strlen(leido)+1 );
+    agregar_a_paquete(paquete, leido, strlen(leido)+1 );
 //    	free(leido);
 
     enviar_paquete(paquete, conexion);

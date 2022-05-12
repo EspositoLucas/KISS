@@ -67,3 +67,12 @@
 [INFO] 18:49:28:998 Servidor Kernel/(26034:26034): Kernel listo para recibir al modulo cliente
 [INFO] 18:49:33:632 Servidor Kernel/(26034:26034): Se conecto un cliente!
 [INFO] 18:49:33:632 Servidor Kernel/(26034:26034): Me llego el mensaje Envio a kernel la info del proceso
+[INFO] 17:52:22:907 Servidor Kernel/(22729:22729): Kernel listo para recibir al modulo cliente
+[INFO] 17:53:08:947 Servidor Kernel/(22801:22801): Kernel listo para recibir al modulo cliente
+[INFO] 17:54:04:294 Servidor Kernel/(22879:22879): Kernel listo para recibir al modulo cliente
+[INFO] 18:19:55:833 Servidor Kernel/(24388:24388): Kernel listo para recibir al modulo cliente
+[INFO] 18:20:47:036 Servidor Kernel/(24448:24448): Kernel listo para recibir al modulo cliente
+[INFO] 18:21:13:269 Servidor Kernel/(24448:24448): Se conecto un cliente!
+[INFO] 18:21:23:639 Servidor Kernel/(24448:24448): Me llego el mensaje :  : Envio a kernel la info del proceso
+[INFO] 18:22:15:724 Servidor Kernel/(24448:24448): Me llegaron las instrucciones:
+

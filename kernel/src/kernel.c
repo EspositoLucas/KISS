@@ -8,8 +8,9 @@ int main(void)
     log_info(logger, "Kernel listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(server_fd);
 
-    t_list *lista;
-    
+//    t_list *lista;
+    pcb* pcb ;
+
     while (1)
     {
         int cod_op = recibir_operacion(cliente_fd);
@@ -18,10 +19,14 @@ int main(void)
         case MENSAJE:
             recibir_mensaje(cliente_fd);
             break;
+        // case PAQUETE:
+        //     lista = recibir_paquete(cliente_fd);
+        //     log_info(logger, "Me llegaron los mensajes:\n");
+        //     list_iterate(lista, (void *)iterator);
+        //     break;
         case PAQUETE:
-            lista = recibir_paquete_instrucciones(cliente_fd);
-            log_info(logger, "Me llegaron los mensajes:\n");
-            list_iterate(lista, (void *)iterator);
+            log_info(logger, "Me llegaron las instrucciones:\n");
+            pcb = recibir_paquete_instrucciones(cliente_fd);
             break;
         
         // case TABLA_PAGINAS:   // PARA MEMORIA

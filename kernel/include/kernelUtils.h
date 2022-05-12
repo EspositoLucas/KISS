@@ -14,6 +14,8 @@
 #include<assert.h>
 #include <pthread.h>
 #include <signal.h>
+#include <stdbool.h>
+
 
 #define IP_KERNEL "0.0.0.0"
 #define PUERTO_KERNEL "8000"
@@ -33,19 +35,17 @@ typedef enum
 } op_code;
 
 typedef struct {
-    int id_proceso ;
-    const int tamanio_proceso ;
-    t_list* instrucciones ; 
-    int valor_tabla_paginas ;
-    int program_counter;
-    float rafaga_real_anterior ;
-    float estimacion_recalculada ;
+    uint32_t id_proceso ;
+    uint32_t tamanio_proceso ;
+    uint32_t valor_tabla_paginas ;
+    uint32_t program_counter;
+    float estimacion_rafaga ;
+    double tiempo_bloqueado ;
+    uint8_t suspendido;
     char* estado ;
-    int tiempoEspera ;
-    bool suspendido;
-
+    t_list* instrucciones ; 
 }pcb ;
-pcb proceso ;
+
 typedef struct  // archivo de configuracion kernel
 {
    char* ip_memoria;
@@ -103,6 +103,11 @@ void recibir_mensaje(int);
 int recibir_operacion(int);
 void enviar_mensaje(char *, int );
 void *serializar_paquete(t_paquete *, int );
-void eliminar_paquete(t_paquete *paquete);
+void eliminar_paquete(t_paquete *);
+pcb *recibir_paquete_instrucciones(int );
+pcb *deserializar_paquete_instrucciones_consola(t_buffer* );
+pcb* deserializar_pcb(t_buffer*);
+void *serializar_pcb(pcb*);
+
 
 #endif

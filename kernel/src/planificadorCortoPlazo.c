@@ -642,3 +642,14 @@
 
 // 	pthread_mutex_unlock(&mutexBlock);
 // }
+
+
+// float calculoEstimacionProceso(float realAnterior){
+
+//     float alfa = config_valores.alfa;
+//     float estimacionInicial = config_valores.estimacion_inicial;;
+
+//     estimacion_rafaga = alpha * realAnterior + (1 - alpha) * estimacionInicial;
+
+//     return estimacion_rafaga;
+// }
