@@ -82,7 +82,8 @@ t_log *logger;
 
 typedef struct
 {
-    int size;
+	int tamanio_proceso;
+    int stream_size;
     void *stream;
 } t_buffer;
 

@@ -62,6 +62,7 @@ void *recibir_buffer(int *size, int socket_cliente)
 {
     void *buffer;
 
+    recv(socket_cliente, buffer->tamanio_proceso, sizeof(int), MSG_WAITALL);
     recv(socket_cliente, size, sizeof(int), MSG_WAITALL);
     buffer = malloc(*size);
     recv(socket_cliente, buffer, *size, MSG_WAITALL);
@@ -99,39 +100,38 @@ t_list *recibir_paquete(int socket_cliente)
     free(buffer);
     return valores;
 }
-pcb *recibir_paquete_instrucciones(int socket_cliente)
+t_buffer *recibir_buffer(int socket_cliente) // desrialziar paquete instrucciones y tamnio proceso
 {
 	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
     int size;
     void *stream ;
-    pcb* pcb ;
 
-    stream = recibir_buffer(&size, socket_cliente);
+    recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
+    recv(socket_cliente, &size, sizeof(int), MSG_WAITALL);
+    stream = malloc(size);
+    recv(socket_cliente, stream, size, MSG_WAITALL);
+
     buffer->stream = stream ;
 
-    pcb = deserializar_paquete_instrucciones_consola(buffer);
-    free(buffer);
-    return pcb ;
+    free(stream);
+    return buffer ;
 }
 
- pcb *deserializar_paquete_instrucciones_consola(t_buffer* buffer) // Para deserializar las instrucciones de consola
+ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
  {
 
      pcb* proceso_pcb = malloc(sizeof(pcb)) ;
      int indice_split = 0 ;
-     void* stream = buffer->stream ; 
      char* mensaje_consola ; // leido de consola que se envia en el paquete
 
      
      // Deserializar los campos del buffer
 
-    // memcpy(&(proceso->mensaje_length), stream, sizeof(uint32_t));
-    // stream += sizeof(uint32_t);
-    mensaje_consola = malloc(sizeof(strlen(mensaje_consola) + 1));
-    memcpy(mensaje_consola, stream, sizeof(uint32_t));
-    stream += sizeof(uint32_t);
+    mensaje_consola = malloc(buffer->stream_size);
+    memcpy(mensaje_consola,buffer->stream ,buffer->stream_size);
+    memcpy(proceso_pcb->tamanio_proceso,&(buffer->tamanio_proceso) ,sizeof(int));
 
-//    char** split_buffer = malloc(sizeof(mensaje_consola));
+    //    char** split_buffer = malloc(sizeof(mensaje_consola));
     char** split_buffer = string_split(mensaje_consola, "\n");
 //    char** palabras = malloc(sizeof(split_buffer[indice_split])) ;
     char** palabras ;
@@ -223,10 +223,11 @@ pcb* deserializar_pcb(t_buffer* buffer) {
 
     //Aca en el medio faltaria deserializar los campos de la lista
 
+    pcb->instrucciones = list_create();
     for (int i = 0; i < list_size(pcb->instrucciones); i++){ // hacemos un char* a la vez
         memcpy(stream + offset, sizeof(pcb->instrucciones[i]), sizeof(uint32_t));
         offset += sizeof(uint32_t);
-        memcpy(stream + offset, list_get(pcb->instrucciones,i), strlen(sizeof(pcb->instrucciones[i])+1));
+        memcpy(stream + offset, list_get(pcb->instrucciones,i), sizeof(pcb->instrucciones[i]));
     }
 
     // memcpy(&(sizeof(pcb->estado_length)), stream,sizeof(uint32_t));
@@ -305,13 +306,14 @@ void *serializar_pcb(pcb* pcb)
     //Serializar los campos char*
     memcpy(stream + offset, sizeof(pcb->estado), sizeof(uint32_t));
     offset += sizeof(uint32_t);
-    memcpy(stream + offset, &pcb->estado, strlen(sizeof(pcb->estado)) + 1);
+    memcpy(stream + offset, &pcb->estado, sizeof(pcb->estado));
 
-     //Aca en el medio faltaria serializar los campos de la lista
+    pcb->instrucciones = list_create();
+    //Aca en el medio faltaria serializar los campos de la lista
     for (int i = 0; i < list_size(pcb->instrucciones); i++){ // hacemos un char* a la vez
         memcpy(stream + offset,/*list_get(pcb->instrucciones,i)*/ sizeof(pcb->instrucciones[i]), sizeof(uint32_t));
         offset += sizeof(uint32_t);
-        memcpy(stream + offset, list_get(pcb->instrucciones,i), strlen(sizeof(pcb->instrucciones[i])+1));
+        memcpy(stream + offset, list_get(pcb->instrucciones,i), sizeof(pcb->instrucciones[i]));
 
     }
 

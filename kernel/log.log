@@ -152,3 +152,8 @@
 [INFO] 21:01:10:621 Servidor Kernel/(1160:1160): Me llego el mensaje :  : Envio a kernel la info del proceso
 [INFO] 21:01:12:159 Servidor Kernel/(1160:1160): Me llegaron las instrucciones:
 
+[INFO] 14:26:32:159 Servidor Kernel/(2179:2179): Kernel listo para recibir al modulo cliente
+[INFO] 14:27:27:409 Servidor Kernel/(2179:2179): Se conecto un cliente!
+[INFO] 14:27:29:860 Servidor Kernel/(2179:2179): Me llego el mensaje :  : Envio a kernel la info del proceso
+[INFO] 14:27:33:040 Servidor Kernel/(2179:2179): Me llegaron las instrucciones:
+
