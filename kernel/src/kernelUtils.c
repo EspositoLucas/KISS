@@ -101,7 +101,7 @@ t_list *recibir_paquete(int socket_cliente)
 }
 pcb *recibir_paquete_instrucciones(int socket_cliente)
 {
-	t_buffer* buffer ;
+	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
     int size;
     void *stream ;
     pcb* pcb ;
@@ -121,18 +121,21 @@ pcb *recibir_paquete_instrucciones(int socket_cliente)
      int indice_split = 0 ;
      void* stream = buffer->stream ; 
      char* mensaje_consola ; // leido de consola que se envia en el paquete
-   
+
      
      // Deserializar los campos del buffer
 
     // memcpy(&(proceso->mensaje_length), stream, sizeof(uint32_t));
     // stream += sizeof(uint32_t);
-    mensaje_consola = malloc(sizeof(uint32_t));
+    mensaje_consola = malloc(sizeof(strlen(mensaje_consola) + 1));
     memcpy(mensaje_consola, stream, sizeof(uint32_t));
     stream += sizeof(uint32_t);
 
+//    char** split_buffer = malloc(sizeof(mensaje_consola));
     char** split_buffer = string_split(mensaje_consola, "\n");
+//    char** palabras = malloc(sizeof(split_buffer[indice_split])) ;
     char** palabras ;
+    proceso_pcb->instrucciones = list_create();
 
     while (split_buffer[indice_split] != NULL) {
       
@@ -181,8 +184,10 @@ pcb *recibir_paquete_instrucciones(int socket_cliente)
     }    
 
     string_array_destroy(split_buffer);
-    string_array_destroy(palabras);  
+    string_array_destroy(palabras);
+    list_destroy(proceso_pcb->instrucciones);
     free(mensaje_consola);
+//    free(proceso_pcb);
 
     return proceso_pcb;
 }

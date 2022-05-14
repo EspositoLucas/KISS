@@ -9,7 +9,7 @@ int main(void)
     int cliente_fd = esperar_cliente(server_fd);
 
 //    t_list *lista;
-    pcb* pcb ;
+    pcb* pcb = malloc(sizeof(pcb));
 
     while (1)
     {
@@ -27,6 +27,7 @@ int main(void)
         case PAQUETE:
             log_info(logger, "Me llegaron las instrucciones:\n");
             pcb = recibir_paquete_instrucciones(cliente_fd);
+            free(pcb);
             break;
         
         // case TABLA_PAGINAS:   // PARA MEMORIA
