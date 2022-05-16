@@ -20,19 +20,22 @@
 #define IP_KERNEL "0.0.0.0"
 #define PUERTO_KERNEL "8000"
 
-//#define NEW
-//#define READY
-//#define EXEC
-//#define BLOCK
-//#define SUSPENDED_BLOCK
-//#define SUSPENDED_READY
-//#define EXIT
 
 typedef enum
 {
     MENSAJE,
     PAQUETE,
 } op_code;
+
+typedef enum
+{
+    NO_OP,
+    IO,
+    READ,
+    WRITE,
+    COPY,
+    EXIT
+} codigo_instrucciones;
 
 typedef struct {
     uint32_t id_proceso ;
@@ -93,7 +96,7 @@ typedef struct
     t_buffer *buffer;
 }t_paquete;
 
-void *recibir_buffer(int *, int);
+void *recibir_stream(int *, int);
 void cargar_configuracion();
 
 t_config* leer_config(void);
@@ -109,6 +112,8 @@ pcb *recibir_paquete_instrucciones(int );
 pcb *deserializar_paquete_instrucciones_consola(t_buffer* );
 pcb* deserializar_pcb(t_buffer*);
 void *serializar_pcb(pcb*);
+t_buffer *recibir_buffer_instrucciones(int );
+pcb *armar_pcb(t_buffer* buffer);
 
 
 #endif

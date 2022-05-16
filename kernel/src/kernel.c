@@ -7,6 +7,7 @@ int main(void)
     int server_fd = iniciar_servidor();
     log_info(logger, "Kernel listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(server_fd);
+    t_buffer * buffer ;
 
 //    t_list *lista;
     pcb* pcb = malloc(sizeof(pcb));
@@ -26,7 +27,8 @@ int main(void)
         //     break;
         case PAQUETE:
             log_info(logger, "Me llegaron las instrucciones:\n");
-            pcb = recibir_paquete_instrucciones(cliente_fd);
+            buffer =recibir_buffer_instrucciones(cliente_fd);
+            pcb = armar_pcb(buffer);
             free(pcb);
             break;
         

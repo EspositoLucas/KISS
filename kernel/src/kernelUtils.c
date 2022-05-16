@@ -58,49 +58,49 @@ int recibir_operacion(int socket_cliente)
     }
 }
 
-void *recibir_buffer(int *size, int socket_cliente)
+void *recibir_stream(int *size, int socket_cliente)
 {
-    void *buffer;
+    void *stream;
 
-    recv(socket_cliente, buffer->tamanio_proceso, sizeof(int), MSG_WAITALL);
+//    recv(socket_cliente, buffer->tamanio_proceso, sizeof(int), MSG_WAITALL);
     recv(socket_cliente, size, sizeof(int), MSG_WAITALL);
-    buffer = malloc(*size);
-    recv(socket_cliente, buffer, *size, MSG_WAITALL);
+    stream = malloc(*size);
+    recv(socket_cliente, stream, *size, MSG_WAITALL);
 
-    return buffer;
+    return stream;
 }
 
 void recibir_mensaje(int socket_cliente)
 {
     int size;
-    char *buffer = recibir_buffer(&size, socket_cliente);
-    log_info(logger, "Me llego el mensaje : %s", buffer);
-    free(buffer);
+    char *stream = recibir_stream(&size, socket_cliente);
+    log_info(logger, "Me llego el mensaje : %s", stream);
+    free(stream);
 }
 
 t_list *recibir_paquete(int socket_cliente)
 {
     int size;
     int desplazamiento = 0;
-    void *buffer;
+    void *stream;
     t_list *valores = list_create();
     int tamanio;
 
-    buffer = recibir_buffer(&size, socket_cliente);
+   stream = recibir_stream(&size, socket_cliente);
 
     while (desplazamiento < size)
     {
-        memcpy(&tamanio, buffer + desplazamiento, sizeof(int));
+        memcpy(&tamanio, stream + desplazamiento, sizeof(int));
         desplazamiento += sizeof(int);
         char *valor = malloc(tamanio);
-        memcpy(valor, buffer + desplazamiento, tamanio);
+        memcpy(valor, stream + desplazamiento, tamanio);
         desplazamiento += tamanio;
         list_add(valores, valor);
     }
-    free(buffer);
+    free(stream);
     return valores;
 }
-t_buffer *recibir_buffer(int socket_cliente) // desrialziar paquete instrucciones y tamnio proceso
+t_buffer *recibir_buffer_instrucciones(int socket_cliente) // deserializar paquete instrucciones y tamanio proceso
 {
 	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
     int size;
@@ -117,6 +117,8 @@ t_buffer *recibir_buffer(int socket_cliente) // desrialziar paquete instruccione
     return buffer ;
 }
 
+//VERSION CON IF
+
  pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
  {
 
@@ -129,57 +131,58 @@ t_buffer *recibir_buffer(int socket_cliente) // desrialziar paquete instruccione
 
     mensaje_consola = malloc(buffer->stream_size);
     memcpy(mensaje_consola,buffer->stream ,buffer->stream_size);
-    memcpy(proceso_pcb->tamanio_proceso,&(buffer->tamanio_proceso) ,sizeof(int));
+    memcpy(&(proceso_pcb->tamanio_proceso),&(buffer->tamanio_proceso) ,sizeof(int));
 
     //    char** split_buffer = malloc(sizeof(mensaje_consola));
     char** split_buffer = string_split(mensaje_consola, "\n");
 //    char** palabras = malloc(sizeof(split_buffer[indice_split])) ;
-    char** palabras ;
+    // char** palabras ;
     proceso_pcb->instrucciones = list_create();
 
     while (split_buffer[indice_split] != NULL) {
       
 
         if(string_contains(split_buffer[indice_split], "NO_OP") ) {
-            palabras = string_split(split_buffer[indice_split], " ") ;
-     		int parametro_NO_OP = atoi(palabras[1]);
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+     	    int parametro_NO_OP = atoi(palabras[1]);
             for(int i=0; i< parametro_NO_OP  ; i++){
                 printf("NO_OP %d ", parametro_NO_OP);
-                list_add(proceso_pcb->instrucciones,palabras[0]) ; // Para agregar a lista a medida quese vaya parseando
+                list_add(proceso_pcb->instrucciones,string_duplicate(palabras[0])) ; // Para agregar a lista a medida quese vaya parseando
             }
         // string_array_destroy(palabras);
 
-        } else { // si no es no op directamente entra aca y se agrega a la lista
-            printf("%s",split_buffer[indice_split]);
-            list_add(proceso_pcb->instrucciones,split_buffer[indice_split]); // consultar si esto es lo mejor o volver a la anterior de if para cada uno. 
-        }
+        // } else { // si no es no op directamente entra aca y se agrega a la lista
+        //     printf("%s",split_buffer[indice_split]);
+        //     list_add(proceso_pcb->instrucciones,split_buffer[indice_split]); // consultar si esto es lo mejor o volver a la anterior de if para cada uno. 
+        // }
 
-     	// } else if (string_contains(split_buffer[indice_split], "I/O")){
-        //     //  int parametro_IO = atoi(palabras[1]);
-        //      printf("I/O %d ", parametro_IO);
-        //      list_add(proceso->instrucciones,split_buffer[indice_split]) ; 
-     	// }
-     	//  else if (string_contains(split_buffer[indice_split], "READ")){
-        //     //  int parametro_READ = atoi(palabras[1]);
-        //     printf("READ %d ", parametro_READ);
-        //     list_add(proceso->instrucciones,split_buffer[indice_split]) ; 
+     	} else if (string_contains(split_buffer[indice_split], "I/O")){
+            //  palabras = string_split(split_buffer[indice_split], " ") ;
+             int parametro_IO = atoi(palabras[1]);
+             printf("I/O %d ", parametro_IO);
+             list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
+     	}
+     	 else if (string_contains(split_buffer[indice_split], "READ")){
+             int parametro_READ = atoi(palabras[1]);
+            printf("READ %d ", parametro_READ);
+            list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
 
-     	// } else if (string_contains(split_buffer[indice_split], "WRITE")) {
-        //     //  int parametro1_WRITE = atoi(palabras[1]);
-        //     //  int parametro2_WRITE = atoi(palabras[2]);
-        //      printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
-        //      list_add(proceso->instrucciones,split_buffer[indice_split]) ;
+     	} else if (string_contains(split_buffer[indice_split], "WRITE")) {
+             int parametro1_WRITE = atoi(palabras[1]);
+             int parametro2_WRITE = atoi(palabras[2]);
+             printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
+             list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
 
-     	// } else if (string_contains(split_buffer[indice_split], "COPY")){
-        //     //  int parametro1_COPY = atoi(palabras[1]);
-        //     //  int parametro2_COPY = atoi(palabras[2]);
-        //      printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
-        //      list_add(proceso->instrucciones,split_buffer[indice_split]) ;
+     	} else if (string_contains(split_buffer[indice_split], "COPY")){
+             int parametro1_COPY = atoi(palabras[1]);
+             int parametro2_COPY = atoi(palabras[2]);
+             printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
+             list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
 
-     	// } else if (string_contains(split_buffer[indice_split], "EXIT")){
-     	// 	printf("EXIT");
-        //     list_add(proceso->instrucciones,split_buffer[indice_split]) ;
-     	// }
+     	} else if (string_contains(split_buffer[indice_split], "EXIT")){
+     		printf("EXIT");
+            list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
+     	}
         indice_split++;
     }    
 
@@ -187,10 +190,87 @@ t_buffer *recibir_buffer(int socket_cliente) // desrialziar paquete instruccione
     string_array_destroy(palabras);
     list_destroy(proceso_pcb->instrucciones);
     free(mensaje_consola);
-//    free(proceso_pcb);
 
     return proceso_pcb;
 }
+
+
+//VERSION CON SWITCH
+
+// pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
+// {
+
+//     pcb* proceso_pcb = malloc(sizeof(pcb)) ;
+//     int indice_split = 0 ;
+//     char* mensaje_consola ; // leido de consola que se envia en el paquete
+//     int codigo_instrucciones
+
+//     // Deserializar los campos del buffer
+
+//    mensaje_consola = malloc(buffer->stream_size);
+//    memcpy(mensaje_consola,buffer->stream ,buffer->stream_size);
+//    memcpy(proceso_pcb->tamanio_proceso,&(buffer->tamanio_proceso) ,sizeof(int));
+//    char** split_buffer = string_split(mensaje_consola, "\n");
+//    char** palabras ;
+//    proceso_pcb->instrucciones = list_create();
+
+//    while (split_buffer[indice_split] != NULL) {
+
+//        switch(codigo_instrucciones) {
+
+//            case:NO_OP:
+//                palabras = string_split(split_buffer[indice_split], " ") ;
+//                int parametro_NO_OP = atoi(palabras[1]);
+//                for(int i=0; i< parametro_NO_OP  ; i++){
+//                    printf("NO_OP %d ", parametro_NO_OP);
+//                    list_add(proceso_pcb->instrucciones,palabras[0]) ; // Para agregar a lista a medida quese vaya parseando
+//                    break;
+//            }
+
+//            case:IO:
+//                int parametro_IO = atoi(palabras[1]);
+//                printf("I/O %d ", parametro_IO);
+//                list_add(proceso->instrucciones,split_buffer[indice_split]) ;
+//                break;
+
+//            case:READ:
+//                int parametro_READ = atoi(palabras[1]);
+//                printf("READ %d ", parametro_READ);
+//                list_add(proceso->instrucciones,split_buffer[indice_split]) ;
+//                break;
+
+//            case:WRITE:
+//                int parametro1_WRITE = atoi(palabras[1]);
+//                int parametro2_WRITE = atoi(palabras[2]);
+//                printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
+//                list_add(proceso->instrucciones,split_buffer[indice_split]) ;
+//                break;
+
+//            case:COPY:
+//                int parametro1_COPY = atoi(palabras[1]);
+//                int parametro2_COPY = atoi(palabras[2]);
+//                printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
+//                list_add(proceso->instrucciones,split_buffer[indice_split]) ;
+//                break;
+
+//            case:EXIT:
+//                printf("EXIT");
+//                list_add(proceso->instrucciones,split_buffer[indice_split]) ;
+//                break;
+
+
+//        }
+
+//        indice_split++;
+//    }
+
+//    string_array_destroy(split_buffer);
+//    string_array_destroy(palabras);
+//    list_destroy(proceso_pcb->instrucciones);
+//    free(mensaje_consola);
+
+//    return proceso_pcb;
+// }
 
 pcb* deserializar_pcb(t_buffer* buffer) {
     
@@ -202,7 +282,7 @@ pcb* deserializar_pcb(t_buffer* buffer) {
     //Deserializar los campos int y float
     memcpy(&(pcb->id_proceso), stream, sizeof(uint32_t));
     stream += sizeof(uint32_t);
-    memcpy(&(pcb->tamanio_proceso), stream, sizeof(uint32_t));
+    memcpy(&(pcb->tamanio_proceso), &(buffer->tamanio_proceso) ,sizeof(int));
     stream += sizeof(uint32_t);
     memcpy(&(pcb->valor_tabla_paginas), stream, sizeof(uint32_t));
     stream += sizeof(uint32_t);
@@ -225,8 +305,8 @@ pcb* deserializar_pcb(t_buffer* buffer) {
 
     pcb->instrucciones = list_create();
     for (int i = 0; i < list_size(pcb->instrucciones); i++){ // hacemos un char* a la vez
-        memcpy(stream + offset, sizeof(pcb->instrucciones[i]), sizeof(uint32_t));
-        offset += sizeof(uint32_t);
+//        memcpy(stream + offset, sizeof(pcb->instrucciones[i]), sizeof(uint32_t));
+//        offset += sizeof(uint32_t);
         memcpy(stream + offset, list_get(pcb->instrucciones,i), sizeof(pcb->instrucciones[i]));
     }
 
@@ -245,11 +325,11 @@ void enviar_mensaje(char *mensaje, int socket_cliente)
 
     paquete->codigo_operacion = MENSAJE;
     paquete->buffer = malloc(sizeof(t_buffer));
-    paquete->buffer->size = strlen(mensaje) + 1;
-    paquete->buffer->stream = malloc(paquete->buffer->size);
-    memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
+    paquete->buffer->stream_size = strlen(mensaje) + 1;
+    paquete->buffer->stream = malloc(paquete->buffer->stream_size);
+    memcpy(paquete->buffer->stream, mensaje, paquete->buffer->stream_size);
 
-    int bytes = paquete->buffer->size + 2 * sizeof(int);
+    int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
 
     void *a_enviar = serializar_paquete(paquete, bytes);
 
@@ -266,10 +346,10 @@ void *serializar_paquete(t_paquete *paquete, int bytes)
 
     memcpy(magic + desplazamiento, &(paquete->codigo_operacion), sizeof(int));
     desplazamiento += sizeof(int);
-    memcpy(magic + desplazamiento, &(paquete->buffer->size), sizeof(int));
+    memcpy(magic + desplazamiento, &(paquete->buffer->stream_size), sizeof(int));
     desplazamiento += sizeof(int);
-    memcpy(magic + desplazamiento, paquete->buffer->stream, paquete->buffer->size);
-    desplazamiento += paquete->buffer->size;
+    memcpy(magic + desplazamiento, paquete->buffer->stream, paquete->buffer->stream_size);
+    desplazamiento += paquete->buffer->stream_size;
 
     return magic;
 }
@@ -278,12 +358,12 @@ void *serializar_pcb(pcb* pcb)
 {
     t_buffer* buffer = malloc(sizeof(t_buffer));
 
-    buffer->size = sizeof(uint32_t) * 5 // Para los unint32
+    buffer->stream_size = sizeof(uint32_t) * 5 // Para los unint32
              + sizeof(uint8_t) *  1 // Para los unint8
              + sizeof(1) * 1 // Para los float
              + strlen(pcb->estado) + 1; // Para los char*
 
-    void* stream = malloc(buffer->size);
+    void* stream = malloc(buffer->stream_size);
     int offset = 0; // Desplazamiento
 
     // Serializar los campos int , float y double
@@ -304,15 +384,15 @@ void *serializar_pcb(pcb* pcb)
     offset += sizeof(uint32_t);
 
     //Serializar los campos char*
-    memcpy(stream + offset, sizeof(pcb->estado), sizeof(uint32_t));
-    offset += sizeof(uint32_t);
-    memcpy(stream + offset, &pcb->estado, sizeof(pcb->estado));
+//    memcpy(stream + offset, sizeof(pcb->estado), sizeof(uint32_t));
+//    offset += sizeof(uint32_t);
+    memcpy(stream + offset, &pcb->estado, strlen(pcb->estado) + 1);
 
     pcb->instrucciones = list_create();
     //Aca en el medio faltaria serializar los campos de la lista
     for (int i = 0; i < list_size(pcb->instrucciones); i++){ // hacemos un char* a la vez
-        memcpy(stream + offset,/*list_get(pcb->instrucciones,i)*/ sizeof(pcb->instrucciones[i]), sizeof(uint32_t));
-        offset += sizeof(uint32_t);
+//        memcpy(stream + offset,/*list_get(pcb->instrucciones,i)*/ sizeof(pcb->instrucciones[i]), sizeof(uint32_t));
+//        offset += sizeof(uint32_t);
         memcpy(stream + offset, list_get(pcb->instrucciones,i), sizeof(pcb->instrucciones[i]));
 
     }
