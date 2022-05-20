@@ -65,7 +65,7 @@ typedef struct  // archivo de configuracion kernel
 
 } arch_config;
 
-arch_config config_valores ;
+arch_config config_valores_kernel ;
 
 typedef struct
 {

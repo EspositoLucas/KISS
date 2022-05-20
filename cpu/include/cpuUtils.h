@@ -47,7 +47,7 @@ typedef struct  // archivo de configuracion cpu
 
 } arch_config;
 
-arch_config config_valores ;
+arch_config config_valores_cpu ;
 
 typedef struct
 {
