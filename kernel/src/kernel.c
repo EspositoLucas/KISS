@@ -49,6 +49,8 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
+// Funcion TP0
+
 void iterator(char *value)
 {
     // printf("Valor: %s\n", value);

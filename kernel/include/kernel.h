@@ -21,6 +21,26 @@
 // #define PUERTO_KERNEL "8000"
 
 
+//STRUCTS/ENUMS
+
+// typedef struct  // archivo de configuracion kernel
+// {
+//    char* ip_memoria;
+//    int puerto_memoria;
+//    char* ip_cpu;
+//    int puerto_cpu_dispatch;
+//    int puerto_cpu_interrupt;
+//    int puerto_escucha;
+//    char* algoritmo_planificacion;
+//    float estimacion_inicial ;
+//    float alfa;
+//    int grado_multiprogramacion ;
+//    int tiempo_maximo_bloqueado;
+
+// } arch_config;
+
+// arch_config config_valores_kernel ;
+
 // FUNCIONES
 
 // void cargar_configuracion();
