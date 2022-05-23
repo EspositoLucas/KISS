@@ -1,4 +1,4 @@
-#include "utils/sockets.h"
+#include "sockets.h"
 
 //CLIENTE 
 
@@ -31,7 +31,7 @@ void liberar_conexion(int socket_cliente) {
 }
 //SERVIDOR
 
-int iniciar_servidor(void)
+int iniciar_servidor(char *ip, char *puerto)
 {
 
     struct addrinfo hints, *servinfo;
@@ -41,7 +41,7 @@ int iniciar_servidor(void)
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_flags = AI_PASSIVE;
 
-    getaddrinfo(IP_KERNEL, PUERTO_KERNEL, &hints, &servinfo);
+    getaddrinfo(ip, puerto, &hints, &servinfo);
 
     // Creamos el socket de escucha del servidor
 

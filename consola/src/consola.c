@@ -1,5 +1,4 @@
 #include "consola.h"
-//#include "consolaUtils.h"
 
 
 int main(int argc, char **argv){

@@ -49,6 +49,121 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
+t_buffer *recibir_buffer_instrucciones(int socket_cliente) // deserializar paquete instrucciones y tamanio proceso
+{
+	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
+    int size;
+    void *stream ;
+
+    recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
+    recv(socket_cliente, &size, sizeof(int), MSG_WAITALL);
+    stream = malloc(size);
+    recv(socket_cliente, stream, size, MSG_WAITALL);
+
+    buffer->stream = stream ;
+
+    free(stream);
+    return buffer ;
+}
+
+//VERSION CON IF
+
+ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
+
+{
+    pcb* proceso_pcb = malloc(sizeof(pcb)) ;
+    int indice_split = 0 ;
+    char* mensaje_consola = malloc(buffer->stream_size) ; // leido de consola que se envia en el paquete
+    buffer = malloc(sizeof(t_buffer)) ;
+
+     // Deserializar los campos del buffer
+
+//    mensaje_consola = malloc(buffer->stream_size);
+
+    memcpy(mensaje_consola,buffer->stream ,buffer->stream_size);
+    memcpy(&(proceso_pcb->tamanio_proceso),&(buffer->tamanio_proceso) ,sizeof(int));
+    char** split_buffer = string_split(mensaje_consola, "\n");
+    proceso_pcb->instrucciones = list_create();
+    while (split_buffer[indice_split] != NULL) {
+
+        if(string_contains(split_buffer[indice_split], "NO_OP") ) {
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro_NO_OP = atoi(palabras[1]);
+            for(int i=0; i< parametro_NO_OP  ; i++){
+                // printf("NO_OP %d ", parametro_NO_OP);
+                instruccion* instruccion_No_op = malloc(sizeof(instruccion));
+                instruccion_No_op->codigo = NO_OP ;
+                list_add(proceso_pcb->instrucciones,instruccion_No_op) ; // Para agregar a lista a medida quese vaya parseando
+                free(instruccion_No_op);
+            }
+        string_array_destroy(palabras);
+
+    } else if (string_contains(split_buffer[indice_split], "I/O")){
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro_IO = atoi(palabras[1]);
+            // printf("I/O %d ", parametro_IO);
+            instruccion* instruccion_IO = malloc(sizeof(instruccion));
+            instruccion_IO->codigo = IO ;
+            instruccion_IO->parametro1= parametro_IO ;
+            list_add(proceso_pcb->instrucciones,instruccion_IO) ;
+            string_array_destroy(palabras);
+            free(instruccion_IO) ;
+    }
+
+    else if (string_contains(split_buffer[indice_split], "READ")){
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro_READ = atoi(palabras[1]);
+            instruccion* instruccion_READ = malloc(sizeof(instruccion));
+            instruccion_READ->codigo = READ ;
+            instruccion_READ->parametro1= parametro_READ ;
+            // printf("READ %d ", parametro_READ);
+            list_add(proceso_pcb->instrucciones,instruccion_READ) ;
+            string_array_destroy(palabras);
+            free(instruccion_READ);
+
+    } else if (string_contains(split_buffer[indice_split], "WRITE")) {
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro1_WRITE = atoi(palabras[1]);
+            int parametro2_WRITE = atoi(palabras[2]);
+            instruccion* instruccion_WRITE = malloc(sizeof(instruccion));
+            instruccion_WRITE->codigo = WRITE ;
+            instruccion_WRITE->parametro1= parametro1_WRITE ;
+            instruccion_WRITE->parametro2= parametro2_WRITE ;
+            // printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
+            list_add(proceso_pcb->instrucciones,instruccion_WRITE) ;
+            string_array_destroy(palabras);
+            free(instruccion_WRITE);
+
+    } else if (string_contains(split_buffer[indice_split], "COPY")){
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro1_COPY = atoi(palabras[1]);
+            int parametro2_COPY = atoi(palabras[2]);
+            instruccion* instruccion_COPY = malloc(sizeof(instruccion));
+            instruccion_COPY->codigo = COPY ;
+            instruccion_COPY->parametro1= parametro1_COPY ;
+            instruccion_COPY->parametro2= parametro2_COPY ;
+            printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
+            list_add(proceso_pcb->instrucciones,instruccion_COPY) ;
+            string_array_destroy(palabras);
+            free(instruccion_COPY);
+
+    } else if (string_contains(split_buffer[indice_split], "EXIT")){
+            instruccion* instruccion_EXIT = malloc(sizeof(instruccion));
+            instruccion_EXIT->codigo = EXIT ;
+    		// printf("EXIT");
+            list_add(proceso_pcb->instrucciones,instruccion_EXIT) ;
+            free(instruccion_EXIT);
+    }
+        indice_split++;
+    }
+    string_array_destroy(split_buffer);
+    list_destroy(proceso_pcb->instrucciones);
+    free(mensaje_consola);
+    free(buffer);
+
+    return proceso_pcb;
+}
+
 // Funcion TP0
 
 void iterator(char *value)

@@ -1,5 +1,5 @@
 
-#include "utils/log_config.h"
+#include "log_config.h"
 
 t_log* iniciar_logger(char* archivoLog, char* nombrePrograma, int flagConsola, t_log_level nivelLoggeo) {
 

@@ -1,5 +1,4 @@
-
-#include "../../include/utils/comunicacion.h"
+#include "comunicacion.h"
 
 // OPERACION
 
@@ -22,11 +21,11 @@ void enviar_mensaje(char *mensaje, int socket_cliente)
 
     paquete->codigo_operacion = MENSAJE;
     paquete->buffer = malloc(sizeof(t_buffer));
-    paquete->buffer->size = strlen(mensaje) + 1;
-    paquete->buffer->stream = malloc(paquete->buffer->size);
-    memcpy(paquete->buffer->stream, mensaje, paquete->buffer->size);
+    paquete->buffer->stream_size = strlen(mensaje) + 1;
+    paquete->buffer->stream = malloc(paquete->buffer->stream_size);
+    memcpy(paquete->buffer->stream, mensaje, paquete->buffer->stream_size);
 
-    int bytes = paquete->buffer->size + 2 * sizeof(int);
+    int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
 
     void *a_enviar = serializar_paquete(paquete, bytes);
 
@@ -49,7 +48,7 @@ void recibir_mensaje(int socket_cliente,t_log* logger) {
 void crear_buffer(t_paquete *paquete)
 {
     paquete->buffer = malloc(sizeof(t_buffer));
-    paquete->buffer->size = 0;
+    paquete->buffer->stream_size = 0;
     paquete->buffer->stream = NULL;
 }
 
@@ -83,10 +82,10 @@ void* serializar_paquete(t_paquete* paquete, int bytes) {
 
     memcpy(magic + desplazamiento, &(paquete->codigo_operacion), sizeof(int));
     desplazamiento+= sizeof(int);
-    memcpy(magic + desplazamiento, &(paquete->buffer->size), sizeof(int));
+    memcpy(magic + desplazamiento, &(paquete->buffer->stream_size), sizeof(int));
     desplazamiento+= sizeof(int);
-    memcpy(magic + desplazamiento, paquete->buffer->stream, paquete->buffer->size);
-    desplazamiento+= paquete->buffer->size;
+    memcpy(magic + desplazamiento, paquete->buffer->stream, paquete->buffer->stream_size);
+    desplazamiento+= paquete->buffer->stream_size;
 
     return magic;
 }
@@ -109,25 +108,25 @@ t_paquete *crear_paquete(void)
 
 void agregar_a_paquete(t_paquete *paquete, void *valor, int tamanio)
 {
-    paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->size + tamanio + sizeof(int));
+    paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + tamanio + sizeof(int));
 
-    memcpy(paquete->buffer->stream + paquete->buffer->size, &tamanio, sizeof(int));
-    memcpy(paquete->buffer->stream + paquete->buffer->size + sizeof(int), valor, tamanio);
+    memcpy(paquete->buffer->stream + paquete->buffer->stream_size, &tamanio, sizeof(int));
+    memcpy(paquete->buffer->stream + paquete->buffer->stream_size + sizeof(int), valor, tamanio);
 
-    paquete->buffer->size += tamanio + sizeof(int);
+    paquete->buffer->stream_size += tamanio + sizeof(int);
 }
 void agregar_entero_a_paquete(t_paquete *paquete, int x) // Agregar un entero a un paquete (ya creado)
 {
-    paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->size + sizeof(int));
+    paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + sizeof(int));
 
-    memcpy(paquete->buffer->stream + paquete->buffer->size, &x, sizeof(int));
+    memcpy(paquete->buffer->stream + paquete->buffer->stream_size, &x, sizeof(int));
 
-    paquete->buffer->size += sizeof(int);
+    paquete->buffer->stream_size += sizeof(int);
 }
 
 void enviar_paquete(t_paquete *paquete, int socket_cliente)
 {
-    int bytes = paquete->buffer->size + 2 * sizeof(int);
+    int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
     void *a_enviar = serializar_paquete(paquete, bytes);
 
     send(socket_cliente, a_enviar, bytes, 0);

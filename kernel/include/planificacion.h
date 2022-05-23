@@ -11,9 +11,10 @@
 #include <commons/log.h>
 #include <commons/config.h>
 #include <pthread.h>
-#include "utils/log_config.h"
-#include <time.h>
-
+#include <unistd.h>
+#include "comunicacion.h"
+#include "log_config.h"
+#include "sockets.h"
 
 // STRUCTS/ENUMS
 
@@ -22,18 +23,17 @@ typedef enum{
 	SRT
 }t_algoritmo_planificacion;
 
-
-typedef struct {
-    uint32_t id_proceso ;
-    uint32_t tamanio_proceso ;
-    uint32_t valor_tabla_paginas ;
-    uint32_t program_counter;
-    float estimacion_rafaga ;
-    double tiempo_bloqueado ;
-    uint8_t suspendido;
-    char* estado ;
-    t_list* instrucciones ; 
-}pcb ;
+//typedef struct {
+//    uint32_t id_proceso ;
+//    uint32_t tamanio_proceso ;
+//    uint32_t valor_tabla_paginas ;
+//    uint32_t program_counter;
+//    float estimacion_rafaga ;
+//    double tiempo_bloqueado ;
+//    uint8_t suspendido;
+//    char* estado ;
+//    t_list* instrucciones ;
+//}pcb ;
 
 
 // SEMAFOROS
@@ -67,32 +67,26 @@ typedef struct {
 
 // FUNCIONES
 
-void planificador_crearProcesos(int  ,char*,int  );
-void planificacionFIFO();
-void planificacionSRT();
-void agregarAReady(pcb* proceso);
-void agregarABlock(pcb* proceso);
-void sacarDeBlock(pcb* proceso);
-void hiloNew_Ready() ;
-t_pcb sacarDeNew(); 
-void agregarANewProceso(t_pcb proceso);
-void avisarAMemoria(t_pcb proceso)
+//void planificador_crearProcesos(int  ,char*,int  );
+//void planificacionFIFO();
+//void planificacionSRT();
+//void agregarAReady(pcb* proceso);
+//void agregarABlocked(pcb* proceso);
+//void sacarDeBlocked(pcb* proceso);
+//void hiloNew_Ready() ;
+//pcb sacarDeNew();
+//void agregarANewProceso(pcb proceso);
+//void avisarAMemoria(pcb proceso)
 
 
 // LISTAS/COLAS
 
-t_lista* colaNew;
-t_list* colaReady;
-t_list* listaExe;
-t_list* listaBlock;
-t_list* listaExit;
-t_list* listaBlockSuspended;
-t_lista* colaReadySuspended;
-
-
-
-
-
-
+//t_lista* colaNew;
+//t_list* colaReady;
+//t_list* listaExec;
+//t_list* listaBlocked;
+//t_list* listaExit;
+//t_list* listaBlockedSuspended;
+//t_lista* colaReadySuspended;
 
 #endif

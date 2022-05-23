@@ -14,7 +14,6 @@
 
 #include "sockets.h"
 
-
 // FUNCIONES
 
 t_log* iniciar_logger(char* archivoLog, char* nombrePrograma, int flagConsola, t_log_level nivelLoggeo);
@@ -24,7 +23,5 @@ int obtener_int_de_config(t_config* config, char* key);
 float obtener_float_de_config(t_config* config, char* key);
 bool config_tiene_todas_las_propiedades(t_config* cfg, char** propiedades);
 void terminar_programa(int conexion, t_log* logger, t_config* config);
-
-
 
 #endif

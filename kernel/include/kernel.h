@@ -5,41 +5,34 @@
 #include <stdlib.h>
 #include <string.h>
 #include <commons/log.h>
-#include "utils/planificacion.h"
-#include "kernelUtils.h"
-
-// INCLUDE UTILS
-
-// #include "utils/comunicacion.h"
-// #include "utils/log_config.h"
-
-
+#include "comunicacion.h"
+#include "log_config.h"
+#include "sockets.h"
 
 // PUERTOS
 
-// #define IP_KERNEL "0.0.0.0"
-// #define PUERTO_KERNEL "8000"
-
+#define IP_KERNEL "0.0.0.0"
+#define PUERTO_KERNEL "8000"
 
 //STRUCTS/ENUMS
 
-// typedef struct  // archivo de configuracion kernel
-// {
-//    char* ip_memoria;
-//    int puerto_memoria;
-//    char* ip_cpu;
-//    int puerto_cpu_dispatch;
-//    int puerto_cpu_interrupt;
-//    int puerto_escucha;
-//    char* algoritmo_planificacion;
-//    float estimacion_inicial ;
-//    float alfa;
-//    int grado_multiprogramacion ;
-//    int tiempo_maximo_bloqueado;
+ typedef struct  // archivo de configuracion kernel
+ {
+    char* ip_memoria;
+    int puerto_memoria;
+    char* ip_cpu;
+    int puerto_cpu_dispatch;
+    int puerto_cpu_interrupt;
+    int puerto_escucha;
+    char* algoritmo_planificacion;
+    float estimacion_inicial ;
+    float alfa;
+    int grado_multiprogramacion ;
+    int tiempo_maximo_bloqueado;
 
-// } arch_config;
+ } arch_config;
 
-// arch_config config_valores_kernel ;
+arch_config config_valores_kernel ;
 
 // FUNCIONES
 
@@ -47,6 +40,8 @@
 // pcb *recibir_paquete_instrucciones(int );
 // pcb *deserializar_paquete_instrucciones_consola(t_buffer* );
 // t_buffer *recibir_buffer_instrucciones(int );
+pcb *armar_pcb(t_buffer* buffer);
+t_buffer *recibir_buffer_instrucciones(int socket_cliente);
 void iterator(char *value);
 
 #endif 

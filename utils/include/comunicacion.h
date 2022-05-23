@@ -13,7 +13,7 @@
 #include<string.h>
 #include<assert.h>
 #include<signal.h>
-
+#include<stdbool.h>
 
 // STRUCTS/ENUMS
 
@@ -21,6 +21,7 @@ typedef enum
 {
     MENSAJE,
     PAQUETE,
+	PCB
 } op_code;
 
 typedef enum
@@ -40,11 +41,16 @@ typedef struct {
     uint32_t program_counter;
     float estimacion_rafaga ;
     double tiempo_bloqueado ;
-    uint8_t suspendido;
+    bool suspendido;
     char* estado ;
     t_list* instrucciones ; 
 }pcb ;
 
+typedef struct {
+    codigo_instrucciones codigo ;
+    int parametro1;
+    int parametro2;
+}instruccion ;
 
 t_log *logger;
 
@@ -83,8 +89,5 @@ t_paquete *crear_paquete(void);
 void agregar_a_paquete(t_paquete *paquete, void *valor, int tamanio);
 void agregar_entero_a_paquete(t_paquete *paquete, int entero);
 void enviar_paquete(t_paquete *paquete, int socket_cliente);
-
-
-
 
 #endif

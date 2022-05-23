@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <commons/collections/list.h>
+#include "cpu.h"
 
 int main(int argc, char *argv[])
 {
@@ -81,11 +79,11 @@ void iterator(char *value)
 
 void ejecutarNO_OP(){}
 
-void ejecutarIO(tiempo){
+void ejecutarIO(int tiempo){
 
 }
 
-void ejecutarREAD(dirLogica){
+/*void ejecutarREAD(dirLogica){
 
 }
 
@@ -95,7 +93,7 @@ void ejecutarWRITE(dirLogica,valor){
 
 void ejecutarCOPY(dirLogicaDestino,dirLogicaOrigen){
 
-}
+}*/
 
 void ejecutarEXIT(){
 
