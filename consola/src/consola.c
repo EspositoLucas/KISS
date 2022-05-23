@@ -1,5 +1,5 @@
 #include "consola.h"
-#include "consolaUtils.h"
+//#include "consolaUtils.h"
 
 
 int main(int argc, char **argv){
@@ -26,13 +26,13 @@ int main(int argc, char **argv){
 
     config = iniciar_config();
 
-    config_valores.ip_kernel = config_get_string_value(config, "IP_KERNEL");
-    config_valores.puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
+    config_valores_consola.ip_kernel = config_get_string_value(config, "IP_KERNEL");
+    config_valores_consola.puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
 
     // Conexión hacia el kernel
 
-    conexion_consola = crear_conexion(config_valores.ip_kernel, config_valores.puerto_kernel);
+    conexion_consola = crear_conexion(config_valores_consola.ip_kernel, config_valores_consola.puerto_kernel);
 
     enviar_mensaje(" : Envio a kernel la info del proceso", conexion_consola);
 

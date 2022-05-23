@@ -12,9 +12,8 @@
 #include<commons/config.h>
 #include<string.h>
 #include<assert.h>
-#include <pthread.h>
-#include <signal.h>
-#include <stdbool.h>
+#include<pthread.h>
+#include<signal.h>
 
 
 #define IP_KERNEL "0.0.0.0"
@@ -98,7 +97,6 @@ typedef struct
 
 void *recibir_stream(int *, int);
 void cargar_configuracion();
-
 t_config* leer_config(void);
 int iniciar_servidor(void);
 int esperar_cliente(int);

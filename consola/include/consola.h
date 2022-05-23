@@ -7,17 +7,15 @@
 #include<commons/string.h>
 #include<commons/config.h>
 #include<readline/readline.h>
-
-// #define NO_OP 5
-// #define IO 3000
-// #define READ 0
-// #define WRITE 4 42
-// #define COPY 0 4
-// #define EXIT
-
-
-
 #include "consolaUtils.h"
+
+// INCLUDE UTILS
+
+// #include "utils/comunicacion.h"
+// #include "utils/log_config.h"
+
+
+// FUNCIONES
 
 t_log* iniciar_logger(void);
 t_config* iniciar_config(void);

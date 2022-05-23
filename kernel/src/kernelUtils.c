@@ -120,76 +120,80 @@ t_buffer *recibir_buffer_instrucciones(int socket_cliente) // deserializar paque
 //VERSION CON IF
 
  pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
- {
+{
 
-     pcb* proceso_pcb = malloc(sizeof(pcb)) ;
-     int indice_split = 0 ;
-     char* mensaje_consola ; // leido de consola que se envia en el paquete
+    pcb* proceso_pcb = malloc(sizeof(pcb)) ;
+    int indice_split = 0 ;
+    char* mensaje_consola = malloc(buffer->stream_size) ; // leido de consola que se envia en el paquete
 
-     
+
      // Deserializar los campos del buffer
 
-    mensaje_consola = malloc(buffer->stream_size);
+//    mensaje_consola = malloc(buffer->stream_size);
     memcpy(mensaje_consola,buffer->stream ,buffer->stream_size);
     memcpy(&(proceso_pcb->tamanio_proceso),&(buffer->tamanio_proceso) ,sizeof(int));
 
-    //    char** split_buffer = malloc(sizeof(mensaje_consola));
     char** split_buffer = string_split(mensaje_consola, "\n");
-//    char** palabras = malloc(sizeof(split_buffer[indice_split])) ;
-    // char** palabras ;
     proceso_pcb->instrucciones = list_create();
 
     while (split_buffer[indice_split] != NULL) {
-      
+
 
         if(string_contains(split_buffer[indice_split], "NO_OP") ) {
             char** palabras = string_split(split_buffer[indice_split], " ") ;
-     	    int parametro_NO_OP = atoi(palabras[1]);
+            int parametro_NO_OP = atoi(palabras[1]);
             for(int i=0; i< parametro_NO_OP  ; i++){
                 printf("NO_OP %d ", parametro_NO_OP);
                 list_add(proceso_pcb->instrucciones,string_duplicate(palabras[0])) ; // Para agregar a lista a medida quese vaya parseando
             }
-        // string_array_destroy(palabras);
+        string_array_destroy(palabras);
 
-        // } else { // si no es no op directamente entra aca y se agrega a la lista
-        //     printf("%s",split_buffer[indice_split]);
-        //     list_add(proceso_pcb->instrucciones,split_buffer[indice_split]); // consultar si esto es lo mejor o volver a la anterior de if para cada uno. 
-        // }
 
-     	} else if (string_contains(split_buffer[indice_split], "I/O")){
-            //  palabras = string_split(split_buffer[indice_split], " ") ;
-             int parametro_IO = atoi(palabras[1]);
-             printf("I/O %d ", parametro_IO);
-             list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
-     	}
-     	 else if (string_contains(split_buffer[indice_split], "READ")){
-             int parametro_READ = atoi(palabras[1]);
+    } else if (string_contains(split_buffer[indice_split], "I/O")){
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro_IO = atoi(palabras[1]);
+            printf("I/O %d ", parametro_IO);
+            list_add(proceso_pcb->instrucciones,string_duplicate(palabras[0])) ;
+            string_array_destroy(palabras);
+    }
+    else if (string_contains(split_buffer[indice_split], "READ")){
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro_READ = atoi(palabras[1]);
             printf("READ %d ", parametro_READ);
-            list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
+            list_add(proceso_pcb->instrucciones,string_duplicate(palabras[0])) ;
+            string_array_destroy(palabras);
 
-     	} else if (string_contains(split_buffer[indice_split], "WRITE")) {
-             int parametro1_WRITE = atoi(palabras[1]);
-             int parametro2_WRITE = atoi(palabras[2]);
-             printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
-             list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
+    } else if (string_contains(split_buffer[indice_split], "WRITE")) {
+            char** palabras = string_split(split_buffer[indice_split], " ") ;
+            int parametro1_WRITE = atoi(palabras[1]);
+            int parametro2_WRITE = atoi(palabras[2]);
+            printf("WRITE %d %d ", parametro1_WRITE,parametro2_WRITE);
+            list_add(proceso_pcb->instrucciones,string_duplicate(palabras[0])) ;
+            string_array_destroy(palabras);
 
-     	} else if (string_contains(split_buffer[indice_split], "COPY")){
-             int parametro1_COPY = atoi(palabras[1]);
-             int parametro2_COPY = atoi(palabras[2]);
-             printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
-             list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
 
-     	} else if (string_contains(split_buffer[indice_split], "EXIT")){
-     		printf("EXIT");
-            list_add(proceso_pcb->instrucciones,split_buffer[indice_split]) ;
-     	}
+    } else if (string_contains(split_buffer[indice_split], "COPY")){
+            char** palabras = string_split(split_buffer[indice_split], " ") ; 
+            int parametro1_COPY = atoi(palabras[1]);
+            int parametro2_COPY = atoi(palabras[2]);
+            printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
+            list_add(proceso_pcb->instrucciones,string_duplicate(palabras[0])) ;
+            string_array_destroy(palabras);
+
+
+    } else if (string_contains(split_buffer[indice_split], "EXIT")){
+    		char** palabras = string_split(split_buffer[indice_split], " ") ;
+    		printf("EXIT");
+            list_add(proceso_pcb->instrucciones,string_duplicate(palabras[0])) ;
+            string_array_destroy(palabras);
+    }
         indice_split++;
     }    
 
     string_array_destroy(split_buffer);
-    string_array_destroy(palabras);
     list_destroy(proceso_pcb->instrucciones);
     free(mensaje_consola);
+    free(buffer->stream);
 
     return proceso_pcb;
 }
