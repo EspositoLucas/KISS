@@ -40,8 +40,8 @@ arch_config config_valores_kernel ;
 // pcb *recibir_paquete_instrucciones(int );
 // pcb *deserializar_paquete_instrucciones_consola(t_buffer* );
 // t_buffer *recibir_buffer_instrucciones(int );
-pcb *armar_pcb(t_buffer* buffer);
-t_buffer *recibir_buffer_instrucciones(int socket_cliente);
+pcb *armar_pcb(t_buffer* );
+t_buffer *recibir_buffer_instrucciones(int );
 void iterator(char *value);
 
 #endif 

@@ -32,7 +32,7 @@ all: consola
 consola: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -L"/media/sf_Shared/tp-2022-1c-Ubunteam/utils/Debug" -o "consola" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -L"/home/utnso/shared/TP/tp-2022-1c-Ubunteam/utils/Debug" -o "consola" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

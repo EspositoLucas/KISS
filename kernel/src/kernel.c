@@ -4,7 +4,7 @@ int main(void)
 {
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 
-    int server_fd = iniciar_servidor();
+    int server_fd = iniciar_servidor(IP_KERNEL,PUERTO_KERNEL);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(server_fd);
     t_buffer * buffer ;
@@ -18,7 +18,7 @@ int main(void)
         switch (cod_op)
         {
         case MENSAJE:
-            recibir_mensaje(cliente_fd);
+            recibir_mensaje(cliente_fd,logger);
             break;
         // case PAQUETE:
         //     lista = recibir_paquete(cliente_fd);
