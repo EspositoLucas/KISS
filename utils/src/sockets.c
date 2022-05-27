@@ -65,14 +65,14 @@ int iniciar_servidor(char *ip, char *puerto)
     return socket_servidor;
 }
 
-int esperar_cliente(int socket_servidor)
+int esperar_cliente(t_log* logger,const char* nombre, int socket_servidor)
 {
 
     struct sockaddr_in direccion_Cliente;
-    socklen_t tam_Direccion = sizeof(struct sockaddr_in);
+    int tam_Direccion = sizeof(struct sockaddr_in);
 
     int socket_cliente = accept(socket_servidor, (void *)&direccion_Cliente, &tam_Direccion);
-    log_info(logger, "Se conecto un cliente!");
+    log_info(logger, "Se conecto un cliente a %s/n",nombre);
 
     return socket_cliente;
 }

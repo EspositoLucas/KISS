@@ -4,20 +4,26 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c 
+../src/comunicacion.c \
+../src/log_config.c \
+../src/sockets.c 
 
 OBJS += \
-./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o 
+./src/comunicacion.o \
+./src/log_config.o \
+./src/sockets.o 
 
 C_DEPS += \
-./.metadata/.plugins/org.eclipse.cdt.make.core/specs.d 
+./src/comunicacion.d \
+./src/log_config.d \
+./src/sockets.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-.metadata/.plugins/org.eclipse.cdt.make.core/%.o: ../.metadata/.plugins/org.eclipse.cdt.make.core/%.c
+src/%.o: ../src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C Compiler'
-	gcc -I"/home/utnso/shared/TP/tp-2022-1c-Ubunteam/consola/include" -I"/home/utnso/shared/TP/tp-2022-1c-Ubunteam/utils/include" -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	gcc -O3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

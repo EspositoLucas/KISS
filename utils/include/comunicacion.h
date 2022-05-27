@@ -34,6 +34,8 @@ typedef enum
     EXIT
 } codigo_instrucciones;
 
+
+
 typedef struct {
     uint32_t id_proceso ;
     uint32_t tamanio_proceso ;

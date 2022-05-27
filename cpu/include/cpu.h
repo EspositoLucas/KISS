@@ -12,6 +12,7 @@
 #define IP_CPU "0.0.0.0"
 #define PUERTO_CPU "8001"
 
+extern t_log* logger;
 typedef struct  // archivo de configuracion cpu
 {
    int entradas_tlb;

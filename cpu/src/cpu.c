@@ -4,9 +4,9 @@ int main(int argc, char *argv[])
 {
 	logger = log_create("log.log", "Servidor CPU", 1, LOG_LEVEL_DEBUG);
 
-	    int server_fd = iniciar_servidor();
+	    int server_fd = iniciar_servidor(IP_CPU,PUERTO_CPU);
 	    log_info(logger, "CPU listo para recibir al modulo cliente");
-	    int cliente_fd = esperar_cliente(server_fd);
+	    int cliente_fd = esperar_cliente(logger,"cpu",server_fd);
 
 	    t_list *lista = list_create();
 	    while (1)
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	        switch (cod_op)
 	        {
 	        case MENSAJE:
-	            recibir_mensaje(cliente_fd);
+	            recibir_mensaje(cliente_fd,logger);
 	            break;
 	        case PCB:
 	            lista = recibir_paquete(cliente_fd);

@@ -4,9 +4,9 @@ int main(void) {
 
     logger = log_create("log.log", "Servidor Memoria", 1, LOG_LEVEL_DEBUG);
 
-    int server_fd = iniciar_servidor();
+    int server_fd = iniciar_servidor(IP_MEMORIA,PUERTO_MEMORIA);
     log_info(logger, "Memoria lista para recibir al modulo cliente");
-    int cliente_fd = esperar_cliente(server_fd);
+    int cliente_fd = esperar_cliente(logger,"memoria",server_fd);
 
     while (1)
     {
@@ -14,7 +14,7 @@ int main(void) {
         switch (cod_op)
         {
         case MENSAJE:
-            recibir_mensaje(cliente_fd);
+            recibir_mensaje(cliente_fd,logger);
             break;
 
         case PAQUETE:

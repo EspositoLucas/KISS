@@ -4,7 +4,7 @@
 
 -include ../makefile.init
 
-RM := rm
+RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -23,19 +23,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: kernel
+all: libutils.so
 
 # Tool invocations
-kernel: $(OBJS) $(USER_OBJS)
+libutils.so: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -L"/home/utnso/shared/TP/tp-2022-1c-Ubunteam/utils/Debug" -o "kernel" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -shared -o "libutils.so" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) kernel
+	-$(RM) $(LIBRARIES)$(OBJS)$(C_DEPS) libutils.so
 	-@echo ' '
 
 .PHONY: all clean dependents

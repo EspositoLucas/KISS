@@ -6,7 +6,7 @@ int main(void)
 
     int server_fd = iniciar_servidor(IP_KERNEL,PUERTO_KERNEL);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
-    int cliente_fd = esperar_cliente(server_fd);
+    int cliente_fd = esperar_cliente(logger,"kernel",server_fd);
     t_buffer * buffer ;
 
 //    t_list *lista;
@@ -157,7 +157,7 @@ t_buffer *recibir_buffer_instrucciones(int socket_cliente) // deserializar paque
         indice_split++;
     }
     string_array_destroy(split_buffer);
-    list_destroy(proceso_pcb->instrucciones);
+    // list_destroy(proceso_pcb->instrucciones);
     free(mensaje_consola);
     free(buffer);
 
