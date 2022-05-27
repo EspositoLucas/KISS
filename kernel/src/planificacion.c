@@ -33,9 +33,9 @@ t_algoritmo_planificacion obtener_algoritmo(){
 
 // 	pthread_mutex_lock(&mutexNew);
 
-// list_add(colaNew, proceso);
-//     proceso.estado = "NEW";
-// 	log_info(logger, "[NEW] Entra el proceso de ID: %d a la cola.", proceso->id_proceso);
+// list_add(procesosNew, proceso);
+//     proceso->estado = "NEW";
+// 	log_info(logger, "[NEW] Entra el proceso de ID: %d a la procesos.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexNew);
 
@@ -62,14 +62,12 @@ t_algoritmo_planificacion obtener_algoritmo(){
 // void agregarAReady(pcb proceso){
 
 //    int grado_multiprogramacion  = config_valores.grado_multiprogramacion ;
-//    int tamanio_ready = list_size(colaReady);
-// 	proceso->tiempoEspera = 0;
-// //	sem_wait(&multiprogramacion); Lo sacamos de aca para usarlo en el contexto en el que se llama a la funcion, porque no siempre que se agrega a ready, se toca la multiprogramacion
+//    int tamanio_ready = list_size(procesosReady);
 // 	pthread_mutex_lock(&mutexReady);
 //    if(tamanio_ready < grado_multiprogramacion ) {
 //            proceso->suspendido = false;
-//            proceso.estado = "READY";
-//            list_add(colaReady,  proceso);
+//            proceso->estado = "READY";
+//            list_add(procesosReady,  proceso);
 //            log_info(logger, "[READY] Entra el  proceso de ID: %d a la cola.",  proceso-> proceso_id);
 
 //            pthread_mutex_unlock(&mutexReady);
@@ -86,7 +84,16 @@ t_algoritmo_planificacion obtener_algoritmo(){
 //     proceso.estado = "EXIT";
 // 	log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
 
-// 	pthread_mutex_unlock(&mutexExit);
+//     if(proceso->instrucciones[proceso->program_counter] == "EXIT") {
+//         pthread_mutex_lock(&mutexExit);
+// 	    list_add(listaExit, proceso);
+//         proceso->estado = "EXIT";
+// 	    log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
+
+// 	    pthread_mutex_unlock(&mutexExit);
+        // avisarAMemoriaLiberarEstructuras(proceso) ;
+        // avisarAConsola(proceso) ;
+//     }
 
 
 
@@ -101,7 +108,7 @@ t_algoritmo_planificacion obtener_algoritmo(){
 
 // 		sem_wait(&largoPlazo);
 
-// 		if(list_size(colaReadySuspended) != 0){
+// 		if(list_size(procesosReadySuspended) != 0){
 
 // 			sem_post(&medianoPlazo);
 // 		}else{
@@ -122,19 +129,26 @@ t_algoritmo_planificacion obtener_algoritmo(){
 
 
 
-// void avisarAMemoriaInicializar(pcb proceso){
+// void avisarAMemoriaInicializarEstructuras(pcb proceso){
 // 	//CREAR CONEXION
 //     int socket_cliente;
-//     socket_cliente= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
+//     socket_cliente= crear_conexion(config_valores->ip_ram,config_valores->puerto_ram);
 //     enviar_mensaje("Inicializar estructuras Memoria",socket_cliente);
-//     proceso.valor_tabla_paginas = recibir_paquete(socket_cliente)  ; // Ver como se recibe el paquete si el valor va a ser un int o una lista y en que posicion
-//     log_info(logger, "Obtuve el valor de la tabla de paginas ");
+//     proceso->valor_tabla_paginas = recibir_paquete(socket_cliente)  ; // Ver como se recibe el paquete si el valor va a ser un int o una lista y en que posicion
+//	   proceso->valor_tabla_paginas = tabla_paginas(socket_cliente);
+//log_info(logger, "Obtuve el valor de la tabla de paginas ");
 
 //     // LIBERAR CONEXION
 //     liberar_conexion(socket_cliente);
 
+//  int tabla_paginas(int socket-cliente) {
+//     t_list valores = recibir_paquete(socket_cliente) ;
+//     return list_get(valores,0);
+
 // }
-// void avisarAMemoriaLiberar(pcb proceso){
+
+// }
+// void avisarAMemoriaLiberarEstructuras(pcb proceso){
 // 	//CREAR CONEXION
 
 // 	int socket_cliente;
@@ -924,19 +938,13 @@ float calculoEstimacionProceso(float realAnterior){
 // }
 
 
-
-
-
-
-
-
 //................................. MEDIANO PLAZO.........................................................................................
 
 // void sacarDeBlocked(pcb* proceso){ 
 
 // 	sem_wait(&contadorBlock);
 
-// 	bool tienenMismoPID(void* elemento){
+// 	bool suspensionMayorAtiempoMaximo(void* elemento){
 
 // 		if(carpincho->carpinchoPID == ((pcb_carpincho *) elemento)->carpinchoPID)
 // 			return true;
@@ -946,24 +954,30 @@ float calculoEstimacionProceso(float realAnterior){
 
 // 	pthread_mutex_lock(&mutexBlock);
 
-// 	list_remove_by_condition(listaBlock, tienenMismoPID);
-// 	log_info(logger, "[BLOCK] Sale el carpincho de PID: %d de la cola.", carpincho->carpinchoPID);
+// 	list_remove_by_condition(listaBlock, suspensionMayorAtiempoMaximo);
+// 	log_info(logger, "[BLOCK] Sale el carpincho de PID: %d de la procesos.", carpincho->carpinchoPID);
 
 // 	pthread_mutex_unlock(&mutexBlock);
 // }
 
-// void agregarABlockSuspended(pcb* proceso){ // Para que entre en supension
+// void agregarASuspendedBlock(pcb* proceso){ // Para que entre en supension
 
 // 	pthread_mutex_lock(&mutexBlockedSuspended);
 
-// 	if(proceso->tiempo_bloqueado ==)
 // 	proceso->suspendido = true;
+
 // 	list_add(listaBlockSuspended, carpincho);
 
-// 	log_info(logger, "[BLOCKED-SUSPENDED] Ingresa el proceso de PID: %d a la cola.", carpincho->carpinchoPID);
+// void avisarAMemoriaProcesoSuspendido(pcb proceso){
 
-// 	pthread_mutex_unlock(&mutexBlockSuspended);
+// 	int socket_cliente;
+// 	socket_cliente= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
+//     enviar_mensaje("Proceso paso a estado SUPENDE_BLOCKED",socket_cliente);
 
+// 	liberar_conexion(socket_cliente);
 
 // }
 
+
+
+// }
