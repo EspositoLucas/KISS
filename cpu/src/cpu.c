@@ -1,14 +1,28 @@
 #include "cpu.h"
 
+
 int main(int argc, char *argv[])
 {
+
 	logger = log_create("log.log", "Servidor CPU", 1, LOG_LEVEL_DEBUG);
+	config= iniciar_config("cfg/cpu.config");
+	t_buffer * buffer=malloc(sizeof(t_buffer));
+	pcb* pcb_recibido=malloc(sizeof(pcb));
+
+	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS");
+	config_valores_cpu.reemplazo_tlb=config_get_string_value(config,"REEMPLAZO");
+	config_valores_cpu.retardo_NOOP=config_get_int_value(config,"RETARDO_NOOP");
+	config_valores_cpu.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
+	config_valores_cpu.puerto_memoria=config_get_int_value(config,"PUERTO_MEMORIA");
+	config_valores_cpu.puerto_escucha_dispatch=config_get_int_value(config,"PUERTO_ESCUCHA_DISPATCH");
+	config_valores_cpu.puerto_escucha_interrupt=config_get_int_value(config,"PUERTO_ESCUCHA_INTERRUPT");
+
+
 
 	    int server_fd = iniciar_servidor(IP_CPU,PUERTO_CPU);
 	    log_info(logger, "CPU listo para recibir al modulo cliente");
 	    int cliente_fd = esperar_cliente(logger,"cpu",server_fd);
 
-	    t_list *lista = list_create();
 	    while (1)
 	    {
 	        int cod_op = recibir_operacion(cliente_fd);
@@ -18,9 +32,9 @@ int main(int argc, char *argv[])
 	            recibir_mensaje(cliente_fd,logger);
 	            break;
 	        case PCB:
-	            lista = recibir_paquete(cliente_fd);
+	            /*buffer = recibir_paquete(cliente_fd);
 	            log_info(logger, "Me llegaron los mensajes:\n");
-	            list_iterate(lista, (void *)iterator);
+	            list_iterate(lista, (void *)iterator);*/
 	            break;
 	        case -1:
 	            log_error(logger, "Fallo la comunicacion. Abortando");
@@ -39,63 +53,4 @@ void iterator(char *value)
     log_info(logger, "%s", value);
 }
 
-//void fetch(t_pcb* pcb){
-//	t_ins* instruccionProxima = ;
-//	instruccionProxima = list_get(pcb->instrucciones,pcb->program_counter);
-//	decode(instruccionProxima);
-//	pcb->program_counter++;
-//	free(instruccionProxima);
-//}
-
-//void decode(t_ins* instruccion){
-
-//	if(string_contains(instruccion->tipoInstruccion,"NO_OP")){
-//		ejecutarNO_OP();
-//	}
-
-//	if(string_contains(instruccion->tipoInstruccion,"I/O")){
-//		ejecutarIO(instruccion->primerParametro);
-//	}
-
-//	if(string_contains(instruccion->tipoInstruccion,"READ")){
-//		ejecutarREAD(instruccion->primerParametro);
-//	}
-
-//	if(string_contains(instruccion->tipoInstruccion,"WRITE")){
-//		ejecutarWRITE(instruccion->primerParametro,instruccion->segundoParametro);
-//	}
-
-//	if(string_contains(instruccion->tipoInstruccion,"COPY")){
-
-//		fetchOperands(instruccion->segundoParametro);
-//		ejecutarCOPY(instruccion->primerParametro,instruccion->segundoParametro);
-//	}
-
-//	if(string_contains(instruccion->tipoInstruccion,"EXIT")){
-//		ejecutarEXIT();
-//	}
-
-//}
-
-void ejecutarNO_OP(){}
-
-void ejecutarIO(int tiempo){
-
-}
-
-/*void ejecutarREAD(dirLogica){
-
-}
-
-void ejecutarWRITE(dirLogica,valor){
-
-}
-
-void ejecutarCOPY(dirLogicaDestino,dirLogicaOrigen){
-
-}*/
-
-void ejecutarEXIT(){
-
-}
 

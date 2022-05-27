@@ -192,7 +192,7 @@ void *serializar_pcb(pcb* pcb)
     offset += sizeof(uint32_t);
     memcpy(stream + offset, &pcb->estimacion_rafaga, sizeof(1));
     offset += sizeof(1);
-    memcpy(stream + offset, &pcb->tiempo_bloqueado,sizeof(uint8_t));
+    memcpy(stream + offset, &pcb->tiempo_de_bloqueo,sizeof(uint8_t));
     offset += sizeof(uint8_t);
     memcpy(stream + offset, &pcb->suspendido, sizeof(uint8_t));
     offset += sizeof(uint8_t);

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <commons/log.h>
+#include <commons/collections/list.h>
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"
@@ -12,6 +13,7 @@
 #define IP_CPU "0.0.0.0"
 #define PUERTO_CPU "8001"
 
+extern t_config *config;
 extern t_log* logger;
 typedef struct  // archivo de configuracion cpu
 {
@@ -28,11 +30,13 @@ typedef struct  // archivo de configuracion cpu
 arch_config config_valores_cpu ;
 
 void iterator(char *value);
+void fetch(pcb*);
+void decode(instruccion*,pcb*);
 void ejecutarNO_OP();
-void ejecutarIO(int);
+void ejecutarIO(int,pcb*);
 //void ejecutarREAD(dirLogica);
 //void ejecutarWRITE(dirLogica,valor);
 //void ejecutarCOPY(dirLogicaDestino,dirLogicaOrigen);
-void ejecutarEXIT();
+void ejecutarEXIT(pcb*);
 
 #endif

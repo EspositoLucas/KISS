@@ -37,22 +37,24 @@ typedef enum
 
 
 typedef struct {
+    codigo_instrucciones codigo ;
+    int parametro1;
+    int parametro2;
+}instruccion ;
+
+
+typedef struct {
     uint32_t id_proceso ;
     uint32_t tamanio_proceso ;
     uint32_t valor_tabla_paginas ;
     uint32_t program_counter;
     float estimacion_rafaga ;
-    double tiempo_bloqueado ;
+    double tiempo_de_bloqueo;
     uint8_t suspendido;
-    char* estado ;
-    t_list* instrucciones ; 
-}pcb ;
+    char* estado ;//Podria ser enum para no tener que pasar char*
+    instruccion* instrucciones ;
+}pcb;
 
-typedef struct {
-    codigo_instrucciones codigo ;
-    int parametro1;
-    int parametro2;
-}instruccion ;
 
 t_log *logger;
 

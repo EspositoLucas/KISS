@@ -88,7 +88,10 @@ t_buffer *recibir_buffer_instrucciones(int socket_cliente) // deserializar paque
 
         if(string_contains(split_buffer[indice_split], "NO_OP") ) {
             char** palabras = string_split(split_buffer[indice_split], " ") ;
-            int parametro_NO_OP = atoi(palabras[1]);
+            int parametro_NO_OP;
+            if(palabras[1]==NULL){parametro_NO_OP=1;}
+            else{
+            parametro_NO_OP= atoi(palabras[1]);}
             for(int i=0; i< parametro_NO_OP  ; i++){
                 // printf("NO_OP %d ", parametro_NO_OP);
                 instruccion* instruccion_No_op = malloc(sizeof(instruccion));
