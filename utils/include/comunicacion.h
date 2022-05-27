@@ -42,7 +42,7 @@ typedef enum{
 	BLOQUEADOSUSPENDIDO,
 	LISTOSUSPENDIDO,
 	FINALIZADO
-};
+} estado;
 
 
 typedef struct {
