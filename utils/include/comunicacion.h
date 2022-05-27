@@ -34,6 +34,15 @@ typedef enum
     EXIT
 } codigo_instrucciones;
 
+typedef enum{
+	NUEVO,
+	LISTO,
+	EXEC,
+	BLOQUEADO,
+	BLOQUEADOSUSPENDIDO,
+	LISTOSUSPENDIDO,
+	FINALIZADO
+};
 
 
 typedef struct {
