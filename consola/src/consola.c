@@ -3,7 +3,6 @@
 
 int main(int argc, char **argv){
 
-// ./consola 10000 /C:\Users\esposito\Carpetas Compartidas SO\TP\tp-2022-1c-Ubunteam\consola\instrucciones.txt
 	if(argc < 3) {
 		return EXIT_FAILURE;
     }
@@ -47,29 +46,24 @@ int main(int argc, char **argv){
 
 
 
-// VERSION 3 PAQUETE - Sin serializar en consola 
+// VERSION sin serializar en consola
 
 void paquete_proceso(int conexion){
 
    
     t_paquete *paquete = crear_paquete();
     char* leido = leer_archivo("instrucciones.txt");
-//    char** split = string_split(leido, "\n");
-//    int longitud_instrucciones = string_array_size(split);
-//    int indice_split = 0 ;
 
     agregar_a_paquete(paquete, leido, strlen(leido)+1 );
-//    	free(leido);
 
     enviar_paquete(paquete, conexion);
     eliminar_paquete(paquete);
-//    free(leido);
 
 }
 
 
 
-// LEER ARCHIVO
+// LEER ARCHIVO DE INSTRUCCIONES
 
 char *leer_archivo(char *unPath)
 {

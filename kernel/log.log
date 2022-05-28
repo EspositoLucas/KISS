@@ -242,3 +242,11 @@
 [INFO] 22:45:09:677 Servidor Kernel/(30485:30485): Me llego el mensaje  : Envio a kernel la info del proceso
 [INFO] 22:45:13:094 Servidor Kernel/(30485:30485): Me llegaron las instrucciones:
 
+[INFO] 12:08:01:436 Servidor Kernel/(6314:6314): Kernel listo para recibir al modulo cliente
+[INFO] 12:14:01:601 Servidor Kernel/(6639:6639): Kernel listo para recibir al modulo cliente
+[INFO] 12:20:49:577 Servidor Kernel/(6806:6806): Kernel listo para recibir al modulo cliente
+[INFO] 12:23:01:777 Servidor Kernel/(6921:6921): Kernel listo para recibir al modulo cliente
+[INFO] 12:30:11:865 Servidor Kernel/(7022:7022): Kernel listo para recibir al modulo cliente
+[INFO] 17:31:19:916 Servidor Kernel/(9785:9785): Kernel listo para recibir al modulo cliente
+[INFO] 18:24:22:442 Servidor Kernel/(10412:10412): Kernel listo para recibir al modulo cliente
+[INFO] 19:12:31:134 Servidor Kernel/(12261:12261): Kernel listo para recibir al modulo cliente

@@ -11,7 +11,7 @@
 
 // PUERTOS
 
-#define IP_KERNEL "0.0.0.0"
+#define IP_KERNEL "0.0.0.1"
 #define PUERTO_KERNEL "8000"
 
 //STRUCTS/ENUMS

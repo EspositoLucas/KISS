@@ -39,8 +39,8 @@ typedef enum{
 	LISTO,
 	EXEC,
 	BLOQUEADO,
-	BLOQUEADOSUSPENDIDO,
-	LISTOSUSPENDIDO,
+	BLOQUEADO_SUSPENDIDO,
+	LISTO_SUSPENDIDO,
 	FINALIZADO
 } estado;
 
@@ -58,7 +58,7 @@ typedef struct {
     uint32_t valor_tabla_paginas ;
     uint32_t program_counter;
     float estimacion_rafaga ;
-    double tiempo_de_bloqueo;
+    double tiempo_de_bloqueo; // tiempo de IO  para estar bloqueado
     uint8_t suspendido;
     estado estado_proceso ;//Podria ser enum para no tener que pasar char*
     instruccion* instrucciones ;
