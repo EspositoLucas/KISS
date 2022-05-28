@@ -4,6 +4,7 @@
 
 #include "kernel.h"
 #include <commons/collections/list.h>
+#include <commons/collections/queue.h>
 #include <semaphore.h>
 #include <stdio.h>
 #include <stdlib.h>
