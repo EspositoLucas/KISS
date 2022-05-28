@@ -2,26 +2,26 @@
 
 // CONFIG_ALGORITMO
 
-t_algoritmo_planificacion obtener_algoritmo(){
-
- 	 t_algoritmo_planificacion switcher;
- 	 char* algoritmo = obtener_de_config(config, "ALGORITMO_PLANIFICACION");
-
- 	    //FIFO
- 	 if (strcmp(algoritmo,"FIFO") == 0)
- 	 {
- 		 switcher = FIFO;
- 	     log_info(logger, "El algoritmo de planificacion elegido es FIFO.");
- 	 }
-
- 	    //SFJ SIN DESALOJO
- 	 if (strcmp(algoritmo,"SRT") == 0)
- 	 {
- 		 switcher = SRT;
- 	     log_info(logger, "El algoritmo de planificacion elegido es SRT.");
- 	 }
- 	 return switcher;
-}
+//t_algoritmo_planificacion obtener_algoritmo(){
+//
+// 	 t_algoritmo_planificacion switcher;
+// 	 char* algoritmo = obtener_de_config(config, "ALGORITMO_PLANIFICACION");
+//
+// 	    //FIFO
+// 	 if (strcmp(algoritmo,"FIFO") == 0)
+// 	 {
+// 		 switcher = FIFO;
+// 	     log_info(logger, "El algoritmo de planificacion elegido es FIFO.");
+// 	 }
+//
+// 	    //SFJ SIN DESALOJO
+// 	 if (strcmp(algoritmo,"SRT") == 0)
+// 	 {
+// 		 switcher = SRT;
+// 	     log_info(logger, "El algoritmo de planificacion elegido es SRT.");
+// 	 }
+// 	 return switcher;
+//}
 
 //................................. LARGO PLAZO.........................................................................................
 
@@ -163,8 +163,6 @@ t_algoritmo_planificacion obtener_algoritmo(){
 //................................. CORTO PLAZO.........................................................................................
 
 
-// #include "planificadorCortoPlazo.h"
-
 // void enviarPcbACpu(pcb pcb){
 // 	//CREAR CONEXION
 // 		int socket_cliente;
@@ -196,115 +194,115 @@ t_algoritmo_planificacion obtener_algoritmo(){
 
 //---------------------------------------- Inicializar colas---------------------------------------
 
-void inicializarColas(){
-	colaReady = list_create();
-	listaExec= list_create();
-}
+// void inicializarColas(){
+// 	colaReady = list_create();
+// 	listaExec= list_create();
+// }
 
 
 //----------------------------------------Hilos-----------------------------------------------------
 
 
-void hiloReady_Exec(){
-	while (1){
-		pcb* procesoAEjecutar = obtenerSiguienteReady();
+// void hiloReady_Exec(){
+// 	while (1){
+// 		pcb* procesoAEjecutar = obtenerSiguienteReady();
 
-		if (procesoAEjecutar != NULL){
-			list_add(listaExec,procesoAEjecutar);
-			//enviarPCBaCPU(procesoAEjecutar);
-		}
-	}
-}
+// 		if (procesoAEjecutar != NULL){
+// 			list_add(listaExec,procesoAEjecutar);
+// 			//enviarPCBaCPU(procesoAEjecutar);
+// 		}
+// 	}
+// }
 
 
 // ---------------------------------------------------------------------------------------------
 
-pcb* obtenerSiguienteReady(){
-	pcb* procesoSeleccionado;
+// pcb* obtenerSiguienteReady(){
+// 	pcb* procesoSeleccionado;
 
-	int tamanioReady;
-	tamanioReady = list_size(colaReady);
-	int gradoMultiprogramacion;
-	t_algoritmo_planificacion algoritmo = obtener_algoritmo();
-	int ejecutando = list_size(listaExec);
-
-
-	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
-		switch(algoritmo){
-		case FIFO:
-			procesoSeleccionado = obtenerSiguienteFIFO();
-			break;
-		case SRT:
-			procesoSeleccionado = obtenerSiguienteSRT();
-			break;
-		}
-	}
-	return procesoSeleccionado;
-}
-
-pcb* obtenerSiguienteFIFO(){
-
-	log_info(logger,"Inicio la planificacion FIFO");
-
-	pcb* procesoSeleccionado = list_remove(colaReady,0);
+// 	int tamanioReady;
+// 	tamanioReady = list_size(colaReady);
+// 	int gradoMultiprogramacion;
+// 	t_algoritmo_planificacion algoritmo = obtener_algoritmo();
+// 	int ejecutando = list_size(listaExec);
 
 
-	return procesoSeleccionado;
+// 	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
+// 		switch(algoritmo){
+// 		case FIFO:
+// 			procesoSeleccionado = obtenerSiguienteFIFO();
+// 			break;
+// 		case SRT:
+// 			procesoSeleccionado = obtenerSiguienteSRT();
+// 			break;
+// 		}
+// 	}
+// 	return procesoSeleccionado;
+// }
 
-}
+// pcb* obtenerSiguienteFIFO(){
 
-pcb* obtenerSiguienteSRT(){
-	log_info(logger,"Inicio la planificacion SRT");
-	asignarEstimacionesAProcesos();
-	pcb* procesoElegido = elegirElDeMenorEstimacion();
-	return procesoElegido;
-}
+// 	log_info(logger,"Inicio la planificacion FIFO");
 
-pcb* elegirElDeMenorEstimacion(){
-	int tamanioReady = list_size(colaReady);
-	pcb* procesoSeleccionado;
-	pcb* procesoAux;
-	int indiceElegido = 0;
+// 	pcb* procesoSeleccionado = list_remove(colaReady,0);
 
-	float procesoMasCorto;
 
-	procesoMasCorto = procesoAux->estimacion_rafaga;
+// 	return procesoSeleccionado;
 
-	for(int i = 0; i < tamanioReady; i++){
-		pcb* procesoAux = list_get(colaReady,i);
+// }
 
-		if(procesoMasCorto > procesoAux->estimacion_rafaga){
-			procesoMasCorto = procesoAux->estimacion_rafaga;
-			indiceElegido = i;
-		}
+// pcb* obtenerSiguienteSRT(){
+// 	log_info(logger,"Inicio la planificacion SRT");
+// 	asignarEstimacionesAProcesos();
+// 	pcb* procesoElegido = elegirElDeMenorEstimacion();
+// 	return procesoElegido;
+// }
 
-	}
+// pcb* elegirElDeMenorEstimacion(){
+// 	int tamanioReady = list_size(colaReady);
+// 	pcb* procesoSeleccionado;
+// 	pcb* procesoAux;
+// 	int indiceElegido = 0;
 
-	procesoSeleccionado = list_remove(colaReady,indiceElegido);
+// 	float procesoMasCorto;
 
-	return procesoSeleccionado;
-}
+// 	procesoMasCorto = procesoAux->estimacion_rafaga;
 
-void asignarEstimacionesAProcesos(){
+// 	for(int i = 0; i < tamanioReady; i++){
+// 		pcb* procesoAux = list_get(colaReady,i);
 
-	int tamanioReady = list_size(colaReady);
+// 		if(procesoMasCorto > procesoAux->estimacion_rafaga){
+// 			procesoMasCorto = procesoAux->estimacion_rafaga;
+// 			indiceElegido = i;
+// 		}
+
+// 	}
+
+// 	procesoSeleccionado = list_remove(colaReady,indiceElegido);
+
+// 	return procesoSeleccionado;
+// }
+
+// void asignarEstimacionesAProcesos(){
+
+// 	int tamanioReady = list_size(colaReady);
 
 	/*for(int i = 0; i < tamanioReady; i++){
 		pcb* proceso = list_get(colaReady,i);
 		float realAnterior = proceso->instrucciones[(proceso->program_counter)-1]
 		proceso->estimacion_rafaga = calculoEstimacionProceso(realAnterior); // le paso a calculoEstimacionProceso la rafaga real anterior
 	}*/
-} // revisar bien esta funcion
+//}  revisar bien esta funcion
 
-float calculoEstimacionProceso(float realAnterior){
+// float calculoEstimacionProceso(float realAnterior){
 
-	float alfa;
-	float estimacionInicial;
+// 	float alfa;
+// 	float estimacionInicial;
 
-	float estimacion_rafaga = alfa * realAnterior + (1 - alfa) * estimacionInicial;
+// 	float estimacion_rafaga = alfa * realAnterior + (1 - alfa) * estimacionInicial;
 
-	return estimacion_rafaga;
-}
+// 	return estimacion_rafaga;
+// }
 
 
 // -----------------------------------------------------------------------------------------------------------------
@@ -880,6 +878,11 @@ float calculoEstimacionProceso(float realAnterior){
 
 // 	sem_wait(&contadorExe);
 
+// usleep(tiempo_maximo)
+// if(sigueen en la cola de bloqueo){
+//         supedner()
+// }
+
 // 	bool tienenMismoPID(void* elemento){
 
 // 		if(proceso->procesoPID == ((t_pcb *) elemento)->procesoPID)
@@ -890,7 +893,7 @@ float calculoEstimacionProceso(float realAnterior){
 
 // 	list_remove_by_condition(listaExe, tienenMismoPID);
 
-// 	pthread_mutex_lock(&mutexBlock);
+// 	pthread_mutex_lock(&mutexBlock
 
 // 	list_add(listaBlock, proceso);
 // 	log_info(logger, "[BLOCK] Entra el proceso de PID: %d a la cola.", proceso->procesoPID);
@@ -966,4 +969,6 @@ float calculoEstimacionProceso(float realAnterior){
 
 
 // }
+
+
 

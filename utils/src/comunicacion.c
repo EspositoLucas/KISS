@@ -174,7 +174,7 @@ void *serializar_pcb(pcb* pcb)
     buffer->stream_size = sizeof(uint32_t) * 4 // Para los unint32
              + sizeof(1) * 1 // Para los float
              + sizeof(uint8_t) * 2 // Para los uint_8_t
-             + strlen(pcb->estado) + 1; // Para los char*
+//             + strlen(pcb->estado) + 1; // Para los char*
              + list_size(pcb->instrucciones) * sizeof(instruccion);
 
     void* stream = malloc(buffer->stream_size);
@@ -198,11 +198,17 @@ void *serializar_pcb(pcb* pcb)
     offset += sizeof(uint8_t);
 
     //Serializar los campos char*
-   memcpy(stream + offset, sizeof(uint32_t), sizeof(uint32_t));
-   offset += sizeof(uint32_t);
-   memcpy(stream + offset, &pcb->estado, strlen(pcb->estado) + 1);
+//   memcpy(stream + offset, sizeof(uint32_t), sizeof(uint32_t));
+//   offset += sizeof(uint32_t);
+//   memcpy(stream + offset, &pcb->estado, strlen(pcb->estado) + 1);
 
     
+    //Serializar los campos enum
+
+    memcpy(stream + offset, &pcb->estado_proceso, sizeof(estado));
+    offset += sizeof(estado);
+
+
     //Serializar lista instrucciones
     
     for (int i = 0; i < list_size(pcb->instrucciones); i++){ // hacemos un char* a la vez
@@ -214,7 +220,7 @@ void *serializar_pcb(pcb* pcb)
     buffer->stream = stream;
 
 
-    free(pcb->estado);
+//    free(pcb->estado);
     list_destroy(pcb->instrucciones);
     free(stream);
 
@@ -241,17 +247,22 @@ pcb* deserializar_pcb(t_buffer* buffer) {
     stream += sizeof(uint32_t);
     memcpy(&(pcb->estimacion_rafaga), stream, sizeof(1));
     stream += sizeof(1);
-    memcpy(&(pcb->tiempo_bloqueado), stream, sizeof(uint8_t));
-    stream += sizeof(uint8_t);
+    memcpy(&(pcb->tiempo_de_bloqueo), stream, sizeof(1));
+    stream += sizeof(1);
     memcpy(&(pcb->suspendido), stream, sizeof(uint8_t));
     stream += sizeof(uint8_t);
 
     //Deserializar los campos char*
 
-    pcb->estado = malloc(sizeof(uint32_t));
-    memcpy(&(pcb->estado), stream, sizeof(uint32_t));
-    stream += sizeof(uint32_t);
+//    pcb->estado = malloc(sizeof(uint32_t));
+//    memcpy(&(pcb->estado), stream, sizeof(uint32_t));
+//    stream += sizeof(uint32_t);
 
+    //Deserializar los campos enum*
+
+
+    memcpy(&(pcb->estado_proceso), stream, sizeof(estado));
+    stream += sizeof(estado);
 
 //Deserializar lista instrucciones 
 

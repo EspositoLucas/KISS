@@ -23,18 +23,6 @@ typedef enum{
 	SRT
 }t_algoritmo_planificacion;
 
-//typedef struct {
-//    uint32_t id_proceso ;
-//    uint32_t tamanio_proceso ;
-//    uint32_t valor_tabla_paginas ;
-//    uint32_t program_counter;
-//    float estimacion_rafaga ;
-//    double tiempo_bloqueado ;
-//    uint8_t suspendido;
-//    char* estado ;
-//    t_list* instrucciones ;
-//}pcb ;
-
 
 // SEMAFOROS
 

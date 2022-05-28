@@ -60,7 +60,7 @@ typedef struct {
     float estimacion_rafaga ;
     double tiempo_de_bloqueo;
     uint8_t suspendido;
-    char* estado ;//Podria ser enum para no tener que pasar char*
+    estado estado_proceso ;//Podria ser enum para no tener que pasar char*
     instruccion* instrucciones ;
 }pcb;
 

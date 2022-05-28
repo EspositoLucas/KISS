@@ -2,7 +2,11 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-USER_OBJS :=
+# Add inputs and outputs from these tool invocations to the build variables 
+O_SRCS += \
+../obj/consola.o \
+../obj/consolaUtils.o 
 
-LIBS := -lcommons -lutils
+
+# Each subdirectory must supply rules for building sources it contributes
 
