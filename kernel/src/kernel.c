@@ -96,7 +96,7 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
     memcpy(mensaje_consola,buffer->stream ,buffer->stream_size);
     memcpy(&(proceso_pcb->tamanio_proceso),&(buffer->tamanio_proceso) ,sizeof(int));
     char** split_buffer = string_split(mensaje_consola, "\n");
-    proceso_pcb->instrucciones = list_create();
+    proceso_pcb->instrucciones = list_create(); // aca como seria ahora que instrucciones es un instruccion* y no una t_list?
     while (split_buffer[indice_split] != NULL) {
 
         if(string_contains(split_buffer[indice_split], "NO_OP") ) {
@@ -111,8 +111,9 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
                 list_add(proceso_pcb->instrucciones,instruccion_No_op) ; // Para agregar a lista a medida quese vaya parseando
             }
         string_array_destroy(palabras);
+        //indice_split++;
 
-    } else if (string_contains(split_buffer[indice_split], "I/O")){
+        } else if (string_contains(split_buffer[indice_split], "I/O")){
             char** palabras = string_split(split_buffer[indice_split], " ") ;
             int parametro_IO = atoi(palabras[1]);
             instruccion* instruccion_IO = malloc(sizeof(instruccion));
@@ -120,9 +121,9 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             instruccion_IO->parametro1= parametro_IO ;
             list_add(proceso_pcb->instrucciones,instruccion_IO) ;
             string_array_destroy(palabras);
-    }
+            //indice_split++;
 
-    else if (string_contains(split_buffer[indice_split], "READ")){
+        } else if (string_contains(split_buffer[indice_split], "READ")){
             char** palabras = string_split(split_buffer[indice_split], " ") ;
             int parametro_READ = atoi(palabras[1]);
             instruccion* instruccion_READ = malloc(sizeof(instruccion));
@@ -130,8 +131,9 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             instruccion_READ->parametro1= parametro_READ ;
             list_add(proceso_pcb->instrucciones,instruccion_READ) ;
             string_array_destroy(palabras);
+            //indice_split++;
 
-    } else if (string_contains(split_buffer[indice_split], "WRITE")) {
+        } else if (string_contains(split_buffer[indice_split], "WRITE")) {
             char** palabras = string_split(split_buffer[indice_split], " ") ;
             int parametro1_WRITE = atoi(palabras[1]);
             int parametro2_WRITE = atoi(palabras[2]);
@@ -141,8 +143,9 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             instruccion_WRITE->parametro2= parametro2_WRITE ;
             list_add(proceso_pcb->instrucciones,instruccion_WRITE) ;
             string_array_destroy(palabras);
+            //indice_split++;
 
-    } else if (string_contains(split_buffer[indice_split], "COPY")){
+        } else if (string_contains(split_buffer[indice_split], "COPY")){
             char** palabras = string_split(split_buffer[indice_split], " ") ;
             int parametro1_COPY = atoi(palabras[1]);
             int parametro2_COPY = atoi(palabras[2]);
@@ -153,19 +156,20 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
             list_add(proceso_pcb->instrucciones,instruccion_COPY) ;
             string_array_destroy(palabras);
+            //indice_split++;
 
-    } else if (string_contains(split_buffer[indice_split], "EXIT")){
+        } else if (string_contains(split_buffer[indice_split], "EXIT")){
             instruccion* instruccion_EXIT = malloc(sizeof(instruccion));
             instruccion_EXIT->codigo = EXIT ;
             list_add(proceso_pcb->instrucciones,instruccion_EXIT) ;
-        indice_split++;
-    }
+            indice_split++;
+        }
     string_array_destroy(split_buffer);
     free(mensaje_consola);
     free(buffer);
 
     return proceso_pcb;
-}
+    }
 }
 
 

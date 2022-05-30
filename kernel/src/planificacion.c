@@ -66,6 +66,7 @@
 
 // void agregarAReady(pcb proceso){
 
+// 	t_algoritmo_planificacion algoritmo = obtener_algoritmo();
 //    int grado_multiprogramacion  = config_valores.grado_multiprogramacion ;
 //    int tamanio_ready = list_size(procesosReady);
 // 	pthread_mutex_lock(&mutexReady);
@@ -79,6 +80,14 @@
 //            sem_post(&contadorReady);
 
 //    }
+// 	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
+// 		switch(algoritmo){
+// 		case FIFO:
+// 			break;
+// 		case SRT:
+			// despertar hilo de ready a exec
+// 			break;
+// 		}
 
 // }
 // void finalizarProceso(pcb proceso){
