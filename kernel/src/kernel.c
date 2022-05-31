@@ -18,19 +18,13 @@ int main(void)
         int cod_op = recibir_operacion(cliente_fd);
         switch (cod_op)
         {
-        case MENSAJE:
+        case MENSAJE_CONSOLA:
             recibir_mensaje(cliente_fd,logger);
             break;
-        // case PAQUETE:
-        //     lista = recibir_paquete(cliente_fd);
-        //     log_info(logger, "Me llegaron los mensajes:\n");
-        //     list_iterate(lista, (void *)iterator);
-        //     break;
         case PAQUETE:
-            log_info(logger, "Me llegaron las instrucciones:\n");
-            buffer =recibir_buffer_instrucciones(cliente_fd);
+            log_info(logger, "Me llego el tamanio del proceso y las instrucciones:\n");
+            buffer = recibir_buffer_proceso(cliente_fd);
             pcb = armar_pcb(buffer);
-            free(pcb);
             break;
         
         // case TABLA_PAGINAS:   // PARA MEMORIA
@@ -58,23 +52,8 @@ int main(void)
 //    log_info(logger, "%s", value);
 //}
 
-//.................................. DESERIALIZAR_BUFFER.............................................................................................
 
-t_buffer *recibir_buffer_instrucciones(int socket_cliente) // deserializar paquete instrucciones y tamanio proceso
-{
-	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
-    int size;
-    void *stream ;
 
-    recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
-    recv(socket_cliente, &size, sizeof(int), MSG_WAITALL);
-    stream = malloc(size);
-    recv(socket_cliente, stream, size, MSG_WAITALL);
-
-    buffer->stream = stream ;
-
-    return buffer ;
-}
 
 
 //.................................. PARSEO_CONSOLA.............................................................................................
@@ -82,7 +61,7 @@ t_buffer *recibir_buffer_instrucciones(int socket_cliente) // deserializar paque
 
 //VERSION CON IF
 
-pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
+pcb *agregar_instrucciones_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
 
 {
     pcb* proceso_pcb = malloc(sizeof(pcb)) ;
@@ -111,7 +90,6 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
                 list_add(proceso_pcb->instrucciones,instruccion_No_op) ; // Para agregar a lista a medida quese vaya parseando
             }
         string_array_destroy(palabras);
-        //indice_split++;
 
         } else if (string_contains(split_buffer[indice_split], "I/O")){
             char** palabras = string_split(split_buffer[indice_split], " ") ;
@@ -121,7 +99,6 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             instruccion_IO->parametro1= parametro_IO ;
             list_add(proceso_pcb->instrucciones,instruccion_IO) ;
             string_array_destroy(palabras);
-            //indice_split++;
 
         } else if (string_contains(split_buffer[indice_split], "READ")){
             char** palabras = string_split(split_buffer[indice_split], " ") ;
@@ -131,7 +108,6 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             instruccion_READ->parametro1= parametro_READ ;
             list_add(proceso_pcb->instrucciones,instruccion_READ) ;
             string_array_destroy(palabras);
-            //indice_split++;
 
         } else if (string_contains(split_buffer[indice_split], "WRITE")) {
             char** palabras = string_split(split_buffer[indice_split], " ") ;
@@ -143,7 +119,6 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             instruccion_WRITE->parametro2= parametro2_WRITE ;
             list_add(proceso_pcb->instrucciones,instruccion_WRITE) ;
             string_array_destroy(palabras);
-            //indice_split++;
 
         } else if (string_contains(split_buffer[indice_split], "COPY")){
             char** palabras = string_split(split_buffer[indice_split], " ") ;
@@ -156,22 +131,42 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
             printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
             list_add(proceso_pcb->instrucciones,instruccion_COPY) ;
             string_array_destroy(palabras);
-            //indice_split++;
 
         } else if (string_contains(split_buffer[indice_split], "EXIT")){
             instruccion* instruccion_EXIT = malloc(sizeof(instruccion));
             instruccion_EXIT->codigo = EXIT ;
             list_add(proceso_pcb->instrucciones,instruccion_EXIT) ;
-            indice_split++;
+            
         }
+
+    indice_split++;
+    }
+
+
     string_array_destroy(split_buffer);
     free(mensaje_consola);
     free(buffer);
 
     return proceso_pcb;
-    }
 }
 
+//.................................. ARMAR_PCB.............................................................................................
+
+pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
+
+{
+    pcb* proceso_pcb = agregar_instrucciones_pcb(buffer) ;
+
+// Inicializar campos del pcb
+
+    proceso_pcb->estado_proceso = NUEVO ;
+    proceso_pcb->estimacion_rafaga = config_valores_kernel->estimacion_inicial;
+    proceso_pcb->rafaga_anterior = 0;
+    proceso_pcb->suspendido = 0 ;
+    proceso_pcb->tiempo_de_bloqueo = 0;
+
+    return proceso_pcb;
+}
 
 //VERSION CON SWITCH
 
@@ -253,8 +248,8 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 //..................................CONFIGURACIONES.......................................................................
 
 
-// void cargar_configuracion(void) 
-// {
+// void cargar_configuracion(void) {
+
 // 	t_config* config = config_create("/cfg/kernel.config"); //Leo el archivo de configuracion
 
 // 	if (config == NULL) {
@@ -271,14 +266,79 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 // 	config_valores.puerto_cpu_interrupt = config_get_int_value(config, "PUERTO_CPU_INTERRUPT");
 // 	config_valores.puerto_escucha = config_get_int_value(config, 	"PUERTO_ESCUCHA");
 // 	config_valores.estimacion_inicial = config_get_int_value(config, 	"GRADO_MULTIPROGRAMACION");
-//    config_valores.grado_multiprogramacion = config_get_int_value(config, 	"ESTIMACION_INICIAL");
-//    config_valores.tiempo_maximo_bloqueado = config_get_int_value(config, 	"TIEMPO_MAXIMO_BLOQUEADO");
+//  config_valores.grado_multiprogramacion = config_get_int_value(config, 	"ESTIMACION_INICIAL");
+//   config_valores.tiempo_maximo_bloqueado = config_get_int_value(config, 	"TIEMPO_MAXIMO_BLOQUEADO");
 
 //    config_valores.alfa = config_get_double_value(config, 	"ALFA");
-// 	//config_destroy(config);
+// 	  config_destroy(config);
+
+
+
+// }
+
+//..................................INICIALIZACIONES.......................................................................
+
+
+// LISTAS
+
+// void inicializar_listas(){
+
+// 	colaNew =lista_create();
+// 	colaReady = list_create();
+// 	colaExec = list_create();
+// 	colaBlocked = list_create();
+// 	colaExit = list_create();
 // }
 
 
+// SEMAFOROS
+
+// void inicializar_semaforos(){
+
+// 	pthread_mutex_init(&mutexBlockSuspended, NULL);
+// 	pthread_mutex_init(&mutexReadySuspended, NULL);
+// 	pthread_mutex_init(&mutexListaSemaforos, NULL);
+// 	pthread_mutex_init(&mutexNew, NULL);
+// 	pthread_mutex_init(&mutexReady, NULL);
+// 	pthread_mutex_init(&mutexBlocked, NULL);
+// 	pthread_mutex_init(&mutexExec, NULL);
+// 	pthread_mutex_init(&mutexExit, NULL);
+
+// 	sem_init(&analizarSuspension, 0, 0);
+// 	sem_init(&suspensionFinalizada, 0, 0);
+// 	sem_init(&contadorNew, 0, 0); // Estado New
+// 	sem_init(&contadorReady, 0, 0); // Estado Ready
+// 	sem_init(&contadorExec, 0, 0); // Estado Exec
+// 	sem_init(&contadorProcesosEnMemoria, 0, 0);	
+// 	sem_init(&multiprogramacion, 0, gradoMultiprogramacion); // Memoria
+// 	sem_init(&contadorBlock, 0, 0);
+// 	sem_init(&largoPlazo, 0, 1);
+// 	sem_init(&contadorReadySuspended, 0, 0);
+// 	sem_init(&medianoPlazo, 0, 1);
+// }
+
+
+
+// PLANIFICACION
+
+
+// void inicializar_planificacion(){
+
+
+
+// 	pthread_create(&hiloSuspendedAReady, NULL, (void*)hiloSuspensionAReady, NULL);
+// 	pthread_create(&hiloMedianoPlazo, NULL, (void*)hiloBlockASuspension, NULL);
+// 	pthread_detach(hiloQueDesuspende);
+// 	pthread_detach(hiloMedianoPlazo);
+
+
+// 	pthread_create(&hiloNewAReady, NULL, (void*)hiloNew_Ready, NULL);
+// 	pthread_create(&hiloReadyAExec, NULL, (void*)hiloReady_Exec, NULL);
+// 	pthread_detach(hiloNewReady);
+// 	pthread_detach(hiloReady_Exec);
+
+
+// }
 
 
 //.................................. CONEXIONES.............................................................................................
@@ -331,57 +391,8 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 
 // int main(void)
 // {
-// 	int conexion;
-// 	procesosReady =      list_create();
-// 	procesosNuevos=      list_create();
-// 	procesosExecute=     list_create();
-// 	procesosBlockIO=     list_create();
-// 	procesosBlock=       list_create();
-// 	procesosFinalizados= list_create();
-// 	puerto_inicial=5800;
 
 
-// 	cargar_configuracion();
-// 	sem_init(&planificacion,0,config_valores.multitarea);
-// 	sem_init(&operacionesprocesos,0,1);
-// 	sem_init(&planificacionPausada,0,0);
-// 	sem_init(&sincroProcesPlanif,0,0);
-// 	sem_init(&sincroProcesPlanif2,0,0);
-// 	sem_init(&sabotaje,0,1);
-// 	prog_andando= 1;
-// 	logger = iniciar_logger();
-
-// 	log_info(logger,"Soy un log");
-
-// 	log_info(logger,"lei la ip %s y el puerto %s",config_valores.ip_ram,config_valores.puerto_ram);
-
-// 	//crear conexion
-// 	//conexion= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
-// 	//enviar CLAVE al servidor
-// 	//enviar_mensaje("DISCORDIADOR" ,conexion);
-
-// 	//liberar_conexion(conexion);
-// 	int server_fd = iniciar_servidor(config_valores.ip_propia,config_valores.puerto_propio);
-// 	pthread_t manejo_recepcion;
-// 	pthread_create(&manejo_recepcion, NULL, (void*) manejar_clientes, (void*)server_fd);
-// 	pthread_detach(manejo_recepcion); //Va a estar corriendo siempre a la espera de una solicitud de apertura de socket
-// 	pthread_t manejo_consola;
-// 		pthread_create(&manejo_consola, NULL, (void*) manejarConsola, NULL);
-// 		pthread_detach(manejo_consola);
-
-// 	while (prog_andando)
-// 	{
-// 		sleep(1);
-// 		/*char* leido = readline(">");
-// 		if (string_equals_ignore_case(leido, "exit"))
-// 		{
-// 			free(leido);
-// 			break;
-// 		}
-// 		free(leido);*/
-// 	}
-
-// 	//finalizar_programa(conexion, logger);
 // }
 
 
@@ -425,4 +436,56 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 // 		pthread_detach(t);
 // 		//printf("Thread: %lu\n", t);
 // 	}
+// }
+
+
+
+
+//..................................... DESTRUCCIONES............................................................................ 
+
+
+
+// SEMAFOROS
+
+// void destruir_semaforos(){
+
+// 	pthread_mutex_destroy(&mutexListaSemaforos);
+// 	pthread_mutex_destroy(&mutexNew);
+// 	pthread_mutex_destroy(&mutexReady);
+// 	pthread_mutex_destroy(&mutexBlock);
+// 	pthread_mutex_destroy(&mutexExe);
+// 	pthread_mutex_destroy(&mutexExit);
+// 	pthread_mutex_destroy(&mutexBlockSuspended);
+// 	pthread_mutex_destroy(&mutexReadySuspended);
+
+// 	sem_destroy(&contadorNew);
+// 	sem_destroy(&contadorReady);
+// 	sem_destroy(&contadorExe);
+// 	sem_destroy(&multiprogramacion);
+// 	sem_destroy(&contadorBlock);
+// 	sem_destroy(&analizarSuspension);
+// 	sem_destroy(&suspensionFinalizada);
+// 	sem_destroy(&largoPlazo);
+// 	sem_destroy(&contadorReadySuspended);
+// 	sem_destroy(&medianoPlazo);
+
+// }
+
+
+// LISTAS
+
+// void destruir_listas(){
+
+// 	liberarListaDeSemaforos();
+// 	destruirColaYElementos(colaNew);
+// 	destruirListaYElementos(colaReady);
+// 	destruirListaYElementos(colaExec);
+// 	destruirListaYElementos(colaBlocked);
+// 	destruirListaYElementos(colaExit);
+	
+// }
+
+// void destruirListaYElementos(t_list* unaLista){
+//     list_clean_and_destroy_elements(unaLista, free);
+//     list_destroy(unaLista);
 // }

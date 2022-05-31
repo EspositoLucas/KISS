@@ -35,7 +35,6 @@ typedef enum{
 // sem_t contadorNew;
 // sem_t contadorReady;
 // sem_t contadorExe;
-// sem_t contadorProcesosEnMemoria;
 // sem_t multiprogramacion;
 // sem_t multiprocesamiento;
 // sem_t contadorBlock;
@@ -79,11 +78,10 @@ t_algoritmo_planificacion obtener_algoritmo();
 // LISTAS/COLAS
 
 //t_lista* colaNew;
-t_list* colaReady;
-t_list* listaExec;
-//t_list* listaBlocked;
-//t_list* listaExit;
-//t_list* listaBlockedSuspended;
-//t_lista* colaReadySuspended;
+// t_list* colaReady;
+// t_list* colaExec;
+//t_list* colaBlocked;
+//t_list* colaExit;
+
 
 #endif

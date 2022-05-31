@@ -71,7 +71,7 @@
 //    int tamanio_ready = list_size(procesosReady);
 // 	pthread_mutex_lock(&mutexReady);
 //    if(tamanio_ready < grado_multiprogramacion ) {
-//            proceso->suspendido = false;
+//            proceso->suspendido = 0;
 //            proceso->estado = "READY";
 //            list_add(procesosReady,  proceso);
 //            log_info(logger, "[READY] Entra el  proceso de ID: %d a la cola.",  proceso-> proceso_id);
@@ -149,43 +149,38 @@
 
 
 // void avisarAMemoriaInicializarEstructuras(pcb proceso){
-// 	//CREAR CONEXION
 //     int socket_cliente;
 //     socket_cliente= crear_conexion(config_valores->ip_ram,config_valores->puerto_ram);
 //     enviar_mensaje("Inicializar estructuras Memoria",socket_cliente);
 //     proceso->valor_tabla_paginas = recibir_paquete(socket_cliente)  ; // Ver como se recibe el paquete si el valor va a ser un int o una lista y en que posicion
 //	   proceso->valor_tabla_paginas = tabla_paginas(socket_cliente);
-//log_info(logger, "Obtuve el valor de la tabla de paginas ");
+//	   log_info(logger, "Obtuve el valor de la tabla de paginas ");
 
-//     // LIBERAR CONEXION
 //     liberar_conexion(socket_cliente);
 
-//  int tabla_paginas(int socket-cliente) {
+//     int tabla_paginas(int socket-cliente) {
 //     t_list valores = recibir_paquete(socket_cliente) ;
 //     return list_get(valores,0);
 
 // }
 
 // }
+
 // void avisarAMemoriaLiberarEstructuras(pcb proceso){
-// 	//CREAR CONEXION
 
 // 	int socket_cliente;
 // 	socket_cliente= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
 //     enviar_mensaje("Liberar estructuras Memoria",socket_cliente);
 
-// 	// LIBERAR CONEXION
 // 	liberar_conexion(socket_cliente);
 
 // }
 
 // void avisarAConsola(pcb proceso){
-// 	//CREAR CONEXION
 // 	int socket_cliente;
 // 	socket_cliente= crear_conexion(IP_KERNEL,PUERTO_KERNEL);
-//     enviar_mensaje("Proceso Finalizado",socket_cliente);
+//   enviar_mensaje("Proceso Finalizado",socket_cliente);
 
-// 	// LIBERAR CONEXION
 // 	liberar_conexion(socket_cliente);
 
 // }
@@ -196,34 +191,27 @@
 //................................. CORTO PLAZO.........................................................................................
 
 
-// void enviarPcbACpu(pcb pcb){
-// 	//CREAR CONEXION
+// ENVIO PCB A CPU
+
+// void enviarPcbACpu(pcb* pcb){
+
 // 		int socket_cliente;
 // 		socket_cliente= crear_conexion(config_valores.ip_cpu,config_valores.puerto_cpu_dispatch);
-// 	//CREAR PAQUETE
-// 		t_paquete* nuevoPaquete = crear_paquete();
-// 	//AGREGAR A PAQUETE
-// 		agregar_entero_a_paquete(nuevoPaquete, id);
-// 		agregar_a_paquete(nuevoPaquete,estado,(strlen(estado) + 1));
+//		t_buffer* buffer
+// 		t_paquete* paquete_pcb = crear_paquete();
 
-// 	//ENVIAR PAQUETE
+// buffer = serializar_pcb(pcb);
+
+// 		agregar_a_paquete(paquete_pcb,buffer,buffer->stream_size));
+
 
 // 		enviar_paquete(nuevoPaquete, socket_cliente);
 
-// 	// BORRAR PAQUETE
 // 	eliminar_paquete(nuevoPaquete);
 
-// 	int codCpu = recibir_operacion(socket_cliente);
-
-// 	if(codCpu == OK){
-// 		log_info(logger, "Recibi Pcb OK");
-// 	}
-
-// 	// LIBERAR CONEXION
 // 	liberar_conexion(socket_cliente);
 
 // }
-// //
 
 
 // Inicializar colas
@@ -234,7 +222,7 @@
 // }
 
 
-// Hilos
+// HILOS
 
 
 // void hiloReady_Exec(){
@@ -243,7 +231,7 @@
 
 // 		if (procesoAEjecutar != NULL){
 // 			list_add(listaExec,procesoAEjecutar);
-// 			//enviarPCBaCPU(procesoAEjecutar);
+// 			//enviarPcbACpu(procesoAEjecutar);
 // 		}
 // 	}
 // }
@@ -355,13 +343,13 @@
 // TRANSICIONES_ ESTADOS
 
 
-// void sacarDeBlocked(pcb* proceso){ 
+// void sacarDeBlockedASuspendedBlocked(pcb* proceso){   // Se saca un proceso de bloqueado a suspendido
 
 // 	sem_wait(&contadorBlock);
 
-// 	bool suspensionMayorAtiempoMaximo(void* elemento){
+// 	bool suspensionMayorAtiempoMaximo(void* elemento){ 
 
-// 		if(carpincho->carpinchoPID == ((pcb_carpincho *) elemento)->carpinchoPID)
+// 		if(proceso->tiempo_bloqueado > config_valores_kernel->tiempo_maximo_bloqueado)
 // 			return true;
 // 		else
 // 			return false;
@@ -375,20 +363,23 @@
 // 	pthread_mutex_unlock(&mutexBlock);
 // }
 
-// void agregarASuspendedBlock(pcb* proceso){ // Para que entre en supension
+// void agregarAEstadoSuspendedBlocked(pcb* proceso){ // Para que entre en supension pero sigue en la cola de bloqueado
 
-// 	pthread_mutex_lock(&mutexBlockedSuspended);
 
-// 	proceso->suspendido = true;
+// 	proceso->suspendido = 1;
 
-// 	list_add(listaBlockSuspended, carpincho);
+// proceso->estado = SUPENDIDO_BLOQUEADO ;
+
+// avisarAMemoriaProcesoSuspendido(pcb proceso);
+
+//}
+
 
 // void avisarAMemoriaProcesoSuspendido(pcb proceso){
 
 // 	int socket_cliente;
 // 	socket_cliente= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
-//     enviar_mensaje("Proceso paso a estado SUPENDE_BLOCKED",socket_cliente);
-
+//  enviar_mensaje("Proceso paso a estado SUPENDED_BLOCKED",socket_cliente);
 // 	liberar_conexion(socket_cliente);
 
 // }
@@ -411,3 +402,52 @@
 
 // }
 //}
+
+
+// HILOS PARA LA SUSPENSION DE PROCESOS
+
+
+
+// void hiloBlockedASuspension(){
+
+// 	while(true){
+
+// 		sem_wait(&analizarSuspension);
+
+// 		if(condiciones_de_suspension()){
+
+// 			sem_wait(&contadorProcesosEnMemoria);
+
+// 			pcb* pcb = list_get(listaBlocked, list_size(listaBlocked) - 1);
+// 			sacarDeBlock(pcb);
+
+// 			agregarAEstadoSuspendedBlocked(pcb);
+
+// 			sem_post(&multiprogramacion);
+// 		}
+
+// 		sem_post(&suspensionFinalizada);
+// 	}
+// }
+
+// void hiloSuspensionAReady(){
+
+// 	while(1){
+
+// 		sem_wait(&medianoPlazo);
+
+// 		if(list_size(colaBlocked) == 0){
+
+// 			sem_post(&largoPlazo);
+// 		}else{
+
+// 		pcb* proceso = sacarDeReadySuspended();
+
+// 		sem_wait(&multiprogramacion);
+
+// 		agregarAReady(proceso);
+
+// 		sem_post(&contadorProcesosEnMemoria);
+// 		}
+// 	}
+// }

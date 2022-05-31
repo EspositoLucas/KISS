@@ -34,11 +34,8 @@ int main(int argc, char **argv){
 
     enviar_mensaje(" : Envio a kernel la info del proceso", conexion_consola);
 
-    agregar_entero_a_paquete(paquete, tamanio_proceso);
 
-    enviar_paquete(paquete, conexion_consola);
-
-    paquete_proceso(conexion_consola);
+    paquete_proceso(conexion_consola,paquete,tamanio_proceso);
 
 
     terminar_programa(conexion_consola, logger, config);
@@ -46,14 +43,16 @@ int main(int argc, char **argv){
 
 
 
-// VERSION sin serializar en consola
+// VERSION SIN DESERIALIZAR EN CONSOLA
 
-void paquete_proceso(int conexion){
+void paquete_proceso(int conexion,t_paquete* paquete, int tamanio_proceso){
 
-   
-    t_paquete *paquete = crear_paquete();
     char* leido = leer_archivo("instrucciones.txt");
 
+
+// SE AGREGA EN UN SOLO PAQUETE PRIMERO EL TAMANIO DEL PROCESO Y DESPUES LAS INSTRUCCIONES
+
+    agregar_entero_a_paquete(paquete, tamanio_proceso);
     agregar_a_paquete(paquete, leido, strlen(leido)+1 );
 
     enviar_paquete(paquete, conexion);

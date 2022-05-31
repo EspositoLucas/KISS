@@ -64,14 +64,36 @@ void *recibir_stream(int *size, int socket_cliente)
     return stream;
 }
 
-void* recibir_buffer(int* size, int socket_cliente) {
-    void * buffer;
 
-    recv(socket_cliente, size, sizeof(int), MSG_WAITALL);
-    buffer = malloc(*size);
-    recv(socket_cliente, buffer, *size, MSG_WAITALL);
+// RECIBIR BUFFER COMUN SIN TAMANIO_PROCESO
 
-    return buffer;
+// void* recibir_buffer(int* size, int socket_cliente) {
+//     void * buffer;
+
+//     recv(socket_cliente, size, sizeof(int), MSG_WAITALL);
+//     buffer = malloc(*size);
+//     recv(socket_cliente, buffer, *size, MSG_WAITALL);
+
+//     return buffer;
+// }
+
+
+// RECIBIR BUFFER PARA PCB 
+
+t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete instrucciones y tamanio proceso
+{
+	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
+    int size;
+    void *stream ;
+
+    recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
+    recv(socket_cliente, &size, sizeof(int), MSG_WAITALL);
+    stream = malloc(size);
+    recv(socket_cliente, stream, size, MSG_WAITALL);
+
+    buffer->stream = stream ;
+
+    return buffer ;
 }
 
 // PAQUETE
@@ -142,7 +164,7 @@ t_list *recibir_paquete(int socket_cliente)
     t_list *valores = list_create();
     int tamanio;
 
-   stream = recibir_stream(&size, socket_cliente);
+    stream = recibir_stream(&size, socket_cliente);
 
     while (desplazamiento < size)
     {
@@ -166,7 +188,7 @@ void eliminar_paquete(t_paquete* paquete) {
 
 
 
-//----------------------------------SERIALIZACIONES---------------------------------------
+//----------------------------------SERIALIZAR_PCB---------------------------------------
 
 void *serializar_pcb(pcb* pcb)
 {
@@ -196,7 +218,8 @@ void *serializar_pcb(pcb* pcb)
     offset += sizeof(double);
     memcpy(stream + offset, &pcb->suspendido, sizeof(uint8_t));
     offset += sizeof(uint8_t);
-
+    memcpy(stream + offset, &pcb->rafaga_anterior, sizeof(uint8_t));
+    offset += sizeof(uint8_t);
     
     //Serializar los campos enum
 
@@ -227,7 +250,7 @@ void *serializar_pcb(pcb* pcb)
 
 }
 
-//----------------------------------DESERIALIZACIONES-----------------------------------------
+//----------------------------------DESERIALIZAR_PCB-----------------------------------------
 
 pcb* deserializar_pcb(t_buffer* buffer) {
     
@@ -251,7 +274,8 @@ pcb* deserializar_pcb(t_buffer* buffer) {
     stream += sizeof(double);
     memcpy(&(pcb->suspendido), stream, sizeof(uint8_t));
     stream += sizeof(uint8_t);
-
+    memcpy(&(pcb->rafaga_anterior), stream, sizeof(uint8_t));
+    stream += sizeof(uint8_t);
 
     //Deserializar los campos enum*
 

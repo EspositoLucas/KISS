@@ -19,9 +19,13 @@
 
 typedef enum
 {
-    MENSAJE,
     PAQUETE,
-	PCB
+    MENSAJE_CONSOLA,
+    // MENSAJE_KERNEL,    // lo dejo como base para que tom lo vea despues cuando memoria responda los mensajes genericamente
+    // MENSAJE_CPU,
+    // MENSAJE_MEMORIA
+    // PCB,
+    // TABLA_PAGINAS  
 } op_code;
 
 typedef enum
@@ -60,8 +64,9 @@ typedef struct {
     float estimacion_rafaga ;
     double tiempo_de_bloqueo; // tiempo de IO  para estar bloqueado
     uint8_t suspendido;
-    estado estado_proceso ;//Podria ser enum para no tener que pasar char*
-    instruccion* instrucciones ;
+    uint8_t rafaga_anterior;
+    estado estado_proceso ;
+    t_list* instrucciones ;
 }pcb;
 
 
