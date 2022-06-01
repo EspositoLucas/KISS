@@ -160,7 +160,7 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 // Inicializar campos del pcb
 
     proceso_pcb->estado_proceso = NUEVO ;
-    proceso_pcb->estimacion_rafaga = config_valores_kernel->estimacion_inicial;
+    proceso_pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
     proceso_pcb->rafaga_anterior = 0;
     proceso_pcb->suspendido = 0 ;
     proceso_pcb->tiempo_de_bloqueo = 0;

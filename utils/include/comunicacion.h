@@ -59,16 +59,16 @@ typedef struct {
 
 
 typedef struct {
-    uint32_t id_proceso ;
-    uint32_t tamanio_proceso ;
-    uint32_t valor_tabla_paginas ;
+    uint32_t id_proceso;
+    uint32_t tamanio_proceso;
+    uint32_t valor_tabla_paginas;
     uint32_t program_counter;
-    float estimacion_rafaga ;
+    float estimacion_rafaga;
     double tiempo_de_bloqueo; // tiempo de IO  para estar bloqueado
     uint8_t suspendido;
     uint8_t rafaga_anterior;
-    estado estado_proceso ;
-    t_list* instrucciones ;
+    estado estado_proceso;
+    t_list* instrucciones;
 }pcb;
 
 
@@ -109,5 +109,6 @@ void agregar_a_paquete(t_paquete*, void *, int );
 void agregar_entero_a_paquete(t_paquete*, int );
 void enviar_paquete(t_paquete*, int );
 void* recibir_buffer(int*, int );
+t_buffer *recibir_buffer_proceso(int);
 
 #endif

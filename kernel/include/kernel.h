@@ -25,9 +25,9 @@
     int puerto_cpu_interrupt;
     int puerto_escucha;
     char* algoritmo_planificacion;
-    float estimacion_inicial ;
+    float estimacion_inicial;
     float alfa;
-    int grado_multiprogramacion ;
+    int grado_multiprogramacion;
     int tiempo_maximo_bloqueado;
 
  } arch_config;
