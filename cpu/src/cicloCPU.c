@@ -1,5 +1,5 @@
 #include "cpu.h"
-
+/*
 void fetch(pcb* PCB){
 	while(1){
 		instruccion* instruccionProxima = malloc(sizeof(instruccion));
@@ -49,11 +49,11 @@ void ejecutarWRITE(dirLogica,valor){
 
 void ejecutarCOPY(dirLogicaDestino,dirLogicaOrigen){
 
-}*/
+}
 
 void ejecutarEXIT(pcb* PCB){
 	PCB->program_counter++;
 }
-
+*/
 
 

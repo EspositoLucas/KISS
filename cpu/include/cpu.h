@@ -30,7 +30,7 @@ typedef struct  // archivo de configuracion cpu
 arch_config config_valores_cpu ;
 
 void iterator(char *value);
-void fetch(pcb*);
+void* fetch(pcb*,int);
 void decode(instruccion*,pcb*);
 void ejecutarNO_OP();
 void ejecutarIO(int,pcb*);
@@ -38,5 +38,7 @@ void ejecutarIO(int,pcb*);
 //void ejecutarWRITE(dirLogica,valor);
 //void ejecutarCOPY(dirLogicaDestino,dirLogicaOrigen);
 void ejecutarEXIT(pcb*);
+int checkInterrupt();
+void enviarPcb(pcb*,int);
 
 #endif

@@ -185,6 +185,29 @@ void eliminar_paquete(t_paquete* paquete) {
     free(paquete);
 }
 
+//----------------------------------ENVIO RECIBO DE PCBS----------------------------------
+void enviarPcb(pcb* proceso,int socket_cliente){
+	op_code codigo=PCB;
+	t_buffer* buffer=serializar_pcb(proceso);
+	int bytes=sizeof(int)*2+buffer->stream_size;
+	void* a_enviar=malloc(bytes);
+	memcpy(a_enviar,&(codigo),sizeof(int));
+	memcpy(a_enviar+sizeof(int),buffer->stream_size,sizeof(int));
+	memcpy(a_enviar+sizeof(int)*2,buffer->stream,buffer->stream_size);
+	send(socket_cliente,a_enviar,bytes,0);
+	free(buffer);
+}
+
+pcb* recibir_pcb(int socket_cliente){
+	int size;
+	void *stream;
+	pcb* recibido=malloc(sizeof(pcb));
+	stream= recibir_stream(&size, socket_cliente);
+	deserializar_pcb(stream,recibido);
+	free(stream);
+	return recibido;
+}
+
 
 
 
@@ -324,6 +347,51 @@ pcb* deserializar_pcb(t_buffer* buffer) {
 
 }
 
+///----------------------------------DESERIALIZADOR DE PCBS POR MAXI----------------------------------
+/*void deserializar_pcb(void* stream,pcb* pcb) {
+    //Deserializar los campos int, double  y float
 
+    memcpy(&(pcb->id_proceso), stream, sizeof(uint32_t));
+    stream += sizeof(uint32_t);
+    memcpy(&(pcb->tamanio_proceso), stream ,sizeof(uint32_t));
+    stream += sizeof(uint32_t);
+    memcpy(&(pcb->valor_tabla_paginas), stream, sizeof(uint32_t));
+    stream += sizeof(uint32_t);
+    memcpy(&(pcb->program_counter), stream, sizeof(uint32_t));
+    stream += sizeof(uint32_t);
+    memcpy(&(pcb->estimacion_rafaga), stream, sizeof(float));
+    stream += sizeof(float);
+    memcpy(&(pcb->tiempo_de_bloqueo), stream, sizeof(double));
+    stream += sizeof(double);
+    memcpy(&(pcb->suspendido), stream, sizeof(uint8_t));
+    stream += sizeof(uint8_t);
+
+    //Deserializar los campos enum*
+
+    memcpy(&(pcb->estado_proceso), stream, sizeof(estado));
+    stream += sizeof(estado);
+
+    //Deserializar lista instrucciones
+
+    pcb->instrucciones = list_create();
+
+    int cant_instrucciones ;
+    memcpy(&(cant_instrucciones), stream, sizeof(1));  // primero se deserializa el tamanio de la lista para despues ir deserializando los otros campos de la lista
+    stream += sizeof(1);
+
+    for(int i = 0 ; i<cant_instrucciones; i++) {
+    	instruccion* instruccion_deserializar = malloc(sizeof(instruccion));
+        memcpy(&(instruccion_deserializar->codigo), stream, sizeof(codigo_instrucciones));
+        stream += sizeof(codigo_instrucciones);
+        memcpy(&(instruccion_deserializar->parametro1), stream, sizeof(1));
+        stream += sizeof(1);
+        memcpy(&(instruccion_deserializar->parametro2), stream, sizeof(1));
+        stream += sizeof(1);
+
+        list_add(pcb->instrucciones,instruccion_deserializar);
+        free(instruccion_deserializar);
+    }
+}
+*/
 
 
