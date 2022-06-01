@@ -24,7 +24,7 @@ arch_config config_valores_consola;
 
 // FUNCIONES
 
-char *leer_archivo();
-void paquete_proceso(int);
+char *leer_archivo(char*);
+void paquete_proceso(int, t_paquete*, int);
 
 #endif

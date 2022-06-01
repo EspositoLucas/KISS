@@ -1,5 +1,5 @@
-#include "cpu.h"
-/*
+/*#include "cpu.h"
+
 void fetch(pcb* PCB){
 	while(1){
 		instruccion* instruccionProxima = malloc(sizeof(instruccion));
@@ -39,7 +39,7 @@ void ejecutarIO(int tiempo,pcb* PCB){
 	//PCB cambia a estado bloqueado
 }
 
-/*void ejecutarREAD(dirLogica){
+void ejecutarREAD(dirLogica){
 
 }
 

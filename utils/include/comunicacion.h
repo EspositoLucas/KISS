@@ -23,11 +23,11 @@ typedef enum
 {
     PAQUETE,
     MENSAJE,
+	PCB
     // MENSAJE_KERNEL,    // lo dejo como base para que tom lo vea despues cuando memoria responda los mensajes genericamente
     // MENSAJE_CPU,
     // MENSAJE_MEMORIA
-     PCB,
-    // TABLA_PAGINAS  
+    // TABLA_PAGINAS
 } op_code;
 
 typedef enum
@@ -98,9 +98,11 @@ void enviar_mensaje(char *, int );
 void *serializar_paquete(t_paquete *, int );
 void eliminar_paquete(t_paquete *);
 pcb *recibir_paquete_instrucciones(int );
-pcb* deserializar_pcb(t_buffer*);
+//pcb* deserializar_pcb(t_buffer*);
+void deserializar_pcb(void* stream,pcb* pcb);
 void *serializar_pcb(pcb*);
 pcb *armar_pcb(t_buffer* buffer);
+pcb* recibir_pcb(int socket_cliente);
 void enviar_mensaje(char *mensaje, int socket_cliente);
 t_paquete *crear_paquete(void);
 void agregar_a_paquete(t_paquete*, void *, int );
