@@ -2,3 +2,42 @@
 [INFO] 12:04:12:218 Servidor Kernel/(6192:6192): Kernel listo para recibir al modulo cliente
 [INFO] 19:18:50:373 Servidor Kernel/(12403:12403): Kernel listo para recibir al modulo cliente
 [INFO] 19:24:53:548 Servidor Kernel/(12551:12551): Kernel listo para recibir al modulo cliente
+[INFO] 13:01:23:401 Servidor Kernel/(27690:27690): Kernel listo para recibir al modulo cliente
+[INFO] 15:17:19:316 Servidor Kernel/(29060:29060): Kernel listo para recibir al modulo cliente
+[INFO] 15:17:23:938 Servidor Kernel/(29060:29060): Se conecto un cliente a kernel/n
+[INFO] 15:17:23:942 Servidor Kernel/(29060:29060): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 15:17:23:955 Servidor Kernel/(29060:29060): Me llego el tamanio del proceso y las instrucciones:
+
+[ERROR] 15:17:23:971 Servidor Kernel/(29060:29060): Fallo la comunicacion. Abortando
+[INFO] 16:25:35:575 Servidor Kernel/(31185:31185): Kernel listo para recibir al modulo cliente
+[INFO] 16:25:44:529 Servidor Kernel/(31185:31185): Se conecto un cliente a kernel/n
+[INFO] 16:25:44:535 Servidor Kernel/(31185:31185): Me llego el mensaje &
+[ERROR] 16:25:44:535 Servidor Kernel/(31185:31185): Fallo la comunicacion. Abortando
+[INFO] 16:31:35:095 Servidor Kernel/(31312:31312): Kernel listo para recibir al modulo cliente
+[INFO] 16:31:54:696 Servidor Kernel/(31312:31312): Se conecto un cliente a kernel/n
+[INFO] 16:37:03:702 Servidor Kernel/(31312:31312): Me llego el mensaje &
+[ERROR] 16:37:03:702 Servidor Kernel/(31312:31312): Fallo la comunicacion. Abortando
+[INFO] 16:37:19:255 Servidor Kernel/(31458:31458): Kernel listo para recibir al modulo cliente
+[INFO] 16:37:41:943 Servidor Kernel/(31458:31458): Se conecto un cliente a kernel/n
+[INFO] 16:39:00:795 Servidor Kernel/(31458:31458): Me llego el mensaje &
+[ERROR] 16:39:00:796 Servidor Kernel/(31458:31458): Fallo la comunicacion. Abortando
+[INFO] 16:39:05:839 Servidor Kernel/(31577:31577): Kernel listo para recibir al modulo cliente
+[INFO] 16:39:13:409 Servidor Kernel/(31577:31577): Se conecto un cliente a kernel/n
+[INFO] 16:40:06:737 Servidor Kernel/(31577:31577): Me llego el mensaje &
+[ERROR] 16:40:06:738 Servidor Kernel/(31577:31577): Fallo la comunicacion. Abortando
+[INFO] 16:40:11:807 Servidor Kernel/(31662:31662): Kernel listo para recibir al modulo cliente
+[INFO] 16:40:28:607 Servidor Kernel/(31662:31662): Se conecto un cliente a kernel/n
+[INFO] 16:42:45:883 Servidor Kernel/(31662:31662): Me llego el mensaje &
+[ERROR] 16:42:45:884 Servidor Kernel/(31662:31662): Fallo la comunicacion. Abortando
+[INFO] 16:52:03:758 Servidor Kernel/(31950:31950): Kernel listo para recibir al modulo cliente
+[INFO] 16:52:23:139 Servidor Kernel/(31950:31950): Se conecto un cliente a kernel/n
+[INFO] 16:53:04:174 Servidor Kernel/(31950:31950): Me llego el mensaje &
+[ERROR] 16:53:04:174 Servidor Kernel/(31950:31950): Fallo la comunicacion. Abortando
+[INFO] 16:53:34:542 Servidor Kernel/(32039:32039): Kernel listo para recibir al modulo cliente
+[INFO] 16:54:06:434 Servidor Kernel/(32039:32039): Se conecto un cliente a kernel/n
+[INFO] 16:55:51:812 Servidor Kernel/(32039:32039): Me llego el mensaje &
+[ERROR] 16:55:51:812 Servidor Kernel/(32039:32039): Fallo la comunicacion. Abortando
+[INFO] 17:01:01:256 Servidor Kernel/(32280:32280): Kernel listo para recibir al modulo cliente
+[INFO] 17:01:11:545 Servidor Kernel/(32280:32280): Se conecto un cliente a kernel/n
+[INFO] 17:01:11:728 Servidor Kernel/(32280:32280): Me llego el mensaje &
+[ERROR] 17:01:11:730 Servidor Kernel/(32280:32280): Fallo la comunicacion. Abortando

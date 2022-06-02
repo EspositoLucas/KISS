@@ -84,7 +84,7 @@ t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete ins
 {
 	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
     int size;
-    void *stream ;
+    void*stream ;
 
     recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
     recv(socket_cliente, &size, sizeof(int), MSG_WAITALL);
@@ -92,6 +92,7 @@ t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete ins
     recv(socket_cliente, stream, size, MSG_WAITALL);
 
     buffer->stream = stream ;
+
 
     return buffer ;
 }
@@ -103,6 +104,8 @@ void* serializar_paquete(t_paquete* paquete, int bytes) {
     int desplazamiento = 0;
 
     memcpy(magic + desplazamiento, &(paquete->codigo_operacion), sizeof(int));
+    desplazamiento+= sizeof(int);
+    memcpy(magic + desplazamiento, &(paquete->buffer->tamanio_proceso), sizeof(int));
     desplazamiento+= sizeof(int);
     memcpy(magic + desplazamiento, &(paquete->buffer->stream_size), sizeof(int));
     desplazamiento+= sizeof(int);

@@ -24,9 +24,6 @@ typedef enum
     PAQUETE,
     MENSAJE,
 	PCB
-    // MENSAJE_KERNEL,    // lo dejo como base para que tom lo vea despues cuando memoria responda los mensajes genericamente
-    // MENSAJE_CPU,
-    // MENSAJE_MEMORIA
     // TABLA_PAGINAS
 } op_code;
 

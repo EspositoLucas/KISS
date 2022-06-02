@@ -27,20 +27,16 @@
 
 
 
-
-
 // MANEJO DE ESTADOS PROCESOS
-
-
 
 
 // void agregarANewProceso(pcb proceso) {
 
 // 	pthread_mutex_lock(&mutexNew);
 
-// list_add(procesosNew, proceso);
+// 	   list_add(procesosNew, proceso);
 //     proceso->estado = "NEW";
-// 	log_info(logger, "[NEW] Entra el proceso de ID: %d a la procesos.", proceso->id_proceso);
+// 	   log_info(logger, "[NEW] Entra el proceso de ID: %d a la procesos.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexNew);
 
@@ -66,7 +62,6 @@
 
 // void agregarAReady(pcb proceso){
 
-// 	t_algoritmo_planificacion algoritmo = obtener_algoritmo();
 //    int grado_multiprogramacion  = config_valores.grado_multiprogramacion ;
 //    int tamanio_ready = list_size(procesosReady);
 // 	pthread_mutex_lock(&mutexReady);
@@ -77,17 +72,12 @@
 //            log_info(logger, "[READY] Entra el  proceso de ID: %d a la cola.",  proceso-> proceso_id);
 
 //            pthread_mutex_unlock(&mutexReady);
+
 //            sem_post(&contadorReady);
+//		avisarAMemoriaInicializarEstructuras(pcb proceso);
+//
 
 //    }
-// 	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
-// 		switch(algoritmo){
-// 		case FIFO:
-// 			break;
-// 		case SRT:
-			// despertar hilo de ready a exec
-// 			break;
-// 		}
 
 // }
 // void finalizarProceso(pcb proceso){
@@ -114,7 +104,7 @@
 // }
 
 
-// // Hilo que maneja pasar los procesos de new a ready	-	CASO FIFO
+// // Hilo que maneja pasar los procesos de new a ready	
 
 // void hiloNew_Ready(){
 
@@ -122,7 +112,7 @@
 
 // 		sem_wait(&largoPlazo);
 
-// 		if(list_size(procesosReadySuspended) != 0){
+// 		if(list_size(listaBlocked) != 0){
 
 // 			sem_post(&medianoPlazo);
 // 		}else{
@@ -131,10 +121,8 @@
 
 // 			// proceso->rafagaAnterior = 0;
 // 			 proceso->estimacion_rafaga = estimacion_anterior;
-// 			//  proceso->estimacion_rafaga= estimacion_actual;	//"estimacio_inicial" va a ser una variable que vamos a obtener del cfg
+// 			//  proceso->estimacion_rafaga= estimacion_actual;	//"estimacion_inicial" va a ser una variable que vamos a obtener del cfg
 // 			 proceso->tiempoEspera = 0;
-
-// 			sem_wait(&multiprogramacion);
 // 			agregarAReady( proceso);
 // 			sem_post(&contadorProcesosEnMemoria);
 // 		}
@@ -357,10 +345,11 @@
 
 // 	pthread_mutex_lock(&mutexBlock);
 
-// 	list_remove_by_condition(listaBlock, suspensionMayorAtiempoMaximo);
-// 	log_info(logger, "[BLOCK] Sale el carpincho de PID: %d de la procesos.", carpincho->carpinchoPID);
+// 	list_remove_by_condition(colaBlocked, suspensionMayorAtiempoMaximo);
+// 	log_info(logger, "[BLOCK] Sale el proceso de PID: %d de la procesos.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexBlock);
+// agregarAEstadoSuspendedBlocked(pcb* proceso)
 // }
 
 // void agregarAEstadoSuspendedBlocked(pcb* proceso){ // Para que entre en supension pero sigue en la cola de bloqueado
@@ -441,7 +430,7 @@
 // 			sem_post(&largoPlazo);
 // 		}else{
 
-// 		pcb* proceso = sacarDeReadySuspended();
+// 		pcb* proceso = sacarDeBlocked();
 
 // 		sem_wait(&multiprogramacion);
 

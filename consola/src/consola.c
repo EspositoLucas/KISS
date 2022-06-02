@@ -14,6 +14,7 @@ int main(int argc, char **argv){
     t_config *config;
     t_paquete* paquete = crear_paquete() ;
 
+
     /* ---------------- LOGGING CONSOLA  ---------------- */
 
     logger = iniciar_logger("consola.log", "consola", 1, LOG_LEVEL_INFO);
@@ -27,9 +28,6 @@ int main(int argc, char **argv){
     config_valores_consola.ip_kernel = config_get_string_value(config, "IP_KERNEL");
     config_valores_consola.puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
-
-    log_info(logger, config_valores_consola.ip_kernel);
-    log_info(logger, config_valores_consola.puerto_kernel);
 
 
     // Conexión hacia el kernel
@@ -55,7 +53,6 @@ int main(int argc, char **argv){
 void paquete_proceso(int conexion,t_paquete* paquete, int tamanio_proceso){
 
     char* leido = leer_archivo("instrucciones.txt");
-
 
 // SE AGREGA EN UN SOLO PAQUETE PRIMERO EL TAMANIO DEL PROCESO Y DESPUES LAS INSTRUCCIONES
 
@@ -100,7 +97,6 @@ char *leer_archivo(char *unPath)
     }
 
     printf("%s", cadena);
-    free(cadena);
     fclose(archivo);
     printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
     return cadena;

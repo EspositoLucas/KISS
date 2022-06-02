@@ -73,7 +73,7 @@ int esperar_cliente(t_log* logger,const char* nombre, int socket_servidor)
     socklen_t tam_Direccion = sizeof(struct sockaddr_in);
 
     int socket_cliente = accept(socket_servidor, (void *)&direccion_Cliente, &tam_Direccion);
-    log_info(logger, "Se conecto un cliente a %s/n",nombre);
+    log_info(logger, "Se conecto un cliente a %s",nombre);
 
     return socket_cliente;
 }

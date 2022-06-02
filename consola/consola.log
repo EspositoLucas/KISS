@@ -370,3 +370,128 @@
 [INFO] 00:23:12:218 consola/(9796:9796): conexion kernel
 [INFO] 00:23:12:219 consola/(9796:9796): mensaje kernel
 [INFO] 00:23:12:219 consola/(9796:9796): paquete proceso
+[INFO] 12:43:44:888 consola/(27418:27418): INICIANDO CONSOLA
+[INFO] 12:43:44:893 consola/(27418:27418): 127.0.0.1
+[INFO] 12:43:44:894 consola/(27418:27418): 8000
+[INFO] 12:43:44:894 consola/(27418:27418): conexion kernel
+[INFO] 12:57:08:009 consola/(27564:27564): INICIANDO CONSOLA
+[INFO] 12:57:08:014 consola/(27564:27564): 127.0.0.1
+[INFO] 12:57:08:014 consola/(27564:27564): 8000
+[INFO] 12:57:08:014 consola/(27564:27564): conexion kernel
+[INFO] 12:57:08:014 consola/(27564:27564): mensaje kernel
+[INFO] 12:57:08:019 consola/(27564:27564): paquete proceso
+[INFO] 13:00:12:218 consola/(27647:27647): INICIANDO CONSOLA
+[INFO] 13:00:12:225 consola/(27647:27647): 127.0.0.1
+[INFO] 13:00:12:226 consola/(27647:27647): 8000
+[INFO] 13:00:12:226 consola/(27647:27647): conexion kernel
+[INFO] 13:00:12:227 consola/(27647:27647): mensaje kernel
+[INFO] 13:00:12:233 consola/(27647:27647): paquete proceso
+[INFO] 15:17:23:932 consola/(29066:29066): INICIANDO CONSOLA
+[INFO] 15:17:23:935 consola/(29066:29066): 127.0.0.1
+[INFO] 15:17:23:936 consola/(29066:29066): 8000
+[INFO] 15:17:23:938 consola/(29066:29066): conexion kernel
+[INFO] 15:17:23:939 consola/(29066:29066): mensaje kernel
+[INFO] 15:17:23:943 consola/(29066:29066): paquete proceso
+[INFO] 15:18:12:474 consola/(29116:29116): INICIANDO CONSOLA
+[INFO] 15:18:12:475 consola/(29116:29116): 127.0.0.1
+[INFO] 15:18:12:476 consola/(29116:29116): 8000
+[INFO] 15:18:12:477 consola/(29116:29116): conexion kernel
+[INFO] 15:18:12:478 consola/(29116:29116): mensaje kernel
+[INFO] 15:18:12:481 consola/(29116:29116): paquete proceso
+[INFO] 15:19:23:282 consola/(29181:29181): INICIANDO CONSOLA
+[INFO] 15:19:23:284 consola/(29181:29181): 127.0.0.1
+[INFO] 15:19:23:284 consola/(29181:29181): 8000
+[INFO] 15:19:23:284 consola/(29181:29181): conexion kernel
+[INFO] 15:19:23:284 consola/(29181:29181): mensaje kernel
+[INFO] 15:19:23:287 consola/(29181:29181): paquete proceso
+[INFO] 15:35:37:260 consola/(29520:29520): INICIANDO CONSOLA
+[INFO] 15:35:37:262 consola/(29520:29520): 127.0.0.1
+[INFO] 15:35:37:263 consola/(29520:29520): 8000
+[INFO] 15:35:37:263 consola/(29520:29520): conexion kernel
+[INFO] 15:35:37:263 consola/(29520:29520): mensaje kernel
+[INFO] 15:35:37:266 consola/(29520:29520): paquete proceso
+[INFO] 15:37:10:989 consola/(29662:29662): INICIANDO CONSOLA
+[INFO] 15:37:10:991 consola/(29662:29662): 127.0.0.1
+[INFO] 15:37:10:991 consola/(29662:29662): 8000
+[INFO] 15:37:10:991 consola/(29662:29662): conexion kernel
+[INFO] 15:37:10:991 consola/(29662:29662): mensaje kernel
+[INFO] 15:37:10:996 consola/(29662:29662): paquete proceso
+[INFO] 15:46:54:621 consola/(30029:30029): INICIANDO CONSOLA
+[INFO] 15:46:54:622 consola/(30029:30029): 127.0.0.1
+[INFO] 15:46:54:623 consola/(30029:30029): 8000
+[INFO] 15:46:54:623 consola/(30029:30029): conexion kernel
+[INFO] 15:46:54:623 consola/(30029:30029): mensaje kernel
+[INFO] 15:46:54:626 consola/(30029:30029): paquete proceso
+[INFO] 15:50:07:640 consola/(30118:30118): INICIANDO CONSOLA
+[INFO] 15:50:07:642 consola/(30118:30118): 127.0.0.1
+[INFO] 15:50:07:642 consola/(30118:30118): 8000
+[INFO] 15:50:07:643 consola/(30118:30118): conexion kernel
+[INFO] 15:50:07:643 consola/(30118:30118): mensaje kernel
+[INFO] 15:50:07:649 consola/(30118:30118): paquete proceso
+[INFO] 16:03:57:081 consola/(30361:30361): INICIANDO CONSOLA
+[INFO] 16:03:57:083 consola/(30361:30361): 127.0.0.1
+[INFO] 16:03:57:084 consola/(30361:30361): 8000
+[INFO] 16:03:57:084 consola/(30361:30361): conexion kernel
+[INFO] 16:03:57:085 consola/(30361:30361): mensaje kernel
+[INFO] 16:03:57:090 consola/(30361:30361): paquete proceso
+[INFO] 16:12:28:372 consola/(30717:30717): INICIANDO CONSOLA
+[INFO] 16:12:28:374 consola/(30717:30717): conexion kernel
+[INFO] 16:12:28:374 consola/(30717:30717): mensaje kernel
+[INFO] 16:16:22:675 consola/(30855:30855): INICIANDO CONSOLA
+[INFO] 16:16:22:677 consola/(30855:30855): conexion kernel
+[INFO] 16:16:22:677 consola/(30855:30855): mensaje kernel
+[INFO] 16:16:22:680 consola/(30855:30855): paquete proceso
+[INFO] 16:17:09:053 consola/(30917:30917): INICIANDO CONSOLA
+[INFO] 16:17:09:055 consola/(30917:30917): conexion kernel
+[INFO] 16:17:09:055 consola/(30917:30917): mensaje kernel
+[INFO] 16:17:09:061 consola/(30917:30917): paquete proceso
+[INFO] 16:18:01:618 consola/(30978:30978): INICIANDO CONSOLA
+[INFO] 16:18:01:620 consola/(30978:30978): conexion kernel
+[INFO] 16:18:01:620 consola/(30978:30978): mensaje kernel
+[INFO] 16:18:01:623 consola/(30978:30978): paquete proceso
+[INFO] 16:23:04:078 consola/(31161:31161): INICIANDO CONSOLA
+[INFO] 16:23:04:085 consola/(31161:31161): conexion kernel
+[INFO] 16:23:04:086 consola/(31161:31161): mensaje kernel
+[INFO] 16:23:04:089 consola/(31161:31161): paquete proceso
+[INFO] 16:25:44:523 consola/(31193:31193): INICIANDO CONSOLA
+[INFO] 16:25:44:530 consola/(31193:31193): conexion kernel
+[INFO] 16:25:44:530 consola/(31193:31193): mensaje kernel
+[INFO] 16:25:44:534 consola/(31193:31193): paquete proceso
+[INFO] 16:30:46:291 consola/(31257:31257): INICIANDO CONSOLA
+[INFO] 16:30:53:664 consola/(31257:31257): conexion kernel
+[INFO] 16:31:48:903 consola/(31334:31334): INICIANDO CONSOLA
+[INFO] 16:31:55:550 consola/(31334:31334): conexion kernel
+[INFO] 16:31:57:817 consola/(31334:31334): mensaje kernel
+[INFO] 16:37:37:091 consola/(31480:31480): INICIANDO CONSOLA
+[INFO] 16:37:42:717 consola/(31480:31480): conexion kernel
+[INFO] 16:37:44:621 consola/(31480:31480): mensaje kernel
+[INFO] 16:39:10:610 consola/(31571:31571): INICIANDO CONSOLA
+[INFO] 16:39:13:907 consola/(31571:31571): conexion kernel
+[INFO] 16:39:15:340 consola/(31571:31571): mensaje kernel
+[INFO] 16:40:24:595 consola/(31654:31654): INICIANDO CONSOLA
+[INFO] 16:40:29:274 consola/(31654:31654): conexion kernel
+[INFO] 16:40:30:545 consola/(31654:31654): mensaje kernel
+[INFO] 16:42:44:059 consola/(31654:31654): paquete proceso
+[INFO] 16:45:14:146 consola/(31827:31827): INICIANDO CONSOLA
+[INFO] 16:45:14:148 consola/(31827:31827): conexion kernel
+[INFO] 16:45:14:148 consola/(31827:31827): mensaje kernel
+[INFO] 16:45:14:151 consola/(31827:31827): paquete proceso
+[INFO] 16:52:16:707 consola/(31972:31972): INICIANDO CONSOLA
+[INFO] 16:52:24:526 consola/(31972:31972): conexion kernel
+[INFO] 16:52:25:752 consola/(31972:31972): mensaje kernel
+[INFO] 16:53:02:037 consola/(31972:31972): paquete proceso
+[INFO] 16:53:58:070 consola/(32060:32060): INICIANDO CONSOLA
+[INFO] 16:54:06:879 consola/(32060:32060): conexion kernel
+[INFO] 16:54:08:264 consola/(32060:32060): mensaje kernel
+[INFO] 16:57:00:462 consola/(32199:32199): INICIANDO CONSOLA
+[INFO] 16:57:00:464 consola/(32199:32199): conexion kernel
+[INFO] 16:57:00:464 consola/(32199:32199): mensaje kernel
+[INFO] 16:57:00:467 consola/(32199:32199): paquete proceso
+[INFO] 17:01:11:540 consola/(32298:32298): INICIANDO CONSOLA
+[INFO] 17:01:11:546 consola/(32298:32298): conexion kernel
+[INFO] 17:01:11:547 consola/(32298:32298): mensaje kernel
+[INFO] 17:01:11:550 consola/(32298:32298): paquete proceso
+[INFO] 17:10:03:558 consola/(32505:32505): INICIANDO CONSOLA
+[INFO] 17:10:03:560 consola/(32505:32505): conexion kernel
+[INFO] 17:10:03:560 consola/(32505:32505): mensaje kernel
+[INFO] 17:10:03:563 consola/(32505:32505): paquete proceso
