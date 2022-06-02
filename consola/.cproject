@@ -23,8 +23,8 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1974446800" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1720996161" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
 								<option id="gnu.c.compiler.option.include.paths.1524119973" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="/media/sf_Shared/tp-2022-1c-Ubunteam/consola/include"/>
-									<listOptionValue builtIn="false" value="/media/sf_Shared/tp-2022-1c-Ubunteam/utils/include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/utils/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/include}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.208371016" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -34,7 +34,7 @@
 									<listOptionValue builtIn="false" value="commons"/>
 								</option>
 								<option id="gnu.c.link.option.paths.2067297128" name="Library search path (-L)" superClass="gnu.c.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
-									<listOptionValue builtIn="false" value="/media/sf_Shared/tp-2022-1c-Ubunteam/utils/Debug"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/utils/Debug}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1402314100" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>

@@ -1,0 +1,19 @@
+[INFO] 15:32:31:694 Servidor Kernel/(4190:4190): Kernel listo para recibir al modulo cliente
+[INFO] 22:30:08:440 Servidor Kernel/(4875:4875): Kernel listo para recibir al modulo cliente
+[INFO] 22:41:21:344 Servidor Kernel/(5481:5481): Kernel listo para recibir al modulo cliente
+[INFO] 23:03:07:875 Servidor Kernel/(6337:6337): Kernel listo para recibir al modulo cliente
+[INFO] 23:22:33:505 Servidor Kernel/(7107:7107): Kernel listo para recibir al modulo cliente
+[INFO] 23:47:15:684 Servidor Kernel/(8194:8194): Kernel listo para recibir al modulo cliente
+[INFO] 23:59:46:915 Servidor Kernel/(8735:8735): Kernel listo para recibir al modulo cliente
+[INFO] 00:04:24:789 Servidor Kernel/(8735:8735): Se conecto un cliente a kernel/n
+[INFO] 00:04:24:792 Servidor Kernel/(8735:8735): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 00:04:24:792 Servidor Kernel/(8735:8735): Me llego el tamanio del proceso y las instrucciones:
+
+[INFO] 00:04:41:481 Servidor Kernel/(9037:9037): Kernel listo para recibir al modulo cliente
+[INFO] 00:10:40:657 Servidor Kernel/(9281:9281): Kernel listo para recibir al modulo cliente
+[INFO] 00:11:56:240 Servidor Kernel/(9406:9406): Kernel listo para recibir al modulo cliente
+[INFO] 00:12:48:032 Servidor Kernel/(9570:9570): Kernel listo para recibir al modulo cliente
+[INFO] 00:12:52:496 Servidor Kernel/(9570:9570): Se conecto un cliente a kernel/n
+[INFO] 00:12:52:496 Servidor Kernel/(9570:9570): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 00:12:52:496 Servidor Kernel/(9570:9570): Me llego el tamanio del proceso y las instrucciones:
+

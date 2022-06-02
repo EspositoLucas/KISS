@@ -161,7 +161,7 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 
     proceso_pcb->estado_proceso = NUEVO ;
     proceso_pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
-    proceso_pcb->rafaga_anterior = 0;
+    //proceso_pcb->rafaga_anterior = 0;
     proceso_pcb->suspendido = 0 ;
     proceso_pcb->tiempo_de_bloqueo = 0;
 
@@ -248,33 +248,32 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 //..................................CONFIGURACIONES.......................................................................
 
 
-// void cargar_configuracion(void) {
+ void cargar_configuracion(void) {
 
-// 	t_config* config = config_create("/cfg/kernel.config"); //Leo el archivo de configuracion
+ 	t_config* config = config_create("/cfg/kernel.config"); //Leo el archivo de configuracion
 
-// 	if (config == NULL) {
-// 		perror("Archivo de configuracion de kernel no encontrado");
-// 		return;
-// 	}
+ 	if (config == NULL) {
+ 		perror("Archivo de configuracion de kernel no encontrado");
+ 		return;
+ 	}
 
-// 	config_valores.ip_memoria = 			config_get_string_value(config, "IP_MEMORIA");
-// 	config_valores.ip_cpu = 		    config_get_string_value(config, "IP_CPU");
-// 	config_valores.algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
+ 	config_valores_kernel.ip_memoria = 			config_get_string_value(config, "IP_MEMORIA");
+ 	config_valores_kernel.ip_cpu = 		    config_get_string_value(config, "IP_CPU");
+ 	config_valores_kernel.algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
 
-// 	config_valores.puerto_memoria =	config_get_int_value(config, 	"PUERTO_MEMORIA");
-// 	config_valores.puerto_cpu_dispatch = config_get_int_value(config, 	"PUERTO_CPU_DISPATCH");
-// 	config_valores.puerto_cpu_interrupt = config_get_int_value(config, "PUERTO_CPU_INTERRUPT");
-// 	config_valores.puerto_escucha = config_get_int_value(config, 	"PUERTO_ESCUCHA");
-// 	config_valores.estimacion_inicial = config_get_int_value(config, 	"GRADO_MULTIPROGRAMACION");
-//  config_valores.grado_multiprogramacion = config_get_int_value(config, 	"ESTIMACION_INICIAL");
-//   config_valores.tiempo_maximo_bloqueado = config_get_int_value(config, 	"TIEMPO_MAXIMO_BLOQUEADO");
-
-//    config_valores.alfa = config_get_double_value(config, 	"ALFA");
-// 	  config_destroy(config);
-
+ 	config_valores_kernel.puerto_memoria =	config_get_int_value(config, 	"PUERTO_MEMORIA");
+ 	config_valores_kernel.puerto_cpu_dispatch = config_get_int_value(config, 	"PUERTO_CPU_DISPATCH");
+ 	config_valores_kernel.puerto_cpu_interrupt = config_get_int_value(config, "PUERTO_CPU_INTERRUPT");
+ 	config_valores_kernel.puerto_escucha = config_get_int_value(config, 	"PUERTO_ESCUCHA");
+ 	config_valores_kernel.estimacion_inicial = config_get_int_value(config, 	"GRADO_MULTIPROGRAMACION");
+ 	config_valores_kernel.grado_multiprogramacion = config_get_int_value(config, 	"ESTIMACION_INICIAL");
+ 	config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, 	"TIEMPO_MAXIMO_BLOQUEADO");
+    config_valores_kernel.alfa = config_get_double_value(config, 	"ALFA");
+ 	  config_destroy(config);
 
 
-// }
+
+ }
 
 //..................................INICIALIZACIONES.......................................................................
 

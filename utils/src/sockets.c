@@ -21,10 +21,11 @@ int crear_conexion(char *ip, char *puerto)
         printf("error");
     }
 
-    freeaddrinfo(server_info);
+    //freeaddrinfo(server_info);
 
     return socket_cliente;
 }
+
 
 void liberar_conexion(int socket_cliente) {
     close(socket_cliente);
@@ -69,7 +70,7 @@ int esperar_cliente(t_log* logger,const char* nombre, int socket_servidor)
 {
 
     struct sockaddr_in direccion_Cliente;
-    int tam_Direccion = sizeof(struct sockaddr_in);
+    socklen_t tam_Direccion = sizeof(struct sockaddr_in);
 
     int socket_cliente = accept(socket_servidor, (void *)&direccion_Cliente, &tam_Direccion);
     log_info(logger, "Se conecto un cliente a %s/n",nombre);

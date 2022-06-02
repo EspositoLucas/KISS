@@ -28,20 +28,27 @@ int main(int argc, char **argv){
     config_valores_consola.puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
 
+    log_info(logger, config_valores_consola.ip_kernel);
+    log_info(logger, config_valores_consola.puerto_kernel);
+
+
     // Conexión hacia el kernel
 
     conexion_consola = crear_conexion(config_valores_consola.ip_kernel, config_valores_consola.puerto_kernel);
 
+    log_info(logger, "conexion kernel");
+
     enviar_mensaje(" : Envio a kernel la info del proceso", conexion_consola);
 
+    log_info(logger, "mensaje kernel");
 
     paquete_proceso(conexion_consola,paquete,tamanio_proceso);
 
+    log_info(logger, "paquete proceso");
 
     terminar_programa(conexion_consola, logger, config);
+
 }
-
-
 
 // VERSION SIN DESERIALIZAR EN CONSOLA
 
