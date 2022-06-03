@@ -495,3 +495,9 @@
 [INFO] 17:10:03:560 consola/(32505:32505): conexion kernel
 [INFO] 17:10:03:560 consola/(32505:32505): mensaje kernel
 [INFO] 17:10:03:563 consola/(32505:32505): paquete proceso
+[INFO] 23:39:25:607 consola/(6628:6628): INICIANDO CONSOLA
+[INFO] 23:39:25:618 consola/(6628:6628): conexion kernel
+[INFO] 23:44:34:259 consola/(6870:6870): INICIANDO CONSOLA
+[INFO] 23:44:34:260 consola/(6870:6870): conexion kernel
+[INFO] 23:44:34:261 consola/(6870:6870): mensaje kernel
+[INFO] 23:44:34:264 consola/(6870:6870): paquete proceso

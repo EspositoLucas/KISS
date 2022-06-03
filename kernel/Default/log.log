@@ -41,3 +41,8 @@
 [INFO] 17:01:11:545 Servidor Kernel/(32280:32280): Se conecto un cliente a kernel/n
 [INFO] 17:01:11:728 Servidor Kernel/(32280:32280): Me llego el mensaje &
 [ERROR] 17:01:11:730 Servidor Kernel/(32280:32280): Fallo la comunicacion. Abortando
+[INFO] 23:44:22:818 Servidor Kernel/(6852:6852): Kernel listo para recibir al modulo cliente
+[INFO] 23:44:34:260 Servidor Kernel/(6852:6852): Se conecto un cliente a kernel/n
+[INFO] 23:44:34:261 Servidor Kernel/(6852:6852): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 23:44:34:264 Servidor Kernel/(6852:6852): Me llego el tamanio del proceso y las instrucciones:
+
