@@ -216,7 +216,7 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 
 // LISTAS
 
-// void inicializar_listas(){
+// void inicializar_listas(void){
 
 // 	colaNew =lista_create();
 // 	colaReady = list_create();
@@ -228,11 +228,10 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 
 // SEMAFOROS
 
-// void inicializar_semaforos(){
+// void inicializar_semaforos(void){
 
 // 	pthread_mutex_init(&mutexBlockSuspended, NULL);
 // 	pthread_mutex_init(&mutexReadySuspended, NULL);
-// 	pthread_mutex_init(&mutexListaSemaforos, NULL);
 // 	pthread_mutex_init(&mutexNew, NULL);
 // 	pthread_mutex_init(&mutexReady, NULL);
 // 	pthread_mutex_init(&mutexBlocked, NULL);
@@ -257,12 +256,12 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 //PLANIFICACION
 
 
-// void inicializar_planificacion(){
+// void inicializar_planificacion(void){
 
 
 
 // 	pthread_create(&hiloSuspendedAReady, NULL, (void*)hiloSuspensionAReady, NULL);
-// 	pthread_create(&hiloMedianoPlazo, NULL, (void*)hiloBlockASuspension, NULL);
+// 	pthread_create(&hiloMedianoPlazo, NULL, (void*)hiloBlockedASuspension, NULL);
 // 	pthread_detach(hiloQueDesuspende);
 // 	pthread_detach(hiloMedianoPlazo);
 
@@ -279,8 +278,8 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 //.................................. CONEXIONES.............................................................................................
 
 
-// // void manejar_conexion(t_buffer * buffer ,pcb* pcb)
-// // {
+//  void manejar_conexion(t_buffer * buffer ,pcb* pcb)
+//  {
 
 
 // //    t_list *lista;
@@ -343,11 +342,13 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 // {
 // 	while(1)
 // 	{
-// 		cliente_fd =  esperar_cliente(server_fd);
-// 		//hilos para recepcion / envio de info a clientes
-// 		pthread_t t;
-// 		pthread_create(&t, NULL, (void*) manejar_conexion, (void*) &conexiones);
-// 		pthread_detach(t);
+    	// t_conexiones conexiones;
+		// conexiones.socket =  esperar_cliente(server_fd);
+		// conexiones.socket_anterior = 0;
+		// //Threads para recepcion / envio de info a clientes
+		// pthread_t t;
+		// pthread_create(&t, NULL, (void*) manejar_conexion, (void*) &conexiones,);
+		// pthread_detach(t);
 // 	}
 // }
 
@@ -362,20 +363,19 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 
 // void destruir_semaforos(){
 
-// 	pthread_mutex_destroy(&mutexListaSemaforos);
 // 	pthread_mutex_destroy(&mutexNew);
 // 	pthread_mutex_destroy(&mutexReady);
-// 	pthread_mutex_destroy(&mutexBlock);
-// 	pthread_mutex_destroy(&mutexExe);
+// 	pthread_mutex_destroy(&mutexBlocked);
+// 	pthread_mutex_destroy(&mutexExec);
 // 	pthread_mutex_destroy(&mutexExit);
 // 	pthread_mutex_destroy(&mutexBlockSuspended);
 // 	pthread_mutex_destroy(&mutexReadySuspended);
 
 // 	sem_destroy(&contadorNew);
 // 	sem_destroy(&contadorReady);
-// 	sem_destroy(&contadorExe);
+// 	sem_destroy(&contadorExec);
 // 	sem_destroy(&multiprogramacion);
-// 	sem_destroy(&contadorBlock);
+// 	sem_destroy(&contadorBlocked);
 // 	sem_destroy(&analizarSuspension);
 // 	sem_destroy(&suspensionFinalizada);
 // 	sem_destroy(&largoPlazo);
@@ -389,7 +389,6 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 
 // void destruir_listas(){
 
-// 	liberarListaDeSemaforos();
 // 	destruirListaYElementos(colaNew);
 // 	destruirListaYElementos(colaReady);
 // 	destruirListaYElementos(colaExec);

@@ -34,14 +34,27 @@
 
 arch_config config_valores_kernel ;
 
+typedef struct
+{
+    int socket;
+    int socket_anterior; 
+} t_conexiones; // para el manejo de las conexiones entre los clientes que se vayan conectando y tener referencia el ultimo y proximo que se conecto
+
 // FUNCIONES
 
-// void cargar_configuracion();
-// pcb *recibir_paquete_instrucciones(int );
-// pcb *deserializar_paquete_instrucciones_consola(t_buffer* );
-// t_buffer *recibir_buffer_instrucciones(int );
+//void cargar_configuracion();
+//void manejar_conexion(t_buffer *  ,pcb* );
+//void manejo_recepcion(int );
+//void manejar_clientes(int ,int );
+//void destruir_semaforos(void);
+//void destruir_listas(void);
+//void inicializarListas(void);
+//void inicializarPlanificacion(void);
+//void inicializarSemaforos(void);
+
+
 pcb *armar_pcb(t_buffer* );
-t_buffer *recibir_buffer_instrucciones(int );
+pcb *agregar_instrucciones_pcb(t_buffer* );
 void iterator(char *value);
 
 #endif 

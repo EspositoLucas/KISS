@@ -35,8 +35,8 @@
 // 	pthread_mutex_lock(&mutexNew);
 
 // 	   list_add(procesosNew, proceso);
-//     proceso->estado = "NEW";
-// 	   log_info(logger, "[NEW] Entra el proceso de ID: %d a la procesos.", proceso->id_proceso);
+//     proceso->estado = NUEVO;
+// 	   log_info(logger, "[NEW] Entra el proceso de ID: %d a la cola.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexNew);
 
@@ -63,12 +63,12 @@
 // void agregarAReady(pcb proceso){
 
 //    int grado_multiprogramacion  = config_valores.grado_multiprogramacion ;
-//    int tamanio_ready = list_size(procesosReady);
+//    int tamanio_ready = list_size(colaReady);
 // 	pthread_mutex_lock(&mutexReady);
 //    if(tamanio_ready < grado_multiprogramacion ) {
 //            proceso->suspendido = 0;
-//            proceso->estado = "READY";
-//            list_add(procesosReady,  proceso);
+//            proceso->estado = LISTO;
+//            list_add(colaReady,  proceso);
 //            log_info(logger, "[READY] Entra el  proceso de ID: %d a la cola.",  proceso-> proceso_id);
 
 //            pthread_mutex_unlock(&mutexReady);
@@ -84,13 +84,13 @@
 
 // 	pthread_mutex_lock(&mutexExit);
 
-// 	list_add(listaExit, proceso);
+// 	list_add(colaExit, proceso);
 //     proceso.estado = "EXIT";
 // 	log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
 
 //     if(proceso->instrucciones[proceso->program_counter] == "EXIT") {
 //         pthread_mutex_lock(&mutexExit);
-// 	    list_add(listaExit, proceso);
+// 	    list_add(colaExit, proceso);
 //         proceso->estado = "EXIT";
 // 	    log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
 
@@ -112,7 +112,7 @@
 
 // 		sem_wait(&largoPlazo);
 
-// 		if(list_size(listaBlocked) != 0){
+// 		if(list_size(colaBlocked) != 0){
 
 // 			sem_post(&medianoPlazo);
 // 		}else{
@@ -140,7 +140,7 @@
 //     int socket_cliente;
 //     socket_cliente= crear_conexion(config_valores->ip_ram,config_valores->puerto_ram);
 //     enviar_mensaje("Inicializar estructuras Memoria",socket_cliente);
-//     proceso->valor_tabla_paginas = recibir_paquete(socket_cliente)  ; // Ver como se recibe el paquete si el valor va a ser un int o una lista y en que posicion
+//     proceso->valor_tabla_paginas = recibir_paquete(socket_cliente)  ; // Ver como se recibe el paquete si el valor va a ser un int o una cola y en que posicion
 //	   proceso->valor_tabla_paginas = tabla_paginas(socket_cliente);
 //	   log_info(logger, "Obtuve el valor de la tabla de paginas ");
 
@@ -206,7 +206,7 @@
 
 // void inicializarColas(){
 // 	colaReady = list_create();
-// 	listaExec= list_create();
+// 	colaExec= list_create();
 // }
 
 
@@ -218,7 +218,7 @@
 // 		pcb* procesoAEjecutar = obtenerSiguienteReady();
 
 // 		if (procesoAEjecutar != NULL){
-// 			list_add(listaExec,procesoAEjecutar);
+// 			list_add(colaExec,procesoAEjecutar);
 // 			//enviarPcbACpu(procesoAEjecutar);
 // 		}
 // 	}
@@ -238,7 +238,7 @@
 // 	tamanioReady = list_size(colaReady);
 // 	int gradoMultiprogramacion;
 // 	t_algoritmo_planificacion algoritmo = obtener_algoritmo();
-// 	int ejecutando = list_size(listaExec);
+// 	int ejecutando = list_size(colaExec);
 
 
 // 	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
@@ -346,7 +346,7 @@
 // 	pthread_mutex_lock(&mutexBlock);
 
 // 	list_remove_by_condition(colaBlocked, suspensionMayorAtiempoMaximo);
-// 	log_info(logger, "[BLOCK] Sale el proceso de PID: %d de la procesos.", proceso->id_proceso);
+// 	log_info(logger, "[BLOCKed] Sale el proceso de PID: %d de la procesos.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexBlock);
 // agregarAEstadoSuspendedBlocked(pcb* proceso)
@@ -407,8 +407,8 @@
 
 // 			sem_wait(&contadorProcesosEnMemoria);
 
-// 			pcb* pcb = list_get(listaBlocked, list_size(listaBlocked) - 1);
-// 			sacarDeBlock(pcb);
+// 			pcb* pcb = list_get(colaBlocked, list_size(colaBlocked) - 1);
+// 			sacarDeBlocked(pcb);
 
 // 			agregarAEstadoSuspendedBlocked(pcb);
 

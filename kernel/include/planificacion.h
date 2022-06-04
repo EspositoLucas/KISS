@@ -34,10 +34,9 @@ typedef enum{
 // sem_t sincroProcesPlanif2;
 // sem_t contadorNew;
 // sem_t contadorReady;
-// sem_t contadorExe;
+// sem_t contadorExec;
 // sem_t multiprogramacion;
-// sem_t multiprocesamiento;
-// sem_t contadorBlock;
+// sem_t contadorBlocked;
 // sem_t analizarSuspension;
 // sem_t suspensionFinalizada;
 // sem_t largoPlazo;
@@ -45,8 +44,8 @@ typedef enum{
 // sem_t medianoPlazo;
 // pthread_mutex_t mutexNew;
 // pthread_mutex_t mutexReady;
-// pthread_mutex_t mutexBlock;
-// pthread_mutex_t mutexExe;
+// pthread_mutex_t mutexBlocked;
+// pthread_mutex_t mutexExec;
 // pthread_mutex_t mutexExit;
 // pthread_mutex_t mutexBlockSuspended;
 // pthread_mutex_t mutexReadySuspended;
@@ -66,11 +65,11 @@ typedef enum{
 //void agregarANewProceso(pcb proceso);
 //void avisarAMemoria(pcb proceso)
 
-pcb* obtenerSiguienteFIFO();
-pcb* obtenerSiguienteSRT();
-pcb* elegirElDeMenorEstimacion();
-void asignarEstimacionesAProcesos();
-float calculoEstimacionProceso(float);
+// pcb* obtenerSiguienteFIFO();
+// pcb* obtenerSiguienteSRT();
+// pcb* elegirElDeMenorEstimacion();
+// void asignarEstimacionesAProcesos();
+// float calculoEstimacionProceso(float);
 t_algoritmo_planificacion obtener_algoritmo();
 
 
