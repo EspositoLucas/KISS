@@ -56,7 +56,8 @@ void paquete_proceso(int conexion,t_paquete* paquete, int tamanio_proceso){
 
 // SE AGREGA EN UN SOLO PAQUETE PRIMERO EL TAMANIO DEL PROCESO Y DESPUES LAS INSTRUCCIONES
 
-    agregar_entero_a_paquete(paquete, tamanio_proceso);
+    // agregar_entero_a_paquete(paquete, tamanio_proceso);  // tira error en la logica de la funcion
+    agregar_a_paquete(paquete, tamanio_proceso, sizeof(tamanio_proceso) );
     agregar_a_paquete(paquete, leido, strlen(leido)+1 );
 
     enviar_paquete(paquete, conexion);

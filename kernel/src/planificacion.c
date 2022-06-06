@@ -80,23 +80,22 @@
 //    }
 
 // }
-// void finalizarProceso(pcb proceso){
+//  void finalizarProceso(pcb proceso){
 
-// 	pthread_mutex_lock(&mutexExit);
+//  	pthread_mutex_lock(&mutexExit);
 
-// 	list_add(colaExit, proceso);
+//  	list_add(colaExit, proceso);
 //     proceso.estado = "EXIT";
 // 	log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
-
-//     if(proceso->instrucciones[proceso->program_counter] == "EXIT") {
-//         pthread_mutex_lock(&mutexExit);
+//      if(proceso->instrucciones[proceso->program_counter] == "EXIT") {
+//          pthread_mutex_lock(&mutexExit);
 // 	    list_add(colaExit, proceso);
 //         proceso->estado = "EXIT";
-// 	    log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
+//    log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
 
 // 	    pthread_mutex_unlock(&mutexExit);
-        // avisarAMemoriaLiberarEstructuras(proceso) ;
-        // avisarAConsola(proceso) ;
+//          avisarAMemoriaLiberarEstructuras(proceso) ;
+//          avisarAConsola(proceso) ;
 //     }
 
 
@@ -119,10 +118,10 @@
 
 // 			pcb proceso = sacarDeNew();
 
-// 			// proceso->rafagaAnterior = 0;
-// 			 proceso->estimacion_rafaga = estimacion_anterior;
-// 			//  proceso->estimacion_rafaga= estimacion_actual;	//"estimacion_inicial" va a ser una variable que vamos a obtener del cfg
+// 			proceso->rafagaAnterior = 0;
+// 			 proceso->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
 // 			 proceso->tiempoEspera = 0;
+//          sem_wait(&multiprogramacion);
 // 			agregarAReady( proceso);
 // 			sem_post(&contadorProcesosEnMemoria);
 // 		}
@@ -319,11 +318,21 @@
 // }
 
 
-// void agregarABlock(t_pcb proceso){		//ver semaforos
+// void agregarABlocked(pcb* proceso){		
 
-// 	sem_wait(&contadorExe);
+// 	sem_wait(&contadorExec);
 
+// 	pthread_mutex_lock(&mutexBlocked);
 
+// 	list_add(listaBlock, proceso);
+// 	log_info(logger, "[BLOCKED] Entra el procso de PID: %d a la cola.", proceso->id_proceso);
+
+// 	pthread_mutex_unlock(&mutexBlocked);
+// 	sem_post(&contadorBlock);
+
+// 	sem_post(&analizarSuspension);
+// 	sem_wait(&suspensionFinalizada);
+// }
 
 //................................. MEDIANO PLAZO.........................................................................................
 
@@ -346,18 +355,28 @@
 // 	pthread_mutex_lock(&mutexBlock);
 
 // 	list_remove_by_condition(colaBlocked, suspensionMayorAtiempoMaximo);
-// 	log_info(logger, "[BLOCKed] Sale el proceso de PID: %d de la procesos.", proceso->id_proceso);
+// 	log_info(logger, "[BLOCKED] Sale el proceso de PID: %d de la procesos.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexBlock);
 // agregarAEstadoSuspendedBlocked(pcb* proceso)
 // }
 
+
 // void agregarAEstadoSuspendedBlocked(pcb* proceso){ // Para que entre en supension pero sigue en la cola de bloqueado
 
 
-// 	proceso->suspendido = 1;
+	// pthread_mutex_lock(&mutexBlockSuspended);
 
-// proceso->estado = SUPENDIDO_BLOQUEADO ;
+	// proceso->suspendido = 1;
+	// list_add(colaSuspendedBlocked, proceso);
+
+	// proceso->estado = SUPENDIDO_BLOQUEADO ;
+
+	// log_info(logger, "[BLOCK-SUSPENDED] Ingresa el proceso de PID: %d a la cola.", proceso->proceso_id_proceso);
+
+	// pthread_mutex_unlock(&mutexSuspendedBlocked);
+
+
 
 // avisarAMemoriaProcesoSuspendido(pcb proceso);
 
@@ -374,7 +393,7 @@
 // }
 
 
-// SWITCH ENTRE ESTADOS
+// SWITCH ENTRE ESTADOS PARA CUANDO SE RECIBA PCB DE CPU
 
 // switch(estado) {
 // 	case : BLOCKED 
@@ -410,7 +429,7 @@
 // 			pcb* pcb = list_get(colaBlocked, list_size(colaBlocked) - 1);
 // 			sacarDeBlocked(pcb);
 
-// 			agregarAEstadoSuspendedBlocked(pcb);
+// 			agregarASuspendedBlocked(pcb);
 
 // 			sem_post(&multiprogramacion);
 // 		}
@@ -425,12 +444,12 @@
 
 // 		sem_wait(&medianoPlazo);
 
-// 		if(list_size(colaBlocked) == 0){
+// 		if(list_size(colaSuspendedReady) == 0){
 
 // 			sem_post(&largoPlazo);
 // 		}else{
 
-// 		pcb* proceso = sacarDeBlocked();
+// 		pcb* proceso = sacarDeSuspendedReady();
 
 // 		sem_wait(&multiprogramacion);
 
@@ -439,4 +458,12 @@
 // 		sem_post(&contadorProcesosEnMemoria);
 // 		}
 // 	}
+// }
+
+
+// void hilo_IO () {
+// 	sem_wait(&proceso_blocked) ;
+// 	usleep(proceso->tiempo_bloqueo);
+// 	sem_post(&proceso_termino_IO);
+
 // }

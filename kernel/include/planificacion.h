@@ -47,8 +47,8 @@ typedef enum{
 // pthread_mutex_t mutexBlocked;
 // pthread_mutex_t mutexExec;
 // pthread_mutex_t mutexExit;
-// pthread_mutex_t mutexBlockSuspended;
-// pthread_mutex_t mutexReadySuspended;
+// pthread_mutex_t mutexSuspendedBlocked;
+// pthread_mutex_t mutexSuspendedReady;
 
 
 
@@ -76,10 +76,12 @@ t_algoritmo_planificacion obtener_algoritmo();
 
 // LISTAS/COLAS
 
-//t_lista* colaNew;
+//t_list* colaNew;
 // t_list* colaReady;
 // t_list* colaExec;
 //t_list* colaBlocked;
+//t_list* colaSuspendedBlocked ;
+//t_list* colaReadySuspended;
 //t_list* colaExit;
 
 
