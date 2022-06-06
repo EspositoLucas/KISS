@@ -76,15 +76,16 @@ pcb *agregar_instrucciones_pcb(t_buffer* buffer) // Para deserializar las instru
 
 {
     pcb* proceso_pcb = malloc(sizeof(pcb)) ;
+    int offset = 0;
     int indice_split = 0 ;
-    char* mensaje_consola = malloc(buffer->stream_size) ; // leido de consola que se envia en el paquete
+    char* mensaje_consola = malloc(buffer->stream_size - sizeof(int)) ; // leido de consola que se envia en el paquete
 
     
      // Deserializar los campos del buffer
 
-
-    memcpy(mensaje_consola,buffer->stream ,buffer->stream_size);
-    memcpy(&(proceso_pcb->tamanio_proceso),&(buffer->tamanio_proceso) ,sizeof(int));
+    memcpy(&(proceso_pcb->tamanio_proceso),buffer->stream ,sizeof(int));
+    offset += sizeof(int);
+    memcpy(mensaje_consola,buffer->stream ,buffer->stream_size - sizeof(int));
     char** split_buffer = string_split(mensaje_consola, "\n");
     proceso_pcb->instrucciones = list_create(); // aca como seria ahora que instrucciones es un instruccion* y no una t_list?
     while (split_buffer[indice_split] != NULL) {
@@ -166,11 +167,12 @@ pcb *agregar_instrucciones_pcb(t_buffer* buffer) // Para deserializar las instru
 pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
 
 {
-    pcb* proceso_pcb = agregar_instrucciones_pcb(buffer) ;
+    //pcb* proceso_pcb = agregar_instrucciones_pcb(buffer) ;
+    pcb* proceso_pcb = agregar_instrucciones_pcb(buffer);
 
 // Inicializar campos del pcb
 
-    proceso_pcb->estado_proceso = NUEVO ;
+    proceso_pcb->estado_proceso= NUEVO ;
     proceso_pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
     proceso_pcb->rafaga_anterior = 0;
     proceso_pcb->suspendido = 0 ;
@@ -178,7 +180,6 @@ pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de conso
 
     return proceso_pcb;
 }
-
 
 
 //..................................CONFIGURACIONES.......................................................................

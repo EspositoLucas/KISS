@@ -46,3 +46,27 @@
 [INFO] 23:44:34:261 Servidor Kernel/(6852:6852): Me llego el mensaje  : Envio a kernel la info del proceso
 [INFO] 23:44:34:264 Servidor Kernel/(6852:6852): Me llego el tamanio del proceso y las instrucciones:
 
+[INFO] 14:52:13:567 Servidor Kernel/(9084:9084): Kernel listo para recibir al modulo cliente
+[INFO] 14:52:17:520 Servidor Kernel/(9084:9084): Se conecto un cliente a kernel
+[INFO] 14:52:17:697 Servidor Kernel/(9084:9084): Me llego el mensaje &
+[ERROR] 14:52:17:698 Servidor Kernel/(9084:9084): Fallo la comunicacion. Abortando
+[INFO] 16:25:56:541 Servidor Kernel/(11414:11414): Kernel listo para recibir al modulo cliente
+[INFO] 16:26:02:456 Servidor Kernel/(11414:11414): Se conecto un cliente a kernel
+[INFO] 16:26:02:458 Servidor Kernel/(11414:11414): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 16:26:02:460 Servidor Kernel/(11414:11414): Me llego el tamanio del proceso y las instrucciones:
+
+[INFO] 16:36:44:987 Servidor Kernel/(11753:11753): Kernel listo para recibir al modulo cliente
+[INFO] 16:37:02:210 Servidor Kernel/(11753:11753): Se conecto un cliente a kernel
+[INFO] 16:37:02:242 Servidor Kernel/(11753:11753): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 16:37:02:247 Servidor Kernel/(11753:11753): Me llego el tamanio del proceso y las instrucciones:
+
+[INFO] 17:15:42:011 Servidor Kernel/(12880:12880): Kernel listo para recibir al modulo cliente
+[INFO] 17:15:47:552 Servidor Kernel/(12880:12880): Se conecto un cliente a kernel
+[INFO] 17:15:47:568 Servidor Kernel/(12880:12880): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 17:15:47:578 Servidor Kernel/(12880:12880): Me llego el tamanio del proceso y las instrucciones:
+
+[INFO] 17:17:19:587 Servidor Kernel/(13266:13266): Kernel listo para recibir al modulo cliente
+[INFO] 17:17:24:100 Servidor Kernel/(13266:13266): Se conecto un cliente a kernel
+[INFO] 17:17:24:126 Servidor Kernel/(13266:13266): Me llego el mensaje  : Envio a kernel la info del proceso
+[INFO] 17:17:24:129 Servidor Kernel/(13266:13266): Me llego el tamanio del proceso y las instrucciones:
+

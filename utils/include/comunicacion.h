@@ -73,7 +73,7 @@ t_log *logger;
 
 typedef struct
 {
-	int tamanio_proceso;
+//	int tamanio_proceso;
     int stream_size;
     void *stream;
 } t_buffer;
@@ -104,8 +104,10 @@ void enviar_mensaje(char *mensaje, int socket_cliente);
 t_paquete *crear_paquete(void);
 void agregar_a_paquete(t_paquete*, void *, int );
 void agregar_entero_a_paquete(t_paquete*, int );
+void agregar_datos_consola(t_paquete*,void *, int ,int );
 void enviar_paquete(t_paquete*, int );
 void* recibir_buffer(int*, int );
 t_buffer *recibir_buffer_proceso(int);
+
 
 #endif

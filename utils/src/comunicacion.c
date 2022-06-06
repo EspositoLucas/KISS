@@ -86,7 +86,7 @@ t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete ins
     int size;
     void*stream ;
 
-    recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
+//    recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
     recv(socket_cliente, &size, sizeof(int), MSG_WAITALL);
     stream = malloc(size);
     recv(socket_cliente, stream, size, MSG_WAITALL);
@@ -105,8 +105,8 @@ void* serializar_paquete(t_paquete* paquete, int bytes) {
 
     memcpy(magic + desplazamiento, &(paquete->codigo_operacion), sizeof(int));
     desplazamiento+= sizeof(int);
-    memcpy(magic + desplazamiento, &(paquete->buffer->tamanio_proceso), sizeof(int));
-    desplazamiento+= sizeof(int);
+//    memcpy(magic + desplazamiento, &(paquete->buffer->tamanio_proceso), sizeof(int));
+//    desplazamiento+= sizeof(int);
     memcpy(magic + desplazamiento, &(paquete->buffer->stream_size), sizeof(int));
     desplazamiento+= sizeof(int);
     memcpy(magic + desplazamiento, paquete->buffer->stream, paquete->buffer->stream_size);
@@ -131,24 +131,36 @@ t_paquete *crear_paquete(void)
 // 	return paquete;
 // }
 
-void agregar_a_paquete(t_paquete *paquete, void *valor, int tamanio)
+void agregar_a_paquete(t_paquete *paquete, void *valor, int tamanio_valor)
 {
-    paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + tamanio + sizeof(int));
+    paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + tamanio_valor + sizeof(int));
+    memcpy(paquete->buffer->stream + paquete->buffer->stream_size, &tamanio_valor, sizeof(int));
+    memcpy(paquete->buffer->stream + paquete->buffer->stream_size + sizeof(int), valor, tamanio_valor);
 
-    memcpy(paquete->buffer->stream + paquete->buffer->stream_size, &tamanio, sizeof(int));
-    memcpy(paquete->buffer->stream + paquete->buffer->stream_size + sizeof(int), valor, tamanio);
+    paquete->buffer->stream_size += tamanio_valor + sizeof(int);
 
-    paquete->buffer->stream_size += tamanio + sizeof(int);
 }
-void agregar_entero_a_paquete(t_paquete *paquete, int x) // Agregar un entero a un paquete (ya creado)
+void agregar_entero_a_paquete(t_paquete *paquete, int tamanio_proceso) // Agregar un entero a un paquete (ya creado)
 {
-    paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + sizeof(int));
+	paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + sizeof(int));
+    memcpy(paquete->buffer->stream , &tamanio_proceso, sizeof(int));
 
-    memcpy(paquete->buffer->stream + paquete->buffer->stream_size, &x, sizeof(int));
-
-    paquete->buffer->stream_size += sizeof(int);
+    paquete->buffer->stream_size += tamanio_proceso + sizeof(int);
 }
 
+void agregar_datos_consola(t_paquete* paquete,void *valor, int tamanio_valor,int tamanio_proceso) {
+
+	paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + tamanio_valor + sizeof(int));
+
+	memcpy(paquete->buffer->stream , &tamanio_proceso, sizeof(int));
+    memcpy(paquete->buffer->stream + paquete->buffer->stream_size, &tamanio_valor, sizeof(int));
+    memcpy(paquete->buffer->stream + paquete->buffer->stream_size + sizeof(int), valor, tamanio_valor);
+
+    paquete->buffer->stream_size += tamanio_proceso + sizeof(int);
+    paquete->buffer->stream_size += tamanio_valor + sizeof(int);
+
+
+}
 void enviar_paquete(t_paquete *paquete, int socket_cliente)
 {
     int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
@@ -156,7 +168,6 @@ void enviar_paquete(t_paquete *paquete, int socket_cliente)
 
     send(socket_cliente, a_enviar, bytes, 0);
 
-    free(a_enviar);
 }
 
 t_list *recibir_paquete(int socket_cliente)

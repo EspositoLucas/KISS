@@ -13,6 +13,7 @@
 #include <commons/config.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <time.h>
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"

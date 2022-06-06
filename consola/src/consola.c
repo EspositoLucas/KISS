@@ -42,6 +42,7 @@ int main(int argc, char **argv){
 
     paquete_proceso(conexion_consola,paquete,tamanio_proceso);
 
+
     log_info(logger, "paquete proceso");
 
     terminar_programa(conexion_consola, logger, config);
@@ -56,13 +57,9 @@ void paquete_proceso(int conexion,t_paquete* paquete, int tamanio_proceso){
 
 // SE AGREGA EN UN SOLO PAQUETE PRIMERO EL TAMANIO DEL PROCESO Y DESPUES LAS INSTRUCCIONES
 
-    // agregar_entero_a_paquete(paquete, tamanio_proceso);  // tira error en la logica de la funcion
-    agregar_a_paquete(paquete, tamanio_proceso, sizeof(tamanio_proceso) );
-    agregar_a_paquete(paquete, leido, strlen(leido)+1 );
-
+    agregar_datos_consola(paquete,leido,strlen(leido)+1,tamanio_proceso);
     enviar_paquete(paquete, conexion);
     eliminar_paquete(paquete);
-
 }
 
 
