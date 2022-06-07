@@ -200,6 +200,7 @@ void eliminar_paquete(t_paquete* paquete) {
 }
 
 //----------------------------------ENVIO RECIBO DE PCBS----------------------------------
+
 void enviarPcb(pcb* proceso,int socket_cliente){
 	op_code codigo=PCB;
 	t_buffer* buffer=serializar_pcb(proceso);
@@ -287,7 +288,7 @@ void *serializar_pcb(pcb* pcb)
 
 }
 
-//----------------------------------DESERIALIZAR_PCB-----------------------------------------
+//----------------------------------DESERIALIZAR_PCB VERSION 1-----------------------------------------
 
 //pcb* deserializar_pcb(t_buffer* buffer) {
 //
@@ -299,7 +300,7 @@ void *serializar_pcb(pcb* pcb)
 //
 //    memcpy(&(pcb->id_proceso), stream, sizeof(uint32_t));
 //    stream += sizeof(uint32_t);
-//    memcpy(&(pcb->tamanio_proceso), &(buffer->tamanio_proceso) ,sizeof(uint32_t));
+//    memcpy(&(pcb->tamanio_proceso), stream ,sizeof(uint32_t));
 //    stream += sizeof(uint32_t);
 //    memcpy(&(pcb->valor_tabla_paginas), stream, sizeof(uint32_t));
 //    stream += sizeof(uint32_t);
@@ -346,7 +347,7 @@ void *serializar_pcb(pcb* pcb)
 //
 //}
 
-///----------------------------------DESERIALIZADOR DE PCBS POR MAXI----------------------------------
+///----------------------------------DESERIALIZAR PCB VERSION 2----------------------------------
 void deserializar_pcb(void* stream,pcb* pcb) {
     //Deserializar los campos int, double  y float
 

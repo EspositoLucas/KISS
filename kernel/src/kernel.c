@@ -37,6 +37,18 @@ int main(void)
             pcb* pcb = armar_pcb(buffer);
             // inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
             break;
+
+        // case PCB: // PARA CUANDO SE RECIBA PCB DE CPU O MEMORIA
+        // 	pcb* pcb_recibido = recibir_pcb(cliente_fd);
+        // 	log_info(logger,"Recibi PCB de Id: %d",pcb_recibido->id_proceso);
+        // 	if(pcb_recibido->estado == BLOQUEADO) {
+            //time_t tiempo_actual_bloqueo ;
+        //    agregarABlocked(pcb* proceso);
+        // time(tiempo_actual_bloqueo);
+        //   usleep(pcb_recibido->tiempo_bloqueado);
+        //      manejo_suspensiones(pcb_recibido) ;
+        //     }
+        //     break;
         
         // case TABLA_PAGINAS:   // PARA MEMORIA
         //     lista = recibir_paquete(cliente_fd);

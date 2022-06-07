@@ -358,7 +358,7 @@
 // 	log_info(logger, "[BLOCKED] Sale el proceso de PID: %d de la procesos.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexBlock);
-// agregarAEstadoSuspendedBlocked(pcb* proceso)
+// agregarAEstadoSuspendedBlocked(pcb* proceso);
 // }
 
 
@@ -406,10 +406,21 @@
 // if(sigue en en la cola de bloqueo){
 //         supender()
 // }
-// void suspender(){
+
+
+// void suspender( pcb* proceso){
+	//sacarDeBlockedASuspendedBlocked(pcb* proceso);
 
 // }
 //}
+
+// FUNCION PARA MANEJAR SUSPENSIONES CUANDO UN PCB ESTE BLOQUEADO
+
+// void manejo_suspensiones(pcb* proceso) {
+// 	if (pcb->tiempo_de_bloqueo > config_valores_kernel.tiempo_maximo_bloqueado) {
+// 		suspender(proceso);
+// 	}
+// }
 
 
 // HILOS PARA LA SUSPENSION DE PROCESOS
