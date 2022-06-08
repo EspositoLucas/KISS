@@ -28,5 +28,7 @@ t_list *parsear_instrucciones(char *);
 instruccion *armar_estructura_instruccion(codigo_instrucciones, uint32_t, uint32_t);
 char *leer_archivo(char*);
 void paquete_proceso(int, t_paquete*, int);
+void enviar_paquete_a_kernel(int, t_list *, uint32_t);
+t_paquete *serializar_consola(t_list *, uint32_t, op_code);
 
 #endif

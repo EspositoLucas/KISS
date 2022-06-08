@@ -14,7 +14,6 @@ int main(int argc, char **argv){
 
     t_log *logger;
     t_config *config;
-    t_paquete* paquete = crear_paquete() ;
 
 
     /* ---------------- LOGGING CONSOLA  ---------------- */
@@ -32,20 +31,21 @@ int main(int argc, char **argv){
 
     t_list *instrucciones = parsear_instrucciones(argv[2]);
 
+    log_info(logger, "Instrucciones parseadas correctamente\n");
+
     // Conexión hacia el kernel
 
     conexion_consola = crear_conexion(config_valores_consola.ip_kernel, config_valores_consola.puerto_kernel);
 
-    log_info(logger, "conexion kernel");
+    log_info(logger, "Me conecte al kernel\n");
 
     enviar_mensaje(" : Envio a kernel la info del proceso", conexion_consola);
 
-    log_info(logger, "mensaje kernel");
+    //paquete_proceso(conexion_consola,paquete,tamanio_proceso);
 
-    paquete_proceso(conexion_consola,paquete,tamanio_proceso);
+    enviar_paquete_a_kernel(conexion_consola, instrucciones, tamanio_proceso);
 
-
-    log_info(logger, "paquete proceso");
+    log_info(logger, "Envie el paquete y termine el programa\n");
 
     terminar_programa(conexion_consola, logger, config);
 
@@ -53,7 +53,6 @@ int main(int argc, char **argv){
 
 t_list *parsear_instrucciones(char *path) {
 	t_list *instrucciones = list_create();
-	codigo_instrucciones identificador;
 	uint32_t parametro1;
 	uint32_t parametro2;
 	char *pseudo_codigo_leido = leer_archivo(path);
@@ -102,6 +101,18 @@ instruccion *armar_estructura_instruccion(codigo_instrucciones id, uint32_t para
 	return estructura;
 }
 
+void enviar_paquete_a_kernel(int socket, t_list *instrucciones, uint32_t tamanio_proceso) {
+	t_paquete *paquete = serializar_consola(instrucciones, tamanio_proceso, PAQUETE_CONSOLA);
+	enviar_paquete(paquete, socket);
+	eliminar_paquete(paquete);
+}
+
+t_paquete *serializar_consola(t_list *instrucciones, uint32_t tamanio_consola, op_code codigo) {
+	t_paquete *paquete = serializar_instrucciones(instrucciones, codigo);
+	agregar_a_paquete(paquete, &tamanio_consola, sizeof(uint32_t));
+	return paquete;
+}
+
 // VERSION SIN DESERIALIZAR EN CONSOLA
 
 void paquete_proceso(int conexion,t_paquete* paquete, int tamanio_proceso){
@@ -147,9 +158,9 @@ char *leer_archivo(char *unPath)
         perror("Error leyendo el archivo") ;
     }
 
-    printf("%s", cadena);
+    printf("\n%s", cadena);
     fclose(archivo);
-    printf("\n Se ha leido el archivo de pseudocodigo correctamente ..");
+    printf("\nSe ha leido el archivo de pseudocodigo correctamente ..\n");
     return cadena;
 }
 

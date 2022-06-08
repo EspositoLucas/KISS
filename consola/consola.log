@@ -677,3 +677,66 @@
 [INFO] 15:45:27:658 consola/(7031:7031): conexion kernel
 [INFO] 15:45:29:277 consola/(7031:7031): mensaje kernel
 [INFO] 15:45:30:351 consola/(7031:7031): paquete proceso
+[INFO] 17:09:50:262 consola/(9354:9354): INICIANDO CONSOLA
+[INFO] 17:12:25:718 consola/(9428:9428): INICIANDO CONSOLA
+[INFO] 17:14:09:860 consola/(9481:9481): INICIANDO CONSOLA
+[INFO] 17:14:09:867 consola/(9481:9481): Instrucciones parseadas correctamente
+
+[INFO] 17:14:09:868 consola/(9481:9481): Me conecte al kernel
+
+[INFO] 17:14:09:870 consola/(9481:9481): Envie el paquete y termine el programa
+
+[INFO] 17:15:56:298 consola/(9544:9544): INICIANDO CONSOLA
+[INFO] 17:15:56:303 consola/(9544:9544): Instrucciones parseadas correctamente
+
+[INFO] 17:15:56:305 consola/(9544:9544): Me conecte al kernel
+
+[INFO] 17:15:56:308 consola/(9544:9544): Envie el paquete y termine el programa
+
+[INFO] 17:16:47:588 consola/(9584:9584): INICIANDO CONSOLA
+[INFO] 17:16:47:598 consola/(9584:9584): Instrucciones parseadas correctamente
+
+[INFO] 17:16:47:599 consola/(9584:9584): Me conecte al kernel
+
+[INFO] 17:16:47:599 consola/(9584:9584): Envie el paquete y termine el programa
+
+[INFO] 17:17:05:212 consola/(9624:9624): INICIANDO CONSOLA
+[INFO] 17:17:05:216 consola/(9624:9624): Instrucciones parseadas correctamente
+
+[INFO] 17:17:05:217 consola/(9624:9624): Me conecte al kernel
+
+[INFO] 17:17:05:217 consola/(9624:9624): Envie el paquete y termine el programa
+
+[INFO] 17:17:53:050 consola/(9654:9654): INICIANDO CONSOLA
+[INFO] 17:18:22:697 consola/(9654:9654): Instrucciones parseadas correctamente
+
+[INFO] 17:18:28:349 consola/(9654:9654): Me conecte al kernel
+
+[INFO] 17:18:38:520 consola/(9654:9654): Envie el paquete y termine el programa
+
+[INFO] 17:18:58:772 consola/(9764:9764): INICIANDO CONSOLA
+[INFO] 17:19:01:691 consola/(9764:9764): Instrucciones parseadas correctamente
+
+[INFO] 17:19:11:613 consola/(9764:9764): Me conecte al kernel
+
+[INFO] 17:20:12:808 consola/(9844:9844): INICIANDO CONSOLA
+[INFO] 17:20:12:822 consola/(9844:9844): Instrucciones parseadas correctamente
+
+[INFO] 17:20:12:822 consola/(9844:9844): Me conecte al kernel
+
+[INFO] 17:20:12:823 consola/(9844:9844): Envie el paquete y termine el programa
+
+[INFO] 17:20:30:472 consola/(9871:9871): INICIANDO CONSOLA
+[INFO] 17:20:39:929 consola/(9871:9871): Instrucciones parseadas correctamente
+
+[INFO] 17:20:40:278 consola/(9871:9871): Me conecte al kernel
+
+[INFO] 17:22:33:435 consola/(9871:9871): Envie el paquete y termine el programa
+
+[INFO] 17:23:06:902 consola/(10074:10074): INICIANDO CONSOLA
+[INFO] 17:23:09:303 consola/(10074:10074): Instrucciones parseadas correctamente
+
+[INFO] 17:23:11:651 consola/(10074:10074): Me conecte al kernel
+
+[INFO] 17:23:47:126 consola/(10074:10074): Envie el paquete y termine el programa
+

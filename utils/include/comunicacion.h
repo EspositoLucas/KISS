@@ -21,9 +21,10 @@
 
 typedef enum
 {
-    PAQUETE,
+	PAQUETE,
+    PAQUETE_CONSOLA,
     MENSAJE,
-	PCB
+	PCB,
     // TABLA_PAGINAS
 } op_code;
 
@@ -52,7 +53,7 @@ typedef struct {
     codigo_instrucciones codigo ;
     uint32_t parametro1;
     uint32_t parametro2;
-}instruccion ;
+}instruccion;
 
 
 typedef struct {
@@ -92,7 +93,7 @@ t_config* leer_config(void);
 void recibir_mensaje(int,t_log*);
 int recibir_operacion(int);
 void enviar_mensaje(char *, int );
-void *serializar_paquete(t_paquete *, int );
+t_buffer *serializar_paquete(t_paquete *);
 void eliminar_paquete(t_paquete *);
 pcb *recibir_paquete_instrucciones(int );
 //pcb* deserializar_pcb(t_buffer*);
@@ -101,13 +102,17 @@ void *serializar_pcb(pcb*);
 pcb *armar_pcb(t_buffer* buffer);
 pcb* recibir_pcb(int socket_cliente);
 void enviar_mensaje(char *mensaje, int socket_cliente);
-t_paquete *crear_paquete(void);
-void agregar_a_paquete(t_paquete*, void *, int );
+t_paquete *crear_paquete(t_buffer *, uint8_t);
 void agregar_entero_a_paquete(t_paquete*, int );
 void agregar_datos_consola(t_paquete*,void *, int ,int );
-void enviar_paquete(t_paquete*, int );
+void enviar_paquete(t_paquete*, int);
 void* recibir_buffer(int*, int );
 t_buffer *recibir_buffer_proceso(int);
 
+t_buffer *inicializar_buffer(uint32_t, void *);
+void agregar_a_paquete(t_paquete *, void *, uint32_t);
+void agregar_a_buffer(t_buffer *, void *, uint32_t);
+t_paquete *serializar_instrucciones(t_list *, op_code);
+t_buffer *buffer_vacio(void);
 
 #endif

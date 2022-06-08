@@ -25,18 +25,20 @@ int main(void)
 
     while (1)
     {
-        int cod_op = recibir_operacion(cliente_fd);
-        switch (cod_op)
-        {
-        case MENSAJE:
-            recibir_mensaje(cliente_fd,logger);
-            break;
-        case PAQUETE:
-            log_info(logger, "Me llego el tamanio del proceso y las instrucciones:\n");
-            buffer = recibir_buffer_proceso(cliente_fd);
-            pcb* pcb = armar_pcb(buffer);
+    	int cod_op = recibir_operacion(cliente_fd);
+    	switch (cod_op) {
+    	case MENSAJE:
+    		recibir_mensaje(cliente_fd,logger);
+    		break;
+    	case PAQUETE_CONSOLA:
+    		log_info(logger, "Me llegaron el tamanio y las instrucciones\n");
+    		break;
+    	case PAQUETE:
+    		log_info(logger, "Me llego el tamanio del proceso y las instrucciones:\n");
+    		buffer = recibir_buffer_proceso(cliente_fd);
+    		pcb* pcb = armar_pcb(buffer);
             // inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
-            break;
+    		break;
 
         // case PCB: // PARA CUANDO SE RECIBA PCB DE CPU O MEMORIA
         // 	pcb* pcb_recibido = recibir_pcb(cliente_fd);
