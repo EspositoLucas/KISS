@@ -50,8 +50,8 @@ typedef enum{
 
 typedef struct {
     codigo_instrucciones codigo ;
-    int parametro1;
-    int parametro2;
+    uint32_t parametro1;
+    uint32_t parametro2;
 }instruccion ;
 
 

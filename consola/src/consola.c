@@ -3,9 +3,11 @@
 
 int main(int argc, char **argv){
 
-	if(argc < 3) {
+	if(argc < 2) {
 		return EXIT_FAILURE;
     }
+
+	printf("%s\n", argv[2]);
 
 	int tamanio_proceso = atoi(argv[1]) ;
 	int conexion_consola;
@@ -28,7 +30,7 @@ int main(int argc, char **argv){
     config_valores_consola.ip_kernel = config_get_string_value(config, "IP_KERNEL");
     config_valores_consola.puerto_kernel = config_get_string_value(config, "PUERTO_KERNEL");
 
-
+    t_list *instrucciones = parsear_instrucciones(argv[2]);
 
     // Conexión hacia el kernel
 
@@ -47,6 +49,57 @@ int main(int argc, char **argv){
 
     terminar_programa(conexion_consola, logger, config);
 
+}
+
+t_list *parsear_instrucciones(char *path) {
+	t_list *instrucciones = list_create();
+	codigo_instrucciones identificador;
+	uint32_t parametro1;
+	uint32_t parametro2;
+	char *pseudo_codigo_leido = leer_archivo(path);
+	char **split_instrucciones = string_split(pseudo_codigo_leido, "\n");
+	int indice_split = 0;
+	while(split_instrucciones[indice_split] != NULL) {
+		char **palabras = string_split(split_instrucciones[indice_split], " ");
+		if(string_equals_ignore_case(palabras[0], "NO_OP")){
+			parametro1 = atoi(palabras[1]);
+			for(int i=0; i<parametro1; i++){
+				list_add(instrucciones, armar_estructura_instruccion(NO_OP, 0, 0));
+			}
+		}
+		else if(string_equals_ignore_case(palabras[0], "I/O")){
+			parametro1 = atoi(palabras[1]);
+			list_add(instrucciones, armar_estructura_instruccion(IO, parametro1, 0));
+		}
+		else if(string_equals_ignore_case(palabras[0], "READ")){
+			parametro1 = atoi(palabras[1]);
+			list_add(instrucciones, armar_estructura_instruccion(READ, parametro1, 0));
+		}
+		else if(string_equals_ignore_case(palabras[0], "WRITE")){
+			parametro1 = atoi(palabras[1]);
+			parametro2 = atoi(palabras[2]);
+			list_add(instrucciones, armar_estructura_instruccion(WRITE, parametro1, parametro2));
+		}
+		else if(string_equals_ignore_case(palabras[0], "COPY")){
+			parametro1 = atoi(palabras[1]);
+			parametro2 = atoi(palabras[2]);
+			list_add(instrucciones, armar_estructura_instruccion(COPY, parametro1, parametro2));
+		}
+		else if(string_equals_ignore_case(palabras[0], "EXIT")){
+			list_add(instrucciones, armar_estructura_instruccion(EXIT, 0, 0));
+		}
+		indice_split++;
+		free(palabras);
+	}
+	return instrucciones;
+}
+
+instruccion *armar_estructura_instruccion(codigo_instrucciones id, uint32_t parametro1, uint32_t parametro2) {
+	instruccion *estructura = malloc(sizeof(instruccion));
+	estructura->codigo = id;
+	estructura->parametro1 = parametro1;
+	estructura->parametro2 = parametro2;
+	return estructura;
 }
 
 // VERSION SIN DESERIALIZAR EN CONSOLA

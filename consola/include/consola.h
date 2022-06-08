@@ -24,6 +24,8 @@ arch_config config_valores_consola;
 
 // FUNCIONES
 
+t_list *parsear_instrucciones(char *);
+instruccion *armar_estructura_instruccion(codigo_instrucciones, uint32_t, uint32_t);
 char *leer_archivo(char*);
 void paquete_proceso(int, t_paquete*, int);
 

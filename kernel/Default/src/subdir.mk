@@ -20,7 +20,7 @@ C_DEPS += \
 src/%.o: ../src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C Compiler'
-	gcc -I"/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/include" -I"/home/utnso/shared/TP/tp-2022-1c-Ubunteam/utils/include" -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	gcc -I"/media/sf_Shared/tp-2022-1c-Ubunteam/kernel/include" -I"/media/sf_Shared/tp-2022-1c-Ubunteam/utils/include" -O2 -g -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
