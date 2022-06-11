@@ -25,6 +25,23 @@
 
 //................................. LARGO PLAZO.........................................................................................
 
+// CREAR PCB
+
+pcb *crear_estructura_pcb(t_consola *consola) {
+	pcb *pcb = malloc(sizeof(pcb));
+
+	pthread_mutex_lock(&mutex_generador_id);
+	pcb->id_proceso = generador_de_id;
+	generador_de_id++;
+	pthread_mutex_unlock(&mutex_generador_id);
+	pcb->tamanio_proceso =consola->tamanio_proceso;
+	pcb->instrucciones = list_duplicate(consola->instrucciones);
+	pcb->program_counter = 0;
+	pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
+	pcb->tiempo_de_bloqueo = 0;
+
+	return pcb;
+}
 
 
 // MANEJO DE ESTADOS PROCESOS

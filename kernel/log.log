@@ -371,3 +371,105 @@
 [INFO] 17:14:38:436 Servidor Kernel/(12815:12815): Me llego el mensaje  : Envio a kernel la info del proceso
 [INFO] 17:14:40:695 Servidor Kernel/(12815:12815): Me llego el tamanio del proceso y las instrucciones:
 
+[INFO] 16:48:23:129 Servidor Kernel/(18903:18903): Kernel listo para recibir al modulo cliente
+[INFO] 16:49:09:253 Servidor Kernel/(18970:18970): Kernel listo para recibir al modulo cliente
+[INFO] 16:49:23:183 Servidor Kernel/(18970:18970): Se conecto un cliente a kernel
+[WARNING] 16:49:34:804 Servidor Kernel/(18970:18970): Operacion desconocida
+[WARNING] 16:49:40:103 Servidor Kernel/(18970:18970): Operacion desconocida
+[INFO] 16:49:48:480 Servidor Kernel/(18970:18970): Me llego el tamanio del proceso y las instrucciones:
+
+[WARNING] 16:49:51:279 Servidor Kernel/(18970:18970): Operacion desconocida
+[INFO] 16:49:55:815 Servidor Kernel/(18970:18970): Me llegaron el tamanio y las instrucciones
+
+[INFO] 16:52:37:393 Servidor Kernel/(19090:19090): Kernel listo para recibir al modulo cliente
+[INFO] 16:52:44:929 Servidor Kernel/(19090:19090): Se conecto un cliente a kernel
+[WARNING] 16:53:01:326 Servidor Kernel/(19090:19090): Operacion desconocida
+[WARNING] 16:53:06:144 Servidor Kernel/(19090:19090): Operacion desconocida
+[INFO] 16:53:10:291 Servidor Kernel/(19090:19090): Me llego el tamanio del proceso y las instrucciones:
+
+[WARNING] 16:53:27:802 Servidor Kernel/(19090:19090): Operacion desconocida
+[INFO] 16:53:32:498 Servidor Kernel/(19090:19090): Me llegaron el tamanio y las instrucciones
+
+[INFO] 16:55:59:753 Servidor Kernel/(19196:19196): Kernel listo para recibir al modulo cliente
+[INFO] 16:56:39:437 Servidor Kernel/(19196:19196): Se conecto un cliente a kernel
+[WARNING] 16:56:55:264 Servidor Kernel/(19196:19196): Operacion desconocida
+[WARNING] 16:57:01:390 Servidor Kernel/(19196:19196): Operacion desconocida
+[INFO] 16:57:07:099 Servidor Kernel/(19196:19196): Me llego el tamanio del proceso y las instrucciones:
+
+[WARNING] 16:57:17:425 Servidor Kernel/(19196:19196): Operacion desconocida
+[INFO] 16:57:25:676 Servidor Kernel/(19196:19196): Me llegaron el tamanio y las instrucciones
+
+[INFO] 17:32:23:280 Servidor Kernel/(19585:19585): Kernel listo para recibir al modulo cliente
+[INFO] 17:32:30:513 Servidor Kernel/(19585:19585): Se conecto un cliente a kernel
+[WARNING] 17:32:34:716 Servidor Kernel/(19585:19585): Operacion desconocida
+[WARNING] 17:32:37:427 Servidor Kernel/(19585:19585): Operacion desconocida
+[INFO] 17:32:44:902 Servidor Kernel/(19585:19585): Me llego el paquete:
+
+[WARNING] 17:33:03:590 Servidor Kernel/(19585:19585): Operacion desconocida
+[INFO] 17:33:29:785 Servidor Kernel/(19658:19658): Kernel listo para recibir al modulo cliente
+[INFO] 17:33:36:148 Servidor Kernel/(19658:19658): Se conecto un cliente a kernel
+[INFO] 17:37:23:095 Servidor Kernel/(19831:19831): Kernel listo para recibir al modulo cliente
+[INFO] 17:37:28:235 Servidor Kernel/(19831:19831): Se conecto un cliente a kernel
+[WARNING] 17:37:32:870 Servidor Kernel/(19831:19831): Operacion desconocida
+[WARNING] 17:37:37:232 Servidor Kernel/(19831:19831): Operacion desconocida
+[INFO] 17:37:39:336 Servidor Kernel/(19831:19831): Me llego el paquete:
+
+[WARNING] 17:37:41:690 Servidor Kernel/(19831:19831): Operacion desconocida
+[INFO] 17:37:51:206 Servidor Kernel/(19831:19831): Me llego el tamanio y las instrucciones
+
+[INFO] 12:01:20:616 Servidor Kernel/(23410:23410): Kernel listo para recibir al modulo cliente
+[INFO] 12:01:32:990 Servidor Kernel/(23410:23410): Se conecto un cliente a kernel
+[WARNING] 12:01:44:046 Servidor Kernel/(23410:23410): Operacion desconocida
+[WARNING] 12:01:55:561 Servidor Kernel/(23410:23410): Operacion desconocida
+[INFO] 12:01:58:379 Servidor Kernel/(23410:23410): Me llego el paquete:
+
+[WARNING] 12:02:00:648 Servidor Kernel/(23410:23410): Operacion desconocida
+[INFO] 12:02:17:469 Servidor Kernel/(23410:23410): Me llego el tamanio y las instrucciones
+
+[INFO] 12:08:38:397 Servidor Kernel/(23613:23613): Kernel listo para recibir al modulo cliente
+[INFO] 12:09:29:138 Servidor Kernel/(23647:23647): Kernel listo para recibir al modulo cliente
+[INFO] 12:09:36:874 Servidor Kernel/(23647:23647): Se conecto un cliente a kernel
+[WARNING] 12:10:14:941 Servidor Kernel/(23647:23647): Operacion desconocida
+[WARNING] 12:10:16:960 Servidor Kernel/(23647:23647): Operacion desconocida
+[INFO] 12:10:21:253 Servidor Kernel/(23647:23647): Me llego el paquete:
+
+[WARNING] 12:10:26:130 Servidor Kernel/(23647:23647): Operacion desconocida
+[INFO] 12:10:35:875 Servidor Kernel/(23647:23647): Me llego el tamanio y las instrucciones
+
+[INFO] 12:14:06:152 Servidor Kernel/(23848:23848): Kernel listo para recibir al modulo cliente
+[INFO] 12:14:13:065 Servidor Kernel/(23848:23848): Se conecto un cliente a kernel
+[WARNING] 12:14:52:516 Servidor Kernel/(23848:23848): Operacion desconocida
+[WARNING] 12:14:55:605 Servidor Kernel/(23848:23848): Operacion desconocida
+[INFO] 12:14:58:436 Servidor Kernel/(23848:23848): Me llego el paquete:
+
+[WARNING] 12:15:01:436 Servidor Kernel/(23848:23848): Operacion desconocida
+[INFO] 12:15:08:647 Servidor Kernel/(23848:23848): Me llego el tamanio y las instrucciones
+
+[INFO] 13:06:21:865 Servidor Kernel/(24842:24842): Kernel listo para recibir al modulo cliente
+[INFO] 13:06:47:913 Servidor Kernel/(24842:24842): Se conecto un cliente a kernel
+[WARNING] 13:06:49:456 Servidor Kernel/(24842:24842): Operacion desconocida
+[WARNING] 13:06:55:237 Servidor Kernel/(24842:24842): Operacion desconocida
+[INFO] 13:06:57:981 Servidor Kernel/(24842:24842): Me llego el paquete:
+
+[WARNING] 13:07:02:684 Servidor Kernel/(24842:24842): Operacion desconocida
+[INFO] 13:07:12:759 Servidor Kernel/(24842:24842): Me llego el tamanio y las instrucciones
+
+[INFO] 13:58:51:167 Servidor Kernel/(27482:27482): Kernel listo para recibir al modulo cliente
+[INFO] 13:58:57:790 Servidor Kernel/(27482:27482): Se conecto un cliente a kernel
+[WARNING] 13:59:08:436 Servidor Kernel/(27482:27482): Operacion desconocida
+[WARNING] 14:00:17:176 Servidor Kernel/(27482:27482): Operacion desconocida
+[INFO] 14:00:25:501 Servidor Kernel/(27482:27482): Me llego el paquete:
+
+[WARNING] 14:00:45:916 Servidor Kernel/(27482:27482): Operacion desconocida
+[INFO] 14:01:39:509 Servidor Kernel/(27482:27482): Me llego el tamanio y las instrucciones
+
+[INFO] 14:04:08:070 Servidor Kernel/(27600:27600): Kernel listo para recibir al modulo cliente
+[INFO] 14:04:13:137 Servidor Kernel/(27600:27600): Se conecto un cliente a kernel
+[WARNING] 14:04:15:053 Servidor Kernel/(27600:27600): Operacion desconocida
+[WARNING] 14:04:19:103 Servidor Kernel/(27600:27600): Operacion desconocida
+[INFO] 14:04:21:280 Servidor Kernel/(27600:27600): Me llego el paquete:
+
+[WARNING] 14:04:22:588 Servidor Kernel/(27600:27600): Operacion desconocida
+[INFO] 14:04:24:419 Servidor Kernel/(27600:27600): Me llego el tamanio y las instrucciones
+
+[INFO] 14:12:55:201 Servidor Kernel/(27764:27764): Kernel listo para recibir al modulo cliente

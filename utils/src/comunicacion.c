@@ -1,9 +1,16 @@
 #include "comunicacion.h"
 
+// NO TOCAR FUNCIONES TP0 - SOLO SE AGREGAN NUEVAS FUNCIONES EN CASO DE SER NECESARIO
+
+
+
+
+//----------------------------------ENVIO - RECIBO DE  PAQUETE/BUFFER/MENSAJE/OPERACION------------------------------------
+
 // OPERACION
 
 int recibir_operacion(int socket_cliente) {
-    int cod_op;
+   int cod_op;
     if(recv(socket_cliente, &cod_op, sizeof(int), MSG_WAITALL) != 0)
         return cod_op;
     else
@@ -27,8 +34,11 @@ void enviar_mensaje(char *mensaje, int socket_cliente)
 
     int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
 
-    void *a_enviar = serializar_paquete(paquete);
+    void *a_enviar = serializar_paquete_con_bytes(paquete,bytes);
 
+    for(int i = 0 ; i<bytes; i++){
+    	printf("%02x ",((char*) a_enviar)[i]);
+    }
     send(socket_cliente, a_enviar, bytes, 0);
 
     free(a_enviar);
@@ -56,7 +66,6 @@ void *recibir_stream(int *size, int socket_cliente)
 {
     void *stream;
 
-//    recv(socket_cliente, buffer->tamanio_proceso, sizeof(int), MSG_WAITALL);
     recv(socket_cliente, size, sizeof(int), MSG_WAITALL);
     stream = malloc(*size);
     recv(socket_cliente, stream, *size, MSG_WAITALL);
@@ -99,8 +108,23 @@ t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete ins
 
 // PAQUETE
 
+void* serializar_paquete_con_bytes(t_paquete* paquete, int bytes)
+{
+	void * magic = malloc(bytes);
+	int desplazamiento = 0;
+
+	memcpy(magic + desplazamiento, &(paquete->codigo_operacion), sizeof(int));
+	desplazamiento+= sizeof(int);
+	memcpy(magic + desplazamiento, &(paquete->buffer->stream_size), sizeof(int));
+	desplazamiento+= sizeof(int);
+	memcpy(magic + desplazamiento, paquete->buffer->stream, paquete->buffer->stream_size);
+	desplazamiento+= paquete->buffer->stream_size;
+
+	return magic;
+}
+
 t_buffer* serializar_paquete(t_paquete* paquete) {
-    t_buffer * magic = inicializar_buffer(0, NULL);
+    t_buffer * magic = inicializar_buffer_con_parametros(0, NULL);
 
     agregar_a_buffer(magic, &(paquete->codigo_operacion), sizeof(uint8_t));
     agregar_a_buffer(magic, &(paquete->buffer->stream_size), sizeof(uint32_t));
@@ -109,22 +133,26 @@ t_buffer* serializar_paquete(t_paquete* paquete) {
     return magic;
 }
 
-t_paquete *crear_paquete(t_buffer *buffer, uint8_t codigo){
+// PAQUETE CON CODIGO PAQUETE
+
+t_paquete *crear_paquete(void){
     t_paquete *paquete = malloc(sizeof(t_paquete));
 
-    paquete->codigo_operacion = codigo;
-    paquete->buffer = buffer;
-
+    paquete->codigo_operacion = PAQUETE;
+    crear_buffer(paquete);
     return paquete;
 }
 
-// t_paquete* crear_paquete_con_codigo_op(op_code codigo_op)
-// {
-// 	t_paquete* paquete = malloc(sizeof(t_paquete));
-// 	paquete->codigo_operacion = codigo_op;
-// 	crear_buffer(paquete);
-// 	return paquete;
-// }
+//PAQUETE CON CODIGO DE OPERACION
+
+t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
+    t_paquete *paquete = malloc(sizeof(t_paquete));
+
+    paquete->codigo_operacion = codigo;
+    crear_buffer(paquete);
+    return paquete;
+}
+
 
 void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) {
     agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t));
@@ -141,7 +169,6 @@ void agregar_entero_a_paquete(t_paquete *paquete, int tamanio_proceso) // Agrega
 {
 	paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + sizeof(int));
     memcpy(paquete->buffer->stream , &tamanio_proceso, sizeof(int));
-
     paquete->buffer->stream_size += tamanio_proceso + sizeof(int);
 }
 
@@ -161,7 +188,11 @@ void agregar_datos_consola(t_paquete* paquete,void *valor, int tamanio_valor,int
 void enviar_paquete(t_paquete *paquete, int socket_cliente)
 {
     t_buffer *a_enviar = serializar_paquete(paquete);
-
+    char* stream = (char*)(a_enviar->stream);
+    printf("enviar paquete \n");
+    for(int i=0 ; i<a_enviar->stream_size;i++){
+    	printf("%02X ",stream[i]);
+    }
     send(socket_cliente, a_enviar->stream, a_enviar->stream_size, 0);
     free(a_enviar->stream);
     free(a_enviar);
@@ -199,26 +230,25 @@ void eliminar_paquete(t_paquete* paquete) {
 //----------------------------------SERIALIZAR INSTRUCCIONES------------------------------------
 
 t_paquete *serializar_instrucciones(t_list *instrucciones, op_code codigo) {
-	t_paquete *paquete = crear_paquete(inicializar_buffer(0, NULL), codigo);
+	t_paquete *paquete = crear_paquete_con_codigo_de_operacion(codigo);
 
 	for(int i=0; i<list_size(instrucciones); i++) {
 		instruccion *instr = (instruccion *)list_get(instrucciones, i);
-		agregar_a_paquete(paquete, &(instr->codigo), sizeof(codigo_instrucciones));
-		agregar_a_paquete(paquete, &(instr->parametro1), sizeof(uint32_t));
-		agregar_a_paquete(paquete, &(instr->parametro2), sizeof(uint32_t));
+		agregar_entero_a_paquete(paquete, instr->codigo);
+		agregar_entero_a_paquete(paquete, instr->parametro1);
+		agregar_entero_a_paquete(paquete, instr->parametro2);
 	}
 	return paquete;
 
 }
 
-t_buffer *inicializar_buffer(uint32_t size, void *stream) {
+t_buffer *inicializar_buffer_con_parametros(uint32_t size, void *stream) {
 	t_buffer *buffer = (t_buffer *)malloc(sizeof(t_buffer));
 	buffer->stream_size = size;
 	buffer->stream = stream;
 	return buffer;
 }
 
-//----------------------------------DESERIALIZAR INSTRUCCIONES----------------------------------
 
 
 //----------------------------------ENVIO RECIBO DE PCBS----------------------------------

@@ -24,7 +24,7 @@ typedef enum
 	PAQUETE,
     PAQUETE_CONSOLA,
     MENSAJE,
-	PCB,
+	PCB
     // TABLA_PAGINAS
 } op_code;
 
@@ -74,8 +74,7 @@ t_log *logger;
 
 typedef struct
 {
-//	int tamanio_proceso;
-    int stream_size;
+    uint32_t stream_size;
     void *stream;
 } t_buffer;
 
@@ -102,14 +101,16 @@ void *serializar_pcb(pcb*);
 pcb *armar_pcb(t_buffer* buffer);
 pcb* recibir_pcb(int socket_cliente);
 void enviar_mensaje(char *mensaje, int socket_cliente);
-t_paquete *crear_paquete(t_buffer *, uint8_t);
+t_paquete *crear_paquete(void);
+t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t );
 void agregar_entero_a_paquete(t_paquete*, int );
 void agregar_datos_consola(t_paquete*,void *, int ,int );
 void enviar_paquete(t_paquete*, int);
 void* recibir_buffer(int*, int );
 t_buffer *recibir_buffer_proceso(int);
+void* serializar_paquete_con_bytes(t_paquete* , int );
 
-t_buffer *inicializar_buffer(uint32_t, void *);
+t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
 void agregar_a_paquete(t_paquete *, void *, uint32_t);
 void agregar_a_buffer(t_buffer *, void *, uint32_t);
 t_paquete *serializar_instrucciones(t_list *, op_code);

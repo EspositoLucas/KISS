@@ -39,10 +39,6 @@ int main(int argc, char **argv){
 
     log_info(logger, "Me conecte al kernel\n");
 
-    enviar_mensaje(" : Envio a kernel la info del proceso", conexion_consola);
-
-    //paquete_proceso(conexion_consola,paquete,tamanio_proceso);
-
     enviar_paquete_a_kernel(conexion_consola, instrucciones, tamanio_proceso);
 
     log_info(logger, "Envie el paquete y termine el programa\n");
@@ -109,23 +105,13 @@ void enviar_paquete_a_kernel(int socket, t_list *instrucciones, uint32_t tamanio
 
 t_paquete *serializar_consola(t_list *instrucciones, uint32_t tamanio_consola, op_code codigo) {
 	t_paquete *paquete = serializar_instrucciones(instrucciones, codigo);
-	agregar_a_paquete(paquete, &tamanio_consola, sizeof(uint32_t));
+	char* stream = (char*)(paquete->buffer->stream);
+	for(int i=0 ; i<paquete->buffer->stream_size;i++){
+	    	printf("%02X ",stream[i]);
+	    }
+	agregar_entero_a_paquete(paquete, tamanio_consola);
 	return paquete;
 }
-
-// VERSION SIN DESERIALIZAR EN CONSOLA
-
-void paquete_proceso(int conexion,t_paquete* paquete, int tamanio_proceso){
-
-    char* leido = leer_archivo("instrucciones.txt");
-
-// SE AGREGA EN UN SOLO PAQUETE PRIMERO EL TAMANIO DEL PROCESO Y DESPUES LAS INSTRUCCIONES
-
-    agregar_datos_consola(paquete,leido,strlen(leido)+1,tamanio_proceso);
-    enviar_paquete(paquete, conexion);
-    eliminar_paquete(paquete);
-}
-
 
 
 // LEER ARCHIVO DE INSTRUCCIONES

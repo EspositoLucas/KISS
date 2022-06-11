@@ -20,12 +20,14 @@
 
 // STRUCTS/ENUMS
 
-typedef enum{
-	FIFO,
-	SRT
-}t_algoritmo_planificacion;
+//typedef enum{
+//	FIFO,
+//	SRT
+//}t_algoritmo_planificacion;
 
+// VARIABLES
 
+uint32_t generador_de_id;
 // SEMAFOROS
 
 // sem_t planificacion;
@@ -43,6 +45,7 @@ typedef enum{
 // sem_t largoPlazo;
 // sem_t contadorReadySuspended;
 // sem_t medianoPlazo;
+pthread_mutex_t mutex_generador_id;
 // pthread_mutex_t mutexNew;
 // pthread_mutex_t mutexReady;
 // pthread_mutex_t mutexBlocked;
@@ -64,14 +67,14 @@ typedef enum{
 //void hiloNew_Ready() ;
 //pcb sacarDeNew();
 //void agregarANewProceso(pcb proceso);
-//void avisarAMemoria(pcb proceso)
-
+//void avisarAMemoria(pcb proceso);
+//t_pcb *crear_estructura_pcb(t_consola*);
 // pcb* obtenerSiguienteFIFO();
 // pcb* obtenerSiguienteSRT();
 // pcb* elegirElDeMenorEstimacion();
 // void asignarEstimacionesAProcesos();
 // float calculoEstimacionProceso(float);
-t_algoritmo_planificacion obtener_algoritmo();
+//t_algoritmo_planificacion obtener_algoritmo();
 
 
 

@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <commons/log.h>
+#include <commons/collections/list.h>
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"
+#include "planificacion.h"
 
 // PUERTOS
 
@@ -40,6 +42,12 @@ typedef struct
     int socket_anterior; 
 } t_conexiones; // para el manejo de las conexiones entre los clientes que se vayan conectando y tener referencia el ultimo y proximo que se conecto
 
+typedef struct
+{
+    uint32_t tamanio_proceso;
+    t_list* instrucciones; 
+} t_consola;
+
 // FUNCIONES
 
 //void cargar_configuracion();
@@ -51,10 +59,10 @@ typedef struct
 //void inicializarListas(void);
 //void inicializarPlanificacion(void);
 //void inicializarSemaforos(void);
+t_list *deserializar_instrucciones(t_list *, uint32_t );
+t_consola *deserializar_consola(int );
 
 
-pcb *armar_pcb(t_buffer* );
-pcb *agregar_instrucciones_pcb(t_buffer* );
 void iterator(char *value);
 
 #endif 

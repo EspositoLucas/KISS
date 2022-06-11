@@ -17,7 +17,7 @@ int main(void)
     int server_fd = iniciar_servidor(IP_KERNEL,PUERTO_KERNEL);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(logger,"kernel",server_fd);
-    t_buffer * buffer ;
+    t_consola * consola ;
 
 //    t_list *lista;
 
@@ -26,18 +26,21 @@ int main(void)
     while (1)
     {
     	int cod_op = recibir_operacion(cliente_fd);
+    	printf("%d ", cod_op);
     	switch (cod_op) {
     	case MENSAJE:
     		recibir_mensaje(cliente_fd,logger);
     		break;
     	case PAQUETE_CONSOLA:
-    		log_info(logger, "Me llegaron el tamanio y las instrucciones\n");
+    		log_info(logger, "Me llego el tamanio y las instrucciones\n");
+            consola = deserializar_consola(cliente_fd);
+            log_info(logger, "PCB listo para armar\n");
+            pcb* pcb = crear_estructura_pcb(consola);
+            log_info(logger, "PCB creado\n");
+            // inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
     		break;
     	case PAQUETE:
-    		log_info(logger, "Me llego el tamanio del proceso y las instrucciones:\n");
-    		buffer = recibir_buffer_proceso(cliente_fd);
-    		pcb* pcb = armar_pcb(buffer);
-            // inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
+    		log_info(logger, "Me llego el paquete:\n");
     		break;
 
         // case PCB: // PARA CUANDO SE RECIBA PCB DE CPU O MEMORIA
@@ -77,123 +80,33 @@ int main(void)
 //    log_info(logger, "%s", value);
 //}
 
+//----------------------------------DESERIALIZAR INSTRUCCIONES----------------------------------
 
+t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
+	t_list *instrucciones = list_create();
 
+	for(int i = 0; i < longitud_datos; i += 3) {
+		instruccion *instruccion = malloc(sizeof(instruccion));
+		instruccion->codigo = *(codigo_instrucciones *)list_get(datos, i);
+		instruccion->parametro1 = *(uint32_t *)list_get(datos, i + 1);
+		instruccion->parametro2 = *(uint32_t *)list_get(datos, i + 2);
+		list_add(instrucciones, instruccion);
+	}
 
-
-//.................................. PARSEO_CONSOLA.............................................................................................
-
-
-//VERSION CON IF
-
-pcb *agregar_instrucciones_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
-
-{
-    pcb* proceso_pcb = malloc(sizeof(pcb)) ;
-    int offset = 0;
-    int indice_split = 0 ;
-    char* mensaje_consola = malloc(buffer->stream_size - sizeof(int)) ; // leido de consola que se envia en el paquete
-
-    
-     // Deserializar los campos del buffer
-
-    memcpy(&(proceso_pcb->tamanio_proceso),buffer->stream ,sizeof(int));
-    offset += sizeof(int);
-    memcpy(mensaje_consola,buffer->stream ,buffer->stream_size - sizeof(int));
-    char** split_buffer = string_split(mensaje_consola, "\n");
-    proceso_pcb->instrucciones = list_create(); // aca como seria ahora que instrucciones es un instruccion* y no una t_list?
-    while (split_buffer[indice_split] != NULL) {
-
-        if(string_contains(split_buffer[indice_split], "NO_OP") ) {
-            char** palabras = string_split(split_buffer[indice_split], " ") ;
-            int parametro_NO_OP;
-            if(palabras[1]==NULL){parametro_NO_OP=1;}
-            else{
-            parametro_NO_OP= atoi(palabras[1]);}
-            for(int i=0; i< parametro_NO_OP  ; i++){
-                instruccion* instruccion_No_op = malloc(sizeof(instruccion));
-                instruccion_No_op->codigo = NO_OP ;
-                list_add(proceso_pcb->instrucciones,instruccion_No_op) ; // Para agregar a lista a medida quese vaya parseando
-            }
-        string_array_destroy(palabras);
-
-        } else if (string_contains(split_buffer[indice_split], "I/O")){
-            char** palabras = string_split(split_buffer[indice_split], " ") ;
-            int parametro_IO = atoi(palabras[1]);
-            instruccion* instruccion_IO = malloc(sizeof(instruccion));
-            instruccion_IO->codigo = IO ;
-            instruccion_IO->parametro1= parametro_IO ;
-            list_add(proceso_pcb->instrucciones,instruccion_IO) ;
-            string_array_destroy(palabras);
-
-        } else if (string_contains(split_buffer[indice_split], "READ")){
-            char** palabras = string_split(split_buffer[indice_split], " ") ;
-            int parametro_READ = atoi(palabras[1]);
-            instruccion* instruccion_READ = malloc(sizeof(instruccion));
-            instruccion_READ->codigo = READ ;
-            instruccion_READ->parametro1= parametro_READ ;
-            list_add(proceso_pcb->instrucciones,instruccion_READ) ;
-            string_array_destroy(palabras);
-
-        } else if (string_contains(split_buffer[indice_split], "WRITE")) {
-            char** palabras = string_split(split_buffer[indice_split], " ") ;
-            int parametro1_WRITE = atoi(palabras[1]);
-            int parametro2_WRITE = atoi(palabras[2]);
-            instruccion* instruccion_WRITE = malloc(sizeof(instruccion));
-            instruccion_WRITE->codigo = WRITE ;
-            instruccion_WRITE->parametro1= parametro1_WRITE ;
-            instruccion_WRITE->parametro2= parametro2_WRITE ;
-            list_add(proceso_pcb->instrucciones,instruccion_WRITE) ;
-            string_array_destroy(palabras);
-
-        } else if (string_contains(split_buffer[indice_split], "COPY")){
-            char** palabras = string_split(split_buffer[indice_split], " ") ;
-            int parametro1_COPY = atoi(palabras[1]);
-            int parametro2_COPY = atoi(palabras[2]);
-            instruccion* instruccion_COPY = malloc(sizeof(instruccion));
-            instruccion_COPY->codigo = COPY ;
-            instruccion_COPY->parametro1= parametro1_COPY ;
-            instruccion_COPY->parametro2= parametro2_COPY ;
-            printf("COPY %d %d ", parametro1_COPY,parametro2_COPY);
-            list_add(proceso_pcb->instrucciones,instruccion_COPY) ;
-            string_array_destroy(palabras);
-
-        } else if (string_contains(split_buffer[indice_split], "EXIT")){
-            instruccion* instruccion_EXIT = malloc(sizeof(instruccion));
-            instruccion_EXIT->codigo = EXIT ;
-            list_add(proceso_pcb->instrucciones,instruccion_EXIT) ;
-            
-        }
-
-    indice_split++;
-    }
-
-
-    string_array_destroy(split_buffer);
-    free(mensaje_consola);
-    free(buffer);
-
-    return proceso_pcb;
+	return instrucciones;
 }
 
-//.................................. ARMAR_PCB.............................................................................................
+t_consola *deserializar_consola(int  socket_cliente) {
+	t_list *datos = recibir_paquete(socket_cliente);
+	t_consola *consola = malloc(sizeof(t_consola));
 
-pcb *armar_pcb(t_buffer* buffer) // Para deserializar las instrucciones de consola
+	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos) - 1);
+	consola->tamanio_proceso = *(uint32_t *)list_get(datos, list_size(datos) - 1);
 
-{
-    //pcb* proceso_pcb = agregar_instrucciones_pcb(buffer) ;
-    pcb* proceso_pcb = agregar_instrucciones_pcb(buffer);
-
-// Inicializar campos del pcb
-
-    proceso_pcb->estado_proceso= NUEVO ;
-    proceso_pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
-    proceso_pcb->rafaga_anterior = 0;
-    proceso_pcb->suspendido = 0 ;
-    proceso_pcb->tiempo_de_bloqueo = 0;
-
-    return proceso_pcb;
+	list_destroy_and_destroy_elements(datos, free);
+	return consola;
 }
+
 
 
 //..................................CONFIGURACIONES.......................................................................
