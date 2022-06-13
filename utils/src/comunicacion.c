@@ -74,7 +74,7 @@ void *recibir_stream(int *size, int socket_cliente)
 }
 
 
-// RECIBIR BUFFER COMUN SIN TAMANIO_PROCESO
+// recibir buffer comun sin tamnio proceso
 
  void* recibir_buffer(int* size, int socket_cliente) {
      void * buffer;
@@ -87,7 +87,7 @@ void *recibir_stream(int *size, int socket_cliente)
  }
 
 
-// RECIBIR BUFFER PARA PCB 
+// recibir buffer para pcb
 
 t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete instrucciones y tamanio proceso
 {
@@ -106,7 +106,21 @@ t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete ins
     return buffer ;
 }
 
+void agregar_a_buffer(t_buffer *buffer, void *src, uint32_t size) {
+	buffer->stream = realloc(buffer->stream, buffer->stream_size + size);
+	memcpy(buffer->stream + buffer->stream_size, src, size);
+	buffer->stream_size+=size;
+}
+
+t_buffer *inicializar_buffer_con_parametros(uint32_t size, void *stream) {
+	t_buffer *buffer = (t_buffer *)malloc(sizeof(t_buffer));
+	buffer->stream_size = size;
+	buffer->stream = stream;
+	return buffer;
+}
+
 // PAQUETE
+
 
 void* serializar_paquete_con_bytes(t_paquete* paquete, int bytes)
 {
@@ -133,7 +147,7 @@ t_buffer* serializar_paquete(t_paquete* paquete) {
     return magic;
 }
 
-// PAQUETE CON CODIGO PAQUETE
+// paquete con codigo de operacion solo paquete
 
 t_paquete *crear_paquete(void){
     t_paquete *paquete = malloc(sizeof(t_paquete));
@@ -143,7 +157,7 @@ t_paquete *crear_paquete(void){
     return paquete;
 }
 
-//PAQUETE CON CODIGO DE OPERACION
+//paquete con cualquier codigo de operacion
 
 t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
     t_paquete *paquete = malloc(sizeof(t_paquete));
@@ -159,11 +173,6 @@ void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) 
     agregar_a_buffer(paquete->buffer, valor, tamanio_valor);
 }
 
-void agregar_a_buffer(t_buffer *buffer, void *src, uint32_t size) {
-	buffer->stream = realloc(buffer->stream, buffer->stream_size + size);
-	memcpy(buffer->stream + buffer->stream_size, src, size);
-	buffer->stream_size+=size;
-}
 
 void agregar_entero_a_paquete(t_paquete *paquete, int tamanio_proceso) // Agregar un entero a un paquete (ya creado)
 {
@@ -242,16 +251,9 @@ t_paquete *serializar_instrucciones(t_list *instrucciones, op_code codigo) {
 
 }
 
-t_buffer *inicializar_buffer_con_parametros(uint32_t size, void *stream) {
-	t_buffer *buffer = (t_buffer *)malloc(sizeof(t_buffer));
-	buffer->stream_size = size;
-	buffer->stream = stream;
-	return buffer;
-}
 
 
-
-//----------------------------------ENVIO RECIBO DE PCBS----------------------------------
+//----------------------------------ENVIO/RECIBO DE PCBS----------------------------------
 
 void enviarPcb(pcb* proceso,int socket_cliente){
 	op_code codigo=PCB;
@@ -340,68 +342,12 @@ void *serializar_pcb(pcb* pcb)
 
 }
 
-//----------------------------------DESERIALIZAR_PCB VERSION 1-----------------------------------------
 
-//pcb* deserializar_pcb(t_buffer* buffer) {
-//
-//    pcb* pcb = malloc(sizeof(pcb));
-//
-//    void* stream = buffer->stream;
-//
-//    //Deserializar los campos int, double  y float
-//
-//    memcpy(&(pcb->id_proceso), stream, sizeof(uint32_t));
-//    stream += sizeof(uint32_t);
-//    memcpy(&(pcb->tamanio_proceso), stream ,sizeof(uint32_t));
-//    stream += sizeof(uint32_t);
-//    memcpy(&(pcb->valor_tabla_paginas), stream, sizeof(uint32_t));
-//    stream += sizeof(uint32_t);
-//    memcpy(&(pcb->program_counter), stream, sizeof(uint32_t));
-//    stream += sizeof(uint32_t);
-//    memcpy(&(pcb->estimacion_rafaga), stream, sizeof(float));
-//    stream += sizeof(float);
-//    memcpy(&(pcb->tiempo_de_bloqueo), stream, sizeof(double));
-//    stream += sizeof(double);
-//    memcpy(&(pcb->suspendido), stream, sizeof(uint8_t));
-//    stream += sizeof(uint8_t);
-//    memcpy(&(pcb->rafaga_anterior), stream, sizeof(uint8_t));
-//    stream += sizeof(uint8_t);
-//
-//    //Deserializar los campos enum*
-//
-//    memcpy(&(pcb->estado_proceso), stream, sizeof(estado));
-//    stream += sizeof(estado);
-//
-//
-//    //Deserializar lista instrucciones
-//
-//
-//    pcb->instrucciones = list_create();
-//
-//    int cant_instrucciones ;
-//    memcpy(&(cant_instrucciones), stream, sizeof(1));  // primero se deserializa el tamanio de la lista para despues ir deserializando los otros campos de la lista
-//    stream += sizeof(1);
-//
-//    for(int i = 0 ; i<cant_instrucciones; i++) {
-//    	instruccion* instruccion_deserializar = malloc(sizeof(instruccion));
-//        memcpy(&(instruccion_deserializar->codigo), stream, sizeof(codigo_instrucciones));
-//        stream += sizeof(codigo_instrucciones);
-//        memcpy(&(instruccion_deserializar->parametro1), stream, sizeof(1));
-//        stream += sizeof(1);
-//        memcpy(&(instruccion_deserializar->parametro2), stream, sizeof(1));
-//        stream += sizeof(1);
-//
-//        list_add(pcb->instrucciones,instruccion_deserializar);
-//        free(instruccion_deserializar);
-//    }
-//
-//    return pcb;
-//
-//}
+///----------------------------------DESERIALIZAR PCB ----------------------------------
 
-///----------------------------------DESERIALIZAR PCB VERSION 2----------------------------------
 void deserializar_pcb(void* stream,pcb* pcb) {
-    //Deserializar los campos int, double  y float
+
+	//Deserializar los campos int, double  y float
 
     memcpy(&(pcb->id_proceso), stream, sizeof(uint32_t));
     stream += sizeof(uint32_t);

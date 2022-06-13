@@ -19,9 +19,6 @@ int main(void)
     int cliente_fd = esperar_cliente(logger,"kernel",server_fd);
     t_consola * consola ;
 
-//    t_list *lista;
-
-    //pcb* pcb = malloc(sizeof(pcb));
 
     while (1)
     {
@@ -43,24 +40,6 @@ int main(void)
     		log_info(logger, "Me llego el paquete:\n");
     		break;
 
-        // case PCB: // PARA CUANDO SE RECIBA PCB DE CPU O MEMORIA
-        // 	pcb* pcb_recibido = recibir_pcb(cliente_fd);
-        // 	log_info(logger,"Recibi PCB de Id: %d",pcb_recibido->id_proceso);
-        // 	if(pcb_recibido->estado == BLOQUEADO) {
-            //time_t tiempo_actual_bloqueo ;
-        //    agregarABlocked(pcb* proceso);
-        // time(tiempo_actual_bloqueo);
-        //   usleep(pcb_recibido->tiempo_bloqueado);
-        //      manejo_suspensiones(pcb_recibido) ;
-        //     }
-        //     break;
-        
-        // case TABLA_PAGINAS:   // PARA MEMORIA
-        //     lista = recibir_paquete(cliente_fd);
-        //     log_info(logger, "Me llego el valor de la tabla de paginas:\n");
-        //     list_iterate(lista, (void *)iterator);
-        //     break;
-
         case -1:
             log_error(logger, "Fallo la comunicacion. Abortando");
             return EXIT_FAILURE;
@@ -72,15 +51,8 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-// Funcion TP0
 
-//void iterator(char *value)
-//{
-//    // printf("Valor: %s\n", value);
-//    log_info(logger, "%s", value);
-//}
-
-//----------------------------------DESERIALIZAR INSTRUCCIONES----------------------------------
+//----------------------------------DESERIALIZAR INSTRUCCIONES CONSOLA ----------------------------------
 
 t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
 	t_list *instrucciones = list_create();
@@ -138,6 +110,19 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 
 //  }
+
+//void eliminar_configuracion(t_config* config) {
+
+//	free(config.ip_memoria);
+//	free(config.puerto_memoria);
+//	free(config.ip_cpu);
+//	free(config.puerto_cpu_dispatch);
+//	free(config.puerto_cpu_interrupt);
+//	free(config.ip_kernel);
+//	free(config.puerto_escucha);
+//	free(config.algoritmo_planificacion);
+//	free(config);
+//}
 
 //..................................INICIALIZACIONES.......................................................................
 
@@ -210,10 +195,6 @@ t_consola *deserializar_consola(int  socket_cliente) {
 //  {
 
 
-// //    t_list *lista;
-
-//     pcb = malloc(sizeof(pcb));
-
 //     while (1)
 //     {
 //         int cod_op = recibir_operacion(cliente_fd);
@@ -229,11 +210,6 @@ t_consola *deserializar_consola(int  socket_cliente) {
 //             inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
 //             break;
         
-//         // case TABLA_PAGINAS:   // PARA MEMORIA
-//         //     lista = recibir_paquete(cliente_fd);
-//         //     log_info(logger, "Me llego el valor de la tabla de paginas:\n");
-//         //     list_iterate(lista, (void *)iterator);
-//         //     break;
 
 //         case -1:
 //             log_error(logger, "Fallo la comunicacion. Abortando");
@@ -257,7 +233,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 // void manejo_recepcion(int  server_fd) {
 // logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
-//server_fd = iniciar_servidor(IP_KERNEL,PUERTO_KERNEL);
+// server_fd = iniciar_servidor(IP_KERNEL,PUERTO_KERNEL);
 // log_info(logger, "Kernel listo para recibir al modulo cliente");
 
 // 	pthread_t manejo_recepcion;
@@ -273,6 +249,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
     	// t_conexiones conexiones;
 		// conexiones.socket =  esperar_cliente(server_fd);
 		// conexiones.socket_anterior = 0;
+
 		// //Threads para recepcion / envio de info a clientes
 		// pthread_t t;
 		// pthread_create(&t, NULL, (void*) manejar_conexion, (void*) &conexiones,);

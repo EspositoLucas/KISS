@@ -473,3 +473,8 @@
 [INFO] 14:04:24:419 Servidor Kernel/(27600:27600): Me llego el tamanio y las instrucciones
 
 [INFO] 14:12:55:201 Servidor Kernel/(27764:27764): Kernel listo para recibir al modulo cliente
+[INFO] 21:12:45:213 Servidor Kernel/(29037:29037): Kernel listo para recibir al modulo cliente
+[INFO] 21:12:57:182 Servidor Kernel/(29037:29037): Se conecto un cliente a kernel
+[WARNING] 21:13:00:431 Servidor Kernel/(29037:29037): Operacion desconocida
+[WARNING] 21:13:02:732 Servidor Kernel/(29037:29037): Operacion desconocida
+[WARNING] 21:13:05:270 Servidor Kernel/(29037:29037): Operacion desconocida
