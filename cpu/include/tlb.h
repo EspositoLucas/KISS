@@ -17,7 +17,6 @@ void agregar_a_tlb_lru(traduccion_t*);
 traduccion_t* restar_uno_al_turno_de_reemplazo(traduccion_t*);
 traduccion_t* sumar_uno_al_turno_de_reemplazo(traduccion_t*);
 bool encontrar_fifo(traduccion_t*);
-bool encontrar_lru(traduccion_t*);
 bool pagina_se_encuentra_en_tlb(traduccion_t*);
 
 #endif /* INCLUDE_TLB_H_ */
