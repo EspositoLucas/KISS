@@ -40,7 +40,7 @@ void tlb_hit(traduccion_t* traduccion){
 			break;
 		case LRU:
 			traduccion->turno_reemplazo=0;
-			list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);
+			tlb->lista=list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);
 			break;
 		default:
 			break;
@@ -79,7 +79,7 @@ void agregar_a_tlb_menor_a_entradas(traduccion_t* traduccion){
 				break;
 			case LRU:
 				traduccion->turno_reemplazo=0;//LRU USA turno_reemplazo COMO CONTADOR DE USOS, SI ES IGUAL A LA CANTIDAD MAXIMA DE TRADUCCIONES PERMITIDAS => PROXIMO A REEMPLAZAR
-				list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);
+				tlb->lista=list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);
 				list_add(tlb->lista,traduccion);
 				break;
 			default:
@@ -91,7 +91,7 @@ void agregar_a_tlb_menor_a_entradas(traduccion_t* traduccion){
 
 void agregar_a_tlb_fifo(traduccion_t* traduccion){
 	traduccion_t* a_reemplazar=list_find(tlb->lista,encontrar_fifo);//ENCUENTRA EL QUE SE AGREGO PRIMERO
-	list_map(tlb->lista,restar_uno_al_turno_de_reemplazo);//LE RESTA 1 A LOS turno_reemplazo DE TODOS LOS DE LA LISTA (EXPLICACION linea 83)
+	tlb->lista=list_map(tlb->lista,restar_uno_al_turno_de_reemplazo);//LE RESTA 1 A LOS turno_reemplazo DE TODOS LOS DE LA LISTA (EXPLICACION linea 83)
 	a_reemplazar->marco=traduccion->marco;//REEMPLAZA EL VALOR DE MARCO
 	a_reemplazar->pagina=traduccion->pagina;//REEMPLAZA EL VALOR DE PAGINA
 	a_reemplazar->turno_reemplazo=cantidad_de_traducciones-1;//ASIGNA cantidad_de_traducciones COMO turno_reemplazo  QUE ES IGUAL A
@@ -99,7 +99,7 @@ void agregar_a_tlb_fifo(traduccion_t* traduccion){
 }
 void agregar_a_tlb_lru(traduccion_t* traduccion){
 	traduccion_t* a_reemplazar=list_find(tlb->lista,encontrar_lru);//ENCUENTRA EL ULTIMO EN USARSE
-	list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);//LE SUMA 1 A LOS turno_reemplazo DE TODOS LOS DE LA LISTA (EXPLICACION linea 88)
+	tlb->lista=list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);//LE SUMA 1 A LOS turno_reemplazo DE TODOS LOS DE LA LISTA (EXPLICACION linea 88)
 	a_reemplazar->marco=traduccion->marco;//REEMPLAZA EL VALOR DE MARCO
 	a_reemplazar->pagina=traduccion->pagina;//REEMPLAZA EL VALOR DE PAGINA
 	a_reemplazar->turno_reemplazo=0;//ASIGNA 0 COMO turno_reemplazo QUE REFIERE A QUE SE ACABA DE USAR
