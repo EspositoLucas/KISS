@@ -1,4 +1,4 @@
-#ifndef PLANIFICION_H
+#ifndef PLANIFICACION_H
 #define PLANIFICACION_H
 
 
@@ -17,76 +17,28 @@
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"
-
-// STRUCTS/ENUMS
-
-//typedef enum{
-//	FIFO,
-//	SRT
-//}t_algoritmo_planificacion;
-
-// VARIABLES
-
-uint32_t generador_de_id;
-// SEMAFOROS
-
-// sem_t planificacion;
-// sem_t operacionesProcesos;
-// sem_t planificacionPausada;
-// sem_t sincroProcesPlanif;
-// sem_t sincroProcesPlanif2;
-// sem_t contadorNew;
-// sem_t contadorReady;
-// sem_t contadorExec;
-// sem_t multiprogramacion;
-// sem_t contadorBlocked;
-// sem_t analizarSuspension;
-// sem_t suspensionFinalizada;
-// sem_t largoPlazo;
-// sem_t contadorReadySuspended;
-// sem_t medianoPlazo;
-pthread_mutex_t mutex_generador_id;
-// pthread_mutex_t mutexNew;
-// pthread_mutex_t mutexReady;
-// pthread_mutex_t mutexBlocked;
-// pthread_mutex_t mutexExec;
-// pthread_mutex_t mutexExit;
-// pthread_mutex_t mutexSuspendedBlocked;
-// pthread_mutex_t mutexSuspendedReady;
+#include "planificacionUtils.h"
 
 
 
 // FUNCIONES
 
-//void planificador_crearProcesos(int  ,char*,int  );
-//void planificacionFIFO();
-//void planificacionSRT();
-//void agregarAReady(pcb* proceso);
-//void agregarABlocked(pcb* proceso);
-//void sacarDeBlocked(pcb* proceso);
-//void hiloNew_Ready() ;
-//pcb sacarDeNew();
-//void agregarANewProceso(pcb proceso);
-//void avisarAMemoria(pcb proceso);
-//t_pcb *crear_estructura_pcb(t_consola*);
-// pcb* obtenerSiguienteFIFO();
-// pcb* obtenerSiguienteSRT();
-// pcb* elegirElDeMenorEstimacion();
-// void asignarEstimacionesAProcesos();
-// float calculoEstimacionProceso(float);
-//t_algoritmo_planificacion obtener_algoritmo();
+
+//Largo Plazo
+
+pcb *crear_estructura_pcb(t_consola*);
+// void iniciar_planificador_largo_plazo(void);
+// void agregarANewPcb(pcb* );
+// void transicion_admitir_por_prioridad(void) ;
+// void finalizarPcb(pcb*);
+
+//Mediano Plazo
+
+// void iniciar_planificador_mediano_plazo(void);
+// void transicion_suspender(pcb *);
+// void estado_suspended_ready(void );
 
 
-
-// LISTAS/COLAS
-
-//t_list* colaNew;
-// t_list* colaReady;
-// t_list* colaExec;
-//t_list* colaBlocked;
-//t_list* colaSuspendedBlocked ;
-//t_list* colaReadySuspended;
-//t_list* colaExit;
 
 
 #endif

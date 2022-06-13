@@ -1,27 +1,6 @@
 #include "planificacion.h"
 
-// CONFIG_ALGORITMO
 
-//t_algoritmo_planificacion obtener_algoritmo(){
-//
-// 	 t_algoritmo_planificacion switcher;
-// 	 char* algoritmo = obtener_de_config(config, "ALGORITMO_PLANIFICACION");
-//
-// 	    //FIFO
-// 	 if (strcmp(algoritmo,"FIFO") == 0)
-// 	 {
-// 		 switcher = FIFO;
-// 	     log_info(logger, "El algoritmo de planificacion elegido es FIFO.");
-// 	 }
-//
-// 	    //SFJ SIN DESALOJO
-// 	 if (strcmp(algoritmo,"SRT") == 0)
-// 	 {
-// 		 switcher = SRT;
-// 	     log_info(logger, "El algoritmo de planificacion elegido es SRT.");
-// 	 }
-// 	 return switcher;
-//}
 
 //................................. LARGO PLAZO.........................................................................................
 
@@ -44,150 +23,85 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 }
 
 
-// MANEJO DE ESTADOS PROCESOS
+// MANEJO DE ESTADOS PCBs
 
 
-// void agregarANewProceso(pcb proceso) {
+// Hilos para las transiciones
+
+
+//void iniciar_planificador_largo_plazo(void) {
+
+//	generador_de_id = 0;
+//	pthread_mutex_init(&mutex_new, NULL);
+//	pthread_mutex_init(&mutex_exit, NULL);
+//	pthread_mutex_init(&mutex_generador_id, NULL);
+//	sem_init(&sem_admitir, 0, 0);
+//	sem_init(&sem_exit, 0, 0);
+//	sem_init(&sem_grado_multiprogramacion, 0, config_valores_kernel->grado_multiprogramacion);
+//	colaNew = list_create();
+//	colaExit = list_create();
+//	pthread_create(&thread_exit, NULL, (void *)estado_exit, NULL);
+//	pthread_create(&thread_admitir, NULL, (void *)transicion_admitir, NULL);
+//	pthread_detach(thread_exit);
+//	pthread_detach(thread_admitir);
+//}
+
+
+
+// void agregarANewPcb(pcb* pcb) {
 
 // 	pthread_mutex_lock(&mutexNew);
 
-// 	   list_add(procesosNew, proceso);
-//     proceso->estado = NUEVO;
-// 	   log_info(logger, "[NEW] Entra el proceso de ID: %d a la cola.", proceso->id_proceso);
+// 	   list_add(pcbsNew, pcb);
+//     pcb->estado = NUEVO;
+// 	   log_info(logger, "[NEW] Entra el pcb de ID: %d a la cola.", pcb->id_pcb);
 
 // 	pthread_mutex_unlock(&mutexNew);
 
-// 	sem_post(&analizarSuspension); // Despierta al planificador de mediano plazo
-// 	sem_wait(&suspensionFinalizada); // Espera a que ya se haya hecho, o no, la suspension
-
-// 	sem_post(&contadorNew); // Despierta al planificador de largo plazo
-// 	sem_post(&largoPlazo);
+//sem_post(&sem_admitir_transicion);
 // }
 
-// pcb sacarDeNew(){
 
-// 	sem_wait(&contadorNew);
-// 	pthread_mutex_lock(&mutexNew);
 
-// 	pcb proceso  proceso = list_remove(colaNew);
-// 	log_info(logger, "[NEW] Se saca el  proceso de ID: %d de la cola de NEW",  proceso-> id_proceso);
-
-// 	pthread_mutex_unlock(&mutexNew);
-
-// 	return  proceso;
-// }
-
-// void agregarAReady(pcb proceso){
-
-//    int grado_multiprogramacion  = config_valores.grado_multiprogramacion ;
-//    int tamanio_ready = list_size(colaReady);
-// 	pthread_mutex_lock(&mutexReady);
-//    if(tamanio_ready < grado_multiprogramacion ) {
-//            proceso->suspendido = 0;
-//            proceso->estado = LISTO;
-//            list_add(colaReady,  proceso);
-//            log_info(logger, "[READY] Entra el  proceso de ID: %d a la cola.",  proceso-> proceso_id);
-
-//            pthread_mutex_unlock(&mutexReady);
-
-//            sem_post(&contadorReady);
-//		avisarAMemoriaInicializarEstructuras(pcb proceso);
+//void transicion_admitir_por_prioridad(void) {
 //
+//	while(1) {
+//		sem_wait(&sem_admitir_transicion);
+//		sem_wait(&sem_grado_multiprogramacion);
+//		pcb *pcb;
+//
+//		pthread_mutex_lock(&mutex_suspended_ready);
+//		if(!list_is_empty(cola_suspended_ready)) {
+//			pcb = list_remove(colaSuspendedReady,colaSuspendedReady[list_size(colaSuspendedReady)]);
+//			pthread_mutex_unlock(&mutex_suspended_ready);
+//			log_info(kernel_logger, "PID[%d] ingresa a READY desde SUSPENDED-READY", pcb->id_pcb);
+//		} else {
+//			pthread_mutex_unlock(&mutex_suspended_ready);
+//			pthread_mutex_lock(&mutex_new);
+//			pcb = list_remove(colaNew,list_size(colaNew));
+//			pthread_mutex_unlock(&mutex_new);
+//			pcb->pcb->tabla_paginas = obtener_entrada_tabla_de_pagina(socket_memoria);
+//			log_info(kernel_logger, "PID[%d] ingresa a READY desde NEW", pcb->id_pcb);
+//		}
+//
+//		pthread_mutex_lock(&mutex_ready);  //Se agrega a Ready elproce
+//		list_add(colaReady, pcb);
+//		pthread_mutex_unlock(&mutex_ready);
+//		avisarAModulo(socket_memoria,INICIALIZAR_ESTRUCTURAS) ;
+//		sem_post(&sem_ready);
+//	}
+//}
 
-//    }
-
-// }
-//  void finalizarProceso(pcb proceso){
-
+//  void finalizarPcb(pcb* pcb){
+//       sem_wait(&sem_exit);
 //  	pthread_mutex_lock(&mutexExit);
-
-//  	list_add(colaExit, proceso);
-//     proceso.estado = "EXIT";
-// 	log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
-//      if(proceso->instrucciones[proceso->program_counter] == "EXIT") {
-//          pthread_mutex_lock(&mutexExit);
-// 	    list_add(colaExit, proceso);
-//         proceso->estado = "EXIT";
-//    log_info(logger, "[EXIT] Finaliza el  proceso de ID: %d", proceso-> proceso_id);
-
-// 	    pthread_mutex_unlock(&mutexExit);
-//          avisarAMemoriaLiberarEstructuras(proceso) ;
-//          avisarAConsola(proceso) ;
+//  	list_add(colaExit, pcb);
+// 	    pthread_mutex_unlock(&mutex_new);
+// 		log_info(logger, "[EXIT] Finaliza el  pcb de ID: %d", pcb-> id_pcb);
+//          obtener_entrada_tabla_de_pagina(socket_memoria) ;
+//          avisarAModulo(socket_consola,FINALIZAR_CONSOLA) ;
+// 			eliminar_pcb(pcb);
 //     }
-
-
-
-// }
-
-
-// // Hilo que maneja pasar los procesos de new a ready	
-
-// void hiloNew_Ready(){
-
-// 	while(1){
-
-// 		sem_wait(&largoPlazo);
-
-// 		if(list_size(colaBlocked) != 0){
-
-// 			sem_post(&medianoPlazo);
-// 		}else{
-
-// 			pcb proceso = sacarDeNew();
-
-// 			proceso->rafagaAnterior = 0;
-// 			 proceso->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
-// 			 proceso->tiempoEspera = 0;
-//          sem_wait(&multiprogramacion);
-// 			agregarAReady( proceso);
-// 			sem_post(&contadorProcesosEnMemoria);
-// 		}
-// 	}
-// }
-
-
-
-
-// AVISOS A MEMORIA - CONSOLA
-
-
-
-// void avisarAMemoriaInicializarEstructuras(pcb proceso){
-//     int socket_cliente;
-//     socket_cliente= crear_conexion(config_valores->ip_ram,config_valores->puerto_ram);
-//     enviar_mensaje("Inicializar estructuras Memoria",socket_cliente);
-//     proceso->valor_tabla_paginas = recibir_paquete(socket_cliente)  ; // Ver como se recibe el paquete si el valor va a ser un int o una cola y en que posicion
-//	   proceso->valor_tabla_paginas = tabla_paginas(socket_cliente);
-//	   log_info(logger, "Obtuve el valor de la tabla de paginas ");
-
-//     liberar_conexion(socket_cliente);
-
-//     int tabla_paginas(int socket-cliente) {
-//     t_list valores = recibir_paquete(socket_cliente) ;
-//     return list_get(valores,0);
-
-// }
-
-// }
-
-// void avisarAMemoriaLiberarEstructuras(pcb proceso){
-
-// 	int socket_cliente;
-// 	socket_cliente= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
-//     enviar_mensaje("Liberar estructuras Memoria",socket_cliente);
-
-// 	liberar_conexion(socket_cliente);
-
-// }
-
-// void avisarAConsola(pcb proceso){
-// 	int socket_cliente;
-// 	socket_cliente= crear_conexion(IP_KERNEL,PUERTO_KERNEL);
-//   enviar_mensaje("Proceso Finalizado",socket_cliente);
-
-// 	liberar_conexion(socket_cliente);
-
-// }
 
 
 
@@ -218,24 +132,17 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // }
 
 
-// Inicializar colas
-
-// void inicializarColas(){
-// 	colaReady = list_create();
-// 	colaExec= list_create();
-// }
-
 
 // HILOS
 
 
 // void hiloReady_Exec(){
 // 	while (1){
-// 		pcb* procesoAEjecutar = obtenerSiguienteReady();
+// 		pcb* pcbAEjecutar = obtenerSiguienteReady();
 
-// 		if (procesoAEjecutar != NULL){
-// 			list_add(colaExec,procesoAEjecutar);
-// 			//enviarPcbACpu(procesoAEjecutar);
+// 		if (pcbAEjecutar != NULL){
+// 			list_add(colaExec,pcbAEjecutar);
+// 			//enviarPcbACpu(pcbAEjecutar);
 // 		}
 // 	}
 // }
@@ -248,7 +155,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 
 
 // pcb* obtenerSiguienteReady(){
-// 	pcb* procesoSeleccionado;
+// 	pcb* pcbSeleccionado;
 
 // 	int tamanioReady;
 // 	tamanioReady = list_size(colaReady);
@@ -260,71 +167,71 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // 	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
 // 		switch(algoritmo){
 // 		case FIFO:
-// 			procesoSeleccionado = obtenerSiguienteFIFO();
+// 			pcbSeleccionado = obtenerSiguienteFIFO();
 // 			break;
 // 		case SRT:
-// 			procesoSeleccionado = obtenerSiguienteSRT();
+// 			pcbSeleccionado = obtenerSiguienteSRT();
 // 			break;
 // 		}
 // 	}
-// 	return procesoSeleccionado;
+// 	return pcbSeleccionado;
 // }
 
 // pcb* obtenerSiguienteFIFO(){
 
 // 	log_info(logger,"Inicio la planificacion FIFO");
 
-// 	pcb* procesoSeleccionado = list_remove(colaReady,0);
+// 	pcb* pcbSeleccionado = list_remove(colaReady,0);
 
 
-// 	return procesoSeleccionado;
+// 	return pcbSeleccionado;
 
 // }
 
 // pcb* obtenerSiguienteSRT(){
 // 	log_info(logger,"Inicio la planificacion SRT");
-// 	asignarEstimacionesAProcesos();
-// 	pcb* procesoElegido = elegirElDeMenorEstimacion();
-// 	return procesoElegido;
+// 	asignarEstimacionesApcbs();
+// 	pcb* pcbElegido = elegirElDeMenorEstimacion();
+// 	return pcbElegido;
 // }
 
 // pcb* elegirElDeMenorEstimacion(){
 // 	int tamanioReady = list_size(colaReady);
-// 	pcb* procesoSeleccionado;
-// 	pcb* procesoAux;
+// 	pcb* pcbSeleccionado;
+// 	pcb* pcbAux;
 // 	int indiceElegido = 0;
 
-// 	float procesoMasCorto;
+// 	float pcbMasCorto;
 
-// 	procesoMasCorto = procesoAux->estimacion_rafaga;
+// 	pcbMasCorto = pcbAux->estimacion_rafaga;
 
 // 	for(int i = 0; i < tamanioReady; i++){
-// 		pcb* procesoAux = list_get(colaReady,i);
+// 		pcb* pcbAux = list_get(colaReady,i);
 
-// 		if(procesoMasCorto > procesoAux->estimacion_rafaga){
-// 			procesoMasCorto = procesoAux->estimacion_rafaga;
+// 		if(pcbMasCorto > pcbAux->estimacion_rafaga){
+// 			pcbMasCorto = pcbAux->estimacion_rafaga;
 // 			indiceElegido = i;
 // 		}
 
 // 	}
 
-// 	procesoSeleccionado = list_remove(colaReady,indiceElegido);
+// 	pcbSeleccionado = list_remove(colaReady,indiceElegido);
 
-// 	return procesoSeleccionado;
+// 	return pcbSeleccionado;
 // }
 
-// void asignarEstimacionesAProcesos(){
+// void asignarEstimacionesApcbs(){
 
 // 	int tamanioReady = list_size(colaReady);
 
 	/*for(int i = 0; i < tamanioReady; i++){
-		pcb* proceso = list_get(colaReady,i);
-		float realAnterior = proceso->instrucciones[(proceso->program_counter)-1]
-		proceso->estimacion_rafaga = calculoEstimacionProceso(realAnterior); // le paso a calculoEstimacionProceso la rafaga real anterior
+		pcb* pcb = list_get(colaReady,i);
+		float realAnterior = pcb->instrucciones[(pcb->program_counter)-1]
+		pcb->estimacion_rafaga = calculoEstimacionpcb(realAnterior); // le paso a calculoEstimacionpcb la rafaga real anterior
 	}*/
 //}  revisar bien esta funcion
 
-// float calculoEstimacionProceso(float realAnterior){
+// float calculoEstimacionpcb(float realAnterior){
 
 // 	float alfa;
 // 	float estimacionInicial;
@@ -335,14 +242,14 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // }
 
 
-// void agregarABlocked(pcb* proceso){		
+// void agregarABlocked(pcb* pcb){		
 
 // 	sem_wait(&contadorExec);
 
 // 	pthread_mutex_lock(&mutexBlocked);
 
-// 	list_add(listaBlock, proceso);
-// 	log_info(logger, "[BLOCKED] Entra el procso de PID: %d a la cola.", proceso->id_proceso);
+// 	list_add(listaBlock, pcb);
+// 	log_info(logger, "[BLOCKED] Entra el procso de PID: %d a la cola.", pcb->id_pcb);
 
 // 	pthread_mutex_unlock(&mutexBlocked);
 // 	sem_post(&contadorBlock);
@@ -357,141 +264,44 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // TRANSICIONES_ ESTADOS
 
 
-// void sacarDeBlockedASuspendedBlocked(pcb* proceso){   // Se saca un proceso de bloqueado a suspendido
+// void iniciar_planificador_mediano_plazo(void) {
+// 	pthread_mutex_init(&mutex_suspended_ready, NULL);
+// 	pthread_mutex_init(&mutex_suspended_blocked, NULL);
+// 	sem_init(&sem_suspended_ready, 0, 0);
+// 	colaSuspendedBlocked =list_create();
+// 	colaSuspendedready = list_create();
+// 	pthread_create(&thread_suspended_ready, NULL, (void *)estado_suspended_ready, NULL);
+// 	pthread_detach(thread_suspended_ready);
+// }
 
-// 	sem_wait(&contadorBlock);
-
-// 	bool suspensionMayorAtiempoMaximo(void* elemento){ 
-
-// 		if(proceso->tiempo_bloqueado > config_valores_kernel->tiempo_maximo_bloqueado)
-// 			return true;
-// 		else
-// 			return false;
+// void transicion_suspender(pcb *pcb) {
+// 	log_info(kernel_logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", pcb->id_proceso);
+// 	pcb->estado = SUSPENDED_BLOCKED;
+// 	enviar_pcb_a_memoria(pcb, socket_memoria);
+// 	recibir_datos(socket_memoria, &codigo, sizeof(op_code));  // ver como recibir codigo de operacion de memoria
+// 	if(codigo != PCB_LIBERADO) {
+// 		log_error(kernel_logger, "No se pudo liberar la memoria de PID[%d]", pcb->id_proceso);
 // 	}
+// 	pthread_mutex_lock(&mutex_suspended_blocked);
+// 	list_add(colaSuspendedBlocked, pcb);
+// 	pthread_mutex_unlock(&mutex_suspended_blocked);
 
-// 	pthread_mutex_lock(&mutexBlock);
-
-// 	list_remove_by_condition(colaBlocked, suspensionMayorAtiempoMaximo);
-// 	log_info(logger, "[BLOCKED] Sale el proceso de PID: %d de la procesos.", proceso->id_proceso);
-
-// 	pthread_mutex_unlock(&mutexBlock);
-// agregarAEstadoSuspendedBlocked(pcb* proceso);
+// 	sem_post(&sem_grado_multiprogramacion);
 // }
 
+// void estado_suspended_ready(void ) {
+// 	while(1) {
+// 		sem_wait(&sem_suspended_ready);
+// 		pthread_mutex_lock(&mutex_suspended_blocked);
+// 		pcb *pcb = list_remove(colaSuspendedBlocked,colaSuspendedBlocked[list_size(colaSuspendedBlocked)]);
+// 		pthread_mutex_unlock(&mutex_suspended_blocked);
 
-// void agregarAEstadoSuspendedBlocked(pcb* proceso){ // Para que entre en supension pero sigue en la cola de bloqueado
+// 		pthread_mutex_lock(&mutex_suspended_ready);
+// 		list_add(colaSuspendedReady, pcb);
+// 		pthread_mutex_unlock(&mutex_suspended_ready);
 
-
-	// pthread_mutex_lock(&mutexBlockSuspended);
-
-	// proceso->suspendido = 1;
-	// list_add(colaSuspendedBlocked, proceso);
-
-	// proceso->estado = SUPENDIDO_BLOQUEADO ;
-
-	// log_info(logger, "[BLOCK-SUSPENDED] Ingresa el proceso de PID: %d a la cola.", proceso->proceso_id_proceso);
-
-	// pthread_mutex_unlock(&mutexSuspendedBlocked);
-
-
-
-// avisarAMemoriaProcesoSuspendido(pcb proceso);
-
-//}
-
-
-// void avisarAMemoriaProcesoSuspendido(pcb proceso){
-
-// 	int socket_cliente;
-// 	socket_cliente= crear_conexion(config_valores.ip_ram,config_valores.puerto_ram);
-//  enviar_mensaje("Proceso paso a estado SUPENDED_BLOCKED",socket_cliente);
-// 	liberar_conexion(socket_cliente);
-
-// }
-
-
-// SWITCH ENTRE ESTADOS PARA CUANDO SE RECIBA PCB DE CPU
-
-// switch(estado) {
-// 	case : BLOCKED 
-// 	// aca iria un hilo ?
-// medir cuanto tiempo en la cola  - timestamp
-//medir tiempo maximo-bloqueado
-// }
-//
-// usleep(tiempo_maximo_bloqueado)  // proceso ya esta bloqueado y entra en la cola de blocked
-// if(sigue en en la cola de bloqueo){
-//         supender()
-// }
-
-
-// void suspender( pcb* proceso){
-	//sacarDeBlockedASuspendedBlocked(pcb* proceso);
-
-// }
-//}
-
-// FUNCION PARA MANEJAR SUSPENSIONES CUANDO UN PCB ESTE BLOQUEADO
-
-// void manejo_suspensiones(pcb* proceso) {
-// 	if (pcb->tiempo_de_bloqueo > config_valores_kernel.tiempo_maximo_bloqueado) {
-// 		suspender(proceso);
+// 		log_info(kernel_logger, "PID[%d] ingresa a SUSPENDED-READY...", pcb->id_proceso);
+// 		sem_post(&sem_admitir);
 // 	}
 // }
 
-
-// HILOS PARA LA SUSPENSION DE PROCESOS
-
-
-
-// void hiloBlockedASuspension(){
-
-// 	while(true){
-
-// 		sem_wait(&analizarSuspension);
-
-// 		if(condiciones_de_suspension()){
-
-// 			sem_wait(&contadorProcesosEnMemoria);
-
-// 			pcb* pcb = list_get(colaBlocked, list_size(colaBlocked) - 1);
-// 			sacarDeBlocked(pcb);
-
-// 			agregarASuspendedBlocked(pcb);
-
-// 			sem_post(&multiprogramacion);
-// 		}
-
-// 		sem_post(&suspensionFinalizada);
-// 	}
-// }
-
-// void hiloSuspensionAReady(){
-
-// 	while(1){
-
-// 		sem_wait(&medianoPlazo);
-
-// 		if(list_size(colaSuspendedReady) == 0){
-
-// 			sem_post(&largoPlazo);
-// 		}else{
-
-// 		pcb* proceso = sacarDeSuspendedReady();
-
-// 		sem_wait(&multiprogramacion);
-
-// 		agregarAReady(proceso);
-
-// 		sem_post(&contadorProcesosEnMemoria);
-// 		}
-// 	}
-// }
-
-
-// void hilo_IO () {
-// 	sem_wait(&proceso_blocked) ;
-// 	usleep(proceso->tiempo_bloqueo);
-// 	sem_post(&proceso_termino_IO);
-
-// }

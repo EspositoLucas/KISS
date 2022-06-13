@@ -127,62 +127,14 @@ t_consola *deserializar_consola(int  socket_cliente) {
 //..................................INICIALIZACIONES.......................................................................
 
 
-// LISTAS
-
-// void inicializar_listas(void){
-
-// 	colaNew =lista_create();
-// 	colaReady = list_create();
-// 	colaExec = list_create();
-// 	colaBlocked = list_create();
-// 	colaExit = list_create();
-// }
-
-
-// SEMAFOROS
-
-// void inicializar_semaforos(void){
-
-// 	pthread_mutex_init(&mutexBlockSuspended, NULL);
-// 	pthread_mutex_init(&mutexReadySuspended, NULL);
-// 	pthread_mutex_init(&mutexNew, NULL);
-// 	pthread_mutex_init(&mutexReady, NULL);
-// 	pthread_mutex_init(&mutexBlocked, NULL);
-// 	pthread_mutex_init(&mutexExec, NULL);
-// 	pthread_mutex_init(&mutexExit, NULL);
-
-// 	sem_init(&analizarSuspension, 0, 0);
-// 	sem_init(&suspensionFinalizada, 0, 0);
-// 	sem_init(&contadorNew, 0, 0); // Estado New
-// 	sem_init(&contadorReady, 0, 0); // Estado Ready
-// 	sem_init(&contadorExec, 0, 0); // Estado Exec
-// 	sem_init(&contadorProcesosEnMemoria, 0, 0);	
-// 	sem_init(&multiprogramacion, 0, gradoMultiprogramacion); // Memoria
-// 	sem_init(&contadorBlocked, 0, 0);
-// 	sem_init(&largoPlazo, 0, 1);
-// 	sem_init(&contadorReadySuspended, 0, 0);
-// 	sem_init(&medianoPlazo, 0, 1);
-// }
-
-
-
 //PLANIFICACION
 
 
 // void inicializar_planificacion(void){
+//	iniciar_planificador_largo_plazo();
+//	iniciar_planificador_corto_plazo();
+//	iniciar_planificador_mediano_plazo();
 
-
-
-// 	pthread_create(&hiloSuspendedAReady, NULL, (void*)hiloSuspensionAReady, NULL);
-// 	pthread_create(&hiloMedianoPlazo, NULL, (void*)hiloBlockedASuspension, NULL);
-// 	pthread_detach(hiloQueDesuspende);
-// 	pthread_detach(hiloMedianoPlazo);
-
-
-// 	pthread_create(&hiloNewAReady, NULL, (void*)hiloNew_Ready, NULL);
-// 	pthread_create(&hiloReadyAExec, NULL, (void*)hiloReady_Exec, NULL);
-// 	pthread_detach(hiloNewReady);
-// 	pthread_detach(hiloReady_Exec);
 
 
 // }
@@ -260,49 +212,4 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 
 
-//..................................... DESTRUCCIONES............................................................................ 
 
-
-
-// SEMAFOROS
-
-// void destruir_semaforos(){
-
-// 	pthread_mutex_destroy(&mutexNew);
-// 	pthread_mutex_destroy(&mutexReady);
-// 	pthread_mutex_destroy(&mutexBlocked);
-// 	pthread_mutex_destroy(&mutexExec);
-// 	pthread_mutex_destroy(&mutexExit);
-// 	pthread_mutex_destroy(&mutexBlockSuspended);
-// 	pthread_mutex_destroy(&mutexReadySuspended);
-
-// 	sem_destroy(&contadorNew);
-// 	sem_destroy(&contadorReady);
-// 	sem_destroy(&contadorExec);
-// 	sem_destroy(&multiprogramacion);
-// 	sem_destroy(&contadorBlocked);
-// 	sem_destroy(&analizarSuspension);
-// 	sem_destroy(&suspensionFinalizada);
-// 	sem_destroy(&largoPlazo);
-// 	sem_destroy(&contadorReadySuspended);
-// 	sem_destroy(&medianoPlazo);
-
-// }
-
-
-// LISTAS
-
-// void destruir_listas(){
-
-// 	destruirListaYElementos(colaNew);
-// 	destruirListaYElementos(colaReady);
-// 	destruirListaYElementos(colaExec);
-// 	destruirListaYElementos(colaBlocked);
-// 	destruirListaYElementos(colaExit);
-	
-// }
-
-// void destruirListaYElementos(t_list* unaLista){
-//     list_clean_and_destroy_elements(unaLista, free);
-//     list_destroy(unaLista);
-// }
