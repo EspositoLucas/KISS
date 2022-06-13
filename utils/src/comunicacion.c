@@ -392,3 +392,48 @@ void deserializar_pcb(void* stream,pcb* pcb) {
 }
 
 
+//HANDSHAKE
+void pedir_handshake(int socket_memoria){
+	t_paquete *paquete = malloc(sizeof(t_paquete));
+	char* mensaje_handshake="HANDSHAKE";
+
+	   paquete->codigo_operacion = HANDSHAKE;
+	    paquete->buffer = malloc(sizeof(t_buffer));
+	    paquete->buffer->stream_size = strlen(mensaje_handshake) + 1;
+	    paquete->buffer->stream = malloc(paquete->buffer->stream_size);
+	    memcpy(paquete->buffer->stream, mensaje_handshake, paquete->buffer->stream_size);
+
+	    int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
+
+	    void *a_enviar = serializar_paquete(paquete);
+
+	    send(socket_memoria, a_enviar, bytes, 0);
+
+	    free(a_enviar);
+	    eliminar_paquete(paquete);
+}
+t_handshake* recibir_handshake(int socket_memoria){
+	t_handshake* han=malloc(sizeof(t_handshake));
+	int size;
+	void* stream=recibir_stream(&size,socket_memoria);
+	memcpy(&(han->tam_pagina),stream,sizeof(int));
+	memcpy(&(han->entradas),stream+sizeof(int),sizeof(int));
+	free(stream);
+	return han;
+}
+//TABLA DE PAGINA
+void pedir_tabla_pagina(int socket,uint32_t tabla,uint32_t entrada){
+	t_paquete* paquete=crear_paquete();
+	paquete->codigo_operacion=TABLA;
+	agregar_entero_a_paquete(paquete,tabla);
+	agregar_entero_a_paquete(paquete,entrada);
+	enviar_paquete(paquete,socket);
+}
+//MARCO
+void pedir_marco(int socket,uint32_t tabla,uint32_t entrada){
+	t_paquete* paquete=crear_paquete();
+	paquete->codigo_operacion=MARCO;
+	agregar_entero_a_paquete(paquete,tabla);
+	agregar_entero_a_paquete(paquete,entrada);
+	enviar_paquete(paquete,socket);
+}

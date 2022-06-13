@@ -1,8 +1,13 @@
 #include <cpu.h>
 
+
 //sem_t pedidofin;
+///SEMAFOROS
 pthread_mutex_t pedidofin;
-int parar_proceso;//Variable
+
+
+///VARIABLES GLOBALES
+int parar_proceso;
 
 int main()
 {
@@ -18,13 +23,27 @@ int main()
 	config_valores_cpu.reemplazo_tlb=config_get_string_value(config,"REEMPLAZO_TLB");
 	config_valores_cpu.retardo_NOOP=config_get_int_value(config,"RETARDO_NOOP");
 	config_valores_cpu.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
-	config_valores_cpu.puerto_memoria=config_get_int_value(config,"PUERTO_MEMORIA");
-	config_valores_cpu.puerto_escucha_dispatch=config_get_int_value(config,"PUERTO_ESCUCHA_DISPATCH");
-	config_valores_cpu.puerto_escucha_interrupt=config_get_int_value(config,"PUERTO_ESCUCHA_INTERRUPT");
+	config_valores_cpu.puerto_memoria=config_get_string_value(config,"PUERTO_MEMORIA");
+	config_valores_cpu.puerto_escucha_dispatch=config_get_string_value(config,"PUERTO_ESCUCHA_DISPATCH");
+	config_valores_cpu.puerto_escucha_interrupt=config_get_string_value(config,"PUERTO_ESCUCHA_INTERRUPT");
 
-    int server_fd = iniciar_servidor(IP_CPU,PUERTO_CPU);
+	///HANDSHAKE
+
+	pthread_t conexion_memoria_i;
+	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,&config_valores_cpu.puerto_memoria);
+	pthread_join(conexion_memoria_i,NULL);
+
+	///INICIA LA TLB
+
+	crear_tlb();
+
+	///CREA LA CONEXION CON EL KERNEL
+
+	int server_fd = iniciar_servidor(IP_CPU,config_valores_cpu.puerto_escucha_dispatch);
     log_info(logger, "CPU listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(logger,"cpu",server_fd);
+
+
 
     while (1)
     {
@@ -154,5 +173,29 @@ while(1){
 	}
 }
 return NULL;
+}
+///CONEXION A MEMORIA: HANDSHAKE
+void* conexion_inicial_memoria(void* puerto_memoria){
+	socket_memoria=crear_conexion(IP_CPU,puerto_memoria);
+	pedir_handshake(socket_memoria);
+	int codigo_memoria;
+	while(1){
+		codigo_memoria=recibir_operacion(socket_memoria);
+		switch(codigo_memoria){
+			case PAQUETE:
+				configuracion_tabla=recibir_handshake(socket_memoria);
+				log_info(logger,"Recibi configuracion por handshake");
+				return NULL;
+			break;
+			case -1:
+				log_error(logger, "Fallo la comunicacion. Abortando");
+				return (void*)(EXIT_FAILURE);
+			break;
+			default:
+				 log_warning(logger, "Operacion desconocida");
+			break;
+		}
+	}
+	return NULL;
 }
 

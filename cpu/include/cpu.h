@@ -10,11 +10,14 @@
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"
+#include "tlb.h"
 
 #define IP_CPU "0.0.0.0"
 #define PUERTO_CPU "8001"
 
 t_config *config;
+int socket_memoria;
+t_handshake* configuracion_tabla;
 
 typedef struct  // archivo de configuracion cpu
 {
@@ -22,9 +25,9 @@ typedef struct  // archivo de configuracion cpu
    char* reemplazo_tlb;
    int retardo_NOOP;
    char* ip_memoria;
-   int puerto_memoria;
-   int puerto_escucha_dispatch;
-   int puerto_escucha_interrupt;
+   char* puerto_memoria;
+   char* puerto_escucha_dispatch;
+   char* puerto_escucha_interrupt;
 } arch_config;
 
 arch_config config_valores_cpu;
@@ -41,5 +44,7 @@ void* interrupt(void* interrupt);
 void ejecutarEXIT(pcb*);
 int checkInterrupt();
 void enviarPcb(pcb*,int);
+
+void*conexion_inicial_memoria(void*);
 
 #endif

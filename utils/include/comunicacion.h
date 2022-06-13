@@ -24,7 +24,10 @@ typedef enum
 	PAQUETE,
     PAQUETE_CONSOLA,
     MENSAJE,
-	PCB
+	PCB,
+	MARCO,
+	TABLA,
+	HANDSHAKE
     // TABLA_PAGINAS
 } op_code;
 
@@ -84,6 +87,31 @@ typedef struct
     t_buffer *buffer;
 }t_paquete;
 
+typedef struct{
+	uint32_t pagina;
+	uint32_t marco;
+	int turno_reemplazo;
+}traduccion_t;
+
+typedef enum{
+	FIFO,
+	LRU
+}algoritmo_tlb;
+
+typedef struct{
+	t_list* lista;
+	algoritmo_tlb algoritmo;
+	int posicion_a_reemplazar;
+}tlb_t;
+
+tlb_t* tlb;
+
+typedef struct{
+	uint32_t tam_pagina;
+	uint32_t entradas;
+} t_handshake;
+
+
 
 // FUNCIONES
 
@@ -115,5 +143,11 @@ void agregar_a_paquete(t_paquete *, void *, uint32_t);
 void agregar_a_buffer(t_buffer *, void *, uint32_t);
 t_paquete *serializar_instrucciones(t_list *, op_code);
 t_buffer *buffer_vacio(void);
+
+t_handshake* recibir_handshake(int);
+void pedir_tabla_pagina(int,uint32_t,uint32_t);
+void pedir_marco(int,uint32_t,uint32_t);
+void pedir_handshake(int);
+
 
 #endif
