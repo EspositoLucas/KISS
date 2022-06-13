@@ -16,7 +16,7 @@ int obtener_algoritmo(){
 
 void crear_tlb(){
 	tlb->lista=list_create();
-	tlb->algoritmo=(algoritmo_tlb)obtener_algoritmo();
+	tlb->algoritmo=(algoritmo)obtener_algoritmo();
 }
 
 ///--------------BUSCAR EN LA TLB-----------------

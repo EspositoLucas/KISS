@@ -95,12 +95,13 @@ typedef struct{
 
 typedef enum{
 	FIFO,
-	LRU
-}algoritmo_tlb;
+	LRU,
+	SRT
+}algoritmo;
 
 typedef struct{
 	t_list* lista;
-	algoritmo_tlb algoritmo;
+	algoritmo algoritmo;
 	int posicion_a_reemplazar;
 }tlb_t;
 

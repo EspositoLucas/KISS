@@ -109,6 +109,72 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //................................. CORTO PLAZO.........................................................................................
 
 
+//void estadoReady(){
+//	while(1){
+//		sem_wait(&sem_ready);
+//		t_algoritmo_planificacion algoritmo = obtener_algoritmo();
+//		if(algoritmo == SRT){
+//			if(list_size(listaExec) > 0){
+//				enviar_interrupcion_cpu(socket_interrupt);
+//				sem_wait(&sem_desalojo);
+//			} else {
+//
+//			}
+//		}
+//		// semaforo
+//
+//		pcb* siguiente_proceso = obtenerSiguienteReady();
+//
+//		list_add(listaExec, siguiente_proceso);
+//
+//		sem_post(&sem_exec);
+//	}
+//}
+//
+//void estadoExec(){
+//	while(1){
+//		sem_wait(&sem_exec);
+//		pcb* proceso = list_get(colaExec,0);
+//
+//		uint32_t inicio_cpu = get_time(); // logueo el tiempo en el que se va
+//		enviar_proceso_a_cpu(prcoeso);
+//		sem_wait(&sem_dispatch);
+//		//esperar a que vuelva el pcb
+//		//aramar para recibir pcb de cpu por dispatch;
+//
+//		uint32_t finalizacion_cpu = get_time();
+//
+//		proceso->rafaga_anterior = inicio_cpu - finalizacion_cpu;
+//
+//		instruccion* instruccion_ejecutada = list_get(proceso, (proceso->program_counter - 1)); // agarro la instruccion ya ejecutada por cpu
+//
+//		switch(instruccion_ejecutada){
+//		case IO:
+//			proceso->estado_proceso = BLOQUEADO;
+//			list_add(colaBlocked, proceso);
+//			sem_post(&sem_blocked); // despertar bloqueado
+//		}
+//		case EXIT:
+//			proceso->estado_proceso = FINALIZADO;
+//			list_add(colaExit, proceso);
+//			sem_post(&sem_exit); // despertar exit
+//		default: // ready write o noop
+//			proceso->estado_proceso = READY;
+//			list_add(colaReady, proceso);
+//			sem_post(&sem_desalojo);
+//			sem_post(&sem_ready);
+//
+//		}
+//
+//}
+//
+//void estadoBlockeado(){
+//	while(1){
+//		sem_wait(&sem_blocked);
+//		//TODO
+//	}
+//}
+
 // ENVIO PCB A CPU
 
 // void enviarPcbACpu(pcb* pcb){
@@ -132,17 +198,24 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // }
 
 
+// Inicializar colas
+
+// void inicializarColas(){
+// 	colaReady = list_create();
+// 	colaExec= list_create();
+// }
+
 
 // HILOS
 
 
 // void hiloReady_Exec(){
 // 	while (1){
-// 		pcb* pcbAEjecutar = obtenerSiguienteReady();
+// 		pcb* procesoAEjecutar = obtenerSiguienteReady();
 
-// 		if (pcbAEjecutar != NULL){
-// 			list_add(colaExec,pcbAEjecutar);
-// 			//enviarPcbACpu(pcbAEjecutar);
+// 		if (procesoAEjecutar != NULL){
+// 			list_add(colaExec,procesoAEjecutar);
+// 			//enviarPcbACpu(procesoAEjecutar);
 // 		}
 // 	}
 // }
@@ -154,102 +227,17 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 
 
 
-// pcb* obtenerSiguienteReady(){
-// 	pcb* pcbSeleccionado;
-
-// 	int tamanioReady;
-// 	tamanioReady = list_size(colaReady);
-// 	int gradoMultiprogramacion;
-// 	t_algoritmo_planificacion algoritmo = obtener_algoritmo();
-// 	int ejecutando = list_size(colaExec);
 
 
-// 	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
-// 		switch(algoritmo){
-// 		case FIFO:
-// 			pcbSeleccionado = obtenerSiguienteFIFO();
-// 			break;
-// 		case SRT:
-// 			pcbSeleccionado = obtenerSiguienteSRT();
-// 			break;
-// 		}
-// 	}
-// 	return pcbSeleccionado;
-// }
 
-// pcb* obtenerSiguienteFIFO(){
-
-// 	log_info(logger,"Inicio la planificacion FIFO");
-
-// 	pcb* pcbSeleccionado = list_remove(colaReady,0);
-
-
-// 	return pcbSeleccionado;
-
-// }
-
-// pcb* obtenerSiguienteSRT(){
-// 	log_info(logger,"Inicio la planificacion SRT");
-// 	asignarEstimacionesApcbs();
-// 	pcb* pcbElegido = elegirElDeMenorEstimacion();
-// 	return pcbElegido;
-// }
-
-// pcb* elegirElDeMenorEstimacion(){
-// 	int tamanioReady = list_size(colaReady);
-// 	pcb* pcbSeleccionado;
-// 	pcb* pcbAux;
-// 	int indiceElegido = 0;
-
-// 	float pcbMasCorto;
-
-// 	pcbMasCorto = pcbAux->estimacion_rafaga;
-
-// 	for(int i = 0; i < tamanioReady; i++){
-// 		pcb* pcbAux = list_get(colaReady,i);
-
-// 		if(pcbMasCorto > pcbAux->estimacion_rafaga){
-// 			pcbMasCorto = pcbAux->estimacion_rafaga;
-// 			indiceElegido = i;
-// 		}
-
-// 	}
-
-// 	pcbSeleccionado = list_remove(colaReady,indiceElegido);
-
-// 	return pcbSeleccionado;
-// }
-
-// void asignarEstimacionesApcbs(){
-
-// 	int tamanioReady = list_size(colaReady);
-
-	/*for(int i = 0; i < tamanioReady; i++){
-		pcb* pcb = list_get(colaReady,i);
-		float realAnterior = pcb->instrucciones[(pcb->program_counter)-1]
-		pcb->estimacion_rafaga = calculoEstimacionpcb(realAnterior); // le paso a calculoEstimacionpcb la rafaga real anterior
-	}*/
-//}  revisar bien esta funcion
-
-// float calculoEstimacionpcb(float realAnterior){
-
-// 	float alfa;
-// 	float estimacionInicial;
-
-// 	float estimacion_rafaga = alfa * realAnterior + (1 - alfa) * estimacionInicial;
-
-// 	return estimacion_rafaga;
-// }
-
-
-// void agregarABlocked(pcb* pcb){		
+// void agregarABlocked(pcb* proceso){
 
 // 	sem_wait(&contadorExec);
 
 // 	pthread_mutex_lock(&mutexBlocked);
 
-// 	list_add(listaBlock, pcb);
-// 	log_info(logger, "[BLOCKED] Entra el procso de PID: %d a la cola.", pcb->id_pcb);
+// 	list_add(listaBlock, proceso);
+// 	log_info(logger, "[BLOCKED] Entra el procso de PID: %d a la cola.", proceso->id_proceso);
 
 // 	pthread_mutex_unlock(&mutexBlocked);
 // 	sem_post(&contadorBlock);

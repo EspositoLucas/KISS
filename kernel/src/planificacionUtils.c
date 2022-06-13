@@ -2,10 +2,10 @@
 
 // CONFIG_ALGORITMO
 
-//t_algoritmo_planificacion obtener_algoritmo(){
+//algoritmo obtener_algoritmo(){
 //
-// 	 t_algoritmo_planificacion switcher;
-// 	 char* algoritmo = obtener_de_config(config, "ALGORITMO_PLANIFICACION");
+// 	 algoritmo switcher;
+// 	 char* algoritmo = obtener_de_config(config_valores_kernel, "ALGORITMO_PLANIFICACION");
 //
 // 	    //FIFO
 // 	 if (strcmp(algoritmo,"FIFO") == 0)
@@ -142,3 +142,78 @@
 //     list_clean_and_destroy_elements(unaLista, free);
 //     list_destroy(unaLista);
 // }
+
+
+// --------------------------------------------------- FUNCIONES CORTO PLAZO ----------------------------------------------------------
+//pcb* obtenerSiguienteReady(){
+//	pcb* procesoSeleccionado;
+//
+//	int tamanioReady;
+// 	tamanioReady = list_size(colaReady);
+// 	int gradoMultiprogramacion;
+// 	algoritmo algoritmo = obtener_algoritmo();
+// 	int ejecutando = list_size(colaExec);
+//
+//
+// 	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
+// 		switch(algoritmo){
+// 		case FIFO:
+// 			procesoSeleccionado = obtenerSiguienteFIFO();
+// 			break;
+// 		case SRT:
+// 			procesoSeleccionado = obtenerSiguienteSRT();
+// 			break;
+// 		}
+// 	}
+// 	return procesoSeleccionado;
+// }
+//
+// pcb* obtenerSiguienteFIFO(){
+// 	log_info(logger,"Inicio la planificacion FIFO");
+// 	pcb* procesoSeleccionado = list_remove(colaReady,0);
+//	return procesoSeleccionado;
+//
+//}
+//
+//pcb* obtenerSiguienteSRT(){
+// 	log_info(logger,"Inicio la planificacion SRT");
+// 	asignarEstimacionesAProcesos();
+// 	pcb* procesoElegido = elegirElDeMenorEstimacion();
+// 	return procesoElegido;
+// }
+//
+//pcb* elegirElDeMenorEstimacion(){
+//	int tamanioReady = list_size(colaReady);
+//	pcb* procesoSeleccionado;
+//	pcb* procesoAux;
+//	int indiceElegido = 0;
+//	float procesoMasCorto;
+//	procesoMasCorto = procesoAux->estimacion_rafaga;
+//	for(int i = 0; i < tamanioReady; i++){
+//		pcb* procesoAux = list_get(colaReady,i);
+//		if(procesoMasCorto > procesoAux->estimacion_rafaga){
+//			procesoMasCorto = procesoAux->estimacion_rafaga;
+//			indiceElegido = i;
+//		}
+//	}
+//
+//	procesoSeleccionado = list_remove(colaReady,indiceElegido);
+//
+//	return procesoSeleccionado;
+//}
+//
+//void asignarEstimacionesAProcesos(){
+// 	int tamanioReady = list_size(colaReady);
+//	for(int i = 0; i < tamanioReady; i++){
+//		pcb* proceso = list_get(colaReady,i);
+//		float realAnterior;
+//		proceso->estimacion_rafaga = calculoEstimacionProceso(realAnterior); // le paso a calculoEstimacionProceso la rafaga real anterior
+//	};
+//}  //revisar bien esta funcion
+//
+//float calculoEstimacionProceso(float realAnterior){
+//	float alfa;
+//	float estimacionInicial;
+//	float estimacion_rafaga = alfa * realAnterior + (1 - alfa) * estimacionInicial;
+//	return estimacion_rafaga;
+}
