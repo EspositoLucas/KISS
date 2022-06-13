@@ -270,9 +270,9 @@ void enviarPcb(pcb* proceso,int socket_cliente){
 pcb* recibir_pcb(int socket_cliente){
 	int size;
 	void *stream;
-	pcb* recibido=malloc(sizeof(pcb));
+	pcb* recibido;
 	stream= recibir_stream(&size, socket_cliente);
-	deserializar_pcb(stream,recibido);
+	recibido=deserializar_pcb(stream);
 	free(stream);
 	return recibido;
 }
@@ -345,8 +345,9 @@ void *serializar_pcb(pcb* pcb)
 
 ///----------------------------------DESERIALIZAR PCB ----------------------------------
 
-void deserializar_pcb(void* stream,pcb* pcb) {
+pcb* deserializar_pcb(void* stream) {
 
+	pcb* pcb=malloc(sizeof(pcb));
 	//Deserializar los campos int, double  y float
 
     memcpy(&(pcb->id_proceso), stream, sizeof(uint32_t));
@@ -389,6 +390,7 @@ void deserializar_pcb(void* stream,pcb* pcb) {
         list_add(pcb->instrucciones,instruccion_deserializar);
         free(instruccion_deserializar);
     }
+    return pcb;
 }
 
 

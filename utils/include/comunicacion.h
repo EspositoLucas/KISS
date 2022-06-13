@@ -27,8 +27,8 @@ typedef enum
 	PCB,
 	MARCO,
 	TABLA,
-	HANDSHAKE
-    // TABLA_PAGINAS
+	HANDSHAKE,
+	INSTRUCCION_MEMORIA
 } op_code;
 
 typedef enum
@@ -124,7 +124,7 @@ t_buffer *serializar_paquete(t_paquete *);
 void eliminar_paquete(t_paquete *);
 pcb *recibir_paquete_instrucciones(int );
 //pcb* deserializar_pcb(t_buffer*);
-void deserializar_pcb(void* stream,pcb* pcb);
+pcb* deserializar_pcb(void* stream);
 void *serializar_pcb(pcb*);
 pcb *armar_pcb(t_buffer* buffer);
 pcb* recibir_pcb(int socket_cliente);

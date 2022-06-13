@@ -5,7 +5,6 @@
 #include "cpu.h"
 
 
-
 int obtener_algoritmo();
 void crear_tlb();
 uint32_t buscar_en_la_tlb(uint32_t pagina);

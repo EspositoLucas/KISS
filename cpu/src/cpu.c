@@ -1,13 +1,12 @@
 #include <cpu.h>
 
 
-//sem_t pedidofin;
 ///SEMAFOROS
 pthread_mutex_t pedidofin;
 
 
 ///VARIABLES GLOBALES
-int parar_proceso;
+int parar_proceso=0;
 
 int main()
 {
@@ -15,9 +14,7 @@ int main()
 	logger = log_create("log.log", "Servidor CPU", 1, LOG_LEVEL_DEBUG);
 	config= iniciar_config("cfg/cpu.config");
 	pcb* pcb_recibido=malloc(sizeof(pcb));
-	//sem_init(&pedidofin,0,1);
-	pthread_mutex_init(&pedidofin,NULL);
-	parar_proceso=0;
+	pthread_mutex_init(&pedidofin,NULL);//INICIA EL MUTEX QUE ENGLOBA A parar_proceso
 
 	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");
 	config_valores_cpu.reemplazo_tlb=config_get_string_value(config,"REEMPLAZO_TLB");
@@ -25,13 +22,17 @@ int main()
 	config_valores_cpu.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_cpu.puerto_memoria=config_get_string_value(config,"PUERTO_MEMORIA");
 	config_valores_cpu.puerto_escucha_dispatch=config_get_string_value(config,"PUERTO_ESCUCHA_DISPATCH");
-	config_valores_cpu.puerto_escucha_interrupt=config_get_string_value(config,"PUERTO_ESCUCHA_INTERRUPT");
+	config_valores_cpu.puerto_escucha_interrupt=config_get_string_value(config,"PUERTO_ESCUCHA_INTERRUPT");//LEE Y GUARDA LA CONFIGURACION DESDE cpu.cfg
 
 	///HANDSHAKE
 
 	pthread_t conexion_memoria_i;
-	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,&config_valores_cpu.puerto_memoria);
-	pthread_join(conexion_memoria_i,NULL);
+	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,&config_valores_cpu.puerto_memoria);//INICIA EL HILO DE CONEXION INICIAL CON MEMORIA (HANDSHAKE)
+	pthread_join(conexion_memoria_i,NULL);//ESPERA A RECIBIR EL HANDSHAKE PARA SEGUIR
+
+	//INTERRUPCIONES
+	pthread_t manejoInterrupciones;
+	pthread_create(&manejoInterrupciones,NULL,interrupt,&config_valores_cpu.puerto_escucha_interrupt);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
 
 	///INICIA LA TLB
 
@@ -51,9 +52,10 @@ int main()
         switch (cod_op)
         {
         case PCB:
+        	parar_proceso=0;//INICIA EL CONTADOR DE PARAR PROCESO
         	pcb_recibido = recibir_pcb(cliente_fd);
         	log_info(logger,"Recibi PCB de Id: %d",pcb_recibido->id_proceso);
-        	fetch(pcb_recibido,cliente_fd);
+        	ciclo_de_instruccion(pcb_recibido,cliente_fd);//INICIA EL CICLO DE INSTRUCCION
             break;
         case -1:
             log_error(logger, "Fallo la comunicacion. Abortando");
@@ -67,26 +69,24 @@ int main()
     return EXIT_SUCCESS;
 }
 
-void* fetch(pcb* PCB,int socket_kernel){
+void* ciclo_de_instruccion(pcb* PCB,int socket_kernel){//ESTRUCTURA PRINCIPAL DEL CICLO DE INSTRUCCION
 instruccion* instruccionProxima;
-pthread_t manejoInterrupciones;
 parar_proceso=0;
-pthread_create(&manejoInterrupciones,NULL,interrupt,&config_valores_cpu.puerto_escucha_interrupt);
+
 log_info(logger, "Se creo hilo para recibir interrupciones");
 while((int)PCB->program_counter <list_size(PCB->instrucciones)){
-	instruccionProxima = list_get(PCB->instrucciones,(int)PCB->program_counter);
-	decode(instruccionProxima,PCB);
-	PCB->program_counter++;
-	if(checkInterrupt()==1){
+	instruccionProxima = list_get(PCB->instrucciones,(int)PCB->program_counter);//FETCH
+	decode(instruccionProxima,PCB);//DECODE (CON EXECUTE INCLUIDO)
+	PCB->program_counter++;//ACTUALIZA EL PCB
+	if(checkInterrupt()==1){//SE FIJA QUE NO HAYA PEDIDO DE PARAR EL PROCESO ANTES DE SEGUIR CON EL CICLO DE INSTRUCCION
 		enviarPcb(PCB,socket_kernel);
-		pthread_cancel(manejoInterrupciones);
 		return NULL;
 	}
 }
 return NULL;
 }
 
-void decode(instruccion* instruccion,pcb* PCB){
+void decode(instruccion* instruccion,pcb* PCB){//IDENTIFICA EL TIPO DE INSTRUCCION Y LO ENVIA A SU EXECUTE CORRESPONDIENTE
 
 switch(instruccion->codigo){
 case NO_OP:
@@ -98,6 +98,15 @@ break;
 case EXIT:
 		ejecutarEXIT(PCB);
 break;
+case READ:
+		ejecutarREAD(instruccion->parametro1,PCB);
+	break;
+case WRITE:
+		ejecutarWRITE(instruccion->parametro1,instruccion->parametro2,PCB);
+	break;
+case COPY:
+		ejecutarCOPY(instruccion->parametro1,instruccion->parametro2,PCB);
+	break;
 default:break;
 }
 
@@ -118,17 +127,59 @@ pthread_mutex_unlock(&pedidofin);
 log_info(logger, "Se ejecuto instruccion I/O");
 }
 
-/*void ejecutarREAD(dirLogica){
-
+void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
+	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
+	t_paquete* paquete=crear_paquete();
+	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
+	agregar_entero_a_paquete(paquete,READ);
+	agregar_entero_a_paquete(paquete,dir_fisica);
+	enviar_paquete(paquete,socket_memoria);
+	free(paquete);
+	int i=0;
+	int size;
+	uint32_t valor_leido;
+	while(1){
+		int cod_op = recibir_operacion(socket_memoria);
+		switch (cod_op){
+		case PAQUETE:
+			valor_leido=(uint32_t)recibir_stream(&size,socket_memoria);
+			printf("Valor leido de memoria: %d",valor_leido);
+			break;
+		case -1:
+		     log_error(logger, "Fallo la comunicacion. Abortando");
+		     break;
+		default:
+		     log_warning(logger, "Operacion desconocida");
+		     break;
+		}
+		if(i==1){
+			break;
+		}
+	}
 }
 
-void ejecutarWRITE(dirLogica,valor){
-
+void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
+	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
+	t_paquete* paquete=crear_paquete();
+	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
+	agregar_entero_a_paquete(paquete,WRITE);
+	agregar_entero_a_paquete(paquete,dir_fisica);
+	agregar_entero_a_paquete(paquete,valor);
+	enviar_paquete(paquete,socket_memoria);
+	free(paquete);
 }
 
-void ejecutarCOPY(dirLogicaDestino,dirLogicaOrigen){
-
-}*/
+void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
+	uint32_t dir_fisica_destino=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaDestino);
+	uint32_t dir_fisica_origen=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaOrigen);
+	t_paquete* paquete=crear_paquete();
+	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
+	agregar_entero_a_paquete(paquete,COPY);
+	agregar_entero_a_paquete(paquete,dir_fisica_destino);
+	agregar_entero_a_paquete(paquete,dir_fisica_origen);
+	enviar_paquete(paquete,socket_memoria);
+	free(paquete);
+}
 
 void ejecutarEXIT(pcb* PCB){
 PCB->estado_proceso=FINALIZADO;

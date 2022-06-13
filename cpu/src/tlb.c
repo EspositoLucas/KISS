@@ -40,6 +40,7 @@ void tlb_hit(traduccion_t* traduccion){
 			break;
 		case LRU:
 			traduccion->turno_reemplazo=0;
+			list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);
 			break;
 		default:
 			break;
@@ -93,11 +94,11 @@ void agregar_a_tlb_fifo(traduccion_t* traduccion){
 	list_map(tlb->lista,restar_uno_al_turno_de_reemplazo);//LE RESTA 1 A LOS turno_reemplazo DE TODOS LOS DE LA LISTA (EXPLICACION linea 83)
 	a_reemplazar->marco=traduccion->marco;//REEMPLAZA EL VALOR DE MARCO
 	a_reemplazar->pagina=traduccion->pagina;//REEMPLAZA EL VALOR DE PAGINA
-	a_reemplazar->turno_reemplazo=cantidad_de_traducciones;//ASIGNA cantidad_de_traducciones COMO turno_reemplazo  QUE ES IGUAL A
+	a_reemplazar->turno_reemplazo=cantidad_de_traducciones-1;//ASIGNA cantidad_de_traducciones COMO turno_reemplazo  QUE ES IGUAL A
 														   //LA CANTIDAD MAXIMA DE TRADUCCIONES PARA QUE SEA EL ULTIMO EN REEMPLAZARSE
 }
 void agregar_a_tlb_lru(traduccion_t* traduccion){
-	traduccion_t* a_reemplazar=list_find(tlb->lista,encontrar_fifo);//ENCUENTRA EL ULTIMO EN USARSE
+	traduccion_t* a_reemplazar=list_find(tlb->lista,encontrar_lru);//ENCUENTRA EL ULTIMO EN USARSE
 	list_map(tlb->lista,sumar_uno_al_turno_de_reemplazo);//LE SUMA 1 A LOS turno_reemplazo DE TODOS LOS DE LA LISTA (EXPLICACION linea 88)
 	a_reemplazar->marco=traduccion->marco;//REEMPLAZA EL VALOR DE MARCO
 	a_reemplazar->pagina=traduccion->pagina;//REEMPLAZA EL VALOR DE PAGINA
@@ -116,6 +117,10 @@ traduccion_t* sumar_uno_al_turno_de_reemplazo(traduccion_t* trad){
 }
 bool encontrar_fifo(traduccion_t* trad){
 	bool respuesta= trad->turno_reemplazo==0;
+	return respuesta;
+}
+bool encontrar_lru(traduccion_t* trad){
+	bool respuesta=trad->turno_reemplazo==config_valores_cpu.entradas_tlb-1;
 	return respuesta;
 }
 bool pagina_se_encuentra_en_tlb(traduccion_t* trad){
