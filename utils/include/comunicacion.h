@@ -28,7 +28,8 @@ typedef enum
 	MARCO,
 	TABLA,
 	HANDSHAKE,
-	INSTRUCCION_MEMORIA
+	INSTRUCCION_MEMORIA,
+	INTERRUPCION
 } op_code;
 
 typedef enum

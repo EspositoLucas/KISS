@@ -216,4 +216,11 @@
 //	float estimacionInicial;
 //	float estimacion_rafaga = alfa * realAnterior + (1 - alfa) * estimacionInicial;
 //	return estimacion_rafaga;
-}
+//}
+
+//void interrumpir_cpu(){
+//	t_paquete *paqueteAEnviar = crear_paquete_con_codigo_de_operacion(INTERRUPCION);
+//	enviar_paquete(paqueteAEnviar, socket_interrupt);
+//	eliminar_paquete(paquete);
+
+//}

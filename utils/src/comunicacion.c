@@ -159,7 +159,7 @@ t_paquete *crear_paquete(void){
 
 //paquete con cualquier codigo de operacion
 
-t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
+t_paquete *crear_paquete_con_codigo_de_operacion(op_code codigo){
     t_paquete *paquete = malloc(sizeof(t_paquete));
 
     paquete->codigo_operacion = codigo;

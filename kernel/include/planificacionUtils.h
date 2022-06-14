@@ -37,6 +37,7 @@
 //void destruir_semaforos(void);
 //void destruir_listas(void);
 //void destruirListaYElementos(t_list* );
+void interrumpir_cpu();
 
 // VARIABLES
 
