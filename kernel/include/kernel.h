@@ -42,11 +42,7 @@ arch_config config_valores_kernel ;
 //     int socket_anterior; 
 // } t_conexiones; // para el manejo de las conexiones entre los clientes que se vayan conectando y tener referencia el ultimo y proximo que se conecto
 
-typedef struct
-{
-    uint32_t tamanio_proceso;
-    t_list* instrucciones; 
-} t_consola;
+
 
 // FUNCIONES
 

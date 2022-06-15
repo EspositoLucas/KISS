@@ -59,6 +59,11 @@ typedef struct {
     uint32_t parametro2;
 }instruccion;
 
+typedef struct
+{
+    uint32_t tamanio_proceso;
+    t_list* instrucciones;
+} t_consola;
 
 typedef struct {
     uint32_t id_proceso;
@@ -143,7 +148,6 @@ void* serializar_paquete_con_bytes(t_paquete* , int );
 t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
 void agregar_a_paquete(t_paquete *, void *, uint32_t);
 void agregar_a_buffer(t_buffer *, void *, uint32_t);
-t_paquete *serializar_instrucciones(t_list *, op_code);
 t_buffer *buffer_vacio(void);
 
 t_handshake* recibir_handshake(int);

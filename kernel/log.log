@@ -478,3 +478,20 @@
 [WARNING] 21:13:00:431 Servidor Kernel/(29037:29037): Operacion desconocida
 [WARNING] 21:13:02:732 Servidor Kernel/(29037:29037): Operacion desconocida
 [WARNING] 21:13:05:270 Servidor Kernel/(29037:29037): Operacion desconocida
+[INFO] 20:43:22:929 Servidor Kernel/(8009:8009): Kernel listo para recibir al modulo cliente
+[INFO] 20:43:32:088 Servidor Kernel/(8009:8009): Se conecto un cliente a kernel
+[INFO] 20:43:38:612 Servidor Kernel/(8009:8009): Me llego el tamanio y las instrucciones
+
+[INFO] 20:46:48:251 Servidor Kernel/(8152:8152): Kernel listo para recibir al modulo cliente
+[INFO] 20:46:59:936 Servidor Kernel/(8152:8152): Se conecto un cliente a kernel
+[INFO] 20:47:03:142 Servidor Kernel/(8152:8152): Me llego el tamanio y las instrucciones
+
+[INFO] 20:48:05:221 Servidor Kernel/(8234:8234): Kernel listo para recibir al modulo cliente
+[INFO] 20:48:18:374 Servidor Kernel/(8268:8268): Kernel listo para recibir al modulo cliente
+[INFO] 20:48:23:769 Servidor Kernel/(8268:8268): Se conecto un cliente a kernel
+[INFO] 20:48:25:064 Servidor Kernel/(8268:8268): Me llego el tamanio y las instrucciones
+
+[INFO] 20:50:03:984 Servidor Kernel/(8394:8394): Kernel listo para recibir al modulo cliente
+[INFO] 20:50:09:184 Servidor Kernel/(8394:8394): Se conecto un cliente a kernel
+[INFO] 20:50:13:240 Servidor Kernel/(8394:8394): Me llego el tamanio y las instrucciones
+

@@ -37130,3 +37130,53 @@
 
 [WARNING] 14:37:04:642 Servidor Kernel/(28465:28465): Operacion desconocida
 [ERROR] 14:37:04:642 Servidor Kernel/(28465:28465): Fallo la comunicacion. Abortando
+[INFO] 20:18:13:993 Servidor Kernel/(7209:7209): Kernel listo para recibir al modulo cliente
+[INFO] 20:18:24:811 Servidor Kernel/(7209:7209): Se conecto un cliente a kernel
+[INFO] 20:18:24:821 Servidor Kernel/(7209:7209): Me llego el tamanio y las instrucciones
+
+[INFO] 20:20:26:568 Servidor Kernel/(7284:7284): Kernel listo para recibir al modulo cliente
+[INFO] 20:20:32:036 Servidor Kernel/(7284:7284): Se conecto un cliente a kernel
+[INFO] 20:20:32:042 Servidor Kernel/(7284:7284): Me llego el tamanio y las instrucciones
+
+[INFO] 20:25:37:794 Servidor Kernel/(7445:7445): Kernel listo para recibir al modulo cliente
+[INFO] 20:25:42:674 Servidor Kernel/(7445:7445): Se conecto un cliente a kernel
+[INFO] 20:25:42:681 Servidor Kernel/(7445:7445): Me llego el tamanio y las instrucciones
+
+[INFO] 20:27:40:547 Servidor Kernel/(7511:7511): Kernel listo para recibir al modulo cliente
+[INFO] 20:27:45:448 Servidor Kernel/(7511:7511): Se conecto un cliente a kernel
+[INFO] 20:27:45:455 Servidor Kernel/(7511:7511): Me llego el tamanio y las instrucciones
+
+[INFO] 20:33:21:412 Servidor Kernel/(7639:7639): Kernel listo para recibir al modulo cliente
+[INFO] 20:33:26:082 Servidor Kernel/(7639:7639): Se conecto un cliente a kernel
+[INFO] 20:33:26:087 Servidor Kernel/(7639:7639): Me llego el tamanio y las instrucciones
+
+[INFO] 20:33:52:007 Servidor Kernel/(7679:7679): Kernel listo para recibir al modulo cliente
+[INFO] 20:33:57:519 Servidor Kernel/(7679:7679): Se conecto un cliente a kernel
+[INFO] 20:33:57:525 Servidor Kernel/(7679:7679): Me llego el tamanio y las instrucciones
+
+[INFO] 20:34:38:159 Servidor Kernel/(7730:7730): Kernel listo para recibir al modulo cliente
+[INFO] 20:34:42:664 Servidor Kernel/(7730:7730): Se conecto un cliente a kernel
+[INFO] 20:34:42:671 Servidor Kernel/(7730:7730): Me llego el tamanio y las instrucciones
+
+[INFO] 20:36:02:098 Servidor Kernel/(7757:7757): Kernel listo para recibir al modulo cliente
+[INFO] 20:36:06:865 Servidor Kernel/(7757:7757): Se conecto un cliente a kernel
+[INFO] 20:36:06:869 Servidor Kernel/(7757:7757): Me llego el tamanio y las instrucciones
+
+[INFO] 20:40:22:270 Servidor Kernel/(7909:7909): Kernel listo para recibir al modulo cliente
+[INFO] 20:40:26:576 Servidor Kernel/(7909:7909): Se conecto un cliente a kernel
+[INFO] 20:40:26:577 Servidor Kernel/(7909:7909): Me llego el tamanio y las instrucciones
+
+[INFO] 20:40:26:577 Servidor Kernel/(7909:7909): PCB listo para armar
+
+[INFO] 20:40:26:577 Servidor Kernel/(7909:7909): PCB creado
+
+[ERROR] 20:40:26:582 Servidor Kernel/(7909:7909): Fallo la comunicacion. Abortando
+[INFO] 20:51:04:333 Servidor Kernel/(8454:8454): Kernel listo para recibir al modulo cliente
+[INFO] 20:51:15:867 Servidor Kernel/(8454:8454): Se conecto un cliente a kernel
+[INFO] 20:51:15:868 Servidor Kernel/(8454:8454): Me llego el tamanio y las instrucciones
+
+[INFO] 20:51:15:868 Servidor Kernel/(8454:8454): PCB listo para armar
+
+[INFO] 20:51:15:868 Servidor Kernel/(8454:8454): PCB creado
+
+[ERROR] 20:51:15:871 Servidor Kernel/(8454:8454): Fallo la comunicacion. Abortando

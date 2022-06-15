@@ -1043,3 +1043,119 @@
 
 [INFO] 21:14:21:970 consola/(29227:29227): Me conecte al kernel
 
+[INFO] 20:18:24:798 consola/(7236:7236): INICIANDO CONSOLA
+[INFO] 20:18:24:810 consola/(7236:7236): Instrucciones parseadas correctamente
+
+[INFO] 20:18:24:811 consola/(7236:7236): Me conecte al kernel
+
+[INFO] 20:18:24:822 consola/(7236:7236): Envie el paquete y termine el programa
+
+[INFO] 20:20:32:033 consola/(7290:7290): INICIANDO CONSOLA
+[INFO] 20:20:32:036 consola/(7290:7290): Instrucciones parseadas correctamente
+
+[INFO] 20:20:32:036 consola/(7290:7290): Me conecte al kernel
+
+[INFO] 20:20:32:043 consola/(7290:7290): Envie el paquete y termine el programa
+
+[INFO] 20:25:42:671 consola/(7461:7461): INICIANDO CONSOLA
+[INFO] 20:25:42:674 consola/(7461:7461): Instrucciones parseadas correctamente
+
+[INFO] 20:25:42:674 consola/(7461:7461): Me conecte al kernel
+
+[INFO] 20:25:42:682 consola/(7461:7461): Envie el paquete y termine el programa
+
+[INFO] 20:27:45:445 consola/(7527:7527): INICIANDO CONSOLA
+[INFO] 20:27:45:447 consola/(7527:7527): Instrucciones parseadas correctamente
+
+[INFO] 20:27:45:448 consola/(7527:7527): Me conecte al kernel
+
+[INFO] 20:27:45:455 consola/(7527:7527): Envie el paquete y termine el programa
+
+[INFO] 20:33:26:079 consola/(7645:7645): INICIANDO CONSOLA
+[INFO] 20:33:26:082 consola/(7645:7645): Instrucciones parseadas correctamente
+
+[INFO] 20:33:26:082 consola/(7645:7645): Me conecte al kernel
+
+[INFO] 20:33:26:087 consola/(7645:7645): Envie el paquete y termine el programa
+
+[INFO] 20:33:57:515 consola/(7686:7686): INICIANDO CONSOLA
+[INFO] 20:33:57:518 consola/(7686:7686): Instrucciones parseadas correctamente
+
+[INFO] 20:33:57:519 consola/(7686:7686): Me conecte al kernel
+
+[INFO] 20:33:57:526 consola/(7686:7686): Envie el paquete y termine el programa
+
+[INFO] 20:34:42:660 consola/(7736:7736): INICIANDO CONSOLA
+[INFO] 20:34:42:664 consola/(7736:7736): Instrucciones parseadas correctamente
+
+[INFO] 20:34:42:664 consola/(7736:7736): Me conecte al kernel
+
+[INFO] 20:34:42:671 consola/(7736:7736): Envie el paquete y termine el programa
+
+[INFO] 20:36:06:863 consola/(7764:7764): INICIANDO CONSOLA
+[INFO] 20:36:06:865 consola/(7764:7764): Instrucciones parseadas correctamente
+
+[INFO] 20:36:06:865 consola/(7764:7764): Me conecte al kernel
+
+[INFO] 20:36:06:869 consola/(7764:7764): Envie el paquete y termine el programa
+
+[INFO] 20:40:26:555 Consola/(7916:7916): Iniciando consola
+
+[INFO] 20:40:26:575 Consola/(7916:7916): Instrucciones parseadas correctamente
+
+[INFO] 20:40:26:576 Consola/(7916:7916): Conexion exitosa con kernel.
+
+[INFO] 20:40:26:576 Consola/(7916:7916): Paquete enviado correctamente.
+
+[INFO] 20:40:26:578 Consola/(7916:7916): Terminando programa.
+
+[INFO] 20:43:27:799 Consola/(8027:8027): Iniciando consola
+
+[INFO] 20:43:27:801 Consola/(8027:8027): Instrucciones parseadas correctamente
+
+[INFO] 20:43:27:802 Consola/(8027:8027): Conexion exitosa con kernel.
+
+[INFO] 20:43:27:802 Consola/(8027:8027): Paquete enviado correctamente.
+
+[INFO] 20:43:27:802 Consola/(8027:8027): Terminando programa.
+
+[INFO] 20:46:54:876 Consola/(8170:8170): Iniciando consola
+
+[INFO] 20:46:54:878 Consola/(8170:8170): Instrucciones parseadas correctamente
+
+[INFO] 20:46:54:879 Consola/(8170:8170): Conexion exitosa con kernel.
+
+[INFO] 20:46:54:881 Consola/(8170:8170): Paquete enviado correctamente.
+
+[INFO] 20:46:54:881 Consola/(8170:8170): Terminando programa.
+
+[INFO] 20:48:21:682 Consola/(8287:8287): Iniciando consola
+
+[INFO] 20:48:21:687 Consola/(8287:8287): Instrucciones parseadas correctamente
+
+[INFO] 20:48:21:687 Consola/(8287:8287): Conexion exitosa con kernel.
+
+[INFO] 20:48:21:687 Consola/(8287:8287): Paquete enviado correctamente.
+
+[INFO] 20:48:21:687 Consola/(8287:8287): Terminando programa.
+
+[INFO] 20:50:07:671 Consola/(8416:8416): Iniciando consola
+
+[INFO] 20:50:07:674 Consola/(8416:8416): Instrucciones parseadas correctamente
+
+[INFO] 20:50:07:675 Consola/(8416:8416): Conexion exitosa con kernel.
+
+[INFO] 20:50:07:676 Consola/(8416:8416): Paquete enviado correctamente.
+
+[INFO] 20:50:07:677 Consola/(8416:8416): Terminando programa.
+
+[INFO] 20:51:15:852 Consola/(8467:8467): Iniciando consola
+
+[INFO] 20:51:15:867 Consola/(8467:8467): Instrucciones parseadas correctamente
+
+[INFO] 20:51:15:867 Consola/(8467:8467): Conexion exitosa con kernel.
+
+[INFO] 20:51:15:868 Consola/(8467:8467): Paquete enviado correctamente.
+
+[INFO] 20:51:15:869 Consola/(8467:8467): Terminando programa.
+
