@@ -12,17 +12,12 @@ int main()
 {
 
 	logger = log_create("log.log", "Servidor CPU", 1, LOG_LEVEL_DEBUG);
-	config= iniciar_config("cfg/cpu.config");
 	pcb* pcb_recibido=malloc(sizeof(pcb));
 	pthread_mutex_init(&pedidofin,NULL);//INICIA EL MUTEX QUE ENGLOBA A parar_proceso
 
-	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");
-	config_valores_cpu.reemplazo_tlb=config_get_string_value(config,"REEMPLAZO_TLB");
-	config_valores_cpu.retardo_NOOP=config_get_int_value(config,"RETARDO_NOOP");
-	config_valores_cpu.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
-	config_valores_cpu.puerto_memoria=config_get_string_value(config,"PUERTO_MEMORIA");
-	config_valores_cpu.puerto_escucha_dispatch=config_get_string_value(config,"PUERTO_ESCUCHA_DISPATCH");
-	config_valores_cpu.puerto_escucha_interrupt=config_get_string_value(config,"PUERTO_ESCUCHA_INTERRUPT");//LEE Y GUARDA LA CONFIGURACION DESDE cpu.cfg
+	///CARGA LA CONFIGURACION DE LA CPU
+	cargar_config();
+
 
 	///HANDSHAKE
 
@@ -40,7 +35,7 @@ int main()
 
 	///CREA LA CONEXION CON EL KERNEL
 
-	int server_fd = iniciar_servidor(IP_CPU,config_valores_cpu.puerto_escucha_dispatch);
+	int server_fd = iniciar_servidor(config_valores_cpu.ip_cpu,config_valores_cpu.puerto_escucha_dispatch);
     log_info(logger, "CPU listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(logger,"cpu",server_fd);
 
@@ -249,4 +244,18 @@ void* conexion_inicial_memoria(void* puerto_memoria){
 	}
 	return NULL;
 }
+///CARGAR CONFIGURACION A CPU
+void cargar_config(){
+	config= iniciar_config("cfg/cpu.config");
 
+	config_valores_cpu.ip_cpu=config_get_string_value(config,"IP_CPU");
+	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");
+	config_valores_cpu.reemplazo_tlb=config_get_string_value(config,"REEMPLAZO_TLB");
+	config_valores_cpu.retardo_NOOP=config_get_int_value(config,"RETARDO_NOOP");
+	config_valores_cpu.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
+	config_valores_cpu.puerto_memoria=config_get_string_value(config,"PUERTO_MEMORIA");
+	config_valores_cpu.puerto_escucha_dispatch=config_get_string_value(config,"PUERTO_ESCUCHA_DISPATCH");
+	config_valores_cpu.puerto_escucha_interrupt=config_get_string_value(config,"PUERTO_ESCUCHA_INTERRUPT");//LEE Y GUARDA LA CONFIGURACION DESDE cpu.cfg
+
+	config_destroy(config);
+}

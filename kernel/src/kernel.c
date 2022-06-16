@@ -120,7 +120,7 @@ void cargar_configuracion(char* path) {
 //.................................. CONEXIONES.............................................................................................
 
 
-  void manejo_conexiones(t_paquete* paquete , socket_kernel)
+  void manejo_conexiones(t_paquete* paquete ,int socket_kernel)
   {
 
 		while (1)

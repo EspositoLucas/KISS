@@ -217,6 +217,23 @@ t_list *recibir_paquete(int socket_cliente)
     free(stream);
     return valores;
 }
+t_paquete* recibe_paquetes(int socket){
+	int size;
+	int desplazamiento = 0;
+	void *stream;
+
+	op_code codigo=recibir_operacion(socket);
+	t_paquete* paquete=crear_paquete_con_codigo_de_operacion(codigo);
+
+	stream = recibir_stream(&size, socket);
+
+	memcpy(&paquete->buffer->stream_size, stream, sizeof(int));
+	memcpy(paquete->buffer->stream, stream + sizeof(int), paquete->buffer->stream_size);
+
+	free(stream);
+	return paquete;
+
+}
 
 void eliminar_paquete(t_paquete* paquete) {
     free(paquete->buffer->stream);
@@ -437,18 +454,19 @@ int atender_clientes(int socket_servidor, void (*manejo_conexiones)(t_paquete *,
 
 void ejecutar_instruccion(t_socket *conexion) {
 	t_paquete *paquete;
+	int socket=conexion->socket;
 
 	while(true) {
-		paquete = recibir_paquete(conexion->socket);
+		paquete = recibe_paquetes(socket);
 		if(error_conexion(paquete)) {
 	    	break;
 	    }
-	    conexion->manejo_conexiones(paquete,conexion->socket);
+	    conexion->manejo_conexiones(paquete,socket);
 	    eliminar_paquete(paquete);
 	}
 
 	eliminar_paquete(paquete);
-	cerrar_conexion(conexion->socket);
+	cerrar_conexion(socket);
 	eliminar_socket_conexion(conexion);
 }
 

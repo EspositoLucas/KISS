@@ -21,6 +21,7 @@ t_handshake* configuracion_tabla;
 
 typedef struct  // archivo de configuracion cpu
 {
+   char* ip_cpu;
    int entradas_tlb;
    char* reemplazo_tlb;
    int retardo_NOOP;

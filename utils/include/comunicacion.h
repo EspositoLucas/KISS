@@ -123,6 +123,24 @@ typedef struct {
 	void (*manejo_conexiones)(t_paquete *,int);
 } t_socket;
 
+typedef struct{
+	int indice;
+	int numero_de_tabla2;
+}t_p_1;
+
+typedef struct{
+	int indice;
+	int marco;
+	uint32_t pid;
+	bool u;
+	bool m;
+}t_p_2;
+
+typedef struct{
+	int id_tabla;
+	t_list* lista_marcos;
+}tabla_de_segundo_nivel;
+
 // FUNCIONES
 
 void *recibir_stream(int *, int);
@@ -158,5 +176,6 @@ void pedir_tabla_pagina(int,uint32_t,uint32_t);
 void pedir_marco(int,uint32_t,uint32_t);
 void pedir_handshake(int);
 
+void ejecutar_instruccion(t_socket *);
 
 #endif

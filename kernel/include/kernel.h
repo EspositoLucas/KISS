@@ -44,6 +44,6 @@ void cargar_configuracion(char*);
 //void inicializarPlanificacion(void);
 t_list *deserializar_instrucciones(t_list*, uint32_t );
 t_consola *deserializar_consola(int );
-
+void manejo_conexiones(t_paquete* ,int);
 
 #endif 
