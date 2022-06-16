@@ -413,3 +413,48 @@ void pedir_marco(int socket,uint32_t tabla,uint32_t entrada){
 	agregar_entero_a_paquete(paquete,entrada);
 	enviar_paquete(paquete,socket);
 }
+
+///----------------------------------ATENDER CLIENTES ----------------------------------
+
+int atender_clientes(int socket_servidor, void (*manejo_conexiones)(t_paquete *,int)) {
+	int socket_cliente ;
+    while(true) {
+    	 socket_cliente = esperar_cliente(socket_servidor);
+        if(socket_cliente == -1) {
+        	break;
+        }
+        pthread_t th_cliente;
+        t_socket *conexion = crear_socket_conexion(socket_cliente, manejo_conexiones);
+
+	    pthread_create(&th_cliente, NULL, (void *)ejecutar_instruccion, conexion);
+	    pthread_detach(th_cliente);
+    }
+
+    return socket_cliente;
+}
+
+// Para recibir paquete y usarlo al procesar las conexiones
+
+void ejecutar_instruccion(t_socket *conexion) {
+	t_paquete *paquete;
+
+	while(true) {
+		paquete = recibir_paquete(conexion->socket);
+		if(error_conexion(paquete)) {
+	    	break;
+	    }
+	    conexion->manejo_conexiones(paquete,conexion->socket);
+	    eliminar_paquete(paquete);
+	}
+
+	eliminar_paquete(paquete);
+	cerrar_conexion(conexion->socket);
+	eliminar_socket_conexion(conexion);
+}
+
+ t_socket *crear_t_socket_conexion(int socket_fd, void (*manejo_conexiones)(t_paquete *,int socket)) {
+    t_socket *conexion = malloc(sizeof(t_socket));
+    conexion->socket = socket_fd;
+    conexion->manejo_conexiones = manejo_conexiones;
+    return conexion;
+}

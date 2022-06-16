@@ -9,10 +9,6 @@
 #include "log_config.h"
 #include "sockets.h"
 
-// PUERTOS
-
-#define IP_MEMORIA "0.0.0.0"
-#define PUERTO_MEMORIA "8002"
 
 // STRUCTS/ENUMS
 
@@ -30,5 +26,7 @@
  } arch_config;
 
 arch_config config_valores_memoria;
+
+int socket_memoria;
 
 #endif

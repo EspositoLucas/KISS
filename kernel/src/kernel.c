@@ -2,52 +2,31 @@
 
 //.................................. INICIO_KERNEL.............................................................................................
 
+
 int main(void)
 {
     
-	// CARGAR CONFIG/SEM/LISTAS
 
-    // cargar_configuracion();
-    //manejar_clientes();
-    // inicializar_listas();
-	// inicializar_semaforos();
+     cargar_configuracion("cfg/kernel.config");
+     char* ip_kernel = config_valores_kernel.ip_kernel;
+     char* puerto_kernel = config_valores_kernel.puerto_escucha;
+
+    //manejo_conexiones();
+	//void inicializar_planificacion(void);
+
 
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 
-    int server_fd = iniciar_servidor(IP_KERNEL,PUERTO_KERNEL);
+    int server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
-    int cliente_fd = esperar_cliente(logger,"kernel",server_fd);
-    t_consola * consola ;
+
+    if(atender_clientes(socket_kernel, manejo_conexiones) == -1) {
+    		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
+    	}
 
 
-    while (1)
-    {
-    	int cod_op = recibir_operacion(cliente_fd);
-    	printf("%d ", cod_op);
-    	switch (cod_op) {
-    	case MENSAJE:
-    		recibir_mensaje(cliente_fd,logger);
-    		break;
-    	case PAQUETE_CONSOLA:
-    		log_info(logger, "Me llego el tamanio y las instrucciones\n");
-            consola = deserializar_consola(cliente_fd);
-            log_info(logger, "PCB listo para armar\n");
-            pcb* pcb = crear_estructura_pcb(consola);
-            log_info(logger, "PCB creado\n");
-            // inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
-    		break;
-    	case PAQUETE:
-    		log_info(logger, "Me llego el paquete:\n");
-    		break;
 
-        case -1:
-            log_error(logger, "Fallo la comunicacion. Abortando");
-            return EXIT_FAILURE;
-        default:
-            log_warning(logger, "Operacion desconocida");
-            break;
-        }
-    }
+
     return EXIT_SUCCESS;
 }
 
@@ -84,32 +63,30 @@ t_consola *deserializar_consola(int  socket_cliente) {
 //..................................CONFIGURACIONES.......................................................................
 
 
-//  void cargar_configuracion(void) {
+void cargar_configuracion(char* path) {
 
-//  	t_config* config = config_create("/cfg/kernel.config"); //Leo el archivo de configuracion
+      t_config* config = config_create(path); //Leo el archivo de configuracion
 
-//  	if (config == NULL) {
-//  		perror("Archivo de configuracion de kernel no encontrado");
-//  		return;
-//  	}
+      if (config == NULL) {
+          perror("Archivo de configuracion de kernel no encontrado");
+          return;
+      }
 
-//  	config_valores_kernel.ip_memoria = 			config_get_string_value(config, "IP_MEMORIA");
-//  	config_valores_kernel.ip_cpu = 		    config_get_string_value(config, "IP_CPU");
-//  	config_valores_kernel.algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
+      config_valores_kernel.ip_memoria = config_get_string_value(config, "IP_MEMORIA");
+      config_valores_kernel.ip_cpu = config_get_string_value(config, "IP_CPU");
+      config_valores_kernel.algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
+      config_valores_kernel.puerto_memoria =    config_get_int_value(config, "PUERTO_MEMORIA");
+      config_valores_kernel.puerto_cpu_dispatch = config_get_int_value(config, "PUERTO_CPU_DISPATCH");
+      config_valores_kernel.puerto_cpu_interrupt = config_get_int_value(config, "PUERTO_CPU_INTERRUPT");
+      config_valores_kernel.ip_kernel = config_get_string_value(config, "IP_KERNEL");
+      config_valores_kernel.puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
+      config_valores_kernel.estimacion_inicial = config_get_int_value(config, "GRADO_MULTIPROGRAMACION");
+      config_valores_kernel.grado_multiprogramacion = config_get_int_value(config, "ESTIMACION_INICIAL");
+      config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
+      config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
+      config_destroy(config);
 
-//  	config_valores_kernel.puerto_memoria =	config_get_int_value(config, 	"PUERTO_MEMORIA");
-//  	config_valores_kernel.puerto_cpu_dispatch = config_get_int_value(config, 	"PUERTO_CPU_DISPATCH");
-//  	config_valores_kernel.puerto_cpu_interrupt = config_get_int_value(config, "PUERTO_CPU_INTERRUPT");
-//  	config_valores_kernel.puerto_escucha = config_get_int_value(config, 	"PUERTO_ESCUCHA");
-//  	config_valores_kernel.estimacion_inicial = config_get_int_value(config, 	"GRADO_MULTIPROGRAMACION");
-//  	config_valores_kernel.grado_multiprogramacion = config_get_int_value(config, 	"ESTIMACION_INICIAL");
-//  	config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, 	"TIEMPO_MAXIMO_BLOQUEADO");
-//      config_valores_kernel.alfa = config_get_double_value(config, 	"ALFA");
-//  	config_destroy(config);
-
-
-
-//  }
+  }
 
 //void eliminar_configuracion(t_config* config) {
 
@@ -143,71 +120,44 @@ t_consola *deserializar_consola(int  socket_cliente) {
 //.................................. CONEXIONES.............................................................................................
 
 
-//  void manejar_conexion(t_buffer * buffer ,pcb* pcb)
-//  {
+  void manejo_conexiones(t_paquete* paquete , socket_kernel)
+  {
 
+		while (1)
+    {
+    	int cod_op = recibir_operacion(socket_kernel);
+    	printf("%d ", cod_op);
+    	switch (cod_op) {
+    	case MENSAJE:
+    		recibir_mensaje(socket_kernel,logger);
+    		break;
+    	case PAQUETE_CONSOLA:
+    		log_info(logger, "Me llego el tamanio y las instrucciones\n");
+            consola = deserializar_consola(socket_kernel);
+            log_info(logger, "PCB listo para armar\n");
+            pcb* pcb = crear_estructura_pcb(consola);
+            log_info(logger, "PCB creado\n");
+            // inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
+    		break;
+    	case PAQUETE:
+    		log_info(logger, "Me llego el paquete:\n");
+    		break;
 
-//     while (1)
-//     {
-//         int cod_op = recibir_operacion(cliente_fd);
-//         switch (cod_op)
-//         {
-//         case MENSAJE:
-//             recibir_mensaje(cliente_fd,logger);
-//             break;
-//         case PAQUETE:
-//             log_info(logger, "Me llego el tamanio del proceso y las instrucciones:\n");
-//             buffer = recibir_buffer_proceso(cliente_fd);
-//             pcb = armar_pcb(buffer);
-//             inicializar_planificacion(); // Una vez que se arma el pcb, se incicia la planificacion
-//             break;
-        
-
-//         case -1:
-//             log_error(logger, "Fallo la comunicacion. Abortando");
-//             return EXIT_FAILURE;
-//         default:
-//             log_warning(logger, "Operacion desconocida");
-//             break;
-//         }
-//     }
+        case -1:
+            log_error(logger, "Fallo la comunicacion. Abortando");
+            break;
+        default:
+            log_warning(logger, "Operacion desconocida");
+            break;
+        }
 		
-// }
+ }
 
 
 
 
-//..................................... HILOS............................................................................ 
 
 
-// MANEJO CLIENTE-SERVIDOR
-
-
-// void manejo_recepcion(int  server_fd) {
-// logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
-// server_fd = iniciar_servidor(IP_KERNEL,PUERTO_KERNEL);
-// log_info(logger, "Kernel listo para recibir al modulo cliente");
-
-// 	pthread_t manejo_recepcion;
-// 	pthread_create(&manejo_recepcion, NULL, (void*) manejar_clientes, (void*)server_fd);
-// 	pthread_detach(manejo_recepcion);
-// }
-
-
-// void manejar_clientes(int server_fd,int cliente_fd) //Thread para esperar clientes
-// {
-// 	while(1)
-// 	{
-    	// t_conexiones conexiones;
-		// conexiones.socket =  esperar_cliente(server_fd);
-		// conexiones.socket_anterior = 0;
-
-		// //Threads para recepcion / envio de info a clientes
-		// pthread_t t;
-		// pthread_create(&t, NULL, (void*) manejar_conexion, (void*) &conexiones,);
-		// pthread_detach(t);
-// 	}
-// }
 
 
 

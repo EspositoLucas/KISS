@@ -118,7 +118,10 @@ typedef struct{
 	uint32_t entradas;
 } t_handshake;
 
-
+typedef struct {
+	int socket;
+	void (*manejo_conexiones)(t_paquete *,int);
+} t_socket;
 
 // FUNCIONES
 
