@@ -153,6 +153,7 @@ void cargar_configuracion(char* path) {
 		
  }
 
+  }
 
 
 
