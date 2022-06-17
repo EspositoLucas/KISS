@@ -16,6 +16,7 @@
 #include<stdbool.h>
 #include "pthread.h"
 #include "semaphore.h"
+#include "sockets.h"
 
 // STRUCTS/ENUMS
 
@@ -182,5 +183,6 @@ void pedir_marco(int,uint32_t,uint32_t);
 void pedir_handshake(int);
 
 void ejecutar_instruccion(t_socket *);
+t_socket *crear_socket_conexion(int , void (*)());
 
 #endif

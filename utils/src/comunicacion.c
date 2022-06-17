@@ -468,8 +468,8 @@ void ejecutar_instruccion(t_socket *conexion) {
 	int socket=conexion->socket;
 
 	while(true) {
-		paquete = recibe_paquetes(socket);
-		if(error_conexion(paquete)) {
+		paquete = recibe_paquete(socket);
+		if(socket == -1) {
 	    	break;
 	    }
 	    conexion->manejo_conexiones(paquete,socket);
@@ -477,11 +477,11 @@ void ejecutar_instruccion(t_socket *conexion) {
 	}
 
 	eliminar_paquete(paquete);
-	cerrar_conexion(socket);
-	eliminar_socket_conexion(conexion);
+	liberar_conexion(socket);
+	free(conexion);
 }
 
- t_socket *crear_t_socket_conexion(int socket_fd, void (*manejo_conexiones)(t_paquete *,int socket)) {
+ t_socket *crear_socket_conexion(int socket_fd, void (*manejo_conexiones)(t_paquete *,int socket)) {
     t_socket *conexion = malloc(sizeof(t_socket));
     conexion->socket = socket_fd;
     conexion->manejo_conexiones = manejo_conexiones;
