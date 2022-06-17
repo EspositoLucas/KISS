@@ -176,7 +176,31 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //void estadoBlockeado(){
 //	while(1){
 //		sem_wait(&sem_blocked);
-//		//TODO
+//		uint32_t tiempoMaxDeBloqueo = config_valores_kernel.tiempo_maximo_bloqueado;
+//		//sem mutex cola blocked
+//		pcb* proceso = list_remove(colaBlocked,0);
+//		// sem mutex cola blocked
+//		uint32_t tiempoQueLLevaEnBlock = get_time() - tiempoInicioBlock; // DISCUTIR EL AGREGAR UN CAMPO DE TIEMPO INICIO BLOCK A LA PCB
+//
+//		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){
+//
+//			//suspender
+//			ejecutarIO(proceso->tiempo_de_bloqueo);
+//
+//		} else if (tiempoQueLLevaEnBlock + proceso->tiempo_de_bloqueo > tiempoMaxDeBloqueo){
+//
+//			uint32_t tiempoIOAntesDeSuspender = tiempoMaxDeBloqueo - tiempoQueLLevaEnBlock;
+//			ejecutarIO(tiempoIOAntesDeSuspender);
+//			//suspender
+//			ejecutarIO(proceso->tiempo_de_bloqueo - tiempoIOAntesDeSuspender);
+//
+//		} else {
+//			ejecutarIO(proceso->tiempo_de_bloqueo);
+//			//mutex cola ready
+//			list_add(colaReady,proceso);
+//			// mutex cola ready
+//			sem_post(&sem_ready);
+//		}
 //	}
 //}
 

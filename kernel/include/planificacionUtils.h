@@ -39,6 +39,14 @@
 //void destruirListaYElementos(t_list* );
 //void interrumpir_cpu();
 //op_code esperar_respuesta_memoria(int );
+//void calculoEstimacionProceso(pcb *);
+//void asignarEstimacionesAProcesos();
+//pcb* elegirElDeMenorEstimacion();
+//pcb* obtenerSiguienteSRT();
+//pcb* obtenerSiguienteFIFO();
+//pcb* obtenerSiguienteReady();
+//void ejecutarIO(uint32_t);
+
 
 // VARIABLES
 

@@ -213,16 +213,16 @@
 // 	int tamanioReady = list_size(colaReady);
 //	for(int i = 0; i < tamanioReady; i++){
 //		pcb* proceso = list_get(colaReady,i);
-//		float realAnterior;
-//		proceso->estimacion_rafaga = calculoEstimacionProceso(realAnterior); // le paso a calculoEstimacionProceso la rafaga real anterior
+//		calculoEstimacionProceso(proceso);
 //	};
 //}  //revisar bien esta funcion
 //
-//float calculoEstimacionProceso(float realAnterior){
-//	float alfa;
-//	float estimacionInicial;
-//	float estimacion_rafaga = alfa * realAnterior + (1 - alfa) * estimacionInicial;
-//	return estimacion_rafaga;
+//void calculoEstimacionProceso(pcb *proceso){
+//	float alfa = config_valores_kernel.alfa;
+//	float estimacionInicial = config_valores_kernel.estimacion_inicial;
+//	float realAnterior = proceso->rafaga_anterior;
+//	float nuevaEstimacion = alfa * realAnterior + (1 - alfa) * estimacionInicial;
+//	proceso->estimacion_rafaga = nuevaEstimacion;
 //}
 
 //void interrumpir_cpu(){
@@ -230,6 +230,10 @@
 //	enviar_paquete(paqueteAEnviar, socket_interrupt);
 //	eliminar_paquete(paquete);
 
+//}
+
+//void ejecutarIO(uint32_t tiempoIO){
+//	usleep(tiempoIO * 1000);
 //}
 
 //probando

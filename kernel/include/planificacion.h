@@ -38,6 +38,11 @@ pcb *crear_estructura_pcb(t_consola*);
 // void transicion_suspender(pcb *);
 // void estado_suspended_ready(void );
 
+// CORTO PLAZO
+//void estadoReady();
+//void estadoExec();
+//void estadoBlockeado();
+
 
 
 
