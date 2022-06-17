@@ -40,7 +40,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //	sem_init(&sem_grado_multiprogramacion, 0, config_valores_kernel->grado_multiprogramacion);
 //	colaNew = list_create();
 //	colaExit = list_create();
-//	pthread_create(&thread_exit, NULL, (void *)estado_exit, NULL);
+//	pthread_create(&thread_exit, NULL, (void *)finalizarPcb, pcb);
 //	pthread_create(&thread_admitir, NULL, (void *)transicion_admitir, NULL);
 //	pthread_detach(thread_exit);
 //	pthread_detach(thread_admitir);
@@ -98,7 +98,12 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //  	list_add(colaExit, pcb);
 // 	    pthread_mutex_unlock(&mutex_new);
 // 		log_info(logger, "[EXIT] Finaliza el  pcb de ID: %d", pcb-> id_pcb);
-//          obtener_entrada_tabla_de_pagina(socket_memoria) ;
+//			enviar_pcb_a_memoria(pcb, socket_memoria,LIBERAR_ESTRUCTURAS);
+        
+		// op_code codigo = esperar_respuesta_memoria(socket_memoria);
+		// if(codigo != ESTRUCTURAS_LIBERADAS) {
+		// 	log_error(kernel_logger, "No se pudo eliminar memoria de PID[%d]", pcb->id_proceso);
+		// }
 //          avisarAModulo(socket_consola,FINALIZAR_CONSOLA) ;
 // 			eliminar_pcb(pcb);
 //     }
@@ -198,13 +203,6 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // }
 
 
-// Inicializar colas
-
-// void inicializarColas(){
-// 	colaReady = list_create();
-// 	colaExec= list_create();
-// }
-
 
 // HILOS
 
@@ -224,10 +222,6 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 
 
 // TRANSICIONES
-
-
-
-
 
 
 // void agregarABlocked(pcb* proceso){
@@ -265,9 +259,9 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // void transicion_suspender(pcb *pcb) {
 // 	log_info(kernel_logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", pcb->id_proceso);
 // 	pcb->estado = SUSPENDED_BLOCKED;
-// 	enviar_pcb_a_memoria(pcb, socket_memoria);
-// 	recibir_datos(socket_memoria, &codigo, sizeof(op_code));  // ver como recibir codigo de operacion de memoria
-// 	if(codigo != PCB_LIBERADO) {
+//	enviar_pcb_a_memoria(pcb, socket_memoria, LIBERAR_ESPACIO_PCB);
+// 	op_code codigo = esperar_respuesta_memoria(socket_memoria);
+// 	if(codigo != ESPACIO_PCB_LIBERADO) {
 // 		log_error(kernel_logger, "No se pudo liberar la memoria de PID[%d]", pcb->id_proceso);
 // 	}
 // 	pthread_mutex_lock(&mutex_suspended_blocked);

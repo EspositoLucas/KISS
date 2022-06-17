@@ -25,6 +25,11 @@ typedef enum
     PAQUETE_CONSOLA,
     MENSAJE,
 	PCB,
+	LIBERAR_ESPACIO_PCB,
+	ESPACIO_PCB_LIBERADO,
+	INICIALIZAR_ESTRUCTURAS,
+	LIBERAR_ESTRUCTURAS,
+	FINALIZAR_CONSOLA,
 	MARCO,
 	TABLA,
 	HANDSHAKE,
@@ -151,7 +156,6 @@ void enviar_mensaje(char *, int );
 t_buffer *serializar_paquete(t_paquete *);
 void eliminar_paquete(t_paquete *);
 pcb *recibir_paquete_instrucciones(int );
-//pcb* deserializar_pcb(t_buffer*);
 pcb* deserializar_pcb(void* stream);
 void *serializar_pcb(pcb*);
 pcb *armar_pcb(t_buffer* buffer);
@@ -165,11 +169,12 @@ void enviar_paquete(t_paquete*, int);
 void* recibir_buffer(int*, int );
 t_buffer *recibir_buffer_proceso(int);
 void* serializar_paquete_con_bytes(t_paquete* , int );
+int enviar_datos(int , void *, uint32_t );
+int recibir_datos(int socket_fd, void *dest, uint32_t size);
 
 t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
 void agregar_a_paquete(t_paquete *, void *, uint32_t);
 void agregar_a_buffer(t_buffer *, void *, uint32_t);
-t_buffer *buffer_vacio(void);
 
 t_handshake* recibir_handshake(int);
 void pedir_tabla_pagina(int,uint32_t,uint32_t);

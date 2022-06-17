@@ -31,13 +31,14 @@
 //void inicializar_listas(void);
 //void inicializar_semaforos(void);
 //void avisarAModulo(int socket_fd,op_code codigo);
-//void enviar_pcb_a_memoria(pcb *, int );
+//void enviar_pcb_a_memoria(pcb *, int,op_code  );
 //uint32_t obtener_entrada_tabla_de_pagina(int );
 //void eliminar_pcb(pcb *);
 //void destruir_semaforos(void);
 //void destruir_listas(void);
 //void destruirListaYElementos(t_list* );
-void interrumpir_cpu();
+//void interrumpir_cpu();
+//op_code esperar_respuesta_memoria(int );
 
 // VARIABLES
 
@@ -58,7 +59,7 @@ uint32_t generador_de_id;
 // sem_t sem_admitir;
 // sem_t sem_exit;
 // sem_t sem_grado_multiprogramacion;
- pthread_mutex_t mutex_generador_id;
+pthread_mutex_t mutex_generador_id;
 // pthread_mutex_t mutex_new;
 // pthread_mutex_t mutex_exit;
 // pthread_t thread_exit;

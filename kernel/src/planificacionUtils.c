@@ -23,15 +23,19 @@
 // 	 return switcher;
 //}
 
-// AVISOS A MEMORIA - CONSOLA
+
+// AVISOS y RECIBOS de MEMORIA - CONSOLA
 
 // void avisarAModulo(int socket_fd,op_code codigo){
 	// enviar_datos(socket_fd, &codigo, sizeof(op_code));
 
 // }
 
-// void enviar_pcb_a_memoria(pcb *pcb, int socket_memoria) {
-// enviar_pcb(pcb,socket_memoria);
+// void enviar_pcb_a_memoria(pcb *pcb, int socket_memoria, op_code codigo) {
+	// t_paquete* paquete = crear_paquete_con_codigo_de_operacion(LIBERAR_ESTRUCTURAS);
+	// enviar_paquete(paquete, socket_memoria);
+	// enviar_pcb(pcb,socket_memoria);
+	// eliminar_paquete(paquete);
 // }
 
 
@@ -44,9 +48,12 @@
 //	recibir_datos(socket_fd, &numero, sizeof(uint32_t));
 //
 //	return numero;
-//}
+// }
 
-
+// op_code esperar_respuesta_memoria(int socket_memoria) {
+// 	op_code codigo;
+// 	recibir_datos(socket_memoria, &codigo, sizeof(op_code));
+// 	return codigo;
 // }
 
 

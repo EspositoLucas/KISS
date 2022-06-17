@@ -195,6 +195,7 @@ void enviar_paquete(t_paquete *paquete, int socket_cliente)
     free(a_enviar);
 }
 
+// Recibir paquete como lista 
 t_list *recibir_paquete(int socket_cliente)
 {
     int size;
@@ -203,7 +204,7 @@ t_list *recibir_paquete(int socket_cliente)
     t_list *valores = list_create();
     int tamanio;
 
-      stream = recibir_stream(&size, socket_cliente);
+    stream = recibir_stream(&size, socket_cliente);
 
     while (desplazamiento < size)
     {
@@ -217,7 +218,9 @@ t_list *recibir_paquete(int socket_cliente)
     free(stream);
     return valores;
 }
-t_paquete* recibe_paquetes(int socket){
+
+// Recibir paquete como paquete 
+t_paquete* recibe_paquete(int socket){
 	int size;
 	int desplazamiento = 0;
 	void *stream;
@@ -241,7 +244,15 @@ void eliminar_paquete(t_paquete* paquete) {
     free(paquete);
 }
 
+//Envio y recibo de datos
 
+int enviar_datos(int socket_fd, void *source, uint32_t size) {
+	return send(socket_fd, source, size, 0);
+}
+
+int recibir_datos(int socket_fd, void *dest, uint32_t size) {
+	return recv(socket_fd, dest, size, MSG_WAITALL);
+}
 
 
 //----------------------------------ENVIO/RECIBO DE PCBS----------------------------------
