@@ -20,7 +20,7 @@ int main(void)
     int server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
 
-    if(atender_clientes(socket_kernel, manejo_conexiones) == -1) {
+    if(atender_clientes(server_fd, manejo_conexiones) == -1) {
     		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
     	}
 
@@ -69,7 +69,7 @@ void cargar_configuracion(char* path) {
 
       if (config == NULL) {
           perror("Archivo de configuracion de kernel no encontrado");
-          return;
+          abort();
       }
 
       config_valores_kernel.ip_memoria = config_get_string_value(config, "IP_MEMORIA");
@@ -84,7 +84,6 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.grado_multiprogramacion = config_get_int_value(config, "ESTIMACION_INICIAL");
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
-      config_destroy(config);
 
   }
 

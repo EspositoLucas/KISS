@@ -168,7 +168,6 @@ void agregar_entero_a_paquete(t_paquete*, int );
 void agregar_datos_consola(t_paquete*,void *, int ,int );
 void enviar_paquete(t_paquete*, int);
 void* recibir_buffer(int*, int );
-t_buffer *recibir_buffer_proceso(int);
 void* serializar_paquete_con_bytes(t_paquete* , int );
 int enviar_datos(int , void *, uint32_t );
 int recibir_datos(int socket_fd, void *dest, uint32_t size);

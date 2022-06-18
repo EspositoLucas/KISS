@@ -87,24 +87,6 @@ void *recibir_stream(int *size, int socket_cliente)
  }
 
 
-// recibir buffer para pcb
-
-t_buffer *recibir_buffer_proceso(int socket_cliente) // deserializar paquete instrucciones y tamanio proceso
-{
-	t_buffer* buffer = malloc(sizeof(t_buffer)) ;
-    int size;
-    void*stream ;
-
-//    recv(socket_cliente, &(buffer->tamanio_proceso), sizeof(int), MSG_WAITALL);
-    recv(socket_cliente, &size, sizeof(int), MSG_WAITALL);
-    stream = malloc(size);
-    recv(socket_cliente, stream, size, MSG_WAITALL);
-
-    buffer->stream = stream ;
-
-
-    return buffer ;
-}
 
 void agregar_a_buffer(t_buffer *buffer, void *src, uint32_t size) {
 	buffer->stream = realloc(buffer->stream, buffer->stream_size + size);
@@ -169,7 +151,7 @@ t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
 
 
 void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) {
-    agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t));
+    //agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t));
     agregar_a_buffer(paquete->buffer, valor, tamanio_valor);
 }
 
