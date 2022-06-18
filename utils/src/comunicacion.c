@@ -151,7 +151,7 @@ t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
 
 
 void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) {
-    //agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t));
+    //agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t)); // Para que no se envie el valor del tamanio del stream size
     agregar_a_buffer(paquete->buffer, valor, tamanio_valor);
 }
 
@@ -204,7 +204,6 @@ t_list *recibir_paquete(int socket_cliente)
 // Recibir paquete como paquete 
 t_paquete* recibe_paquete(int socket){
 	int size;
-	int desplazamiento = 0;
 	void *stream;
 
 	op_code codigo=recibir_operacion(socket);
