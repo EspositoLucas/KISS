@@ -263,6 +263,7 @@ pcb* recibir_pcb(int socket_cliente){
 
 
 
+
 //----------------------------------SERIALIZAR_PCB---------------------------------------
 
 void *serializar_pcb(pcb* pcb)
@@ -468,3 +469,11 @@ void ejecutar_instruccion(t_socket *conexion) {
     conexion->manejo_conexiones = manejo_conexiones;
     return conexion;
 }
+
+ // ---------------------------------ELIMINAR PCB ---------------------------------------
+
+ void eliminar_pcb(pcb* proceso){
+ 	list_destroy_and_destroy_elements(proceso->instrucciones, free);
+ 	free(proceso);
+ }
+

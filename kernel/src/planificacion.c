@@ -1,6 +1,7 @@
 #include "planificacion.h"
 
-
+int proceso_ejecutando;
+uint32_t tiempoInicioBlock;
 
 //................................. LARGO PLAZO.........................................................................................
 
@@ -119,19 +120,19 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //		sem_wait(&sem_ready);
 //		t_algoritmo_planificacion algoritmo = obtener_algoritmo();
 //		if(algoritmo == SRT){
-//			if(list_size(listaExec) > 0){
+//			if(proceso_ejecutando == 1){
 //				enviar_interrupcion_cpu(socket_interrupt);
 //				sem_wait(&sem_desalojo);
-//			} else {
-//
 //			}
 //		}
 //		// semaforo
 //
 //		pcb* siguiente_proceso = obtenerSiguienteReady();
 //
+//		pthread_mutex_lock(&mutex_exec);
 //		list_add(listaExec, siguiente_proceso);
-//
+//		pthread_mutex_unlock(&mutex_exec);
+
 //		sem_post(&sem_exec);
 //	}
 //}
@@ -139,15 +140,25 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //void estadoExec(){
 //	while(1){
 //		sem_wait(&sem_exec);
-//		pcb* proceso = list_get(colaExec,0);
+
+//		pthread_mutex_lock(&mutex_exec);
+//		pcb* proceso = list_remove(colaExec,0);
+//		proceso_ejecutando = 1;
+//		pthread_mutex_unlock(&mutex_exec);
 //
 //		uint32_t inicio_cpu = get_time(); // logueo el tiempo en el que se va
 //		enviar_proceso_a_cpu(prcoeso);
-//		sem_wait(&sem_dispatch);
+//		eliminar_pcb(proceso);
+
 //		//esperar a que vuelva el pcb
 //		//aramar para recibir pcb de cpu por dispatch;
+
+//		pcb* proceso = recibir_pcb(socket_dispatch);
 //
 //		uint32_t finalizacion_cpu = get_time();
+//		pthread_mutex_lock(&mutex_exec);
+//		proceso_ejecutando = 0;
+//		pthread_mutex_unlock(&mutex_exec);
 //
 //		proceso->rafaga_anterior = inicio_cpu - finalizacion_cpu;
 //
@@ -155,17 +166,24 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //
 //		switch(instruccion_ejecutada){
 //		case IO:
+//			pthread_mutex_lock(&mutex_blocked);
 //			proceso->estado_proceso = BLOQUEADO;
+//			tiempoInicioBLock = get_time();
 //			list_add(colaBlocked, proceso);
+//			pthread_mutex_unlock(&mutex_blocked);
 //			sem_post(&sem_blocked); // despertar bloqueado
 //		}
 //		case EXIT:
+//			pthread_mutex_lock(&mutex_exit);
 //			proceso->estado_proceso = FINALIZADO;
 //			list_add(colaExit, proceso);
+//			pthread_mutex_unlock(&mutex_exit);
 //			sem_post(&sem_exit); // despertar exit
 //		default: // ready write o noop
+//			pthread_mutex_lock(&mutex_ready);
 //			proceso->estado_proceso = READY;
 //			list_add(colaReady, proceso);
+//			pthread_mutex_unlock(&mutex_ready);
 //			sem_post(&sem_desalojo);
 //			sem_post(&sem_ready);
 //
@@ -177,28 +195,28 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //	while(1){
 //		sem_wait(&sem_blocked);
 //		uint32_t tiempoMaxDeBloqueo = config_valores_kernel.tiempo_maximo_bloqueado;
-//		//sem mutex cola blocked
+//		pthread_mutex_lock(&mutex_blocked);
 //		pcb* proceso = list_remove(colaBlocked,0);
-//		// sem mutex cola blocked
-//		uint32_t tiempoQueLLevaEnBlock = get_time() - tiempoInicioBlock; // DISCUTIR EL AGREGAR UN CAMPO DE TIEMPO INICIO BLOCK A LA PCB
+//		pthread_mutex_unlock(&mutex_blocked);
+//		uint32_t tiempoQueLLevaEnBlock = get_time() - tiempoInicioBlock; // tiempoInicioBlock es variable global de planificacion.c
 //
-//		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){
+//		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
 //
 //			//suspender
 //			ejecutarIO(proceso->tiempo_de_bloqueo);
 //
-//		} else if (tiempoQueLLevaEnBlock + proceso->tiempo_de_bloqueo > tiempoMaxDeBloqueo){
+//		} else if (tiempoQueLLevaEnBlock + proceso->tiempo_de_bloqueo > tiempoMaxDeBloqueo){ // suspendo en el medio
 //
 //			uint32_t tiempoIOAntesDeSuspender = tiempoMaxDeBloqueo - tiempoQueLLevaEnBlock;
-//			ejecutarIO(tiempoIOAntesDeSuspender);
+//			ejecutarIO(tiempoIOAntesDeSuspender); // ejecutar hasta que sea necesario suspender
 //			//suspender
-//			ejecutarIO(proceso->tiempo_de_bloqueo - tiempoIOAntesDeSuspender);
+//			ejecutarIO(proceso->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
 //
-//		} else {
+//		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
 //			ejecutarIO(proceso->tiempo_de_bloqueo);
-//			//mutex cola ready
+//			pthread_mutex_lock(&mutex_ready);
 //			list_add(colaReady,proceso);
-//			// mutex cola ready
+//			pthread_mutex_unlock(&mutex_ready);
 //			sem_post(&sem_ready);
 //		}
 //	}
@@ -226,43 +244,6 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 
 // }
 
-
-
-// HILOS
-
-
-// void hiloReady_Exec(){
-// 	while (1){
-// 		pcb* procesoAEjecutar = obtenerSiguienteReady();
-
-// 		if (procesoAEjecutar != NULL){
-// 			list_add(colaExec,procesoAEjecutar);
-// 			//enviarPcbACpu(procesoAEjecutar);
-// 		}
-// 	}
-// }
-
-
-
-
-// TRANSICIONES
-
-
-// void agregarABlocked(pcb* proceso){
-
-// 	sem_wait(&contadorExec);
-
-// 	pthread_mutex_lock(&mutexBlocked);
-
-// 	list_add(listaBlock, proceso);
-// 	log_info(logger, "[BLOCKED] Entra el procso de PID: %d a la cola.", proceso->id_proceso);
-
-// 	pthread_mutex_unlock(&mutexBlocked);
-// 	sem_post(&contadorBlock);
-
-// 	sem_post(&analizarSuspension);
-// 	sem_wait(&suspensionFinalizada);
-// }
 
 //................................. MEDIANO PLAZO.........................................................................................
 
@@ -310,4 +291,3 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // 		sem_post(&sem_admitir);
 // 	}
 // }
-

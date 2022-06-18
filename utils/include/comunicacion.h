@@ -160,6 +160,7 @@ pcb *recibir_paquete_instrucciones(int );
 pcb* deserializar_pcb(void* stream);
 void *serializar_pcb(pcb*);
 pcb *armar_pcb(t_buffer* buffer);
+void eliminar_pcb(pcb* proceso);
 pcb* recibir_pcb(int socket_cliente);
 void enviar_mensaje(char *mensaje, int socket_cliente);
 t_paquete *crear_paquete(void);
