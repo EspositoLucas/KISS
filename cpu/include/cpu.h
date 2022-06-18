@@ -38,11 +38,11 @@ void* ciclo_de_instruccion(pcb*,int);
 void decode(instruccion*,pcb*);
 void ejecutarNO_OP();
 void ejecutarIO(int,pcb*);
-void* interrupt(void* interrupt);
-//void ejecutarREAD(dirLogica);
-//void ejecutarWRITE(dirLogica,valor);
-//void ejecutarCOPY(dirLogicaDestino,dirLogicaOrigen);
+void ejecutarREAD(uint32_t,pcb*);
+void ejecutarWRITE(uint32_t,uint32_t,pcb*);
+void ejecutarCOPY(uint32_t,uint32_t,pcb*);
 void ejecutarEXIT(pcb*);
+void* interrupt(void* interrupt);
 int checkInterrupt();
 void enviarPcb(pcb*,int);
 

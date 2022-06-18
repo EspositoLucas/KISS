@@ -37,7 +37,7 @@ int main()
 
 	int server_fd = iniciar_servidor(config_valores_cpu.ip_cpu,config_valores_cpu.puerto_escucha_dispatch);
     log_info(logger, "CPU listo para recibir al modulo cliente");
-    int cliente_fd = esperar_cliente(logger,"cpu",server_fd);
+    int cliente_fd = esperar_cliente(server_fd);
 
 
 
@@ -83,26 +83,26 @@ return NULL;
 
 void decode(instruccion* instruccion,pcb* PCB){//IDENTIFICA EL TIPO DE INSTRUCCION Y LO ENVIA A SU EXECUTE CORRESPONDIENTE
 
-switch(instruccion->codigo){
-case NO_OP:
-	ejecutarNO_OP();
-break;
-case IO:
-		ejecutarIO(instruccion->parametro1,PCB);
-break;
-case EXIT:
-		ejecutarEXIT(PCB);
-break;
-case READ:
-		ejecutarREAD(instruccion->parametro1,PCB);
-	break;
-case WRITE:
-		ejecutarWRITE(instruccion->parametro1,instruccion->parametro2,PCB);
-	break;
-case COPY:
-		ejecutarCOPY(instruccion->parametro1,instruccion->parametro2,PCB);
-	break;
-default:break;
+	switch(instruccion->codigo){
+		case NO_OP:
+			ejecutarNO_OP();
+			break;
+		case IO:
+			ejecutarIO(instruccion->parametro1,PCB);
+			break;
+		case EXIT:
+			ejecutarEXIT(PCB);
+			break;
+		case READ:
+			ejecutarREAD(instruccion->parametro1,PCB);
+			break;
+		case WRITE:
+			ejecutarWRITE(instruccion->parametro1,instruccion->parametro2,PCB);
+			break;
+		case COPY:
+			ejecutarCOPY(instruccion->parametro1,instruccion->parametro2,PCB);
+			break;
+		default:break;
 }
 
 }
@@ -197,7 +197,7 @@ return 0;}
 void* interrupt(void* interrupt){
 int server_fd = iniciar_servidor(IP_CPU,interrupt);
 log_info(logger, "CPU listo para recibir interrupciones");
-int cliente_fd = esperar_cliente(logger,"cpu",server_fd);
+int cliente_fd = esperar_cliente(server_fd);
 log_info(logger,"Se conecto Kernel al puerto interrupt");
 while(1){
 	int cod_op = recibir_operacion(cliente_fd);
