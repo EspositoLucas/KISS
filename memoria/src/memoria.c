@@ -16,6 +16,7 @@ int main(void) {
 }
 
 // Manejo conexiones - Procesar conexiones con los op code
+
 void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 	switch(paquete->codigo_operacion){
 	case HANDSHAKE:

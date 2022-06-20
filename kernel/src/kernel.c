@@ -11,13 +11,13 @@ int main(void)
      char* ip_kernel = config_valores_kernel.ip_kernel;
      char* puerto_kernel = config_valores_kernel.puerto_escucha;
 
-//     iniciar_planificacion(void);
-
 
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 
     int server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
+
+    //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
     if(atender_clientes(server_fd, manejo_conexiones) == -1) {
     		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
@@ -59,20 +59,11 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
+      config_destroy(config);
+
   }
 
-//void eliminar_configuracion(t_config* config) {
-//
-//	free(config.ip_memoria);
-//	free(config.puerto_memoria);
-//	free(config.ip_cpu);
-//	free(config.puerto_cpu_dispatch);
-//	free(config.puerto_cpu_interrupt);
-//	free(config.ip_kernel);
-//	free(config.puerto_escucha);
-//	free(config.algoritmo_planificacion);
-//	free(config);
-//}
+
 
 //..................................INICIALIZACIONES.......................................................................
 

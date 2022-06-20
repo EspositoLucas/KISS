@@ -30,10 +30,9 @@
 //t_algoritmo_planificacion obtener_algoritmo(void);
 //void inicializar_listas(void);
 //void inicializar_semaforos(void);
-//void avisarAModulo(int socket_fd,op_code codigo);
+//void avisarAModulo(int ,op_code );
 //void enviar_pcb_a_memoria(pcb *, int,op_code  );
 //uint32_t obtener_entrada_tabla_de_pagina(int );
-//void eliminar_pcb(pcb *);
 //void destruir_semaforos(void);
 //void destruir_listas(void);
 //void destruirListaYElementos(t_list* );
@@ -57,6 +56,7 @@ uint32_t generador_de_id;
 // t_log *kernel_logger;
 // int socket_cpu_interrupt;
 // int socket_cpu_dispatch;
+// int socket_consola ;
 // int socket_memoria;
 
 // Planificador Largo Plazo

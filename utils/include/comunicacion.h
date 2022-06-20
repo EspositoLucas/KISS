@@ -78,7 +78,6 @@ typedef struct {
     uint32_t program_counter;
     float estimacion_rafaga;
     double tiempo_de_bloqueo; // tiempo de IO  para estar bloqueado
-    uint8_t suspendido;
     uint8_t rafaga_anterior;
     estado estado_proceso;
     t_list* instrucciones;

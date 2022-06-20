@@ -42,7 +42,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //	colaNew = list_create();
 //	colaExit = list_create();
 //	pthread_create(&thread_exit, NULL, (void *)finalizarPcb, pcb);
-//	pthread_create(&thread_admitir, NULL, (void *)transicion_admitir, NULL);
+//	pthread_create(&thread_admitir, NULL, (void *)transicion_admitir_por_prioridad, NULL);
 //	pthread_detach(thread_exit);
 //	pthread_detach(thread_admitir);
 //}
@@ -85,7 +85,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //			log_info(kernel_logger, "PID[%d] ingresa a READY desde NEW", pcb->id_pcb);
 //		}
 //
-//		pthread_mutex_lock(&mutex_ready);  //Se agrega a Ready elproce
+//		pthread_mutex_lock(&mutex_ready);  //Se agrega a Ready el proceso
 //		list_add(colaReady, pcb);
 //		pthread_mutex_unlock(&mutex_ready);
 //		avisarAModulo(socket_memoria,INICIALIZAR_ESTRUCTURAS) ;
@@ -114,28 +114,50 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 
 //................................. CORTO PLAZO.........................................................................................
 
+//void iniciar_planificador_corto_plazo(void) {
 
-//void estadoReady(){
-//	while(1){
-//		sem_wait(&sem_ready);
-//		t_algoritmo_planificacion algoritmo = obtener_algoritmo();
-//		if(algoritmo == SRT){
-//			if(proceso_ejecutando == 1){
-//				enviar_interrupcion_cpu(socket_interrupt);
-//				sem_wait(&sem_desalojo);
-//			}
-//		}
-//		// semaforo
-//
-//		pcb* siguiente_proceso = obtenerSiguienteReady();
-//
-//		pthread_mutex_lock(&mutex_exec);
-//		list_add(listaExec, siguiente_proceso);
-//		pthread_mutex_unlock(&mutex_exec);
+//	pthread_mutex_init(&mutex_ready, NULL);
+//	pthread_mutex_init(&mutex_blocked, NULL);
+//	pthread_mutex_init(&mutex_exec, NULL);
+//	sem_init(&sem_ready, 0, 0);
+//	sem_init(&sem_exec, 0, 0);
+//	sem_init(&sem_blocked, 0, 0);
+//	sem_init(&sem_desalojo, 0, 0);
+//	colaReady = list_create();
+//	colaExec = list_create();
+//	colaBlocked = list_create();
+//	pthread_create(&thread_ready, NULL, (void *)estadoReady, NULL);
+//	pthread_create(&thread_exec, NULL, (void *)estadoExec, NULL);
+//	pthread_create(&thread_blockeado, NULL, (void *)estadoBlockeado, NULL);
+//	pthread_detach(thread_ready);
+//	pthread_detach(thread_exec);
+//	pthread_detach(thread_blockeado);
 
-//		sem_post(&sem_exec);
-//	}
 //}
+
+
+// void estadoReady(){
+// 	while(1){
+// 		sem_wait(&sem_ready);
+// 		t_algoritmo_planificacion algoritmo = obtener_algoritmo();
+// 		if(algoritmo == SRT){
+// 			if(proceso_ejecutando == 1){
+// 				interrumpir_cpu();
+// 				sem_wait(&sem_desalojo);
+// 			}
+// 		}
+// 		// semaforo
+
+// 		pcb* siguiente_proceso = obtenerSiguienteReady();
+
+// 		pthread_mutex_lock(&mutex_exec);
+// 		list_add(colaExec, siguiente_proceso);
+// 		pthread_mutex_unlock(&mutex_exec);
+
+// 		sem_post(&sem_exec);
+// 	}
+// }
+
 //
 //void estadoExec(){
 //	while(1){
@@ -147,13 +169,16 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //		pthread_mutex_unlock(&mutex_exec);
 //
 //		uint32_t inicio_cpu = get_time(); // logueo el tiempo en el que se va
-//		enviar_proceso_a_cpu(prcoeso);
+
+//		enviar_proceso_a_cpu(proceso);
 //		eliminar_pcb(proceso);
 
 //		//esperar a que vuelva el pcb
-//		//aramar para recibir pcb de cpu por dispatch;
+//		//recibir pcb de cpu por dispatch;
+
 
 //		pcb* proceso = recibir_pcb(socket_dispatch);
+
 //
 //		uint32_t finalizacion_cpu = get_time();
 //		pthread_mutex_lock(&mutex_exec);
@@ -192,6 +217,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //}
 //
 //void estadoBlockeado(){
+
 //	while(1){
 //		sem_wait(&sem_blocked);
 //		uint32_t tiempoMaxDeBloqueo = config_valores_kernel.tiempo_maximo_bloqueado;
@@ -202,14 +228,14 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //
 //		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
 //
-//			//suspender
+//          transicion_suspender(proceso); //suspender para mediano plazo
 //			ejecutarIO(proceso->tiempo_de_bloqueo);
 //
 //		} else if (tiempoQueLLevaEnBlock + proceso->tiempo_de_bloqueo > tiempoMaxDeBloqueo){ // suspendo en el medio
 //
 //			uint32_t tiempoIOAntesDeSuspender = tiempoMaxDeBloqueo - tiempoQueLLevaEnBlock;
 //			ejecutarIO(tiempoIOAntesDeSuspender); // ejecutar hasta que sea necesario suspender
-//			//suspender
+//			transicion_suspender(proceso); //suspender para mediano plazo
 //			ejecutarIO(proceso->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
 //
 //		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
@@ -231,12 +257,12 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 //		t_buffer* buffer
 // 		t_paquete* paquete_pcb = crear_paquete();
 
-// buffer = serializar_pcb(pcb);
+// 		buffer = serializar_pcb(pcb);
 
 // 		agregar_a_paquete(paquete_pcb,buffer,buffer->stream_size));
 
 
-// 		enviar_paquete(nuevoPaquete, socket_cliente);
+// 		enviar_paquete(paquete_pcb, socket_cliente);
 
 // 	eliminar_paquete(nuevoPaquete);
 
@@ -252,6 +278,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 
 
 // void iniciar_planificador_mediano_plazo(void) {
+
 // 	pthread_mutex_init(&mutex_suspended_ready, NULL);
 // 	pthread_mutex_init(&mutex_suspended_blocked, NULL);
 // 	sem_init(&sem_suspended_ready, 0, 0);
@@ -262,6 +289,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // }
 
 // void transicion_suspender(pcb *pcb) {
+
 // 	log_info(kernel_logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", pcb->id_proceso);
 // 	pcb->estado = SUSPENDED_BLOCKED;
 //	enviar_pcb_a_memoria(pcb, socket_memoria, LIBERAR_ESPACIO_PCB);
@@ -277,6 +305,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 // }
 
 // void estado_suspended_ready(void ) {
+
 // 	while(1) {
 // 		sem_wait(&sem_suspended_ready);
 // 		pthread_mutex_lock(&mutex_suspended_blocked);

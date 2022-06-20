@@ -225,6 +225,10 @@ void eliminar_paquete(t_paquete* paquete) {
     free(paquete);
 }
 
+
+// DATOS
+
+
 //Envio y recibo de datos
 
 int enviar_datos(int socket_fd, void *source, uint32_t size) {
@@ -292,8 +296,6 @@ void *serializar_pcb(pcb* pcb)
     offset += sizeof(float);
     memcpy(stream + offset, &pcb->tiempo_de_bloqueo,sizeof(double));
     offset += sizeof(double);
-    memcpy(stream + offset, &pcb->suspendido, sizeof(uint8_t));
-    offset += sizeof(uint8_t);
     memcpy(stream + offset, &pcb->rafaga_anterior, sizeof(uint8_t));
     offset += sizeof(uint8_t);
 
@@ -346,8 +348,6 @@ pcb* deserializar_pcb(void* stream) {
     stream += sizeof(float);
     memcpy(&(pcb->tiempo_de_bloqueo), stream, sizeof(double));
     stream += sizeof(double);
-    memcpy(&(pcb->suspendido), stream, sizeof(uint8_t));
-    stream += sizeof(uint8_t);
 
     //Deserializar los campos enum*
 

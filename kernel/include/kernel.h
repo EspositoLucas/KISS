@@ -39,7 +39,6 @@ t_consola * consola ;
 // FUNCIONES
 
 void cargar_configuracion(char*);
-//void eliminar_configuracion(t_config* config);
 void manejo_conexiones(t_paquete* paquete,int);
 //void iniciar_planificacion(void);
 t_list *deserializar_instrucciones(t_list*, uint32_t );
