@@ -6,11 +6,15 @@ int main(void) {
 
     ///CARGAR LA CONFIGURACION
     cargar_configuracion();
+    inicializar_memoria();
 
 
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
     log_info(logger, "Memoria lista para recibir al modulo cliente");
 
+    if(atender_clientes(server_fd, manejo_conexiones) == -1) {
+        		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
+        	}
 
 	return EXIT_SUCCESS;
 }
@@ -20,26 +24,56 @@ int main(void) {
 void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 	switch(paquete->codigo_operacion){
 	case HANDSHAKE:
-		log_info(logger,"me llego el handshake");
+		log_info(logger,"me llego el handshake de cpu");
 		t_paquete* handshake=preparar_paquete_para_handshake();
 		enviar_paquete(handshake,socket_cliente);
 		free(handshake);
 		break;
 	case INSTRUCCION_MEMORIA:
+		log_info(logger,"me llego una instruccion de cpu");
 		manejo_instrucciones(paquete->buffer->stream,socket_cliente);
 		break;
 	case TABLA:
+		log_info(logger,"me llego un pedido de entrada a segunda tabla de cpu (mmu)");
+		uint32_t tabla;
+		uint32_t entrada1;
+		uint32_t entrada2;
+		void* stream=recibir_stream();
+		traducir_operandos(stream,&tabla,&entrada1);
+		entrada2=devolver_entrada_a_segunda_tabla(tabla,entrada1);
+		t_paquete* paquete=crear_paquete();
+		agregar_a_paquete(paquete,entrada2,sizeof(uint32_t));
+		enviar_paquete(paquete,socket_cliente);
 		break;
+	case MARCO:
+		log_info(logger,"me llego un pedido de marco de cpu (mmu)");
 
+		break;
+	case INICIALIZAR_ESTRUCTURAS:
+		//crear tabla de segundo nivel, pasar su numero de tabla a la de primer nivel y devolver el indice de la de primer nivel a kernel
+		tabla_de_segundo_nivel* nueva_tabla=malloc(sizeof(tabla_de_segundo_nivel));
+		nueva_tabla->id_tabla=indice_de_tabla;
+		indice_de_tabla++;
+		nueva_tabla->lista_marcos=inicializar_tabla_segundo_nivel();
+		t_p_1* posicion=buscar_posicion_libre();
+		posicion->numero_de_tabla2=nueva_tabla->id_tabla;
+		t_paquete* paquete=crear_paquete();
+		agregar_entero_a_paquete(paquete,nueva_tabla->id_tabla);
+		enviar_paquete(paquete,socket_cliente);
+		break;
+	case LIBERAR_ESTRUCTURAS:
+		//liberar los marcos q ocupaba el proceso y el archivo swap (no las tablas de pagina)
 	default:break;
 	}
 }
-///INIIALIZAR MEMORIA
-void inicilizar_memoria(){
-	memoria_usuario=malloc(config_valores_memoria.tam_memoria);
+
+///------------------------------INICIALIZAR MEMORIA----------------------------
+
+void inicializar_memoria(){
+	cantidad_de_marcos=config_valores_memoria.tam_memoria/config_valores_memoria.tam_pagina;
+	memoria_usuario=calloc(cantidad_de_marcos,config_valores_memoria.tam_pagina);
+	inicializar_tabla_primer_nivel();
 }
-
-
 
 
 
@@ -60,6 +94,7 @@ void cargar_configuracion(){
 
 	config_destroy(config);
 }
+///----------------PREPARAR PAQUETE PARA HANDSHAKE------------------
 
 t_paquete* preparar_paquete_para_handshake(){
 	t_paquete* paquete=crear_paquete();
@@ -102,7 +137,10 @@ void manejo_instrucciones(void* stream,int socket_cpu){
 
 		break;
 	default:
-		exit(3);
 		break;
 	}
+}
+void traducir_operandos(void* stream,uint32_t* operando1,uint32_t* operando2){
+	memcpy(&operando1,stream,sizeof(uint32_t));
+	memcpy(&operando1,stream+sizeof(uint32_t),sizeof(uint32_t));
 }
