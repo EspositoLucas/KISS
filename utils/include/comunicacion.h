@@ -130,14 +130,14 @@ typedef struct {
 } t_socket;
 
 typedef struct{
-	int indice;
-	int numero_de_tabla2;
+	uint32_t indice;
+	uint32_t numero_de_tabla2;
 }t_p_1;
 
 typedef struct{
-	int indice;
-	int marco;
-	uint32_t pid;
+	uint32_t indice;
+	uint32_t marco;
+	bool p;
 	bool u;
 	bool m;
 }t_p_2;

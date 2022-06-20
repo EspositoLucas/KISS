@@ -411,16 +411,16 @@ t_handshake* recibir_handshake(int socket_memoria){
 void pedir_tabla_pagina(int socket,uint32_t tabla,uint32_t entrada){
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=TABLA;
-	agregar_entero_a_paquete(paquete,tabla);
-	agregar_entero_a_paquete(paquete,entrada);
+	agregar_a_paquete(paquete,tabla,sizeof(uint32_t));
+	agregar_a_paquete(paquete,entrada,sizeof(uint32_t));
 	enviar_paquete(paquete,socket);
 }
 //MARCO
 void pedir_marco(int socket,uint32_t tabla,uint32_t entrada){
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=MARCO;
-	agregar_entero_a_paquete(paquete,tabla);
-	agregar_entero_a_paquete(paquete,entrada);
+	agregar_a_paquete(paquete,tabla,sizeof(uint32_t));
+	agregar_a_paquete(paquete,entrada,sizeof(uint32_t));
 	enviar_paquete(paquete,socket);
 }
 

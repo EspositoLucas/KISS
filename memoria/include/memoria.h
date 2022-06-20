@@ -8,6 +8,7 @@
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"
+#include "manejodetabla.h"
 
 
 // STRUCTS/ENUMS
@@ -27,13 +28,14 @@
  } arch_config;
 
 t_list* tabla_de_pagina_1_nivel;
-t_list* tablas_de_pagina_2_nivel;
+
 
 arch_config config_valores_memoria;
 
 int socket_memoria;
 
 void* memoria_usuario;
+int cantidad_de_marcos;
 
 void cargar_configuracion();
 t_paquete* preparar_paquete_para_handshake();
