@@ -155,7 +155,8 @@ int recibir_operacion(int);
 void enviar_mensaje(char *, int );
 t_buffer *serializar_paquete(t_paquete *);
 void eliminar_paquete(t_paquete *);
-pcb *recibir_paquete_instrucciones(int );
+t_list *recibir_paquete(int );
+t_paquete* recibe_paquete(int );
 pcb* deserializar_pcb(void* stream);
 void *serializar_pcb(pcb*);
 pcb *armar_pcb(t_buffer* buffer);
@@ -169,8 +170,7 @@ void agregar_datos_consola(t_paquete*,void *, int ,int );
 void enviar_paquete(t_paquete*, int);
 void* recibir_buffer(int*, int );
 void* serializar_paquete_con_bytes(t_paquete* , int );
-int enviar_datos(int , void *, uint32_t );
-int recibir_datos(int socket_fd, void *dest, uint32_t size);
+
 
 t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
 void agregar_a_paquete(t_paquete *, void *, uint32_t);
@@ -181,6 +181,9 @@ void pedir_tabla_pagina(int,uint32_t,uint32_t);
 void pedir_marco(int,uint32_t,uint32_t);
 void pedir_handshake(int);
 
+int atender_clientes(int , void (*)(t_paquete *,int));
+int enviar_datos(int , void *, uint32_t );
+int recibir_datos(int socket_fd, void *dest, uint32_t size);
 void ejecutar_instruccion(t_socket *);
 t_socket *crear_socket_conexion(int , void (*)());
 

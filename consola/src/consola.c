@@ -30,8 +30,8 @@ int main(int argc, char **argv){
 //	Serializacion y agregar a paquete
 
 	t_paquete *paquete_instrucciones = crear_paquete_con_codigo_de_operacion(PAQUETE_CONSOLA);
+	agregar_entero_a_paquete(paquete_instrucciones, tamanio_proceso);
 	serializar_instrucciones(instrucciones, paquete_instrucciones);
-//	agregar_entero_a_paquete(paquete_instrucciones, tamanio_proceso);
 
 
 //	Conexion servidor

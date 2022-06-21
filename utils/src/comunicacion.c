@@ -178,6 +178,7 @@ void enviar_paquete(t_paquete *paquete, int socket_cliente)
 }
 
 // Recibir paquete como lista 
+
 t_list *recibir_paquete(int socket_cliente)
 {
     int size;
@@ -202,6 +203,7 @@ t_list *recibir_paquete(int socket_cliente)
 }
 
 // Recibir paquete como paquete 
+
 t_paquete* recibe_paquete(int socket){
 	int size;
 	void *stream;
