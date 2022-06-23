@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-     cargar_configuracion("cfg/kernel.config");
+	 t_config* config_kernel = cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/cfg/kernel.config");
      char* ip_kernel = config_valores_kernel.ip_kernel;
      char* puerto_kernel = config_valores_kernel.puerto_escucha;
 
@@ -15,16 +15,18 @@ int main(void)
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 
     int server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
-    log_info(logger, "Kernel listo para recibir al modulo cliente");
+
 
     //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
-    if(atender_clientes(server_fd, manejo_conexiones) == -1) {
+    log_info(logger, "Esperando conexion de consolas");
+
+     if(atender_clientes(server_fd, manejo_conexiones) == -1) {
     		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
     	}
 
 
-
+    terminar_programa(server_fd, logger, config_kernel);
 
     return EXIT_SUCCESS;
 }
@@ -37,7 +39,7 @@ int main(void)
 //..................................CONFIGURACIONES.......................................................................
 
 
-void cargar_configuracion(char* path) {
+t_config* cargar_configuracion(char* path) {
 
       t_config* config = config_create(path); //Leo el archivo de configuracion
 
@@ -59,7 +61,7 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
-      //config_destroy(config);
+      return config ;
 
   }
 
@@ -89,9 +91,8 @@ void cargar_configuracion(char* path) {
 
 		while (1)
     {
-    	int cod_op = recibir_operacion(socket_kernel);
-    	printf("%d ", cod_op);
-    	switch (cod_op) {
+    	printf("%d ", paquete->codigo_operacion);
+    	switch (paquete->codigo_operacion) {
     	case MENSAJE:
     		recibir_mensaje(socket_kernel,logger);
     		break;
@@ -120,10 +121,21 @@ void cargar_configuracion(char* path) {
 
   //----------------------------------DESERIALIZAR INSTRUCCIONES CONSOLA ----------------------------------
 
+t_consola *deserializar_consola(int  socket_cliente) {
+  	t_list *datos = recibir_paquete(socket_cliente);
+  	t_consola *consola = malloc(sizeof(t_consola));
+
+  	consola->tamanio_proceso = *(uint32_t *)list_get(datos, 0);
+  	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos));
+
+  	return consola;
+  }
+
+
   t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
   	t_list *instrucciones = list_create();
 
-  	for(int i = 0; i < longitud_datos; i += 5) {
+  	for(int i = 1; i < longitud_datos; i += 5) {
   		instruccion *instruccion = malloc(sizeof(instruccion));
   		instruccion->codigo = *(codigo_instrucciones *)list_get(datos, i);
   		instruccion->parametro1 = *(uint32_t *)list_get(datos, i + 1);
@@ -134,16 +146,6 @@ void cargar_configuracion(char* path) {
   	return instrucciones;
   }
 
-  t_consola *deserializar_consola(int  socket_cliente) {
-  	t_list *datos = recibir_paquete(socket_cliente);
-  	t_consola *consola = malloc(sizeof(t_consola));
-
-  	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos) - 1);
-  	consola->tamanio_proceso = *(uint32_t *)list_get(datos, list_size(datos) - 1);
-
-  	list_destroy_and_destroy_elements(datos, free);
-  	return consola;
-  }
 
 
 

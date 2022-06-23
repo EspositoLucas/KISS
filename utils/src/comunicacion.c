@@ -66,7 +66,7 @@ void *recibir_stream(int *size, int socket_cliente)
 {
     void *stream;
 
-    recv(socket_cliente, size, sizeof(uint32_t), MSG_WAITALL);
+    recv(socket_cliente, size, sizeof(int), MSG_WAITALL);
     stream = malloc(*size);
     recv(socket_cliente, stream, *size, MSG_WAITALL);
 
@@ -88,7 +88,7 @@ void *recibir_stream(int *size, int socket_cliente)
 
 
 
-void agregar_a_buffer(t_buffer *buffer, void *src, uint32_t size) {
+void agregar_a_buffer(t_buffer *buffer, void *src, int size) {
 	buffer->stream = realloc(buffer->stream, buffer->stream_size + size);
 	memcpy(buffer->stream + buffer->stream_size, src, size);
 	buffer->stream_size+=size;
@@ -150,8 +150,8 @@ t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t codigo){
 }
 
 
-void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) {
-    //agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(uint32_t)); // Para que no se envie el valor del tamanio del stream size
+void agregar_a_paquete(t_paquete *paquete, void *valor, int tamanio_valor) {
+    agregar_a_buffer(paquete->buffer, &tamanio_valor, sizeof(int)); // Para que no se envie el valor del tamanio del stream size
     agregar_a_buffer(paquete->buffer, valor, tamanio_valor);
 }
 
@@ -159,6 +159,8 @@ void agregar_a_paquete(t_paquete *paquete, void *valor, uint32_t tamanio_valor) 
 void agregar_entero_a_paquete(t_paquete *paquete, int tamanio_proceso) // Agregar un entero a un paquete (ya creado)
 {
 	paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + sizeof(int));
+	int size_tamanio = sizeof(int);
+	memcpy(paquete->buffer->stream , &size_tamanio, sizeof(int));
     memcpy(paquete->buffer->stream , &tamanio_proceso, sizeof(int));
     paquete->buffer->stream_size += tamanio_proceso + sizeof(int);
 }
@@ -212,9 +214,11 @@ t_paquete* recibe_paquete(int socket){
 	t_paquete* paquete=crear_paquete_con_codigo_de_operacion(codigo);
 
 	stream = recibir_stream(&size, socket);
-
-	memcpy(&paquete->buffer->stream_size, stream, sizeof(int));
-	memcpy(paquete->buffer->stream, stream + sizeof(int), paquete->buffer->stream_size);
+	unsigned char* otro_stream = (unsigned char*)(stream);
+	memcpy(&paquete->buffer->stream_size, &size, sizeof(int));
+	printf("%s \n",otro_stream);
+	paquete->buffer->stream = malloc(size);
+	memcpy(paquete->buffer->stream, stream, size);
 
 	free(stream);
 	return paquete;
@@ -238,7 +242,7 @@ int enviar_datos(int socket_fd, void *source, uint32_t size) {
 }
 
 int recibir_datos(int socket_fd, void *dest, uint32_t size) {
-	return recv(socket_fd, dest, size, MSG_WAITALL);
+	return recv(socket_fd, dest, size, MSG_WAITALL); // cuantos bytes a recibir y a donde los quiero recibir
 }
 
 
@@ -278,7 +282,7 @@ void *serializar_pcb(pcb* pcb)
     buffer->stream_size = sizeof(uint32_t) * 4 // Para los unint32
              + sizeof(1) * 1 // Para los int ;
              + sizeof(float) * 1 // Para los float
-             + sizeof(uint8_t) * 2 // Para los uint_8_t
+             + sizeof(uint8_t) * 1 // Para los uint_8_t
              + list_size(pcb->instrucciones) * sizeof(instruccion);
 
     void* stream = malloc(buffer->stream_size);
@@ -350,6 +354,8 @@ pcb* deserializar_pcb(void* stream) {
     stream += sizeof(float);
     memcpy(&(pcb->tiempo_de_bloqueo), stream, sizeof(double));
     stream += sizeof(double);
+    memcpy(&(pcb->rafaga_anterior), stream, sizeof(uint8_t));
+    stream += sizeof(uint8_t);
 
     //Deserializar los campos enum*
 

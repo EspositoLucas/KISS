@@ -171,10 +171,9 @@ void enviar_paquete(t_paquete*, int);
 void* recibir_buffer(int*, int );
 void* serializar_paquete_con_bytes(t_paquete* , int );
 
-
 t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
-void agregar_a_paquete(t_paquete *, void *, uint32_t);
-void agregar_a_buffer(t_buffer *, void *, uint32_t);
+void agregar_a_paquete(t_paquete *, void *, int);
+void agregar_a_buffer(t_buffer *, void *, int);
 
 t_handshake* recibir_handshake(int);
 void pedir_tabla_pagina(int,uint32_t,uint32_t);

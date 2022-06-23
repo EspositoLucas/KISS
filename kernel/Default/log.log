@@ -37180,3 +37180,18 @@
 [INFO] 20:51:15:868 Servidor Kernel/(8454:8454): PCB creado
 
 [ERROR] 20:51:15:871 Servidor Kernel/(8454:8454): Fallo la comunicacion. Abortando
+[INFO] 16:28:58:193 Servidor Kernel/(30195:30195): Esperando conexion de consolas
+[INFO] 17:27:04:210 Servidor Kernel/(31462:31462): Esperando conexion de consolas
+[INFO] 17:27:08:734 Servidor Kernel/(31462:31473): Me llego el tamanio y las instrucciones
+
+[INFO] 17:31:40:148 Servidor Kernel/(31717:31717): Esperando conexion de consolas
+[INFO] 17:31:44:743 Servidor Kernel/(31717:31728): Me llego el tamanio y las instrucciones
+
+[INFO] 17:42:12:356 Servidor Kernel/(31826:31826): Esperando conexion de consolas
+[INFO] 17:42:17:575 Servidor Kernel/(31826:31840): Me llego el tamanio y las instrucciones
+
+[INFO] 17:42:33:417 Servidor Kernel/(31826:31852): Me llego el tamanio y las instrucciones
+
+[INFO] 17:46:26:142 Servidor Kernel/(31956:31956): Esperando conexion de consolas
+[INFO] 17:46:35:551 Servidor Kernel/(31956:31971): Me llego el tamanio y las instrucciones
+
