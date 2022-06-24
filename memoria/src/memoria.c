@@ -79,7 +79,7 @@ void inicializar_memoria(){
 
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("cfg/memoria.config");
+	t_config* config=iniciar_config("Default/memoria.config");
 
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");

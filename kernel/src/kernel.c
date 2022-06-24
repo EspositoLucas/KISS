@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-     cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/cfg/kernel.config");
+     cargar_configuracion("Default/kernel.config");
      char* ip_kernel = config_valores_kernel.ip_kernel;
      char* puerto_kernel = config_valores_kernel.puerto_escucha;
 
