@@ -155,9 +155,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 	printf("Tamanio de lista recibida: %d\n", list_size(datos));
 
-//    for(int i=0 ; i<datos->elements_count;i++){
-//    	printf("Dato numero '%d': %p \n",i,list_get(datos,i));
-//    }
+    for(int i=0 ; i<datos->elements_count;i++){
+    	printf("Dato numero '%d': %p \n",i,list_get(datos,i));
+    }
 
 
 //	void* stream = malloc(tamanio_stream);
@@ -183,7 +183,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
   void manejar_conexion(int socket_cliente){
 	printf("\nAdentro de manejar conexion con el socket cliente: %d\n", socket_cliente);
 
-	op_code codigo_operacion = recibir_operacion(socket_cliente);
+	op_code codigo_operacion = recibir_operacion_nuevo(socket_cliente);
 
 	printf("Codigo de operacion: %d\n", codigo_operacion);
 	  	switch (codigo_operacion) {
@@ -218,12 +218,12 @@ t_consola *deserializar_consola(int  socket_cliente) {
 int atender_clientes1(int socket_servidor){
 
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
-//	printf("Socket cliente: %d\n", socket_cliente);
+	printf("Socket cliente: %d\n", socket_cliente);
 
 
 	while(true){
 		pthread_t hilo_cliente;
-//		printf("Creo el hilo\n");
+		printf("Creo el hilo\n");
 		pthread_create(&hilo_cliente, NULL, (void*) manejar_conexion, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
 		pthread_detach(hilo_cliente);
 		return 1;

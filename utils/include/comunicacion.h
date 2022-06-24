@@ -148,6 +148,8 @@ typedef struct{
 
 // FUNCIONES
 
+int recibir_operacion_nuevo(int);
+
 void *recibir_stream(int *, int);
 t_config* leer_config(void);
 void recibir_mensaje(int,t_log*);

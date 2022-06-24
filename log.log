@@ -1,0 +1,29 @@
+[INFO] 14:39:37:980 Servidor Kernel/(5300:5300): Kernel listo para recibir al modulo cliente
+[INFO] 14:39:43:093 Servidor Kernel/(5300:5330): Me llego el tamanio y las instrucciones
+
+[INFO] 14:49:01:495 Servidor Kernel/(5645:5645): Kernel listo para recibir al modulo cliente
+[WARNING] 14:49:06:604 Servidor Kernel/(5645:5665): Operacion desconocida
+[INFO] 14:50:17:465 Servidor Kernel/(5801:5801): Kernel listo para recibir al modulo cliente
+[INFO] 14:50:25:999 Servidor Kernel/(5802:5802): Kernel listo para recibir al modulo cliente
+[WARNING] 14:50:45:953 Servidor Kernel/(5802:5816): Operacion desconocida
+[INFO] 15:10:50:689 Servidor Kernel/(6148:6148): Kernel listo para recibir al modulo cliente
+[WARNING] 15:10:58:135 Servidor Kernel/(6148:6159): Operacion desconocida
+[INFO] 15:20:05:545 Servidor Kernel/(6291:6291): Kernel listo para recibir al modulo cliente
+[WARNING] 15:20:10:668 Servidor Kernel/(6291:6318): Operacion desconocida
+[INFO] 15:22:12:568 Servidor Kernel/(6409:6409): Kernel listo para recibir al modulo cliente
+[INFO] 15:22:18:335 Servidor Kernel/(6409:6436): Me llego el tamanio y las instrucciones
+
+[INFO] 15:27:40:411 Servidor Kernel/(6599:6599): Kernel listo para recibir al modulo cliente
+[INFO] 15:27:46:023 Servidor Kernel/(6599:6621): Me llego el tamanio y las instrucciones
+
+[INFO] 15:28:15:437 Servidor Kernel/(6645:6645): Kernel listo para recibir al modulo cliente
+[WARNING] 15:28:27:282 Servidor Kernel/(6645:6664): Operacion desconocida
+[INFO] 15:28:53:935 Servidor Kernel/(6695:6695): Kernel listo para recibir al modulo cliente
+[WARNING] 15:28:58:284 Servidor Kernel/(6695:6714): Operacion desconocida
+[INFO] 15:29:15:994 Servidor Kernel/(6739:6739): Kernel listo para recibir al modulo cliente
+[INFO] 15:29:21:193 Servidor Kernel/(6739:6758): Me llego el tamanio y las instrucciones
+
+[INFO] 15:36:59:043 Servidor Kernel/(6903:6903): Kernel listo para recibir al modulo cliente
+[INFO] 15:41:52:269 Servidor Kernel/(7245:7245): Kernel listo para recibir al modulo cliente
+[INFO] 15:41:57:935 Servidor Kernel/(7245:7272): Me llego el tamanio y las instrucciones
+

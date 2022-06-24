@@ -38,6 +38,8 @@ t_consola * consola ;
 
 // FUNCIONES
 
+
+int atender_clientes1(int);
 void cargar_configuracion(char*);
 void manejo_conexiones(t_paquete* paquete,int);
 //void iniciar_planificacion(void);

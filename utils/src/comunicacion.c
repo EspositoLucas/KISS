@@ -20,6 +20,17 @@ int recibir_operacion(int socket_cliente) {
     }
 }
 
+int recibir_operacion_nuevo(int socket_cliente) {
+   int cod_op = 0;
+    if(recv(socket_cliente, &cod_op, sizeof(uint8_t), MSG_WAITALL) != 0)
+        return cod_op;
+    else
+    {
+        close(socket_cliente);
+        return -1;
+    }
+}
+
 // MENSAJE
 
 void enviar_mensaje(char *mensaje, int socket_cliente)
@@ -496,16 +507,16 @@ t_handshake* recibir_handshake(int socket_memoria){
 void pedir_tabla_pagina(int socket,uint32_t tabla,uint32_t entrada){
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=TABLA;
-	agregar_a_paquete(paquete,tabla,sizeof(uint32_t));
-	agregar_a_paquete(paquete,entrada,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&tabla,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&entrada,sizeof(uint32_t));
 	enviar_paquete(paquete,socket);
 }
 //MARCO
 void pedir_marco(int socket,uint32_t tabla,uint32_t entrada){
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=MARCO;
-	agregar_a_paquete(paquete,tabla,sizeof(uint32_t));
-	agregar_a_paquete(paquete,entrada,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&tabla,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&entrada,sizeof(uint32_t));
 	enviar_paquete(paquete,socket);
 }
 
