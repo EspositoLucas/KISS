@@ -246,30 +246,107 @@ int recibir_datos(int socket_fd, void *dest, uint32_t size) {
 }
 
 
-//----------------------------------ENVIO/RECIBO DE PCBS----------------------------------
-
-void enviarPcb(pcb* proceso,int socket_cliente){
-	op_code codigo=PCB;
-	t_buffer* buffer=serializar_pcb(proceso);
-	int bytes=sizeof(int)*2+buffer->stream_size;
-	void* a_enviar=malloc(bytes);
-	memcpy(a_enviar,&(codigo),sizeof(int));
-	memcpy(a_enviar+sizeof(int),&buffer->stream_size,sizeof(int));
-	memcpy(a_enviar+sizeof(int)*2,&buffer->stream,buffer->stream_size);
-	send(socket_cliente,a_enviar,bytes,0);
-	free(buffer);
+//----------------------------------SERIALIZAR_PCB---------------------------------------
+void agregaABuffer(t_buffer *buffer, void *src, int size){
+	buffer->stream = realloc(buffer->stream, buffer->stream_size + size);
+	memcpy(buffer->stream + buffer->stream_size, src, size);
+	buffer->stream_size+=size;
 }
 
-pcb* recibir_pcb(int socket_cliente){
-	int size;
-	void *stream;
-	pcb* recibido;
-	stream= recibir_stream(&size, socket_cliente);
-	recibido=deserializar_pcb(stream);
-	free(stream);
+void agregaAPaquete(t_paquete* paquete,void* valor,int tamanio){
+	agregar_a_buffer(paquete->buffer, &tamanio, sizeof(int));
+	agregar_a_buffer(paquete->buffer, valor, tamanio);
+}
+void armarPaquete(t_paquete* paquete,pcb* pcb){
+	agregaAPaquete(paquete,&pcb->estado_proceso,sizeof(estado));
+	agregaAPaquete(paquete,&pcb->estimacion_rafaga,sizeof(float));
+	agregaAPaquete(paquete,&pcb->id_proceso,sizeof(uint32_t));
+	agregaAPaquete(paquete,&pcb->program_counter,sizeof(uint32_t));
+	agregaAPaquete(paquete,&pcb->rafaga_anterior,sizeof(uint8_t));
+	agregaAPaquete(paquete,&pcb->tamanio_proceso,sizeof(uint32_t));
+	agregaAPaquete(paquete,&pcb->tiempo_de_bloqueo,sizeof(double));
+	agregaAPaquete(paquete,&pcb->valor_tabla_paginas,sizeof(uint32_t));
+	uint32_t cant=(uint32_t)list_size(pcb->instrucciones);
+	agregaAPaquete(paquete,&cant,sizeof(int));
+	for(int i=0;i<cant;i++){
+		instruccion* inst=list_get(pcb->instrucciones,i);
+		agregaAPaquete(paquete,&inst->codigo,sizeof(codigo_instrucciones));
+		agregaAPaquete(paquete,&inst->parametro1,sizeof(uint32_t));
+		agregaAPaquete(paquete,&inst->parametro2,sizeof(uint32_t));
+	}
+}
+
+void enviarPcb(int socket,pcb* pcb){
+	t_paquete* paquete=crear_paquete();
+	armarPaquete(paquete,pcb);
+	enviar_paquete(paquete,socket);
+}
+
+///----------------------------------RECIBIR PCBS----------------------------------
+t_list *recibirPaquete(int socket_cliente)
+{
+    int size;
+    int desplazamiento = 0;
+    void *stream;
+    t_list *valores = list_create();
+    int tamanio;
+
+    stream = recibir_stream(&size, socket_cliente);
+
+    while (desplazamiento < size)
+    {
+        memcpy(&tamanio, stream + desplazamiento, sizeof(int));
+        desplazamiento += sizeof(int);
+        void *valor = malloc(tamanio);
+        memcpy(valor, stream + desplazamiento, tamanio);
+        desplazamiento += tamanio;
+        list_add(valores, valor);
+    }
+    free(stream);
+    return valores;
+}
+
+pcb* recibirPcb(int socket){
+	t_list* valores=recibirPaquete(socket);
+	pcb* recibido=malloc(sizeof(pcb));
+	recibido->instrucciones=list_create();
+	int i=0;
+	estado* est=list_get(valores,i);i++;
+	recibido->estado_proceso=*est;
+	float* rafaga=list_get(valores,i);i++;
+	recibido->estimacion_rafaga=*rafaga;
+	uint32_t* id=(uint32_t)list_get(valores,i);i++;
+	recibido->id_proceso=*id;
+	uint32_t* pc=(uint32_t)list_get(valores,i);i++;
+	recibido->program_counter=*pc;
+	uint8_t* rafa=list_get(valores,i);i++;
+	recibido->rafaga_anterior=*rafa;
+	uint32_t* tamanio=(uint32_t)list_get(valores,i);i++;
+	recibido->tamanio_proceso=*tamanio;
+	double* bloqueo=list_get(valores,i);i++;
+	recibido->tiempo_de_bloqueo=*bloqueo;
+	uint32_t* valor_tp=(uint32_t)list_get(valores,i);i++;
+	recibido->valor_tabla_paginas=*valor_tp;
+	uint32_t* cant=(uint32_t)list_get(valores,i);i++;
+	codigo_instrucciones* code;
+	uint32_t*para1;
+	uint32_t *para2;
+	for(uint32_t y=0;y<(*cant);y++){
+		instruccion* inst=malloc(sizeof(instruccion));
+		code=list_get(valores,i);i++;
+		inst->codigo=*code;
+		para1=(uint32_t)list_get(valores,i);i++;
+		inst->parametro1=*para1;
+		para2=(uint32_t)list_get(valores,i);i++;
+		inst->parametro2=*para2;
+
+		list_add(recibido->instrucciones,inst);
+	}
+
+	list_destroy(valores);
+
 	return recibido;
 }
-
 
 
 
