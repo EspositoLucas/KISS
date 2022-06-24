@@ -15,6 +15,7 @@ int obtener_algoritmo(){
 }
 
 void crear_tlb(){
+	tlb=malloc(sizeof(tlb_t));
 	tlb->lista=list_create();
 	tlb->algoritmo=(algoritmo)obtener_algoritmo();
 }

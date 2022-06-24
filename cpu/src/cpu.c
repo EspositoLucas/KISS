@@ -17,25 +17,31 @@ int main()
 
 	///CARGA LA CONFIGURACION DE LA CPU
 	cargar_config();
-
+	char* ip=config_valores_cpu.ip_cpu;
+	char* puerto_dispatch=config_valores_cpu.puerto_escucha_dispatch;
+	char* puerto_interrupt=config_valores_cpu.puerto_escucha_interrupt;
+	char* ip_memoria=config_valores_cpu.ip_memoria;
+	char* puerto_memoria=config_valores_cpu.puerto_memoria;
 
 	///HANDSHAKE
 
-	pthread_t conexion_memoria_i;
+	/*pthread_t conexion_memoria_i;
 	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,&config_valores_cpu.puerto_memoria);//INICIA EL HILO DE CONEXION INICIAL CON MEMORIA (HANDSHAKE)
-	pthread_join(conexion_memoria_i,NULL);//ESPERA A RECIBIR EL HANDSHAKE PARA SEGUIR
+	pthread_join(conexion_memoria_i,NULL);//ESPERA A RECIBIR EL HANDSHAKE PARA SEGUIR*/
 
 	//INTERRUPCIONES
 	pthread_t manejoInterrupciones;
-	pthread_create(&manejoInterrupciones,NULL,interrupt,&config_valores_cpu.puerto_escucha_interrupt);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
+	pthread_create(&manejoInterrupciones,NULL,interrupt,&puerto_interrupt);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
 
 	///INICIA LA TLB
 
 	crear_tlb();
 
 	///CREA LA CONEXION CON EL KERNEL
-
-	int server_fd = iniciar_servidor(config_valores_cpu.ip_cpu,config_valores_cpu.puerto_escucha_dispatch);
+	puts(config_valores_cpu.ip_cpu);
+	puts(config_valores_cpu.puerto_escucha_dispatch);
+	puts(config_valores_cpu.puerto_escucha_interrupt);
+	int server_fd = iniciar_servidor(ip,puerto_dispatch);
     log_info(logger, "CPU listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(server_fd);
 
@@ -221,7 +227,8 @@ while(1){
 return NULL;
 }
 ///CONEXION A MEMORIA: HANDSHAKE
-void* conexion_inicial_memoria(void* puerto_memoria){
+void* conexion_inicial_memoria(void* datos){
+	conexion_memoria* cpu=datos;
 	socket_memoria=crear_conexion(IP_CPU,puerto_memoria);
 	pedir_handshake(socket_memoria);
 	int codigo_memoria;
@@ -246,7 +253,7 @@ void* conexion_inicial_memoria(void* puerto_memoria){
 }
 ///CARGAR CONFIGURACION A CPU
 void cargar_config(){
-	config= iniciar_config("cfg/cpu.config");
+	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/cfg/cpu.config");
 
 	config_valores_cpu.ip_cpu=config_get_string_value(config,"IP_CPU");
 	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");
@@ -257,5 +264,5 @@ void cargar_config(){
 	config_valores_cpu.puerto_escucha_dispatch=config_get_string_value(config,"PUERTO_ESCUCHA_DISPATCH");
 	config_valores_cpu.puerto_escucha_interrupt=config_get_string_value(config,"PUERTO_ESCUCHA_INTERRUPT");//LEE Y GUARDA LA CONFIGURACION DESDE cpu.cfg
 
-	config_destroy(config);
+
 }
