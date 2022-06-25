@@ -18,15 +18,11 @@ int main(void)
     server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
 
-    //PROBANDO MONOHILO FUNCIONA FENOMENO
-//    int socket_cliente = esperar_cliente(server_fd);
-//    manejar_conexion(socket_cliente);
 
     while(atender_clientes_kernel(server_fd));
 
     //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
-//    terminar_programa(server_fd, logger, config);
     terminar_kernel();
     return EXIT_SUCCESS;
 }
@@ -144,6 +140,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		consola = deserializar_consola(socket_cliente);
 	  		pcb* proceso = crear_estructura_pcb(consola);
 	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion");
+	  		agregarANewPcb(pcb* pcb);
 	  		//// aca iria iniciar_planificacion ?
 	  		break;
 	  	case PAQUETE:
@@ -178,6 +175,5 @@ int atender_clientes_kernel(int socket_servidor){
 
 void terminar_kernel(){
 	log_destroy(logger);
-//	config_destroy(config);
 	liberar_conexion(server_fd);
 }

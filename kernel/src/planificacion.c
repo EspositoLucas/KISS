@@ -58,7 +58,7 @@ void iniciar_planificador_largo_plazo(void) {
 
  	pthread_mutex_unlock(&mutex_new);
 
- 	sem_post(&sem_admitir_transicion); // ESTE SEM ES DISTINTO AL SEM_ADMITIR?
+ 	sem_post(&sem_admitir);
  }
 
 
@@ -66,7 +66,7 @@ void iniciar_planificador_largo_plazo(void) {
 void transicion_admitir_por_prioridad(void) {
 
 	while(1) {
-		sem_wait(&sem_admitir_transicion); // IDEM ANTERIOR
+		sem_wait(&sem_admitir); // IDEM ANTERIOR
 		sem_wait(&sem_grado_multiprogramacion);
 		pcb *pcb;
 
