@@ -40,7 +40,7 @@ t_consola * consola ;
 
 
 int atender_clientes_kernel(int);
-void cargar_configuracion(char*);
+t_config cargar_configuracion(char*);
 void manejar_conexion(int);
 //void iniciar_planificacion(void);
 t_list *deserializar_instrucciones(t_list*, uint32_t );

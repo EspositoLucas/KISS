@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-     cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+     t_config* config = cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
      char* ip_kernel = config_valores_kernel.ip_kernel;
      char* puerto_kernel = config_valores_kernel.puerto_escucha;
 
@@ -25,7 +25,7 @@ int main(void)
 
     //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
-
+    terminar_programa(server_fd, logger, config);
     return EXIT_SUCCESS;
 }
 
@@ -37,7 +37,7 @@ int main(void)
 //..................................CONFIGURACIONES.......................................................................
 
 
-void cargar_configuracion(char* path) {
+t_config cargar_configuracion(char* path) {
 
       t_config* config = config_create(path); //Leo el archivo de configuracion
 
@@ -59,6 +59,7 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
+      	  return config ;
 
   }
 
