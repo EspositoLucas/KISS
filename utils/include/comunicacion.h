@@ -146,6 +146,10 @@ typedef struct{
 	t_list* lista_marcos;
 }tabla_de_segundo_nivel;
 
+typedef struct{
+	char* puerto;
+	char* ip;
+}conexion_t;
 
 // FUNCIONES
 
