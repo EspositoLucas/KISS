@@ -19,7 +19,7 @@
 #include "sockets.h"
 
 // FUNCIONES
-
+void inciar_planificacion();
 algoritmo obtener_algoritmo(void);
 void inicializar_listas(void);
 void inicializar_semaforos(void);
@@ -54,7 +54,6 @@ uint32_t generador_de_id;
 
 // Planificador Largo Plazo
 
- uint32_t generador_de_id;
  t_list* colaNew;
  t_list *colaExit;
  sem_t sem_admitir;

@@ -8,14 +8,15 @@ int main(void)
     
 
     cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
-    char* ip_kernel = config_valores_kernel.ip_kernel;
-    char* puerto_kernel = config_valores_kernel.puerto_escucha;
 
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 
 //    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
 //    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
-    server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
+    server_fd = iniciar_servidor(config_valores_kernel.ip_kernel,config_valores_kernel.puerto_escucha);
+
+    inciar_planificacion();
+
     log_info(logger, "Kernel listo para recibir al modulo cliente");
 
 
@@ -57,8 +58,9 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
-      config_destroy(config);
-}
+      //config_destroy(config);
+
+  }
 
 
 
@@ -93,25 +95,14 @@ t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
   		instruccion->parametro1 = *(uint32_t *)list_get(datos, i + 1);
   		instruccion->parametro2 = *(uint32_t *)list_get(datos, i + 2);
   		list_add(instrucciones, instruccion);
-  		printf("Instruccion numero [%d]: Cod operacion es: %d, 1erParam: %d, 2doParam: %d\n", i/3, *(codigo_instrucciones *)list_get(datos,i), *(uint32_t *)list_get(datos,i+1), *(uint32_t *)list_get(datos,i+2));
   	}
   	return instrucciones;
 }
 
 
 t_consola *deserializar_consola(int  socket_cliente) {
-	printf("Entre a deseralizar consola con el socket de cliente: %d\n", socket_cliente);
 
 	t_list *datos = recibir_paquete(socket_cliente);
-
-	printf("Tamanio de lista recibida: %d\n", list_size(datos));
-
-    for(int i=0 ; i<datos->elements_count;i++){
-    	printf("Dato numero '%d': %p \n",i,list_get(datos,i));
-    }
-
-
-	printf("Recibi el stream con los datos\n");
   	t_consola *consola = malloc(sizeof(t_consola));
   	consola->tamanio_proceso = *(uint32_t *)list_remove(datos, 0);
   	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos));
@@ -126,11 +117,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 // manejar conexion con codigo de operacion de tipo op_code
 
   void manejar_conexion(int socket_cliente){
-	printf("\nAdentro de manejar conexion con el socket cliente: %d\n", socket_cliente);
 
 	int codigo_operacion = recibir_operacion_nuevo(socket_cliente);
 
-	printf("Codigo de operacion: %d\n", codigo_operacion);
 	  	switch (codigo_operacion) {
 	  	case MENSAJE:
 	  		recibir_mensaje(socket_kernel,logger);
@@ -138,8 +127,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  	case PAQUETE_CONSOLA:
 	  		log_info(logger, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
+	  		printf("Consola deserializada, entro a armar pcb\n");
 	  		pcb* proceso = crear_estructura_pcb(consola);
-	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion");
+	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion\n");
 	  		agregarANewPcb(proceso);
 	  		//// aca iria iniciar_planificacion ?
 	  		break;
@@ -159,12 +149,10 @@ t_consola *deserializar_consola(int  socket_cliente) {
 int atender_clientes_kernel(int socket_servidor){
 
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
-	printf("Socket cliente: %d\n", socket_cliente);
 
 
 	while(true){
 		pthread_t hilo_cliente;
-		printf("Creo el hilo\n");
 		pthread_create(&hilo_cliente, NULL, (void*) manejar_conexion, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
 		pthread_detach(hilo_cliente);
 		return 1;

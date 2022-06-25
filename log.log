@@ -1,0 +1,19 @@
+[INFO] 20:33:25:341 Servidor Kernel/(5051:5051): Kernel listo para recibir al modulo cliente
+[INFO] 20:33:30:745 Servidor Kernel/(5051:5065): Me llego el tamanio y las instrucciones
+
+[INFO] 20:34:45:075 Servidor Kernel/(5162:5162): Kernel listo para recibir al modulo cliente
+[INFO] 20:34:50:579 Servidor Kernel/(5162:5178): Me llego el tamanio y las instrucciones
+
+[INFO] 20:35:07:882 Servidor Kernel/(5222:5222): Kernel listo para recibir al modulo cliente
+[INFO] 20:35:11:676 Servidor Kernel/(5222:5235): Me llego el tamanio y las instrucciones
+
+[INFO] 20:38:10:605 Servidor Kernel/(5382:5382): Kernel listo para recibir al modulo cliente
+[INFO] 20:38:14:433 Servidor Kernel/(5382:5399): Me llego el tamanio y las instrucciones
+
+[INFO] 20:39:23:484 Servidor Kernel/(5489:5489): Kernel listo para recibir al modulo cliente
+[INFO] 20:39:28:582 Servidor Kernel/(5489:5501): Me llego el tamanio y las instrucciones
+
+[INFO] 20:44:03:092 Servidor Kernel/(5804:5804): Kernel listo para recibir al modulo cliente
+[INFO] 20:44:08:308 Servidor Kernel/(5804:5828): Me llego el tamanio y las instrucciones
+
+[INFO] 20:44:08:308 Servidor Kernel/(5804:5828): [NEW] Entra el pcb de ID: 0 a la cola.

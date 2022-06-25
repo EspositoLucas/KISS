@@ -1,5 +1,15 @@
 #include "planificacionUtils.h"
 
+//--------------------------------------------------- FUNCIONES PLANIFICACION -------------------------------
+
+void inciar_planificacion(){
+	iniciar_planificador_largo_plazo();
+	iniciar_planificador_corto_plazo();
+
+	iniciar_planificador_mediano_plazo();
+}
+
+
 
 // --------------------------------------------------- FUNCIONES LARGO PLAZO ----------------------------------------------------------
 

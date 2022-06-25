@@ -3,11 +3,15 @@
 int proceso_ejecutando;
 uint32_t tiempoInicioBlock;
 
+
+
+
 //................................. LARGO PLAZO.........................................................................................
 
 // CREAR PCB
 
 pcb *crear_estructura_pcb(t_consola *consola) {
+
 	pcb *pcb = malloc(sizeof(pcb));
 	pthread_mutex_lock(&mutex_generador_id);
 	pcb->id_proceso = generador_de_id;
@@ -18,6 +22,8 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 	pcb->program_counter = 0;
 	pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
 	pcb->tiempo_de_bloqueo = 0;
+	pcb->rafaga_anterior = 0;
+	pcb->instrucciones = consola->instrucciones;
 
 	return pcb;
 }
