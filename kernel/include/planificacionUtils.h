@@ -38,7 +38,6 @@ pcb* obtenerSiguienteSRT();
 pcb* obtenerSiguienteFIFO();
 pcb* obtenerSiguienteReady();
 void ejecutarIO(uint32_t);
-int get_time();
 
 
 // VARIABLES
@@ -66,6 +65,14 @@ pthread_mutex_t mutex_new;
  pthread_mutex_t mutex_exit;
  pthread_t thread_exit;
  pthread_t thread_admitir;
+
+ // TIMER
+ pthread_mutex_t mutex_timer;
+ pthread_t th_timer;
+ uint32_t tiempo;
+void inciar_timer();
+void timer();
+uint32_t get_time();
 
 
 // Planificador Corto Plazo

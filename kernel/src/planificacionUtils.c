@@ -13,7 +13,7 @@
  void enviar_pcb_a_memoria(pcb *pcb, int socket_memoria, op_code codigo) {
 	 t_paquete* paquete = crear_paquete_con_codigo_de_operacion(LIBERAR_ESTRUCTURAS);
 	 enviar_paquete(paquete, socket_memoria);
-	 enviar_pcb(pcb,socket_memoria);
+	 enviarPcb(socket_memoria,pcb);
 	 eliminar_paquete(paquete);
  }
 
@@ -37,7 +37,29 @@ uint32_t obtener_entrada_tabla_de_pagina(int socket_fd) {
 
 
 
+// ---------------------------------------------------- TIMER ----------------------------------------
+ void iniciar_timer() {
+ 	pthread_mutex_init(&mutex_timer, NULL);
+ 	pthread_create(&th_timer, NULL, (void *)timer, NULL);
+ 	pthread_detach(th_timer);
+ }
 
+ void timer(void *data) {
+	 tiempo = 0;
+ 	while(1) {
+ 		sleep(1);
+ 		pthread_mutex_lock(&mutex_timer);
+ 		tiempo++;
+ 		pthread_mutex_unlock(&mutex_timer);
+ 	}
+ }
+
+ uint32_t get_time() {
+ 	pthread_mutex_lock(&mutex_timer);
+ 	uint32_t tiempo_actual = tiempo * 1000;
+ 	pthread_mutex_unlock(&mutex_timer);
+ 	return tiempo_actual;
+ }
 
 
 
@@ -49,8 +71,7 @@ uint32_t obtener_entrada_tabla_de_pagina(int socket_fd) {
 algoritmo obtener_algoritmo(){
 
  	 algoritmo switcher;
- 	 char* algoritmo = obtener_de_config(config_valores_kernel, "ALGORITMO_PLANIFICACION");
-
+ 	 char* algoritmo = config_valores_kernel.algoritmo_planificacion;
  	    //FIFO
  	 if (strcmp(algoritmo,"FIFO") == 0)
  	 {
@@ -69,10 +90,9 @@ algoritmo obtener_algoritmo(){
 
 pcb* obtenerSiguienteReady(){
 	pcb* procesoSeleccionado;
-
 	int tamanioReady;
  	tamanioReady = list_size(colaReady);
- 	int gradoMultiprogramacion;
+ 	int gradoMultiprogramacion = config_valores_kernel.grado_multiprogramacion;
  	algoritmo algoritmo = obtener_algoritmo();
  	int ejecutando = list_size(colaExec);
 
@@ -111,7 +131,7 @@ pcb* elegirElDeMenorEstimacion(){
 
 	int tamanioReady = list_size(colaReady);
 	pcb* procesoSeleccionado;
-	pcb* procesoAux;
+	pcb* procesoAux = list_get(colaReady,0);
 	int indiceElegido = 0;
 	float procesoMasCorto;
 	procesoMasCorto = procesoAux->estimacion_rafaga;

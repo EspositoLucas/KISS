@@ -166,7 +166,7 @@ void estadoExec(void){
 		pcb* proceso = list_remove(colaExec,0);
 		proceso_ejecutando = 1;
 		pthread_mutex_unlock(&mutex_exec);
-
+		log_info(kernel_logger, "PID[%d] ingresa a EXEC", proceso->id_proceso);
 		uint32_t inicio_cpu = get_time(); // logueo el tiempo en el que se va
 
 		enviarPcb(socket_dispatch, proceso);
@@ -226,6 +226,9 @@ void estadoBlockeado(void){
 		pthread_mutex_lock(&mutex_blocked);
 		pcb* proceso = list_remove(colaBlocked,0);
 		pthread_mutex_unlock(&mutex_blocked);
+
+		log_info(kernel_logger, "PID[%d] ingresa a BLOCKED", proceso->id_proceso);
+
 		uint32_t tiempoQueLLevaEnBlock = get_time() - tiempoInicioBlock; // tiempoInicioBlock es variable global de planificacion.c
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
