@@ -70,10 +70,13 @@ void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 
 ///------------------------------INICIALIZAR MEMORIA----------------------------
 
+
 void inicializar_memoria(){
-	cantidad_de_marcos=config_valores_memoria.tam_memoria/config_valores_memoria.tam_pagina;
-	memoria_usuario=calloc(cantidad_de_marcos,config_valores_memoria.tam_pagina);
+	memoria_usuario=malloc(sizeof(config_valores_memoria.tam_memoria));
 	inicializar_tabla_primer_nivel();
+}
+void* get_marco(void* memoria,int marco){
+	return (memoria+marco*config_valores_memoria.tam_pagina);
 }
 
 
@@ -142,5 +145,5 @@ void manejo_instrucciones(void* stream,int socket_cpu){
 }
 void traducir_operandos(void* stream,uint32_t* operando1,uint32_t* operando2){
 	memcpy(&operando1,stream,sizeof(uint32_t));
-	memcpy(&operando1,stream+sizeof(uint32_t),sizeof(uint32_t));
+	memcpy(&operando2,stream+sizeof(uint32_t),sizeof(uint32_t));
 }
