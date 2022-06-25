@@ -140,7 +140,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		consola = deserializar_consola(socket_cliente);
 	  		pcb* proceso = crear_estructura_pcb(consola);
 	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion");
-	  		agregarANewPcb(pcb* pcb);
+	  		agregarANewPcb(proceso);
 	  		//// aca iria iniciar_planificacion ?
 	  		break;
 	  	case PAQUETE:

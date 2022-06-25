@@ -92,7 +92,7 @@ void transicion_admitir_por_prioridad(void) {
 	}
 }
 
-void finalizarPcb(){
+void finalizarPcb(void){
 	sem_wait(&sem_exit);
   	pthread_mutex_lock(&mutex_exit);
   	pcb* pcb = list_remove(colaExit, 0);
@@ -135,7 +135,7 @@ void iniciar_planificador_corto_plazo(void) {
 }
 
 
- void estadoReady(){
+ void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
  		algoritmo algoritmo = obtener_algoritmo();
@@ -158,7 +158,7 @@ void iniciar_planificador_corto_plazo(void) {
  }
 
 
-void estadoExec(){
+void estadoExec(void){
 	while(1){
 		sem_wait(&sem_exec);
 
@@ -192,7 +192,7 @@ void estadoExec(){
 		case IO:
 			pthread_mutex_lock(&mutex_blocked);
 			proceso->estado_proceso = BLOQUEADO;
-			tiempoInicioBLock = get_time(); // VIG => RESOLVER ESTO
+			tiempoInicioBlock = get_time(); // VIG => RESOLVER ESTO
 			list_add(colaBlocked, proceso);
 			pthread_mutex_unlock(&mutex_blocked);
 			sem_post(&sem_blocked); // despertar bloqueado
@@ -216,7 +216,9 @@ void estadoExec(){
 
 }
 
-void estadoBlockeado(){
+}
+
+void estadoBlockeado(void){
 
 	while(1){
 		sem_wait(&sem_blocked);
@@ -298,5 +300,5 @@ void estado_suspended_ready(void ) {
  		log_info(kernel_logger, "PID[%d] ingresa a SUSPENDED-READY...", pcb->id_proceso);
  		sem_post(&sem_admitir);
 	}
-}// QUE ESTA PASANDO ACA? RESOLVER
+}
 

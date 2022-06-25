@@ -41,9 +41,9 @@ pcb *crear_estructura_pcb(t_consola*);
 // Corto Plazo
 
  void iniciar_planificador_corto_plazo(void);
-void estadoReady();
-void estadoExec();
-void estadoBlockeado();
+void estadoReady(void);
+void estadoExec(void);
+void estadoBlockeado(void);
 
 int socket_interrupt ;
 
