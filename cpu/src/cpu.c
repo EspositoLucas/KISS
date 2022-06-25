@@ -31,16 +31,20 @@ int main()
 
 	//INTERRUPCIONES
 	pthread_t manejoInterrupciones;
-	pthread_create(&manejoInterrupciones,NULL,interrupt,&puerto_interrupt);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
+	conexion_t* conexion_interrupcion=malloc(sizeof(conexion_t));
+	conexion_interrupcion->ip=ip;
+	conexion_interrupcion->puerto=puerto_interrupt;
+	pthread_create(&manejoInterrupciones,NULL,interrupt,conexion_interrupcion);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
+
 
 	///INICIA LA TLB
 
 	crear_tlb();
 
 	///CREA LA CONEXION CON EL KERNEL
-	puts(config_valores_cpu.ip_cpu);
+	/*puts(config_valores_cpu.ip_cpu);
 	puts(config_valores_cpu.puerto_escucha_dispatch);
-	puts(config_valores_cpu.puerto_escucha_interrupt);
+	puts(config_valores_cpu.puerto_escucha_interrupt);*/
 	int server_fd = iniciar_servidor(ip,puerto_dispatch);
     log_info(logger, "CPU listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(server_fd);
@@ -200,8 +204,9 @@ if(parar_proceso>0){
 return 0;}
 }
 //MANEJO DE INTERRUPCIONES
-void* interrupt(void* interrupt){
-int server_fd = iniciar_servidor(IP_CPU,interrupt);
+void* interrupt(void* datos){
+conexion_t* cpu=datos;
+int server_fd = iniciar_servidor(cpu->ip,cpu->puerto);
 log_info(logger, "CPU listo para recibir interrupciones");
 int cliente_fd = esperar_cliente(server_fd);
 log_info(logger,"Se conecto Kernel al puerto interrupt");
@@ -228,8 +233,8 @@ return NULL;
 }
 ///CONEXION A MEMORIA: HANDSHAKE
 void* conexion_inicial_memoria(void* datos){
-	conexion_memoria* cpu=datos;
-	socket_memoria=crear_conexion(IP_CPU,puerto_memoria);
+	conexion_t* cpu=datos;
+	socket_memoria=crear_conexion(cpu->ip,cpu->puerto);
 	pedir_handshake(socket_memoria);
 	int codigo_memoria;
 	while(1){
