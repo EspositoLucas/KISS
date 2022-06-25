@@ -146,41 +146,63 @@ typedef struct{
 	t_list* lista_marcos;
 }tabla_de_segundo_nivel;
 
+
 // FUNCIONES
 
+
+//operacion
+
 int recibir_operacion_nuevo(int);
+int recibir_operacion(int);
+
+
+//mensaje
 
 void *recibir_stream(int *, int);
-t_config* leer_config(void);
-void recibir_mensaje(int,t_log*);
-int recibir_operacion(int);
 void enviar_mensaje(char *, int );
-t_buffer *serializar_paquete(t_paquete *);
-void eliminar_paquete(t_paquete *);
-t_list *recibir_paquete(int );
-t_paquete* recibe_paquete(int );
-pcb* deserializar_pcb(void* stream);
+void recibir_mensaje(int,t_log*);
+
+
+//pcb
+
+pcb* deserializar_pcb(void* );
 void *serializar_pcb(pcb*);
-pcb *armar_pcb(t_buffer* buffer);
 void eliminar_pcb(pcb* proceso);
-pcb* recibir_pcb(int socket_cliente);
-void enviar_mensaje(char *mensaje, int socket_cliente);
+void enviarPcb(int ,pcb* );
+pcb* recibirPcb(int );
+
+//paquete
+
 t_paquete *crear_paquete(void);
 t_paquete *crear_paquete_con_codigo_de_operacion(uint8_t );
-void agregar_entero_a_paquete(t_paquete*, int );
-void agregar_datos_consola(t_paquete*,void *, int ,int );
-void enviar_paquete(t_paquete*, int);
-void* recibir_buffer(int*, int );
-void* serializar_paquete_con_bytes(t_paquete* , int );
-
-t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
 void agregar_a_paquete(t_paquete *, void *, int);
+void agregar_entero_a_paquete(t_paquete*, int );
+void agregaAPaquete(t_paquete*,void* ,int );
+void armarPaquete(t_paquete* ,pcb* );
+void enviar_paquete(t_paquete*, int);
+void* serializar_paquete_con_bytes(t_paquete* , int );
+t_list *recibir_paquete(int );
+t_list *recibirPaquete(int );
+t_paquete* recibe_paquete(int );
+t_buffer *serializar_paquete(t_paquete *);
+void eliminar_paquete(t_paquete *);
+
+
+//buffer
+
+void* recibir_buffer(int*, int );
+t_buffer *inicializar_buffer_con_parametros(uint32_t, void *);
 void agregar_a_buffer(t_buffer *, void *, int);
+void agregaABuffer(t_buffer *, void *, int );
+
+//hanshake
 
 t_handshake* recibir_handshake(int);
 void pedir_tabla_pagina(int,uint32_t,uint32_t);
 void pedir_marco(int,uint32_t,uint32_t);
 void pedir_handshake(int);
+
+//conexion
 
 int atender_clientes(int , void (*)(t_paquete *,int));
 int enviar_datos(int , void *, uint32_t );

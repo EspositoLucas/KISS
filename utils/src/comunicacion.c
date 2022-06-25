@@ -9,7 +9,7 @@
 
 // OPERACION
 
-int recibir_operacion(int socket_cliente) {
+int recibir_operacion(int socket_cliente) {  // TP0
    int cod_op;
     if(recv(socket_cliente, &cod_op, sizeof(uint8_t), MSG_WAITALL) != 0)
         return cod_op;
@@ -33,7 +33,7 @@ int recibir_operacion_nuevo(int socket_cliente) {
 
 // MENSAJE
 
-void enviar_mensaje(char *mensaje, int socket_cliente)
+void enviar_mensaje(char *mensaje, int socket_cliente) //TP0
 {
     t_paquete *paquete = malloc(sizeof(t_paquete));
 
@@ -56,7 +56,7 @@ void enviar_mensaje(char *mensaje, int socket_cliente)
     eliminar_paquete(paquete);
 }
 
-void recibir_mensaje(int socket_cliente,t_log* logger) {
+void recibir_mensaje(int socket_cliente,t_log* logger) { //TP0
     int size;
     char* buffer = recibir_buffer(&size, socket_cliente);
     log_info(logger, "Me llego el mensaje %s", buffer);
@@ -142,7 +142,7 @@ t_buffer* serializar_paquete(t_paquete* paquete) {
 
 // paquete con codigo de operacion solo paquete
 
-t_paquete *crear_paquete(void){
+t_paquete *crear_paquete(void){ // TP0
     t_paquete *paquete = malloc(sizeof(t_paquete));
 
     paquete->codigo_operacion = PAQUETE;
@@ -177,7 +177,7 @@ void agregar_entero_a_paquete(t_paquete *paquete, int tamanio_proceso) // Agrega
 }
 
 
-void enviar_paquete(t_paquete *paquete, int socket_cliente)
+void enviar_paquete(t_paquete *paquete, int socket_cliente) //TP0
 {
     t_buffer *a_enviar = serializar_paquete(paquete);
     unsigned char* stream = (unsigned char*)(a_enviar->stream);
@@ -192,7 +192,7 @@ void enviar_paquete(t_paquete *paquete, int socket_cliente)
 
 // Recibir paquete como lista 
 
-t_list *recibir_paquete(int socket_cliente)
+t_list *recibir_paquete(int socket_cliente)  // TP0
 {
     int size;
     int desplazamiento = 0;
@@ -258,6 +258,7 @@ int recibir_datos(int socket_fd, void *dest, uint32_t size) {
 
 
 //----------------------------------SERIALIZAR_PCB---------------------------------------
+
 void agregaABuffer(t_buffer *buffer, void *src, int size){
 	buffer->stream = realloc(buffer->stream, buffer->stream_size + size);
 	memcpy(buffer->stream + buffer->stream_size, src, size);
@@ -294,6 +295,7 @@ void enviarPcb(int socket,pcb* pcb){
 }
 
 ///----------------------------------RECIBIR PCBS----------------------------------
+
 t_list *recibirPaquete(int socket_cliente)
 {
     int size;
