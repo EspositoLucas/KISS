@@ -7,25 +7,27 @@ int main(void)
 {
     
 
-     t_config* config = cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
-     char* ip_kernel = config_valores_kernel.ip_kernel;
-     char* puerto_kernel = config_valores_kernel.puerto_escucha;
-
+    cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+    char* ip_kernel = config_valores_kernel.ip_kernel;
+    char* puerto_kernel = config_valores_kernel.puerto_escucha;
 
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 
-    int server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
+    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
+    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
+    server_fd = iniciar_servidor(ip_kernel,puerto_kernel);
     log_info(logger, "Kernel listo para recibir al modulo cliente");
 
     //PROBANDO MONOHILO FUNCIONA FENOMENO
 //    int socket_cliente = esperar_cliente(server_fd);
 //    manejar_conexion(socket_cliente);
 
-    while(atender_clientes1(server_fd));
+    while(atender_clientes_kernel(server_fd));
 
     //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
-    terminar_programa(server_fd, logger, config);
+//    terminar_programa(server_fd, logger, config);
+    terminar_kernel();
     return EXIT_SUCCESS;
 }
 
@@ -37,7 +39,7 @@ int main(void)
 //..................................CONFIGURACIONES.......................................................................
 
 
-t_config cargar_configuracion(char* path) {
+void cargar_configuracion(char* path) {
 
       t_config* config = config_create(path); //Leo el archivo de configuracion
 
@@ -50,8 +52,8 @@ t_config cargar_configuracion(char* path) {
       config_valores_kernel.ip_cpu = config_get_string_value(config, "IP_CPU");
       config_valores_kernel.algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
       config_valores_kernel.puerto_memoria =    config_get_int_value(config, "PUERTO_MEMORIA");
-      config_valores_kernel.puerto_cpu_dispatch = config_get_int_value(config, "PUERTO_CPU_DISPATCH");
-      config_valores_kernel.puerto_cpu_interrupt = config_get_int_value(config, "PUERTO_CPU_INTERRUPT");
+      config_valores_kernel.puerto_cpu_dispatch = config_get_string_value(config, "PUERTO_CPU_DISPATCH");
+      config_valores_kernel.puerto_cpu_interrupt = config_get_string_value(config, "PUERTO_CPU_INTERRUPT");
       config_valores_kernel.ip_kernel = config_get_string_value(config, "IP_KERNEL");
       config_valores_kernel.puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
       config_valores_kernel.estimacion_inicial = config_get_int_value(config, "GRADO_MULTIPROGRAMACION");
@@ -59,9 +61,8 @@ t_config cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
-      	  return config ;
-
-  }
+      config_destroy(config);
+}
 
 
 
@@ -131,7 +132,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
   void manejar_conexion(int socket_cliente){
 	printf("\nAdentro de manejar conexion con el socket cliente: %d\n", socket_cliente);
 
-	op_code codigo_operacion = recibir_operacion_nuevo(socket_cliente);
+	int codigo_operacion = recibir_operacion_nuevo(socket_cliente);
 
 	printf("Codigo de operacion: %d\n", codigo_operacion);
 	  	switch (codigo_operacion) {
@@ -157,40 +158,6 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
   // manejar conexion con codigo deoperacion de tipo int
 
-  void manejo_conexiones(t_paquete* paquete ,int socket_kernel)
-    {
-
-  		while (1)
-      {
-      	int cod_op = recibir_operacion(socket_kernel);
-      	printf("%d ", cod_op);
-      	switch (cod_op) {
-      	case MENSAJE:
-      		recibir_mensaje(socket_kernel,logger);
-      		break;
-      	case PAQUETE_CONSOLA:
-      		log_info(logger, "Me llego el tamanio y las instrucciones\n");
-              consola = deserializar_consola(socket_kernel);
-              log_info(logger, "PCB listo para armar\n");
-              pcb* pcb = crear_estructura_pcb(consola);
-              // aca iria iniciar_planificacion ?
-              log_info(logger, "PCB creado\n");
-      		break;
-      	case PAQUETE:
-      		log_info(logger, "Me llego el paquete:\n");
-      		break;
-
-          case -1:
-              log_error(logger, "Fallo la comunicacion. Abortando");
-              break;
-          default:
-              log_warning(logger, "Operacion desconocida");
-              break;
-          }
-
-   }
-
-    }
 
 int atender_clientes_kernel(int socket_servidor){
 
@@ -206,4 +173,11 @@ int atender_clientes_kernel(int socket_servidor){
 		return 1;
 	}
 	return 0;
+}
+
+
+void terminar_kernel(){
+	log_destroy(logger);
+//	config_destroy(config);
+	liberar_conexion(server_fd);
 }

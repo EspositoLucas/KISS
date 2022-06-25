@@ -26,24 +26,24 @@
 //Largo Plazo
 
 pcb *crear_estructura_pcb(t_consola*);
-// void iniciar_planificador_largo_plazo(void);
-// void agregarANewPcb(pcb* );
-// void transicion_admitir_por_prioridad(void) ;
-// void finalizarPcb(pcb*);
+ void iniciar_planificador_largo_plazo(void);
+ void agregarANewPcb(pcb* );
+ void transicion_admitir_por_prioridad(void) ;
+ void finalizarPcb();
 
 
 //Mediano Plazo
 
-// void iniciar_planificador_mediano_plazo(void);
-// void transicion_suspender(pcb *);
-// void estado_suspended_ready(void );
+ void iniciar_planificador_mediano_plazo(void);
+ void transicion_suspender(pcb *);
+ void estado_suspended_ready(void );
 
 // Corto Plazo
 
-// void iniciar_planificador_corto_plazo(void);
-//void estadoReady();
-//void estadoExec();
-//void estadoBlockeado();
+ void iniciar_planificador_corto_plazo(void);
+void estadoReady();
+void estadoExec();
+void estadoBlockeado();
 
 int socket_interrupt ;
 

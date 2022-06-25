@@ -19,8 +19,8 @@
     char* ip_memoria;
     int puerto_memoria;
     char* ip_cpu;
-    int puerto_cpu_dispatch;
-    int puerto_cpu_interrupt;
+    char* puerto_cpu_dispatch;
+    char* puerto_cpu_interrupt;
     char* ip_kernel;
     char* puerto_escucha;
     char* algoritmo_planificacion;
@@ -32,6 +32,9 @@
 } arch_config;
 
 arch_config config_valores_kernel ;
+int server_fd;
+int socket_dispatch;
+int socket_interrupt;
 
 int socket_kernel ;
 t_consola * consola ;
@@ -40,11 +43,12 @@ t_consola * consola ;
 
 
 int atender_clientes_kernel(int);
-t_config cargar_configuracion(char*);
+void cargar_configuracion(char*);
 void manejar_conexion(int);
 //void iniciar_planificacion(void);
 t_list *deserializar_instrucciones(t_list*, uint32_t );
 t_consola *deserializar_consola(int );
 void manejo_conexiones(t_paquete* ,int);
+void terminar_kernel();
 
 #endif 
