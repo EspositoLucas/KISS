@@ -22,6 +22,7 @@ int main(void) {
 // Manejo conexiones - Procesar conexiones con los op code
 
 void manejo_conexiones(t_paquete* paquete,int socket_cliente){
+
 	switch(paquete->codigo_operacion){
 	case HANDSHAKE:
 		log_info(logger,"me llego el handshake de cpu");
@@ -92,7 +93,6 @@ void cargar_configuracion(){
 	config_valores_memoria.retardo_swap=config_get_int_value(config,"RETARDO_SWAP");
 	config_valores_memoria.path_swap=config_get_string_value(config,"PATH_SWAP");
 
-	config_destroy(config);
 }
 ///----------------PREPARAR PAQUETE PARA HANDSHAKE------------------
 

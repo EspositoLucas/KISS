@@ -25,9 +25,6 @@ int main(void)
 
     //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
 
-//    if(atender_clientes(server_fd, manejo_conexiones) == -1) {
-//    		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
-//    }
 
     return EXIT_SUCCESS;
 }
@@ -62,7 +59,6 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
-      //config_destroy(config);
 
   }
 
@@ -84,43 +80,9 @@ void cargar_configuracion(char* path) {
 // }
 
 
-//.................................. CONEXIONES.............................................................................................
 
 
-  void manejo_conexiones(t_paquete* paquete ,int socket_kernel)
-  {
 
-		while (1)
-    {
-    	int cod_op = recibir_operacion(socket_kernel);
-    	printf("%d ", cod_op);
-    	switch (cod_op) {
-    	case MENSAJE:
-    		recibir_mensaje(socket_kernel,logger);
-    		break;
-    	case PAQUETE_CONSOLA:
-    		log_info(logger, "Me llego el tamanio y las instrucciones\n");
-            consola = deserializar_consola(socket_kernel);
-            log_info(logger, "PCB listo para armar\n");
-            pcb* pcb = crear_estructura_pcb(consola);
-            //meter pcb a new
-            log_info(logger, "PCB creado\n");
-    		break;
-    	case PAQUETE:
-    		log_info(logger, "Me llego el paquete:\n");
-    		break;
-
-        case -1:
-            log_error(logger, "Fallo la comunicacion. Abortando");
-            break;
-        default:
-            log_warning(logger, "Operacion desconocida");
-            break;
-        }
-		
- }
-
-  }
 
   //----------------------------------DESERIALIZAR INSTRUCCIONES CONSOLA ----------------------------------
 
@@ -129,7 +91,6 @@ t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
 
   	for(int i = 0; i < longitud_datos; i += 3) {
   		instruccion *instruccion = malloc(sizeof(instruccion));
-  		//printf("Op code: %d, Primer param: %d , Segundo param: %d\n",*(codigo_instrucciones *)list_get(datos,i), *(uint32_t *)list_get(datos,i+1), *(uint32_t *)list_get(datos,i+2));
   		instruccion->codigo = *(codigo_instrucciones *)list_get(datos, i);
   		instruccion->parametro1 = *(uint32_t *)list_get(datos, i + 1);
   		instruccion->parametro2 = *(uint32_t *)list_get(datos, i + 2);
@@ -143,14 +104,6 @@ t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
 t_consola *deserializar_consola(int  socket_cliente) {
 	printf("Entre a deseralizar consola con el socket de cliente: %d\n", socket_cliente);
 
-//	int tamanio = sizeof(int);
-//	void* stream = malloc(tamanio);
-//	recv(socket_cliente, stream, tamanio,0);
-//
-//	int tamanio_proceso;
-//
-//	memcpy(tamanio_proceso, stream, sizeof(int));
-
 	t_list *datos = recibir_paquete(socket_cliente);
 
 	printf("Tamanio de lista recibida: %d\n", list_size(datos));
@@ -160,25 +113,19 @@ t_consola *deserializar_consola(int  socket_cliente) {
     }
 
 
-//	void* stream = malloc(tamanio_stream);
-//	recv(socket_cliente, stream, tamanio_stream,0);
-
-//  	printf("Cantidad de datos deberia ser igual a 6, es: %d", datos->elements_count);
-
 	printf("Recibi el stream con los datos\n");
   	t_consola *consola = malloc(sizeof(t_consola));
   	consola->tamanio_proceso = *(uint32_t *)list_remove(datos, 0);
-//  	printf("Tamanio de proceso en cosola: %d", *(int *) consola->tamanio_proceso);
   	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos));
-//  	printf("Datos de consola, cantidad de instr en la lista: %d", consola->instrucciones->elements_count);
-//  	list_destroy_and_destroy_elements(datos, free);
   	return consola;
 }
 
 
-  //---------------------------------------VIDEO LA CAJA -----------------------
+
+  //---------------------------------------MANEJO CLIENTES - CONEXIONES -----------------------
 
 
+// manejar conexion con codigo de operacion de tipo op_code
 
   void manejar_conexion(int socket_cliente){
 	printf("\nAdentro de manejar conexion con el socket cliente: %d\n", socket_cliente);
@@ -195,27 +142,56 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		consola = deserializar_consola(socket_cliente);
 	  		pcb* proceso = crear_estructura_pcb(consola);
 	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion");
-	  		//agregarANewPcb(proceso);
-	  //        log_info(logger, "PCB listo para armar\n");
-	  //        pcb* pcb = crear_estructura_pcb(consola);
-	  //        log_info(logger, "PCB creado\n");
+	  		//// aca iria iniciar_planificacion ?
 	  		break;
 	  	case PAQUETE:
 			log_info(logger, "Me llego el paquete:\n");
 	  		break;
 
-	//      case -1:
-	//          log_error(logger, "Fallo la comunicacion. Abortando");
-	//          break;
 	      default:
 	          log_warning(logger, "Operacion desconocida");
 	          break;
 	  	}
   }
 
+  // manejar conexion con codigo deoperacion de tipo int
 
+  void manejo_conexiones(t_paquete* paquete ,int socket_kernel)
+    {
 
-int atender_clientes1(int socket_servidor){
+  		while (1)
+      {
+      	int cod_op = recibir_operacion(socket_kernel);
+      	printf("%d ", cod_op);
+      	switch (cod_op) {
+      	case MENSAJE:
+      		recibir_mensaje(socket_kernel,logger);
+      		break;
+      	case PAQUETE_CONSOLA:
+      		log_info(logger, "Me llego el tamanio y las instrucciones\n");
+              consola = deserializar_consola(socket_kernel);
+              log_info(logger, "PCB listo para armar\n");
+              pcb* pcb = crear_estructura_pcb(consola);
+              // aca iria iniciar_planificacion ?
+              log_info(logger, "PCB creado\n");
+      		break;
+      	case PAQUETE:
+      		log_info(logger, "Me llego el paquete:\n");
+      		break;
+
+          case -1:
+              log_error(logger, "Fallo la comunicacion. Abortando");
+              break;
+          default:
+              log_warning(logger, "Operacion desconocida");
+              break;
+          }
+
+   }
+
+    }
+
+int atender_clientes_kernel(int socket_servidor){
 
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
 	printf("Socket cliente: %d\n", socket_cliente);

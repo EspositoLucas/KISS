@@ -39,9 +39,9 @@ t_consola * consola ;
 // FUNCIONES
 
 
-int atender_clientes1(int);
+int atender_clientes_kernel(int);
 void cargar_configuracion(char*);
-void manejo_conexiones(t_paquete* paquete,int);
+void manejar_conexion(int);
 //void iniciar_planificacion(void);
 t_list *deserializar_instrucciones(t_list*, uint32_t );
 t_consola *deserializar_consola(int );
