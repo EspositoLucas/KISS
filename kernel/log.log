@@ -19,3 +19,46 @@
 [INFO] 20:43:43:792 Servidor Kernel/(10320:10361): Me llego el tamanio y las instrucciones
 
 [INFO] 20:33:02:187 Servidor Kernel/(4934:4934): Kernel listo para recibir al modulo cliente
+[INFO] 19:35:03:737 Servidor Kernel/(17137:17137): Kernel listo para recibir al modulo cliente
+[INFO] 19:35:19:131 Servidor Kernel/(17137:17203): Me llego el tamanio y las instrucciones
+
+[INFO] 19:35:19:132 Servidor Kernel/(17137:17203): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:41:21:508 Servidor Kernel/(17358:17358): Kernel listo para recibir al modulo cliente
+[INFO] 19:41:34:925 Servidor Kernel/(17358:17396): Me llego el tamanio y las instrucciones
+
+[INFO] 19:41:34:926 Servidor Kernel/(17358:17396): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:45:32:735 Servidor Kernel/(17480:17480): Kernel listo para recibir al modulo cliente
+[INFO] 19:46:41:066 Servidor Kernel/(17534:17534): Kernel listo para recibir al modulo cliente
+[INFO] 19:46:52:522 Servidor Kernel/(17534:17580): Me llego el tamanio y las instrucciones
+
+[INFO] 19:46:52:523 Servidor Kernel/(17534:17580): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:56:35:745 Servidor Kernel/(17780:17780): Kernel listo para recibir al modulo cliente
+[INFO] 19:56:47:375 Servidor Kernel/(17780:17819): Me llego el tamanio y las instrucciones
+
+[INFO] 19:56:47:376 Servidor Kernel/(17780:17819): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:58:46:068 Servidor Kernel/(17909:17909): Kernel listo para recibir al modulo cliente
+[INFO] 19:58:58:316 Servidor Kernel/(17909:17946): Me llego el tamanio y las instrucciones
+
+[INFO] 19:58:58:316 Servidor Kernel/(17909:17946): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 20:03:32:955 Servidor Kernel/(18065:18065): Kernel listo para recibir al modulo cliente
+[INFO] 20:03:47:550 Servidor Kernel/(18065:18103): Me llego el tamanio y las instrucciones
+
+[INFO] 20:03:47:551 Servidor Kernel/(18065:18103): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 20:08:05:555 Servidor Kernel/(18219:18219): Kernel listo para recibir al modulo cliente
+[INFO] 20:08:15:613 Servidor Kernel/(18219:18260): Me llego el tamanio y las instrucciones
+
+[INFO] 20:08:15:613 Servidor Kernel/(18219:18260): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 20:08:15:613 Servidor Kernel/(18219:18234): PID[0] ingresa a READY desde NEW
+[INFO] 20:08:15:614 Servidor Kernel/(18219:18235): El algoritmo de planificacion elegido es FIFO.
+[INFO] 20:08:15:614 Servidor Kernel/(18219:18235): El algoritmo de planificacion elegido es FIFO.
+[INFO] 20:08:15:615 Servidor Kernel/(18219:18235): Inicio la planificacion FIFO
+[INFO] 20:08:15:615 Servidor Kernel/(18219:18236): PID[0] ingresa a EXEC
+[INFO] 20:10:46:647 Servidor Kernel/(18355:18355): Kernel listo para recibir al modulo cliente
+[INFO] 20:10:56:839 Servidor Kernel/(18355:18394): Me llego el tamanio y las instrucciones
+
+[INFO] 20:10:56:840 Servidor Kernel/(18355:18394): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 20:10:56:840 Servidor Kernel/(18355:18370): PID[0] ingresa a READY desde NEW
+[INFO] 20:10:56:841 Servidor Kernel/(18355:18371): El algoritmo de planificacion elegido es FIFO.
+[INFO] 20:10:56:841 Servidor Kernel/(18355:18371): El algoritmo de planificacion elegido es FIFO.
+[INFO] 20:10:56:841 Servidor Kernel/(18355:18371): Inicio la planificacion FIFO
+[INFO] 20:10:56:842 Servidor Kernel/(18355:18372): PID[0] ingresa a EXEC

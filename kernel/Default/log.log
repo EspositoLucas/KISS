@@ -4,3 +4,23 @@
 [INFO] 20:44:17:208 Servidor Kernel/(10369:10369): Kernel listo para recibir al modulo cliente
 [INFO] 20:44:28:517 Servidor Kernel/(10369:10380): Me llego el tamanio y las instrucciones
 
+[INFO] 19:32:36:519 Servidor Kernel/(17002:17002): Kernel listo para recibir al modulo cliente
+[INFO] 19:32:42:982 Servidor Kernel/(17002:17037): Me llego el tamanio y las instrucciones
+
+[INFO] 19:32:42:983 Servidor Kernel/(17002:17037): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:33:28:703 Servidor Kernel/(17091:17091): Kernel listo para recibir al modulo cliente
+[INFO] 19:33:36:401 Servidor Kernel/(17091:17109): Me llego el tamanio y las instrucciones
+
+[INFO] 19:33:36:402 Servidor Kernel/(17091:17109): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:37:58:839 Servidor Kernel/(17239:17239): Kernel listo para recibir al modulo cliente
+[INFO] 19:38:03:875 Servidor Kernel/(17239:17258): Me llego el tamanio y las instrucciones
+
+[INFO] 19:43:40:807 Servidor Kernel/(17426:17426): Kernel listo para recibir al modulo cliente
+[INFO] 19:43:44:886 Servidor Kernel/(17426:17445): Me llego el tamanio y las instrucciones
+
+[INFO] 19:43:44:887 Servidor Kernel/(17426:17445): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:51:26:919 Servidor Kernel/(17614:17614): Kernel listo para recibir al modulo cliente
+[INFO] 19:52:39:437 Servidor Kernel/(17614:17672): Me llego el tamanio y las instrucciones
+
+[INFO] 19:52:39:438 Servidor Kernel/(17614:17672): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 19:53:19:568 Servidor Kernel/(17701:17701): Kernel listo para recibir al modulo cliente

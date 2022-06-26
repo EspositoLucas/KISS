@@ -181,10 +181,10 @@ void enviar_paquete(t_paquete *paquete, int socket_cliente) //TP0
 {
     t_buffer *a_enviar = serializar_paquete(paquete);
     unsigned char* stream = (unsigned char*)(a_enviar->stream);
-    printf("enviar paquete \n");
-    for(int i=0 ; i<a_enviar->stream_size;i++){
-    	printf("%02X ",stream[i]);
-    }
+//    printf("enviar paquete \n");
+//    for(int i=0 ; i<a_enviar->stream_size;i++){
+//    	printf("%02X ",stream[i]);
+//    }
     send(socket_cliente, a_enviar->stream, a_enviar->stream_size, 0);
     free(a_enviar->stream);
     free(a_enviar);
