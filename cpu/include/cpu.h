@@ -44,7 +44,6 @@ void ejecutarCOPY(uint32_t,uint32_t,pcb*);
 void ejecutarEXIT(pcb*);
 void* interrupt(void* interrupt);
 int checkInterrupt();
-void enviarPcb(pcb*,int);
 void cargar_config();
 void*conexion_inicial_memoria(void*);
 

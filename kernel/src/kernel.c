@@ -64,24 +64,6 @@ void cargar_configuracion(char* path) {
 
 
 
-//..................................INICIALIZACIONES.......................................................................
-
-
-//PLANIFICACION
-
-
-// void iniciar_planificacion(void){
-//	iniciar_planificador_largo_plazo();
-//	iniciar_planificador_corto_plazo();
-//	iniciar_planificador_mediano_plazo();
-
-
-
-// }
-
-
-
-
 
 
   //----------------------------------DESERIALIZAR INSTRUCCIONES CONSOLA ----------------------------------
@@ -114,7 +96,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
   //---------------------------------------MANEJO CLIENTES - CONEXIONES -----------------------
 
 
-// manejar conexion con codigo de operacion de tipo op_code
+// manejar conexion con codigo deoperacion de tipo int
 
   void manejar_conexion(int socket_cliente){
 
@@ -143,7 +125,6 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  	}
   }
 
-  // manejar conexion con codigo deoperacion de tipo int
 
 
 int atender_clientes_kernel(int socket_servidor){

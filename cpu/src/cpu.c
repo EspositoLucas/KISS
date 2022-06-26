@@ -58,7 +58,7 @@ int main()
         {
         case PCB:
         	parar_proceso=0;//INICIA EL CONTADOR DE PARAR PROCESO
-        	pcb_recibido = recibir_pcb(cliente_fd);
+        	pcb_recibido = recibirPcb(cliente_fd);
         	log_info(logger,"Recibi PCB de Id: %d",pcb_recibido->id_proceso);
         	ciclo_de_instruccion(pcb_recibido,cliente_fd);//INICIA EL CICLO DE INSTRUCCION
             break;
@@ -84,7 +84,7 @@ while((int)PCB->program_counter <list_size(PCB->instrucciones)){
 	decode(instruccionProxima,PCB);//DECODE (CON EXECUTE INCLUIDO)
 	PCB->program_counter++;//ACTUALIZA EL PCB
 	if(checkInterrupt()==1){//SE FIJA QUE NO HAYA PEDIDO DE PARAR EL PROCESO ANTES DE SEGUIR CON EL CICLO DE INSTRUCCION
-		enviarPcb(PCB,socket_kernel);
+		enviarPcb(socket_kernel,PCB);
 		return NULL;
 	}
 }
@@ -257,6 +257,7 @@ void* conexion_inicial_memoria(void* datos){
 	return NULL;
 }
 ///CARGAR CONFIGURACION A CPU
+
 void cargar_config(){
 	config= iniciar_config("Default/cpu.config");
 

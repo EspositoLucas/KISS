@@ -5,7 +5,6 @@
 void inciar_planificacion(){
 	iniciar_planificador_largo_plazo();
 	iniciar_planificador_corto_plazo();
-
 	iniciar_planificador_mediano_plazo();
 }
 
@@ -197,8 +196,8 @@ void ejecutarIO(uint32_t tiempoIO){
  	colaReady = list_create();
  	colaExec = list_create();
  	colaBlocked = list_create();
-  colaSuspendedBlocked = list_create();
-  colaSuspendedReady=list_create();
+ 	colaSuspendedBlocked = list_create();
+ 	colaSuspendedReady=list_create();
  	colaExit = list_create();
  }
 
@@ -216,18 +215,6 @@ void ejecutarIO(uint32_t tiempoIO){
  	pthread_mutex_init(&mutex_exit, NULL);
 
 
- 	//PAARA QUE NECESITAMOS ESTOS?
-// 	sem_init(&analizarSuspension, 0, 0);
-// 	sem_init(&suspensionFinalizada, 0, 0);
-// 	sem_init(&contadorNew, 0, 0); // Estado New
-// 	sem_init(&contadorReady, 0, 0); // Estado Ready
-// 	sem_init(&contadorExec, 0, 0); // Estado Exec
-// 	sem_init(&contadorProcesosEnMemoria, 0, 0);
-// 	sem_init(&multiprogramacion, 0, gradoMultiprogramacion); // Memoria
-// 	sem_init(&contadorBlocked, 0, 0);
-// 	sem_init(&largoPlazo, 0, 1);
-// 	sem_init(&contadorReadySuspended, 0, 0);
-// 	sem_init(&medianoPlazo, 0, 1);
  }
 
 
@@ -248,17 +235,6 @@ void ejecutarIO(uint32_t tiempoIO){
  	pthread_mutex_destroy(&mutex_suspended_blocked);
  	pthread_mutex_destroy(&mutex_suspended_ready);
 
- 	//DE LA MANO DEL COMMENT EN LOS INIT
-// 	sem_destroy(&contadorNew);
-// 	sem_destroy(&contadorReady);
-// 	sem_destroy(&contadorExec);
-// 	sem_destroy(&multiprogramacion);
-// 	sem_destroy(&contadorBlocked);
-// 	sem_destroy(&analizarSuspension);
-// 	sem_destroy(&suspensionFinalizada);
-// 	sem_destroy(&largoPlazo);
-// 	sem_destroy(&contadorReadySuspended);
-// 	sem_destroy(&medianoPlazo);
 
  }
 
