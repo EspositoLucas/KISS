@@ -410,3 +410,194 @@
 
 [INFO] 20:10:53:075 Consola/(18387:18387): Terminando programa.
 
+[INFO] 15:09:24:484 Consola/(20626:20626): Iniciando consola
+
+[INFO] 15:09:24:499 Consola/(20626:20626): Instrucciones parseadas correctamente
+
+[INFO] 15:09:24:506 Consola/(20626:20626): Conexion exitosa con kernel.
+
+[INFO] 15:09:24:507 Consola/(20626:20626): Paquete enviado correctamente.
+
+[INFO] 15:09:24:507 Consola/(20626:20626): Terminando programa.
+
+[INFO] 15:13:45:246 Consola/(20721:20721): Iniciando consola
+
+[INFO] 15:13:45:248 Consola/(20721:20721): Instrucciones parseadas correctamente
+
+[INFO] 15:13:45:251 Consola/(20721:20721): Conexion exitosa con kernel.
+
+[INFO] 15:13:45:251 Consola/(20721:20721): Paquete enviado correctamente.
+
+[INFO] 15:13:45:251 Consola/(20721:20721): Terminando programa.
+
+[INFO] 15:17:55:048 Consola/(20812:20812): Iniciando consola
+
+[INFO] 15:17:55:053 Consola/(20812:20812): Instrucciones parseadas correctamente
+
+[INFO] 15:17:55:062 Consola/(20812:20812): Conexion exitosa con kernel.
+
+[INFO] 15:17:55:066 Consola/(20812:20812): Paquete enviado correctamente.
+
+[INFO] 15:17:55:066 Consola/(20812:20812): Terminando programa.
+
+[INFO] 15:19:14:623 Consola/(20827:20827): Iniciando consola
+
+[INFO] 15:19:14:627 Consola/(20827:20827): Instrucciones parseadas correctamente
+
+[INFO] 15:19:14:630 Consola/(20827:20827): Conexion exitosa con kernel.
+
+[INFO] 15:19:14:630 Consola/(20827:20827): Paquete enviado correctamente.
+
+[INFO] 15:19:14:631 Consola/(20827:20827): Terminando programa.
+
+[INFO] 15:26:31:513 Consola/(20962:20962): Iniciando consola
+
+[INFO] 15:26:31:515 Consola/(20962:20962): Instrucciones parseadas correctamente
+
+[INFO] 15:26:31:518 Consola/(20962:20962): Conexion exitosa con kernel.
+
+[INFO] 15:26:31:518 Consola/(20962:20962): Paquete enviado correctamente.
+
+[ERROR] 15:27:04:348 Consola/(20962:20962): Error al finalizar consola
+[INFO] 15:27:04:348 Consola/(20962:20962): Terminando programa.
+
+[INFO] 15:29:15:417 Consola/(21064:21064): Iniciando consola
+
+[INFO] 15:29:15:419 Consola/(21064:21064): Instrucciones parseadas correctamente
+
+[INFO] 15:29:15:423 Consola/(21064:21064): Conexion exitosa con kernel.
+
+[INFO] 15:29:15:423 Consola/(21064:21064): Paquete enviado correctamente.
+
+[INFO] 15:29:15:424 Consola/(21064:21064): Terminando programa.
+
+[INFO] 15:29:39:050 Consola/(21077:21077): Iniciando consola
+
+[INFO] 15:29:39:052 Consola/(21077:21077): Instrucciones parseadas correctamente
+
+[INFO] 15:29:39:054 Consola/(21077:21077): Conexion exitosa con kernel.
+
+[INFO] 15:29:39:054 Consola/(21077:21077): Paquete enviado correctamente.
+
+[INFO] 15:29:39:055 Consola/(21077:21077): Terminando programa.
+
+[INFO] 15:36:10:483 Consola/(21252:21252): Iniciando consola
+
+[INFO] 15:36:10:493 Consola/(21252:21252): Instrucciones parseadas correctamente
+
+[INFO] 15:36:10:498 Consola/(21252:21252): Conexion exitosa con kernel.
+
+[INFO] 15:36:10:498 Consola/(21252:21252): Paquete enviado correctamente.
+
+[INFO] 15:36:10:500 Consola/(21252:21252): Terminando programa.
+
+[INFO] 15:36:19:079 Consola/(21264:21264): Iniciando consola
+
+[INFO] 15:36:19:092 Consola/(21264:21264): Instrucciones parseadas correctamente
+
+[INFO] 15:36:19:094 Consola/(21264:21264): Conexion exitosa con kernel.
+
+[INFO] 15:36:19:094 Consola/(21264:21264): Paquete enviado correctamente.
+
+[INFO] 15:36:19:095 Consola/(21264:21264): Terminando programa.
+
+[INFO] 15:36:57:961 Consola/(21282:21282): Iniciando consola
+
+[INFO] 15:36:57:963 Consola/(21282:21282): Instrucciones parseadas correctamente
+
+[INFO] 15:36:57:967 Consola/(21282:21282): Conexion exitosa con kernel.
+
+[INFO] 15:36:57:968 Consola/(21282:21282): Paquete enviado correctamente.
+
+[INFO] 15:36:57:968 Consola/(21282:21282): Terminando programa.
+
+[INFO] 15:37:26:267 Consola/(21294:21294): Iniciando consola
+
+[INFO] 15:37:26:270 Consola/(21294:21294): Instrucciones parseadas correctamente
+
+[INFO] 15:37:26:272 Consola/(21294:21294): Conexion exitosa con kernel.
+
+[INFO] 15:37:26:272 Consola/(21294:21294): Paquete enviado correctamente.
+
+[INFO] 15:37:26:273 Consola/(21294:21294): Terminando programa.
+
+[INFO] 16:01:16:917 Consola/(21657:21657): Iniciando consola
+
+[INFO] 16:01:16:931 Consola/(21657:21657): Instrucciones parseadas correctamente
+
+[INFO] 16:01:16:934 Consola/(21657:21657): Conexion exitosa con kernel.
+
+[INFO] 16:01:16:935 Consola/(21657:21657): Paquete enviado correctamente.
+
+[INFO] 16:01:16:935 Consola/(21657:21657): Terminando programa.
+
+[INFO] 16:01:23:634 Consola/(21670:21670): Iniciando consola
+
+[INFO] 16:01:23:637 Consola/(21670:21670): Instrucciones parseadas correctamente
+
+[INFO] 16:01:23:641 Consola/(21670:21670): Conexion exitosa con kernel.
+
+[INFO] 16:01:23:641 Consola/(21670:21670): Paquete enviado correctamente.
+
+[INFO] 16:01:23:642 Consola/(21670:21670): Terminando programa.
+
+[INFO] 16:01:29:740 Consola/(21682:21682): Iniciando consola
+
+[INFO] 16:01:29:742 Consola/(21682:21682): Instrucciones parseadas correctamente
+
+[INFO] 16:01:29:745 Consola/(21682:21682): Conexion exitosa con kernel.
+
+[INFO] 16:01:29:745 Consola/(21682:21682): Paquete enviado correctamente.
+
+[INFO] 16:01:29:746 Consola/(21682:21682): Terminando programa.
+
+[INFO] 16:01:36:054 Consola/(21695:21695): Iniciando consola
+
+[INFO] 16:01:36:056 Consola/(21695:21695): Instrucciones parseadas correctamente
+
+[INFO] 16:01:36:058 Consola/(21695:21695): Conexion exitosa con kernel.
+
+[INFO] 16:01:36:058 Consola/(21695:21695): Paquete enviado correctamente.
+
+[INFO] 16:01:36:059 Consola/(21695:21695): Terminando programa.
+
+[INFO] 16:09:52:695 Consola/(21859:21859): Iniciando consola
+
+[INFO] 16:09:52:703 Consola/(21859:21859): Instrucciones parseadas correctamente
+
+[INFO] 16:09:52:706 Consola/(21859:21859): Conexion exitosa con kernel.
+
+[INFO] 16:09:52:706 Consola/(21859:21859): Paquete enviado correctamente.
+
+[INFO] 16:09:52:707 Consola/(21859:21859): Terminando programa.
+
+[INFO] 16:09:57:965 Consola/(21874:21874): Iniciando consola
+
+[INFO] 16:09:57:968 Consola/(21874:21874): Instrucciones parseadas correctamente
+
+[INFO] 16:09:57:970 Consola/(21874:21874): Conexion exitosa con kernel.
+
+[INFO] 16:09:57:971 Consola/(21874:21874): Paquete enviado correctamente.
+
+[INFO] 16:09:57:971 Consola/(21874:21874): Terminando programa.
+
+[INFO] 16:10:04:608 Consola/(21886:21886): Iniciando consola
+
+[INFO] 16:10:04:611 Consola/(21886:21886): Instrucciones parseadas correctamente
+
+[INFO] 16:10:04:614 Consola/(21886:21886): Conexion exitosa con kernel.
+
+[INFO] 16:10:04:614 Consola/(21886:21886): Paquete enviado correctamente.
+
+[INFO] 16:10:04:615 Consola/(21886:21886): Terminando programa.
+
+[INFO] 16:10:11:704 Consola/(21899:21899): Iniciando consola
+
+[INFO] 16:10:11:708 Consola/(21899:21899): Instrucciones parseadas correctamente
+
+[INFO] 16:10:11:714 Consola/(21899:21899): Conexion exitosa con kernel.
+
+[INFO] 16:10:11:714 Consola/(21899:21899): Paquete enviado correctamente.
+
+[INFO] 16:10:11:714 Consola/(21899:21899): Terminando programa.
+

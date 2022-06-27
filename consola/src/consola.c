@@ -46,6 +46,10 @@ int main(int argc, char **argv){
 
 //	Terminar programa
 
+	op_code respuesta_kernel = recibir_operacion_nuevo(server_fd);
+	if(respuesta_kernel != FINALIZAR_CONSOLA) {
+			log_error(logger, "Error al finalizar consola");
+		}
 	log_info(logger, "Terminando programa.\n");
 	terminar_programa(server_fd, logger, config);
 

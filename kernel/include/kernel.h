@@ -36,7 +36,6 @@ int server_fd;
 int socket_dispatch;
 int socket_interrupt;
 
-int socket_kernel ;
 t_consola * consola ;
 
 // FUNCIONES
@@ -45,10 +44,10 @@ t_consola * consola ;
 int atender_clientes_kernel(int);
 void cargar_configuracion(char*);
 void manejar_conexion(int);
+void chequear_lista_pcbs();
 //void iniciar_planificacion(void);
 t_list *deserializar_instrucciones(t_list*, uint32_t );
 t_consola *deserializar_consola(int );
 void manejo_conexiones(t_paquete* ,int);
-void terminar_kernel();
 
 #endif 

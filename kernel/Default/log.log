@@ -24,3 +24,53 @@
 
 [INFO] 19:52:39:438 Servidor Kernel/(17614:17672): [NEW] Entra el pcb de ID: 0 a la cola.
 [INFO] 19:53:19:568 Servidor Kernel/(17701:17701): Kernel listo para recibir al modulo cliente
+[INFO] 20:17:33:605 Servidor Kernel/(18574:18574): Kernel listo para recibir al modulo cliente
+[INFO] 15:13:39:402 Servidor Kernel/(20709:20709): Kernel listo para recibir al modulo cliente
+[INFO] 15:13:45:251 Servidor Kernel/(20709:20728): Me llego el tamanio y las instrucciones
+
+[INFO] 15:13:45:262 Servidor Kernel/(20709:20728): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 15:13:45:262 Servidor Kernel/(20709:20711): PID[0] ingresa a READY desde NEW
+[INFO] 15:13:45:262 Servidor Kernel/(20709:20712): El algoritmo de planificacion elegido es FIFO.
+[INFO] 15:13:45:262 Servidor Kernel/(20709:20712): El algoritmo de planificacion elegido es FIFO.
+[INFO] 15:13:45:263 Servidor Kernel/(20709:20712): Inicio la planificacion FIFO
+[INFO] 15:13:45:264 Servidor Kernel/(20709:20713): PID[0] ingresa a EXEC
+[INFO] 15:17:48:457 Servidor Kernel/(20798:20798): Kernel listo para recibir al modulo cliente
+[INFO] 15:17:55:068 Servidor Kernel/(20798:20818): Me llego el tamanio y las instrucciones
+
+[INFO] 15:19:14:637 Servidor Kernel/(20798:20833): Me llego el tamanio y las instrucciones
+
+[INFO] 15:26:27:458 Servidor Kernel/(20950:20950): Kernel listo para recibir al modulo cliente
+[INFO] 15:26:31:518 Servidor Kernel/(20950:20968): Me llego el tamanio y las instrucciones
+
+[INFO] 15:29:10:721 Servidor Kernel/(21052:21052): Kernel listo para recibir al modulo cliente
+[INFO] 15:29:15:423 Servidor Kernel/(21052:21070): Me llego el tamanio y las instrucciones
+
+[INFO] 15:29:39:054 Servidor Kernel/(21052:21083): Me llego el tamanio y las instrucciones
+
+[INFO] 15:36:05:232 Servidor Kernel/(21240:21240): Kernel listo para recibir al modulo cliente
+[INFO] 15:36:10:499 Servidor Kernel/(21240:21258): Me llego el tamanio y las instrucciones
+
+[INFO] 15:36:19:094 Servidor Kernel/(21240:21271): Me llego el tamanio y las instrucciones
+
+[INFO] 15:36:57:968 Servidor Kernel/(21240:21288): Me llego el tamanio y las instrucciones
+
+[INFO] 15:37:26:273 Servidor Kernel/(21240:21300): Me llego el tamanio y las instrucciones
+
+[INFO] 16:01:12:393 Servidor Kernel/(21645:21645): Kernel listo para recibir al modulo cliente
+[INFO] 16:01:16:935 Servidor Kernel/(21645:21663): Me llego el tamanio y las instrucciones
+
+[INFO] 16:01:23:641 Servidor Kernel/(21645:21676): Me llego el tamanio y las instrucciones
+
+[INFO] 16:01:29:745 Servidor Kernel/(21645:21688): Me llego el tamanio y las instrucciones
+
+[INFO] 16:01:36:058 Servidor Kernel/(21645:21701): Me llego el tamanio y las instrucciones
+
+[INFO] 16:09:46:774 Servidor Kernel/(21846:21846): Kernel listo para recibir al modulo cliente
+[INFO] 16:09:52:706 Servidor Kernel/(21846:21865): Me llego el tamanio y las instrucciones
+
+[INFO] 16:09:57:971 Servidor Kernel/(21846:21880): Me llego el tamanio y las instrucciones
+
+[INFO] 16:10:04:614 Servidor Kernel/(21846:21892): Me llego el tamanio y las instrucciones
+
+[INFO] 16:10:11:714 Servidor Kernel/(21846:21905): Me llego el tamanio y las instrucciones
+

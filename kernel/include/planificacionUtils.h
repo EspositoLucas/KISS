@@ -52,6 +52,12 @@ uint32_t generador_de_id;
  int socket_consola ;
  int socket_memoria;
 
+typedef struct{
+	int socket;
+	pcb *pcb;
+	uint32_t tiempo_inicio_bloqueo;
+ }proceso;
+
 // Planificador Largo Plazo
 
  t_list* colaNew;

@@ -22,9 +22,6 @@ int main(void)
 
     while(atender_clientes_kernel(server_fd));
 
-    //     iniciar_planificacion(void); // Se inician los hilos para la planificacion una vez que se levanto el kernel
-
-    terminar_kernel();
     return EXIT_SUCCESS;
 }
 
@@ -58,7 +55,6 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
-      //config_destroy(config);
 
   }
 
@@ -104,16 +100,20 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 	  	switch (codigo_operacion) {
 	  	case MENSAJE:
-	  		recibir_mensaje(socket_kernel,logger);
+	  		recibir_mensaje(socket_cliente,logger);
 	  		break;
 	  	case PAQUETE_CONSOLA:
 	  		log_info(logger, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
 	  		printf("Consola deserializada, entro a armar pcb\n");
-	  		pcb* proceso = crear_estructura_pcb(consola);
+	  		proceso* proceso1 ;
+	  		proceso1->pcb = crear_estructura_pcb(consola);
+	  		proceso1->socket = socket_cliente;
 	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion\n");
-	  		agregarANewPcb(proceso);
-	  		//// aca iria iniciar_planificacion ?
+	  		list_add(colaNew,proceso1->pcb);
+	  		chequear_lista_pcbs();
+	  		//agregarANewPcb(proceso);
+	  		avisarAModulo(proceso1->socket,FINALIZAR_CONSOLA);
 	  		break;
 	  	case PAQUETE:
 			log_info(logger, "Me llego el paquete:\n");
@@ -125,7 +125,12 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  	}
   }
 
-
+  void chequear_lista_pcbs(){
+      for (int i= 0 ; i < list_size(colaNew) ;i++){
+          pcb* proceso = list_get(colaNew, i);
+          printf("PCB ID: %d",proceso->id_proceso);
+      }
+  }
 
 int atender_clientes_kernel(int socket_servidor){
 
@@ -141,8 +146,3 @@ int atender_clientes_kernel(int socket_servidor){
 	return 0;
 }
 
-
-void terminar_kernel(){
-	log_destroy(logger);
-	liberar_conexion(server_fd);
-}

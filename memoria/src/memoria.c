@@ -96,7 +96,6 @@ void cargar_configuracion(){
 	config_valores_memoria.retardo_swap=config_get_int_value(config,"RETARDO_SWAP");
 	config_valores_memoria.path_swap=config_get_string_value(config,"PATH_SWAP");
 
-	config_destroy(config);
 
 }
 ///----------------PREPARAR PAQUETE PARA HANDSHAKE------------------

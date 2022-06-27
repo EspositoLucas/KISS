@@ -86,33 +86,32 @@ void transicion_admitir_por_prioridad(void) {
 			pthread_mutex_lock(&mutex_new);
 			pcb = list_remove(colaNew,list_size(colaNew) -1 );
 			pthread_mutex_unlock(&mutex_new);
+			//pcb = obtener_entrada_tabla_de_pagina(socket_memoria,pcb); // lo comento hasta que funcione memoria
 			log_info(logger, "PID[%d] ingresa a READY desde NEW", pcb->id_proceso);
-			//pcb->valor_tabla_paginas = obtener_entrada_tabla_de_pagina(socket_memoria); // lo comento hasta que funcione memoria
-
 		}
 
 		pthread_mutex_lock(&mutex_ready);  //Se agrega a Ready el proceso
 		list_add(colaReady, pcb);
 		pthread_mutex_unlock(&mutex_ready);
-		avisarAModulo(socket_memoria,INICIALIZAR_ESTRUCTURAS) ;
 		sem_post(&sem_ready);
 	}
 }
 
 void finalizarPcb(void){
 	sem_wait(&sem_exit);
+	proceso* proceso ;
   	pthread_mutex_lock(&mutex_exit);
-  	pcb* pcb = list_remove(colaExit, 0);
+  	proceso->pcb = list_remove(colaExit, 0);
   	pthread_mutex_unlock(&mutex_exit);
- 	log_info(logger, "[EXIT] Finaliza el  pcb de ID: %d", pcb-> id_proceso);
-	enviar_pcb_a_memoria(pcb, socket_memoria,LIBERAR_ESTRUCTURAS);
+ 	log_info(logger, "[EXIT] Finaliza el  pcb de ID: %d", proceso->pcb-> id_proceso);
+	enviar_pcb_a_memoria(proceso->pcb, socket_memoria,LIBERAR_ESTRUCTURAS);
 
 	op_code codigo = esperar_respuesta_memoria(socket_memoria);
 	if(codigo != ESTRUCTURAS_LIBERADAS) {
-		log_error(kernel_logger, "No se pudo eliminar memoria de PID[%d]", pcb->id_proceso);
+		log_error(kernel_logger, "No se pudo eliminar memoria de PID[%d]", proceso->pcb->id_proceso);
 	}
-	avisarAModulo(socket_consola,FINALIZAR_CONSOLA) ;
- 	eliminar_pcb(pcb);
+	avisarAModulo(proceso->socket,FINALIZAR_CONSOLA) ;
+ 	eliminar_pcb(proceso->pcb);
 }
 
 
@@ -182,7 +181,7 @@ void estadoExec(void){
 		//recibir pcb de cpu por dispatch;
 
 
-		proceso = recibirPcb(socket_dispatch); // aca rompe el hilo porque no se hizo la conexion ac pu
+		proceso = recibirPcb(socket_dispatch); // aca rompe el hilo porque no se hizo la conexion a cpu
 
 		uint32_t finalizacion_cpu = get_time();
 		pthread_mutex_lock(&mutex_exec);
@@ -282,6 +281,7 @@ void estadoBlockeado(void){
  	log_info(logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", pcb->id_proceso);
  	pcb->estado_proceso = LISTO_SUSPENDIDO;
 	enviar_pcb_a_memoria(pcb, socket_memoria, LIBERAR_ESPACIO_PCB);
+	pcb = recibirPcb(socket_memoria);
  	op_code codigo = esperar_respuesta_memoria(socket_memoria);
  	if(codigo != ESPACIO_PCB_LIBERADO) {
  		log_error(logger, "No se pudo liberar la memoria de PID[%d]", pcb->id_proceso);

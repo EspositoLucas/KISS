@@ -62,3 +62,13 @@
 [INFO] 20:10:56:841 Servidor Kernel/(18355:18371): El algoritmo de planificacion elegido es FIFO.
 [INFO] 20:10:56:841 Servidor Kernel/(18355:18371): Inicio la planificacion FIFO
 [INFO] 20:10:56:842 Servidor Kernel/(18355:18372): PID[0] ingresa a EXEC
+[INFO] 15:07:59:784 Servidor Kernel/(20504:20504): Kernel listo para recibir al modulo cliente
+[INFO] 15:09:17:407 Servidor Kernel/(20588:20588): Kernel listo para recibir al modulo cliente
+[INFO] 15:09:30:820 Servidor Kernel/(20588:20634): Me llego el tamanio y las instrucciones
+
+[INFO] 15:09:30:821 Servidor Kernel/(20588:20634): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 15:09:30:821 Servidor Kernel/(20588:20600): PID[0] ingresa a READY desde NEW
+[INFO] 15:09:30:822 Servidor Kernel/(20588:20601): El algoritmo de planificacion elegido es FIFO.
+[INFO] 15:09:30:822 Servidor Kernel/(20588:20601): El algoritmo de planificacion elegido es FIFO.
+[INFO] 15:09:30:823 Servidor Kernel/(20588:20601): Inicio la planificacion FIFO
+[INFO] 15:09:30:823 Servidor Kernel/(20588:20602): PID[0] ingresa a EXEC

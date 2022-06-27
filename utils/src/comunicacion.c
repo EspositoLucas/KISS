@@ -328,19 +328,19 @@ pcb* recibirPcb(int socket){
 	recibido->estado_proceso=*est;
 	float* rafaga=list_get(valores,i);i++;
 	recibido->estimacion_rafaga=*rafaga;
-	uint32_t* id=(uint32_t)list_get(valores,i);i++;
+	uint32_t* id=(uint32_t*)list_get(valores,i);i++;
 	recibido->id_proceso=*id;
-	uint32_t* pc=(uint32_t)list_get(valores,i);i++;
+	uint32_t* pc=(uint32_t*)list_get(valores,i);i++;
 	recibido->program_counter=*pc;
 	uint8_t* rafa=list_get(valores,i);i++;
 	recibido->rafaga_anterior=*rafa;
-	uint32_t* tamanio=(uint32_t)list_get(valores,i);i++;
+	uint32_t* tamanio=(uint32_t*)list_get(valores,i);i++;
 	recibido->tamanio_proceso=*tamanio;
 	double* bloqueo=list_get(valores,i);i++;
 	recibido->tiempo_de_bloqueo=*bloqueo;
-	uint32_t* valor_tp=(uint32_t)list_get(valores,i);i++;
+	uint32_t* valor_tp=(uint32_t*)list_get(valores,i);i++;
 	recibido->valor_tabla_paginas=*valor_tp;
-	uint32_t* cant=(uint32_t)list_get(valores,i);i++;
+	uint32_t* cant=(uint32_t*)list_get(valores,i);i++;
 	codigo_instrucciones* code;
 	uint32_t*para1;
 	uint32_t *para2;
@@ -348,9 +348,9 @@ pcb* recibirPcb(int socket){
 		instruccion* inst=malloc(sizeof(instruccion));
 		code=list_get(valores,i);i++;
 		inst->codigo=*code;
-		para1=(uint32_t)list_get(valores,i);i++;
+		para1=(uint32_t*)list_get(valores,i);i++;
 		inst->parametro1=*para1;
-		para2=(uint32_t)list_get(valores,i);i++;
+		para2=(uint32_t*)list_get(valores,i);i++;
 		inst->parametro2=*para2;
 
 		list_add(recibido->instrucciones,inst);
@@ -522,51 +522,6 @@ void pedir_marco(int socket,uint32_t tabla,uint32_t entrada){
 	enviar_paquete(paquete,socket);
 }
 
-///----------------------------------ATENDER CLIENTES ----------------------------------
-
-int atender_clientes(int socket_servidor, void (*manejo_conexiones)(t_paquete *,int)) {
-	int socket_cliente ;
-    while(true) {
-    	 socket_cliente = esperar_cliente(socket_servidor);
-        if(socket_cliente == -1) {
-        	break;
-        }
-        pthread_t th_cliente;
-        t_socket *conexion = crear_socket_conexion(socket_cliente, manejo_conexiones);
-
-	    pthread_create(&th_cliente, NULL, (void *)ejecutar_instruccion, conexion);
-	    pthread_detach(th_cliente);
-    }
-
-    return socket_cliente;
-}
-
-// Para recibir paquete y usarlo al procesar las conexiones
-
-void ejecutar_instruccion(t_socket *conexion) {
-	t_paquete *paquete;
-	int socket=conexion->socket;
-
-	while(true) {
-		paquete = recibe_paquete(socket);
-		if(socket == -1) {
-	    	break;
-	    }
-	    conexion->manejo_conexiones(paquete,socket);
-	    eliminar_paquete(paquete);
-	}
-
-	eliminar_paquete(paquete);
-	liberar_conexion(socket);
-	free(conexion);
-}
-
- t_socket *crear_socket_conexion(int socket_fd, void (*manejo_conexiones)(t_paquete *,int socket)) {
-    t_socket *conexion = malloc(sizeof(t_socket));
-    conexion->socket = socket_fd;
-    conexion->manejo_conexiones = manejo_conexiones;
-    return conexion;
-}
 
  // ---------------------------------ELIMINAR PCB ---------------------------------------
 

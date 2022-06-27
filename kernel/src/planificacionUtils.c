@@ -21,26 +21,27 @@ void inciar_planificacion(){
 
  void enviar_pcb_a_memoria(pcb *pcb, int socket_memoria, op_code codigo) {
 	 t_paquete* paquete = crear_paquete_con_codigo_de_operacion(LIBERAR_ESTRUCTURAS);
+	 armarPaquete(paquete,pcb);
 	 enviar_paquete(paquete, socket_memoria);
-	 enviarPcb(socket_memoria,pcb);
 	 eliminar_paquete(paquete);
  }
 
 
-uint32_t obtener_entrada_tabla_de_pagina(int socket_fd) {
+pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	uint32_t numero;
 	t_paquete *paquete = crear_paquete_con_codigo_de_operacion(INICIALIZAR_ESTRUCTURAS);
+	armarPaquete(paquete,pcb);
 	enviar_paquete(paquete, socket_fd);
 	eliminar_paquete(paquete);
 
-	recibir_datos(socket_fd, &numero, sizeof(uint32_t));
+	pcb = recibirPcb(socket_fd);
 
-	return numero;
+	return pcb;
  }
 
  op_code esperar_respuesta_memoria(int socket_memoria) {
  	op_code codigo;
- 	recibir_datos(socket_memoria, &codigo, sizeof(op_code));
+ 	codigo = recibir_operacion_nuevo(socket_memoria);
  	return codigo;
  }
 
