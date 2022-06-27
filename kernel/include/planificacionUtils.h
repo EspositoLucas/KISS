@@ -25,7 +25,7 @@ void inicializar_listas(void);
 void inicializar_semaforos(void);
 void avisarAModulo(int ,op_code );
 void enviar_pcb_a_memoria(pcb *, int,op_code  );
-uint32_t obtener_entrada_tabla_de_pagina(int );
+pcb* obtener_entrada_tabla_de_pagina(int,pcb*);
 void destruir_semaforos(void);
 void destruir_listas(void);
 void destruirListaYElementos(t_list* );

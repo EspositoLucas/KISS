@@ -208,7 +208,5 @@ void pedir_handshake(int);
 int atender_clientes(int , void (*)(t_paquete *,int));
 int enviar_datos(int , void *, uint32_t );
 int recibir_datos(int socket_fd, void *dest, uint32_t size);
-void ejecutar_instruccion(t_socket *);
-t_socket *crear_socket_conexion(int , void (*)());
 
 #endif

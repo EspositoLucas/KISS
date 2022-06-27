@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/manejodetabla.c \
 ../src/memoria.c 
 
 OBJS += \
+./src/manejodetabla.o \
 ./src/memoria.o 
 
 C_DEPS += \
+./src/manejodetabla.d \
 ./src/memoria.d 
 
 
