@@ -106,14 +106,14 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		log_info(logger, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
 	  		printf("Consola deserializada, entro a armar pcb\n");
-	  		proceso* proceso1 ;
-	  		proceso1->pcb = crear_estructura_pcb(consola);
-	  		proceso1->socket = socket_cliente;
+	  		proceso* proceso ;
+	  		proceso->pcb = crear_estructura_pcb(consola);
+	  		proceso->socket = socket_cliente;
 	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion\n");
-	  		list_add(colaNew,proceso1->pcb);
+	  		list_add(colaNew,proceso->pcb);
 	  		chequear_lista_pcbs();
 	  		//agregarANewPcb(proceso);
-	  		avisarAModulo(proceso1->socket,FINALIZAR_CONSOLA);
+	  		avisarAModulo(proceso->socket,FINALIZAR_CONSOLA);
 	  		break;
 	  	case PAQUETE:
 			log_info(logger, "Me llego el paquete:\n");
@@ -127,8 +127,8 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
   void chequear_lista_pcbs(){
       for (int i= 0 ; i < list_size(colaNew) ;i++){
-          pcb* proceso = list_get(colaNew, i);
-          printf("PCB ID: %d",proceso->id_proceso);
+          proceso* proceso = list_get(colaNew, i);
+          printf("PCB ID: %d",proceso->pcb->id_proceso);
       }
   }
 

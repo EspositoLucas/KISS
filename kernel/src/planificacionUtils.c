@@ -98,8 +98,8 @@ algoritmo obtener_algoritmo(){
  	 return switcher;
 }
 
-pcb* obtenerSiguienteReady(){
-	pcb* procesoSeleccionado;
+proceso* obtenerSiguienteReady(){
+	proceso* procesoSeleccionado;
 	int tamanioReady;
  	tamanioReady = list_size(colaReady);
  	int gradoMultiprogramacion = config_valores_kernel.grado_multiprogramacion;
@@ -121,34 +121,34 @@ pcb* obtenerSiguienteReady(){
  }
 
 
- pcb* obtenerSiguienteFIFO(){
+proceso* obtenerSiguienteFIFO(){
 
  	log_info(logger,"Inicio la planificacion FIFO");
- 	pcb* procesoSeleccionado = list_remove(colaReady,0);
+ 	proceso* procesoSeleccionado = list_remove(colaReady,0);
 	return procesoSeleccionado;
 
 }
 
-pcb* obtenerSiguienteSRT(){
+proceso* obtenerSiguienteSRT(){
 
  	log_info(logger,"Inicio la planificacion SRT");
  	asignarEstimacionesAProcesos();
- 	pcb* procesoElegido = elegirElDeMenorEstimacion();
+ 	proceso* procesoElegido = elegirElDeMenorEstimacion();
  	return procesoElegido;
  }
 
-pcb* elegirElDeMenorEstimacion(){
+proceso* elegirElDeMenorEstimacion(){
 
 	int tamanioReady = list_size(colaReady);
-	pcb* procesoSeleccionado;
-	pcb* procesoAux = list_get(colaReady,0);
+	proceso* procesoSeleccionado;
+	proceso* procesoAux = list_get(colaReady,0);
 	int indiceElegido = 0;
 	float procesoMasCorto;
-	procesoMasCorto = procesoAux->estimacion_rafaga;
+	procesoMasCorto = procesoAux->pcb->estimacion_rafaga;
 	for(int i = 0; i < tamanioReady; i++){
-		pcb* procesoAux = list_get(colaReady,i);
-		if(procesoMasCorto > procesoAux->estimacion_rafaga){
-			procesoMasCorto = procesoAux->estimacion_rafaga;
+		proceso* procesoAux = list_get(colaReady,i);
+		if(procesoMasCorto > procesoAux->pcb->estimacion_rafaga){
+			procesoMasCorto = procesoAux->pcb->estimacion_rafaga;
 			indiceElegido = i;
 		}
 	}
@@ -161,17 +161,17 @@ pcb* elegirElDeMenorEstimacion(){
 void asignarEstimacionesAProcesos(){
  	int tamanioReady = list_size(colaReady);
 	for(int i = 0; i < tamanioReady; i++){
-		pcb* proceso = list_get(colaReady,i);
+		proceso* proceso = list_get(colaReady,i);
 		calculoEstimacionProceso(proceso);
 	};
 }  //revisar bien esta funcion
 
-void calculoEstimacionProceso(pcb *proceso){
+void calculoEstimacionProceso(proceso *proceso){
 	float alfa = config_valores_kernel.alfa;
 	float estimacionInicial = config_valores_kernel.estimacion_inicial;
-	float realAnterior = proceso->rafaga_anterior;
+	float realAnterior = proceso->pcb->rafaga_anterior;
 	float nuevaEstimacion = alfa * realAnterior + (1 - alfa) * estimacionInicial;
-	proceso->estimacion_rafaga = nuevaEstimacion;
+	proceso->pcb->estimacion_rafaga = nuevaEstimacion;
 }
 
 void interrumpir_cpu(){

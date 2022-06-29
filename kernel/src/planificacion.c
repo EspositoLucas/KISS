@@ -1,10 +1,6 @@
 #include "planificacion.h"
 
 int proceso_ejecutando;
-uint32_t tiempoInicioBlock;
-
-
-
 
 //................................. LARGO PLAZO.........................................................................................
 
@@ -54,13 +50,13 @@ void iniciar_planificador_largo_plazo(void) {
 
 
 
- void agregarANewPcb(pcb* pcb) {
+ void agregarANewPcb(proceso* proceso) {
 
  	pthread_mutex_lock(&mutex_new);
 
- 	   list_add(colaNew, pcb);
- 	   pcb->estado_proceso = NUEVO;
- 	   log_info(logger, "[NEW] Entra el pcb de ID: %d a la cola.", pcb->id_proceso);
+ 	   list_add(colaNew, proceso);
+ 	   proceso->pcb->estado_proceso = NUEVO;
+ 	   log_info(logger, "[NEW] Entra el pcb de ID: %d a la cola.", proceso->pcb->id_proceso);
 
  	pthread_mutex_unlock(&mutex_new);
 
@@ -74,24 +70,24 @@ void transicion_admitir_por_prioridad(void) {
 	while(1) {
 		sem_wait(&sem_admitir); // IDEM ANTERIOR
 		sem_wait(&sem_grado_multiprogramacion);
-		pcb *pcb;
+		proceso* proceso;
 
 		pthread_mutex_lock(&mutex_suspended_ready);
 		if(!list_is_empty(colaSuspendedReady)) {
-			pcb = list_remove(colaSuspendedReady,list_size(colaSuspendedReady)- 1);
+			proceso = list_remove(colaSuspendedReady,list_size(colaSuspendedReady)- 1);
 			pthread_mutex_unlock(&mutex_suspended_ready);
-			log_info(logger, "PID[%d] ingresa a READY desde SUSPENDED-READY", pcb->id_proceso);
+			log_info(logger, "PID[%d] ingresa a READY desde SUSPENDED-READY", proceso->pcb->id_proceso);
 		} else {
 			pthread_mutex_unlock(&mutex_suspended_ready);
 			pthread_mutex_lock(&mutex_new);
-			pcb = list_remove(colaNew,list_size(colaNew) -1 );
+			proceso = list_remove(colaNew,list_size(colaNew) -1 );
 			pthread_mutex_unlock(&mutex_new);
 			//pcb = obtener_entrada_tabla_de_pagina(socket_memoria,pcb); // lo comento hasta que funcione memoria
-			log_info(logger, "PID[%d] ingresa a READY desde NEW", pcb->id_proceso);
+			log_info(logger, "PID[%d] ingresa a READY desde NEW", proceso->pcb->id_proceso);
 		}
 
 		pthread_mutex_lock(&mutex_ready);  //Se agrega a Ready el proceso
-		list_add(colaReady, pcb);
+		list_add(colaReady, proceso);
 		pthread_mutex_unlock(&mutex_ready);
 		sem_post(&sem_ready);
 	}
@@ -153,7 +149,7 @@ void iniciar_planificador_corto_plazo(void) {
  		}
  		// semaforo
 
- 		pcb* siguiente_proceso = obtenerSiguienteReady();
+ 		proceso* siguiente_proceso = obtenerSiguienteReady();
 
  		pthread_mutex_lock(&mutex_exec);
  		list_add(colaExec, siguiente_proceso);
@@ -169,10 +165,10 @@ void estadoExec(void){
 		sem_wait(&sem_exec);
 
 		pthread_mutex_lock(&mutex_exec);
-		pcb* proceso = list_remove(colaExec,0);
+		proceso* proceso = list_remove(colaExec,0);
 		proceso_ejecutando = 1;
 		pthread_mutex_unlock(&mutex_exec);
-		log_info(logger, "PID[%d] ingresa a EXEC", proceso->id_proceso);
+		log_info(logger, "PID[%d] ingresa a EXEC", proceso->pcb->id_proceso);
 		uint32_t inicio_cpu = get_time(); // logueo el tiempo en el que se va
 
 		enviarPcb(socket_dispatch, proceso);
@@ -188,29 +184,29 @@ void estadoExec(void){
 		proceso_ejecutando = 0;
 		pthread_mutex_unlock(&mutex_exec);
 
-		proceso->rafaga_anterior = inicio_cpu - finalizacion_cpu;
+		proceso->pcb->rafaga_anterior = inicio_cpu - finalizacion_cpu;
 
-		instruccion *instruccion_ejecutada = list_get(proceso->instrucciones, (proceso->program_counter - 1)); // agarro la instruccion ya ejecutada por cpu
+		instruccion *instruccion_ejecutada = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1)); // agarro la instruccion ya ejecutada por cpu
 
 		switch(instruccion_ejecutada->codigo){
 		case IO:
 			pthread_mutex_lock(&mutex_blocked);
-			proceso->estado_proceso = BLOQUEADO;
-			tiempoInicioBlock = get_time(); // VIG => RESOLVER ESTO
+			proceso->pcb->estado_proceso = BLOQUEADO;
+			proceso->tiempo_inicio_bloqueo = get_time(); // VIG => RESOLVER ESTO
 			list_add(colaBlocked, proceso);
 			pthread_mutex_unlock(&mutex_blocked);
 			sem_post(&sem_blocked); // despertar bloqueado
 			break;
 		case EXIT:
 			pthread_mutex_lock(&mutex_exit);
-			proceso->estado_proceso = FINALIZADO;
+			proceso->pcb->estado_proceso = FINALIZADO;
 			list_add(colaExit, proceso);
 			pthread_mutex_unlock(&mutex_exit);
 			sem_post(&sem_exit); // despertar exit
 			break;
 		default: // ready write o noop
 			pthread_mutex_lock(&mutex_ready);
-			proceso->estado_proceso = LISTO;
+			proceso->pcb->estado_proceso = LISTO;
 			list_add(colaReady, proceso);
 			pthread_mutex_unlock(&mutex_ready);
 			sem_post(&sem_desalojo);
@@ -228,27 +224,27 @@ void estadoBlockeado(void){
 		sem_wait(&sem_blocked);
 		uint32_t tiempoMaxDeBloqueo = config_valores_kernel.tiempo_maximo_bloqueado;
 		pthread_mutex_lock(&mutex_blocked);
-		pcb* proceso = list_remove(colaBlocked,0);
+		proceso* proceso = list_remove(colaBlocked,0);
 		pthread_mutex_unlock(&mutex_blocked);
 
-		log_info(logger, "PID[%d] ingresa a BLOCKED", proceso->id_proceso);
+		log_info(logger, "PID[%d] ingresa a BLOCKED", proceso->pcb->id_proceso);
 
-		uint32_t tiempoQueLLevaEnBlock = get_time() - tiempoInicioBlock; // tiempoInicioBlock es variable global de planificacion.c
+		uint32_t tiempoQueLLevaEnBlock = get_time() - proceso->tiempo_inicio_bloqueo; // tiempoInicioBlock es variable global de planificacion.c
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
 
           transicion_suspender(proceso); //suspender para mediano plazo
-			ejecutarIO(proceso->tiempo_de_bloqueo);
+			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
 
-		} else if (tiempoQueLLevaEnBlock + proceso->tiempo_de_bloqueo > tiempoMaxDeBloqueo){ // suspendo en el medio
+		} else if (tiempoQueLLevaEnBlock + proceso->pcb->tiempo_de_bloqueo > tiempoMaxDeBloqueo){ // suspendo en el medio
 
 			uint32_t tiempoIOAntesDeSuspender = tiempoMaxDeBloqueo - tiempoQueLLevaEnBlock;
 			ejecutarIO(tiempoIOAntesDeSuspender); // ejecutar hasta que sea necesario suspender
 			transicion_suspender(proceso); //suspender para mediano plazo
-			ejecutarIO(proceso->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
+			ejecutarIO(proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
 
 		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
-			ejecutarIO(proceso->tiempo_de_bloqueo);
+			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
 			pthread_mutex_lock(&mutex_ready);
 			list_add(colaReady,proceso);
 			pthread_mutex_unlock(&mutex_ready);
@@ -276,18 +272,18 @@ void estadoBlockeado(void){
  	pthread_detach(thread_suspended_ready);
  }
 
- void transicion_suspender(pcb *pcb) {
+ void transicion_suspender(proceso *proceso) {
 
- 	log_info(logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", pcb->id_proceso);
- 	pcb->estado_proceso = LISTO_SUSPENDIDO;
-	enviar_pcb_a_memoria(pcb, socket_memoria, LIBERAR_ESPACIO_PCB);
-	pcb = recibirPcb(socket_memoria);
+ 	log_info(logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", proceso->pcb->id_proceso);
+ 	proceso->pcb->estado_proceso = LISTO_SUSPENDIDO;
+	enviar_pcb_a_memoria(proceso->pcb, socket_memoria, LIBERAR_ESPACIO_PCB);
+	proceso->pcb = recibirPcb(socket_memoria);
  	op_code codigo = esperar_respuesta_memoria(socket_memoria);
  	if(codigo != ESPACIO_PCB_LIBERADO) {
- 		log_error(logger, "No se pudo liberar la memoria de PID[%d]", pcb->id_proceso);
+ 		log_error(logger, "No se pudo liberar la memoria de PID[%d]", proceso->pcb->id_proceso);
  	}
  	pthread_mutex_lock(&mutex_suspended_blocked);
- 	list_add(colaSuspendedBlocked, pcb);
+ 	list_add(colaSuspendedBlocked, proceso->pcb);
  	pthread_mutex_unlock(&mutex_suspended_blocked);
 
  	sem_post(&sem_grado_multiprogramacion);
@@ -298,14 +294,14 @@ void estado_suspended_ready(void ) {
 	while(1) {
 		sem_wait(&sem_suspended_ready);
 		pthread_mutex_lock(&mutex_suspended_blocked);
-		pcb *pcb = list_remove(colaSuspendedBlocked,list_size(colaSuspendedBlocked));
+		proceso *proceso= list_remove(colaSuspendedBlocked,list_size(colaSuspendedBlocked));
 		pthread_mutex_unlock(&mutex_suspended_blocked);
 
  		pthread_mutex_lock(&mutex_suspended_ready);
- 		list_add(colaSuspendedReady, pcb);
+ 		list_add(colaSuspendedReady, proceso->pcb);
  		pthread_mutex_unlock(&mutex_suspended_ready);
 
- 		log_info(logger, "PID[%d] ingresa a SUSPENDED-READY...", pcb->id_proceso);
+ 		log_info(logger, "PID[%d] ingresa a SUSPENDED-READY...", proceso->pcb->id_proceso);
  		sem_post(&sem_admitir);
 	}
 }
