@@ -18,7 +18,7 @@ int main(void)
 
    // conexion memoria
 
- //   socket_memoria = crear_conexion(config_valores_kernel.ip_memoria, config_valores_kernel.puerto_cpu_memoria);
+ //   socket_memoria = crear_conexion(config_valores_kernel.ip_memoria, config_valores_kernel.puerto_memoria);
 
     server_fd = iniciar_servidor(config_valores_kernel.ip_kernel,config_valores_kernel.puerto_escucha);
 
