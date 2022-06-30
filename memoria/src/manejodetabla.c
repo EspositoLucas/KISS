@@ -38,9 +38,14 @@ t_list* inicializar_tabla_segundo_nivel(){
 
 //-------------------------BUSCAR POSICION LIBRE EN TABLA DE PRIMER NIVEL-----------------------------
 
+bool posicion_vacia(t_p_1* posicion){
+	bool respuesta = posicion->numero_de_tabla2 == -1;
+	return respuesta;
+}
+
 t_p_1* buscar_posicion_libre(){
 	t_p_1* posicion;
-	posicion=list_find(tabla_de_pagina_1_nivel,posicion_vacia);
+	posicion = list_find(tabla_de_pagina_1_nivel,posicion_vacia);
 	return posicion;
 }
 uint32_t buscar_marco_disponible(){
@@ -52,9 +57,4 @@ uint32_t buscar_marco_disponible(){
 		marco++;
 	}
 	return -1;
-}
-
-bool posicion_vacia(t_p_1* posicion){
-	bool respuesta=posicion->numero_de_tabla2==-1;
-	return respuesta;
 }

@@ -12,11 +12,24 @@ int main(void) {
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
     log_info(logger, "Memoria lista para recibir al modulo cliente");
 
-    if(atender_clientes(server_fd, manejo_conexiones) == -1) {
+    if(atender_clientes_memoria(server_fd) == -1) {
         		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
         	}
 
 	return EXIT_SUCCESS;
+}
+
+int atender_clientes_memoria(int socket_servidor){ //Es el atender clientes de kernel pero con el nombre cambiado
+
+	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
+
+	while(true){
+		pthread_t hilo_cliente;
+		pthread_create(&hilo_cliente, NULL, (void*) manejo_conexiones, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
+		pthread_detach(hilo_cliente);
+		return 1;
+	}
+	return 0;
 }
 
 // Manejo conexiones - Procesar conexiones con los op code
@@ -39,11 +52,12 @@ void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 		uint32_t tabla;
 		uint32_t entrada1;
 		uint32_t entrada2;
-		void* stream=recibir_stream();
+		int size = 0;
+		void* stream = recibir_stream(&size, socket_cliente);
 		traducir_operandos(stream,&tabla,&entrada1);
-		entrada2=devolver_entrada_a_segunda_tabla(tabla,entrada1);
-		t_paquete* paquete=crear_paquete();
-		agregar_a_paquete(paquete,entrada2,sizeof(uint32_t));
+		entrada2 = devolver_entrada_a_segunda_tabla(tabla, entrada1);
+		paquete = crear_paquete();
+		agregar_a_paquete(paquete,&entrada2,sizeof(uint32_t));
 		enviar_paquete(paquete,socket_cliente);
 		break;
 	case MARCO:
@@ -51,14 +65,15 @@ void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
+		log_info(logger, "Inicializando estructuras");
 		//crear tabla de segundo nivel, pasar su numero de tabla a la de primer nivel y devolver el indice de la de primer nivel a kernel
-		tabla_de_segundo_nivel* nueva_tabla=malloc(sizeof(tabla_de_segundo_nivel));
-		nueva_tabla->id_tabla=indice_de_tabla;
+		tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
+		nueva_tabla->id_tabla = indice_de_tabla;
 		indice_de_tabla++;
-		nueva_tabla->lista_marcos=inicializar_tabla_segundo_nivel();
+		nueva_tabla->lista_marcos = inicializar_tabla_segundo_nivel();
 		t_p_1* posicion=buscar_posicion_libre();
 		posicion->numero_de_tabla2=nueva_tabla->id_tabla;
-		t_paquete* paquete=crear_paquete();
+		paquete = crear_paquete();
 		agregar_entero_a_paquete(paquete,nueva_tabla->id_tabla);
 		enviar_paquete(paquete,socket_cliente);
 		break;
