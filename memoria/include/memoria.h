@@ -36,6 +36,7 @@ int socket_memoria;
 
 void* memoria_usuario;
 int cantidad_de_marcos;
+char* pathSwap;
 
 void cargar_configuracion();
 t_paquete* preparar_paquete_para_handshake();
