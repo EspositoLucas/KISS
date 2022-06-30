@@ -43,7 +43,7 @@ t_paquete* preparar_paquete_para_handshake();
 void manejo_instrucciones(void*,int);
 void traducir_operandos(void*,uint32_t*,uint32_t*);
 void inicializar_memoria();
-void manejo_conexiones(t_paquete*,int);
+void manejo_conexiones(int);
 int atender_clientes_memoria(int);
 
 

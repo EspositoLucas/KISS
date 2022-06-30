@@ -12,20 +12,39 @@ int main(void) {
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
     log_info(logger, "Memoria lista para recibir al modulo cliente");
 
-    if(atender_clientes_memoria(server_fd) == -1) {
-        		log_error(logger, "Error al escuchar clientes... Finalizando servidor");
-        	}
+    while(atender_clientes_memoria(server_fd));
 
 	return EXIT_SUCCESS;
 }
 
-int atender_clientes_memoria(int socket_servidor){ //Es el atender clientes de kernel pero con el nombre cambiado
 
-	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
+// atender clientes con dos hilos
+
+//int atender_clientes_memoria(int socket_servidor){
+//
+//	int socket_cpu = esperar_cliente(socket_servidor); // se conecta primero cpu
+//	int socket_kernel = esperar_cliente(socket_servidor); // se conecta kernel
+//	while(true){
+//		pthread_t hilo_cliente_cpu;
+//		pthread_t hilo_cliente_kernel;
+//		pthread_create(&hilo_cliente_cpu, NULL, (void*) manejo_conexiones, (void *)socket_cpu);
+//		pthread_detach(hilo_cliente_cpu);
+//		pthread_create(&hilo_cliente_kernel, NULL, (void*) manejo_conexiones, (void *)socket_kernel);
+//		pthread_detach(hilo_cliente_kernel);
+//		return 1;
+//	}
+//	return 0;
+//}
+
+// atender clientes con un hilo
+
+int atender_clientes_memoria(int socket_servidor){
+
+	int socket_cliente = esperar_cliente(socket_servidor); // se conecta primero cpu
 
 	while(true){
 		pthread_t hilo_cliente;
-		pthread_create(&hilo_cliente, NULL, (void*) manejo_conexiones, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
+		pthread_create(&hilo_cliente, NULL, (void*) manejo_conexiones, (void *)socket_cliente);
 		pthread_detach(hilo_cliente);
 		return 1;
 	}
@@ -34,9 +53,11 @@ int atender_clientes_memoria(int socket_servidor){ //Es el atender clientes de k
 
 // Manejo conexiones - Procesar conexiones con los op code
 
-void manejo_conexiones(t_paquete* paquete,int socket_cliente){
+void manejo_conexiones(int socket_cliente){
 
-	switch(paquete->codigo_operacion){
+	int codigo_operacion = recibir_operacion_nuevo(socket_cliente);
+
+	switch(codigo_operacion){
 	case HANDSHAKE:
 		log_info(logger,"me llego el handshake de cpu");
 		t_paquete* handshake=preparar_paquete_para_handshake();
@@ -45,7 +66,8 @@ void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 		break;
 	case INSTRUCCION_MEMORIA:
 		log_info(logger,"me llego una instruccion de cpu");
-		manejo_instrucciones(paquete->buffer->stream,socket_cliente);
+		t_list* datos = recibirPaquete(socket_cliente);
+		manejo_instrucciones(datos,socket_cliente);
 		break;
 	case TABLA:
 		log_info(logger,"me llego un pedido de entrada a segunda tabla de cpu (mmu)");
@@ -56,7 +78,7 @@ void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 		void* stream = recibir_stream(&size, socket_cliente);
 		traducir_operandos(stream,&tabla,&entrada1);
 		entrada2 = devolver_entrada_a_segunda_tabla(tabla, entrada1);
-		paquete = crear_paquete();
+		t_paquete* paquete = crear_paquete();
 		agregar_a_paquete(paquete,&entrada2,sizeof(uint32_t));
 		enviar_paquete(paquete,socket_cliente);
 		break;
@@ -73,7 +95,7 @@ void manejo_conexiones(t_paquete* paquete,int socket_cliente){
 		nueva_tabla->lista_marcos = inicializar_tabla_segundo_nivel();
 		t_p_1* posicion=buscar_posicion_libre();
 		posicion->numero_de_tabla2=nueva_tabla->id_tabla;
-		paquete = crear_paquete();
+		t_paquete* paquete = crear_paquete();
 		agregar_entero_a_paquete(paquete,nueva_tabla->id_tabla);
 		enviar_paquete(paquete,socket_cliente);
 		break;

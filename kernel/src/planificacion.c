@@ -42,7 +42,7 @@ void iniciar_planificador_largo_plazo(void) {
 	sem_init(&sem_grado_multiprogramacion, 0, config_valores_kernel.grado_multiprogramacion);
 	colaNew = list_create();
 	colaExit = list_create();
-	pthread_create(&thread_exit, NULL, (void *)finalizarPcb, NULL); // (?) NO ESTA DEFINIDA UNA PCB ACA, VA A HABER QUE HACER QUE FINALIZARPCB AGARRE LA PCB DESDE LA LISTA
+	pthread_create(&thread_exit, NULL, (void *)finalizarPcb, NULL);
 	pthread_create(&thread_admitir, NULL, (void *)transicion_admitir_por_prioridad, NULL);
 	pthread_detach(thread_exit);
 	pthread_detach(thread_admitir);
@@ -97,7 +97,7 @@ void finalizarPcb(void){
 	sem_wait(&sem_exit);
 	proceso* proceso ;
   	pthread_mutex_lock(&mutex_exit);
-  	proceso->pcb = list_remove(colaExit, 0);
+  	proceso = list_remove(colaExit, 0);
   	pthread_mutex_unlock(&mutex_exit);
  	log_info(logger, "[EXIT] Finaliza el  pcb de ID: %d", proceso->pcb-> id_proceso);
 	enviar_pcb_a_memoria(proceso->pcb, socket_memoria,LIBERAR_ESTRUCTURAS);
@@ -147,7 +147,6 @@ void iniciar_planificador_corto_plazo(void) {
  				sem_wait(&sem_desalojo);
  			}
  		}
- 		// semaforo
 
  		proceso* siguiente_proceso = obtenerSiguienteReady();
 
@@ -173,11 +172,7 @@ void estadoExec(void){
 
 		enviarPcb(socket_dispatch, proceso);
 
-		//esperar a que vuelva el pcb
-		//recibir pcb de cpu por dispatch;
-
-
-		proceso = recibirPcb(socket_dispatch); // aca rompe el hilo porque no se hizo la conexion a cpu
+		proceso->pcb = recibirPcb(socket_dispatch); // aca rompe el hilo porque no se hizo la conexion a cpu
 
 		uint32_t finalizacion_cpu = get_time();
 		pthread_mutex_lock(&mutex_exec);
@@ -192,7 +187,7 @@ void estadoExec(void){
 		case IO:
 			pthread_mutex_lock(&mutex_blocked);
 			proceso->pcb->estado_proceso = BLOQUEADO;
-			proceso->tiempo_inicio_bloqueo = get_time(); // VIG => RESOLVER ESTO
+			proceso->tiempo_inicio_bloqueo = get_time();
 			list_add(colaBlocked, proceso);
 			pthread_mutex_unlock(&mutex_blocked);
 			sem_post(&sem_blocked); // despertar bloqueado
@@ -229,7 +224,7 @@ void estadoBlockeado(void){
 
 		log_info(logger, "PID[%d] ingresa a BLOCKED", proceso->pcb->id_proceso);
 
-		uint32_t tiempoQueLLevaEnBlock = get_time() - proceso->tiempo_inicio_bloqueo; // tiempoInicioBlock es variable global de planificacion.c
+		uint32_t tiempoQueLLevaEnBlock = get_time() - proceso->tiempo_inicio_bloqueo;
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
 
@@ -283,7 +278,7 @@ void estadoBlockeado(void){
  		log_error(logger, "No se pudo liberar la memoria de PID[%d]", proceso->pcb->id_proceso);
  	}
  	pthread_mutex_lock(&mutex_suspended_blocked);
- 	list_add(colaSuspendedBlocked, proceso->pcb);
+ 	list_add(colaSuspendedBlocked, proceso);
  	pthread_mutex_unlock(&mutex_suspended_blocked);
 
  	sem_post(&sem_grado_multiprogramacion);
@@ -298,7 +293,7 @@ void estado_suspended_ready(void ) {
 		pthread_mutex_unlock(&mutex_suspended_blocked);
 
  		pthread_mutex_lock(&mutex_suspended_ready);
- 		list_add(colaSuspendedReady, proceso->pcb);
+ 		list_add(colaSuspendedReady, proceso);
  		pthread_mutex_unlock(&mutex_suspended_ready);
 
  		log_info(logger, "PID[%d] ingresa a SUSPENDED-READY...", proceso->pcb->id_proceso);

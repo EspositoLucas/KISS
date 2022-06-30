@@ -11,8 +11,15 @@ int main(void)
 
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 
+    //conexion cpu
+
 //    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
 //    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
+
+   // conexion memoria
+
+ //   socket_memoria = crear_conexion(config_valores_kernel.ip_memoria, config_valores_kernel.puerto_cpu_memoria);
+
     server_fd = iniciar_servidor(config_valores_kernel.ip_kernel,config_valores_kernel.puerto_escucha);
 
     inciar_planificacion();
@@ -92,7 +99,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
   //---------------------------------------MANEJO CLIENTES - CONEXIONES -----------------------
 
 
-// manejar conexion con codigo deoperacion de tipo int
+// manejar conexion con codigo de operacion de tipo int
 
   void manejar_conexion(int socket_cliente){
 
@@ -110,7 +117,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		proceso->pcb = crear_estructura_pcb(consola);
 	  		proceso->socket = socket_cliente;
 	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion\n");
-	  		list_add(colaNew,proceso->pcb);
+	  		list_add(colaNew,proceso);
 	  		chequear_lista_pcbs();
 	  		//agregarANewPcb(proceso);
 	  		avisarAModulo(proceso->socket,FINALIZAR_CONSOLA);
