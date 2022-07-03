@@ -27,3 +27,15 @@ void eliminarSwap(int idProceso){
 		log_info(logger,"Se borro con exito el archivo swap del proceso: %d\n",idProceso);
 	}
 }
+
+void supender_proceso(int socket_cliente) {
+
+	pcb* pcb = recibirPcb(socket_cliente);
+	// aca hay que desasignar las paginas del proceso en los marcos en los que están asignadas y escribir en swap si el bit de modificado es 1 pero ni idea como se implementa
+
+	void* archivo_swap = crearSwap(pcb->id_proceso);
+
+	//memcpy(archivo_swap, pagina_proceso, sizeof(tam_pagina)) // aca no entiendo que se copia , seria la pagaina con el tam_pagina ?
+
+
+}

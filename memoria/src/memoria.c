@@ -100,7 +100,13 @@ void manejo_conexiones(int socket_cliente){
 		enviar_paquete(paquete,socket_cliente);
 		break;
 	case LIBERAR_ESTRUCTURAS:
-		//liberar los marcos q ocupaba el proceso y el archivo swap (no las tablas de pagina)
+		//liberar los marcos q ocupaba el proceso y el archivo swap (no las tablas de pagina) ;
+		break;
+	case LIBERAR_ESPACIO_PCB:
+		log_info(logger,"me llego mensaje para liberar eapacio del proceso");
+		suspender_proceso(socket_cliente);
+		// liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
+		break;
 	default:break;
 	}
 }
