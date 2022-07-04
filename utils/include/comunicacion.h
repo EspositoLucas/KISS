@@ -108,7 +108,9 @@ typedef struct{
 typedef enum{
 	FIFO,
 	LRU,
-	SRT
+	SRT,
+	CLOCK,
+	CLOCK_M
 }algoritmo;
 
 typedef struct{
@@ -138,9 +140,22 @@ typedef struct{
 	bool m;
 }t_p_2;
 
+typedef struct
+ {
+	 	uint32_t marco;
+	 	uint32_t nro_pagina;
+	 	bool bit_uso;
+	 	bool bit_modificado;
+
+
+ } tabla_reemplazo_clock_clock_modificado;
+
+t_list* lista_tablas_segundo_nivel ;
+
+
 typedef struct{
 	int id_tabla;
-	t_list* lista_marcos;
+	t_list* lista_paginas;
 }tabla_de_segundo_nivel;
 
 typedef struct{

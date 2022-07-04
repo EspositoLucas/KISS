@@ -92,18 +92,20 @@ void manejo_conexiones(int socket_cliente){
 		tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
 		nueva_tabla->id_tabla = indice_de_tabla;
 		indice_de_tabla++;
-		nueva_tabla->lista_marcos = inicializar_tabla_segundo_nivel();
+		nueva_tabla->lista_paginas = inicializar_tabla_segundo_nivel();
 		t_p_1* posicion=buscar_posicion_libre();
 		posicion->numero_de_tabla2=nueva_tabla->id_tabla;
+		// crear swap
 		t_paquete* paquete = crear_paquete();
 		agregar_entero_a_paquete(paquete,nueva_tabla->id_tabla);
 		enviar_paquete(paquete,socket_cliente);
 		break;
-	case LIBERAR_ESTRUCTURAS:
-		//liberar los marcos q ocupaba el proceso y el archivo swap (no las tablas de pagina) ;
+	case LIBERAR_ESTRUCTURAS: // finalizar proceso
+		//liberar los marcos q ocupaba el proceso
+		// eliminar swap - poner funcion
 		break;
 	case LIBERAR_ESPACIO_PCB:
-		log_info(logger,"me llego mensaje para liberar eapacio del proceso");
+		log_info(logger,"me llego mensaje para supender proceso");
 		suspender_proceso(socket_cliente);
 		// liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
 		break;
@@ -117,6 +119,7 @@ void manejo_conexiones(int socket_cliente){
 void inicializar_memoria(){
 	memoria_usuario=malloc(sizeof(config_valores_memoria.tam_memoria));
 	inicializar_tabla_primer_nivel();
+	lista_tablas_segundo_nivel = list_create();
 }
 void* get_marco(void* memoria,int marco){
 	return (memoria+marco*config_valores_memoria.tam_pagina);
@@ -191,3 +194,5 @@ void traducir_operandos(void* stream,uint32_t* operando1,uint32_t* operando2){
 	memcpy(&operando1,stream,sizeof(uint32_t));
 	memcpy(&operando2,stream+sizeof(uint32_t),sizeof(uint32_t));
 }
+
+

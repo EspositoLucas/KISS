@@ -27,6 +27,7 @@
  	char* path_swap;
  } arch_config;
 
+
 t_list* tabla_de_pagina_1_nivel;
 
 

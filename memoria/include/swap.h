@@ -16,5 +16,4 @@ void crearSwap(int /*,int */);
 void eliminarSwap(int );
 void supender_proceso(int ) ;
 
-
 #endif /* INCLUDE_SWAP_H_ */

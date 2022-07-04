@@ -10,5 +10,12 @@ uint32_t buscar_marco_disponible();
 void inicializar_tabla_primer_nivel();
 t_list* inicializar_tabla_segundo_nivel();
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t,uint32_t);
+uint32_t  obtenerPaginaAReemplazar(uint32_t );
+algoritmo obtener_algoritmo();
+uint32_t obtenerPaginaClock(t_list*);
+uint32_t  obtenerPaginaClockM(t_list* );
+bool condicion_misma_numero_tabla(tabla_de_segundo_nivel* );
+bool pagina_con_presencia(t_p_2*);
+
 
 #endif /* INCLUDE_MANEJODETABLA_H_ */

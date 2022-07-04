@@ -6,7 +6,7 @@ char* armarPath(int idProceso){
 	return path;
 }
 
-void crearSwap(int idProceso/*,int tamanio*/){
+void crearSwap(int idProceso){
 	int fd;
 	char* path=armarPath(idProceso);
 	if((fd=open(path,/*O_RDWR|*/O_TRUNC|O_CREAT|O_EXCL,S_IROTH|S_IWOTH))==-1){
@@ -15,7 +15,6 @@ void crearSwap(int idProceso/*,int tamanio*/){
 	}else{
 		log_info(logger,"Se creo el archivo swap del proceso: %d\n",idProceso);
 	}
-	//void* archivo=mmap(NULL,tamanio,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
 	close(fd);
 }
 void eliminarSwap(int idProceso){
@@ -35,7 +34,11 @@ void supender_proceso(int socket_cliente) {
 
 	void* archivo_swap = crearSwap(pcb->id_proceso);
 
-	//memcpy(archivo_swap, pagina_proceso, sizeof(tam_pagina)) // aca no entiendo que se copia , seria la pagaina con el tam_pagina ?
+	//void* archivo=mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
+	//memcpy(archivo_swap + offset, pagina_proceso, tam_pagina) // aca no entiendo que se copia , seria la pagaina con el tam_pagina ?
 
-
+	// offset= nro_pagina * tam_pagina
 }
+
+
+
