@@ -56,49 +56,82 @@ int atender_clientes_memoria(int socket_servidor){
 void manejo_conexiones(int socket_cliente){
 
 	int codigo_operacion = recibir_operacion_nuevo(socket_cliente);
+	t_list* valores;
+	uint32_t tabla,entrada1,entrada2,marco;
 
 	switch(codigo_operacion){
 	case HANDSHAKE:
 		log_info(logger,"me llego el handshake de cpu");
 		t_paquete* handshake=preparar_paquete_para_handshake();
 		enviar_paquete(handshake,socket_cliente);
-		free(handshake);
+		eliminar_paquete(handshake);
 		break;
 	case INSTRUCCION_MEMORIA:
 		log_info(logger,"me llego una instruccion de cpu");
 		t_list* datos = recibirPaquete(socket_cliente);
 		manejo_instrucciones(datos,socket_cliente);
+		list_destroy(datos);
 		break;
 	case TABLA:
 		log_info(logger,"me llego un pedido de entrada a segunda tabla de cpu (mmu)");
-		uint32_t tabla;
-		uint32_t entrada1;
-		uint32_t entrada2;
-		int size = 0;
-		void* stream = recibir_stream(&size, socket_cliente);
-		traducir_operandos(stream,&tabla,&entrada1);
+		valores=recibir_paquete(socket_cliente);
+		tabla=*(uint32_t*)list_get(valores,0);
+		entrada1=*(uint32_t*)list_get(valores,1);
 		entrada2 = devolver_entrada_a_segunda_tabla(tabla, entrada1);
-		t_paquete* paquete = crear_paquete();
-		agregar_a_paquete(paquete,&entrada2,sizeof(uint32_t));
-		enviar_paquete(paquete,socket_cliente);
+		t_paquete* paquete_tabla= crear_paquete();
+		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
+		enviar_paquete(paquete_tabla,socket_cliente);
+		list_destroy(valores);
+		eliminar_paquete(paquete_tabla);
 		break;
 	case MARCO:
 		log_info(logger,"me llego un pedido de marco de cpu (mmu)");
-
+		valores=recibir_paquete(socket_cliente);
+		tabla=*(uint32_t*)list_get(valores,0);
+		entrada2=*(uint32_t*)list_get(valores,1);
+		marco= devolver_marco(tabla, entrada2);
+		t_paquete* paquete_marco= crear_paquete();
+		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
+		enviar_paquete(paquete_marco,socket_cliente);
+		list_destroy(valores);
+		eliminar_paquete(paquete_marco);
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
 		log_info(logger, "Inicializando estructuras");
-		//crear tabla de segundo nivel, pasar su numero de tabla a la de primer nivel y devolver el indice de la de primer nivel a kernel
-		tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
-		nueva_tabla->id_tabla = indice_de_tabla;
-		indice_de_tabla++;
-		nueva_tabla->lista_paginas = inicializar_tabla_segundo_nivel();
-		t_p_1* posicion=buscar_posicion_libre();
-		posicion->numero_de_tabla2=nueva_tabla->id_tabla;
-		// crear swap
-		t_paquete* paquete = crear_paquete();
-		agregar_entero_a_paquete(paquete,nueva_tabla->id_tabla);
-		enviar_paquete(paquete,socket_cliente);
+		//Recibe el pcb del proceso para iniciar estructuras
+		pcb* pcb_recibido=recibirPcb(socket_cliente);
+		//Averiguamos cuantas pags ocupa el proceso
+		int cantidad_de_pags=pags_proceso(pcb_recibido->tamanio_proceso,config_valores_memoria.tam_pagina);
+		//Averigua cuantas tablas de segundo significa esa cantidad de paginas
+		uint32_t cantidad_de_tp2=(uint32_t)tp2_proceso(cantidad_de_pags,config_valores_memoria.entradas_por_tabla);
+		//Veo cual es el tamanio de la pag de 1 nivel (que tambien nos sirve para averiguar el proximo indice a usar)
+		uint32_t valorTP1=*(uint32_t*)list_size(tabla_de_pagina_1_nivel);
+		//No pueden haber mas entradas q las permitidas
+		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
+			log_info(logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas");
+			exit(34);
+		}
+		//Cargo el num de tabla de la primera pag de 2 nivel del proceso ya que las demas seran contiguas
+		pcb_recibido->valor_tabla_paginas=valorTP1;
+		//crear tabla de segundo nivel, pasar su numero de tabla a la de primer nivel
+		for(uint32_t i=0;i<cantidad_de_tp2;i++){
+			tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
+			nueva_tabla->id_tabla = indice_de_tabla2;
+			nueva_tabla->lista_paginas = inicializar_tabla_segundo_nivel();
+			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
+			entrada_en_tp1->indice=valorTP1+i;
+			entrada_en_tp1->numero_de_tabla2=indice_de_tabla2;
+			list_add(tabla_de_pagina_1_nivel,entrada_en_tp1);
+			list_add(lista_tablas_segundo_nivel,nueva_tabla);
+			indice_de_tabla2++;
+		}
+		//crea el swap
+		crearSwap(pcb_recibido->id_proceso);
+		//Envia el num de tabla de la primera pag de 2 nivel del proceso
+		t_paquete* paquete_ini = crear_paquete();
+		agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
+		enviar_paquete(paquete_ini,socket_cliente);
+		free(paquete_ini);
 		break;
 	case LIBERAR_ESTRUCTURAS: // finalizar proceso
 		//liberar los marcos q ocupaba el proceso
@@ -106,7 +139,7 @@ void manejo_conexiones(int socket_cliente){
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(logger,"me llego mensaje para supender proceso");
-		suspender_proceso(socket_cliente);
+		//suspender_proceso(socket_cliente);
 		// liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
 		break;
 	default:break;
@@ -118,13 +151,19 @@ void manejo_conexiones(int socket_cliente){
 
 void inicializar_memoria(){
 	memoria_usuario=malloc(sizeof(config_valores_memoria.tam_memoria));
-	inicializar_tabla_primer_nivel();
+	tabla_de_pagina_1_nivel=list_create();
 	lista_tablas_segundo_nivel = list_create();
+	algoritmo_memoria=obtener_algoritmo();
+	indice_de_tabla2=0;
+	pathSwap=config_valores_memoria.path_swap;
 }
 void* get_marco(void* memoria,int marco){
 	return (memoria+marco*config_valores_memoria.tam_pagina);
 }
+///
+void crearTP2(){
 
+}
 
 
 ///--------------CARGA DE CONFIGURACION----------------------
@@ -148,18 +187,14 @@ void cargar_configuracion(){
 
 t_paquete* preparar_paquete_para_handshake(){
 	t_paquete* paquete=crear_paquete();
-	agregar_entero_a_paquete(paquete,config_valores_memoria.tam_pagina);
-	agregar_entero_a_paquete(paquete,config_valores_memoria.entradas_por_tabla);
+	agregar_a_paquete(paquete,&config_valores_memoria.tam_pagina,sizeof(int));
+	agregar_a_paquete(paquete,&config_valores_memoria.entradas_por_tabla,sizeof(int));
 	return paquete;
 }
 
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
-void manejo_instrucciones(void* stream,int socket_cpu){
-	op_code tipo_instruccion;
-	int desplazamiento=0;
-
-	memcpy(&tipo_instruccion,stream,sizeof(op_code));
-	desplazamiento+=sizeof(op_code);
+void manejo_instrucciones(t_list* datos,int socket_cpu){
+	op_code tipo_instruccion=*(op_code*)list_get(datos,0);
 
 	switch(tipo_instruccion){
 	case READ:
@@ -194,5 +229,23 @@ void traducir_operandos(void* stream,uint32_t* operando1,uint32_t* operando2){
 	memcpy(&operando1,stream,sizeof(uint32_t));
 	memcpy(&operando2,stream+sizeof(uint32_t),sizeof(uint32_t));
 }
-
-
+int pags_proceso(uint32_t tamanio_proc,int tamanio_pag){
+	int entero=((int)tamanio_proc)/tamanio_pag;
+	int resto=((int)tamanio_proc)%tamanio_pag;
+	if(resto!=0){
+		return entero+1;
+	}
+	else{
+		return entero;
+	}
+}
+int tp2_proceso(int pags,int entradas_tabla){
+	int entero=pags/entradas_tabla;
+	int resto=pags % entradas_tabla;
+	if(resto!=0){
+		return entero+1;
+	}
+	else{
+		return entero;
+	}
+}

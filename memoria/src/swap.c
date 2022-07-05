@@ -6,10 +6,10 @@ char* armarPath(int idProceso){
 	return path;
 }
 
-void crearSwap(int idProceso){
+void crearSwap(uint32_t idProceso){
 	int fd;
-	char* path=armarPath(idProceso);
-	if((fd=open(path,/*O_RDWR|*/O_TRUNC|O_CREAT|O_EXCL,S_IROTH|S_IWOTH))==-1){
+	char* path=armarPath((int)idProceso);
+	if((fd=open(path,O_TRUNC|O_CREAT|O_EXCL,S_IROTH|S_IWOTH))==-1){
 		log_info(logger,"Error al crear el archivo swap del proceso: %d\n",idProceso);
 		exit(-1);
 	}else{
@@ -34,9 +34,10 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 	// armo y abro el swap
 	int fd ;
 	char* path=armarPath(pcb->id_proceso);
-	fd=open(path,O_RDWR|O_TRUNC|O_CREAT|O_EXCL,S_IROTH|S_IWOTH);
+	fd=open(path,O_RDWR);
 	// mapeo el swap a void* para el mmap
 	void* archivo_swap = mmap(NULL,pcb->tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
+	//munmap();
 	// aca hay que chequear lo del algoritmo de reemplazo para lectura/escritura
 
 	// int offset= nro_pagina * tam_pagina

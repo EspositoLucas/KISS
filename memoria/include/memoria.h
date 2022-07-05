@@ -9,6 +9,7 @@
 #include "log_config.h"
 #include "sockets.h"
 #include "manejodetabla.h"
+#include "swap.h"
 
 
 // STRUCTS/ENUMS
@@ -38,14 +39,17 @@ int socket_memoria;
 void* memoria_usuario;
 int cantidad_de_marcos;
 char* pathSwap;
+algoritmo algoritmo_memoria;
 
 void cargar_configuracion();
 t_paquete* preparar_paquete_para_handshake();
-void manejo_instrucciones(void*,int);
+void manejo_instrucciones(t_list*,int);
 void traducir_operandos(void*,uint32_t*,uint32_t*);
 void inicializar_memoria();
 void manejo_conexiones(int);
 int atender_clientes_memoria(int);
+void suspender_proceso(int);
 
-
+int pags_proceso(uint32_t ,int );
+int tp2_proceso(int ,int );
 #endif

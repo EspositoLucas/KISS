@@ -478,26 +478,18 @@ void pedir_handshake(int socket_memoria){
 
 	   paquete->codigo_operacion = HANDSHAKE;
 	    paquete->buffer = malloc(sizeof(t_buffer));
-	    paquete->buffer->stream_size = strlen(mensaje_handshake) + 1;
-	    paquete->buffer->stream = malloc(paquete->buffer->stream_size);
-	    memcpy(paquete->buffer->stream, mensaje_handshake, paquete->buffer->stream_size);
-
-	    int bytes = paquete->buffer->stream_size + 2 * sizeof(int);
-
-	    void *a_enviar = serializar_paquete(paquete);
-
-	    send(socket_memoria, a_enviar, bytes, 0);
-
-	    free(a_enviar);
+	    agregar_a_paquete(paquete,mensaje_handshake,strlen(mensaje_handshake) + 1);
+	    enviar_paquete(paquete,socket_memoria);
 	    eliminar_paquete(paquete);
 }
 t_handshake* recibir_handshake(int socket_memoria){
 	t_handshake* han=malloc(sizeof(t_handshake));
-	int size;
-	void* stream=recibir_stream(&size,socket_memoria);
-	memcpy(&(han->tam_pagina),stream,sizeof(int));
-	memcpy(&(han->entradas),stream+sizeof(int),sizeof(int));
-	free(stream);
+	t_list* valores=recibir_paquete(socket_memoria);
+	uint32_t* tam=list_get(valores,0);
+	uint32_t* ent=list_get(valores,1);
+	han->tam_pagina=*tam;
+	han->entradas=*ent;
+	list_destroy(valores);
 	return han;
 }
 //TABLA DE PAGINA
@@ -515,6 +507,7 @@ void pedir_marco(int socket,uint32_t tabla,uint32_t entrada){
 	agregar_a_paquete(paquete,&tabla,sizeof(uint32_t));
 	agregar_a_paquete(paquete,&entrada,sizeof(uint32_t));
 	enviar_paquete(paquete,socket);
+	eliminar_paquete(paquete);
 }
 
 

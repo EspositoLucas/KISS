@@ -69,7 +69,8 @@ uint32_t obtener_marco(uint32_t segunda_tabla, uint32_t entrada_tabla_2){
 			int size;
 			switch(codigo_op){
 				case MARCO:
-					marco=(uint32_t)recibir_stream(&size,socket_memoria);
+					t_list* valores=recibir_paquete(socket_memoria);
+					marco=*(uint32_t*)list_get(valores,0);
 					log_info(logger,"Recibi valor de segunda tabla");
 					return marco;
 					break;
