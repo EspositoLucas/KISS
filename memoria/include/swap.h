@@ -12,7 +12,7 @@
 
 
 char* armarPath(int );
-void crearSwap(int /*,int */);
+void crearSwap(int );
 void eliminarSwap(int );
 void supender_proceso(int ) ;
 

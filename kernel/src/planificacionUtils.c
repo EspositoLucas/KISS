@@ -20,7 +20,7 @@ void inciar_planificacion(){
  }
 
  void enviar_pcb_a_memoria(pcb *pcb, int socket_memoria, op_code codigo) {
-	 t_paquete* paquete = crear_paquete_con_codigo_de_operacion(LIBERAR_ESTRUCTURAS);
+	 t_paquete* paquete = crear_paquete_con_codigo_de_operacion(codigo);
 	 armarPaquete(paquete,pcb);
 	 enviar_paquete(paquete, socket_memoria);
 	 eliminar_paquete(paquete);

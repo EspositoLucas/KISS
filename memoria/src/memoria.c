@@ -104,7 +104,7 @@ void manejo_conexiones(int socket_cliente){
 		//liberar los marcos q ocupaba el proceso
 		// eliminar swap - poner funcion
 		break;
-	case LIBERAR_ESPACIO_PCB:
+	case SUSPENDER_PROCESO:
 		log_info(logger,"me llego mensaje para supender proceso");
 		suspender_proceso(socket_cliente);
 		// liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)

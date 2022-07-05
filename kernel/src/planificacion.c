@@ -271,7 +271,7 @@ void estadoBlockeado(void){
 
  	log_info(logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", proceso->pcb->id_proceso);
  	proceso->pcb->estado_proceso = LISTO_SUSPENDIDO;
-	enviar_pcb_a_memoria(proceso->pcb, socket_memoria, LIBERAR_ESPACIO_PCB);
+	enviar_pcb_a_memoria(proceso->pcb, socket_memoria, SUSPENDER_PCB);
 	proceso->pcb = recibirPcb(socket_memoria);
  	op_code codigo = esperar_respuesta_memoria(socket_memoria);
  	if(codigo != ESPACIO_PCB_LIBERADO) {
