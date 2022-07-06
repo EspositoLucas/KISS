@@ -113,13 +113,13 @@ uint32_t  obtenerPaginaClockM(t_list* tabla_marcos) {
 }
 
 
-bool condicion_misma_numero_tabla(tabla_de_segundo_nivel* tabla){
-	return tabla->id_tabla == numero_tabla_2p;
+bool condicion_misma_numero_tabla(void* tabla){
+	return ((tabla_de_segundo_nivel *)tabla)->id_tabla == numero_tabla_2p;
 
 }
 
-bool pagina_con_presencia(t_p_2* tabla){
-	return tabla->p ;
+bool pagina_con_presencia(void* tabla){
+	return ((t_p_2 *)tabla)->p ;
 
 }
 
