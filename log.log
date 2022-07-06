@@ -1174,3 +1174,363 @@
 [ERROR] 18:25:44:009 Servidor CPU/(18120:18120): Fallo la comunicacion. Abortando
 [INFO] 18:25:51:993 Servidor CPU/(18126:18126): CPU listo para recibir al modulo cliente
 [ERROR] 18:26:01:675 Servidor CPU/(18126:18126): Fallo la comunicacion. Abortando
+[INFO] 18:27:29:760 Servidor CPU/(18384:18384): CPU listo para recibir al modulo cliente
+[INFO] 18:27:41:297 Servidor Kernel/(18490:18490): Kernel listo para recibir al modulo cliente
+[INFO] 18:27:46:189 Servidor Kernel/(18490:18514): Me llego el tamanio y las instrucciones
+
+[INFO] 18:27:46:190 Servidor Kernel/(18490:18493): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:27:46:190 Servidor Kernel/(18490:18493): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:27:46:190 Servidor Kernel/(18490:18493): Inicio la planificacion FIFO
+[INFO] 18:27:46:190 Servidor CPU/(18384:18384): Recibi PCB de Id: 0
+[INFO] 18:27:46:190 Servidor CPU/(18384:18384): Se creo hilo para recibir interrupciones
+[INFO] 18:27:46:192 Servidor CPU/(18384:18384): Se ejecuto instruccion NO-OP
+[INFO] 18:27:46:193 Servidor CPU/(18384:18384): Se ejecuto instruccion NO-OP
+[INFO] 18:27:46:194 Servidor CPU/(18384:18384): Se ejecuto instruccion NO-OP
+[INFO] 18:27:46:196 Servidor CPU/(18384:18384): Se ejecuto instruccion NO-OP
+[INFO] 18:27:46:200 Servidor CPU/(18384:18384): Se ejecuto instruccion NO-OP
+[INFO] 18:27:46:200 Servidor CPU/(18384:18384): Se ejecuto instruccion I/O
+[ERROR] 18:30:16:389 Servidor CPU/(18384:18384): Fallo la comunicacion. Abortando
+[INFO] 18:30:26:552 Servidor CPU/(18639:18639): CPU listo para recibir al modulo cliente
+[ERROR] 18:30:28:967 Servidor CPU/(18639:18639): Fallo la comunicacion. Abortando
+[INFO] 18:31:17:786 Servidor CPU/(18660:18660): CPU listo para recibir al modulo cliente
+[INFO] 18:31:22:168 Servidor Kernel/(18663:18663): Kernel listo para recibir al modulo cliente
+[INFO] 18:31:26:181 Servidor Kernel/(18663:18690): Me llego el tamanio y las instrucciones
+
+[INFO] 18:31:26:182 Servidor Kernel/(18663:18666): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:31:26:182 Servidor Kernel/(18663:18666): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:31:26:182 Servidor Kernel/(18663:18666): Inicio la planificacion FIFO
+[INFO] 18:31:26:182 Servidor CPU/(18660:18660): Recibi PCB de Id: 0
+[INFO] 18:31:26:183 Servidor CPU/(18660:18660): Se creo hilo para recibir interrupciones
+[INFO] 18:31:26:184 Servidor CPU/(18660:18660): Se ejecuto instruccion NO-OP
+[INFO] 18:31:26:185 Servidor CPU/(18660:18660): Se ejecuto instruccion NO-OP
+[INFO] 18:31:26:186 Servidor CPU/(18660:18660): Se ejecuto instruccion NO-OP
+[INFO] 18:31:26:188 Servidor CPU/(18660:18660): Se ejecuto instruccion NO-OP
+[INFO] 18:31:26:190 Servidor CPU/(18660:18660): Se ejecuto instruccion NO-OP
+[INFO] 18:31:26:190 Servidor CPU/(18660:18660): Se ejecuto instruccion I/O
+[ERROR] 18:31:26:684 Servidor CPU/(18660:18660): Fallo la comunicacion. Abortando
+[INFO] 18:32:42:317 Servidor Kernel/(18771:18771): Kernel listo para recibir al modulo cliente
+[INFO] 18:32:45:018 Servidor CPU/(18779:18779): CPU listo para recibir al modulo cliente
+[INFO] 18:32:47:985 Servidor Kernel/(18781:18781): Kernel listo para recibir al modulo cliente
+[INFO] 18:32:54:553 Servidor Kernel/(18781:18800): Me llego el tamanio y las instrucciones
+
+[INFO] 18:32:54:554 Servidor Kernel/(18781:18784): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:32:54:554 Servidor Kernel/(18781:18784): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:32:54:554 Servidor Kernel/(18781:18784): Inicio la planificacion FIFO
+[INFO] 18:32:54:554 Servidor CPU/(18779:18779): Recibi PCB de Id: 0
+[INFO] 18:32:54:554 Servidor CPU/(18779:18779): Se creo hilo para recibir interrupciones
+[INFO] 18:32:54:555 Servidor CPU/(18779:18779): Se ejecuto instruccion NO-OP
+[INFO] 18:32:54:557 Servidor CPU/(18779:18779): Se ejecuto instruccion NO-OP
+[INFO] 18:32:54:558 Servidor CPU/(18779:18779): Se ejecuto instruccion NO-OP
+[INFO] 18:32:54:560 Servidor CPU/(18779:18779): Se ejecuto instruccion NO-OP
+[INFO] 18:32:54:562 Servidor CPU/(18779:18779): Se ejecuto instruccion NO-OP
+[INFO] 18:32:54:562 Servidor CPU/(18779:18779): Se ejecuto instruccion I/O
+[ERROR] 18:32:54:996 Servidor CPU/(18779:18779): Fallo la comunicacion. Abortando
+[INFO] 18:33:45:985 Servidor CPU/(18891:18891): CPU listo para recibir al modulo cliente
+[ERROR] 18:33:48:001 Servidor CPU/(18891:18891): Fallo la comunicacion. Abortando
+[INFO] 18:34:18:666 Servidor CPU/(18926:18926): CPU listo para recibir al modulo cliente
+[INFO] 18:34:20:497 Servidor Kernel/(18928:18928): Kernel listo para recibir al modulo cliente
+[INFO] 18:34:24:385 Servidor Kernel/(18928:18948): Me llego el tamanio y las instrucciones
+
+[INFO] 18:34:24:386 Servidor Kernel/(18928:18931): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:34:24:386 Servidor Kernel/(18928:18931): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:34:24:386 Servidor Kernel/(18928:18931): Inicio la planificacion FIFO
+[INFO] 18:34:24:387 Servidor CPU/(18926:18926): Recibi PCB de Id: 0
+[INFO] 18:34:24:387 Servidor CPU/(18926:18926): Se creo hilo para recibir interrupciones
+[INFO] 18:34:24:389 Servidor CPU/(18926:18926): Se ejecuto instruccion NO-OP
+[INFO] 18:34:24:391 Servidor CPU/(18926:18926): Se ejecuto instruccion NO-OP
+[INFO] 18:34:24:392 Servidor CPU/(18926:18926): Se ejecuto instruccion NO-OP
+[INFO] 18:34:24:394 Servidor CPU/(18926:18926): Se ejecuto instruccion NO-OP
+[INFO] 18:34:24:396 Servidor CPU/(18926:18926): Se ejecuto instruccion NO-OP
+[INFO] 18:34:24:398 Servidor CPU/(18926:18926): Se ejecuto instruccion I/O
+[ERROR] 18:34:24:895 Servidor CPU/(18926:18926): Fallo la comunicacion. Abortando
+[INFO] 18:36:09:355 Servidor CPU/(19194:19194): CPU listo para recibir al modulo cliente
+[INFO] 18:36:11:201 Servidor Kernel/(19196:19196): Kernel listo para recibir al modulo cliente
+[INFO] 18:36:16:161 Servidor Kernel/(19196:19214): Me llego el tamanio y las instrucciones
+
+[INFO] 18:36:16:162 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:36:16:162 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:36:16:162 Servidor Kernel/(19196:19199): Inicio la planificacion FIFO
+[INFO] 18:36:16:162 Servidor CPU/(19194:19194): Recibi PCB de Id: 0
+[INFO] 18:36:16:162 Servidor CPU/(19194:19194): Se creo hilo para recibir interrupciones
+[INFO] 18:36:16:165 Servidor CPU/(19194:19194): Se ejecuto instruccion NO-OP
+[INFO] 18:36:16:167 Servidor CPU/(19194:19194): Se ejecuto instruccion NO-OP
+[INFO] 18:36:16:168 Servidor CPU/(19194:19194): Se ejecuto instruccion NO-OP
+[INFO] 18:36:16:172 Servidor CPU/(19194:19194): Se ejecuto instruccion NO-OP
+[INFO] 18:36:16:178 Servidor CPU/(19194:19194): Se ejecuto instruccion NO-OP
+[INFO] 18:36:16:178 Servidor CPU/(19194:19194): Se ejecuto instruccion I/O
+[INFO] 18:36:19:178 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:36:19:178 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:36:19:178 Servidor Kernel/(19196:19199): Inicio la planificacion FIFO
+[INFO] 18:36:19:179 Servidor CPU/(19194:19194): Recibi PCB de Id: 0
+[INFO] 18:36:19:179 Servidor CPU/(19194:19194): Se creo hilo para recibir interrupciones
+[INFO] 18:37:30:825 Servidor Kernel/(19196:19276): Me llego el tamanio y las instrucciones
+
+[INFO] 18:37:30:826 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:37:30:826 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:37:30:826 Servidor Kernel/(19196:19199): Inicio la planificacion FIFO
+[INFO] 18:37:45:357 Servidor Kernel/(19196:19292): Me llego el tamanio y las instrucciones
+
+[INFO] 18:37:45:358 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:37:45:358 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:37:45:358 Servidor Kernel/(19196:19199): Inicio la planificacion FIFO
+[INFO] 18:38:00:389 Servidor Kernel/(19196:19307): Me llego el tamanio y las instrucciones
+
+[INFO] 18:38:00:389 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:38:00:389 Servidor Kernel/(19196:19199): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:38:00:390 Servidor Kernel/(19196:19199): Inicio la planificacion FIFO
+[INFO] 18:39:28:077 Servidor CPU/(19377:19377): CPU listo para recibir al modulo cliente
+[INFO] 18:39:30:443 Servidor Kernel/(19380:19380): Kernel listo para recibir al modulo cliente
+[INFO] 18:39:35:813 Servidor Kernel/(19380:19398): Me llego el tamanio y las instrucciones
+
+[INFO] 18:39:35:814 Servidor Kernel/(19380:19383): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:39:35:814 Servidor Kernel/(19380:19383): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:39:35:814 Servidor Kernel/(19380:19383): Inicio la planificacion FIFO
+[INFO] 18:39:35:814 Servidor CPU/(19377:19377): Recibi PCB de Id: 0
+[INFO] 18:39:35:814 Servidor CPU/(19377:19377): Se creo hilo para recibir interrupciones
+[INFO] 18:39:35:816 Servidor CPU/(19377:19377): Se ejecuto instruccion NO-OP
+[INFO] 18:39:35:817 Servidor CPU/(19377:19377): Se ejecuto instruccion NO-OP
+[INFO] 18:39:35:819 Servidor CPU/(19377:19377): Se ejecuto instruccion NO-OP
+[INFO] 18:39:35:820 Servidor CPU/(19377:19377): Se ejecuto instruccion NO-OP
+[INFO] 18:39:35:822 Servidor CPU/(19377:19377): Se ejecuto instruccion NO-OP
+[INFO] 18:39:35:822 Servidor CPU/(19377:19377): Se ejecuto instruccion I/O
+[ERROR] 18:39:36:465 Servidor CPU/(19377:19377): Fallo la comunicacion. Abortando
+[INFO] 18:40:00:715 Servidor CPU/(19405:19405): CPU listo para recibir al modulo cliente
+[ERROR] 18:40:02:801 Servidor CPU/(19405:19405): Fallo la comunicacion. Abortando
+[INFO] 18:40:39:940 Servidor CPU/(19427:19427): CPU listo para recibir al modulo cliente
+[INFO] 18:40:43:476 Servidor Kernel/(19431:19431): Kernel listo para recibir al modulo cliente
+[INFO] 18:40:47:954 Servidor Kernel/(19431:19450): Me llego el tamanio y las instrucciones
+
+[INFO] 18:40:47:955 Servidor Kernel/(19431:19434): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:40:47:955 Servidor Kernel/(19431:19434): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:40:47:955 Servidor Kernel/(19431:19434): Inicio la planificacion FIFO
+[INFO] 18:40:47:955 Servidor CPU/(19427:19427): Recibi PCB de Id: 0
+[INFO] 18:40:47:955 Servidor CPU/(19427:19427): Se creo hilo para recibir interrupciones
+[INFO] 18:40:47:956 Servidor CPU/(19427:19427): Se ejecuto instruccion NO-OP
+[INFO] 18:40:47:958 Servidor CPU/(19427:19427): Se ejecuto instruccion NO-OP
+[INFO] 18:40:47:960 Servidor CPU/(19427:19427): Se ejecuto instruccion NO-OP
+[INFO] 18:40:47:963 Servidor CPU/(19427:19427): Se ejecuto instruccion NO-OP
+[INFO] 18:40:47:965 Servidor CPU/(19427:19427): Se ejecuto instruccion NO-OP
+[INFO] 18:40:47:967 Servidor CPU/(19427:19427): Se ejecuto instruccion I/O
+[ERROR] 18:40:48:821 Servidor CPU/(19427:19427): Fallo la comunicacion. Abortando
+[INFO] 18:41:39:125 Servidor CPU/(19522:19522): CPU listo para recibir al modulo cliente
+[ERROR] 18:41:41:683 Servidor CPU/(19522:19522): Fallo la comunicacion. Abortando
+[INFO] 18:41:49:764 Servidor CPU/(19528:19528): CPU listo para recibir al modulo cliente
+[INFO] 18:41:51:563 Servidor Kernel/(19530:19530): Kernel listo para recibir al modulo cliente
+[INFO] 18:41:55:500 Servidor Kernel/(19530:19548): Me llego el tamanio y las instrucciones
+
+[INFO] 18:41:55:501 Servidor Kernel/(19530:19533): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:41:55:501 Servidor Kernel/(19530:19533): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:41:55:501 Servidor Kernel/(19530:19533): Inicio la planificacion FIFO
+[INFO] 18:41:55:501 Servidor CPU/(19528:19528): Recibi PCB de Id: 0
+[INFO] 18:41:55:501 Servidor CPU/(19528:19528): Se creo hilo para recibir interrupciones
+[INFO] 18:41:55:502 Servidor CPU/(19528:19528): Se ejecuto instruccion NO-OP
+[INFO] 18:41:55:504 Servidor CPU/(19528:19528): Se ejecuto instruccion NO-OP
+[INFO] 18:41:55:505 Servidor CPU/(19528:19528): Se ejecuto instruccion NO-OP
+[INFO] 18:41:55:506 Servidor CPU/(19528:19528): Se ejecuto instruccion NO-OP
+[INFO] 18:41:55:508 Servidor CPU/(19528:19528): Se ejecuto instruccion NO-OP
+[INFO] 18:41:55:508 Servidor CPU/(19528:19528): Se ejecuto instruccion I/O
+[ERROR] 18:41:56:084 Servidor CPU/(19528:19528): Fallo la comunicacion. Abortando
+[INFO] 18:42:36:207 Servidor CPU/(19627:19627): CPU listo para recibir al modulo cliente
+[ERROR] 18:42:38:310 Servidor CPU/(19627:19627): Fallo la comunicacion. Abortando
+[INFO] 18:42:47:471 Servidor CPU/(19789:19789): CPU listo para recibir al modulo cliente
+[ERROR] 18:42:49:518 Servidor CPU/(19789:19789): Fallo la comunicacion. Abortando
+[INFO] 18:43:13:778 Servidor CPU/(19796:19796): CPU listo para recibir al modulo cliente
+[INFO] 18:43:16:145 Servidor Kernel/(19799:19799): Kernel listo para recibir al modulo cliente
+[INFO] 18:43:24:957 Servidor Kernel/(19799:19827): Me llego el tamanio y las instrucciones
+
+[INFO] 18:43:24:959 Servidor Kernel/(19799:19802): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:43:24:959 Servidor Kernel/(19799:19802): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:43:24:959 Servidor Kernel/(19799:19802): Inicio la planificacion FIFO
+[INFO] 18:43:24:959 Servidor CPU/(19796:19796): Recibi PCB de Id: 0
+[INFO] 18:43:24:959 Servidor CPU/(19796:19796): Se creo hilo para recibir interrupciones
+[INFO] 18:43:24:960 Servidor CPU/(19796:19796): Se ejecuto instruccion NO-OP
+[INFO] 18:43:24:962 Servidor CPU/(19796:19796): Se ejecuto instruccion NO-OP
+[INFO] 18:43:24:963 Servidor CPU/(19796:19796): Se ejecuto instruccion NO-OP
+[INFO] 18:43:24:964 Servidor CPU/(19796:19796): Se ejecuto instruccion NO-OP
+[INFO] 18:43:24:966 Servidor CPU/(19796:19796): Se ejecuto instruccion NO-OP
+[INFO] 18:43:24:966 Servidor CPU/(19796:19796): Se ejecuto instruccion I/O
+[ERROR] 18:43:25:656 Servidor CPU/(19796:19796): Fallo la comunicacion. Abortando
+[INFO] 18:44:40:277 Servidor CPU/(19934:19934): CPU listo para recibir al modulo cliente
+[INFO] 18:44:42:436 Servidor Kernel/(19936:19936): Kernel listo para recibir al modulo cliente
+[INFO] 18:44:46:312 Servidor Kernel/(19936:19954): Me llego el tamanio y las instrucciones
+
+[INFO] 18:44:46:313 Servidor Kernel/(19936:19939): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:44:46:313 Servidor Kernel/(19936:19939): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:44:46:313 Servidor Kernel/(19936:19939): Inicio la planificacion FIFO
+[INFO] 18:44:46:313 Servidor CPU/(19934:19934): Recibi PCB de Id: 0
+[INFO] 18:44:46:314 Servidor CPU/(19934:19934): Se creo hilo para recibir interrupciones
+[INFO] 18:44:46:317 Servidor CPU/(19934:19934): Se ejecuto instruccion NO-OP
+[INFO] 18:44:46:318 Servidor CPU/(19934:19934): Se ejecuto instruccion NO-OP
+[INFO] 18:44:46:320 Servidor CPU/(19934:19934): Se ejecuto instruccion NO-OP
+[INFO] 18:44:46:321 Servidor CPU/(19934:19934): Se ejecuto instruccion NO-OP
+[INFO] 18:44:46:326 Servidor CPU/(19934:19934): Se ejecuto instruccion NO-OP
+[INFO] 18:44:46:329 Servidor CPU/(19934:19934): Se ejecuto instruccion I/O
+[ERROR] 18:44:47:068 Servidor CPU/(19934:19934): Fallo la comunicacion. Abortando
+[INFO] 18:45:04:955 Servidor CPU/(19998:19998): CPU listo para recibir al modulo cliente
+[ERROR] 18:45:06:937 Servidor CPU/(19998:19998): Fallo la comunicacion. Abortando
+[INFO] 18:45:25:634 Servidor CPU/(20029:20029): CPU listo para recibir al modulo cliente
+[ERROR] 18:45:28:232 Servidor CPU/(20029:20029): Fallo la comunicacion. Abortando
+[INFO] 18:48:05:019 Servidor CPU/(20075:20075): CPU listo para recibir al modulo cliente
+[INFO] 18:48:07:249 Servidor Kernel/(20078:20078): Kernel listo para recibir al modulo cliente
+[INFO] 18:48:11:488 Servidor Kernel/(20078:20101): Me llego el tamanio y las instrucciones
+
+[INFO] 18:48:11:489 Servidor Kernel/(20078:20081): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:48:11:490 Servidor Kernel/(20078:20081): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:48:11:490 Servidor Kernel/(20078:20081): Inicio la planificacion FIFO
+[INFO] 18:48:11:490 Servidor CPU/(20075:20075): Recibi PCB de Id: 0
+[INFO] 18:48:11:490 Servidor CPU/(20075:20075): Se creo hilo para recibir interrupciones
+[INFO] 18:48:11:491 Servidor CPU/(20075:20075): Se ejecuto instruccion NO-OP
+[INFO] 18:48:11:493 Servidor CPU/(20075:20075): Se ejecuto instruccion NO-OP
+[INFO] 18:48:11:494 Servidor CPU/(20075:20075): Se ejecuto instruccion NO-OP
+[INFO] 18:48:11:498 Servidor CPU/(20075:20075): Se ejecuto instruccion NO-OP
+[INFO] 18:48:11:506 Servidor CPU/(20075:20075): Se ejecuto instruccion NO-OP
+[INFO] 18:48:11:508 Servidor CPU/(20075:20075): Se ejecuto instruccion I/O
+[ERROR] 18:48:12:166 Servidor CPU/(20075:20075): Fallo la comunicacion. Abortando
+[INFO] 18:48:48:303 Servidor CPU/(20302:20302): CPU listo para recibir al modulo cliente
+[ERROR] 18:48:50:141 Servidor CPU/(20302:20302): Fallo la comunicacion. Abortando
+[INFO] 18:50:37:696 Servidor CPU/(20442:20442): CPU listo para recibir al modulo cliente
+[INFO] 18:50:41:169 Servidor Kernel/(20445:20445): Kernel listo para recibir al modulo cliente
+[INFO] 18:50:44:845 Servidor Kernel/(20445:20464): Me llego el tamanio y las instrucciones
+
+[INFO] 18:50:44:847 Servidor Kernel/(20445:20448): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:50:44:847 Servidor Kernel/(20445:20448): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:50:44:847 Servidor Kernel/(20445:20448): Inicio la planificacion FIFO
+[INFO] 18:50:44:847 Servidor CPU/(20442:20442): Recibi PCB de Id: 0
+[INFO] 18:50:44:847 Servidor CPU/(20442:20442): Se creo hilo para recibir interrupciones
+[INFO] 18:50:44:852 Servidor CPU/(20442:20442): Se ejecuto instruccion NO-OP
+[INFO] 18:50:44:853 Servidor CPU/(20442:20442): Se ejecuto instruccion NO-OP
+[INFO] 18:50:44:854 Servidor CPU/(20442:20442): Se ejecuto instruccion NO-OP
+[INFO] 18:50:44:858 Servidor CPU/(20442:20442): Se ejecuto instruccion NO-OP
+[INFO] 18:50:44:859 Servidor CPU/(20442:20442): Se ejecuto instruccion NO-OP
+[INFO] 18:50:44:859 Servidor CPU/(20442:20442): Se ejecuto instruccion I/O
+[ERROR] 18:50:45:536 Servidor CPU/(20442:20442): Fallo la comunicacion. Abortando
+[INFO] 18:51:21:540 Servidor CPU/(20510:20510): CPU listo para recibir al modulo cliente
+[ERROR] 18:51:24:011 Servidor CPU/(20510:20510): Fallo la comunicacion. Abortando
+[INFO] 18:53:06:601 Servidor CPU/(20643:20643): CPU listo para recibir al modulo cliente
+[INFO] 18:53:08:864 Servidor Kernel/(20646:20646): Kernel listo para recibir al modulo cliente
+[INFO] 18:53:12:238 Servidor Kernel/(20646:20665): Me llego el tamanio y las instrucciones
+
+[INFO] 18:53:12:239 Servidor Kernel/(20646:20649): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:53:12:239 Servidor Kernel/(20646:20649): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:53:12:239 Servidor Kernel/(20646:20649): Inicio la planificacion FIFO
+[INFO] 18:53:12:240 Servidor CPU/(20643:20643): Recibi PCB de Id: 0
+[INFO] 18:53:12:240 Servidor CPU/(20643:20643): Se creo hilo para recibir interrupciones
+[INFO] 18:53:12:242 Servidor CPU/(20643:20643): Se ejecuto instruccion NO-OP
+[INFO] 18:53:12:243 Servidor CPU/(20643:20643): Se ejecuto instruccion NO-OP
+[INFO] 18:53:12:245 Servidor CPU/(20643:20643): Se ejecuto instruccion NO-OP
+[INFO] 18:53:12:248 Servidor CPU/(20643:20643): Se ejecuto instruccion NO-OP
+[INFO] 18:53:12:251 Servidor CPU/(20643:20643): Se ejecuto instruccion NO-OP
+[INFO] 18:53:12:252 Servidor CPU/(20643:20643): Se ejecuto instruccion I/O
+[ERROR] 18:53:13:113 Servidor CPU/(20643:20643): Fallo la comunicacion. Abortando
+[INFO] 18:53:44:525 Servidor CPU/(20820:20820): CPU listo para recibir al modulo cliente
+[ERROR] 18:53:48:018 Servidor CPU/(20820:20820): Fallo la comunicacion. Abortando
+[INFO] 18:54:14:485 Servidor CPU/(20897:20897): CPU listo para recibir al modulo cliente
+[INFO] 18:54:16:820 Servidor Kernel/(20900:20900): Kernel listo para recibir al modulo cliente
+[INFO] 18:54:20:461 Servidor Kernel/(20900:20918): Me llego el tamanio y las instrucciones
+
+[INFO] 18:54:20:462 Servidor Kernel/(20900:20903): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:54:20:462 Servidor Kernel/(20900:20903): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:54:20:462 Servidor Kernel/(20900:20903): Inicio la planificacion FIFO
+[INFO] 18:54:20:462 Servidor CPU/(20897:20897): Recibi PCB de Id: 0
+[INFO] 18:54:20:462 Servidor CPU/(20897:20897): Se creo hilo para recibir interrupciones
+[INFO] 18:54:20:463 Servidor CPU/(20897:20897): Se ejecuto instruccion NO-OP
+[INFO] 18:54:20:466 Servidor CPU/(20897:20897): Se ejecuto instruccion NO-OP
+[INFO] 18:54:20:468 Servidor CPU/(20897:20897): Se ejecuto instruccion NO-OP
+[INFO] 18:54:20:470 Servidor CPU/(20897:20897): Se ejecuto instruccion NO-OP
+[INFO] 18:54:20:471 Servidor CPU/(20897:20897): Se ejecuto instruccion NO-OP
+[INFO] 18:54:20:474 Servidor CPU/(20897:20897): Se ejecuto instruccion I/O
+[ERROR] 18:54:21:136 Servidor CPU/(20897:20897): Fallo la comunicacion. Abortando
+[INFO] 18:54:47:818 Servidor CPU/(20931:20931): CPU listo para recibir al modulo cliente
+[ERROR] 18:54:50:025 Servidor CPU/(20931:20931): Fallo la comunicacion. Abortando
+[INFO] 18:55:07:236 Servidor CPU/(20952:20952): CPU listo para recibir al modulo cliente
+[ERROR] 18:55:09:537 Servidor CPU/(20952:20952): Fallo la comunicacion. Abortando
+[INFO] 18:55:50:744 Servidor CPU/(20984:20984): CPU listo para recibir al modulo cliente
+[INFO] 18:55:53:879 Servidor Kernel/(20988:20988): Kernel listo para recibir al modulo cliente
+[INFO] 18:55:58:373 Servidor Kernel/(20988:21011): Me llego el tamanio y las instrucciones
+
+[INFO] 18:55:58:374 Servidor Kernel/(20988:20991): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:55:58:374 Servidor Kernel/(20988:20991): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:55:58:374 Servidor Kernel/(20988:20991): Inicio la planificacion FIFO
+[INFO] 18:55:58:375 Servidor CPU/(20984:20984): Recibi PCB de Id: 0
+[INFO] 18:55:58:375 Servidor CPU/(20984:20984): Se creo hilo para recibir interrupciones
+[INFO] 18:55:58:376 Servidor CPU/(20984:20984): Se ejecuto instruccion NO-OP
+[INFO] 18:55:58:378 Servidor CPU/(20984:20984): Se ejecuto instruccion NO-OP
+[INFO] 18:55:58:379 Servidor CPU/(20984:20984): Se ejecuto instruccion NO-OP
+[INFO] 18:55:58:381 Servidor CPU/(20984:20984): Se ejecuto instruccion NO-OP
+[INFO] 18:55:58:382 Servidor CPU/(20984:20984): Se ejecuto instruccion NO-OP
+[INFO] 18:55:58:383 Servidor CPU/(20984:20984): Se ejecuto instruccion I/O
+[INFO] 18:55:58:483 Servidor Kernel/(20988:20991): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:55:58:484 Servidor Kernel/(20988:20991): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:55:58:484 Servidor Kernel/(20988:20991): Inicio la planificacion FIFO
+[INFO] 18:55:58:484 Servidor CPU/(20984:20984): Recibi PCB de Id: 0
+[INFO] 18:55:58:484 Servidor CPU/(20984:20984): Se creo hilo para recibir interrupciones
+[INFO] 18:55:58:484 Servidor CPU/(20984:20984): Se ejecuto instruccion EXIT
+[ERROR] 18:55:58:947 Servidor CPU/(20984:20984): Fallo la comunicacion. Abortando
+[INFO] 18:57:48:031 Servidor CPU/(21112:21112): CPU listo para recibir al modulo cliente
+[INFO] 18:57:50:090 Servidor Kernel/(21114:21114): Kernel listo para recibir al modulo cliente
+[INFO] 18:57:53:639 Servidor Kernel/(21114:21132): Me llego el tamanio y las instrucciones
+
+[INFO] 18:57:53:639 Servidor Kernel/(21114:21117): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:57:53:639 Servidor Kernel/(21114:21117): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:57:53:640 Servidor Kernel/(21114:21117): Inicio la planificacion FIFO
+[INFO] 18:57:53:640 Servidor CPU/(21112:21112): Recibi PCB de Id: 0
+[INFO] 18:57:53:640 Servidor CPU/(21112:21112): Se creo hilo para recibir interrupciones
+[INFO] 18:57:53:641 Servidor CPU/(21112:21112): Se ejecuto instruccion NO-OP
+[INFO] 18:57:53:644 Servidor CPU/(21112:21112): Se ejecuto instruccion NO-OP
+[INFO] 18:57:53:646 Servidor CPU/(21112:21112): Se ejecuto instruccion NO-OP
+[INFO] 18:57:53:647 Servidor CPU/(21112:21112): Se ejecuto instruccion NO-OP
+[INFO] 18:57:53:649 Servidor CPU/(21112:21112): Se ejecuto instruccion NO-OP
+[INFO] 18:57:53:649 Servidor CPU/(21112:21112): Se ejecuto instruccion I/O
+[INFO] 18:57:53:752 Servidor Kernel/(21114:21117): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:57:53:752 Servidor Kernel/(21114:21117): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:57:53:752 Servidor Kernel/(21114:21117): Inicio la planificacion FIFO
+[INFO] 18:57:53:752 Servidor CPU/(21112:21112): Recibi PCB de Id: 0
+[INFO] 18:57:53:752 Servidor CPU/(21112:21112): Se creo hilo para recibir interrupciones
+[INFO] 18:57:53:752 Servidor CPU/(21112:21112): Se ejecuto instruccion EXIT
+[ERROR] 18:57:54:435 Servidor CPU/(21112:21112): Fallo la comunicacion. Abortando
+[INFO] 18:58:52:298 Servidor CPU/(21203:21203): CPU listo para recibir al modulo cliente
+[INFO] 18:58:54:598 Servidor Kernel/(21205:21205): Kernel listo para recibir al modulo cliente
+[INFO] 18:58:59:107 Servidor Kernel/(21205:21224): Me llego el tamanio y las instrucciones
+
+[INFO] 18:58:59:108 Servidor Kernel/(21205:21208): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:58:59:108 Servidor Kernel/(21205:21208): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:58:59:108 Servidor Kernel/(21205:21208): Inicio la planificacion FIFO
+[INFO] 18:58:59:108 Servidor CPU/(21203:21203): Recibi PCB de Id: 0
+[INFO] 18:58:59:108 Servidor CPU/(21203:21203): Se creo hilo para recibir interrupciones
+[INFO] 18:58:59:110 Servidor CPU/(21203:21203): Se ejecuto instruccion NO-OP
+[INFO] 18:58:59:111 Servidor CPU/(21203:21203): Se ejecuto instruccion NO-OP
+[INFO] 18:58:59:113 Servidor CPU/(21203:21203): Se ejecuto instruccion NO-OP
+[INFO] 18:58:59:115 Servidor CPU/(21203:21203): Se ejecuto instruccion NO-OP
+[INFO] 18:58:59:117 Servidor CPU/(21203:21203): Se ejecuto instruccion NO-OP
+[INFO] 18:58:59:117 Servidor CPU/(21203:21203): Se ejecuto instruccion I/O
+[INFO] 18:58:59:220 Servidor Kernel/(21205:21208): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:58:59:220 Servidor Kernel/(21205:21208): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:58:59:220 Servidor Kernel/(21205:21208): Inicio la planificacion FIFO
+[INFO] 18:58:59:220 Servidor CPU/(21203:21203): Recibi PCB de Id: 0
+[INFO] 18:58:59:221 Servidor CPU/(21203:21203): Se creo hilo para recibir interrupciones
+[INFO] 18:58:59:221 Servidor CPU/(21203:21203): Se ejecuto instruccion EXIT
+[ERROR] 18:58:59:795 Servidor CPU/(21203:21203): Fallo la comunicacion. Abortando
+[INFO] 18:59:38:253 Servidor CPU/(21267:21267): CPU listo para recibir al modulo cliente
+[ERROR] 18:59:41:575 Servidor CPU/(21267:21267): Fallo la comunicacion. Abortando
+[INFO] 19:00:22:448 Servidor CPU/(21286:21286): CPU listo para recibir al modulo cliente
+[INFO] 19:00:25:934 Servidor Kernel/(21288:21288): Kernel listo para recibir al modulo cliente
+[INFO] 19:00:29:173 Servidor Kernel/(21288:21309): Me llego el tamanio y las instrucciones
+
+[INFO] 19:00:29:174 Servidor Kernel/(21288:21291): El algoritmo de planificacion elegido es FIFO.
+[INFO] 19:00:29:174 Servidor Kernel/(21288:21291): El algoritmo de planificacion elegido es FIFO.
+[INFO] 19:00:29:174 Servidor Kernel/(21288:21291): Inicio la planificacion FIFO
+[INFO] 19:00:29:174 Servidor CPU/(21286:21286): Recibi PCB de Id: 0
+[INFO] 19:00:29:174 Servidor CPU/(21286:21286): Se creo hilo para recibir interrupciones
+[INFO] 19:00:29:176 Servidor CPU/(21286:21286): Se ejecuto instruccion NO-OP
+[INFO] 19:00:29:178 Servidor CPU/(21286:21286): Se ejecuto instruccion NO-OP
+[INFO] 19:00:29:180 Servidor CPU/(21286:21286): Se ejecuto instruccion NO-OP
+[INFO] 19:00:29:183 Servidor CPU/(21286:21286): Se ejecuto instruccion NO-OP
+[INFO] 19:00:29:185 Servidor CPU/(21286:21286): Se ejecuto instruccion NO-OP
+[INFO] 19:00:29:186 Servidor CPU/(21286:21286): Se ejecuto instruccion I/O
+[INFO] 19:00:29:288 Servidor Kernel/(21288:21291): El algoritmo de planificacion elegido es FIFO.
+[INFO] 19:00:29:288 Servidor Kernel/(21288:21291): El algoritmo de planificacion elegido es FIFO.
+[INFO] 19:00:29:288 Servidor Kernel/(21288:21291): Inicio la planificacion FIFO
+[INFO] 19:00:29:288 Servidor CPU/(21286:21286): Recibi PCB de Id: 0
+[INFO] 19:00:29:288 Servidor CPU/(21286:21286): Se creo hilo para recibir interrupciones
+[INFO] 19:00:29:288 Servidor CPU/(21286:21286): Se ejecuto instruccion EXIT
+[ERROR] 19:00:29:929 Servidor CPU/(21286:21286): Fallo la comunicacion. Abortando

@@ -186,6 +186,8 @@ void interrumpir_cpu(){
 }
 
 void ejecutarIO(uint32_t tiempoIO){
+	printf("EJECUTO IO\n");
+
 	usleep(tiempoIO * 1000);
 }
 

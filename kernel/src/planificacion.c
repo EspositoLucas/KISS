@@ -101,8 +101,9 @@ void finalizarPcb(void){
 	proceso* proceso ;
   	pthread_mutex_lock(&mutex_exit);
   	proceso = list_remove(colaExit, 0);
+  	printf("Finalizo el pid: %d\n", proceso->pcb->id_proceso);
   	pthread_mutex_unlock(&mutex_exit);
- 	printf("[EXIT] Finaliza el  pcb de ID: %d", proceso->pcb-> id_proceso);
+// 	printf("[EXIT] Finaliza el  pcb de ID: %d", proceso->pcb-> id_proceso);
 	enviar_pcb_a_memoria(proceso->pcb, socket_memoria,LIBERAR_ESTRUCTURAS);
 
 	op_code codigo = esperar_respuesta_memoria(socket_memoria);
@@ -179,7 +180,10 @@ void estadoExec(void){
 
 		enviarPcb(socket_dispatch, proceso->pcb);
 		printf("PCB enviada \n");
+
+		op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
 		proceso->pcb = recibirPcb(socket_dispatch); // aca rompe el hilo porque no se hizo la conexion a cpu
+
 		printf("PCB recibida \n");
 		uint32_t finalizacion_cpu = get_time();
 		pthread_mutex_lock(&mutex_exec);
@@ -189,20 +193,26 @@ void estadoExec(void){
 		proceso->pcb->rafaga_anterior = inicio_cpu - finalizacion_cpu;
 
 		instruccion *instruccion_ejecutada = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1)); // agarro la instruccion ya ejecutada por cpu
+		printf("Ultima instruccion ejecutada: %d \n",instruccion_ejecutada->codigo);
+
 
 		switch(instruccion_ejecutada->codigo){
 		case IO:
+			printf("Me meto en IO \n");
 			pthread_mutex_lock(&mutex_blocked);
 			proceso->pcb->estado_proceso = BLOQUEADO;
 			proceso->tiempo_inicio_bloqueo = get_time();
 			list_add(colaBlocked, proceso);
+			chequear_lista_pcbs(colaBlocked);
 			pthread_mutex_unlock(&mutex_blocked);
 			sem_post(&sem_blocked); // despertar bloqueado
 			break;
 		case EXIT:
+			printf("Me meto en EXIT\n");
 			pthread_mutex_lock(&mutex_exit);
 			proceso->pcb->estado_proceso = FINALIZADO;
 			list_add(colaExit, proceso);
+			chequear_lista_pcbs(colaExit);
 			pthread_mutex_unlock(&mutex_exit);
 			sem_post(&sem_exit); // despertar exit
 			break;
@@ -225,27 +235,33 @@ void estadoBlockeado(void){
 	while(1){
 		sem_wait(&sem_blocked);
 		uint32_t tiempoMaxDeBloqueo = config_valores_kernel.tiempo_maximo_bloqueado;
+		printf("Tiempo max de bloqueo segun config: %d\n",tiempoMaxDeBloqueo);
 		pthread_mutex_lock(&mutex_blocked);
 		proceso* proceso = list_remove(colaBlocked,0);
 		pthread_mutex_unlock(&mutex_blocked);
-
-		log_info(kernel_logger, "PID[%d] ingresa a BLOCKED", proceso->pcb->id_proceso);
+		chequear_lista_pcbs(colaBlocked);
+		printf("Ejecuto io del pid: %d\n", proceso->pcb->id_proceso);
+//		printf("PID[%d] ingresa a BLOCKED", proceso->pcb->id_proceso);
 
 		uint32_t tiempoQueLLevaEnBlock = get_time() - proceso->tiempo_inicio_bloqueo;
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
-
-          transicion_suspender(proceso); //suspender para mediano plazo
+			printf("caso 1\n");
+			transicion_suspender(proceso); //suspender para mediano plazo
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
 
 		} else if (tiempoQueLLevaEnBlock + proceso->pcb->tiempo_de_bloqueo > tiempoMaxDeBloqueo){ // suspendo en el medio
-
+			printf("caso 2\n");
 			uint32_t tiempoIOAntesDeSuspender = tiempoMaxDeBloqueo - tiempoQueLLevaEnBlock;
 			ejecutarIO(tiempoIOAntesDeSuspender); // ejecutar hasta que sea necesario suspender
+			printf("Ejecute %d de IO\n", tiempoIOAntesDeSuspender);
 			transicion_suspender(proceso); //suspender para mediano plazo
+			printf("Suspendi el proceso\n");
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
+			printf("Ejecuto IO pendiente: %d\n", proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender);
 
 		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
+			printf("caso 3\n");
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
 			pthread_mutex_lock(&mutex_ready);
 			list_add(colaReady,proceso);
@@ -276,7 +292,7 @@ void estadoBlockeado(void){
 
  void transicion_suspender(proceso *proceso) {
 
- 	log_info(kernel_logger, "PID[%d] ingresa a SUSPENDED-BLOCKED", proceso->pcb->id_proceso);
+ 	printf("PID[%d] ingresa a SUSPENDED-BLOCKED", proceso->pcb->id_proceso);
  	proceso->pcb->estado_proceso = LISTO_SUSPENDIDO;
 	enviar_pcb_a_memoria(proceso->pcb, socket_memoria, SUSPENDER_PCB);
 	proceso->pcb = recibirPcb(socket_memoria);
