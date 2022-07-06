@@ -37,6 +37,7 @@ int socket_dispatch;
 int socket_interrupt;
 
 t_consola * consola ;
+t_log* kernel_logger;
 
 // FUNCIONES
 
@@ -44,7 +45,7 @@ t_consola * consola ;
 int atender_clientes_kernel(int);
 void cargar_configuracion(char*);
 void manejar_conexion(int);
-void chequear_lista_pcbs();
+void chequear_lista_pcbs(t_list*);
 //void iniciar_planificacion(void);
 t_list *deserializar_instrucciones(t_list*, uint32_t );
 t_consola *deserializar_consola(int );

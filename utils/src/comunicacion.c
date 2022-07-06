@@ -265,6 +265,7 @@ void agregaAPaquete(t_paquete* paquete,void* valor,int tamanio){
 	agregar_a_buffer(paquete->buffer, valor, tamanio);
 }
 void armarPaquete(t_paquete* paquete,pcb* pcb){
+
 	agregaAPaquete(paquete,&pcb->estado_proceso,sizeof(estado));
 	agregaAPaquete(paquete,&pcb->estimacion_rafaga,sizeof(float));
 	agregaAPaquete(paquete,&pcb->id_proceso,sizeof(uint32_t));
@@ -273,8 +274,11 @@ void armarPaquete(t_paquete* paquete,pcb* pcb){
 	agregaAPaquete(paquete,&pcb->tamanio_proceso,sizeof(uint32_t));
 	agregaAPaquete(paquete,&pcb->tiempo_de_bloqueo,sizeof(double));
 	agregaAPaquete(paquete,&pcb->valor_tabla_paginas,sizeof(uint32_t));
+
 	uint32_t cant=(uint32_t)list_size(pcb->instrucciones);
+
 	agregaAPaquete(paquete,&cant,sizeof(int));
+
 	for(int i=0;i<cant;i++){
 		instruccion* inst=list_get(pcb->instrucciones,i);
 		agregaAPaquete(paquete,&inst->codigo,sizeof(codigo_instrucciones));
@@ -284,7 +288,7 @@ void armarPaquete(t_paquete* paquete,pcb* pcb){
 }
 
 void enviarPcb(int socket,pcb* pcb){
-	t_paquete* paquete=crear_paquete();
+	t_paquete* paquete=crear_paquete_con_codigo_de_operacion(PCB);
 	armarPaquete(paquete,pcb);
 	enviar_paquete(paquete,socket);
 }

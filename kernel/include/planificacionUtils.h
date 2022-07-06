@@ -49,7 +49,6 @@ uint32_t generador_de_id;
 
 // Kernel
 
- t_log *kernel_logger;
  int socket_cpu_interrupt;
  int socket_cpu_dispatch;
  int socket_consola ;

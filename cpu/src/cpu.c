@@ -34,7 +34,7 @@ int main()
 	conexion_t* conexion_interrupcion=malloc(sizeof(conexion_t));
 	conexion_interrupcion->ip=ip;
 	conexion_interrupcion->puerto=puerto_interrupt;
-	pthread_create(&manejoInterrupciones,NULL,interrupt,conexion_interrupcion);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
+	//pthread_create(&manejoInterrupciones,NULL,interrupt,conexion_interrupcion);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
 
 
 	///INICIA LA TLB
@@ -48,12 +48,13 @@ int main()
 	int server_fd = iniciar_servidor(ip,puerto_dispatch);
     log_info(logger, "CPU listo para recibir al modulo cliente");
     int cliente_fd = esperar_cliente(server_fd);
-
+    printf("Se conecto un cliente por dispatch\n");
 
 
     while (1)
     {
-        int cod_op = recibir_operacion(cliente_fd);
+    	printf("Miro el op code \n");
+        int cod_op = recibir_operacion_nuevo(cliente_fd);
         switch (cod_op)
         {
         case PCB:
@@ -85,6 +86,7 @@ while((int)PCB->program_counter <list_size(PCB->instrucciones)){
 	PCB->program_counter++;//ACTUALIZA EL PCB
 	if(checkInterrupt()==1){//SE FIJA QUE NO HAYA PEDIDO DE PARAR EL PROCESO ANTES DE SEGUIR CON EL CICLO DE INSTRUCCION
 		enviarPcb(socket_kernel,PCB);
+		printf("Envio pcb devuelta al kernel \n");
 		return NULL;
 	}
 }
@@ -259,7 +261,7 @@ void* conexion_inicial_memoria(void* datos){
 ///CARGAR CONFIGURACION A CPU
 
 void cargar_config(){
-	config= iniciar_config("Default/cpu.config");
+	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/cpu.config");
 
 	config_valores_cpu.ip_cpu=config_get_string_value(config,"IP_CPU");
 	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");

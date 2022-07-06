@@ -17,3 +17,1160 @@
 [INFO] 20:44:08:308 Servidor Kernel/(5804:5828): Me llego el tamanio y las instrucciones
 
 [INFO] 20:44:08:308 Servidor Kernel/(5804:5828): [NEW] Entra el pcb de ID: 0 a la cola.
+[INFO] 17:12:48:214 Servidor Kernel/(10084:10084): Kernel listo para recibir al modulo cliente
+[INFO] 17:20:45:714 Servidor CPU/(10932:10932): CPU listo para recibir al modulo cliente
+[INFO] 17:20:45:714 Servidor CPU/(10932:10933): CPU listo para recibir interrupciones
+[INFO] 17:20:57:209 Servidor Kernel/(10942:10942): Kernel listo para recibir al modulo cliente
+[INFO] 17:21:52:442 Servidor Kernel/(10981:10981): Kernel listo para recibir al modulo cliente
+[INFO] 17:22:01:266 Servidor CPU/(10932:10933): Se conecto Kernel al puerto interrupt
+[INFO] 17:22:01:267 Servidor Kernel/(11016:11016): Kernel listo para recibir al modulo cliente
+[INFO] 17:24:14:730 Servidor CPU/(11380:11380): CPU listo para recibir al modulo cliente
+[INFO] 17:24:14:730 Servidor CPU/(11380:11381): CPU listo para recibir interrupciones
+[INFO] 17:24:20:629 Servidor CPU/(11380:11381): Se conecto Kernel al puerto interrupt
+[INFO] 17:24:20:629 Servidor Kernel/(11386:11386): Kernel listo para recibir al modulo cliente
+[INFO] 17:24:34:591 Servidor Kernel/(11386:11406): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:24:35:046 Servidor CPU/(11380:11381): Fallo la comunicacion. Abortando
+[ERROR] 17:24:35:046 Servidor CPU/(11380:11380): Fallo la comunicacion. Abortando
+[INFO] 17:26:05:644 Servidor CPU/(11441:11441): CPU listo para recibir al modulo cliente
+[INFO] 17:26:05:644 Servidor CPU/(11441:11442): CPU listo para recibir interrupciones
+[INFO] 17:26:08:792 Servidor CPU/(11441:11442): Se conecto Kernel al puerto interrupt
+[INFO] 17:26:08:792 Servidor Kernel/(11445:11445): Kernel listo para recibir al modulo cliente
+[INFO] 17:26:21:073 Servidor Kernel/(11445:11472): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:26:21:555 Servidor CPU/(11441:11442): Fallo la comunicacion. Abortando
+[ERROR] 17:26:21:555 Servidor CPU/(11441:11441): Fallo la comunicacion. Abortando
+[INFO] 17:27:16:948 Servidor CPU/(11695:11695): CPU listo para recibir al modulo cliente
+[INFO] 17:27:16:955 Servidor CPU/(11695:11696): CPU listo para recibir interrupciones
+[INFO] 17:27:19:630 Servidor CPU/(11695:11696): Se conecto Kernel al puerto interrupt
+[ERROR] 17:27:19:630 Servidor CPU/(11695:11696): Fallo la comunicacion. Abortando
+[ERROR] 17:27:19:630 Servidor CPU/(11695:11695): Fallo la comunicacion. Abortando
+[INFO] 17:27:22:564 Servidor Kernel/(11702:11702): Kernel listo para recibir al modulo cliente
+[INFO] 17:27:28:622 Servidor Kernel/(11702:11720): Me llego el tamanio y las instrucciones
+
+[INFO] 17:28:42:989 Servidor CPU/(11781:11781): CPU listo para recibir al modulo cliente
+[INFO] 17:28:42:993 Servidor CPU/(11781:11782): CPU listo para recibir interrupciones
+[INFO] 17:28:46:541 Servidor CPU/(11781:11782): Se conecto Kernel al puerto interrupt
+[ERROR] 17:28:46:541 Servidor CPU/(11781:11782): Fallo la comunicacion. Abortando
+[ERROR] 17:28:46:541 Servidor CPU/(11781:11781): Fallo la comunicacion. Abortando
+[INFO] 17:29:53:748 Servidor CPU/(12015:12015): CPU listo para recibir al modulo cliente
+[INFO] 17:29:53:748 Servidor CPU/(12015:12016): CPU listo para recibir interrupciones
+[INFO] 17:29:55:459 Servidor CPU/(12015:12016): Se conecto Kernel al puerto interrupt
+[INFO] 17:29:55:459 Servidor Kernel/(12019:12019): Kernel listo para recibir al modulo cliente
+[INFO] 17:30:00:235 Servidor Kernel/(12019:12042): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:30:00:701 Servidor CPU/(12015:12016): Fallo la comunicacion. Abortando
+[ERROR] 17:30:00:701 Servidor CPU/(12015:12015): Fallo la comunicacion. Abortando
+[INFO] 17:31:03:073 Servidor CPU/(12143:12143): CPU listo para recibir al modulo cliente
+[INFO] 17:31:03:074 Servidor CPU/(12143:12144): CPU listo para recibir interrupciones
+[INFO] 17:31:05:888 Servidor CPU/(12143:12144): Se conecto Kernel al puerto interrupt
+[INFO] 17:31:05:895 Servidor Kernel/(12146:12146): Kernel listo para recibir al modulo cliente
+[INFO] 17:31:12:973 Servidor Kernel/(12146:12166): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:31:13:435 Servidor CPU/(12143:12144): Fallo la comunicacion. Abortando
+[ERROR] 17:31:13:435 Servidor CPU/(12143:12143): Fallo la comunicacion. Abortando
+[INFO] 17:31:43:461 Servidor CPU/(12208:12208): CPU listo para recibir al modulo cliente
+[INFO] 17:31:43:464 Servidor CPU/(12208:12209): CPU listo para recibir interrupciones
+[INFO] 17:31:46:373 Servidor CPU/(12208:12209): Se conecto Kernel al puerto interrupt
+[ERROR] 17:31:46:373 Servidor CPU/(12208:12209): Fallo la comunicacion. Abortando
+[ERROR] 17:31:46:373 Servidor CPU/(12208:12208): Fallo la comunicacion. Abortando
+[INFO] 17:32:13:575 Servidor CPU/(12515:12515): CPU listo para recibir al modulo cliente
+[INFO] 17:32:13:576 Servidor CPU/(12515:12516): CPU listo para recibir interrupciones
+[INFO] 17:32:18:075 Servidor CPU/(12515:12516): Se conecto Kernel al puerto interrupt
+[INFO] 17:32:18:076 Servidor Kernel/(12625:12625): Kernel listo para recibir al modulo cliente
+[INFO] 17:32:56:039 Servidor Kernel/(12625:12657): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:32:56:475 Servidor CPU/(12515:12516): Fallo la comunicacion. Abortando
+[ERROR] 17:32:56:475 Servidor CPU/(12515:12515): Fallo la comunicacion. Abortando
+[INFO] 17:34:15:738 Servidor CPU/(12743:12743): CPU listo para recibir al modulo cliente
+[INFO] 17:34:15:739 Servidor CPU/(12743:12744): CPU listo para recibir interrupciones
+[INFO] 17:34:20:979 Servidor CPU/(12743:12744): Se conecto Kernel al puerto interrupt
+[INFO] 17:34:20:980 Servidor Kernel/(12750:12750): Kernel listo para recibir al modulo cliente
+[INFO] 17:34:26:118 Servidor Kernel/(12750:12769): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:34:26:559 Servidor CPU/(12743:12744): Fallo la comunicacion. Abortando
+[ERROR] 17:34:26:559 Servidor CPU/(12743:12743): Fallo la comunicacion. Abortando
+[INFO] 17:37:51:798 Servidor CPU/(12957:12957): CPU listo para recibir al modulo cliente
+[INFO] 17:37:51:799 Servidor CPU/(12957:12958): CPU listo para recibir interrupciones
+[INFO] 17:37:55:454 Servidor CPU/(12957:12958): Se conecto Kernel al puerto interrupt
+[ERROR] 17:37:55:891 Servidor CPU/(12957:12958): Fallo la comunicacion. Abortando
+[ERROR] 17:37:55:891 Servidor CPU/(12957:12957): Fallo la comunicacion. Abortando
+[INFO] 17:39:52:469 Servidor CPU/(13122:13122): CPU listo para recibir al modulo cliente
+[INFO] 17:39:52:470 Servidor CPU/(13122:13123): CPU listo para recibir interrupciones
+[INFO] 17:39:55:020 Servidor CPU/(13122:13123): Se conecto Kernel al puerto interrupt
+[ERROR] 17:39:55:404 Servidor CPU/(13122:13123): Fallo la comunicacion. Abortando
+[ERROR] 17:39:55:404 Servidor CPU/(13122:13122): Fallo la comunicacion. Abortando
+[INFO] 17:40:57:045 Servidor CPU/(13171:13171): CPU listo para recibir al modulo cliente
+[INFO] 17:40:57:045 Servidor CPU/(13171:13172): CPU listo para recibir interrupciones
+[INFO] 17:40:59:459 Servidor CPU/(13171:13172): Se conecto Kernel al puerto interrupt
+[ERROR] 17:40:59:677 Servidor CPU/(13171:13172): Fallo la comunicacion. Abortando
+[ERROR] 17:40:59:677 Servidor CPU/(13171:13171): Fallo la comunicacion. Abortando
+[INFO] 17:41:51:918 Servidor CPU/(13192:13192): CPU listo para recibir al modulo cliente
+[INFO] 17:41:51:919 Servidor CPU/(13192:13193): CPU listo para recibir interrupciones
+[INFO] 17:41:54:782 Servidor CPU/(13192:13193): Se conecto Kernel al puerto interrupt
+[ERROR] 17:41:54:990 Servidor CPU/(13192:13193): Fallo la comunicacion. Abortando
+[ERROR] 17:41:54:990 Servidor CPU/(13192:13192): Fallo la comunicacion. Abortando
+[INFO] 17:42:54:780 Servidor CPU/(13218:13218): CPU listo para recibir al modulo cliente
+[INFO] 17:42:54:780 Servidor CPU/(13218:13219): CPU listo para recibir interrupciones
+[INFO] 17:42:57:322 Servidor CPU/(13218:13219): Se conecto Kernel al puerto interrupt
+[ERROR] 17:42:57:530 Servidor CPU/(13218:13219): Fallo la comunicacion. Abortando
+[ERROR] 17:42:57:530 Servidor CPU/(13218:13218): Fallo la comunicacion. Abortando
+[INFO] 17:43:04:077 Servidor CPU/(13248:13248): CPU listo para recibir al modulo cliente
+[INFO] 17:43:04:080 Servidor CPU/(13248:13249): CPU listo para recibir interrupciones
+[INFO] 17:43:06:379 Servidor CPU/(13248:13249): Se conecto Kernel al puerto interrupt
+[INFO] 17:43:06:380 Servidor Kernel/(13251:13251): Kernel listo para recibir al modulo cliente
+[INFO] 17:43:15:316 Servidor Kernel/(13251:13270): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:43:15:793 Servidor CPU/(13248:13249): Fallo la comunicacion. Abortando
+[ERROR] 17:43:15:793 Servidor CPU/(13248:13248): Fallo la comunicacion. Abortando
+[INFO] 17:44:02:354 Servidor CPU/(13329:13329): CPU listo para recibir al modulo cliente
+[INFO] 17:44:02:354 Servidor CPU/(13329:13330): CPU listo para recibir interrupciones
+[INFO] 17:44:04:616 Servidor CPU/(13329:13330): Se conecto Kernel al puerto interrupt
+[ERROR] 17:44:04:617 Servidor CPU/(13329:13330): Fallo la comunicacion. Abortando
+[ERROR] 17:44:04:617 Servidor CPU/(13329:13329): Fallo la comunicacion. Abortando
+[INFO] 17:44:09:949 Servidor CPU/(13334:13334): CPU listo para recibir al modulo cliente
+[INFO] 17:44:09:949 Servidor CPU/(13334:13335): CPU listo para recibir interrupciones
+[INFO] 17:44:15:584 Servidor CPU/(13334:13335): Se conecto Kernel al puerto interrupt
+[ERROR] 17:44:15:585 Servidor CPU/(13334:13335): Fallo la comunicacion. Abortando
+[ERROR] 17:44:15:585 Servidor CPU/(13334:13334): Fallo la comunicacion. Abortando
+[INFO] 17:44:23:795 Servidor CPU/(13355:13355): CPU listo para recibir al modulo cliente
+[INFO] 17:44:23:795 Servidor CPU/(13355:13356): CPU listo para recibir interrupciones
+[INFO] 17:44:44:570 Servidor CPU/(13355:13356): Se conecto Kernel al puerto interrupt
+[INFO] 17:44:44:571 Servidor Kernel/(13492:13492): Kernel listo para recibir al modulo cliente
+[INFO] 17:44:53:194 Servidor Kernel/(13492:13592): Me llego el tamanio y las instrucciones
+
+[ERROR] 17:44:53:739 Servidor CPU/(13355:13356): Fallo la comunicacion. Abortando
+[ERROR] 17:44:53:739 Servidor CPU/(13355:13355): Fallo la comunicacion. Abortando
+[INFO] 17:45:57:695 Servidor CPU/(13740:13740): CPU listo para recibir al modulo cliente
+[INFO] 17:45:57:696 Servidor CPU/(13740:13741): CPU listo para recibir interrupciones
+[INFO] 17:46:00:444 Servidor CPU/(13740:13741): Se conecto Kernel al puerto interrupt
+[INFO] 17:46:00:445 Servidor Kernel/(13748:13748): Kernel listo para recibir al modulo cliente
+[INFO] 17:46:04:633 Servidor Kernel/(13748:13771): Me llego el tamanio y las instrucciones
+
+[INFO] 17:46:04:634 Servidor Kernel/(13748:13751): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:46:04:634 Servidor Kernel/(13748:13751): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:46:04:634 Servidor Kernel/(13748:13751): Inicio la planificacion FIFO
+[ERROR] 17:46:05:097 Servidor CPU/(13740:13741): Fallo la comunicacion. Abortando
+[ERROR] 17:46:05:097 Servidor CPU/(13740:13740): Fallo la comunicacion. Abortando
+[INFO] 17:47:57:901 Servidor CPU/(13880:13880): CPU listo para recibir al modulo cliente
+[INFO] 17:47:57:901 Servidor CPU/(13880:13881): CPU listo para recibir interrupciones
+[INFO] 17:48:21:210 Servidor CPU/(13880:13881): Se conecto Kernel al puerto interrupt
+[INFO] 17:48:21:210 Servidor Kernel/(13929:13929): Kernel listo para recibir al modulo cliente
+[INFO] 17:48:24:979 Servidor Kernel/(13929:13947): Me llego el tamanio y las instrucciones
+
+[INFO] 17:48:24:979 Servidor Kernel/(13929:13933): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:48:24:980 Servidor Kernel/(13929:13933): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:48:24:980 Servidor Kernel/(13929:13933): Inicio la planificacion FIFO
+[ERROR] 17:48:25:582 Servidor CPU/(13880:13881): Fallo la comunicacion. Abortando
+[ERROR] 17:48:25:582 Servidor CPU/(13880:13880): Fallo la comunicacion. Abortando
+[INFO] 17:49:04:519 Servidor CPU/(13986:13986): CPU listo para recibir al modulo cliente
+[INFO] 17:49:04:520 Servidor CPU/(13986:13987): CPU listo para recibir interrupciones
+[INFO] 17:49:07:124 Servidor CPU/(13986:13987): Se conecto Kernel al puerto interrupt
+[ERROR] 17:49:07:124 Servidor CPU/(13986:13987): Fallo la comunicacion. Abortando
+[ERROR] 17:49:07:125 Servidor CPU/(13986:13986): Fallo la comunicacion. Abortando
+[INFO] 17:49:26:916 Servidor CPU/(14024:14024): CPU listo para recibir al modulo cliente
+[INFO] 17:49:26:917 Servidor CPU/(14024:14025): CPU listo para recibir interrupciones
+[INFO] 17:49:30:841 Servidor CPU/(14024:14025): Se conecto Kernel al puerto interrupt
+[INFO] 17:49:30:841 Servidor Kernel/(14142:14142): Kernel listo para recibir al modulo cliente
+[INFO] 17:49:36:517 Servidor Kernel/(14142:14160): Me llego el tamanio y las instrucciones
+
+[INFO] 17:49:36:518 Servidor Kernel/(14142:14145): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:49:36:518 Servidor Kernel/(14142:14145): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:49:36:518 Servidor Kernel/(14142:14145): Inicio la planificacion FIFO
+[ERROR] 17:49:37:027 Servidor CPU/(14024:14025): Fallo la comunicacion. Abortando
+[ERROR] 17:49:37:027 Servidor CPU/(14024:14024): Fallo la comunicacion. Abortando
+[INFO] 17:50:33:510 Servidor CPU/(14208:14208): CPU listo para recibir al modulo cliente
+[INFO] 17:50:33:510 Servidor CPU/(14208:14209): CPU listo para recibir interrupciones
+[INFO] 17:50:36:708 Servidor CPU/(14208:14209): Se conecto Kernel al puerto interrupt
+[ERROR] 17:50:36:709 Servidor CPU/(14208:14209): Fallo la comunicacion. Abortando
+[ERROR] 17:50:36:709 Servidor CPU/(14208:14208): Fallo la comunicacion. Abortando
+[INFO] 17:50:56:795 Servidor CPU/(14247:14247): CPU listo para recibir al modulo cliente
+[INFO] 17:50:56:796 Servidor CPU/(14247:14248): CPU listo para recibir interrupciones
+[INFO] 17:50:59:361 Servidor CPU/(14247:14248): Se conecto Kernel al puerto interrupt
+[INFO] 17:50:59:362 Servidor Kernel/(14251:14251): Kernel listo para recibir al modulo cliente
+[INFO] 17:51:04:289 Servidor Kernel/(14251:14269): Me llego el tamanio y las instrucciones
+
+[INFO] 17:51:04:289 Servidor Kernel/(14251:14254): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:51:04:290 Servidor Kernel/(14251:14254): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:51:04:290 Servidor Kernel/(14251:14254): Inicio la planificacion FIFO
+[ERROR] 17:51:04:747 Servidor CPU/(14247:14248): Fallo la comunicacion. Abortando
+[ERROR] 17:51:04:747 Servidor CPU/(14247:14247): Fallo la comunicacion. Abortando
+[INFO] 17:52:20:223 Servidor Kernel/(14354:14354): Kernel listo para recibir al modulo cliente
+[INFO] 17:52:23:966 Servidor CPU/(14362:14362): CPU listo para recibir al modulo cliente
+[INFO] 17:52:23:966 Servidor CPU/(14362:14363): CPU listo para recibir interrupciones
+[INFO] 17:52:26:753 Servidor CPU/(14362:14363): Se conecto Kernel al puerto interrupt
+[INFO] 17:52:26:754 Servidor Kernel/(14366:14366): Kernel listo para recibir al modulo cliente
+[INFO] 17:52:31:393 Servidor Kernel/(14366:14384): Me llego el tamanio y las instrucciones
+
+[INFO] 17:52:31:394 Servidor Kernel/(14366:14370): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:52:31:394 Servidor Kernel/(14366:14370): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:52:31:394 Servidor Kernel/(14366:14370): Inicio la planificacion FIFO
+[ERROR] 17:52:31:882 Servidor CPU/(14362:14363): Fallo la comunicacion. Abortando
+[ERROR] 17:52:31:882 Servidor CPU/(14362:14362): Fallo la comunicacion. Abortando
+[INFO] 17:53:13:079 Servidor CPU/(14587:14587): CPU listo para recibir al modulo cliente
+[INFO] 17:53:13:079 Servidor CPU/(14587:14588): CPU listo para recibir interrupciones
+[INFO] 17:53:16:507 Servidor CPU/(14587:14588): Se conecto Kernel al puerto interrupt
+[ERROR] 17:53:16:508 Servidor CPU/(14587:14588): Fallo la comunicacion. Abortando
+[ERROR] 17:53:16:508 Servidor CPU/(14587:14587): Fallo la comunicacion. Abortando
+[INFO] 17:53:42:689 Servidor Kernel/(14729:14729): Kernel listo para recibir al modulo cliente
+[INFO] 17:53:47:942 Servidor Kernel/(14729:14749): Me llego el tamanio y las instrucciones
+
+[INFO] 17:53:47:943 Servidor Kernel/(14729:14732): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:53:47:943 Servidor Kernel/(14729:14732): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:53:47:943 Servidor Kernel/(14729:14732): Inicio la planificacion FIFO
+[INFO] 17:55:03:216 Servidor Kernel/(14873:14873): Kernel listo para recibir al modulo cliente
+[INFO] 17:55:06:933 Servidor Kernel/(14873:14898): Me llego el tamanio y las instrucciones
+
+[INFO] 17:55:06:935 Servidor Kernel/(14873:14876): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:55:06:935 Servidor Kernel/(14873:14876): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:55:06:935 Servidor Kernel/(14873:14876): Inicio la planificacion FIFO
+[INFO] 17:56:16:804 Servidor Kernel/(15012:15012): Kernel listo para recibir al modulo cliente
+[INFO] 17:56:21:222 Servidor Kernel/(15012:15033): Me llego el tamanio y las instrucciones
+
+[INFO] 17:56:21:226 Servidor Kernel/(15012:15015): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:56:21:226 Servidor Kernel/(15012:15015): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:56:21:226 Servidor Kernel/(15012:15015): Inicio la planificacion FIFO
+[INFO] 17:57:28:690 Servidor Kernel/(15115:15115): Kernel listo para recibir al modulo cliente
+[INFO] 17:57:33:710 Servidor Kernel/(15115:15134): Me llego el tamanio y las instrucciones
+
+[INFO] 17:57:33:712 Servidor Kernel/(15115:15118): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:57:33:712 Servidor Kernel/(15115:15118): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:57:33:712 Servidor Kernel/(15115:15118): Inicio la planificacion FIFO
+[INFO] 17:58:48:512 Servidor CPU/(15204:15204): CPU listo para recibir al modulo cliente
+[INFO] 17:58:48:513 Servidor CPU/(15204:15205): CPU listo para recibir interrupciones
+[INFO] 17:58:53:412 Servidor CPU/(15204:15205): Se conecto Kernel al puerto interrupt
+[INFO] 17:58:53:413 Servidor Kernel/(15213:15213): Kernel listo para recibir al modulo cliente
+[INFO] 17:59:01:289 Servidor Kernel/(15213:15231): Me llego el tamanio y las instrucciones
+
+[INFO] 17:59:01:290 Servidor Kernel/(15213:15216): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:59:01:290 Servidor Kernel/(15213:15216): El algoritmo de planificacion elegido es FIFO.
+[INFO] 17:59:01:290 Servidor Kernel/(15213:15216): Inicio la planificacion FIFO
+[ERROR] 17:59:01:770 Servidor CPU/(15204:15205): Fallo la comunicacion. Abortando
+[ERROR] 17:59:01:771 Servidor CPU/(15204:15204): Fallo la comunicacion. Abortando
+[INFO] 18:00:34:610 Servidor CPU/(15336:15336): CPU listo para recibir al modulo cliente
+[INFO] 18:00:34:610 Servidor CPU/(15336:15337): CPU listo para recibir interrupciones
+[INFO] 18:00:36:880 Servidor CPU/(15336:15337): Se conecto Kernel al puerto interrupt
+[INFO] 18:00:36:881 Servidor Kernel/(15339:15339): Kernel listo para recibir al modulo cliente
+[INFO] 18:00:41:510 Servidor Kernel/(15339:15358): Me llego el tamanio y las instrucciones
+
+[INFO] 18:00:41:511 Servidor Kernel/(15339:15342): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:00:41:511 Servidor Kernel/(15339:15342): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:00:41:511 Servidor Kernel/(15339:15342): Inicio la planificacion FIFO
+[ERROR] 18:00:41:964 Servidor CPU/(15336:15337): Fallo la comunicacion. Abortando
+[ERROR] 18:00:41:964 Servidor CPU/(15336:15336): Fallo la comunicacion. Abortando
+[INFO] 18:01:14:758 Servidor CPU/(15581:15581): CPU listo para recibir al modulo cliente
+[INFO] 18:01:14:758 Servidor CPU/(15581:15582): CPU listo para recibir interrupciones
+[INFO] 18:01:18:843 Servidor CPU/(15581:15582): Se conecto Kernel al puerto interrupt
+[ERROR] 18:01:18:843 Servidor CPU/(15581:15582): Fallo la comunicacion. Abortando
+[ERROR] 18:01:18:843 Servidor CPU/(15581:15581): Fallo la comunicacion. Abortando
+[INFO] 18:01:36:711 Servidor CPU/(15616:15616): CPU listo para recibir al modulo cliente
+[INFO] 18:01:36:711 Servidor CPU/(15616:15617): CPU listo para recibir interrupciones
+[INFO] 18:01:39:837 Servidor CPU/(15616:15617): Se conecto Kernel al puerto interrupt
+[ERROR] 18:01:39:837 Servidor CPU/(15616:15617): Fallo la comunicacion. Abortando
+[ERROR] 18:01:39:838 Servidor CPU/(15616:15616): Fallo la comunicacion. Abortando
+[INFO] 18:01:47:012 Servidor Kernel/(15622:15622): Kernel listo para recibir al modulo cliente
+[INFO] 18:01:49:777 Servidor CPU/(15630:15630): CPU listo para recibir al modulo cliente
+[INFO] 18:01:49:778 Servidor CPU/(15630:15631): CPU listo para recibir interrupciones
+[INFO] 18:01:52:581 Servidor CPU/(15630:15631): Se conecto Kernel al puerto interrupt
+[INFO] 18:01:52:582 Servidor Kernel/(15639:15639): Kernel listo para recibir al modulo cliente
+[INFO] 18:01:57:620 Servidor Kernel/(15639:15688): Me llego el tamanio y las instrucciones
+
+[INFO] 18:01:57:620 Servidor Kernel/(15639:15643): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:01:57:620 Servidor Kernel/(15639:15643): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:01:57:620 Servidor Kernel/(15639:15643): Inicio la planificacion FIFO
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:621 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:622 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:623 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:624 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:625 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:626 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:628 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:628 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:628 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:628 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:628 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[WARNING] 18:01:57:629 Servidor CPU/(15630:15630): Operacion desconocida
+[ERROR] 18:03:24:642 Servidor CPU/(15630:15631): Fallo la comunicacion. Abortando
+[ERROR] 18:03:24:643 Servidor CPU/(15630:15630): Fallo la comunicacion. Abortando
+[INFO] 18:03:28:520 Servidor CPU/(15783:15783): CPU listo para recibir al modulo cliente
+[INFO] 18:03:28:521 Servidor CPU/(15783:15784): CPU listo para recibir interrupciones
+[INFO] 18:03:31:578 Servidor CPU/(15783:15784): Se conecto Kernel al puerto interrupt
+[ERROR] 18:03:31:583 Servidor CPU/(15783:15784): Fallo la comunicacion. Abortando
+[ERROR] 18:03:31:583 Servidor CPU/(15783:15783): Fallo la comunicacion. Abortando
+[INFO] 18:03:56:906 Servidor CPU/(15828:15828): CPU listo para recibir al modulo cliente
+[INFO] 18:03:56:906 Servidor CPU/(15828:15829): CPU listo para recibir interrupciones
+[INFO] 18:03:58:777 Servidor CPU/(15828:15829): Se conecto Kernel al puerto interrupt
+[ERROR] 18:03:58:777 Servidor CPU/(15828:15829): Fallo la comunicacion. Abortando
+[ERROR] 18:03:58:777 Servidor CPU/(15828:15828): Fallo la comunicacion. Abortando
+[INFO] 18:04:05:315 Servidor CPU/(15839:15839): CPU listo para recibir al modulo cliente
+[INFO] 18:04:05:316 Servidor CPU/(15839:15840): CPU listo para recibir interrupciones
+[INFO] 18:04:07:162 Servidor CPU/(15839:15840): Se conecto Kernel al puerto interrupt
+[ERROR] 18:04:07:162 Servidor CPU/(15839:15840): Fallo la comunicacion. Abortando
+[ERROR] 18:04:07:162 Servidor CPU/(15839:15839): Fallo la comunicacion. Abortando
+[INFO] 18:04:36:609 Servidor CPU/(15994:15994): CPU listo para recibir al modulo cliente
+[INFO] 18:04:36:610 Servidor CPU/(15994:15995): CPU listo para recibir interrupciones
+[INFO] 18:04:38:511 Servidor CPU/(15994:15995): Se conecto Kernel al puerto interrupt
+[INFO] 18:04:38:512 Servidor Kernel/(15998:15998): Kernel listo para recibir al modulo cliente
+[INFO] 18:04:44:056 Servidor Kernel/(15998:16016): Me llego el tamanio y las instrucciones
+
+[INFO] 18:04:44:057 Servidor Kernel/(15998:16001): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:04:44:057 Servidor Kernel/(15998:16001): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:04:44:057 Servidor Kernel/(15998:16001): Inicio la planificacion FIFO
+[WARNING] 18:04:44:057 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:058 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:059 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:060 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:061 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:062 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:063 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:064 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:065 Servidor CPU/(15994:15994): Operacion desconocida
+[WARNING] 18:04:44:066 Servidor CPU/(15994:15994): Operacion desconocida
+[INFO] 18:11:43:449 Servidor CPU/(16782:16782): CPU listo para recibir al modulo cliente
+[INFO] 18:11:46:560 Servidor Kernel/(16785:16785): Kernel listo para recibir al modulo cliente
+[INFO] 18:11:55:091 Servidor Kernel/(16785:16804): Me llego el tamanio y las instrucciones
+
+[INFO] 18:11:55:091 Servidor Kernel/(16785:16788): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:11:55:091 Servidor Kernel/(16785:16788): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:11:55:091 Servidor Kernel/(16785:16788): Inicio la planificacion FIFO
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:092 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:093 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:094 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:095 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:096 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[WARNING] 18:11:55:097 Servidor CPU/(16782:16782): Operacion desconocida
+[INFO] 18:13:15:471 Servidor CPU/(16853:16853): CPU listo para recibir al modulo cliente
+[INFO] 18:13:19:249 Servidor Kernel/(16856:16856): Kernel listo para recibir al modulo cliente
+[INFO] 18:13:25:548 Servidor Kernel/(16856:16877): Me llego el tamanio y las instrucciones
+
+[INFO] 18:13:25:549 Servidor Kernel/(16856:16859): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:13:25:549 Servidor Kernel/(16856:16859): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:13:25:549 Servidor Kernel/(16856:16859): Inicio la planificacion FIFO
+[WARNING] 18:13:25:549 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:549 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:550 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:551 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:552 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:553 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:554 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:556 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:556 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:556 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:556 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[WARNING] 18:13:25:557 Servidor CPU/(16853:16853): Operacion desconocida
+[INFO] 18:14:44:886 Servidor CPU/(17207:17207): CPU listo para recibir al modulo cliente
+[INFO] 18:14:48:701 Servidor Kernel/(17211:17211): Kernel listo para recibir al modulo cliente
+[INFO] 18:14:55:921 Servidor Kernel/(17211:17234): Me llego el tamanio y las instrucciones
+
+[INFO] 18:14:55:922 Servidor Kernel/(17211:17214): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:14:55:922 Servidor Kernel/(17211:17214): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:14:55:922 Servidor Kernel/(17211:17214): Inicio la planificacion FIFO
+[INFO] 18:14:55:923 Servidor CPU/(17207:17207): Recibi PCB de Id: 0
+[INFO] 18:14:55:923 Servidor CPU/(17207:17207): Se creo hilo para recibir interrupciones
+[INFO] 18:14:55:924 Servidor CPU/(17207:17207): Se ejecuto instruccion NO-OP
+[INFO] 18:14:55:925 Servidor CPU/(17207:17207): Se ejecuto instruccion NO-OP
+[INFO] 18:14:55:927 Servidor CPU/(17207:17207): Se ejecuto instruccion NO-OP
+[INFO] 18:14:55:928 Servidor CPU/(17207:17207): Se ejecuto instruccion NO-OP
+[INFO] 18:14:55:930 Servidor CPU/(17207:17207): Se ejecuto instruccion NO-OP
+[INFO] 18:17:46:242 Servidor CPU/(17536:17536): CPU listo para recibir al modulo cliente
+[INFO] 18:17:48:674 Servidor Kernel/(17539:17539): Kernel listo para recibir al modulo cliente
+[INFO] 18:17:54:607 Servidor Kernel/(17539:17558): Me llego el tamanio y las instrucciones
+
+[INFO] 18:17:54:608 Servidor Kernel/(17539:17542): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:17:54:608 Servidor Kernel/(17539:17542): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:17:54:608 Servidor Kernel/(17539:17542): Inicio la planificacion FIFO
+[INFO] 18:17:54:608 Servidor CPU/(17536:17536): Recibi PCB de Id: 0
+[INFO] 18:17:54:608 Servidor CPU/(17536:17536): Se creo hilo para recibir interrupciones
+[INFO] 18:17:54:610 Servidor CPU/(17536:17536): Se ejecuto instruccion NO-OP
+[INFO] 18:17:54:611 Servidor CPU/(17536:17536): Se ejecuto instruccion NO-OP
+[INFO] 18:17:54:612 Servidor CPU/(17536:17536): Se ejecuto instruccion NO-OP
+[INFO] 18:17:54:615 Servidor CPU/(17536:17536): Se ejecuto instruccion NO-OP
+[INFO] 18:17:54:617 Servidor CPU/(17536:17536): Se ejecuto instruccion NO-OP
+[INFO] 18:17:54:617 Servidor CPU/(17536:17536): Se ejecuto instruccion I/O
+[INFO] 18:20:40:452 Servidor CPU/(17742:17742): CPU listo para recibir al modulo cliente
+[INFO] 18:20:43:579 Servidor Kernel/(17745:17745): Kernel listo para recibir al modulo cliente
+[INFO] 18:20:47:935 Servidor Kernel/(17745:17763): Me llego el tamanio y las instrucciones
+
+[INFO] 18:20:47:936 Servidor Kernel/(17745:17748): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:20:47:936 Servidor Kernel/(17745:17748): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:20:47:936 Servidor Kernel/(17745:17748): Inicio la planificacion FIFO
+[INFO] 18:20:47:936 Servidor CPU/(17742:17742): Recibi PCB de Id: 0
+[INFO] 18:20:47:936 Servidor CPU/(17742:17742): Se creo hilo para recibir interrupciones
+[INFO] 18:20:47:938 Servidor CPU/(17742:17742): Se ejecuto instruccion NO-OP
+[INFO] 18:20:47:940 Servidor CPU/(17742:17742): Se ejecuto instruccion NO-OP
+[INFO] 18:20:47:943 Servidor CPU/(17742:17742): Se ejecuto instruccion NO-OP
+[INFO] 18:20:47:944 Servidor CPU/(17742:17742): Se ejecuto instruccion NO-OP
+[INFO] 18:20:47:947 Servidor CPU/(17742:17742): Se ejecuto instruccion NO-OP
+[INFO] 18:20:47:948 Servidor CPU/(17742:17742): Se ejecuto instruccion I/O
+[INFO] 18:24:46:735 Servidor CPU/(18057:18057): CPU listo para recibir al modulo cliente
+[INFO] 18:24:49:941 Servidor Kernel/(18060:18060): Kernel listo para recibir al modulo cliente
+[INFO] 18:24:55:417 Servidor Kernel/(18060:18082): Me llego el tamanio y las instrucciones
+
+[INFO] 18:24:55:418 Servidor Kernel/(18060:18063): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:24:55:418 Servidor Kernel/(18060:18063): El algoritmo de planificacion elegido es FIFO.
+[INFO] 18:24:55:418 Servidor Kernel/(18060:18063): Inicio la planificacion FIFO
+[INFO] 18:24:55:418 Servidor CPU/(18057:18057): Recibi PCB de Id: 0
+[INFO] 18:24:55:419 Servidor CPU/(18057:18057): Se creo hilo para recibir interrupciones
+[INFO] 18:24:55:420 Servidor CPU/(18057:18057): Se ejecuto instruccion NO-OP
+[INFO] 18:24:55:422 Servidor CPU/(18057:18057): Se ejecuto instruccion NO-OP
+[INFO] 18:24:55:424 Servidor CPU/(18057:18057): Se ejecuto instruccion NO-OP
+[INFO] 18:24:55:426 Servidor CPU/(18057:18057): Se ejecuto instruccion NO-OP
+[INFO] 18:24:55:427 Servidor CPU/(18057:18057): Se ejecuto instruccion NO-OP
+[INFO] 18:24:55:427 Servidor CPU/(18057:18057): Se ejecuto instruccion I/O
+[ERROR] 18:25:09:515 Servidor CPU/(18057:18057): Fallo la comunicacion. Abortando
+[INFO] 18:25:41:410 Servidor CPU/(18120:18120): CPU listo para recibir al modulo cliente
+[ERROR] 18:25:44:009 Servidor CPU/(18120:18120): Fallo la comunicacion. Abortando
+[INFO] 18:25:51:993 Servidor CPU/(18126:18126): CPU listo para recibir al modulo cliente
+[ERROR] 18:26:01:675 Servidor CPU/(18126:18126): Fallo la comunicacion. Abortando

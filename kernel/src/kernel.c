@@ -8,13 +8,17 @@ int main(void)
     
 
     cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+    printf("Config cargada\n");
 
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
+    printf("logger creado \n");
 
     //conexion cpu
 
-//    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
-//    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
+    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
+    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
+
+    printf("Conectado a cpu \n");
 
    // conexion memoria
 
@@ -22,7 +26,11 @@ int main(void)
 
     server_fd = iniciar_servidor(config_valores_kernel.ip_kernel,config_valores_kernel.puerto_escucha);
 
+    printf("Servidor creado \n");
+
     inciar_planificacion();
+
+    printf("Planificacion iniciada\n");
 
     log_info(logger, "Kernel listo para recibir al modulo cliente");
 
@@ -112,14 +120,12 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		log_info(logger, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
 	  		printf("Consola deserializada, entro a armar pcb\n");
-	  		proceso* proceso ;
+	  		proceso* proceso = malloc(sizeof(proceso)) ;
+	  		proceso->pcb = malloc(sizeof(pcb));
 	  		proceso->pcb = crear_estructura_pcb(consola);
 	  		proceso->socket = socket_cliente;
 	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion\n");
-	  		list_add(colaNew,proceso);
-	  		chequear_lista_pcbs();
-	  		//agregarANewPcb(proceso);
-	  		avisarAModulo(proceso->socket,FINALIZAR_CONSOLA);
+	  		agregarANewPcb(proceso);
 	  		break;
 	  	case PAQUETE:
 			log_info(logger, "Me llego el paquete:\n");
@@ -131,10 +137,10 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  	}
   }
 
-  void chequear_lista_pcbs(){
-      for (int i= 0 ; i < list_size(colaNew) ;i++){
-          proceso* proceso = list_get(colaNew, i);
-          printf("PCB ID: %d",proceso->pcb->id_proceso);
+  void chequear_lista_pcbs(t_list*lista){
+      for (int i= 0 ; i < list_size(lista) ;i++){
+          proceso* proceso = list_get(lista, i);
+          printf("PCB ID: %d\n",proceso->pcb->id_proceso);
       }
   }
 

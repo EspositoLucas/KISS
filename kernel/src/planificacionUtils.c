@@ -106,6 +106,7 @@ proceso* obtenerSiguienteReady(){
  	algoritmo algoritmo = obtener_algoritmo();
  	int ejecutando = list_size(colaExec);
 
+ 	chequear_lista_pcbs(colaReady);
 
  	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
  		switch(algoritmo){
@@ -117,6 +118,7 @@ proceso* obtenerSiguienteReady(){
  			break;
  		}
  	}
+ 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
  	return procesoSeleccionado;
  }
 
@@ -124,7 +126,9 @@ proceso* obtenerSiguienteReady(){
 proceso* obtenerSiguienteFIFO(){
 
  	log_info(logger,"Inicio la planificacion FIFO");
+ 	chequear_lista_pcbs(colaReady);
  	proceso* procesoSeleccionado = list_remove(colaReady,0);
+ 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
 	return procesoSeleccionado;
 
 }
