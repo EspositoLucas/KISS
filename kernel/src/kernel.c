@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-    cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
 
     logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
 

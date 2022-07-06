@@ -118,3 +118,30 @@ bool pagina_con_presencia(t_p_2* tabla){
 
 }
 
+t_list* paginas_en_memoria(t_list* lista_tablas_segundo_nivel){
+
+	t_list *lista_pags_en_mem = list_create();
+
+	for (int i = 0; i < lista_tablas_segundo_nivel->elements_count ; i++){
+		t_p_2 *aux = list_get(lista_tablas_segundo_nivel, i);
+		if (pagina_con_presencia(aux)){
+			list_add(lista_pags_en_mem, aux);
+		}
+	}
+
+	list_sort(lista_pags_en_mem, marcosMin);
+	return lista_pags_en_mem;
+}
+
+
+//t_list* sortear_segun_marco(t_list* lista_de_tps){
+//	t_list* lista_sorteada = list_create();
+//
+//	lista_sorteada = list_sort(lista_de_tps, marcosMin);
+//
+//	return lista_sorteada;
+//}
+
+bool marcosMin(t_p_2* tp1, t_p_2* tp2){
+	return (tp1->marco > tp2->marco);
+}
