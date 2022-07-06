@@ -43,7 +43,7 @@ t_list* inicializar_tabla_segundo_nivel(){
 
 uint32_t  obtenerPaginaAReemplazar(uint32_t entrada_primer_nivel){
 
-	uint32_t pagina_reemplazo ;
+	uint32_t pagina_reemplazo;
 	numero_tabla_2p = devolver_entrada_a_segunda_tabla(0,entrada_primer_nivel);
 
 	t_list* tabla_auxiliar =(t_list*) list_filter(lista_tablas_segundo_nivel, condicion_misma_numero_tabla);
@@ -65,7 +65,7 @@ uint32_t  obtenerPaginaAReemplazar(uint32_t entrada_primer_nivel){
  		default:break;
  		}
 
- 	return pagina_reemplazo ;
+ 	return pagina_reemplazo;
  }
 
 
@@ -93,22 +93,23 @@ uint32_t  obtenerPaginaClock(t_list* tabla_marcos) {
 
 	tabla_reemplazo_clock_clock_modificado tabla_reemplazo;
 
-	uint32_t pagina_reemplazada = NULL;
+	uint32_t pagina_reemplazada = -1;
 
-	pagina_reemplazada = buscar_pagina_bit_uso_0(tabla_marcos); // itera la primera vez
+	pagina_reemplazada = uso_en_cero(tabla_marcos); // itera la primera vez
 
-	if (pagina_reemplazada == NULL){ // si no habia ninguno en 0 entonces paso todos los uno a 0
-		pagina_reemplazada = buscar_pagina_bit_uso_0(tabla_marcos); // itero denuevo hasta encontrar el primero en 0
+	if (pagina_reemplazada == -1){ // si no habia ninguno en 0 entonces paso todos los uno a 0
+		pagina_reemplazada = uso_en_cero(tabla_marcos); // itero denuevo hasta encontrar el primero en 0
 	}
 
 	return pagina_reemplazada;
 }
 
-uint32_t buscar_pagina_bit_uso_0(t_list lista){
+uint32_t uso_en_cero(t_list* lista){
 
-	uint32_t pagina;
+	uint32_t pagina = -1;
+	tabla_reemplazo_clock_clock_modificado *aux;
 	for (int i =0 ; i < lista->elements_count; i++){
-		tabla_reemplazo_clock_clock_modificado *aux = list_get(lista, i);
+		aux = list_get(lista, i);
 		if (aux->bit_uso == 0){
 			 pagina = aux->nro_pagina;
 		} else {
@@ -121,11 +122,60 @@ uint32_t buscar_pagina_bit_uso_0(t_list lista){
 
 uint32_t  obtenerPaginaClockM(t_list* tabla_marcos) {
 
+	// 1. busco 0/0, sin tocar nada
+	// 2. busco 0/1, voy cambiando u a 0
+	// 3. busco 0/0
+	// 4. busco 0/1
+
+
 	tabla_reemplazo_clock_clock_modificado tabla_reemplazo ;
-	uint32_t pagina_reemplazada ;
+	uint32_t pagina_reemplazada = -1;
 
+	//Buscar 0/0
+	pagina_reemplazada = uso_y_mod_en_cero(tabla_marcos);
 
+	//Buscar 0/1 y voy modificando u a 0
+
+	if(pagina_reemplazada == -1){
+		pagina_reemplazada = uso_y_mod_en_cero_uno(tabla_marcos);
+	}
+	//Buscar 0/0
+	if(pagina_reemplazada == -1){
+		pagina_reemplazada = uso_y_mod_en_cero(tabla_marcos);
+	}
+
+	//Buscar 0/1
+	if(pagina_reemplazada == -1){
+		pagina_reemplazada = uso_y_mod_en_cero_uno(tabla_marcos);
+
+	}
 	return pagina_reemplazada ;
+}
+
+uint32_t uso_y_mod_en_cero(t_list* lista){
+	uint32_t pagina = -1;
+	tabla_reemplazo_clock_clock_modificado* aux;
+	for (int i = 0; i < lista->elements_count; i++){
+		aux = list_get(lista, i);
+		if(aux->bit_uso == 0 && aux->bit_modificado == 0){
+			pagina = aux->nro_pagina;
+		}
+	}
+	return pagina;
+}
+
+uint32_t uso_y_mod_en_cero_uno(t_list* lista){
+	uint32_t pagina = -1;
+	tabla_reemplazo_clock_clock_modificado* aux;
+	for (int i = 0; i < lista->elements_count; i++){
+		aux = list_get(lista, i);
+		if(aux->bit_uso == 0 && aux->bit_modificado == 1){
+			pagina = aux->nro_pagina;
+		} else {
+			aux->bit_uso = 0;
+		}
+	}
+	return pagina;
 }
 
 

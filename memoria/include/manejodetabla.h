@@ -20,6 +20,9 @@ bool pagina_con_presencia(void*);
 t_list* paginas_en_memoria(t_list* );
 t_list* sortear_segun_marco(t_list*);
 bool marcosMin(void* ,void * );
+uint32_t uso_en_cero(t_list*);
+uint32_t uso_y_mod_en_cero_uno(t_list* );
+uint32_t uso_y_mod_en_cero(t_list* lista);
 
 
 #endif /* INCLUDE_MANEJODETABLA_H_ */
