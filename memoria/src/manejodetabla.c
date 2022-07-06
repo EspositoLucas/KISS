@@ -93,14 +93,30 @@ uint32_t  obtenerPaginaClock(t_list* tabla_marcos) {
 
 	tabla_reemplazo_clock_clock_modificado tabla_reemplazo;
 
+	uint32_t pagina_reemplazada = NULL;
 
+	pagina_reemplazada = buscar_pagina_bit_uso_0(tabla_marcos); // itera la primera vez
 
-	uint32_t pagina_reemplazada ;
+	if (pagina_reemplazada == NULL){ // si no habia ninguno en 0 entonces paso todos los uno a 0
+		pagina_reemplazada = buscar_pagina_bit_uso_0(tabla_marcos); // itero denuevo hasta encontrar el primero en 0
+	}
 
+	return pagina_reemplazada;
+}
 
+uint32_t buscar_pagina_bit_uso_0(t_list lista){
 
+	uint32_t pagina;
+	for (int i =0 ; i < lista->elements_count; i++){
+		tabla_reemplazo_clock_clock_modificado *aux = list_get(lista, i);
+		if (aux->bit_uso == 0){
+			 pagina = aux->nro_pagina;
+		} else {
+			aux->bit_uso = 0;
+		}
+	}
 
-	return pagina_reemplazada ;
+	return pagina;
 }
 
 uint32_t  obtenerPaginaClockM(t_list* tabla_marcos) {
