@@ -20,6 +20,7 @@
 #include "planificacionUtils.h"
 
 
+
 // FUNCIONES
 
 
@@ -27,7 +28,7 @@
 
 pcb *crear_estructura_pcb(t_consola*);
  void iniciar_planificador_largo_plazo(void);
- void agregarANewPcb(pcb* );
+ void agregarANewPcb(proceso* );
  void transicion_admitir_por_prioridad(void) ;
  void finalizarPcb();
 
@@ -35,7 +36,7 @@ pcb *crear_estructura_pcb(t_consola*);
 //Mediano Plazo
 
  void iniciar_planificador_mediano_plazo(void);
- void transicion_suspender(pcb *);
+ void transicion_suspender(proceso *);
  void estado_suspended_ready(void );
 
 // Corto Plazo

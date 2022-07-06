@@ -62,8 +62,7 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 
-
-  }
+}
 
 
 
@@ -138,6 +137,8 @@ t_consola *deserializar_consola(int  socket_cliente) {
           printf("PCB ID: %d",proceso->pcb->id_proceso);
       }
   }
+
+  //
 
 int atender_clientes_kernel(int socket_servidor){
 

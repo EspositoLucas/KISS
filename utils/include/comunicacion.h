@@ -36,7 +36,8 @@ typedef enum
 	TABLA,
 	HANDSHAKE,
 	INSTRUCCION_MEMORIA,
-	INTERRUPCION
+	INTERRUPCION,
+	SUSPENDER_PCB
 } op_code;
 
 typedef enum
@@ -72,6 +73,9 @@ typedef struct
     t_list* instrucciones;
 } t_consola;
 
+
+
+
 typedef struct {
     uint32_t id_proceso;
     uint32_t tamanio_proceso;
@@ -84,6 +88,12 @@ typedef struct {
     t_list* instrucciones;
 }pcb;
 
+
+typedef struct{
+	int socket;
+	pcb *pcb;
+	uint32_t tiempo_inicio_bloqueo;
+ }proceso;
 
 t_log *logger;
 

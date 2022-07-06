@@ -18,6 +18,9 @@
 #include "log_config.h"
 #include "sockets.h"
 
+
+
+
 // FUNCIONES
 void inciar_planificacion();
 algoritmo obtener_algoritmo(void);
@@ -31,12 +34,12 @@ void destruir_listas(void);
 void destruirListaYElementos(t_list* );
 void interrumpir_cpu();
 op_code esperar_respuesta_memoria(int );
-void calculoEstimacionProceso(pcb *);
+void calculoEstimacionProceso(proceso*);
 void asignarEstimacionesAProcesos();
-pcb* elegirElDeMenorEstimacion();
-pcb* obtenerSiguienteSRT();
-pcb* obtenerSiguienteFIFO();
-pcb* obtenerSiguienteReady();
+proceso* elegirElDeMenorEstimacion();
+proceso* obtenerSiguienteSRT();
+proceso* obtenerSiguienteFIFO();
+proceso* obtenerSiguienteReady();
 void ejecutarIO(uint32_t);
 
 
@@ -52,11 +55,7 @@ uint32_t generador_de_id;
  int socket_consola ;
  int socket_memoria;
 
-typedef struct{
-	int socket;
-	pcb *pcb;
-	uint32_t tiempo_inicio_bloqueo;
- }proceso;
+
 
 // Planificador Largo Plazo
 
