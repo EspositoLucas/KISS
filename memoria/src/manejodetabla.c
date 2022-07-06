@@ -91,8 +91,13 @@ algoritmo obtener_algoritmo(){
 
 uint32_t  obtenerPaginaClock(t_list* tabla_marcos) {
 
-	tabla_reemplazo_clock_clock_modificado tabla_reemplazo ;
+	tabla_reemplazo_clock_clock_modificado tabla_reemplazo;
+
+
+
 	uint32_t pagina_reemplazada ;
+
+
 
 
 	return pagina_reemplazada ;
@@ -142,6 +147,6 @@ t_list* paginas_en_memoria(t_list* lista_tablas_segundo_nivel){
 //	return lista_sorteada;
 //}
 
-bool marcosMin(t_p_2* tp1, t_p_2* tp2){
-	return (tp1->marco > tp2->marco);
+bool marcosMin(void* tp1, void* tp2){
+	return (((t_p_2 *)tp1)->marco < ((t_p_2 *)tp2)->marco);
 }

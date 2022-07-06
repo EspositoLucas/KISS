@@ -19,7 +19,7 @@ bool condicion_misma_numero_tabla(tabla_de_segundo_nivel* );
 bool pagina_con_presencia(t_p_2*);
 t_list* paginas_en_memoria(t_list* );
 t_list* sortear_segun_marco(t_list*);
-bool marcosMin(t_p_2* , t_p_2* );
+bool marcosMin(void* ,void * );
 
 
 #endif /* INCLUDE_MANEJODETABLA_H_ */
