@@ -28,7 +28,6 @@ void inciar_planificacion(){
 
 
 pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
-	uint32_t numero;
 	t_paquete *paquete = crear_paquete_con_codigo_de_operacion(INICIALIZAR_ESTRUCTURAS);
 	armarPaquete(paquete,pcb);
 	enviar_paquete(paquete, socket_fd);

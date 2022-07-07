@@ -140,7 +140,7 @@ typedef struct{
 typedef struct{
 	uint32_t indice;
 	uint32_t numero_de_tabla2;
-}t_p_1;
+}t_p_1; // entrada primer nivel
 
 typedef struct{
 	uint32_t indice;
@@ -148,7 +148,8 @@ typedef struct{
 	bool p;
 	bool u;
 	bool m;
-}t_p_2;
+	bool puntero_indice ;
+}t_p_2; // entrada segundo nivel
 
 typedef struct
  {
@@ -157,8 +158,7 @@ typedef struct
 	 	bool bit_uso;
 	 	bool bit_modificado;
 
-
- } tabla_reemplazo_clock_clock_modificado;
+ } tabla_reemplazo_clock_clock_modificado; // entrada tabla auxiliar
 
 t_list* lista_tablas_segundo_nivel ;
 
@@ -166,7 +166,8 @@ t_list* lista_tablas_segundo_nivel ;
 typedef struct{
 	int id_tabla;
 	t_list* lista_paginas;
-}tabla_de_segundo_nivel;
+	uint32_t p_id ;
+}tabla_de_segundo_nivel; // tabla de pagina
 
 typedef struct{
 	char* puerto;

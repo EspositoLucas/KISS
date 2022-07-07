@@ -95,6 +95,7 @@ void manejo_conexiones(int socket_cliente){
 		enviar_paquete(paquete_marco,socket_cliente);
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
+		// falta algoritmo
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
 		log_info(logger, "Inicializando estructuras");
@@ -134,13 +135,16 @@ void manejo_conexiones(int socket_cliente){
 		free(paquete_ini);
 		break;
 	case LIBERAR_ESTRUCTURAS: // finalizar proceso
+		pcb* pcb_recibido=recibirPcb(socket_cliente);
 		//liberar los marcos q ocupaba el proceso
 		// eliminar swap - poner funcion
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(logger,"me llego mensaje para supender proceso");
+		op_code codigo = ESPACIO_PCB_LIBERADO ;
 		//suspender_proceso(socket_cliente);
-		// liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
+		//liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
+		//enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
 		break;
 	default:break;
 	}

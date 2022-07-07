@@ -30,6 +30,8 @@ void eliminarSwap(int idProceso){
 void supender_proceso(int socket_cliente) { // aca hay que desasignar las paginas del proceso en los marcos en los que están asignadas y escribir en swap si el bit de modificado es 1
 
 	pcb* pcb = recibirPcb(socket_cliente);
+	uint32_t pagina_a_escribir;
+	t_list* paginas_proceso;
 
 	// armo y abro el swap
 	int fd ;
@@ -37,11 +39,12 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 	fd=open(path,O_RDWR);
 	// mapeo el swap a void* para el mmap
 	void* archivo_swap = mmap(NULL,pcb->tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
+	pagina_a_escribir=obtenerPaginaAReemplazar(pcb->valor_tabla_paginas);
 	//munmap();
-	// aca hay que chequear lo del algoritmo de reemplazo para lectura/escritura
+	// aca hay que chequear bit modificado de las paginas y escribirlas en swap
 
-	// int offset= nro_pagina * tam_pagina
-	//memcpy(archivo_swap + offset, pagina_proceso, tam_pagina) // aca se copia la pagina con el tam_pagina ?
+	 //int offset= pagina_a_escribir * config_valores_memoria.tam_pagina ;
+	// memcpy(archivo_swap + offset, pagina_a_escribir, config_valores_memoria.tam_pagina); // aca se copia la pagina con el tam_pagina ?
 
 
 }

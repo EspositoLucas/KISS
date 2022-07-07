@@ -182,7 +182,7 @@ void estadoExec(void){
 		printf("PCB enviada \n");
 
 		op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
-		proceso->pcb = recibirPcb(socket_dispatch); // aca rompe el hilo porque no se hizo la conexion a cpu
+		proceso->pcb = recibirPcb(socket_dispatch);
 
 		printf("PCB recibida \n");
 		uint32_t finalizacion_cpu = get_time();
@@ -258,7 +258,7 @@ void estadoBlockeado(void){
 			transicion_suspender(proceso); //suspender para mediano plazo
 			printf("Suspendi el proceso\n");
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
-			printf("Ejecuto IO pendiente: %d\n", proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender);
+			printf("Ejecuto IO pendiente: %f\n", proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender);
 
 		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
 			printf("caso 3\n");
