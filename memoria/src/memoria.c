@@ -142,16 +142,22 @@ void manejo_conexiones(int socket_cliente){
 		free(paquete_ini);
 		break;
 	case LIBERAR_ESTRUCTURAS: // finalizar proceso
-		pcb* pcb_recibido=recibirPcb(socket_cliente);
+		pcb* pcb=recibirPcb(socket_cliente);
 		//liberar los marcos q ocupaba el proceso
+		t_list* paginas_proceso = paginas_por_proceso(pcb->id_proceso);
+		t_list* paginas_en_memoria = list_filter(paginas_proceso,pagina_con_presencia);
+		t_p_2* aux;
+		for (int i = 0; i < list_size(paginas_en_memoria); i++){
+				aux = list_get(paginas_en_memoria,i);
+				liberar_marco(pcb->id_proceso,aux);
+			}
 		// eliminar swap - poner funcion
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(logger,"me llego mensaje para supender proceso");
 		op_code codigo = ESPACIO_PCB_LIBERADO;
-		//suspender_proceso(socket_cliente);
-		//liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
-		//enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
+		suspender_proceso(socket_cliente); //liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
+		enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
 		break;
 	default:break;
 	}
@@ -276,4 +282,14 @@ void escribirEn(uint32_t dir_fisica, uint32_t valor){
 
 bool tiene_mismo_indice(tabla_de_segundo_nivel* tabla) {
 //	return tabla->id_tabla == pcb->id_proceso;
+}
+
+void liberar_marco(uint32_t id_proceso, t_p_2* tp2){
+
+	tp2->marco = NULL ;
+	tp2->m = 0 ;
+	tp2->p = 0 ;
+	tp2->u = 0;
+
+	// aca no se si falta relacionar algo con el id_proceso
 }
