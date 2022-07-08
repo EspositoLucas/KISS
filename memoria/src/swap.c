@@ -31,7 +31,7 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 	pcb* pcb = recibirPcb(socket_cliente);
 	t_list* paginas_proceso = paginas_por_proceso(pcb->id_proceso);
 	t_list* paginas_en_memoria = list_filter(paginas_proceso,pagina_con_presencia);
-	t_list* pagina_con_modificado = list_filter(paginas_en_memoria, pagina_con_modificado);
+	t_list* paginas_con_bit_modificado = list_filter(paginas_en_memoria, pagina_con_modificado);
 
 	t_p_2* aux;
 
@@ -47,7 +47,7 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
 	for (int i = 0; i < list_size(pagina_con_modificado); i++){
-		aux = list_get(pagina_con_modificado,i);
+		aux = list_get(paginas_con_bit_modificado,i);
 		escribir_en_swap(archivo_swap,aux);
 		liberar_marco(pcb->id_proceso,aux);
 	}
@@ -58,7 +58,7 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 void escribir_en_swap(void* archivo, t_p_2* tp2){
 	//TODO
 	int offset = tp2->marco * config_valores_memoria.tam_pagina ; //desplazamiento
-	memcpy(archivo + offset, tp2->marco, config_valores_memoria.tam_pagina); // aca se copia el indice o el amrco de la tabla  con el tam_pagina ?
+	memcpy(archivo + offset, tp2->marco, config_valores_memoria.tam_pagina); // aca se copia el indice o el marco de la tabla  con el tam_pagina ?
 }
 
 

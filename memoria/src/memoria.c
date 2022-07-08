@@ -274,6 +274,8 @@ uint32_t leer(uint32_t dir_fisica){
 	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
 	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,marco);
 	// Tengo q completarlo
+
+	return marco ;
 }
 
 void escribirEn(uint32_t dir_fisica, uint32_t valor){
