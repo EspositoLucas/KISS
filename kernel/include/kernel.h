@@ -12,6 +12,9 @@
 #include "planificacion.h"
 
 
+t_log *kernel_logger;
+
+
 //STRUCTS/ENUMS
 
  typedef struct  // archivo de configuracion kernel
@@ -37,7 +40,6 @@ int socket_dispatch;
 int socket_interrupt;
 
 t_consola * consola ;
-t_log* kernel_logger;
 
 // FUNCIONES
 

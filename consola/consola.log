@@ -537,3 +537,14 @@
 [ERROR] 19:00:29:929 Consola/(21304:21304): Error al finalizar consola
 [INFO] 19:00:29:931 Consola/(21304:21304): Terminando programa.
 
+[INFO] 19:04:16:954 Consola/(21641:21641): Iniciando consola
+
+[INFO] 19:04:16:954 Consola/(21641:21641): Instrucciones parseadas correctamente
+
+[INFO] 19:04:16:981 Consola/(21641:21641): Conexion exitosa con kernel.
+
+[INFO] 19:04:16:981 Consola/(21641:21641): Paquete enviado correctamente.
+
+[ERROR] 19:04:17:537 Consola/(21641:21641): Error al finalizar consola
+[INFO] 19:04:17:539 Consola/(21641:21641): Terminando programa.
+

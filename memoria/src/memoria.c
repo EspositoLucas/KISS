@@ -101,19 +101,25 @@ void manejo_conexiones(int socket_cliente){
 		log_info(logger, "Inicializando estructuras");
 		//Recibe el pcb del proceso para iniciar estructuras
 		pcb* pcb_recibido=recibirPcb(socket_cliente);
+
 		//Averiguamos cuantas pags ocupa el proceso
 		int cantidad_de_pags=pags_proceso(pcb_recibido->tamanio_proceso,config_valores_memoria.tam_pagina);
+
 		//Averigua cuantas tablas de segundo significa esa cantidad de paginas
 		uint32_t cantidad_de_tp2=(uint32_t)tp2_proceso(cantidad_de_pags,config_valores_memoria.entradas_por_tabla);
+
 		//Veo cual es el tamanio de la pag de 1 nivel (que tambien nos sirve para averiguar el proximo indice a usar)
-		uint32_t valorTP1=*(uint32_t*)list_size(tabla_de_pagina_1_nivel);
+		uint32_t valorTP1=*(uint32_t*)list_size(tabla_de_pagina_1_nivel); // aca no calcula el TAMANIO de la tp1 en vez de la PAGINA??
+
 		//No pueden haber mas entradas q las permitidas
 		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
 			log_info(logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas");
 			exit(34);
 		}
+
 		//Cargo el num de tabla de la primera pag de 2 nivel del proceso ya que las demas seran contiguas
 		pcb_recibido->valor_tabla_paginas=valorTP1;
+
 		//crear tabla de segundo nivel, pasar su numero de tabla a la de primer nivel
 		for(uint32_t i=0;i<cantidad_de_tp2;i++){
 			tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
@@ -128,6 +134,7 @@ void manejo_conexiones(int socket_cliente){
 		}
 		//crea el swap
 		crearSwap(pcb_recibido->id_proceso);
+
 		//Envia el num de tabla de la primera pag de 2 nivel del proceso
 		t_paquete* paquete_ini = crear_paquete();
 		agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
@@ -141,7 +148,7 @@ void manejo_conexiones(int socket_cliente){
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(logger,"me llego mensaje para supender proceso");
-		op_code codigo = ESPACIO_PCB_LIBERADO ;
+		op_code codigo = ESPACIO_PCB_LIBERADO;
 		//suspender_proceso(socket_cliente);
 		//liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
 		//enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
@@ -151,7 +158,6 @@ void manejo_conexiones(int socket_cliente){
 }
 
 ///------------------------------INICIALIZAR MEMORIA----------------------------
-
 
 void inicializar_memoria(){
 	memoria_usuario=malloc(sizeof(config_valores_memoria.tam_memoria));

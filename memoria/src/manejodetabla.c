@@ -1,7 +1,6 @@
 #include "manejodetabla.h"
 
 
-
 //------------------------ACCESO A PRIMERA TABLA------------------------
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	int entradafinal=(int)(tabla+entrada);
@@ -101,12 +100,30 @@ uint32_t  obtenerPaginaClock(t_list* tabla_marcos) {
 		pagina_reemplazada = uso_en_cero(tabla_marcos); // itero denuevo hasta encontrar el primero en 0
 	}
 	t_p_2* entrada_segundo_nivel ;
+
+	int posicion_en_lista_de_pagina;
+
+	for (int i = 0 ; i < list_size(tabla_marcos); i++){
+		t_p_2 *aux = list_get(tabla_marcos,i);
+		if (aux->indice == pagina_reemplazada){
+			posicion_en_lista_de_pagina = i;
+		}
+	}
+
+	reasignar_puntero(tabla_marcos, posicion_en_lista_de_pagina+1); // a la posicion i+1 le pone el bit de puntero en true
+
 //	for(int i = 0 ; i < list_size(tabla_marcos);i++){
 //		entrada = list_get(tabla_marcos,i);
 //	if()
 //	}
 //	entrada_segundo_nivel->puntero_indice = 1;
 	return pagina_reemplazada;
+}
+
+void reasignar_puntero(t_list* lista, int posicion){
+	t_p_2 *aux = list_remove(lista,posicion); // lo saca
+	aux->puntero_indice = true;
+	list_add(lista, aux); // lo vuelve a meter acutalizado
 }
 
 uint32_t uso_en_cero(t_list* lista){
@@ -183,14 +200,32 @@ uint32_t uso_y_mod_en_cero_uno(t_list* lista){
 	return pagina;
 }
 
+t_list *paginas_por_proceso(int pid){
+
+	t_list* lista_pags_por_proceso = list_create();
+	tabla_de_segundo_nivel *aux;
+	for (int i = 0; i < list_size(lista_tablas_segundo_nivel); i++){
+		aux = list_get(lista_tablas_segundo_nivel,i);
+		if (aux->p_id == pid){
+			list_add(lista_pags_por_proceso,aux);
+		}
+	}
+	return lista_pags_por_proceso;
+
+}
 
 bool condicion_misma_numero_p_id(void* tabla){
 	return ((tabla_de_segundo_nivel *)tabla)->p_id == numero_tabla_2p; // ver con que se compara el p_id
-}
+
+
 
 bool pagina_con_presencia(void* tabla){
 	return ((t_p_2 *)tabla)->p ;
 
+}
+
+bool pagina_con_modificado(t_p_2 *pagina){
+	return pagina->m;
 }
 
 t_list* paginas_en_memoria(t_list* lista_tablas_segundo_nivel){

@@ -10,8 +10,8 @@ int main(void)
     cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
     printf("Config cargada\n");
 
-    logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
-    printf("logger creado \n");
+    kernel_logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
+    printf("kernel_logger creado \n");
 
     //conexion cpu
 
@@ -32,7 +32,7 @@ int main(void)
 
     printf("Planificacion iniciada\n");
 
-    log_info(logger, "Kernel listo para recibir al modulo cliente");
+    log_info(kernel_logger, "Kernel listo para recibir al modulo cliente");
 
 
     while(atender_clientes_kernel(server_fd));
@@ -114,10 +114,10 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 	  	switch (codigo_operacion) {
 	  	case MENSAJE:
-	  		recibir_mensaje(socket_cliente,logger);
+	  		recibir_mensaje(socket_cliente,kernel_logger);
 	  		break;
 	  	case PAQUETE_CONSOLA:
-	  		log_info(logger, "Me llego el tamanio y las instrucciones\n");
+	  		log_info(kernel_logger, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
 	  		printf("Consola deserializada, entro a armar pcb\n");
 	  		proceso* proceso = malloc(sizeof(proceso)) ;
@@ -128,11 +128,11 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		agregarANewPcb(proceso);
 	  		break;
 	  	case PAQUETE:
-			log_info(logger, "Me llego el paquete:\n");
+			log_info(kernel_logger, "Me llego el paquete:\n");
 	  		break;
 
 	      default:
-	          log_warning(logger, "Operacion desconocida");
+	          log_warning(kernel_logger, "Operacion desconocida");
 	          break;
 	  	}
   }

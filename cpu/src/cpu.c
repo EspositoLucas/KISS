@@ -34,7 +34,7 @@ int main()
 	conexion_t* conexion_interrupcion=malloc(sizeof(conexion_t));
 	conexion_interrupcion->ip=ip;
 	conexion_interrupcion->puerto=puerto_interrupt;
-	//pthread_create(&manejoInterrupciones,NULL,interrupt,conexion_interrupcion);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
+	pthread_create(&manejoInterrupciones,NULL,interrupt,conexion_interrupcion);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
 
 
 	///INICIA LA TLB

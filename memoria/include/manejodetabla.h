@@ -25,6 +25,7 @@ bool marcosMin(void* ,void * );
 uint32_t uso_en_cero(t_list*);
 uint32_t uso_y_mod_en_cero_uno(t_list* );
 uint32_t uso_y_mod_en_cero(t_list* lista);
+void reasignar_puntero(t_list* , int );
 
 
 #endif /* INCLUDE_MANEJODETABLA_H_ */

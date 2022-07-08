@@ -85,14 +85,14 @@ algoritmo obtener_algoritmo(){
  	 if (strcmp(algoritmo,"FIFO") == 0)
  	 {
  		 switcher = FIFO;
- 	     log_info(logger, "El algoritmo de planificacion elegido es FIFO.");
+ 		log_info(kernel_logger, "El algoritmo de planificacion elegido es FIFO.");
  	 }
 
  	    //SFJ SIN DESALOJO
  	 if (strcmp(algoritmo,"SRT") == 0)
  	 {
  		 switcher = SRT;
- 	     log_info(logger, "El algoritmo de planificacion elegido es SRT.");
+ 		log_info(kernel_logger, "El algoritmo de planificacion elegido es SRT.");
  	 }
  	 return switcher;
 }
@@ -117,24 +117,24 @@ proceso* obtenerSiguienteReady(){
  			break;
  		}
  	}
- 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
+// 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
  	return procesoSeleccionado;
  }
 
 
 proceso* obtenerSiguienteFIFO(){
 
- 	log_info(logger,"Inicio la planificacion FIFO");
+	log_info(kernel_logger, "Inicio la planificacion FIFO");
  	chequear_lista_pcbs(colaReady);
  	proceso* procesoSeleccionado = list_remove(colaReady,0);
- 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
+// 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
 	return procesoSeleccionado;
 
 }
 
 proceso* obtenerSiguienteSRT(){
 
- 	log_info(logger,"Inicio la planificacion SRT");
+	log_info(kernel_logger, "Inicio la planificacion SRT");
  	asignarEstimacionesAProcesos();
  	proceso* procesoElegido = elegirElDeMenorEstimacion();
  	return procesoElegido;
@@ -185,7 +185,7 @@ void interrumpir_cpu(){
 }
 
 void ejecutarIO(uint32_t tiempoIO){
-	printf("EJECUTO IO\n");
+//	printf("EJECUTO IO\n");
 
 	usleep(tiempoIO * 1000);
 }

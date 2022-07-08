@@ -148,7 +148,7 @@ typedef struct{
 	bool p;
 	bool u;
 	bool m;
-	bool puntero_indice ;
+	bool puntero_indice;
 }t_p_2; // entrada segundo nivel
 
 typedef struct

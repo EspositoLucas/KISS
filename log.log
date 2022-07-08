@@ -1534,3 +1534,28 @@
 [INFO] 19:00:29:288 Servidor CPU/(21286:21286): Se creo hilo para recibir interrupciones
 [INFO] 19:00:29:288 Servidor CPU/(21286:21286): Se ejecuto instruccion EXIT
 [ERROR] 19:00:29:929 Servidor CPU/(21286:21286): Fallo la comunicacion. Abortando
+[INFO] 19:04:08:644 Servidor CPU/(21621:21621): CPU listo para recibir al modulo cliente
+[INFO] 19:04:08:644 Servidor CPU/(21621:21622): CPU listo para recibir interrupciones
+[INFO] 19:04:12:457 Servidor CPU/(21621:21622): Se conecto Kernel al puerto interrupt
+[INFO] 19:04:12:458 Servidor Kernel/(21626:21626): Kernel listo para recibir al modulo cliente
+[INFO] 19:04:16:985 Servidor Kernel/(21626:21646): Me llego el tamanio y las instrucciones
+
+[INFO] 19:04:16:986 Servidor Kernel/(21626:21629): El algoritmo de planificacion elegido es SRT.
+[INFO] 19:04:16:986 Servidor Kernel/(21626:21629): El algoritmo de planificacion elegido es SRT.
+[INFO] 19:04:16:986 Servidor Kernel/(21626:21629): Inicio la planificacion SRT
+[INFO] 19:04:16:986 Servidor CPU/(21621:21621): Recibi PCB de Id: 0
+[INFO] 19:04:16:986 Servidor CPU/(21621:21621): Se creo hilo para recibir interrupciones
+[INFO] 19:04:16:988 Servidor CPU/(21621:21621): Se ejecuto instruccion NO-OP
+[INFO] 19:04:16:989 Servidor CPU/(21621:21621): Se ejecuto instruccion NO-OP
+[INFO] 19:04:16:992 Servidor CPU/(21621:21621): Se ejecuto instruccion NO-OP
+[INFO] 19:04:16:993 Servidor CPU/(21621:21621): Se ejecuto instruccion NO-OP
+[INFO] 19:04:16:994 Servidor CPU/(21621:21621): Se ejecuto instruccion NO-OP
+[INFO] 19:04:16:995 Servidor CPU/(21621:21621): Se ejecuto instruccion I/O
+[INFO] 19:04:17:095 Servidor Kernel/(21626:21629): El algoritmo de planificacion elegido es SRT.
+[INFO] 19:04:17:095 Servidor Kernel/(21626:21629): El algoritmo de planificacion elegido es SRT.
+[INFO] 19:04:17:096 Servidor Kernel/(21626:21629): Inicio la planificacion SRT
+[INFO] 19:04:17:096 Servidor CPU/(21621:21621): Recibi PCB de Id: 0
+[INFO] 19:04:17:096 Servidor CPU/(21621:21621): Se creo hilo para recibir interrupciones
+[INFO] 19:04:17:096 Servidor CPU/(21621:21621): Se ejecuto instruccion EXIT
+[ERROR] 19:04:17:537 Servidor CPU/(21621:21622): Fallo la comunicacion. Abortando
+[ERROR] 19:04:17:537 Servidor CPU/(21621:21621): Fallo la comunicacion. Abortando
