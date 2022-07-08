@@ -52,4 +52,8 @@ void suspender_proceso(int);
 
 int pags_proceso(uint32_t ,int );
 int tp2_proceso(int ,int );
+
+uint32_t leer(uint32_t);
+void escribirEn(uint32_t , uint32_t);
+bool tiene_mismo_indice(tabla_de_segundo_nivel*);
 #endif

@@ -45,7 +45,7 @@ uint32_t  obtenerPaginaAReemplazar(uint32_t entrada_primer_nivel){
 	uint32_t pagina_reemplazo;
 	numero_tabla_2p = devolver_entrada_a_segunda_tabla(0,entrada_primer_nivel);
 
-	t_list* tabla_auxiliar =(t_list*) list_filter(lista_tablas_segundo_nivel, condicion_misma_numero_p_id);
+	t_list* tabla_auxiliar =(t_list*) list_filter(lista_tablas_segundo_nivel,condicion_misma_numero_p_id);
 	t_list* tabla_marcos = list_create();
 
 	for(int i = 0 ; i<list_size(tabla_auxiliar);i++){
@@ -186,7 +186,6 @@ uint32_t uso_y_mod_en_cero_uno(t_list* lista){
 
 bool condicion_misma_numero_p_id(void* tabla){
 	return ((tabla_de_segundo_nivel *)tabla)->p_id == numero_tabla_2p; // ver con que se compara el p_id
-
 }
 
 bool pagina_con_presencia(void* tabla){

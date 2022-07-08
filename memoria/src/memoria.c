@@ -198,32 +198,35 @@ t_paquete* preparar_paquete_para_handshake(){
 
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
 void manejo_instrucciones(t_list* datos,int socket_cpu){
-	op_code tipo_instruccion=*(op_code*)list_get(datos,0);
+	op_code tipo_instruccion=(op_code)list_get(datos,0);
 
 	switch(tipo_instruccion){
 	case READ:
-//		uint32_t dir_fisica;
+		uint32_t valor_leido;
+		uint32_t dir_fisica = (uint32_t)list_get(datos,1);
 //		memcpy(&dir_fisica,stream + desplazamiento,sizeof(uint32_t));
-		//EJECUTAR READ
-
+		valor_leido = leer(dir_fisica);
+		t_paquete* paquete=crear_paquete();
+		agregar_entero_a_paquete(paquete,valor_leido);
+		enviar_paquete(paquete,socket_cpu);
 		break;
 	case WRITE:
-//		uint32_t dir_fisica;
-//		uint32_t valor;
+		uint32_t dir_fisica = (uint32_t)list_get(datos,1);;
+		uint32_t valor = (uint32_t)list_get(datos,2);;
 //		memcpy(&dir_fisica,stream + desplazamiento,sizeof(uint32_t));
 //		desplazamiento+=sizeof(uint32_t);
 //		memcpy(&valor,stream + desplazamiento,sizeof(uint32_t));
-		//EJECUTAR WRITE
-
+		escribirEn(dir_fisica,valor);
 		break;
 	case COPY:
-//		uint32_t dir_fisica_origen;
-//		uint32_t dir_fisica_destino;
+		uint32_t valor_leido;
+		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);;
+		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,2);;
 //		memcpy(&dir_fisica_destino,stream + desplazamiento,sizeof(uint32_t));
 //		desplazamiento+=sizeof(uint32_t);
 //		memcpy(&dir_fisica_origen,stream + desplazamiento,sizeof(uint32_t));
-		//EJECUTAR COPY
-
+		valor_leido = leer(dir_fisica_origen);
+		escribirEn(dir_fisica_destino,valor_leido);
 		break;
 	default:
 		break;
@@ -252,4 +255,19 @@ int tp2_proceso(int pags,int entradas_tabla){
 	else{
 		return entero;
 	}
+}
+
+uint32_t leer(uint32_t dir_fisica){
+	uint32_t marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
+	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
+	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,marco);
+	// Tengo q completarlo
+}
+
+void escribirEn(uint32_t dir_fisica, uint32_t valor){
+
+}
+
+bool tiene_mismo_indice(tabla_de_segundo_nivel* tabla) {
+//	return tabla->id_tabla == pcb->id_proceso;
 }
