@@ -233,11 +233,6 @@ bool pagina_con_modificado(t_p_2 *pagina){
 	return pagina->m;
 }
 
-
-bool pagina_con_presencia(void* tabla){
-	return ((t_p_2 *)tabla)->p ;
-
-}
 bool pagConigualpid(tabla_de_segundo_nivel* tab){
 	return tab->p_id==pid_comparador;
 }

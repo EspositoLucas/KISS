@@ -50,7 +50,17 @@ void inicializar_memoria();
 void manejo_conexiones(int);
 int atender_clientes_memoria(int);
 void suspender_proceso(int);
-void liberar_marco(uint32_t id_proceso, t_p_2* tp2);
+
+
+void liberarMarco(uint32_t);
+void liberarPag(uint32_t );
+void liberarTodosLosMarcos(uint32_t);
+int ocuparMarcolibre(uint32_t pid);
+bool estaLibre(marquito* );
+bool igualPid(marquito*);
+int cantidadUsadaMarcos(uint32_t pid);
+void inicializar_marcos();
+double marcosTotales();
 
 int pags_proceso(uint32_t ,int );
 int tp2_proceso(int ,int );
@@ -58,4 +68,5 @@ int tp2_proceso(int ,int );
 uint32_t leer(uint32_t);
 void escribirEn(uint32_t , uint32_t);
 bool tiene_mismo_indice(tabla_de_segundo_nivel*);
+int get_marco_offset(uint32_t indice);
 #endif

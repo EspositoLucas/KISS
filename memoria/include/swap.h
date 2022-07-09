@@ -15,5 +15,10 @@ char* armarPath(int );
 void crearSwap(uint32_t );
 void eliminarSwap(int );
 void supender_proceso(int ) ;
+bool modificados(t_p_2* );
+t_list* marcosMod(t_list*);
+void escribirPagEnSwap(t_p_2* ,void* );
+void escribirPaginasModificadas(pcb* );
+
 
 #endif /* INCLUDE_SWAP_H_ */

@@ -74,3 +74,23 @@
 
 [INFO] 16:10:11:714 Servidor Kernel/(21846:21905): Me llego el tamanio y las instrucciones
 
+[INFO] 16:18:01:996 Servidor Kernel/(15053:15053): Kernel listo para recibir al modulo cliente
+[INFO] 16:21:28:542 Servidor Kernel/(15244:15244): Kernel listo para recibir al modulo cliente
+[INFO] 16:21:42:032 Servidor Kernel/(15263:15263): Kernel listo para recibir al modulo cliente
+[INFO] 16:22:41:944 Servidor Kernel/(15326:15326): Kernel listo para recibir al modulo cliente
+[INFO] 16:22:46:753 Servidor Kernel/(15326:15710): Me llego el tamanio y las instrucciones
+
+[WARNING] 16:22:46:753 Servidor Kernel/(15326:15703): Operacion desconocida
+[INFO] 16:22:46:753 Servidor Kernel/(15326:15709): Me llego el paquete:
+
+[INFO] 16:27:02:993 Servidor Kernel/(15879:15879): Kernel listo para recibir al modulo cliente
+[INFO] 16:27:09:361 Servidor Kernel/(15879:15897): Me llego el tamanio y las instrucciones
+
+[INFO] 16:27:09:362 Servidor Kernel/(15879:15897): [NEW] Entra el pcb de ID: 0 a la cola.
+
+[INFO] 16:27:09:362 Servidor Kernel/(15879:15881): PID[0] ingresa a READY desde NEW
+[INFO] 16:27:09:362 Servidor Kernel/(15879:15882): El algoritmo de planificacion elegido es SRT.
+[INFO] 16:27:09:362 Servidor Kernel/(15879:15882): El algoritmo de planificacion elegido es SRT.
+[INFO] 16:27:09:362 Servidor Kernel/(15879:15882): Inicio la planificacion SRT
+[INFO] 16:27:09:362 Servidor Kernel/(15879:15883): PID[0] ingresa a EXEC
+

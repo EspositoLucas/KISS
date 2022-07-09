@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+    cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
     printf("Config cargada\n");
 
     kernel_logger = log_create("log.log", "Servidor Kernel", 1, LOG_LEVEL_DEBUG);
@@ -15,8 +15,8 @@ int main(void)
 
     //conexion cpu
 
-    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
-    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
+//    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
+//    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
 
     printf("Conectado a cpu \n");
 
@@ -150,13 +150,14 @@ int atender_clientes_kernel(int socket_servidor){
 
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta el cliente
 
+		if(socket_cliente != -1) {
+			pthread_t hilo_cliente;
+			pthread_create(&hilo_cliente, NULL, (void*) manejar_conexion, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
+			pthread_detach(hilo_cliente);
+			return 1;
+		}
 
-	while(true){
-		pthread_t hilo_cliente;
-		pthread_create(&hilo_cliente, NULL, (void*) manejar_conexion, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
-		pthread_detach(hilo_cliente);
-		return 1;
-	}
+
 	return 0;
 }
 

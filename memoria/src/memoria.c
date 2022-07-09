@@ -20,31 +20,13 @@ int main(void) {
 }
 
 
-// atender clientes con dos hilos
-
-//int atender_clientes_memoria(int socket_servidor){
-//
-//	int socket_cpu = esperar_cliente(socket_servidor); // se conecta primero cpu
-//	int socket_kernel = esperar_cliente(socket_servidor); // se conecta kernel
-//	while(true){
-//		pthread_t hilo_cliente_cpu;
-//		pthread_t hilo_cliente_kernel;
-//		pthread_create(&hilo_cliente_cpu, NULL, (void*) manejo_conexiones, (void *)socket_cpu);
-//		pthread_detach(hilo_cliente_cpu);
-//		pthread_create(&hilo_cliente_kernel, NULL, (void*) manejo_conexiones, (void *)socket_kernel);
-//		pthread_detach(hilo_cliente_kernel);
-//		return 1;
-//	}
-//	return 0;
-//}
-
-// atender clientes con un hilo
+// atender clientes sin diferenciar tipo cliente
 
 int atender_clientes_memoria(int socket_servidor){
 
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta primero cpu
 
-	while(true){
+	if(socket_cliente != -1){
 		pthread_t hilo_cliente;
 		pthread_create(&hilo_cliente, NULL, (void*) manejo_conexiones, (void *)socket_cliente);
 		pthread_detach(hilo_cliente);
@@ -149,11 +131,15 @@ void manejo_conexiones(int socket_cliente){
 		t_list* paginas_proceso = paginas_por_proceso(pcb->id_proceso);
 		t_list* paginas_en_memoria = list_filter(paginas_proceso,pagina_con_presencia);
 		t_p_2* aux;
-		for (int i = 0; i < list_size(paginas_en_memoria); i++){
+		for (int i = 0; i < list_size(paginas_en_memoria); i++){ // esto no me cierra, hay que corregirlo pero lo dejo por las dudas
 				aux = list_get(paginas_en_memoria,i);
-				liberar_marco(pcb->id_proceso,aux);
+				liberarTodosLosMarcos(pcb->id_proceso);
+				liberarPag(aux->indice);
 			}
 		// eliminar swap - poner funcion
+
+		eliminarSwap(pcb->id_proceso);
+
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(logger,"me llego mensaje para supender proceso");
@@ -171,6 +157,7 @@ void inicializar_memoria(){
 	memoria_usuario=malloc(sizeof(config_valores_memoria.tam_memoria));
 	tabla_de_pagina_1_nivel=list_create();
 	lista_tablas_segundo_nivel = list_create();
+	inicializar_marcos();
 	algoritmo_memoria=obtener_algoritmo();
 	indice_de_tabla2=0;
 	pathSwap=config_valores_memoria.path_swap;
@@ -322,7 +309,7 @@ bool estaLibre(marquito* marquinhos){
 
 //Ocupa en la lista de marcos el primero que esta libre y devuelve el numero de marco de este
 
-int OcuparMarcolibre(uint32_t pid){
+int ocuparMarcolibre(uint32_t pid){
 	marquito* marco_libre=list_find(marcos,estaLibre);
 	marco_libre->pid=pid;
 	return marco_libre->numero_de_marco;
@@ -333,6 +320,13 @@ int OcuparMarcolibre(uint32_t pid){
 void liberarMarco(uint32_t marcoALiberar){
 	marquito* marc=list_get(marcos,marcoALiberar);
 	marc->pid=-1;
+}
+
+//Libera la pagina indicada
+
+void liberarPag(uint32_t pagALiberar){
+	t_p_2* pagina=list_get(marcos,pagALiberar);
+	pagina->p = 0 ;
 }
 
 //Libera todos los marcos ocupados por el proceso
@@ -347,13 +341,16 @@ void liberarTodosLosMarcos(uint32_t pid){
 
 //
 
-uint32_t leer(uint32_t dir_fisica){
-	uint32_t marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
+uint32_t leer_de_memoria(uint32_t dir_fisica){
+	uint32_t nro_marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
 	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
 	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,marco);
 	// Tengo q completarlo
 
-	return marco ;
+	// traer de swap - depende del bit presencia - por ejemplo si al principio no va haber ninguna pagina presente, hay page fault y se tare de swap una pagina
+	//memcpy para la lectura desde swap (ej : memcpy(paginaDeSwap,archivoSwap+get_marco_offset(pag->indice),config_valores_memoria.tam_pagina)
+	// poner offset de la pagina a leer
+	//return contenido_leido_memoria ; // este contenido va a ser al que se copia del memcpy si es que se tare de swap o si ya estaba presente, la pagina directamente, se lo envia a cpu y cpu lo imprime por pantalla
 }
 
 void escribirEn(uint32_t dir_fisica, uint32_t valor){
@@ -364,12 +361,7 @@ bool tiene_mismo_indice(tabla_de_segundo_nivel* tabla) {
 //	return tabla->id_tabla == pcb->id_proceso;
 }
 
-void liberar_marco(uint32_t id_proceso, t_p_2* tp2){
 
-	tp2->marco = NULL ;
-	tp2->m = 0 ;
-	tp2->p = 0 ;
-	tp2->u = 0;
-
-	// aca no se si falta relacionar algo con el id_proceso
+int get_marco_offset(uint32_t indice) {
+	return indice * config_valores_memoria.tam_pagina ;
 }
