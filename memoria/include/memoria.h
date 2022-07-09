@@ -40,6 +40,7 @@ void* memoria_usuario;
 int cantidad_de_marcos;
 char* pathSwap;
 algoritmo algoritmo_memoria;
+t_list* marcos;
 
 void cargar_configuracion();
 t_paquete* preparar_paquete_para_handshake();

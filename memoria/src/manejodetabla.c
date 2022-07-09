@@ -1,6 +1,6 @@
 #include "manejodetabla.h"
 
-
+int pid_comparador;
 //------------------------ACCESO A PRIMERA TABLA------------------------
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	int entradafinal=(int)(tabla+entrada);
@@ -15,6 +15,11 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		return pagina->marco;
 	}
 	else{
+		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){
+			pagina->marco=OcuparMarcolibre(tabla_elegida->p_id);
+			pagina->p=true;
+			return pagina->marco;
+		}
 		//DEBO TRAER LA PAG DESDE MEMORIA (ALGORITMO DE REEMPLAZO)
 		return pagina->marco;//pongo esto x ahora para q no rompa
 	}
@@ -227,6 +232,41 @@ bool pagina_con_presencia(void* tabla){
 bool pagina_con_modificado(t_p_2 *pagina){
 	return pagina->m;
 }
+
+
+bool pagina_con_presencia(void* tabla){
+	return ((t_p_2 *)tabla)->p ;
+
+}
+bool pagConigualpid(tabla_de_segundo_nivel* tab){
+	return tab->p_id==pid_comparador;
+}
+
+t_list* paginasEnMemoria(uint32_t pid){
+
+	pid_comparador=pid;
+	t_list *lista_pags_en_mem = list_create();
+	t_list* tablas_del_proceso=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConigualpid);
+	for(int i=0;i<list_size(tablas_del_proceso);i++){
+		tabla_de_segundo_nivel* aux=(tabla_de_segundo_nivel*)list_get(tablas_del_proceso,i);
+		t_list* pags_en_memoria=(t_list*)list_filter(aux->lista_paginas,pagina_con_presencia);
+		for(int j=0;j<list_size(pags_en_memoria);j++){
+			t_p_2* pagReal=malloc(sizeof(t_p_2));
+			t_p_2* pagEnMemoria=list_get(pags_en_memoria,j);
+			pagReal->m=pagEnMemoria->m;
+			pagReal->marco=pagEnMemoria->marco;
+			pagReal->p=pagEnMemoria->p;
+			pagReal->puntero_indice=pagEnMemoria->puntero_indice;
+			pagReal->u=pagEnMemoria->u;
+			pagReal->indice=pagEnMemoria->indice+10*i;
+			list_add(lista_pags_en_mem,pagReal);
+		}
+	}
+
+	list_sort(lista_pags_en_mem, marcosMin);
+	return lista_pags_en_mem;
+}
+
 
 t_list* paginas_en_memoria(t_list* lista_tablas_segundo_nivel){
 

@@ -1,5 +1,7 @@
 #include "memoria.h"
 
+int comparador;
+
 int main(void) {
 
     logger = log_create("log.log", "Servidor Memoria", 1, LOG_LEVEL_DEBUG);
@@ -173,8 +175,8 @@ void inicializar_memoria(){
 	indice_de_tabla2=0;
 	pathSwap=config_valores_memoria.path_swap;
 }
-void* get_marco(void* memoria,int marco){
-	return (memoria+marco*config_valores_memoria.tam_pagina);
+int get_marco(int marco){
+	return marco*config_valores_memoria.tam_pagina;
 }
 ///
 void crearTP2(){
@@ -268,6 +270,82 @@ int tp2_proceso(int pags,int entradas_tabla){
 		return entero;
 	}
 }
+///-----------MANEJO DE MARCOS----------------
+
+//Cree una estructura llamada marquito, que tiene numero de marco y el pid del proceso que lo ocupa
+//Si marco=-1 => libre SINO esta ocupado
+
+//Calcula la cantidad de marcos que hay en memoria
+
+double marcosTotales(){
+	return (double)(config_valores_memoria.tam_memoria)/(double)(config_valores_memoria.tam_pagina);
+}
+
+//Inicializa la lista de marcos
+
+void inicializar_marcos(){
+	marcos=list_create();
+	for(int i=0;i<marcosTotales();i++){
+		marquito* entradaMarco=malloc(sizeof(marquito));
+		entradaMarco->pid=-1;
+		entradaMarco->numero_de_marco=i;
+		list_add(marcos,entradaMarco);
+	}
+}
+
+//Devuelve la lista de marcos que pertenezcan al proceso
+
+t_list* marcosPid(uint32_t pid){
+	t_list* marc=(t_list*)list_filter(marcos,igualPid);
+	return marc;
+}
+
+//Devuelve la cantidad de marcos que usa un proceso
+
+int cantidadUsadaMarcos(uint32_t pid){
+	comparador=(int)pid;
+	t_list* marcos_de_proceso=marcosPid(pid);
+	return list_size(marcos_de_proceso);
+}
+
+//funcion auxiliar
+
+bool igualPid(marquito* marquinhos){
+	return marquinhos->pid==comparador;
+}
+
+//funcion auxiliar
+
+bool estaLibre(marquito* marquinhos){
+	return marquinhos->pid==-1;
+}
+
+//Ocupa en la lista de marcos el primero que esta libre y devuelve el numero de marco de este
+
+int OcuparMarcolibre(uint32_t pid){
+	marquito* marco_libre=list_find(marcos,estaLibre);
+	marco_libre->pid=pid;
+	return marco_libre->numero_de_marco;
+}
+
+//Libera el marco indicado
+
+void liberarMarco(uint32_t marcoALiberar){
+	marquito* marc=list_get(marcos,marcoALiberar);
+	marc->pid=-1;
+}
+
+//Libera todos los marcos ocupados por el proceso
+
+void liberarTodosLosMarcos(uint32_t pid){
+	t_list* marc=marcosPid(pid);
+	for(int i=0;i<list_size(marc);i++){
+		marquito*marcoALiberar=list_get(marc,i);
+		liberarMarco(marcoALiberar->numero_de_marco);
+	}
+}
+
+//
 
 uint32_t leer(uint32_t dir_fisica){
 	uint32_t marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);

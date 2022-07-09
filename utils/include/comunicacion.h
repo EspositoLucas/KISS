@@ -174,6 +174,11 @@ typedef struct{
 	char* ip;
 }conexion_t;
 
+typedef struct{
+	int pid;
+	int numero_de_marco;
+}marquito;
+
 // FUNCIONES
 
 

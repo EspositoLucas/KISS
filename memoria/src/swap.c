@@ -54,6 +54,30 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 
 	//donde hay que usar el munmap() ?
 }
+bool modificados(t_p_2* marq){
+	return marq->m;
+}
+t_list* marcosMod(t_list* marquinhos){
+	t_list* modificado=list_filter(marquinhos,modificados);
+	return modificado;
+}
+void escribirPagenSwap(t_p_2* pag,void* swap){
+	memcpy(swap+get_marco_offset(pag->indice),memoria_usuario+get_marco_offset(pag->marco),config_valores_memoria.tam_pagina);
+}
+
+void escribirPaginasModificadas(pcb* pcb){
+	int fd ;
+	char* path=armarPath(pcb->id_proceso);
+	fd=open(path,O_RDWR);
+	void* archivo_swap = mmap(NULL,pcb->tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
+	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
+	for(int i=0;i<list_size(paginasProc);i++){
+		t_p_2* pag=list_get(paginasProc,i);
+		escribirPagenSwap(pag,archivo_swap);
+	}
+	munmap(archivo_swap,pcb->tamanio_proceso);
+	close(fd);
+}
 
 void escribir_en_swap(void* archivo, t_p_2* tp2){
 	//TODO
