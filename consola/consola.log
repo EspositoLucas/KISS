@@ -625,3 +625,25 @@
 [ERROR] 16:27:09:520 Consola/(15892:15892): Error al finalizar consola
 [INFO] 16:27:09:520 Consola/(15892:15892): Terminando programa.
 
+[INFO] 18:06:36:538 Consola/(17315:17315): Iniciando consola
+
+[INFO] 18:06:36:560 Consola/(17315:17315): Instrucciones parseadas correctamente
+
+[INFO] 18:06:36:565 Consola/(17315:17315): Conexion exitosa con kernel.
+
+[INFO] 18:06:36:566 Consola/(17315:17315): Paquete enviado correctamente.
+
+[ERROR] 18:06:36:624 Consola/(17315:17315): Error al finalizar consola
+[INFO] 18:06:36:625 Consola/(17315:17315): Terminando programa.
+
+[INFO] 18:07:50:248 Consola/(17339:17339): Iniciando consola
+
+[INFO] 18:07:50:254 Consola/(17339:17339): Instrucciones parseadas correctamente
+
+[INFO] 18:07:50:259 Consola/(17339:17339): Conexion exitosa con kernel.
+
+[INFO] 18:07:50:261 Consola/(17339:17339): Paquete enviado correctamente.
+
+[ERROR] 18:08:17:684 Consola/(17339:17339): Error al finalizar consola
+[INFO] 18:08:17:684 Consola/(17339:17339): Terminando programa.
+

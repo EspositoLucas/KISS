@@ -344,7 +344,7 @@ void liberarTodosLosMarcos(uint32_t pid){
 uint32_t leer_de_memoria(uint32_t dir_fisica){
 	uint32_t nro_marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
 	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
-	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,marco);
+	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
 	// Tengo q completarlo
 
 	// traer de swap - depende del bit presencia - por ejemplo si al principio no va haber ninguna pagina presente, hay page fault y se tare de swap una pagina
