@@ -34,6 +34,7 @@ t_list* tabla_de_pagina_1_nivel;
 
 arch_config config_valores_memoria;
 
+//VARIABLES
 int socket_memoria;
 
 void* memoria_usuario;
@@ -41,6 +42,13 @@ int cantidad_de_marcos;
 char* pathSwap;
 algoritmo algoritmo_memoria;
 t_list* marcos;
+
+//SEMAFOROS
+
+pthread_mutex_t mutex_comparador_pid;
+pthread_mutex_t mutex_comparador;
+
+//FUNCIONES
 
 void cargar_configuracion();
 t_paquete* preparar_paquete_para_handshake();
@@ -69,4 +77,7 @@ uint32_t leer_de_memoria(uint32_t);
 void escribirEn(uint32_t , uint32_t);
 bool tiene_mismo_indice(tabla_de_segundo_nivel*);
 int get_marco_offset(uint32_t indice);
+
+
+
 #endif

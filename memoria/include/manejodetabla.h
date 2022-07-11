@@ -19,6 +19,7 @@ uint32_t  obtenerPaginaClockM(t_list* );
 bool condicion_misma_numero_tabla(void* );
 bool condicion_misma_numero_p_id(void*);
 bool pagina_con_presencia(void*);
+bool pagConIgualPid(tabla_de_segundo_nivel* );
 t_list* paginas_en_memoria(t_list* );
 t_list* sortear_segun_marco(t_list*);
 bool marcosMin(void* ,void * );

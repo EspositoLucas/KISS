@@ -15,10 +15,12 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		return pagina->marco;
 	}
 	else{
+		pthread_mutex_lock(&mutex_comparador);
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){
 			pagina->marco=OcuparMarcolibre(tabla_elegida->p_id);
 			pagina->p=true;
 			return pagina->marco;
+			pthread_mutex_unlock(&mutex_comparador_pid);
 		}
 		//DEBO TRAER LA PAG DESDE MEMORIA (ALGORITMO DE REEMPLAZO)
 		return pagina->marco;//pongo esto x ahora para q no rompa
@@ -222,7 +224,7 @@ t_list *paginas_por_proceso(int pid){
 bool condicion_misma_numero_p_id(void* tabla){
 	return ((tabla_de_segundo_nivel *)tabla)->p_id == numero_tabla_2p; // ver con que se compara el p_id
 
-
+}
 
 bool pagina_con_presencia(void* tabla){
 	return ((t_p_2 *)tabla)->p ;
@@ -233,7 +235,7 @@ bool pagina_con_modificado(t_p_2 *pagina){
 	return pagina->m;
 }
 
-bool pagConigualpid(tabla_de_segundo_nivel* tab){
+bool pagConIgualPid(tabla_de_segundo_nivel* tab){
 	return tab->p_id==pid_comparador;
 }
 
@@ -241,7 +243,9 @@ t_list* paginasEnMemoria(uint32_t pid){
 
 	pid_comparador=pid;
 	t_list *lista_pags_en_mem = list_create();
-	t_list* tablas_del_proceso=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConigualpid);
+	pthread_mutex_lock(&mutex_comparador_pid);
+	t_list* tablas_del_proceso=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	pthread_mutex_lock(&mutex_comparador_pid);
 	for(int i=0;i<list_size(tablas_del_proceso);i++){
 		tabla_de_segundo_nivel* aux=(tabla_de_segundo_nivel*)list_get(tablas_del_proceso,i);
 		t_list* pags_en_memoria=(t_list*)list_filter(aux->lista_paginas,pagina_con_presencia);

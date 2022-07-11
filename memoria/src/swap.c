@@ -61,13 +61,15 @@ void escribirPagEnSwap(t_p_2* pag,void* swap){
 }
 
 void escribirPaginasModificadas(pcb* pcb){
+		pthread_mutex_lock(&mutex_comparador_pid);
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
 
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=list_get(paginasProc,i);
 		escribirPagEnSwap(pag,archivo_swap);
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
-		liberarPag(pag->indice); // libero la pagina del marco relacionado y pongo el bit de presencia en 0
+		liberarPag(pag->indice);
+		pthread_mutex_unlock(&mutex_comparador_pid);// libero la pagina del marco relacionado y pongo el bit de presencia en 0
 	}
 }
 
