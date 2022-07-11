@@ -44,6 +44,7 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
+	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir
 	escribirPaginasModificadas(pcb);
 
 	munmap(archivo_swap,pcb->tamanio_proceso); /// una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
@@ -61,7 +62,6 @@ void escribirPagEnSwap(t_p_2* pag,void* swap){
 }
 
 void escribirPaginasModificadas(pcb* pcb){
-		pthread_mutex_lock(&mutex_comparador_pid);
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
 
 	for(int i=0;i<list_size(paginasProc);i++){
@@ -69,7 +69,7 @@ void escribirPaginasModificadas(pcb* pcb){
 		escribirPagEnSwap(pag,archivo_swap);
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
 		liberarPag(pag->indice);
-		pthread_mutex_unlock(&mutex_comparador_pid);// libero la pagina del marco relacionado y pongo el bit de presencia en 0
+		// libero la pagina del marco relacionado y pongo el bit de presencia en 0
 	}
 }
 

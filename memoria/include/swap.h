@@ -10,7 +10,6 @@
 
 //FUNCIONES
 
-
 char* armarPath(int );
 void crearSwap(uint32_t );
 void eliminarSwap(int );

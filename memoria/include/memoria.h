@@ -47,6 +47,7 @@ t_list* marcos;
 
 pthread_mutex_t mutex_comparador_pid;
 pthread_mutex_t mutex_comparador;
+pthread_mutex_t mutex_marcos;
 
 //FUNCIONES
 
@@ -69,6 +70,7 @@ bool igualPid(marquito*);
 int cantidadUsadaMarcos(uint32_t pid);
 void inicializar_marcos();
 double marcosTotales();
+t_list* marcosPid(uint32_t );
 
 int pags_proceso(uint32_t ,int );
 int tp2_proceso(int ,int );

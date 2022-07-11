@@ -241,11 +241,11 @@ bool pagConIgualPid(tabla_de_segundo_nivel* tab){
 
 t_list* paginasEnMemoria(uint32_t pid){
 
+	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
+	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list *lista_pags_en_mem = list_create();
-	pthread_mutex_lock(&mutex_comparador_pid);
 	t_list* tablas_del_proceso=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
-	pthread_mutex_lock(&mutex_comparador_pid);
 	for(int i=0;i<list_size(tablas_del_proceso);i++){
 		tabla_de_segundo_nivel* aux=(tabla_de_segundo_nivel*)list_get(tablas_del_proceso,i);
 		t_list* pags_en_memoria=(t_list*)list_filter(aux->lista_paginas,pagina_con_presencia);

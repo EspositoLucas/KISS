@@ -207,6 +207,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		uint32_t dir_fisica = (uint32_t)list_get(datos,1);
 //		memcpy(&dir_fisica,stream + desplazamiento,sizeof(uint32_t));
 		valor_leido = leer(dir_fisica);
+		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de responder a cpu
 		t_paquete* paquete=crear_paquete();
 		agregar_entero_a_paquete(paquete,valor_leido);
 		enviar_paquete(paquete,socket_cpu);
@@ -283,21 +284,25 @@ void inicializar_marcos(){
 //Devuelve la lista de marcos que pertenezcan al proceso
 
 t_list* marcosPid(uint32_t pid){
+	pthread_mutex_lock(&mutex_marcos);
 	t_list* marc=(t_list*)list_filter(marcos,igualPid);
+	pthread_mutex_unlock(&mutex_marcos);
 	return marc;
 }
 
 //Devuelve la cantidad de marcos que usa un proceso
 
 int cantidadUsadaMarcos(uint32_t pid){
+	pthread_mutex_lock(&mutex_comparador);
 	comparador=(int)pid;
+	pthread_mutex_unlock(&mutex_comparador);
 	t_list* marcos_de_proceso=marcosPid(pid);
 	return list_size(marcos_de_proceso);
 }
 
 //funcion auxiliar
-
-bool igualPid(marquito* marquinhos){
+bool igualPid(marquito* marquinhos )
+{
 	return marquinhos->pid==comparador;
 }
 
@@ -310,23 +315,29 @@ bool estaLibre(marquito* marquinhos){
 //Ocupa en la lista de marcos el primero que esta libre y devuelve el numero de marco de este
 
 int ocuparMarcolibre(uint32_t pid){
+	pthread_mutex_lock(&mutex_marcos);
 	marquito* marco_libre=list_find(marcos,estaLibre);
 	marco_libre->pid=pid;
+	pthread_mutex_lock(&mutex_marcos);
 	return marco_libre->numero_de_marco;
 }
 
 //Libera el marco indicado
 
 void liberarMarco(uint32_t marcoALiberar){
+	pthread_mutex_lock(&mutex_marcos);
 	marquito* marc=list_get(marcos,marcoALiberar);
 	marc->pid=-1;
+	pthread_mutex_unlock(&mutex_marcos);
 }
 
 //Libera la pagina indicada
 
 void liberarPag(uint32_t pagALiberar){
+	pthread_mutex_lock(&mutex_marcos);
 	t_p_2* pagina=list_get(marcos,pagALiberar);
 	pagina->p = 0 ;
+	pthread_mutex_unlock(&mutex_marcos);
 }
 
 //Libera todos los marcos ocupados por el proceso
@@ -347,6 +358,7 @@ uint32_t leer_de_memoria(uint32_t dir_fisica){
 	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
 	// Tengo q completarlo
 
+	usleep(config_valores_memoria.retardo_swap); // aca el usleep es parael reatrdo cuando se accde al swap para leer
 	// traer de swap - depende del bit presencia - por ejemplo si al principio no va haber ninguna pagina presente, hay page fault y se tare de swap una pagina
 	//memcpy para la lectura desde swap (ej : memcpy(paginaDeSwap,archivoSwap+get_marco_offset(pag->indice),config_valores_memoria.tam_pagina)
 	// poner offset de la pagina a leer
