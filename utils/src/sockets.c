@@ -61,7 +61,7 @@ int iniciar_servidor(char *ip, char *puerto)
     listen(socket_servidor, SOMAXCONN);
 
     freeaddrinfo(servinfo);
-   // log_trace(logger, "Listo para escuchar a cliente");
+    log_trace(logger, "Listo para escuchar a cliente");
 
     return socket_servidor;
 }

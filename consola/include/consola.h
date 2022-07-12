@@ -12,7 +12,7 @@
 #include "log_config.h"
 #include "sockets.h"
 
-t_log *logger;
+t_log *consola_logger;
 
 // PUERTOS
 

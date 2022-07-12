@@ -83,14 +83,14 @@ algoritmo obtener_algoritmo(){
  	 if (strcmp(algoritmo_reemplazo,"CLOCK") == 0)
  	 {
  		 switcher = CLOCK;
- 	     log_info(logger, "El algoritmo de planificacion elegido es CLOCK.");
+ 	     log_info(memoria_logger, "El algoritmo de planificacion elegido es CLOCK.");
  	 }
 
  	    //CLOCK-M
  	 if (strcmp(algoritmo_reemplazo,"CLOCK-M") == 0)
  	 {
  		 switcher = CLOCK_M;
- 	     log_info(logger, "El algoritmo de planificacion elegido es CLOCK-M.");
+ 	     log_info(memoria_logger, "El algoritmo de planificacion elegido es CLOCK-M.");
  	 }
  	 return switcher;
 }

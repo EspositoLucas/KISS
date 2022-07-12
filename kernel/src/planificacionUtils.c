@@ -85,14 +85,14 @@ algoritmo obtener_algoritmo(){
  	 if (strcmp(algoritmo,"FIFO") == 0)
  	 {
  		 switcher = FIFO;
- 		log_info(kernel_logger, "El algoritmo de planificacion elegido es FIFO.");
+ 		log_info(kernel_logger_info, "El algoritmo de planificacion elegido es FIFO.");
  	 }
 
  	    //SFJ SIN DESALOJO
  	 if (strcmp(algoritmo,"SRT") == 0)
  	 {
  		 switcher = SRT;
- 		log_info(kernel_logger, "El algoritmo de planificacion elegido es SRT.");
+ 		log_info(kernel_logger_info, "El algoritmo de planificacion elegido es SRT.");
  	 }
  	 return switcher;
 }
@@ -124,7 +124,7 @@ proceso* obtenerSiguienteReady(){
 
 proceso* obtenerSiguienteFIFO(){
 
-	log_info(kernel_logger, "Inicio la planificacion FIFO");
+	log_info(kernel_logger_info, "Inicio la planificacion FIFO");
  	chequear_lista_pcbs(colaReady);
  	proceso* procesoSeleccionado = list_remove(colaReady,0);
 // 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
@@ -134,7 +134,7 @@ proceso* obtenerSiguienteFIFO(){
 
 proceso* obtenerSiguienteSRT(){
 
-	log_info(kernel_logger, "Inicio la planificacion SRT");
+	log_info(kernel_logger_info, "Inicio la planificacion SRT");
  	asignarEstimacionesAProcesos();
  	proceso* procesoElegido = elegirElDeMenorEstimacion();
  	return procesoElegido;

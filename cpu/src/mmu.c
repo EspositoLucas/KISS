@@ -8,7 +8,7 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 	uint32_t entrada_tabla_1 =  (uint32_t) floor((double)num_pagina / (double)configuracion_tabla->entradas);
 	uint32_t entrada_tabla_2 =  num_pagina % (configuracion_tabla->entradas);
 	uint32_t offset =  direccion_logica - num_pagina * configuracion_tabla->tam_pagina ;
-	log_info(logger,"Direccion logica %d : [%d|%d|%d]",direccion_logica,entrada_tabla_1,entrada_tabla_2,offset);
+	log_info(cpu_logger,"Direccion logica %d : [%d|%d|%d]",direccion_logica,entrada_tabla_1,entrada_tabla_2,offset);
 
 	uint32_t marco=buscar_en_la_tlb(num_pagina);
 
@@ -28,7 +28,7 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 	//CALCULO DE DIRECCION FISICA
 
 	uint32_t direccion_fisica=marco*configuracion_tabla->tam_pagina+offset;
-	log_info(logger,"Direccion fisica traducida: %d",direccion_fisica);
+	log_info(cpu_logger,"Direccion fisica traducida: %d",direccion_fisica);
 
 	return direccion_fisica;
 
@@ -45,15 +45,15 @@ uint32_t obtener_segunda_tabla(uint32_t primera_tabla, uint32_t entrada_tabla_1)
 		switch(codigo_op){
 		case TABLA:
 					segunda_tabla=(uint32_t)recibir_stream(&size,socket_memoria);
-		        	log_info(logger,"Recibi valor de segunda tabla");
+		        	log_info(cpu_logger,"Recibi valor de segunda tabla");
 		        	return segunda_tabla;
 		            break;
 		        case -1:
-		            log_error(logger, "Fallo la comunicacion. Abortando");
+		            log_error(cpu_logger, "Fallo la comunicacion. Abortando");
 		            return (uint32_t)EXIT_FAILURE;
 		        break;
 		        default:
-		            log_warning(logger, "Operacion desconocida");
+		            log_warning(cpu_logger, "Operacion desconocida");
 		            break;
 		        }
 		}
@@ -72,15 +72,15 @@ uint32_t obtener_marco(uint32_t segunda_tabla, uint32_t entrada_tabla_2){
 				case MARCO:
 					valores = recibir_paquete(socket_memoria);
 					marco=*(uint32_t*)list_get(valores,0);
-					log_info(logger,"Recibi valor de segunda tabla");
+					log_info(cpu_logger,"Recibi valor de segunda tabla");
 					return marco;
 					break;
 				case -1:
-					log_error(logger, "Fallo la comunicacion. Abortando");
+					log_error(cpu_logger, "Fallo la comunicacion. Abortando");
 					return EXIT_FAILURE;
 					break;
 				default:
-					log_warning(logger, "Operacion desconocida");
+					log_warning(cpu_logger, "Operacion desconocida");
 					break;
 			        }
 			}

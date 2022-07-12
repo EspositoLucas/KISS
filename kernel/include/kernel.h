@@ -12,7 +12,7 @@
 #include "planificacion.h"
 
 
-t_log *kernel_logger;
+t_log *kernel_logger_info;
 
 
 //STRUCTS/ENUMS

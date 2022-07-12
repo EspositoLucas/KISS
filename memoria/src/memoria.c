@@ -4,7 +4,7 @@ int comparador;
 
 int main(void) {
 
-    logger = log_create("log.log", "Servidor Memoria", 1, LOG_LEVEL_DEBUG);
+    memoria_logger = log_create("memoria.log", "Servidor Memoria", 1, LOG_LEVEL_INFO);
 
     ///CARGAR LA CONFIGURACION
     cargar_configuracion();
@@ -12,7 +12,7 @@ int main(void) {
 
 
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
-    log_info(logger, "Memoria lista para recibir al modulo cliente");
+    log_info(memoria_logger, "Memoria lista para recibir al modulo cliente");
 
     while(atender_clientes_memoria(server_fd));
 
@@ -45,19 +45,19 @@ void manejo_conexiones(int socket_cliente){
 
 	switch(codigo_operacion){
 	case HANDSHAKE:
-		log_info(logger,"me llego el handshake de cpu");
+		log_info(memoria_logger,"me llego el handshake de cpu");
 		t_paquete* handshake=preparar_paquete_para_handshake();
 		enviar_paquete(handshake,socket_cliente);
 		eliminar_paquete(handshake);
 		break;
 	case INSTRUCCION_MEMORIA:
-		log_info(logger,"me llego una instruccion de cpu");
+		log_info(memoria_logger,"me llego una instruccion de cpu");
 		t_list* datos = recibirPaquete(socket_cliente);
 		manejo_instrucciones(datos,socket_cliente);
 		list_destroy(datos);
 		break;
 	case TABLA:
-		log_info(logger,"me llego un pedido de entrada a segunda tabla de cpu (mmu)");
+		log_info(memoria_logger,"me llego un pedido de entrada a segunda tabla de cpu (mmu)");
 		valores=recibir_paquete(socket_cliente);
 		tabla=*(uint32_t*)list_get(valores,0);
 		entrada1=*(uint32_t*)list_get(valores,1);
@@ -69,7 +69,7 @@ void manejo_conexiones(int socket_cliente){
 		eliminar_paquete(paquete_tabla);
 		break;
 	case MARCO:
-		log_info(logger,"me llego un pedido de marco de cpu (mmu)");
+		log_info(memoria_logger,"me llego un pedido de marco de cpu (mmu)");
 		valores=recibir_paquete(socket_cliente);
 		tabla=*(uint32_t*)list_get(valores,0);
 		entrada2=*(uint32_t*)list_get(valores,1);
@@ -82,7 +82,7 @@ void manejo_conexiones(int socket_cliente){
 		// falta algoritmo
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
-		log_info(logger, "Inicializando estructuras");
+		log_info(memoria_logger, "Inicializando estructuras");
 		//Recibe el pcb del proceso para iniciar estructuras
 		pcb* pcb_recibido=recibirPcb(socket_cliente);
 
@@ -97,7 +97,7 @@ void manejo_conexiones(int socket_cliente){
 
 		//No pueden haber mas entradas q las permitidas
 		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
-			log_info(logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas");
+			log_info(memoria_logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas");
 			exit(34);
 		}
 
@@ -142,7 +142,7 @@ void manejo_conexiones(int socket_cliente){
 
 		break;
 	case SUSPENDER_PROCESO:
-		log_info(logger,"me llego mensaje para supender proceso");
+		log_info(memoria_logger,"me llego mensaje para supender proceso");
 		op_code codigo = ESPACIO_PCB_LIBERADO;
 		suspender_proceso(socket_cliente); //liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
 		enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
@@ -337,6 +337,8 @@ void liberarPag(uint32_t pagALiberar){
 	pthread_mutex_lock(&mutex_marcos);
 	t_p_2* pagina=list_get(marcos,pagALiberar);
 	pagina->p = 0 ;
+	pagina->u = 0 ;
+	pagina->m = 0 ;
 	pthread_mutex_unlock(&mutex_marcos);
 }
 
@@ -358,7 +360,7 @@ uint32_t leer_de_memoria(uint32_t dir_fisica){
 	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
 	// Tengo q completarlo
 
-	usleep(config_valores_memoria.retardo_swap); // aca el usleep es parael reatrdo cuando se accde al swap para leer
+	usleep(config_valores_memoria.retardo_swap); // aca el usleep es para el retardo cuando se accede al swap para leer
 	// traer de swap - depende del bit presencia - por ejemplo si al principio no va haber ninguna pagina presente, hay page fault y se tare de swap una pagina
 	//memcpy para la lectura desde swap (ej : memcpy(paginaDeSwap,archivoSwap+get_marco_offset(pag->indice),config_valores_memoria.tam_pagina)
 	// poner offset de la pagina a leer

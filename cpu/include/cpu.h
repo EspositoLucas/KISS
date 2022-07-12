@@ -18,6 +18,7 @@
 t_config *config;
 int socket_memoria;
 t_handshake* configuracion_tabla;
+t_log* cpu_logger ;
 
 typedef struct  // archivo de configuracion cpu
 {

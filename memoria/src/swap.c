@@ -12,10 +12,10 @@ void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
 	int fd;
 	char* path=armarPath((int)idProceso);
 	if((fd=open(path,O_TRUNC|O_CREAT|O_EXCL,S_IROTH|S_IWOTH))==-1){
-		log_info(logger,"Error al crear el archivo swap del proceso: %d\n",idProceso);
+		log_info(memoria_logger,"Error al crear el archivo swap del proceso: %d\n",idProceso);
 		exit(-1);
 	} else {
-		log_info(logger,"Se creo el archivo swap del proceso: %d\n",idProceso);
+		log_info(memoria_logger,"Se creo el archivo swap del proceso: %d\n",idProceso);
 	}
 	ftruncate(fd,idProceso); // pongo el truncate porque el ayudante me dijo que no funcionaba sino el mmap y unmap
 
@@ -27,10 +27,10 @@ void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
 }
 void eliminarSwap(int idProceso){
 	if(remove(armarPath(idProceso))==-1){
-		log_info(logger,"Error al borrar el archivo swap del proceso: %d\n",idProceso);
+		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",idProceso);
 		exit(-1);
 	} else {
-		log_info(logger,"Se borro con exito el archivo swap del proceso: %d\n",idProceso);
+		log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",idProceso);
 	}
 }
 
@@ -47,7 +47,7 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir
 	escribirPaginasModificadas(pcb);
 
-	munmap(archivo_swap,pcb->tamanio_proceso); /// una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
+	munmap(archivo_swap,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
 
 }
 bool modificados(t_p_2* marq){
@@ -68,8 +68,7 @@ void escribirPaginasModificadas(pcb* pcb){
 		t_p_2* pag=list_get(paginasProc,i);
 		escribirPagEnSwap(pag,archivo_swap);
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
-		liberarPag(pag->indice);
-		// libero la pagina del marco relacionado y pongo el bit de presencia en 0
+		liberarPag(pag->indice); // libero la pagina del marco relacionado y pongo el bit de presencia en 0
 	}
 }
 

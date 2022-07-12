@@ -8,9 +8,8 @@
 #include<netdb.h>
 #include<string.h>
 #include<commons/log.h>
+#include<comunicacion.h>
 
-
-t_log* logger;
 
 // FUNCIONES
 

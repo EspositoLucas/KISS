@@ -15,8 +15,8 @@ int main(int argc, char **argv){
 
 //	Logging consola
 
-	logger = iniciar_logger("consola.log", "Consola", 1, LOG_LEVEL_INFO);
-	log_info(logger,"Iniciando consola\n");
+	consola_logger = iniciar_consola_logger("consola.log", "Consola", 1, LOG_LEVEL_INFO);
+	log_info(consola_logger,"Iniciando consola\n");
 
 //	Configuracion
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv){
 //	Parseo
 
 	t_list *instrucciones = parsear_instrucciones(argv[2]);
-	log_info(logger, "Instrucciones parseadas correctamente\n");
+	log_info(consola_logger, "Instrucciones parseadas correctamente\n");
 
 //	Serializacion y agregar a paquete
 
@@ -37,21 +37,21 @@ int main(int argc, char **argv){
 //	Conexion servidor
 
 	int server_fd = crear_conexion(config_valores_consola.ip_kernel, config_valores_consola.puerto_kernel);
-	log_info(logger, "Conexion exitosa con kernel.\n");
+	log_info(consola_logger, "Conexion exitosa con kernel.\n");
 
 //	Enviar paquete
 
 	enviar_paquete(paquete_instrucciones, server_fd);
-	log_info(logger, "Paquete enviado correctamente.\n");
+	log_info(consola_logger, "Paquete enviado correctamente.\n");
 
 //	Terminar programa
 
 	op_code respuesta_kernel = recibir_operacion_nuevo(server_fd);
 	if(respuesta_kernel != FINALIZAR_CONSOLA) {
-			log_error(logger, "Error al finalizar consola");
+			log_error(consola_logger, "Error al finalizar consola");
 		}
-	log_info(logger, "Terminando programa.\n");
-	terminar_programa(server_fd, logger, config);
+	log_info(consola_logger, "Terminando programa.\n");
+	terminar_programa(server_fd, consola_logger, config);
 
 
 	return 0;

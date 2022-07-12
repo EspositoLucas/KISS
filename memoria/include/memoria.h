@@ -30,7 +30,7 @@
 
 
 t_list* tabla_de_pagina_1_nivel;
-
+t_log* memoria_logger ;
 
 arch_config config_valores_memoria;
 
