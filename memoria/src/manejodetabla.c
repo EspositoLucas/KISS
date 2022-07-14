@@ -16,7 +16,7 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	}
 	else{
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){
-			pagina->marco=OcuparMarcolibre(tabla_elegida->p_id);
+			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);
 			pagina->p=true;
 			return pagina->marco;
 		}
@@ -118,11 +118,6 @@ uint32_t  obtenerPaginaClock(t_list* tabla_marcos) {
 
 	reasignar_puntero(tabla_marcos, posicion_en_lista_de_pagina+1); // a la posicion i+1 le pone el bit de puntero en true
 
-//	for(int i = 0 ; i < list_size(tabla_marcos);i++){
-//		entrada = list_get(tabla_marcos,i);
-//	if()
-//	}
-//	entrada_segundo_nivel->puntero_indice = 1;
 	return pagina_reemplazada;
 }
 

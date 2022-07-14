@@ -127,6 +127,7 @@ void manejo_conexiones(int socket_cliente){
 		break;
 	case LIBERAR_ESTRUCTURAS: ; // finalizar proceso
 		pcb* pcb=recibirPcb(socket_cliente);
+		op_code codigo = FINALIZAR_CONSOLA;
 		//liberar los marcos q ocupaba el proceso
 		t_list* paginas_proceso = paginas_por_proceso(pcb->id_proceso);
 		t_list* paginas_en_memoria = paginasEnMemoria(pcb->id_proceso); // aca lo cambie por la funcion que devuelve directamente la lista de paginas en memoria que usa pagina_con_presencia
@@ -139,6 +140,7 @@ void manejo_conexiones(int socket_cliente){
 		// eliminar swap - poner funcion
 
 		eliminarSwap(pcb->id_proceso);
+		enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
 
 		break;
 	case SUSPENDER_PROCESO:
@@ -324,7 +326,6 @@ void liberarMarco(uint32_t marcoALiberar){
 	marc->pid=-1;
 	pthread_mutex_unlock(&mutex_marcos);
 }
-
 //Libera la pagina indicada
 
 void liberarPag(uint32_t pagALiberar){
