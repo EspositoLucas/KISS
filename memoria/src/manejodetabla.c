@@ -11,17 +11,20 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	tabla_de_segundo_nivel*tabla_elegida=list_get(lista_tablas_segundo_nivel,tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida,entrada);
+
 	if(pagina->p){
+		usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria
 		return pagina->marco;
 	}
-	else{
+	else{ // page fault
+		usleep(config_valores_memoria.retardo_swap); //retardo swap
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);
 			pagina->p=true;
 			return pagina->marco;
+
 		}
-		//DEBO TRAER LA PAG DESDE MEMORIA (ALGORITMO DE REEMPLAZO)
-		usleep(config_valores_memoria.retardo_memoria); //  retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria
+		//DEBO TRAER LA PAG DESDE SWAP (ALGORITMO DE REEMPLAZO)
 		return pagina->marco;//pongo esto x ahora para q no rompa
 	}
 }
@@ -45,21 +48,15 @@ t_list* inicializar_tabla_segundo_nivel(){
 
 ///------------ALGORITMO_REEMPLAZO---------------
 
-uint32_t  obtenerPaginaAReemplazar(uint32_t entrada_primer_nivel){
+uint32_t  obtenerPaginaAReemplazar(pcb* pcb){
 
 	uint32_t pagina_reemplazo;
-	numero_tabla_2p = devolver_entrada_a_segunda_tabla(0,entrada_primer_nivel);
 
-	t_list* tabla_auxiliar =(t_list*) list_filter(lista_tablas_segundo_nivel,condicion_misma_numero_p_id);
-	t_list* tabla_marcos = list_create();
-
-	for(int i = 0 ; i<list_size(tabla_auxiliar);i++){
-		tabla_de_segundo_nivel* tabla_auxiliar2 = list_get(tabla_auxiliar,i);
-		t_list* paginas_en_memoria =(t_list*) list_filter(tabla_auxiliar2->lista_paginas,pagina_con_presencia);
-		list_add_all(tabla_marcos,paginas_en_memoria);
+	t_list* tabla_marcos = paginasEnMemoria(pcb->id_proceso);
+	if(list_all_satisfy(tabla_marcos,tienePunteroEnCero)) {
+		t_p_2* pag_aux = list_get(tabla_marcos,0);
+		pag_aux->puntero_indice = 1;
 	}
-		list_sort(tabla_marcos, marcosMin); // ordeno la lista por numero de marco
-
  		switch(algoritmo_memoria){
  		case CLOCK:
  			pagina_reemplazo = obtenerPaginaClock(tabla_marcos);
@@ -73,6 +70,10 @@ uint32_t  obtenerPaginaAReemplazar(uint32_t entrada_primer_nivel){
  	return pagina_reemplazo;
  }
 
+bool tienePunteroEnCero(t_p_2* pagina ) {
+	return pagina->puntero_indice == 0;
+
+}
 
 algoritmo obtener_algoritmo(){
 
@@ -94,112 +95,117 @@ algoritmo obtener_algoritmo(){
  	 return switcher;
 }
 
-uint32_t  obtenerPaginaClock(t_list* tabla_marcos) {
 
-	tabla_reemplazo_clock_clock_modificado tabla_reemplazo;
+uint32_t obtenerPaginaClock(t_list* lista){
 
-	int pagina_reemplazada = -1;
-
-	pagina_reemplazada = uso_en_cero(tabla_marcos); // itera la primera vez
-
-	if (pagina_reemplazada == -1){ // si no habia ninguno en 0 entonces paso todos los uno a 0
-		pagina_reemplazada = uso_en_cero(tabla_marcos); // itero denuevo hasta encontrar el primero en 0
-	}
-	t_p_2* entrada_segundo_nivel ;
-
-	int posicion_en_lista_de_pagina;
-
-	for (int i = 0 ; i < list_size(tabla_marcos); i++){
-		t_p_2 *aux = list_get(tabla_marcos,i);
-		if (aux->indice == pagina_reemplazada){
-			posicion_en_lista_de_pagina = i;
-		}
-	}
-
-	reasignar_puntero(tabla_marcos, posicion_en_lista_de_pagina+1); // a la posicion i+1 le pone el bit de puntero en true
-
-	return pagina_reemplazada;
+    t_p_2* pagina=(t_p_2) list_find(lista,punteroEnUno);
+    t_p_2 aux;
+    t_p_2* siguiente;
+    uint32_t numeroPaginaInicial=pagina->indice;
+    uint32_t indice=numeroPaginaInicial;
+    pagina->puntero_indice=0;
+    while(1){
+    for (int i =indice ; i < list_size(lista); i++){
+        aux = list_get(lista, i);
+        if (aux->u == 0){
+            if(i==list_size(lista)-1){
+                siguiente=list_get(lista, 0);
+            }else{
+                siguiente=list_get(lista, i);
+            }
+            siguiente->puntero_indice=1;
+             return aux->indice;
+        } else {
+            aux->u = 0;
+        }
+    }
+    indice=0;
+    }
+    return numeroPaginaInicial;
 }
 
-void reasignar_puntero(t_list* lista, int posicion){
-	t_p_2 *aux = list_remove(lista,posicion); // lo saca
-	aux->puntero_indice = true;
-	list_add(lista, aux); // lo vuelve a meter acutalizado
+bool punteroEnUno(t_p_2* pagina){
+    return pagina->puntero_indice==1;
 }
 
-uint32_t uso_en_cero(t_list* lista){
 
-	int pagina = -1;
-	tabla_reemplazo_clock_clock_modificado *aux;
-	for (int i =0 ; i < lista->elements_count; i++){
-		aux = list_get(lista, i);
-		if (aux->bit_uso == 0){
-			 pagina = aux->nro_pagina;
-		} else {
-			aux->bit_uso = 0;
-		}
-	}
+uint32_t obtenerPaginaClockM(t_list* lista){
 
-	return pagina;
+    t_p_2* pagina=(t_p_2) list_find(lista,punteroEnUno);
+    t_p_2 aux;
+    t_p_2* siguiente;
+    uint32_t numeroPaginaInicial=pagina->indice;
+    uint32_t indice=numeroPaginaInicial;
+    pagina->puntero_indice=0;
+
+    while(1){
+    for (int i =indice ; i < list_size(lista); i++){
+        aux = list_get(lista, i);
+        if (aux->u == 0 && aux->m == 0){
+            if(i==list_size(lista)-1){
+                siguiente=list_get(lista, 0);
+            }else{
+                siguiente=list_get(lista, i);
+            }
+            siguiente->puntero_indice=1;
+             return aux->indice;
+        }
+    }
+    for (int i =0 ; i < indice; i++){
+            aux = list_get(lista, i);
+            if (aux->u == 0 && aux->m == 0){
+                if(i==list_size(lista)-1){
+                    siguiente=list_get(lista, 0);
+                }else{
+                    siguiente=list_get(lista, i);
+                }
+                siguiente->puntero_indice=1;
+                 return aux->indice;
+            }
+        }
+
+    for(int i= indice ; i< list_size(lista);i++){
+    	aux = list_get(lista, i);
+    	        if (aux->u == 0 && aux->m ){
+    	            if(i==list_size(lista)-1){
+    	                siguiente=list_get(lista, 0);
+    	            }else{
+    	                siguiente=list_get(lista, i);
+    	            }
+    	            siguiente->puntero_indice=1;
+    	            return aux->indice;
+    	        }else {
+    	            aux->u = 0;
+    	        }
+    }
+
+    for(int i= 0 ; i< indice;i++){
+        	aux = list_get(lista, i);
+        	        if (aux->u == 0 && aux->m ){
+        	            if(i==list_size(lista)-1){
+        	                siguiente=list_get(lista, 0);
+        	            }else{
+        	                siguiente=list_get(lista, i);
+        	            }
+        	            siguiente->puntero_indice=1;
+        	            return aux->indice;
+        	        }else {
+        	            aux->u = 0;
+        	        }
+        }
+
+    }
+    return numeroPaginaInicial;
 }
 
-uint32_t  obtenerPaginaClockM(t_list* tabla_marcos) {
-
-	// 1. busco 0/0, sin tocar nada
-	// 2. busco 0/1, voy cambiando u a 0
-	// 3. busco 0/0
-	// 4. busco 0/1
-
-
-	tabla_reemplazo_clock_clock_modificado tabla_reemplazo ;
-	int pagina_reemplazada = -1;
-
-	//Buscar 0/0
-	pagina_reemplazada = uso_y_mod_en_cero(tabla_marcos);
-
-	//Buscar 0/1 y voy modificando u a 0
-
-	if(pagina_reemplazada == -1){
-		pagina_reemplazada = uso_y_mod_en_cero_uno(tabla_marcos);
-	}
-	//Buscar 0/0
-	if(pagina_reemplazada == -1){
-		pagina_reemplazada = uso_y_mod_en_cero(tabla_marcos);
-	}
-
-	//Buscar 0/1
-	if(pagina_reemplazada == -1){
-		pagina_reemplazada = uso_y_mod_en_cero_uno(tabla_marcos);
-
-	}
-	return pagina_reemplazada ;
+bool punteroUyMEnCero(t_p_2* pagina){
+    return !pagina->u && !pagina->m ;
 }
 
-uint32_t uso_y_mod_en_cero(t_list* lista){
-	int pagina = -1;
-	tabla_reemplazo_clock_clock_modificado* aux;
-	for (int i = 0; i < lista->elements_count; i++){
-		aux = list_get(lista, i);
-		if(aux->bit_uso == 0 && aux->bit_modificado == 0){
-			pagina = aux->nro_pagina;
-		}
-	}
-	return pagina;
+bool punteroUEnCeroyMEnUno(t_p_2* pagina){
+    return !pagina->u && pagina->m ;
 }
 
-uint32_t uso_y_mod_en_cero_uno(t_list* lista){
-	int pagina = -1;
-	tabla_reemplazo_clock_clock_modificado* aux;
-	for (int i = 0; i < lista->elements_count; i++){
-		aux = list_get(lista, i);
-		if(aux->bit_uso == 0 && aux->bit_modificado == 1){
-			pagina = aux->nro_pagina;
-		} else {
-			aux->bit_uso = 0;
-		}
-	}
-	return pagina;
-}
 
 t_list *paginas_por_proceso(int pid){
 
@@ -214,6 +220,7 @@ t_list *paginas_por_proceso(int pid){
 	return lista_pags_por_proceso;
 
 }
+
 
 bool condicion_misma_numero_p_id(void* tabla){
 	return ((tabla_de_segundo_nivel *)tabla)->p_id == numero_tabla_2p; // ver con que se compara el p_id
@@ -253,22 +260,6 @@ t_list* paginasEnMemoria(uint32_t pid){
 			pagReal->u=pagEnMemoria->u;
 			pagReal->indice=pagEnMemoria->indice+10*i;
 			list_add(lista_pags_en_mem,pagReal);
-		}
-	}
-
-	list_sort(lista_pags_en_mem, marcosMin);
-	return lista_pags_en_mem;
-}
-
-
-t_list* paginas_en_memoria(t_list* lista_tablas_segundo_nivel){
-
-	t_list *lista_pags_en_mem = list_create();
-
-	for (int i = 0; i < lista_tablas_segundo_nivel->elements_count ; i++){
-		t_p_2 *aux = list_get(lista_tablas_segundo_nivel, i);
-		if (pagina_con_presencia(aux)){
-			list_add(lista_pags_en_mem, aux);
 		}
 	}
 

@@ -23,14 +23,15 @@ void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
 
 	archivo_swap = mmap(NULL,idProceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
 
-	close(fd);
+	//close(fd);
 }
-void eliminarSwap(int idProceso){
-	if(remove(armarPath(idProceso))==-1){
-		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",idProceso);
+void eliminarSwap(pcb* pcb){
+	munmap(archivo_swap,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
+	if(remove(armarPath(pcb->id_proceso))==-1){
+		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
 		exit(-1);
 	} else {
-		log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",idProceso);
+		log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
 	}
 }
 
@@ -38,17 +39,12 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 
 	pcb* pcb = recibirPcb(socket_cliente);
 
-	// creo el swap directamente con el mmap adentro
-
-	crearSwap(pcb->id_proceso);
-
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
 	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir paginas modificadas
 
 	escribirPaginasModificadas(pcb);
 
-	munmap(archivo_swap,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
 
 }
 bool modificados(t_p_2* marq){
@@ -69,7 +65,6 @@ void escribirPaginasModificadas(pcb* pcb){
 		t_p_2* pag=list_get(paginasProc,i);
 		escribirPagEnSwap(pag,archivo_swap);
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
-		liberarPag(pag->indice); // libero la pagina del marco relacionado y pongo el bit de presencia en 0
 	}
 }
 

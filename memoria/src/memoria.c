@@ -46,6 +46,7 @@ void manejo_conexiones(int socket_cliente){
 	switch(codigo_operacion){
 	case HANDSHAKE:
 		log_info(memoria_logger,"me llego el handshake de cpu");
+		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* handshake=preparar_paquete_para_handshake();
 		enviar_paquete(handshake,socket_cliente);
 		eliminar_paquete(handshake);
@@ -62,6 +63,7 @@ void manejo_conexiones(int socket_cliente){
 		tabla=*(uint32_t*)list_get(valores,0);
 		entrada1=*(uint32_t*)list_get(valores,1);
 		entrada2 = devolver_entrada_a_segunda_tabla(tabla, entrada1);
+		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_tabla= crear_paquete();
 		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
 		enviar_paquete(paquete_tabla,socket_cliente);
@@ -74,6 +76,7 @@ void manejo_conexiones(int socket_cliente){
 		tabla=*(uint32_t*)list_get(valores,0);
 		entrada2=*(uint32_t*)list_get(valores,1);
 		marco= devolver_marco(tabla, entrada2);
+		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_marco= crear_paquete();
 		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
 		enviar_paquete(paquete_marco,socket_cliente);
@@ -127,21 +130,9 @@ void manejo_conexiones(int socket_cliente){
 		break;
 	case LIBERAR_ESTRUCTURAS: ; // finalizar proceso
 		pcb* pcb=recibirPcb(socket_cliente);
-		op_code codigo = FINALIZAR_CONSOLA;
-		//liberar los marcos q ocupaba el proceso
-		t_list* paginas_proceso = paginas_por_proceso(pcb->id_proceso);
-		t_list* paginas_en_memoria = paginasEnMemoria(pcb->id_proceso); // aca lo cambie por la funcion que devuelve directamente la lista de paginas en memoria que usa pagina_con_presencia
-		t_p_2* aux;
-		for (int i = 0; i < list_size(paginas_en_memoria); i++){ // esto no me cierra, hay que corregirlo pero lo dejo por las dudas
-				aux = list_get(paginas_en_memoria,i);
-				liberarTodosLosMarcos(pcb->id_proceso);
-				liberarPag(aux->indice);
-			}
+		liberarTodosLosMarcos(pcb->id_proceso);
 		// eliminar swap - poner funcion
-
-		eliminarSwap(pcb->id_proceso);
-		enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
-
+		eliminarSwap(pcb);
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(memoria_logger,"me llego mensaje para supender proceso");
@@ -163,13 +154,12 @@ void inicializar_memoria(){
 	algoritmo_memoria=obtener_algoritmo();
 	indice_de_tabla2=0;
 	pathSwap=config_valores_memoria.path_swap;
+	pthread_mutex_init(&mutex_comparador_pid,NULL);
+	pthread_mutex_init(&mutex_comparador,NULL);
+	pthread_mutex_init(&mutex_marcos,NULL);
 }
 int get_marco(int marco){
 	return marco*config_valores_memoria.tam_pagina;
-}
-///
-void crearTP2(){
-
 }
 
 
@@ -324,16 +314,6 @@ void liberarMarco(uint32_t marcoALiberar){
 	pthread_mutex_lock(&mutex_marcos);
 	marquito* marc=list_get(marcos,marcoALiberar);
 	marc->pid=-1;
-	pthread_mutex_unlock(&mutex_marcos);
-}
-//Libera la pagina indicada
-
-void liberarPag(uint32_t pagALiberar){
-	pthread_mutex_lock(&mutex_marcos);
-	t_p_2* pagina=list_get(marcos,pagALiberar);
-	pagina->p = 0 ;
-	pagina->u = 0 ;
-	pagina->m = 0 ;
 	pthread_mutex_unlock(&mutex_marcos);
 }
 

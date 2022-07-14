@@ -151,16 +151,7 @@ typedef struct{
 	bool puntero_indice;
 }t_p_2; // entrada segundo nivel
 
-typedef struct
- {
-	 	uint32_t marco;
-	 	uint32_t nro_pagina;
-	 	bool bit_uso;
-	 	bool bit_modificado;
-
- } tabla_reemplazo_clock_clock_modificado; // entrada tabla auxiliar
-
-t_list* lista_tablas_segundo_nivel ;
+ t_list* lista_tablas_segundo_nivel ;
 
 
 typedef struct{
