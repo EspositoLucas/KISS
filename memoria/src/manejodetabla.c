@@ -15,14 +15,13 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		return pagina->marco;
 	}
 	else{
-		pthread_mutex_lock(&mutex_comparador);
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){
 			pagina->marco=OcuparMarcolibre(tabla_elegida->p_id);
 			pagina->p=true;
 			return pagina->marco;
-			pthread_mutex_unlock(&mutex_comparador_pid);
 		}
 		//DEBO TRAER LA PAG DESDE MEMORIA (ALGORITMO DE REEMPLAZO)
+		usleep(config_valores_memoria.retardo_memoria); //  retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria
 		return pagina->marco;//pongo esto x ahora para q no rompa
 	}
 }

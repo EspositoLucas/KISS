@@ -44,7 +44,8 @@ void supender_proceso(int socket_cliente) { // aca hay que desasignar las pagina
 
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
-	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir
+	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir paginas modificadas
+
 	escribirPaginasModificadas(pcb);
 
 	munmap(archivo_swap,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap

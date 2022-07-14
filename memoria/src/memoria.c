@@ -129,7 +129,7 @@ void manejo_conexiones(int socket_cliente){
 		pcb* pcb=recibirPcb(socket_cliente);
 		//liberar los marcos q ocupaba el proceso
 		t_list* paginas_proceso = paginas_por_proceso(pcb->id_proceso);
-		t_list* paginas_en_memoria = list_filter(paginas_proceso,pagina_con_presencia);
+		t_list* paginas_en_memoria = paginasEnMemoria(pcb->id_proceso); // aca lo cambie por la funcion que devuelve directamente la lista de paginas en memoria que usa pagina_con_presencia
 		t_p_2* aux;
 		for (int i = 0; i < list_size(paginas_en_memoria); i++){ // esto no me cierra, hay que corregirlo pero lo dejo por las dudas
 				aux = list_get(paginas_en_memoria,i);
@@ -218,7 +218,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 //		memcpy(&dir_fisica,stream + desplazamiento,sizeof(uint32_t));
 //		desplazamiento+=sizeof(uint32_t);
 //		memcpy(&valor,stream + desplazamiento,sizeof(uint32_t));
-		escribirEn(dir_fisica,valor);
+		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de escribir
 		break;
 	case COPY:
 		uint32_t valor_leido;
@@ -228,6 +228,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 //		desplazamiento+=sizeof(uint32_t);
 //		memcpy(&dir_fisica_origen,stream + desplazamiento,sizeof(uint32_t));
 		valor_leido = leer(dir_fisica_origen);
+		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de escribir
 		escribirEn(dir_fisica_destino,valor_leido);
 		break;
 	default:
@@ -360,11 +361,12 @@ uint32_t leer_de_memoria(uint32_t dir_fisica){
 	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
 	// Tengo q completarlo
 
+	usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el primer acceso a memoria
+	// traer de swap - depende del bit presencia - por ejemplo si al principio no va haber ninguna pagina presente, ,no se puede cargar una página sin antes haber leído que su bit de presencia es 0.hay page fault y se trae de swap una pagina
 	usleep(config_valores_memoria.retardo_swap); // aca el usleep es para el retardo cuando se accede al swap para leer
-	// traer de swap - depende del bit presencia - por ejemplo si al principio no va haber ninguna pagina presente, hay page fault y se tare de swap una pagina
 	//memcpy para la lectura desde swap (ej : memcpy(paginaDeSwap,archivoSwap+get_marco_offset(pag->indice),config_valores_memoria.tam_pagina)
 	// poner offset de la pagina a leer
-	//return contenido_leido_memoria ; // este contenido va a ser al que se copia del memcpy si es que se tare de swap o si ya estaba presente, la pagina directamente, se lo envia a cpu y cpu lo imprime por pantalla
+	//return contenido_leido_memoria ; // este contenido va a ser al que se copia del memcpy si es que se trae de swap o si ya estaba presente, la pagina directamente, se lo envia a cpu y cpu lo imprime por pantalla
 }
 
 void escribirEn(uint32_t dir_fisica, uint32_t valor){
