@@ -125,7 +125,7 @@ void manejo_conexiones(int socket_cliente){
 		enviar_paquete(paquete_ini,socket_cliente);
 		free(paquete_ini);
 		break;
-	case LIBERAR_ESTRUCTURAS: // finalizar proceso
+	case LIBERAR_ESTRUCTURAS: ; // finalizar proceso
 		pcb* pcb=recibirPcb(socket_cliente);
 		//liberar los marcos q ocupaba el proceso
 		t_list* paginas_proceso = paginas_por_proceso(pcb->id_proceso);
@@ -200,35 +200,28 @@ t_paquete* preparar_paquete_para_handshake(){
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
 void manejo_instrucciones(t_list* datos,int socket_cpu){
 	op_code tipo_instruccion=(op_code)list_get(datos,0);
+	uint32_t dir_fisica = (uint32_t)list_get(datos,1);
+	uint32_t valor_leido;
 
 	switch(tipo_instruccion){
-	case READ:
-		uint32_t valor_leido;
-		uint32_t dir_fisica = (uint32_t)list_get(datos,1);
-//		memcpy(&dir_fisica,stream + desplazamiento,sizeof(uint32_t));
-		valor_leido = leer(dir_fisica);
+	case READ: ;
+		valor_leido = leer_de_memoria(dir_fisica);
+
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de responder a cpu
 		t_paquete* paquete=crear_paquete();
 		agregar_entero_a_paquete(paquete,valor_leido);
 		enviar_paquete(paquete,socket_cpu);
 		break;
-	case WRITE:
-		uint32_t dir_fisica = (uint32_t)list_get(datos,1);;
-		uint32_t valor = (uint32_t)list_get(datos,2);;
-//		memcpy(&dir_fisica,stream + desplazamiento,sizeof(uint32_t));
-//		desplazamiento+=sizeof(uint32_t);
-//		memcpy(&valor,stream + desplazamiento,sizeof(uint32_t));
-		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de escribir
+	case WRITE: ;
+		uint32_t valor = (uint32_t)list_get(datos,2);
+
+		escribirEn(dir_fisica,valor);
 		break;
-	case COPY:
-		uint32_t valor_leido;
-		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);;
-		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,2);;
-//		memcpy(&dir_fisica_destino,stream + desplazamiento,sizeof(uint32_t));
-//		desplazamiento+=sizeof(uint32_t);
-//		memcpy(&dir_fisica_origen,stream + desplazamiento,sizeof(uint32_t));
-		valor_leido = leer(dir_fisica_origen);
-		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de escribir
+	case COPY: ;
+		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);
+		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,2);
+
+		valor_leido = leer_de_memoria(dir_fisica_origen);
 		escribirEn(dir_fisica_destino,valor_leido);
 		break;
 	default:
@@ -357,20 +350,25 @@ void liberarTodosLosMarcos(uint32_t pid){
 
 uint32_t leer_de_memoria(uint32_t dir_fisica){
 	uint32_t nro_marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
-	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
-	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
-	// Tengo q completarlo
 
-	usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el primer acceso a memoria
-	// traer de swap - depende del bit presencia - por ejemplo si al principio no va haber ninguna pagina presente, ,no se puede cargar una página sin antes haber leído que su bit de presencia es 0.hay page fault y se trae de swap una pagina
-	usleep(config_valores_memoria.retardo_swap); // aca el usleep es para el retardo cuando se accede al swap para leer
-	//memcpy para la lectura desde swap (ej : memcpy(paginaDeSwap,archivoSwap+get_marco_offset(pag->indice),config_valores_memoria.tam_pagina)
-	// poner offset de la pagina a leer
-	//return contenido_leido_memoria ; // este contenido va a ser al que se copia del memcpy si es que se trae de swap o si ya estaba presente, la pagina directamente, se lo envia a cpu y cpu lo imprime por pantalla
+	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
+
+	pthread_mutex_lock(&mutex_marcos);
+	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
+	uint32_t valor_leido_memoria = indice_segunda_tabla->marco;
+	pthread_mutex_unlock(&mutex_marcos);
+	return valor_leido_memoria;
 }
 
 void escribirEn(uint32_t dir_fisica, uint32_t valor){
+	uint32_t nro_marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
 
+	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
+
+	pthread_mutex_lock(&mutex_marcos);
+	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
+	indice_segunda_tabla->marco = valor;
+	pthread_mutex_unlock(&mutex_marcos);
 }
 
 bool tiene_mismo_indice(tabla_de_segundo_nivel* tabla) {

@@ -34,7 +34,7 @@ void eliminarSwap(int idProceso){
 	}
 }
 
-void supender_proceso(int socket_cliente) { // aca hay que desasignar las paginas del proceso en los marcos en los que están asignadas y escribir en swap si el bit de modificado es 1
+void suspender_proceso(int socket_cliente) { // aca hay que desasignar las paginas del proceso en los marcos en los que están asignadas y escribir en swap si el bit de modificado es 1
 
 	pcb* pcb = recibirPcb(socket_cliente);
 

@@ -29,7 +29,7 @@ bool pagina_con_presencia(void*);
 bool pagina_con_modificado(t_p_2 *pagina);
 bool pagConIgualPid(tabla_de_segundo_nivel* );
 t_list* paginas_en_memoria(t_list* );
-t_list* paginasEnMemoria(t_list* );
+t_list* paginasEnMemoria(uint32_t );
 t_list *paginas_por_proceso(int );
 t_list* sortear_segun_marco(t_list*);
 bool marcosMin(void* ,void * );

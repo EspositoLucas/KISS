@@ -13,7 +13,7 @@
 char* armarPath(int );
 void crearSwap(uint32_t );
 void eliminarSwap(int );
-void supender_proceso(int ) ;
+void suspender_proceso(int ) ;
 bool modificados(t_p_2* );
 t_list* marcosMod(t_list*);
 void escribirPagEnSwap(t_p_2* ,void* );
