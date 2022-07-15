@@ -158,12 +158,36 @@ void inicializar_memoria(){
 	pthread_mutex_init(&mutex_comparador_pid,NULL);
 	pthread_mutex_init(&mutex_comparador,NULL);
 	pthread_mutex_init(&mutex_marcos,NULL);
+	pthread_mutex_init(&mutex_memoria_usuario,NULL);
 }
 int get_marco(int marco){
 	return marco*config_valores_memoria.tam_pagina;
 }
+void escribirPagEnMemoria(void* pagina,uint32_t numMarco){
+	memcpy(memoria_usuario + get_marco(numMarco),pagina,config_valores_memoria.tam_memoria);
+}
 
 
+uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
+	t_list* pagsEnMemoria=paginasEnMemoria(pid);
+	t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
+	if(pagElegida->m){
+		escribirPagEnSwap(pagElegida);
+	}
+	cabiarPagina(numPagina,pid);
+	return pagElegida->marco;
+}
+void cambiarPagina(uint32_t numPagina,uint32_t pid){
+	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
+	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
+	pthread_mutex_lock(&mutex_comparador_pid);
+	pid_comparador=pid;
+	pthread_mutex_unlock(&mutex_comparador_pid);
+	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
+	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
+	pagina->p=0;
+}
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
 	t_config* config=iniciar_config("Default/memoria.config");

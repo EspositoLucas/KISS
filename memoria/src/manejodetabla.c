@@ -18,14 +18,23 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	}
 	else{ // page fault
 		usleep(config_valores_memoria.retardo_swap); //retardo swap
-		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){
-			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);
+		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
+			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
 			pagina->p=true;
+			void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
+			escribirPagEnMemoria(paginaTraida,pagina->marco);//la escribe en memoria
+			pagina->p=true;//pagina ahora está presente en memoria
 			return pagina->marco;
 
 		}
-		//DEBO TRAER LA PAG DESDE SWAP (ALGORITMO DE REEMPLAZO)
-		return pagina->marco;//pongo esto x ahora para q no rompa
+		uint32_t numPagAReemplazar=obtenerPaginaAReemplazar(tabla_elegida->p_id);
+		uint32_t marcoAUsar=escribirModificaciones(numPagAReemplazar);//Veo que marco voy a usar para traer la pagina
+																	 //Si la pag reemplazada tiene m=1 => la escribo en swap, además, se le pone p=0
+		pagina->marco=marcoAUsar;
+		void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
+		escribirPagEnMemoria(paginaTraida,marcoAUsar);//la escribe en memoria, reemplazando a la anterior
+		pagina->p=true;//pagina ahora está presente en memoria
+		return pagina->marco;
 	}
 }
 
@@ -48,11 +57,11 @@ t_list* inicializar_tabla_segundo_nivel(){
 
 ///------------ALGORITMO_REEMPLAZO---------------
 
-uint32_t  obtenerPaginaAReemplazar(pcb* pcb){
+uint32_t  obtenerPaginaAReemplazar(uint32_t pid){
 
 	uint32_t pagina_reemplazo;
 
-	t_list* tabla_marcos = paginasEnMemoria(pcb->id_proceso);
+	t_list* tabla_marcos = paginasEnMemoria(pid);
 	if(list_all_satisfy(tabla_marcos,tienePunteroEnCero)) {
 		t_p_2* pag_aux = list_get(tabla_marcos,0);
 		pag_aux->puntero_indice = 1;
@@ -269,4 +278,26 @@ t_list* paginasEnMemoria(uint32_t pid){
 
 bool marcosMin(void* tp1, void* tp2){
 	return (((t_p_2 *)tp1)->marco < ((t_p_2 *)tp2)->marco);
+}
+t_list* pagsDeUnProceso(uint32_t pid){
+	t_list* paginas=list_create();
+	pthread_mutex_lock(&mutex_comparador_pid);
+	pid_comparador=pid;
+	pthread_mutex_unlock(&mutex_comparador_pid);
+	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	for(int i=0;i<list_size(tablas);i++){
+		tabla_de_segundo_nivel* aux=(tabla_de_segundo_nivel*)list_get(tablas,i);
+		for(int j=0;j<list_size(aux->lista_paginas);j++){
+			t_p_2* pagTabla=(t_p_2*) list_get(aux->lista_paginas,j);
+			t_p_2* pagReal=malloc(sizeof(t_p_2));
+			pagReal->m=pagTabla->m;
+			pagReal->marco=pagTabla->marco;
+			pagReal->p=pagTabla->p;
+			pagReal->puntero_indice=pagTabla->puntero_indice;
+			pagReal->u=pagTabla->u;
+			pagReal->indice=pagTabla->indice+10*i;
+			list_add(paginas,pagReal);
+		}
+	}
+	return paginas;
 }

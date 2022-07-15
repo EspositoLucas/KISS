@@ -54,8 +54,9 @@ t_list* marcosMod(t_list* marquinhos){
 	t_list* modificado=list_filter(marquinhos,modificados);
 	return modificado;
 }
-void escribirPagEnSwap(t_p_2* pag,void* swap){
-	memcpy(swap+get_marco_offset(pag->indice),memoria_usuario+get_marco_offset(pag->marco),config_valores_memoria.tam_pagina);
+void escribirPagEnSwap(t_p_2* pag){
+	usleep(config_valores_memoria.retardo_swap);
+	memcpy(archivo_swap+get_marco_offset(pag->indice),memoria_usuario+get_marco_offset(pag->marco),config_valores_memoria.tam_pagina);
 }
 
 void escribirPaginasModificadas(pcb* pcb){
@@ -68,5 +69,11 @@ void escribirPaginasModificadas(pcb* pcb){
 	}
 }
 
+void* traerPaginaDeSwap(uint32_t numPag){
+	usleep(config_valores_memoria.retardo_swap);
+	void* pag=malloc(sizeof(config_valores_memoria.tam_pagina));
+	memcpy(pag,archivo_swap + get_marco(numPag),config_valores_memoria.tam_pagina);
+	return pag;
+}
 
 

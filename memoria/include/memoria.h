@@ -48,6 +48,7 @@ t_list* marcos;
 pthread_mutex_t mutex_comparador_pid;
 pthread_mutex_t mutex_comparador;
 pthread_mutex_t mutex_marcos;
+pthread_mutex_t mutex_memoria_usuario;
 
 //FUNCIONES
 
