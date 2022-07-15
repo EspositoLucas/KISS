@@ -27,6 +27,8 @@ bool condicion_misma_numero_p_id(void*);
 bool pagina_con_presencia(void*);
 bool pagina_con_modificado(t_p_2 *pagina);
 bool pagConIgualPid(tabla_de_segundo_nivel* );
+bool tienePunteroEnCero(t_p_2*);
+bool punteroEnUno(t_p_2*);
 
 
 t_list* paginasEnMemoria(uint32_t );

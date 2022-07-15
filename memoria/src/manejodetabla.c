@@ -98,8 +98,8 @@ algoritmo obtener_algoritmo(){
 
 uint32_t obtenerPaginaClock(t_list* lista){
 
-    t_p_2* pagina=(t_p_2) list_find(lista,punteroEnUno);
-    t_p_2 aux;
+    t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
+    t_p_2* aux;
     t_p_2* siguiente;
     uint32_t numeroPaginaInicial=pagina->indice;
     uint32_t indice=numeroPaginaInicial;
@@ -131,8 +131,8 @@ bool punteroEnUno(t_p_2* pagina){
 
 uint32_t obtenerPaginaClockM(t_list* lista){
 
-    t_p_2* pagina=(t_p_2) list_find(lista,punteroEnUno);
-    t_p_2 aux;
+    t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
+    t_p_2* aux;
     t_p_2* siguiente;
     uint32_t numeroPaginaInicial=pagina->indice;
     uint32_t indice=numeroPaginaInicial;

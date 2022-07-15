@@ -1,6 +1,7 @@
 #include "memoria.h"
 
 int comparador;
+uint32_t id_manejo_inst;
 
 int main(void) {
 
@@ -191,12 +192,14 @@ t_paquete* preparar_paquete_para_handshake(){
 
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
 void manejo_instrucciones(t_list* datos,int socket_cpu){
-	op_code tipo_instruccion=(op_code)list_get(datos,0);
-	uint32_t dir_fisica = (uint32_t)list_get(datos,1);
+	op_code tipo_instruccion = (op_code) list_get(datos,0);
+	id_manejo_inst = (uint32_t) list_get(datos,1);
+	uint32_t dir_fisica;
 	uint32_t valor_leido;
 
 	switch(tipo_instruccion){
 	case READ: ;
+		dir_fisica = (uint32_t)list_get(datos,2);
 		valor_leido = leer_de_memoria(dir_fisica);
 
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de responder a cpu
@@ -205,16 +208,19 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		enviar_paquete(paquete,socket_cpu);
 		break;
 	case WRITE: ;
-		uint32_t valor = (uint32_t)list_get(datos,2);
+		dir_fisica = (uint32_t)list_get(datos,2);
+		uint32_t valor = (uint32_t)list_get(datos,3);
 
-		escribirEn(dir_fisica,valor);
+		usleep(config_valores_memoria.retardo_memoria);
+		escribirEn(dir_fisica, valor);
 		break;
 	case COPY: ;
-		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);
-		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,2);
+		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,2);
+		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,3);
 
+		usleep(config_valores_memoria.retardo_memoria);
 		valor_leido = leer_de_memoria(dir_fisica_origen);
-		escribirEn(dir_fisica_destino,valor_leido);
+		escribirEn(dir_fisica_destino, valor_leido);
 		break;
 	default:
 		break;
@@ -300,7 +306,7 @@ bool estaLibre(marquito* marquinhos){
 
 //Ocupa en la lista de marcos el primero que esta libre y devuelve el numero de marco de este
 
-int ocuparMarcolibre(uint32_t pid){
+int ocuparMarcoLibre(uint32_t pid){
 	pthread_mutex_lock(&mutex_marcos);
 	marquito* marco_libre=list_find(marcos,estaLibre);
 	marco_libre->pid=pid;
@@ -327,12 +333,10 @@ void liberarTodosLosMarcos(uint32_t pid){
 	}
 }
 
-//
-
 uint32_t leer_de_memoria(uint32_t dir_fisica){
 	uint32_t nro_marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
 
-	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
+	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_id);
 
 	pthread_mutex_lock(&mutex_marcos);
 	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
@@ -344,7 +348,7 @@ uint32_t leer_de_memoria(uint32_t dir_fisica){
 void escribirEn(uint32_t dir_fisica, uint32_t valor){
 	uint32_t nro_marco = (uint32_t) (dir_fisica / config_valores_memoria.tam_pagina);
 
-	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_indice);
+	tabla_de_segundo_nivel* tabla_donde_leer = (tabla_de_segundo_nivel*) list_find(lista_tablas_segundo_nivel,tiene_mismo_id);
 
 	pthread_mutex_lock(&mutex_marcos);
 	t_p_2* indice_segunda_tabla = (t_p_2*) list_find(tabla_donde_leer->lista_paginas,nro_marco);
@@ -352,10 +356,9 @@ void escribirEn(uint32_t dir_fisica, uint32_t valor){
 	pthread_mutex_unlock(&mutex_marcos);
 }
 
-bool tiene_mismo_indice(tabla_de_segundo_nivel* tabla) {
-//	return tabla->id_tabla == pcb->id_proceso;
+bool tiene_mismo_id(tabla_de_segundo_nivel* tabla_donde_leer) {
+	return tabla_donde_leer->id_tabla == id_manejo_inst;
 }
-
 
 int get_marco_offset(uint32_t indice) {
 	return indice * config_valores_memoria.tam_pagina ;
