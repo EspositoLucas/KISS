@@ -156,6 +156,8 @@ int atender_clientes_kernel(int socket_servidor){
 			pthread_create(&hilo_cliente, NULL, (void*) manejar_conexion, (void *)socket_cliente); // creo el hilo con la funcion manejar conexion a la que le paso el socket del cliente y sigo en la otra funcion
 			pthread_detach(hilo_cliente);
 			return 1;
+		} else {
+			log_error(kernel_logger_info, "Error al escuchar clientes... Finalizando servidor"); // log para fallo de comunicaciones
 		}
 
 

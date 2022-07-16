@@ -50,6 +50,7 @@ void manejo_conexiones(int socket_cliente){
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* handshake=preparar_paquete_para_handshake();
 		enviar_paquete(handshake,socket_cliente);
+		log_info(memoria_logger,"hanshake enviado a cpu");
 		eliminar_paquete(handshake);
 		break;
 	case INSTRUCCION_MEMORIA:
@@ -68,6 +69,7 @@ void manejo_conexiones(int socket_cliente){
 		t_paquete* paquete_tabla= crear_paquete();
 		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
 		enviar_paquete(paquete_tabla,socket_cliente);
+		log_info(memoria_logger,"entrada segundo nivel enviado a cpu");
 		list_destroy(valores);
 		eliminar_paquete(paquete_tabla);
 		break;
@@ -81,6 +83,7 @@ void manejo_conexiones(int socket_cliente){
 		t_paquete* paquete_marco= crear_paquete();
 		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
 		enviar_paquete(paquete_marco,socket_cliente);
+		log_info(memoria_logger,"marco enviado a cpu");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
 		// falta algoritmo
@@ -122,11 +125,12 @@ void manejo_conexiones(int socket_cliente){
 		}
 		//crea el swap
 		crearSwap(pcb_recibido->id_proceso);
-
+		log_info(memoria_logger,"Swap creado");
 		//Envia el num de tabla de la primera pag de 2 nivel del proceso
 		t_paquete* paquete_ini = crear_paquete();
 		agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
 		enviar_paquete(paquete_ini,socket_cliente);
+		log_info(memoria_logger,"Numero tabla de paginas de 2 nivel del proceso enviado a kernel");
 		free(paquete_ini);
 		break;
 	case LIBERAR_ESTRUCTURAS: ; // finalizar proceso
@@ -134,12 +138,14 @@ void manejo_conexiones(int socket_cliente){
 		liberarTodosLosMarcos(pcb->id_proceso);
 		// eliminar swap - poner funcion
 		eliminarSwap(pcb);
+		log_info(memoria_logger,"Estructuras del proceso liberadas");
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(memoria_logger,"me llego mensaje para supender proceso");
 		op_code codigo = ESPACIO_PCB_LIBERADO;
 		suspender_proceso(socket_cliente); //liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
 		enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
+		log_info(memoria_logger,"Proceso suspendido");
 		break;
 	default:break;
 	}
@@ -230,6 +236,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		t_paquete* paquete=crear_paquete();
 		agregar_entero_a_paquete(paquete,valor_leido);
 		enviar_paquete(paquete,socket_cpu);
+		log_info(memoria_logger,"Valor leido enviado a CPU");
 		break;
 	case WRITE: ;
 		dir_fisica = (uint32_t)list_get(datos,2);
