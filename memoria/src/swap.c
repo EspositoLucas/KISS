@@ -57,6 +57,7 @@ t_list* marcosMod(t_list* marquinhos){
 void escribirPagEnSwap(t_p_2* pag){
 	usleep(config_valores_memoria.retardo_swap);
 	memcpy(archivo_swap+get_marco_offset(pag->indice),memoria_usuario+get_marco_offset(pag->marco),config_valores_memoria.tam_pagina);
+	log_info(memoria_logger,"Se escribio pagina en swap");
 }
 
 void escribirPaginasModificadas(pcb* pcb){
@@ -64,8 +65,10 @@ void escribirPaginasModificadas(pcb* pcb){
 
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=list_get(paginasProc,i);
-		escribirPagEnSwap(pag);
+		escribirPagEnSwap(pag,archivo_swap);
+		log_info(memoria_logger,"Se escribio pagina modificada en swap");
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
+		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap");
 	}
 }
 

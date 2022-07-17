@@ -10,6 +10,7 @@ int main(void) {
     cargar_configuracion();
     inicializar_memoria();
 
+    log_info(memoria_logger,"memoria inicializada");
 
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
     log_info(memoria_logger, "Memoria lista para recibir al modulo cliente");
@@ -35,7 +36,7 @@ int atender_clientes_memoria(int socket_servidor){
 	return 0;
 }
 
-// Manejo conexiones - Procesar conexiones con los op code
+/// Manejo conexiones - Procesar conexiones con los op code
 
 void manejo_conexiones(int socket_cliente){
 
@@ -115,11 +116,13 @@ void manejo_conexiones(int socket_cliente){
 			tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
 			nueva_tabla->id_tabla = indice_de_tabla2;
 			nueva_tabla->lista_paginas = inicializar_tabla_segundo_nivel();
+			log_info(memoria_logger,"tabla segundo nivel creada");
 			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
 			entrada_en_tp1->indice=valorTP1+i;
 			entrada_en_tp1->numero_de_tabla2=indice_de_tabla2;
 			list_add(tabla_de_pagina_1_nivel,entrada_en_tp1);
 			list_add(lista_tablas_segundo_nivel,nueva_tabla);
+			log_info(memoria_logger,"numero de tabla de segundo nivel pasado a la de primer nivel");
 			indice_de_tabla2++;
 		}
 		//crea el swap
@@ -137,7 +140,7 @@ void manejo_conexiones(int socket_cliente){
 		liberarTodosLosMarcos(pcb->id_proceso);
 		// eliminar swap - poner funcion
 		eliminarSwap(pcb);
-		log_info(memoria_logger,"Estructuras del proceso liberadas");
+		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso");
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(memoria_logger,"me llego mensaje para supender proceso");
