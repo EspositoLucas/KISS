@@ -169,11 +169,13 @@ void agregar_a_paquete(t_paquete *paquete, void *valor, int tamanio_valor) {
 
 void agregar_entero_a_paquete(t_paquete *paquete, int tamanio_proceso) // Agregar un entero a un paquete (ya creado)
 {
-	paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + sizeof(int));
+	paquete->buffer->stream = realloc(paquete->buffer->stream, paquete->buffer->stream_size + 2*sizeof(int));
 	int size_tamanio = sizeof(int);
-	memcpy(paquete->buffer->stream , &size_tamanio, sizeof(int));
+	int offset=paquete->buffer->stream_size;
+	memcpy(paquete->buffer->stream +offset, &size_tamanio, sizeof(int));
+	offset+=size_tamanio;
     memcpy(paquete->buffer->stream , &tamanio_proceso, sizeof(int));
-    paquete->buffer->stream_size += tamanio_proceso + sizeof(int);
+    paquete->buffer->stream_size += 2* sizeof(int);
 }
 
 

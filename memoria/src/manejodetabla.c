@@ -68,10 +68,10 @@ uint32_t  obtenerPaginaAReemplazar(uint32_t pid){
 	}
  		switch(algoritmo_memoria){
  		case CLOCK:
- 			pagina_reemplazo = obtenerPaginaClock(tabla_marcos);
+ 			pagina_reemplazo = obtenerPaginaClock(tabla_marcos,pid);
  			break;
  		case CLOCK_M:
- 			pagina_reemplazo = obtenerPaginaClockM(tabla_marcos);
+ 			pagina_reemplazo = obtenerPaginaClockM(tabla_marcos,pid);
  			break;
  		default:break;
  		}
@@ -105,7 +105,7 @@ algoritmo obtener_algoritmo(){
 }
 
 
-uint32_t obtenerPaginaClock(t_list* lista){
+uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
 
     t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
     t_p_2* aux;
@@ -122,10 +122,12 @@ uint32_t obtenerPaginaClock(t_list* lista){
             }else{
                 siguiente=list_get(lista, i);
             }
-            siguiente->puntero_indice=1;
+            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+            //siguiente->puntero_indice=1;
              return aux->indice;
         } else {
-            aux->u = 0;
+        	cambiarUdePagina(aux->indice,pid,false);
+            //aux->u = 0;
         }
     }
     indice=0;
@@ -138,7 +140,7 @@ bool punteroEnUno(t_p_2* pagina){
 }
 
 
-uint32_t obtenerPaginaClockM(t_list* lista){
+uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
 
     t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
     t_p_2* aux;
@@ -156,7 +158,8 @@ uint32_t obtenerPaginaClockM(t_list* lista){
             }else{
                 siguiente=list_get(lista, i);
             }
-            siguiente->puntero_indice=1;
+            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+            //siguiente->puntero_indice=1;
              return aux->indice;
         }
     }
@@ -181,10 +184,12 @@ uint32_t obtenerPaginaClockM(t_list* lista){
     	            }else{
     	                siguiente=list_get(lista, i);
     	            }
-    	            siguiente->puntero_indice=1;
+    	            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+    	            //siguiente->puntero_indice=1;
     	            return aux->indice;
     	        }else {
-    	            aux->u = 0;
+    	        	cambiarUdePagina(aux->indice,pid,false);
+    	        	//aux->u = 0;
     	        }
     }
 
@@ -196,10 +201,12 @@ uint32_t obtenerPaginaClockM(t_list* lista){
         	            }else{
         	                siguiente=list_get(lista, i);
         	            }
-        	            siguiente->puntero_indice=1;
+        	            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+        	            //siguiente->puntero_indice=1;
         	            return aux->indice;
         	        }else {
-        	            aux->u = 0;
+        	        	cambiarUdePagina(aux->indice,pid,false);
+        	        	//aux->u = 0;
         	        }
         }
 

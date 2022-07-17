@@ -183,7 +183,8 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 	cabiarPagina(numPagina,pid);
 	return pagElegida->marco;
 }
-void cambiarPagina(uint32_t numPagina,uint32_t pid){
+///---------------------MODIFICAR TABLA DE PAGINAS---------------------------------
+void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
 	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
 	pthread_mutex_lock(&mutex_comparador_pid);
@@ -192,7 +193,40 @@ void cambiarPagina(uint32_t numPagina,uint32_t pid){
 	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
-	pagina->p=0;
+	pagina->p=algo;
+}
+void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
+	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
+	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
+	pthread_mutex_lock(&mutex_comparador_pid);
+	pid_comparador=pid;
+	pthread_mutex_unlock(&mutex_comparador_pid);
+	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
+	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
+	pagina->u=algo;
+}
+void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
+	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
+	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
+	pthread_mutex_lock(&mutex_comparador_pid);
+	pid_comparador=pid;
+	pthread_mutex_unlock(&mutex_comparador_pid);
+	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
+	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
+	pagina->m=algo;
+}
+void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
+	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
+	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
+	pthread_mutex_lock(&mutex_comparador_pid);
+	pid_comparador=pid;
+	pthread_mutex_unlock(&mutex_comparador_pid);
+	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
+	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
+	pagina->puntero_indice=algo;
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
