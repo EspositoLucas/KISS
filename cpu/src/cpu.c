@@ -139,7 +139,6 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,READ);
-	agregar_entero_a_paquete(paquete,pcb->id_proceso);
 	agregar_entero_a_paquete(paquete,dir_fisica);
 	enviar_paquete(paquete,socket_memoria);
 	free(paquete);
@@ -171,7 +170,6 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,WRITE);
-	agregar_entero_a_paquete(paquete,pcb->id_proceso);
 	agregar_entero_a_paquete(paquete,dir_fisica);
 	agregar_entero_a_paquete(paquete,valor);
 	enviar_paquete(paquete,socket_memoria);
@@ -184,7 +182,6 @@ void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,COPY);
-	agregar_entero_a_paquete(paquete,pcb->id_proceso);
 	agregar_entero_a_paquete(paquete,dir_fisica_destino);
 	agregar_entero_a_paquete(paquete,dir_fisica_origen);
 	enviar_paquete(paquete,socket_memoria);

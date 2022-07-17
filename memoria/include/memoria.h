@@ -37,6 +37,7 @@ arch_config config_valores_memoria;
 //VARIABLES
 int socket_memoria;
 
+int pid_comparador;
 void* memoria_usuario;
 int cantidad_de_marcos;
 char* pathSwap;
@@ -72,13 +73,13 @@ int cantidadUsadaMarcos(uint32_t );
 void inicializar_marcos();
 double marcosTotales();
 t_list* marcosPid(uint32_t );
+void cambiarPdePagina(uint32_t ,uint32_t ,bool);
 
 int pags_proceso(uint32_t ,int );
 int tp2_proceso(int ,int );
 
 uint32_t leer_de_memoria(uint32_t);
 void escribirEn(uint32_t , uint32_t);
-bool tiene_mismo_id(tabla_de_segundo_nivel*);
 int get_marco_offset(uint32_t indice);
 
 

@@ -19,8 +19,9 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t,uint32_t);
 uint32_t devolver_marco(uint32_t,uint32_t );
 
 algoritmo obtener_algoritmo();
-uint32_t obtenerPaginaClock(t_list*);
-uint32_t  obtenerPaginaClockM(t_list* );
+uint32_t obtenerPaginaClock(t_list*,uint32_t);
+uint32_t  obtenerPaginaClockM(t_list*, uint32_t);
+uint32_t  obtenerPaginaAReemplazar(uint32_t);
 
 bool condicion_misma_numero_tabla(void* );
 bool condicion_misma_numero_p_id(void*);
