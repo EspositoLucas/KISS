@@ -31,10 +31,11 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	t_paquete *paquete = crear_paquete_con_codigo_de_operacion(INICIALIZAR_ESTRUCTURAS);
 	armarPaquete(paquete,pcb);
 	enviar_paquete(paquete, socket_fd);
+	log_info(kernel_logger_info, "envio a memoria mensaje para inicializar estructuras del proceso");
 	eliminar_paquete(paquete);
 
 	pcb = recibirPcb(socket_fd);
-
+	log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida ");
 	return pcb;
  }
 

@@ -33,6 +33,7 @@ int main(int argc, char **argv){
 	agregar_entero_a_paquete(paquete_instrucciones, tamanio_proceso);
 	serializar_instrucciones(instrucciones, paquete_instrucciones);
 
+	log_info(consola_logger, "instrucciones serializadas\n");
 
 //	Conexion servidor
 
@@ -42,7 +43,7 @@ int main(int argc, char **argv){
 //	Enviar paquete
 
 	enviar_paquete(paquete_instrucciones, server_fd);
-	log_info(consola_logger, "Paquete enviado correctamente.\n");
+	log_info(consola_logger, "Paquete con tamanio e instrucciones enviado correctamente.\n");
 
 //	Terminar programa
 
@@ -50,7 +51,7 @@ int main(int argc, char **argv){
 	if(respuesta_kernel != FINALIZAR_CONSOLA) {
 			log_error(consola_logger, "Error al finalizar consola");
 		}
-	log_info(consola_logger, "Terminando programa.\n");
+	log_info(consola_logger, "TFinalizo el proceso, terminando programa.\n");
 	terminar_programa(server_fd, consola_logger, config);
 
 

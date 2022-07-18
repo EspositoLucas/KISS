@@ -19,19 +19,21 @@ int main(void)
 //    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
 //    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
 
-    printf("Conectado a cpu \n");
+    log_info(kernel_logger_info, "Kernel conectado con cpu");
 
    // conexion memoria
 
  //   socket_memoria = crear_conexion(config_valores_kernel.ip_memoria, config_valores_kernel.puerto_memoria);
 
+    log_info(kernel_logger_info, "Kernel conectado con memoria");
+
     server_fd = iniciar_servidor(config_valores_kernel.ip_kernel,config_valores_kernel.puerto_escucha);
 
-    printf("Servidor creado \n");
+    log_info(kernel_logger_info, "Servidor creado");
 
     inciar_planificacion();
 
-    printf("Planificacion iniciada\n");
+    log_info(kernel_logger_info, "Planificacion iniciada");
 
     log_info(kernel_logger_info, "Kernel listo para recibir al modulo cliente");
 
@@ -116,17 +118,19 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  	switch (codigo_operacion) {
 	  	case MENSAJE:
 	  		recibir_mensaje(socket_cliente,kernel_logger_info);
+	  		log_info(kernel_logger_info, "Me llego el mensaje:\n");
 	  		break;
 	  	case PAQUETE_CONSOLA:
 	  		log_info(kernel_logger_info, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
-	  		printf("Consola deserializada, entro a armar pcb\n");
+	  		log_info(kernel_logger_info, "Consola deserializada, entro a armar pcb\n");
 	  		proceso* proceso = malloc(sizeof(proceso)) ;
 	  		proceso->pcb = malloc(sizeof(pcb));
 	  		proceso->pcb = crear_estructura_pcb(consola);
 	  		proceso->socket = socket_cliente;
-	  		printf("PCB armada -> Lo meto en new y arrancamos con la planificacion\n");
+	  		log_info(kernel_logger_info, "PCB armada -> agregar proceso a new y arrancar con la planificacion\n");
 	  		agregarANewPcb(proceso);
+
 	  		break;
 	  	case PAQUETE:
 			log_info(kernel_logger_info, "Me llego el paquete:\n");
