@@ -8,6 +8,22 @@
 #ifndef INCLUDE_SWAP_H_
 #define INCLUDE_SWAP_H_
 
+//VARIABLES
+
+void* archivo_swap ; // la hago global para usarlo en otras funciones una vez que se crea el swap
+t_list* archivos;
+uint32_t archivo ;
+
+//STRUCTS
+
+typedef struct
+ {
+ 	uint32_t pid ;
+ 	void* archivo;
+
+ } archivos_swap;
+
+
 //FUNCIONES
 
 char* armarPath(int );

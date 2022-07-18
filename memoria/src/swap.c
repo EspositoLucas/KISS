@@ -1,7 +1,5 @@
 #include "swap.h"
 
-void* archivo_swap ; // la hago global para usarlo en otras funciones una vez que se crea el swap
-
 char* armarPath(int idProceso){
 	char* path=string_new();
 	path=strcat(pathSwap,strcat("/",strcat(string_itoa(idProceso),".swap")));
@@ -22,10 +20,15 @@ void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
 	// hacer el mmap para que quede siempre abierto
 
 	archivo_swap = mmap(NULL,idProceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
+	archivos_swap* archivo= malloc(sizeof(archivo));
+	archivo->pid = idProceso;
+	archivo->archivo = archivo_swap;
+	list_add(archivos,archivo);
 
 	//close(fd);
 }
 void eliminarSwap(pcb* pcb){
+	archivos_swap* archivo = (archivos_swap*)list_find(archivos,archivos_con_pid);
 	munmap(archivo_swap,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
 	if(remove(armarPath(pcb->id_proceso))==-1){
 		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
@@ -33,6 +36,10 @@ void eliminarSwap(pcb* pcb){
 	} else {
 		log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
 	}
+}
+
+bool archivos_con_pid(uint32_t pid) {
+	return archivo == pid;
 }
 
 void suspender_proceso(int socket_cliente) { // aca hay que desasignar las paginas del proceso en los marcos en los que están asignadas y escribir en swap si el bit de modificado es 1
@@ -66,6 +73,7 @@ void escribirPaginasModificadas(pcb* pcb){
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=list_get(paginasProc,i);
 		escribirPagEnSwap(pag);
+		msync(archivo_swap,pcb->tamanio_proceso,MS_ASYNC);
 		log_info(memoria_logger,"Se escribio pagina modificada en swap");
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
 		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap");

@@ -51,6 +51,8 @@ pthread_mutex_t mutex_comparador_pid;
 pthread_mutex_t mutex_comparador;
 pthread_mutex_t mutex_marcos;
 pthread_mutex_t mutex_memoria_usuario;
+pthread_mutex_t mutex_lista_archivo;
+pthread_mutex_t mutex_comparador_archivo_pid;
 
 //FUNCIONES
 

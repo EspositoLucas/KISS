@@ -163,10 +163,13 @@ void inicializar_memoria(){
 	algoritmo_memoria=obtener_algoritmo();
 	indice_de_tabla2=0;
 	pathSwap=config_valores_memoria.path_swap;
+	archivos= list_create();
 	pthread_mutex_init(&mutex_comparador_pid,NULL);
 	pthread_mutex_init(&mutex_comparador,NULL);
 	pthread_mutex_init(&mutex_marcos,NULL);
 	pthread_mutex_init(&mutex_memoria_usuario,NULL);
+	pthread_mutex_init(&mutex_comparador_archivo_pid,NULL);
+	pthread_mutex_init(&mutex_lista_archivo,NULL);
 }
 int get_marco(int marco){
 	return marco*config_valores_memoria.tam_pagina;
@@ -181,8 +184,10 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 	t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
 	if(pagElegida->m){
 		escribirPagEnSwap(pagElegida);
+		msync(archivo_swap,pid,MS_ASYNC);
 	}
-	cambiarPdePagina(numPagina,pid,1);
+	cambiarPdePagina(numPagina,pid,0);
+	cambiarMdePagina(numPagina,pid,0);
 	return pagElegida->marco;
 }
 ///---------------------MODIFICAR TABLA DE PAGINAS---------------------------------
@@ -407,7 +412,7 @@ uint32_t leer_de_memoria(uint32_t dir_fisica){
 
 void escribirEn(uint32_t dir_fisica, uint32_t valor){
 	if(dir_fisica > config_valores_memoria.tam_memoria) {
-		log_error(memoria_logger,"Escritura insatisfactorio");
+		log_error(memoria_logger,"Escritura insatisfactoria");
 	}
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
 	log_info(memoria_logger,"OK");
