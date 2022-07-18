@@ -169,13 +169,15 @@ void inicializar_memoria(){
 	pthread_mutex_init(&mutex_marcos,NULL);
 	pthread_mutex_init(&mutex_memoria_usuario,NULL);
 	pthread_mutex_init(&mutex_comparador_archivo_pid,NULL);
-	pthread_mutex_init(&mutex_lista_archivo,NULL);
+	pthread_mutex_init(&mutex_archivo_swap,NULL);
 }
 int get_marco(int marco){
 	return marco*config_valores_memoria.tam_pagina;
 }
 void escribirPagEnMemoria(void* pagina,uint32_t numMarco){
+	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(memoria_usuario + get_marco(numMarco),pagina,config_valores_memoria.tam_memoria);
+	pthread_mutex_unlock(&mutex_memoria_usuario);
 }
 
 
@@ -183,6 +185,7 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 	t_list* pagsEnMemoria=paginasEnMemoria(pid);
 	t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
 	if(pagElegida->m){
+		asignarAlArchivo(pid);
 		escribirPagEnSwap(pagElegida);
 		msync(archivo_swap,pid,MS_ASYNC);
 	}
@@ -281,15 +284,13 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 	case WRITE: ;
 		dir_fisica = (uint32_t)list_get(datos,1);
 		uint32_t valor = (uint32_t)list_get(datos,2);
-
-		usleep(config_valores_memoria.retardo_memoria);
 		escribirEn(dir_fisica, valor);
+		usleep(config_valores_memoria.retardo_memoria);
+		//enviar mensaje a cpu OK
 		break;
 	case COPY: ;
 		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);
 		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,2);
-
-		usleep(config_valores_memoria.retardo_memoria);
 		valor_leido = leer_de_memoria(dir_fisica_origen);
 		escribirEn(dir_fisica_destino, valor_leido);
 		break;
@@ -414,10 +415,9 @@ void escribirEn(uint32_t dir_fisica, uint32_t valor){
 	if(dir_fisica > config_valores_memoria.tam_memoria) {
 		log_error(memoria_logger,"Escritura insatisfactoria");
 	}
+	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
+	pthread_mutex_unlock(&mutex_memoria_usuario);
 	log_info(memoria_logger,"OK");
 }
 
-int get_marco_offset(uint32_t indice) {
-	return indice * config_valores_memoria.tam_pagina ;
-}

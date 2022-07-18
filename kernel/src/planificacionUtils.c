@@ -115,7 +115,9 @@ proceso* obtenerSiguienteReady(){
  		case SRT:
  			procesoSeleccionado = obtenerSiguienteSRT();
  			break;
+ 		default:break ;
  		}
+
  	}
 // 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
  	return procesoSeleccionado;

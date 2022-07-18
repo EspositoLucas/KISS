@@ -62,7 +62,7 @@ t_list* inicializar_tabla_segundo_nivel(){
 
 uint32_t  obtenerPaginaAReemplazar(uint32_t pid){
 
-	uint32_t pagina_reemplazo;
+	uint32_t pagina_reemplazo = 0;
 
 	t_list* tabla_marcos = paginasEnMemoria(pid);
 	if(list_all_satisfy(tabla_marcos,tienePunteroEnCero)) {

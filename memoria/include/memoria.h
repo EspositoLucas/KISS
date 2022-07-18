@@ -53,6 +53,7 @@ pthread_mutex_t mutex_marcos;
 pthread_mutex_t mutex_memoria_usuario;
 pthread_mutex_t mutex_lista_archivo;
 pthread_mutex_t mutex_comparador_archivo_pid;
+pthread_mutex_t mutex_archivo_swap;
 
 //FUNCIONES
 
@@ -85,7 +86,7 @@ void escribirEn(uint32_t , uint32_t);
 uint32_t escribirModificaciones(uint32_t ,uint32_t );
 void escribirPagEnMemoria(void* ,uint32_t);
 bool tiene_mismo_id(tabla_de_segundo_nivel*);
-int get_marco_offset(uint32_t indice);
+int get_marco(int);
 
 void cambiarPdePagina(uint32_t,uint32_t ,bool );
 void cambiarUdePagina(uint32_t ,uint32_t ,bool );

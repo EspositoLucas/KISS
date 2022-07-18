@@ -12,7 +12,7 @@
 
 void* archivo_swap ; // la hago global para usarlo en otras funciones una vez que se crea el swap
 t_list* archivos;
-uint32_t archivo ;
+uint32_t comparador_archivo ;
 
 //STRUCTS
 
@@ -35,5 +35,7 @@ t_list* marcosMod(t_list*);
 void escribirPagEnSwap(t_p_2*);
 void escribirPaginasModificadas(pcb* );
 void* traerPaginaDeSwap(uint32_t );
+void asignarAlArchivo(uint32_t );
+bool archivos_con_pid(uint32_t );
 
 #endif /* INCLUDE_SWAP_H_ */
