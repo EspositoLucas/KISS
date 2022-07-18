@@ -93,7 +93,7 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger, "Inicializando estructuras \n");
 		//Recibe el pcb del proceso para iniciar estructuras
 		pcb* pcb_recibido=recibirPcb(socket_cliente);
-
+		log_info(memoria_logger, "recibi pcb de kernel para inicializar estructuras \n");
 		//Averiguamos cuantas pags ocupa el proceso
 		int cantidad_de_pags=pags_proceso(pcb_recibido->tamanio_proceso,config_valores_memoria.tam_pagina);
 

@@ -56,7 +56,7 @@ void cargar_configuracion(char* path) {
       t_config* config = config_create(path); //Leo el archivo de configuracion
 
       if (config == NULL) {
-          perror("Archivo de configuracion de kernel no encontrado");
+          perror("Archivo de configuracion de kernel no encontrado \n");
           abort();
       }
 
@@ -137,7 +137,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		break;
 
 	      default:
-	          log_warning(kernel_logger_info, "Operacion desconocida");
+	          log_warning(kernel_logger_info, "Operacion desconocida \n");
 	          break;
 	  	}
   }
@@ -161,7 +161,7 @@ int atender_clientes_kernel(int socket_servidor){
 			pthread_detach(hilo_cliente);
 			return 1;
 		} else {
-			log_error(kernel_logger_info, "Error al escuchar clientes... Finalizando servidor"); // log para fallo de comunicaciones
+			log_error(kernel_logger_info, "Error al escuchar clientes... Finalizando servidor \n"); // log para fallo de comunicaciones
 		}
 
 

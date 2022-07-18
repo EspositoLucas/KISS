@@ -35,19 +35,19 @@ int main()
 	conexion_interrupcion->ip=ip;
 	conexion_interrupcion->puerto=puerto_interrupt;
 	pthread_create(&manejoInterrupciones,NULL,interrupt,conexion_interrupcion);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
-	log_info(cpu_logger, "Hilo de interrupciones creado");
+	log_info(cpu_logger, "Hilo de interrupciones creado \n");
 
 	///INICIA LA TLB
 
 	crear_tlb();
-	log_info(cpu_logger, "Tlb creada");
+	log_info(cpu_logger, "Tlb creada \n");
 
 	///CREA LA CONEXION CON EL KERNEL
 	/*puts(config_valores_cpu.ip_cpu);
 	puts(config_valores_cpu.puerto_escucha_dispatch);
 	puts(config_valores_cpu.puerto_escucha_interrupt);*/
 	int server_fd = iniciar_servidor(ip,puerto_dispatch);
-    log_info(cpu_logger, "CPU listo para recibir al modulo cliente");
+    log_info(cpu_logger, "CPU listo para recibir al modulo cliente \n");
     int cliente_fd = esperar_cliente(server_fd);
     printf("Se conecto un cliente por dispatch\n");
 
@@ -61,15 +61,15 @@ int main()
         case PCB:
         	parar_proceso=0;//INICIA EL CONTADOR DE PARAR PROCESO
         	pcb_recibido = recibirPcb(cliente_fd);
-        	log_info(cpu_logger,"Recibi PCB de Id: %d",pcb_recibido->id_proceso);
+        	log_info(cpu_logger,"Recibi PCB de Id: %d \n",pcb_recibido->id_proceso);
         	ciclo_de_instruccion(pcb_recibido,cliente_fd);//INICIA EL CICLO DE INSTRUCCION
             break;
         case -1:
-            log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+            log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
             return EXIT_FAILURE;
         break;
         default:
-            log_warning(cpu_logger, "Operacion desconocida");
+            log_warning(cpu_logger, "Operacion desconocida \n");
             break;
         }
     }
@@ -80,7 +80,7 @@ void* ciclo_de_instruccion(pcb* PCB,int socket_kernel){//ESTRUCTURA PRINCIPAL DE
 instruccion* instruccionProxima;
 parar_proceso=0;
 
-log_info(cpu_logger, "Se creo hilo para recibir interrupciones");
+log_info(cpu_logger, "Se creo hilo para recibir interrupciones \n");
 while((int)PCB->program_counter <list_size(PCB->instrucciones)){
 	instruccionProxima = list_get(PCB->instrucciones,(int)PCB->program_counter);//FETCH
 	decode(instruccionProxima,PCB);//DECODE (CON EXECUTE INCLUIDO)
@@ -123,7 +123,7 @@ void decode(instruccion* instruccion,pcb* PCB){//IDENTIFICA EL TIPO DE INSTRUCCI
 
 void ejecutarNO_OP(){
 usleep(config_valores_cpu.retardo_NOOP);
-log_info(cpu_logger, "Se ejecuto instruccion NO-OP");
+log_info(cpu_logger, "Se ejecuto instruccion NO-OP \n");
 }
 
 void ejecutarIO(int tiempo,pcb* PCB){
@@ -132,18 +132,18 @@ PCB->estado_proceso=BLOQUEADO;
 pthread_mutex_lock(&pedidofin);
 parar_proceso++;
 pthread_mutex_unlock(&pedidofin);
-log_info(cpu_logger, "Se ejecuto instruccion I/O");
+log_info(cpu_logger, "Se ejecuto instruccion I/O \n");
 }
 
 void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
-	log_info(cpu_logger, "Traduccion exitosa");
+	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,READ);
 	agregar_entero_a_paquete(paquete,dir_fisica);
 	enviar_paquete(paquete,socket_memoria);
-	log_info(cpu_logger, "Pedido de lectura enviado");
+	log_info(cpu_logger, "Pedido de lectura enviado \n");
 	free(paquete);
 
 	int i=0;
@@ -154,13 +154,13 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 		switch (cod_op){
 		case PAQUETE:
 			valor_leido=(uint32_t)recibir_stream(&size,socket_memoria);
-			printf("Valor leido de memoria: %d",valor_leido);
+			printf("Valor leido de memoria: %d \n",valor_leido);
 			break;
 		case -1:
-		     log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+		     log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
 		     break;
 		default:
-		     log_warning(cpu_logger, "Operacion desconocida");
+		     log_warning(cpu_logger, "Operacion desconocida \n");
 		     break;
 		}
 		if(i==1){
@@ -171,30 +171,30 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 
 void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
-	log_info(cpu_logger, "Traduccion exitosa");
+	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,WRITE);
 	agregar_entero_a_paquete(paquete,dir_fisica);
 	agregar_entero_a_paquete(paquete,valor);
 	enviar_paquete(paquete,socket_memoria);
-	log_info(cpu_logger, "Pedido de escritura enviado");
+	log_info(cpu_logger, "Pedido de escritura enviado \n");
 	free(paquete);
 
 	while(1){
 		int cod_op = recibir_operacion(socket_memoria);
 		switch (cod_op){
 		case ESCRITURA_OK:
-			log_info(cpu_logger, "Se escribio exitosamente en la memoria");
+			log_info(cpu_logger, "Se escribio exitosamente en la memoria \n");
 			break;
 		case ESCRITURA_ERROR:
-			log_info(cpu_logger, "Ocurrio un error al escribir en memoria");
+			log_info(cpu_logger, "Ocurrio un error al escribir en memoria \n");
 			break;
 		case -1:
-			log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+			log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
 			break;
 		default:
-			log_warning(cpu_logger, "Operacion desconocida");
+			log_warning(cpu_logger, "Operacion desconocida \n");
 			break;
 		}
 	}
@@ -203,30 +203,30 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
 	uint32_t dir_fisica_destino=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaDestino);
 	uint32_t dir_fisica_origen=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaOrigen);
-	log_info(cpu_logger, "Traducciones exitosas");
+	log_info(cpu_logger, "Traducciones exitosas \n");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,COPY);
 	agregar_entero_a_paquete(paquete,dir_fisica_destino);
 	agregar_entero_a_paquete(paquete,dir_fisica_origen);
 	enviar_paquete(paquete,socket_memoria);
-	log_info(cpu_logger, "Pedido de copia enviado");
+	log_info(cpu_logger, "Pedido de copia enviado \n");
 	free(paquete);
 
 	while(1){
 		int cod_op = recibir_operacion(socket_memoria);
 		switch (cod_op){
 		case ESCRITURA_OK:
-			log_info(cpu_logger, "Se escribio exitosamente en la memoria");
+			log_info(cpu_logger, "Se escribio exitosamente en la memoria \n");
 			break;
 		case ESCRITURA_ERROR:
-			log_info(cpu_logger, "Ocurrio un error al escribir en memoria");
+			log_info(cpu_logger, "Ocurrio un error al escribir en memoria \n");
 			break;
 		case -1:
-			log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+			log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
 			break;
 		default:
-			log_warning(cpu_logger, "Operacion desconocida");
+			log_warning(cpu_logger, "Operacion desconocida \n");
 			break;
 		}
 	}
@@ -237,7 +237,7 @@ PCB->estado_proceso=FINALIZADO;
 pthread_mutex_lock(&pedidofin);
 parar_proceso++;
 pthread_mutex_unlock(&pedidofin);
-log_info(cpu_logger, "Se ejecuto instruccion EXIT");
+log_info(cpu_logger, "Se ejecuto instruccion EXIT \n");
 }
 
 int checkInterrupt(){
@@ -253,25 +253,25 @@ return 0;}
 void* interrupt(void* datos){
 conexion_t* cpu=datos;
 int server_fd = iniciar_servidor(cpu->ip,cpu->puerto);
-log_info(cpu_logger, "CPU listo para recibir interrupciones");
+log_info(cpu_logger, "CPU listo para recibir interrupciones \n");
 int cliente_fd = esperar_cliente(server_fd);
-log_info(cpu_logger,"Se conecto Kernel al puerto interrupt");
+log_info(cpu_logger,"Se conecto Kernel al puerto interrupt \n");
 while(1){
 	int cod_op = recibir_operacion(cliente_fd);
 	switch (cod_op){
 		case MENSAJE:
-			log_info(cpu_logger,"Peticion de interrupcion recibida");
+			log_info(cpu_logger,"Peticion de interrupcion recibida \n");
 			pthread_mutex_lock(&pedidofin);
 			parar_proceso++;
 			pthread_mutex_unlock(&pedidofin);
 
 		break;
 		case -1:
-			log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+			log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
 			return (void*)(EXIT_FAILURE);
 		break;
 		default:
-			 log_warning(cpu_logger, "Operacion desconocida");
+			 log_warning(cpu_logger, "Operacion desconocida \n");
 		break;
 	}
 }
@@ -282,22 +282,22 @@ void* conexion_inicial_memoria(void* datos){
 	conexion_t* cpu=datos;
 	socket_memoria=crear_conexion(cpu->ip,cpu->puerto);
 	pedir_handshake(socket_memoria);
-	log_info(cpu_logger, "Pedido de handshake enviado");
+	log_info(cpu_logger, "Pedido de handshake enviado \n");
 	int codigo_memoria;
 	while(1){
 		codigo_memoria=recibir_operacion(socket_memoria);
 		switch(codigo_memoria){
 			case PAQUETE:
 				configuracion_tabla=recibir_handshake(socket_memoria);
-				log_info(cpu_logger,"Recibi configuracion por handshake");
+				log_info(cpu_logger,"Recibi configuracion por handshake \n");
 				return NULL;
 			break;
 			case -1:
-				log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+				log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
 				return (void*)(EXIT_FAILURE);
 			break;
 			default:
-				 log_warning(cpu_logger, "Operacion desconocida");
+				 log_warning(cpu_logger, "Operacion desconocida \n");
 			break;
 		}
 	}

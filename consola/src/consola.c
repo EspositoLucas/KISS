@@ -49,7 +49,7 @@ int main(int argc, char **argv){
 
 	op_code respuesta_kernel = recibir_operacion_nuevo(server_fd);
 	if(respuesta_kernel != FINALIZAR_CONSOLA) {
-			log_error(consola_logger, "Error al finalizar consola");
+			log_error(consola_logger, "Error al finalizar consola \n");
 		}
 	log_info(consola_logger, "TFinalizo el proceso, terminando programa.\n");
 	terminar_programa(server_fd, consola_logger, config);
@@ -63,7 +63,7 @@ t_config* cargar_configuracion(char* path) {
 	t_config* config = config_create(path); //Leo el archivo de configuracion
 
 	if (config == NULL) {
-	  	perror("Archivo de configuracion de consola no encontrado");
+	  	perror("Archivo de configuracion de consola no encontrado \n");
 	  	abort();
 	}
 
@@ -158,7 +158,7 @@ char *leer_archivo(char *unPath)
     char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
     if (cadena == NULL)
     {
-        perror("Error en la reserva de memoria") ;
+        perror("Error en la reserva de memoria \n") ;
     }
     int cant_elementos_leidos = fread(cadena, sizeof(char), cant_elementos, archivo);
     if (cant_elementos_leidos != cant_elementos)

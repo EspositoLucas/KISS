@@ -12,20 +12,26 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida,entrada);
 
 	if(pagina->p){
+		log_info(memoria_logger,"Pagina presente en memoria, no hay page fault \n");
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria
 		return pagina->marco;
 	}
 	else{ // page fault
+		log_info(memoria_logger,"Page Fault, buscar marco libre \n");
 		usleep(config_valores_memoria.retardo_swap); //retardo swap
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
 			pagina->p=true;
 			void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
+			log_info(memoria_logger,"pagina traida de swap \n");
 			escribirPagEnMemoria(paginaTraida,pagina->marco);//la escribe en memoria
+			log_info(memoria_logger,"Se escribio y reemplazo pagina traida de swap en memoria \n");
 			pagina->p=true;//pagina ahora está presente en memoria
+			log_info(memoria_logger,"Se obtuvo pagina a reemplazar \n");
 			return pagina->marco;
 
 		}
+		log_info(memoria_logger,"Cant max de marcos del proceso ocupados,obtener pagina reemplazar \n");
 		uint32_t numPagAReemplazar=obtenerPaginaAReemplazar(tabla_elegida->p_id);
 		log_info(memoria_logger,"Se obtuvo pagina a reemplazar \n");
 		uint32_t marcoAUsar=escribirModificaciones(numPagAReemplazar,tabla_elegida->p_id);//Veo que marco voy a usar para traer la pagina
@@ -95,14 +101,14 @@ algoritmo obtener_algoritmo(){
  	 if (strcmp(algoritmo_reemplazo,"CLOCK") == 0)
  	 {
  		 switcher = CLOCK;
- 	     log_info(memoria_logger, "El algoritmo de planificacion elegido es CLOCK.");
+ 	     log_info(memoria_logger, "El algoritmo de planificacion elegido es CLOCK.\n");
  	 }
 
  	    //CLOCK-M
  	 if (strcmp(algoritmo_reemplazo,"CLOCK-M") == 0)
  	 {
  		 switcher = CLOCK_M;
- 	     log_info(memoria_logger, "El algoritmo de planificacion elegido es CLOCK-M.");
+ 	     log_info(memoria_logger, "El algoritmo de planificacion elegido es CLOCK-M.\n");
  	 }
  	 return switcher;
 }
