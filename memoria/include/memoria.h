@@ -5,11 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <commons/log.h>
+#include <pthread.h>
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"
 #include "manejodetabla.h"
 #include "swap.h"
+
 
 
 // STRUCTS/ENUMS

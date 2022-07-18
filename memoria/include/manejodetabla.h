@@ -7,7 +7,7 @@
 t_list* lista_de_tablas_de_pagina_2_nivel;
 int indice_de_tabla2;
 uint32_t numero_tabla_2p;
-
+int pid_comparador;
 //FUNCIONES
 
 bool posicion_vacia(t_p_1*);

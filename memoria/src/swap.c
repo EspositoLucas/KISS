@@ -65,7 +65,7 @@ void escribirPaginasModificadas(pcb* pcb){
 
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=list_get(paginasProc,i);
-		escribirPagEnSwap(pag,archivo_swap);
+		escribirPagEnSwap(pag);
 		log_info(memoria_logger,"Se escribio pagina modificada en swap");
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
 		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap");

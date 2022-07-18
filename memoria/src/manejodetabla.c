@@ -1,6 +1,5 @@
 #include "manejodetabla.h"
 
-int pid_comparador;
 //------------------------ACCESO A PRIMERA TABLA------------------------
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	int entradafinal=(int)(tabla+entrada);

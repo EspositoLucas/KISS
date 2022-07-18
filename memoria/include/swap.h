@@ -16,7 +16,7 @@ void eliminarSwap(pcb* );
 void suspender_proceso(int ) ;
 bool modificados(t_p_2* );
 t_list* marcosMod(t_list*);
-void escribirPagEnSwap(t_p_2* ,void* );
+void escribirPagEnSwap(t_p_2*);
 void escribirPaginasModificadas(pcb* );
 void* traerPaginaDeSwap(uint32_t );
 
