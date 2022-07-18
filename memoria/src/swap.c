@@ -73,7 +73,7 @@ void escribirPagEnSwap(t_p_2* pag){
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(archivo_swap+get_marco(pag->indice),memoria_usuario+get_marco(pag->marco),config_valores_memoria.tam_pagina);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
-	log_info(memoria_logger,"Se escribio pagina en swap");
+	log_info(memoria_logger,"Se escribio pagina en swap \n");
 }
 
 void escribirPaginasModificadas(pcb* pcb){
@@ -86,9 +86,9 @@ void escribirPaginasModificadas(pcb* pcb){
 		escribirPagEnSwap(pag);
 		msync(archivo_swap,pcb->tamanio_proceso,MS_ASYNC);
 		cambiarMdePagina(pag->indice,pcb->id_proceso,0);
-		log_info(memoria_logger,"Se escribio pagina modificada en swap");
+		log_info(memoria_logger,"Se escribio pagina modificada en swap \n");
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
-		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap");
+		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap \n");
 	}
 }
 

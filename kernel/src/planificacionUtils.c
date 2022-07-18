@@ -4,8 +4,11 @@
 
 void inciar_planificacion(){
 	iniciar_planificador_largo_plazo();
+	log_info(kernel_logger_info, "Estructuras plan largo plazo creadas \n");
 	iniciar_planificador_corto_plazo();
+	log_info(kernel_logger_info, "Estructuras corto plazo creadas \n");
 	iniciar_planificador_mediano_plazo();
+	log_info(kernel_logger_info, "Estructuras mediano plazo creadas \n");
 }
 
 
@@ -31,11 +34,11 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	t_paquete *paquete = crear_paquete_con_codigo_de_operacion(INICIALIZAR_ESTRUCTURAS);
 	armarPaquete(paquete,pcb);
 	enviar_paquete(paquete, socket_fd);
-	log_info(kernel_logger_info, "envio a memoria mensaje para inicializar estructuras del proceso");
+	log_info(kernel_logger_info, "envio a memoria mensaje para inicializar estructuras del proceso \n");
 	eliminar_paquete(paquete);
 
 	pcb = recibirPcb(socket_fd);
-	log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida ");
+	log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida \n ");
 	return pcb;
  }
 
@@ -86,14 +89,14 @@ algoritmo obtener_algoritmo(){
  	 if (strcmp(algoritmo,"FIFO") == 0)
  	 {
  		 switcher = FIFO;
- 		log_info(kernel_logger_info, "El algoritmo de planificacion elegido es FIFO.");
+ 		log_info(kernel_logger_info, "El algoritmo de planificacion elegido es FIFO \n");
  	 }
 
  	    //SFJ SIN DESALOJO
  	 if (strcmp(algoritmo,"SRT") == 0)
  	 {
  		 switcher = SRT;
- 		log_info(kernel_logger_info, "El algoritmo de planificacion elegido es SRT.");
+ 		log_info(kernel_logger_info, "El algoritmo de planificacion elegido es SRT \n");
  	 }
  	 return switcher;
 }
@@ -130,16 +133,17 @@ proceso* obtenerSiguienteFIFO(){
 	log_info(kernel_logger_info, "Inicio la planificacion FIFO");
  	chequear_lista_pcbs(colaReady);
  	proceso* procesoSeleccionado = list_remove(colaReady,0);
-// 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
+ 	log_info(kernel_logger_info, "PID[%d] sale de READY para plan FIFO \n", procesoSeleccionado->pcb->id_proceso);
 	return procesoSeleccionado;
 
 }
 
 proceso* obtenerSiguienteSRT(){
 
-	log_info(kernel_logger_info, "Inicio la planificacion SRT");
+	log_info(kernel_logger_info, "Inicio la planificacion SRT \n");
  	asignarEstimacionesAProcesos();
  	proceso* procesoElegido = elegirElDeMenorEstimacion();
+ 	log_info(kernel_logger_info, "PID[%d] con menor estimacion sale de READY para plan SRT \n", procesoElegido->pcb->id_proceso);
  	return procesoElegido;
  }
 
@@ -183,13 +187,12 @@ void calculoEstimacionProceso(proceso *proceso){
 void interrumpir_cpu(){
 	t_paquete *paqueteAEnviar = crear_paquete_con_codigo_de_operacion(INTERRUPCION);
 	enviar_paquete(paqueteAEnviar, socket_interrupt);
+	log_info(kernel_logger_info, "se envia mensaje de interrupcion a cpu \n");
 	eliminar_paquete(paqueteAEnviar);
 
 }
 
 void ejecutarIO(uint32_t tiempoIO){
-//	printf("EJECUTO IO\n");
-
 	usleep(tiempoIO * 1000);
 }
 

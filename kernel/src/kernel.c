@@ -11,7 +11,7 @@ int main(void)
 
     kernel_logger_info = log_create("kernel.log", "Servidor Kernel", 1, LOG_LEVEL_INFO);
 
-    log_info(kernel_logger_info, "Archivo de configuracion cargada ");
+    log_info(kernel_logger_info, "Archivo de configuracion cargada \n");
 
 
     //conexion cpu
@@ -19,23 +19,23 @@ int main(void)
 //    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
 //    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
 
-    log_info(kernel_logger_info, "Kernel conectado con cpu");
+    log_info(kernel_logger_info, "Kernel conectado con cpu \n");
 
    // conexion memoria
 
  //   socket_memoria = crear_conexion(config_valores_kernel.ip_memoria, config_valores_kernel.puerto_memoria);
 
-    log_info(kernel_logger_info, "Kernel conectado con memoria");
+    log_info(kernel_logger_info, "Kernel conectado con memoria \n");
 
     server_fd = iniciar_servidor(config_valores_kernel.ip_kernel,config_valores_kernel.puerto_escucha);
 
-    log_info(kernel_logger_info, "Servidor creado");
+    log_info(kernel_logger_info, "Servidor creado \n");
 
     inciar_planificacion();
 
-    log_info(kernel_logger_info, "Planificacion iniciada");
+    log_info(kernel_logger_info, "Planificacion iniciada \n");
 
-    log_info(kernel_logger_info, "Kernel listo para recibir al modulo cliente");
+    log_info(kernel_logger_info, "Kernel listo para recibir al modulo cliente \n");
 
 
     while(atender_clientes_kernel(server_fd));

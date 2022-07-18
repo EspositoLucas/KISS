@@ -10,10 +10,10 @@ int main(void) {
     cargar_configuracion();
     inicializar_memoria();
 
-    log_info(memoria_logger,"memoria inicializada");
+    log_info(memoria_logger,"memoria inicializada \n");
 
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
-    log_info(memoria_logger, "Memoria lista para recibir al modulo cliente");
+    log_info(memoria_logger, "Memoria lista para recibir al modulo cliente \n");
 
     while(atender_clientes_memoria(server_fd));
 
@@ -46,22 +46,22 @@ void manejo_conexiones(int socket_cliente){
 
 	switch(codigo_operacion){
 	case HANDSHAKE:
-		log_info(memoria_logger,"me llego el handshake de cpu");
+		log_info(memoria_logger,"me llego el handshake de cpu \n");
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* handshake=preparar_paquete_para_handshake();
 		enviar_paquete(handshake,socket_cliente);
-		log_info(memoria_logger,"hanshake enviado a cpu");
+		log_info(memoria_logger,"hanshake enviado a cpu \n");
 		eliminar_paquete(handshake);
 		break;
 	case INSTRUCCION_MEMORIA:
-		log_info(memoria_logger,"me llego una instruccion de cpu");
+		log_info(memoria_logger,"me llego una instruccion de cpu \n");
 		t_list* datos = recibirPaquete(socket_cliente);
 		manejo_instrucciones(datos,socket_cliente);
-		log_info(memoria_logger,"Instruccion de cpu ejecutada");
+		log_info(memoria_logger,"Instruccion de cpu ejecutada \n");
 		list_destroy(datos);
 		break;
 	case TABLA:
-		log_info(memoria_logger,"me llego un pedido de entrada a segunda tabla de cpu (mmu)");
+		log_info(memoria_logger,"me llego un pedido de entrada a segunda tabla de cpu (mmu) \n");
 		valores=recibir_paquete(socket_cliente);
 		tabla=*(uint32_t*)list_get(valores,0);
 		entrada1=*(uint32_t*)list_get(valores,1);
@@ -70,12 +70,12 @@ void manejo_conexiones(int socket_cliente){
 		t_paquete* paquete_tabla= crear_paquete();
 		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
 		enviar_paquete(paquete_tabla,socket_cliente);
-		log_info(memoria_logger,"entrada segundo nivel enviado a cpu");
+		log_info(memoria_logger,"entrada segundo nivel enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_tabla);
 		break;
 	case MARCO:
-		log_info(memoria_logger,"me llego un pedido de marco de cpu (mmu)");
+		log_info(memoria_logger,"me llego un pedido de marco de cpu (mmu) \n");
 		valores=recibir_paquete(socket_cliente);
 		tabla=*(uint32_t*)list_get(valores,0);
 		entrada2=*(uint32_t*)list_get(valores,1);
@@ -84,13 +84,13 @@ void manejo_conexiones(int socket_cliente){
 		t_paquete* paquete_marco= crear_paquete();
 		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
 		enviar_paquete(paquete_marco,socket_cliente);
-		log_info(memoria_logger,"marco enviado a cpu");
+		log_info(memoria_logger,"marco enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
 		// falta algoritmo
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
-		log_info(memoria_logger, "Inicializando estructuras");
+		log_info(memoria_logger, "Inicializando estructuras \n");
 		//Recibe el pcb del proceso para iniciar estructuras
 		pcb* pcb_recibido=recibirPcb(socket_cliente);
 
@@ -105,7 +105,7 @@ void manejo_conexiones(int socket_cliente){
 
 		//No pueden haber mas entradas q las permitidas
 		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
-			log_info(memoria_logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas");
+			log_info(memoria_logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas \n");
 			exit(34);
 		}
 
@@ -117,23 +117,23 @@ void manejo_conexiones(int socket_cliente){
 			tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
 			nueva_tabla->id_tabla = indice_de_tabla2;
 			nueva_tabla->lista_paginas = inicializar_tabla_segundo_nivel();
-			log_info(memoria_logger,"tabla segundo nivel creada");
+			log_info(memoria_logger,"tabla segundo nivel creada \n");
 			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
 			entrada_en_tp1->indice=valorTP1+i;
 			entrada_en_tp1->numero_de_tabla2=indice_de_tabla2;
 			list_add(tabla_de_pagina_1_nivel,entrada_en_tp1);
 			list_add(lista_tablas_segundo_nivel,nueva_tabla);
-			log_info(memoria_logger,"numero de tabla de segundo nivel pasado a la de primer nivel");
+			log_info(memoria_logger,"numero de tabla de segundo nivel pasado a la de primer nivel \n");
 			indice_de_tabla2++;
 		}
 		//crea el swap
 		crearSwap(pcb_recibido->id_proceso);
-		log_info(memoria_logger,"Swap creado");
+		log_info(memoria_logger,"Swap creado \n");
 		//Envia el num de tabla de la primera pag de 2 nivel del proceso
 		t_paquete* paquete_ini = crear_paquete();
 		agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
 		enviar_paquete(paquete_ini,socket_cliente);
-		log_info(memoria_logger,"Numero tabla de paginas de 2 nivel del proceso enviado a kernel");
+		log_info(memoria_logger,"Numero tabla de paginas de 2 nivel del proceso enviado a kernel \n");
 		free(paquete_ini);
 		break;
 	case LIBERAR_ESTRUCTURAS: ; // finalizar proceso
@@ -141,14 +141,14 @@ void manejo_conexiones(int socket_cliente){
 		liberarTodosLosMarcos(pcb->id_proceso);
 		// eliminar swap - poner funcion
 		eliminarSwap(pcb);
-		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso");
+		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso \n");
 		break;
 	case SUSPENDER_PROCESO:
-		log_info(memoria_logger,"me llego mensaje para suspender proceso");
+		log_info(memoria_logger,"me llego mensaje para suspender proceso \n");
 		op_code codigo = ESPACIO_PCB_LIBERADO;
 		suspender_proceso(socket_cliente); //liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
 		enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
-		log_info(memoria_logger,"Proceso suspendido");
+		log_info(memoria_logger,"Proceso suspendido \n");
 		break;
 	default:break;
 	}
@@ -282,7 +282,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		t_paquete* paquete=crear_paquete();
 		agregar_entero_a_paquete(paquete,valor_leido);
 		enviar_paquete(paquete,socket_cpu);
-		log_info(memoria_logger,"Valor leido enviado a CPU");
+		log_info(memoria_logger,"Valor leido enviado a CPU \n");
 		break;
 	case WRITE: ;
 		dir_fisica = (uint32_t)list_get(datos,1);
@@ -293,7 +293,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
-		log_info(memoria_logger,"Estado de escritura enviado a CPU");
+		log_info(memoria_logger,"Estado de escritura enviado a CPU \n");
 		break;
 	case COPY: ;
 		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);
@@ -305,7 +305,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
-		log_info(memoria_logger,"Estado de escritura enviado a CPU");
+		log_info(memoria_logger,"Estado de escritura enviado a CPU \n");
 		break;
 	default:
 		break;
@@ -421,19 +421,19 @@ void liberarTodosLosMarcos(uint32_t pid){
 uint32_t leer_de_memoria(uint32_t dir_fisica){
 	uint32_t valor_leido_memoria = 0;
 	memcpy(&valor_leido_memoria,memoria_usuario + dir_fisica,sizeof(uint32_t));
-	log_info(memoria_logger,"Lectura satisfactoria");
+	log_info(memoria_logger,"Lectura satisfactoria \n");
 	return valor_leido_memoria;
 }
 
 int escribirEn(uint32_t dir_fisica, uint32_t valor){
 	if(dir_fisica > config_valores_memoria.tam_memoria) {
-		log_info(memoria_logger,"Escritura insatisfactoria");
+		log_info(memoria_logger,"Escritura insatisfactoria \n");
 		return 0;
 	}
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
 	pthread_mutex_unlock(&mutex_memoria_usuario);
-	log_info(memoria_logger,"Escritura satisfactoria");
+	log_info(memoria_logger,"Escritura satisfactoria \n");
 	return 1;
 }
 
