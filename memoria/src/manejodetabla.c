@@ -29,7 +29,7 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		}
 		uint32_t numPagAReemplazar=obtenerPaginaAReemplazar(tabla_elegida->p_id);
 		log_info(memoria_logger,"Se obtuvo pagina a reemplazar");
-		uint32_t marcoAUsar=escribirModificaciones(numPagAReemplazar);//Veo que marco voy a usar para traer la pagina
+		uint32_t marcoAUsar=escribirModificaciones(numPagAReemplazar,tabla_elegida->p_id);//Veo que marco voy a usar para traer la pagina
 		log_info(memoria_logger,"Se escribe pagina modificada en swap");															 //Si la pag reemplazada tiene m=1 => la escribo en swap, además, se le pone p=0
 		pagina->marco=marcoAUsar;
 		void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap

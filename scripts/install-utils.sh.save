@@ -1,9 +1,0 @@
-#/bin/bash
-
-
-if cd /home/utnso/shared/TP/tp-2022-1c-Ubunteam/utils && make install; then
-    cd && rm -rf so-commons-librarinstall-commons.sh
-    echo -e "\033[1;32m so-commons-library installed successfully\033[0m"
-else
-    echo -e "\033[1;31m so-commons-library installation failed\033[0m"
-fi
