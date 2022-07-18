@@ -82,11 +82,11 @@ int pags_proceso(uint32_t ,int );
 int tp2_proceso(int ,int );
 
 uint32_t leer_de_memoria(uint32_t);
-void escribirEn(uint32_t , uint32_t);
+int escribirEn(uint32_t , uint32_t);
 uint32_t escribirModificaciones(uint32_t ,uint32_t );
 void escribirPagEnMemoria(void* ,uint32_t);
-bool tiene_mismo_id(tabla_de_segundo_nivel*);
 int get_marco(int);
+op_code codigoEscritura(int);
 
 void cambiarPdePagina(uint32_t,uint32_t ,bool );
 void cambiarUdePagina(uint32_t ,uint32_t ,bool );

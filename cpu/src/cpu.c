@@ -35,11 +35,12 @@ int main()
 	conexion_interrupcion->ip=ip;
 	conexion_interrupcion->puerto=puerto_interrupt;
 	pthread_create(&manejoInterrupciones,NULL,interrupt,conexion_interrupcion);//INICIA EL HILO DE ESCUCHA DE INTERRUPCIONES
-
+	log_info(cpu_logger, "Hilo de interrupciones creado");
 
 	///INICIA LA TLB
 
 	crear_tlb();
+	log_info(cpu_logger, "Tlb creada");
 
 	///CREA LA CONEXION CON EL KERNEL
 	/*puts(config_valores_cpu.ip_cpu);
@@ -136,12 +137,15 @@ log_info(cpu_logger, "Se ejecuto instruccion I/O");
 
 void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
+	log_info(cpu_logger, "Traduccion exitosa");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,READ);
 	agregar_entero_a_paquete(paquete,dir_fisica);
 	enviar_paquete(paquete,socket_memoria);
+	log_info(cpu_logger, "Pedido de lectura enviado");
 	free(paquete);
+
 	int i=0;
 	int size;
 	uint32_t valor_leido;
@@ -167,25 +171,65 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 
 void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
+	log_info(cpu_logger, "Traduccion exitosa");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,WRITE);
 	agregar_entero_a_paquete(paquete,dir_fisica);
 	agregar_entero_a_paquete(paquete,valor);
 	enviar_paquete(paquete,socket_memoria);
+	log_info(cpu_logger, "Pedido de escritura enviado");
 	free(paquete);
+
+	while(1){
+		int cod_op = recibir_operacion(socket_memoria);
+		switch (cod_op){
+		case ESCRITURA_OK:
+			log_info(cpu_logger, "Se escribio exitosamente en la memoria");
+			break;
+		case ESCRITURA_ERROR:
+			log_info(cpu_logger, "Ocurrio un error al escribir en memoria");
+			break;
+		case -1:
+			log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+			break;
+		default:
+			log_warning(cpu_logger, "Operacion desconocida");
+			break;
+		}
+	}
 }
 
 void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
 	uint32_t dir_fisica_destino=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaDestino);
 	uint32_t dir_fisica_origen=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaOrigen);
+	log_info(cpu_logger, "Traducciones exitosas");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_entero_a_paquete(paquete,COPY);
 	agregar_entero_a_paquete(paquete,dir_fisica_destino);
 	agregar_entero_a_paquete(paquete,dir_fisica_origen);
 	enviar_paquete(paquete,socket_memoria);
+	log_info(cpu_logger, "Pedido de copia enviado");
 	free(paquete);
+
+	while(1){
+		int cod_op = recibir_operacion(socket_memoria);
+		switch (cod_op){
+		case ESCRITURA_OK:
+			log_info(cpu_logger, "Se escribio exitosamente en la memoria");
+			break;
+		case ESCRITURA_ERROR:
+			log_info(cpu_logger, "Ocurrio un error al escribir en memoria");
+			break;
+		case -1:
+			log_error(cpu_logger, "Fallo la comunicacion. Abortando");
+			break;
+		default:
+			log_warning(cpu_logger, "Operacion desconocida");
+			break;
+		}
+	}
 }
 
 void ejecutarEXIT(pcb* PCB){
@@ -238,6 +282,7 @@ void* conexion_inicial_memoria(void* datos){
 	conexion_t* cpu=datos;
 	socket_memoria=crear_conexion(cpu->ip,cpu->puerto);
 	pedir_handshake(socket_memoria);
+	log_info(cpu_logger, "Pedido de handshake enviado");
 	int codigo_memoria;
 	while(1){
 		codigo_memoria=recibir_operacion(socket_memoria);

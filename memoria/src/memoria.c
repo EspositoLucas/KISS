@@ -57,6 +57,7 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"me llego una instruccion de cpu");
 		t_list* datos = recibirPaquete(socket_cliente);
 		manejo_instrucciones(datos,socket_cliente);
+		log_info(memoria_logger,"Instruccion de cpu ejecutada");
 		list_destroy(datos);
 		break;
 	case TABLA:
@@ -143,7 +144,7 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso");
 		break;
 	case SUSPENDER_PROCESO:
-		log_info(memoria_logger,"me llego mensaje para supender proceso");
+		log_info(memoria_logger,"me llego mensaje para suspender proceso");
 		op_code codigo = ESPACIO_PCB_LIBERADO;
 		suspender_proceso(socket_cliente); //liberar espacio en memoria del proceso, escribiendo en SWAP la pagina (de tamaño TAM_PAGINA, que está en el marco que indica la tabla de páginas)
 		enviar_datos(socket_cliente, &codigo, sizeof(op_code)) ;
@@ -269,6 +270,8 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 	op_code tipo_instruccion = (op_code) list_get(datos,0);
 	uint32_t dir_fisica;
 	uint32_t valor_leido;
+	op_code codigo;
+	int escritura;
 
 	switch(tipo_instruccion){
 	case READ: ;
@@ -284,15 +287,25 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 	case WRITE: ;
 		dir_fisica = (uint32_t)list_get(datos,1);
 		uint32_t valor = (uint32_t)list_get(datos,2);
-		escribirEn(dir_fisica, valor);
+
+		escritura = escribirEn(dir_fisica, valor);
+
+		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
-		//enviar mensaje a cpu OK
+		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
+		log_info(memoria_logger,"Estado de escritura enviado a CPU");
 		break;
 	case COPY: ;
 		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);
 		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,2);
+
 		valor_leido = leer_de_memoria(dir_fisica_origen);
-		escribirEn(dir_fisica_destino, valor_leido);
+		escritura = escribirEn(dir_fisica_destino, valor_leido);
+
+		codigo = codigoEscritura(escritura);
+		usleep(config_valores_memoria.retardo_memoria);
+		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
+		log_info(memoria_logger,"Estado de escritura enviado a CPU");
 		break;
 	default:
 		break;
@@ -408,16 +421,29 @@ void liberarTodosLosMarcos(uint32_t pid){
 uint32_t leer_de_memoria(uint32_t dir_fisica){
 	uint32_t valor_leido_memoria = 0;
 	memcpy(&valor_leido_memoria,memoria_usuario + dir_fisica,sizeof(uint32_t));
+	log_info(memoria_logger,"Lectura satisfactoria");
 	return valor_leido_memoria;
 }
 
-void escribirEn(uint32_t dir_fisica, uint32_t valor){
+int escribirEn(uint32_t dir_fisica, uint32_t valor){
 	if(dir_fisica > config_valores_memoria.tam_memoria) {
-		log_error(memoria_logger,"Escritura insatisfactoria");
+		log_info(memoria_logger,"Escritura insatisfactoria");
+		return 0;
 	}
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
 	pthread_mutex_unlock(&mutex_memoria_usuario);
-	log_info(memoria_logger,"OK");
+	log_info(memoria_logger,"Escritura satisfactoria");
+	return 1;
+}
+
+op_code codigoEscritura(int valor) {
+	op_code codigo;
+	if (valor == 1) {
+		codigo = ESCRITURA_OK;
+	} else {
+		codigo = ESCRITURA_ERROR;
+	}
+	return codigo;
 }
 
