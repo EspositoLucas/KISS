@@ -20,6 +20,7 @@ typedef struct
  {
  	uint32_t pid ;
  	void* archivo;
+ 	int fd;
 
  } archivos_swap;
 

@@ -191,7 +191,7 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 	if(pagElegida->m){
 		asignarAlArchivo(pid);
 		escribirPagEnSwap(pagElegida);
-		msync(archivo_swap,pid,MS_ASYNC);
+		msync(archivo_swap,pid,MS_SYNC);
 	}
 	cambiarPdePagina(numPagina,pid,0);
 	cambiarMdePagina(numPagina,pid,0);

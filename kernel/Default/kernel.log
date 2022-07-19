@@ -1,0 +1,446 @@
+[INFO] 00:06:18:513 Servidor Kernel/(24805:24805): Archivo de configuracion cargada 
+
+[INFO] 00:06:18:514 Servidor Kernel/(24805:24805): Kernel conectado con cpu 
+
+[INFO] 00:06:18:514 Servidor Kernel/(24805:24805): Kernel conectado con memoria 
+
+[INFO] 00:07:10:070 Servidor Kernel/(24868:24868): Archivo de configuracion cargada 
+
+[INFO] 00:07:10:070 Servidor Kernel/(24868:24868): Kernel conectado con cpu 
+
+[INFO] 00:07:10:070 Servidor Kernel/(24868:24868): Kernel conectado con memoria 
+
+[INFO] 00:07:10:071 Servidor Kernel/(24868:24868): Servidor creado 
+
+[INFO] 00:07:10:071 Servidor Kernel/(24868:24868): Estructuras plan largo plazo creadas 
+
+[INFO] 00:07:10:071 Servidor Kernel/(24868:24868): Estructuras corto plazo creadas 
+
+[INFO] 00:07:10:073 Servidor Kernel/(24868:24868): Estructuras mediano plazo creadas 
+
+[INFO] 00:07:10:073 Servidor Kernel/(24868:24868): Planificacion iniciada 
+
+[INFO] 00:07:10:073 Servidor Kernel/(24868:24868): Kernel listo para recibir al modulo cliente 
+
+[INFO] 12:38:24:178 Servidor Kernel/(25731:25731): Archivo de configuracion cargada 
+
+[INFO] 12:38:24:179 Servidor Kernel/(25731:25731): Kernel conectado con cpu 
+
+[INFO] 12:38:24:179 Servidor Kernel/(25731:25731): Kernel conectado con memoria 
+
+[INFO] 12:38:24:179 Servidor Kernel/(25731:25731): Servidor creado 
+
+[INFO] 12:38:24:180 Servidor Kernel/(25731:25731): Estructuras plan largo plazo creadas 
+
+[INFO] 12:38:24:180 Servidor Kernel/(25731:25731): Estructuras corto plazo creadas 
+
+[INFO] 12:38:24:180 Servidor Kernel/(25731:25731): Estructuras mediano plazo creadas 
+
+[INFO] 12:38:24:180 Servidor Kernel/(25731:25731): Planificacion iniciada 
+
+[INFO] 12:38:24:180 Servidor Kernel/(25731:25731): Kernel listo para recibir al modulo cliente 
+
+[INFO] 12:38:33:255 Servidor Kernel/(25731:25758): Me llego el tamanio y las instrucciones
+
+[INFO] 12:38:33:255 Servidor Kernel/(25731:25758): Consola deserializada, entro a armar pcb
+
+[INFO] 12:42:07:888 Servidor Kernel/(25934:25934): Archivo de configuracion cargada 
+
+[INFO] 12:42:07:888 Servidor Kernel/(25934:25934): Kernel conectado con cpu 
+
+[INFO] 12:42:07:888 Servidor Kernel/(25934:25934): Kernel conectado con memoria 
+
+[INFO] 12:42:07:889 Servidor Kernel/(25934:25934): Servidor creado 
+
+[INFO] 12:42:07:889 Servidor Kernel/(25934:25934): Estructuras plan largo plazo creadas 
+
+[INFO] 12:42:07:889 Servidor Kernel/(25934:25934): Estructuras corto plazo creadas 
+
+[INFO] 12:42:07:889 Servidor Kernel/(25934:25934): Estructuras mediano plazo creadas 
+
+[INFO] 12:42:07:889 Servidor Kernel/(25934:25934): Planificacion iniciada 
+
+[INFO] 12:42:07:890 Servidor Kernel/(25934:25934): Kernel listo para recibir al modulo cliente 
+
+[INFO] 12:42:12:451 Servidor Kernel/(25934:25956): Me llego el tamanio y las instrucciones
+
+[INFO] 12:42:12:451 Servidor Kernel/(25934:25956): Consola deserializada, entro a armar pcb
+
+[INFO] 12:59:27:619 Servidor Kernel/(26625:26625): Archivo de configuracion cargada 
+
+[INFO] 12:59:27:619 Servidor Kernel/(26625:26625): Kernel conectado con cpu 
+
+[INFO] 12:59:27:619 Servidor Kernel/(26625:26625): Kernel conectado con memoria 
+
+[INFO] 12:59:27:620 Servidor Kernel/(26625:26625): Servidor creado 
+
+[INFO] 12:59:27:620 Servidor Kernel/(26625:26625): Estructuras plan largo plazo creadas 
+
+[INFO] 12:59:27:620 Servidor Kernel/(26625:26625): Estructuras corto plazo creadas 
+
+[INFO] 12:59:27:620 Servidor Kernel/(26625:26625): Estructuras mediano plazo creadas 
+
+[INFO] 12:59:27:620 Servidor Kernel/(26625:26625): Planificacion iniciada 
+
+[INFO] 12:59:27:620 Servidor Kernel/(26625:26625): Kernel listo para recibir al modulo cliente 
+
+[INFO] 12:59:31:980 Servidor Kernel/(26625:26645): Me llego el tamanio y las instrucciones
+
+[INFO] 12:59:31:980 Servidor Kernel/(26625:26645): Consola deserializada, entro a armar pcb
+
+[INFO] 13:01:57:851 Servidor Kernel/(26748:26748): Archivo de configuracion cargada 
+
+[INFO] 13:01:57:851 Servidor Kernel/(26748:26748): Kernel conectado con cpu 
+
+[INFO] 13:01:57:852 Servidor Kernel/(26748:26748): Kernel conectado con memoria 
+
+[INFO] 13:01:57:852 Servidor Kernel/(26748:26748): Servidor creado 
+
+[INFO] 13:01:57:852 Servidor Kernel/(26748:26748): Estructuras largo plazo creadas 
+
+[INFO] 13:01:57:852 Servidor Kernel/(26748:26748): Estructuras corto plazo creadas 
+
+[INFO] 13:01:57:853 Servidor Kernel/(26748:26748): Estructuras mediano plazo creadas 
+
+[INFO] 13:01:57:853 Servidor Kernel/(26748:26748): Planificacion iniciada 
+
+[INFO] 13:01:57:853 Servidor Kernel/(26748:26748): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:02:08:146 Servidor Kernel/(26748:26769): Me llego el tamanio y las instrucciones
+
+[INFO] 13:02:08:147 Servidor Kernel/(26748:26769): Consola deserializada, entro a armar pcb
+
+[INFO] 13:02:26:893 Servidor Kernel/(26773:26773): Archivo de configuracion cargada 
+
+[INFO] 13:02:26:947 Servidor Kernel/(26773:26773): Kernel conectado con cpu 
+
+[INFO] 13:02:26:948 Servidor Kernel/(26773:26773): Kernel conectado con memoria 
+
+[INFO] 13:02:45:538 Servidor Kernel/(26774:26774): Archivo de configuracion cargada 
+
+[INFO] 13:02:45:591 Servidor Kernel/(26774:26774): Kernel conectado con cpu 
+
+[INFO] 13:02:45:593 Servidor Kernel/(26774:26774): Kernel conectado con memoria 
+
+[INFO] 13:03:03:514 Servidor Kernel/(26777:26777): Archivo de configuracion cargada 
+
+[INFO] 13:03:03:515 Servidor Kernel/(26777:26777): Kernel conectado con cpu 
+
+[INFO] 13:03:03:515 Servidor Kernel/(26777:26777): Kernel conectado con memoria 
+
+[INFO] 13:03:16:921 Servidor Kernel/(26827:26827): Archivo de configuracion cargada 
+
+[INFO] 13:03:16:995 Servidor Kernel/(26827:26827): Kernel conectado con cpu 
+
+[INFO] 13:03:16:997 Servidor Kernel/(26827:26827): Kernel conectado con memoria 
+
+[INFO] 13:03:17:017 Servidor Kernel/(26827:26827): Servidor creado 
+
+[INFO] 13:03:17:035 Servidor Kernel/(26827:26827): Estructuras largo plazo creadas 
+
+[INFO] 13:03:17:051 Servidor Kernel/(26827:26827): Estructuras corto plazo creadas 
+
+[INFO] 13:03:17:053 Servidor Kernel/(26827:26827): Estructuras mediano plazo creadas 
+
+[INFO] 13:03:17:054 Servidor Kernel/(26827:26827): Planificacion iniciada 
+
+[INFO] 13:03:17:054 Servidor Kernel/(26827:26827): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:03:22:216 Servidor Kernel/(26827:26846): Me llego el tamanio y las instrucciones
+
+[INFO] 13:03:22:226 Servidor Kernel/(26827:26846): Consola deserializada, entro a armar pcb
+
+[INFO] 13:06:49:068 Servidor Kernel/(26870:26870): Archivo de configuracion cargada 
+
+[INFO] 13:06:49:069 Servidor Kernel/(26870:26870): Kernel conectado con cpu 
+
+[INFO] 13:06:49:069 Servidor Kernel/(26870:26870): Kernel conectado con memoria 
+
+[INFO] 13:06:49:069 Servidor Kernel/(26870:26870): Servidor creado 
+
+[INFO] 13:06:49:069 Servidor Kernel/(26870:26870): Estructuras largo plazo creadas 
+
+[INFO] 13:06:49:070 Servidor Kernel/(26870:26870): Estructuras corto plazo creadas 
+
+[INFO] 13:06:49:070 Servidor Kernel/(26870:26870): Estructuras mediano plazo creadas 
+
+[INFO] 13:06:49:070 Servidor Kernel/(26870:26870): Planificacion iniciada 
+
+[INFO] 13:06:49:070 Servidor Kernel/(26870:26870): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:06:54:142 Servidor Kernel/(26870:26893): Me llego el tamanio y las instrucciones
+
+[INFO] 13:06:54:143 Servidor Kernel/(26870:26893): Consola deserializada, entro a armar pcb
+
+[INFO] 13:10:06:596 Servidor Kernel/(26990:26990): Archivo de configuracion cargada 
+
+[INFO] 13:10:06:596 Servidor Kernel/(26990:26990): Kernel conectado con cpu 
+
+[INFO] 13:10:06:596 Servidor Kernel/(26990:26990): Kernel conectado con memoria 
+
+[INFO] 13:10:06:597 Servidor Kernel/(26990:26990): Servidor creado 
+
+[INFO] 13:10:06:597 Servidor Kernel/(26990:26990): Estructuras largo plazo creadas 
+
+[INFO] 13:10:06:597 Servidor Kernel/(26990:26990): Estructuras corto plazo creadas 
+
+[INFO] 13:10:06:597 Servidor Kernel/(26990:26990): Estructuras mediano plazo creadas 
+
+[INFO] 13:10:06:597 Servidor Kernel/(26990:26990): Planificacion iniciada 
+
+[INFO] 13:10:06:597 Servidor Kernel/(26990:26990): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:10:10:882 Servidor Kernel/(26990:27009): Me llego el tamanio y las instrucciones
+
+[INFO] 13:10:10:883 Servidor Kernel/(26990:27009): Consola deserializada, entro a armar pcb
+
+[INFO] 13:12:15:173 Servidor Kernel/(27089:27089): Archivo de configuracion cargada 
+
+[INFO] 13:12:15:174 Servidor Kernel/(27089:27089): Kernel conectado con cpu 
+
+[INFO] 13:12:15:174 Servidor Kernel/(27089:27089): Kernel conectado con memoria 
+
+[INFO] 13:12:15:175 Servidor Kernel/(27089:27089): Servidor creado 
+
+[INFO] 13:12:15:175 Servidor Kernel/(27089:27089): Estructuras largo plazo creadas 
+
+[INFO] 13:12:15:175 Servidor Kernel/(27089:27089): Estructuras corto plazo creadas 
+
+[INFO] 13:12:15:175 Servidor Kernel/(27089:27089): Estructuras mediano plazo creadas 
+
+[INFO] 13:12:15:175 Servidor Kernel/(27089:27089): Planificacion iniciada 
+
+[INFO] 13:12:15:175 Servidor Kernel/(27089:27089): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:12:19:203 Servidor Kernel/(27089:27108): Me llego el tamanio y las instrucciones
+
+[INFO] 13:12:19:204 Servidor Kernel/(27089:27108): Consola deserializada, entro a armar pcb
+
+[INFO] 13:15:22:069 Servidor Kernel/(27222:27222): Archivo de configuracion cargada 
+
+[INFO] 13:15:22:069 Servidor Kernel/(27222:27222): Kernel conectado con cpu 
+
+[INFO] 13:15:22:070 Servidor Kernel/(27222:27222): Kernel conectado con memoria 
+
+[INFO] 13:15:22:070 Servidor Kernel/(27222:27222): Servidor creado 
+
+[INFO] 13:15:22:070 Servidor Kernel/(27222:27222): Estructuras largo plazo creadas 
+
+[INFO] 13:15:22:070 Servidor Kernel/(27222:27222): Estructuras corto plazo creadas 
+
+[INFO] 13:15:22:070 Servidor Kernel/(27222:27222): Estructuras mediano plazo creadas 
+
+[INFO] 13:15:22:070 Servidor Kernel/(27222:27222): Planificacion iniciada 
+
+[INFO] 13:15:22:071 Servidor Kernel/(27222:27222): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:15:26:157 Servidor Kernel/(27222:27241): Me llego el tamanio y las instrucciones
+
+[INFO] 13:15:26:157 Servidor Kernel/(27222:27241): Consola deserializada, entro a armar pcb
+
+[INFO] 13:22:54:454 Servidor Kernel/(27416:27416): Archivo de configuracion cargada 
+
+[INFO] 13:22:54:454 Servidor Kernel/(27416:27416): Kernel conectado con cpu 
+
+[INFO] 13:22:54:454 Servidor Kernel/(27416:27416): Kernel conectado con memoria 
+
+[INFO] 13:23:07:431 Servidor Kernel/(27464:27464): Archivo de configuracion cargada 
+
+[INFO] 13:23:07:432 Servidor Kernel/(27464:27464): Kernel conectado con cpu 
+
+[INFO] 13:23:07:432 Servidor Kernel/(27464:27464): Kernel conectado con memoria 
+
+[INFO] 13:23:39:790 Servidor Kernel/(27540:27540): Archivo de configuracion cargada 
+
+[INFO] 13:23:39:790 Servidor Kernel/(27540:27540): Kernel conectado con cpu 
+
+[INFO] 13:23:39:790 Servidor Kernel/(27540:27540): Kernel conectado con memoria 
+
+[INFO] 13:23:39:791 Servidor Kernel/(27540:27540): Servidor creado 
+
+[INFO] 13:23:39:791 Servidor Kernel/(27540:27540): Estructuras largo plazo creadas 
+
+[INFO] 13:23:39:791 Servidor Kernel/(27540:27540): Estructuras corto plazo creadas 
+
+[INFO] 13:23:39:791 Servidor Kernel/(27540:27540): Estructuras mediano plazo creadas 
+
+[INFO] 13:23:39:791 Servidor Kernel/(27540:27540): Planificacion iniciada 
+
+[INFO] 13:23:39:792 Servidor Kernel/(27540:27540): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:23:46:562 Servidor Kernel/(27540:27577): Me llego el tamanio y las instrucciones
+
+[INFO] 13:23:46:563 Servidor Kernel/(27540:27577): Consola deserializada, entro a armar pcb
+
+[INFO] 13:25:49:862 Servidor Kernel/(27676:27676): Archivo de configuracion cargada 
+
+[INFO] 13:25:49:863 Servidor Kernel/(27676:27676): Kernel conectado con cpu 
+
+[INFO] 13:25:49:863 Servidor Kernel/(27676:27676): Kernel conectado con memoria 
+
+[INFO] 13:25:49:863 Servidor Kernel/(27676:27676): Servidor creado 
+
+[INFO] 13:25:49:863 Servidor Kernel/(27676:27676): Estructuras largo plazo creadas 
+
+[INFO] 13:25:49:864 Servidor Kernel/(27676:27676): Estructuras corto plazo creadas 
+
+[INFO] 13:25:49:864 Servidor Kernel/(27676:27676): Estructuras mediano plazo creadas 
+
+[INFO] 13:25:49:864 Servidor Kernel/(27676:27676): Planificacion iniciada 
+
+[INFO] 13:25:49:864 Servidor Kernel/(27676:27676): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:25:54:264 Servidor Kernel/(27676:27695): Me llego el tamanio y las instrucciones
+
+[INFO] 13:25:54:265 Servidor Kernel/(27676:27695): Consola deserializada, entro a armar pcb
+
+[INFO] 13:27:07:886 Servidor Kernel/(27764:27764): Archivo de configuracion cargada 
+
+[INFO] 13:27:07:887 Servidor Kernel/(27764:27764): Kernel conectado con cpu 
+
+[INFO] 13:27:07:887 Servidor Kernel/(27764:27764): Kernel conectado con memoria 
+
+[INFO] 13:27:07:887 Servidor Kernel/(27764:27764): Servidor creado 
+
+[INFO] 13:27:07:888 Servidor Kernel/(27764:27764): Estructuras largo plazo creadas 
+
+[INFO] 13:27:07:888 Servidor Kernel/(27764:27764): Estructuras corto plazo creadas 
+
+[INFO] 13:27:07:888 Servidor Kernel/(27764:27764): Estructuras mediano plazo creadas 
+
+[INFO] 13:27:07:888 Servidor Kernel/(27764:27764): Planificacion iniciada 
+
+[INFO] 13:27:07:888 Servidor Kernel/(27764:27764): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:27:12:356 Servidor Kernel/(27764:27783): Me llego el tamanio y las instrucciones
+
+[INFO] 13:27:12:358 Servidor Kernel/(27764:27783): Consola deserializada, entro a armar pcb
+
+[INFO] 14:57:40:167 Servidor Kernel/(29241:29241): Archivo de configuracion cargada 
+
+[INFO] 14:57:40:168 Servidor Kernel/(29241:29241): Kernel conectado con cpu 
+
+[INFO] 14:57:40:168 Servidor Kernel/(29241:29241): Kernel conectado con memoria 
+
+[INFO] 14:57:40:168 Servidor Kernel/(29241:29241): Servidor creado 
+
+[INFO] 14:57:40:168 Servidor Kernel/(29241:29241): Estructuras largo plazo creadas 
+
+[INFO] 14:57:40:169 Servidor Kernel/(29241:29241): Estructuras corto plazo creadas 
+
+[INFO] 14:57:40:169 Servidor Kernel/(29241:29241): Estructuras mediano plazo creadas 
+
+[INFO] 14:57:40:169 Servidor Kernel/(29241:29241): Planificacion iniciada 
+
+[INFO] 14:57:40:169 Servidor Kernel/(29241:29241): Kernel listo para recibir al modulo cliente 
+
+[INFO] 14:57:50:139 Servidor Kernel/(29241:29280): Me llego el tamanio y las instrucciones
+
+[INFO] 14:57:50:142 Servidor Kernel/(29241:29280): Consola deserializada, entro a armar pcb
+
+[INFO] 14:58:17:128 Servidor Kernel/(29338:29338): Archivo de configuracion cargada 
+
+[INFO] 14:58:17:128 Servidor Kernel/(29338:29338): Kernel conectado con cpu 
+
+[INFO] 14:58:17:128 Servidor Kernel/(29338:29338): Kernel conectado con memoria 
+
+[INFO] 14:58:50:864 Servidor Kernel/(29415:29415): Archivo de configuracion cargada 
+
+[INFO] 14:58:50:864 Servidor Kernel/(29415:29415): Kernel conectado con cpu 
+
+[INFO] 14:58:50:864 Servidor Kernel/(29415:29415): Kernel conectado con memoria 
+
+[INFO] 14:58:50:865 Servidor Kernel/(29415:29415): Servidor creado 
+
+[INFO] 14:58:50:865 Servidor Kernel/(29415:29415): Estructuras largo plazo creadas 
+
+[INFO] 14:58:50:865 Servidor Kernel/(29415:29415): Estructuras corto plazo creadas 
+
+[INFO] 14:58:50:867 Servidor Kernel/(29415:29415): Estructuras mediano plazo creadas 
+
+[INFO] 14:58:50:870 Servidor Kernel/(29415:29415): Planificacion iniciada 
+
+[INFO] 14:58:50:871 Servidor Kernel/(29415:29415): Kernel listo para recibir al modulo cliente 
+
+[INFO] 14:58:55:360 Servidor Kernel/(29415:29434): Me llego el tamanio y las instrucciones
+
+[INFO] 14:58:55:360 Servidor Kernel/(29415:29434): Consola deserializada, entro a armar pcb
+
+[INFO] 15:17:33:127 Servidor Kernel/(29571:29571): Archivo de configuracion cargada 
+
+[INFO] 15:17:33:180 Servidor Kernel/(29571:29571): Kernel conectado con cpu 
+
+[INFO] 15:17:33:182 Servidor Kernel/(29571:29571): Kernel conectado con memoria 
+
+[INFO] 15:17:33:194 Servidor Kernel/(29571:29571): Servidor creado 
+
+[INFO] 15:17:33:203 Servidor Kernel/(29571:29571): Estructuras largo plazo creadas 
+
+[INFO] 15:17:33:213 Servidor Kernel/(29571:29571): Estructuras corto plazo creadas 
+
+[INFO] 15:17:33:215 Servidor Kernel/(29571:29571): Estructuras mediano plazo creadas 
+
+[INFO] 15:17:33:215 Servidor Kernel/(29571:29571): Planificacion iniciada 
+
+[INFO] 15:17:33:216 Servidor Kernel/(29571:29571): Kernel listo para recibir al modulo cliente 
+
+[INFO] 15:17:38:628 Servidor Kernel/(29571:29593): Me llego el tamanio y las instrucciones
+
+[INFO] 15:17:38:653 Servidor Kernel/(29571:29593): Consola deserializada, entro a armar pcb
+
+[INFO] 15:22:33:449 Servidor Kernel/(29759:29759): Archivo de configuracion cargada 
+
+[INFO] 15:22:33:450 Servidor Kernel/(29759:29759): Kernel conectado con cpu 
+
+[INFO] 15:22:33:450 Servidor Kernel/(29759:29759): Kernel conectado con memoria 
+
+[INFO] 15:22:33:450 Servidor Kernel/(29759:29759): Servidor creado 
+
+[INFO] 15:22:33:451 Servidor Kernel/(29759:29759): Estructuras largo plazo creadas 
+
+[INFO] 15:22:33:451 Servidor Kernel/(29759:29759): Estructuras corto plazo creadas 
+
+[INFO] 15:22:33:451 Servidor Kernel/(29759:29759): Estructuras mediano plazo creadas 
+
+[INFO] 15:22:33:451 Servidor Kernel/(29759:29759): Planificacion iniciada 
+
+[INFO] 15:22:33:451 Servidor Kernel/(29759:29759): Kernel listo para recibir al modulo cliente 
+
+[INFO] 15:22:39:091 Servidor Kernel/(29759:29787): Me llego el tamanio y las instrucciones
+
+[INFO] 15:22:39:094 Servidor Kernel/(29759:29787): Consola deserializada, entro a armar pcb
+
+[INFO] 15:38:18:321 Servidor Kernel/(30200:30200): Archivo de configuracion cargada 
+
+[INFO] 15:38:18:322 Servidor Kernel/(30200:30200): Kernel conectado con cpu 
+
+[INFO] 15:38:18:322 Servidor Kernel/(30200:30200): Kernel conectado con memoria 
+
+[INFO] 15:38:43:346 Servidor Kernel/(30231:30231): Archivo de configuracion cargada 
+
+[INFO] 15:38:43:347 Servidor Kernel/(30231:30231): Kernel conectado con cpu 
+
+[INFO] 15:38:43:347 Servidor Kernel/(30231:30231): Kernel conectado con memoria 
+
+[INFO] 15:38:58:420 Servidor Kernel/(30278:30278): Archivo de configuracion cargada 
+
+[INFO] 15:38:58:421 Servidor Kernel/(30278:30278): Kernel conectado con cpu 
+
+[INFO] 15:38:58:421 Servidor Kernel/(30278:30278): Kernel conectado con memoria 
+
+[INFO] 15:38:58:422 Servidor Kernel/(30278:30278): Servidor creado 
+
+[INFO] 15:38:58:426 Servidor Kernel/(30278:30278): Estructuras largo plazo creadas 
+
+[INFO] 15:38:58:427 Servidor Kernel/(30278:30278): Estructuras corto plazo creadas 
+
+[INFO] 15:38:58:429 Servidor Kernel/(30278:30278): Estructuras mediano plazo creadas 
+
+[INFO] 15:38:58:430 Servidor Kernel/(30278:30278): Planificacion iniciada 
+
+[INFO] 15:38:58:430 Servidor Kernel/(30278:30278): Kernel listo para recibir al modulo cliente 
+
+[INFO] 15:39:08:460 Servidor Kernel/(30278:30297): Me llego el tamanio y las instrucciones
+
+[INFO] 15:39:08:461 Servidor Kernel/(30278:30297): Consola deserializada, entro a armar pcb
+

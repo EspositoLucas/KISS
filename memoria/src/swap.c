@@ -25,7 +25,6 @@ void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
 	archivo->archivo = archivo_swap;
 	list_add(archivos,archivo);
 
-	//close(fd);
 }
 void eliminarSwap(pcb* pcb){
 	pthread_mutex_lock(&mutex_comparador_archivo_pid);
@@ -35,6 +34,7 @@ void eliminarSwap(pcb* pcb){
 	archivos_swap* archivo = (archivos_swap*)list_remove_by_condition(archivos,archivos_con_pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
 	munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
+	close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
 	if(remove(armarPath(pcb->id_proceso))==-1){
 		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
 		exit(-1);
@@ -84,7 +84,7 @@ void escribirPaginasModificadas(pcb* pcb){
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=list_get(paginasProc,i);
 		escribirPagEnSwap(pag);
-		msync(archivo_swap,pcb->tamanio_proceso,MS_ASYNC);
+		msync(archivo_swap,pcb->tamanio_proceso,MS_SYNC);
 		cambiarMdePagina(pag->indice,pcb->id_proceso,0);
 		log_info(memoria_logger,"Se escribio pagina modificada en swap \n");
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina

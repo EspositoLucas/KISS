@@ -4,7 +4,7 @@
 
 void inciar_planificacion(){
 	iniciar_planificador_largo_plazo();
-	log_info(kernel_logger_info, "Estructuras plan largo plazo creadas \n");
+	log_info(kernel_logger_info, "Estructuras largo plazo creadas \n");
 	iniciar_planificador_corto_plazo();
 	log_info(kernel_logger_info, "Estructuras corto plazo creadas \n");
 	iniciar_planificador_mediano_plazo();
