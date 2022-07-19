@@ -1,4 +1,4 @@
-/Default/ 
+/Default/* 
 /Debug/
 
-!*.config
+!/Default/cpu.config
