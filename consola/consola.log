@@ -1156,3 +1156,31 @@
 
 [INFO] 18:05:13:166 Consola/(10694:10694): Finalizo el proceso, terminando programa.
 
+[INFO] 20:53:48:170 Consola/(4018:4018): Iniciando consola
+
+[INFO] 20:53:48:182 Consola/(4018:4018): Instrucciones parseadas correctamente
+
+[INFO] 20:53:48:191 Consola/(4018:4018): instrucciones serializadas
+
+[INFO] 20:53:48:192 Consola/(4018:4018): Conexion exitosa con kernel.
+
+[INFO] 20:53:48:192 Consola/(4018:4018): Paquete con tamanio e instrucciones enviado correctamente.
+
+[ERROR] 20:53:48:469 Consola/(4018:4018): Error al finalizar consola 
+
+[INFO] 20:53:48:469 Consola/(4018:4018): Finalizo el proceso, terminando programa.
+
+[INFO] 20:55:31:142 Consola/(4111:4111): Iniciando consola
+
+[INFO] 20:55:31:144 Consola/(4111:4111): Instrucciones parseadas correctamente
+
+[INFO] 20:55:31:146 Consola/(4111:4111): instrucciones serializadas
+
+[INFO] 20:55:31:146 Consola/(4111:4111): Conexion exitosa con kernel.
+
+[INFO] 20:55:31:147 Consola/(4111:4111): Paquete con tamanio e instrucciones enviado correctamente.
+
+[ERROR] 20:55:31:407 Consola/(4111:4111): Error al finalizar consola 
+
+[INFO] 20:55:31:407 Consola/(4111:4111): Finalizo el proceso, terminando programa.
+

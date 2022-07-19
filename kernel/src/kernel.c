@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-    cargar_configuracion("/media/sf_Shared/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+    cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
 
     kernel_logger_info = log_create("kernel.log", "Servidor Kernel", 1, LOG_LEVEL_INFO);
 
@@ -23,7 +23,7 @@ int main(void)
 
    // conexion memoria
 
- //   socket_memoria = crear_conexion(config_valores_kernel.ip_memoria, config_valores_kernel.puerto_memoria);
+    socket_memoria = crear_conexion(config_valores_kernel.ip_memoria, config_valores_kernel.puerto_memoria);
 
     log_info(kernel_logger_info, "Kernel conectado con memoria \n");
 
@@ -63,7 +63,7 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.ip_memoria = config_get_string_value(config, "IP_MEMORIA");
       config_valores_kernel.ip_cpu = config_get_string_value(config, "IP_CPU");
       config_valores_kernel.algoritmo_planificacion = config_get_string_value(config, "ALGORITMO_PLANIFICACION");
-      config_valores_kernel.puerto_memoria =    config_get_int_value(config, "PUERTO_MEMORIA");
+      config_valores_kernel.puerto_memoria =    config_get_string_value(config, "PUERTO_MEMORIA");
       config_valores_kernel.puerto_cpu_dispatch = config_get_string_value(config, "PUERTO_CPU_DISPATCH");
       config_valores_kernel.puerto_cpu_interrupt = config_get_string_value(config, "PUERTO_CPU_INTERRUPT");
       config_valores_kernel.ip_kernel = config_get_string_value(config, "IP_KERNEL");

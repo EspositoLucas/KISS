@@ -20,7 +20,7 @@ t_log *kernel_logger_info;
  typedef struct  // archivo de configuracion kernel
  {
     char* ip_memoria;
-    int puerto_memoria;
+    char* puerto_memoria;
     char* ip_cpu;
     char* puerto_cpu_dispatch;
     char* puerto_cpu_interrupt;
