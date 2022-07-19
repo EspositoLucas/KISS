@@ -34,6 +34,7 @@ void liberar_conexion(int socket_cliente) {
 
 int iniciar_servidor(char *ip, char *puerto)
 {
+	printf("En iniciar servidor\n");
 
     struct addrinfo hints, *servinfo;
 
@@ -61,7 +62,9 @@ int iniciar_servidor(char *ip, char *puerto)
     listen(socket_servidor, SOMAXCONN);
 
     freeaddrinfo(servinfo);
-    log_trace(logger, "Listo para escuchar a cliente");
+    printf("Por hacer el log\n");
+    //log_trace(logger, "Listo para escuchar a cliente");
+    printf("Listo para escuchar cliente\n");
 
     return socket_servidor;
 }

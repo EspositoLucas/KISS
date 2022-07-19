@@ -21,6 +21,8 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 	pcb->rafaga_anterior = 0;
 	pcb->instrucciones = consola->instrucciones;
 
+	printf("Retorno pcb\n");
+
 	return pcb;
 }
 

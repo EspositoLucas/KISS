@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-    cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
 
     kernel_logger_info = log_create("kernel.log", "Servidor Kernel", 1, LOG_LEVEL_INFO);
 
@@ -124,10 +124,15 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		log_info(kernel_logger_info, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
 	  		log_info(kernel_logger_info, "Consola deserializada, entro a armar pcb\n");
+	  		printf("Hago malloc proceso \n");
 	  		proceso* proceso = malloc(sizeof(proceso)) ;
+	  		printf("Hago malloc pcb\n");
 	  		proceso->pcb = malloc(sizeof(pcb));
+	  		printf("Entro a crear estructura pcb\n");
 	  		proceso->pcb = crear_estructura_pcb(consola);
+	  		printf("Agrego pcb a proceso\n");
 	  		proceso->socket = socket_cliente;
+	  		printf("Agrego socket a proceso \n");
 	  		log_info(kernel_logger_info, "PCB armada -> agregar proceso a new y arrancar con la planificacion\n");
 	  		agregarANewPcb(proceso);
 

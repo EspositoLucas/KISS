@@ -6,13 +6,15 @@ int main(void) {
 
     memoria_logger = log_create("memoria.log", "Servidor Memoria", 1, LOG_LEVEL_INFO);
 
+
     ///CARGAR LA CONFIGURACION
     cargar_configuracion();
+
+
     inicializar_memoria();
-
-    log_info(memoria_logger,"memoria inicializada \n");
-
+    printf("Por iniciar servidor\n");
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
+    printf("Servidor creado\n");
     log_info(memoria_logger, "Memoria lista para recibir al modulo cliente \n");
 
     while(atender_clientes_memoria(server_fd));
@@ -171,6 +173,7 @@ void inicializar_memoria(){
 	pthread_mutex_init(&mutex_memoria_usuario,NULL);
 	pthread_mutex_init(&mutex_comparador_archivo_pid,NULL);
 	pthread_mutex_init(&mutex_archivo_swap,NULL);
+	printf("Memoria inicializada\n");
 }
 int get_marco(int marco){
 	return marco*config_valores_memoria.tam_pagina;
@@ -241,8 +244,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("Default/memoria.config");
-
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");
@@ -253,6 +255,7 @@ void cargar_configuracion(){
 	config_valores_memoria.marcos_por_proceso=config_get_int_value(config,"MARCOS_POR_PROCESO");
 	config_valores_memoria.retardo_swap=config_get_int_value(config,"RETARDO_SWAP");
 	config_valores_memoria.path_swap=config_get_string_value(config,"PATH_SWAP");
+
 
 
 }

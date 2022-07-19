@@ -1,0 +1,12 @@
+[INFO] 23:07:13:456 Servidor CPU/(4504:4504): Hilo de interrupciones creado 
+
+[INFO] 23:07:13:456 Servidor CPU/(4504:4504): Tlb creada 
+
+[INFO] 23:40:13:721 Servidor CPU/(6045:6045): Hilo de interrupciones creado 
+
+[INFO] 23:40:13:721 Servidor CPU/(6045:6045): Tlb creada 
+
+[INFO] 23:40:13:721 Servidor CPU/(6045:6045): CPU listo para recibir al modulo cliente 
+
+[INFO] 23:40:13:722 Servidor CPU/(6045:6046): CPU listo para recibir interrupciones 
+
