@@ -22,6 +22,7 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
 			pagina->p=true;
+			asignarAlArchivo(tabla_elegida->p_id);
 			void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
 			log_info(memoria_logger,"pagina traida de swap \n");
 			escribirPagEnMemoria(paginaTraida,pagina->marco);//la escribe en memoria
@@ -37,8 +38,10 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		uint32_t marcoAUsar=escribirModificaciones(numPagAReemplazar,tabla_elegida->p_id);//Veo que marco voy a usar para traer la pagina
 		log_info(memoria_logger,"Se escribio pagina modificada en swap \n");															 //Si la pag reemplazada tiene m=1 => la escribo en swap, además, se le pone p=0
 		pagina->marco=marcoAUsar;
+		asignarAlArchivo(tabla_elegida->p_id);
 		void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
 		log_info(memoria_logger,"pagina traida de swap \n");
+		//asignarAlArchivo(tabla_elegida->p_id);
 		escribirPagEnMemoria(paginaTraida,marcoAUsar);//la escribe en memoria, reemplazando a la anterior
 		log_info(memoria_logger,"Se escribio y reemplazo pagina traida de swap en memoria \n");
 		pagina->p=true;//pagina ahora está presente en memoria
