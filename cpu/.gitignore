@@ -1,2 +1,4 @@
-/Default/
+/Default/ 
 /Debug/
+
+!*.config
