@@ -1,0 +1,114 @@
+[INFO] 16:00:09:187 Servidor Kernel/(5271:5271): Archivo de configuracion cargada 
+
+[INFO] 16:00:09:528 Servidor Kernel/(5271:5271): Kernel conectado con cpu 
+
+[INFO] 16:00:09:857 Servidor Kernel/(5271:5271): Kernel conectado con memoria 
+
+[INFO] 16:00:11:423 Servidor Kernel/(5271:5271): Servidor creado 
+
+[INFO] 16:00:11:660 Servidor Kernel/(5271:5271): Estructuras plan largo plazo creadas 
+
+[INFO] 16:00:11:686 Servidor Kernel/(5271:5271): Estructuras corto plazo creadas 
+
+[INFO] 16:00:11:696 Servidor Kernel/(5271:5271): Estructuras mediano plazo creadas 
+
+[INFO] 16:00:11:929 Servidor Kernel/(5271:5271): Planificacion iniciada 
+
+[INFO] 16:00:12:426 Servidor Kernel/(5271:5271): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:00:19:682 Servidor Kernel/(5271:5339): Me llego el tamanio y las instrucciones
+
+[INFO] 16:00:19:682 Servidor Kernel/(5271:5339): Consola deserializada, entro a armar pcb
+
+[INFO] 16:08:24:334 Servidor Kernel/(5523:5523): Archivo de configuracion cargada 
+
+[INFO] 16:08:24:805 Servidor Kernel/(5523:5523): Kernel conectado con cpu 
+
+[INFO] 16:08:25:273 Servidor Kernel/(5523:5523): Kernel conectado con memoria 
+
+[INFO] 16:09:12:529 Servidor Kernel/(5574:5574): Archivo de configuracion cargada 
+
+[INFO] 16:09:12:955 Servidor Kernel/(5574:5574): Kernel conectado con cpu 
+
+[INFO] 16:09:13:330 Servidor Kernel/(5574:5574): Kernel conectado con memoria 
+
+[INFO] 16:09:15:973 Servidor Kernel/(5574:5574): Servidor creado 
+
+[INFO] 16:09:16:555 Servidor Kernel/(5574:5574): Estructuras plan largo plazo creadas 
+
+[INFO] 16:09:16:560 Servidor Kernel/(5574:5574): Estructuras corto plazo creadas 
+
+[INFO] 16:09:16:566 Servidor Kernel/(5574:5574): Estructuras mediano plazo creadas 
+
+[INFO] 16:09:17:506 Servidor Kernel/(5574:5574): Planificacion iniciada 
+
+[INFO] 16:09:18:359 Servidor Kernel/(5574:5574): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:09:25:172 Servidor Kernel/(5574:5632): Me llego el tamanio y las instrucciones
+
+[INFO] 16:09:25:173 Servidor Kernel/(5574:5632): Consola deserializada, entro a armar pcb
+
+[INFO] 16:09:25:173 Servidor Kernel/(5574:5632): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:09:25:173 Servidor Kernel/(5574:5632): PID[0] ingresa a NEW 
+
+[INFO] 16:09:25:174 Servidor Kernel/(5574:5609): PID[0] ingresa a READY desde NEW 
+
+[INFO] 16:09:25:174 Servidor Kernel/(5574:5610): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:09:25:174 Servidor Kernel/(5574:5610): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:09:25:175 Servidor Kernel/(5574:5610): Inicio la planificacion SRT 
+
+[INFO] 16:09:25:175 Servidor Kernel/(5574:5610): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 16:09:25:175 Servidor Kernel/(5574:5610): PID[0] ingresa a EXEC
+
+[INFO] 16:09:25:176 Servidor Kernel/(5574:5611): PID[0] sale de EXEC
+
+[INFO] 16:09:25:176 Servidor Kernel/(5574:5611): PCB enviada cpu para ejecucion
+[INFO] 16:19:31:591 Servidor Kernel/(6031:6031): Archivo de configuracion cargada 
+
+[INFO] 16:19:33:200 Servidor Kernel/(6031:6031): Kernel conectado con cpu 
+
+[INFO] 16:19:33:365 Servidor Kernel/(6031:6031): Kernel conectado con memoria 
+
+[INFO] 16:19:34:493 Servidor Kernel/(6031:6031): Servidor creado 
+
+[INFO] 16:19:35:116 Servidor Kernel/(6031:6031): Estructuras plan largo plazo creadas 
+
+[INFO] 16:19:35:141 Servidor Kernel/(6031:6031): Estructuras corto plazo creadas 
+
+[INFO] 16:19:35:157 Servidor Kernel/(6031:6031): Estructuras mediano plazo creadas 
+
+[INFO] 16:19:35:537 Servidor Kernel/(6031:6031): Planificacion iniciada 
+
+[INFO] 16:19:36:076 Servidor Kernel/(6031:6031): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:19:42:671 Servidor Kernel/(6031:6103): Me llego el tamanio y las instrucciones
+
+[INFO] 16:19:42:672 Servidor Kernel/(6031:6103): Consola deserializada, entro a armar pcb
+
+[INFO] 16:19:42:673 Servidor Kernel/(6031:6103): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:19:42:675 Servidor Kernel/(6031:6103): PID[0] ingresa a NEW 
+
+[INFO] 16:19:42:678 Servidor Kernel/(6031:6068): PID[0] ingresa a READY desde NEW 
+
+[INFO] 16:19:42:679 Servidor Kernel/(6031:6069): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:19:42:679 Servidor Kernel/(6031:6069): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:19:42:679 Servidor Kernel/(6031:6069): Inicio la planificacion SRT 
+
+[INFO] 16:19:42:679 Servidor Kernel/(6031:6069): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 16:19:42:680 Servidor Kernel/(6031:6069): PID[0] ingresa a EXEC
+
+[INFO] 16:19:42:680 Servidor Kernel/(6031:6070): PID[0] sale de EXEC
+
+[INFO] 16:19:42:681 Servidor Kernel/(6031:6070): PCB enviada cpu para ejecucion
+[INFO] 16:20:01:736 Servidor Kernel/(6031:6123): Me llego el tamanio y las instrucciones
+
+[INFO] 16:20:01:738 Servidor Kernel/(6031:6123): Consola deserializada, entro a armar pcb
+

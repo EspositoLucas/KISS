@@ -2,3 +2,17 @@
 
 [INFO] 23:43:02:542 Servidor CPU/(6254:6254): Tlb creada 
 
+[INFO] 16:35:40:600 Servidor CPU/(6821:6846): CPU listo para recibir interrupciones 
+
+[INFO] 16:35:40:611 Servidor CPU/(6821:6821): Hilo de interrupciones creado 
+
+[INFO] 16:35:41:161 Servidor CPU/(6821:6821): Tlb creada 
+
+[INFO] 16:35:42:073 Servidor CPU/(6821:6821): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:37:00:052 Servidor CPU/(6821:6846): Se conecto Kernel al puerto interrupt 
+
+[INFO] 16:37:58:500 Servidor CPU/(6821:6821): Recibi PCB de Id: 0 
+
+[INFO] 16:40:27:378 Servidor CPU/(6821:6821): Se creo hilo para recibir interrupciones 
+

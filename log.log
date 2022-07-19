@@ -1,0 +1,142 @@
+[INFO] 17:23:16:254 Servidor Kernel/(8619:8619): Kernel listo para recibir al modulo cliente
+[INFO] 17:23:24:300 Servidor Kernel/(8619:8638): Me llego el tamanio y las instrucciones
+
+[INFO] 17:27:58:454 Servidor Kernel/(8951:8951): Estructuras plan largo plazo creadas 
+
+[INFO] 17:27:58:457 Servidor Kernel/(8951:8951): Estructuras corto plazo creadas 
+
+[INFO] 17:27:58:458 Servidor Kernel/(8951:8951): Estructuras mediano plazo creadas 
+
+[INFO] 17:29:04:552 Servidor Kernel/(9012:9012): Estructuras plan largo plazo creadas 
+
+[INFO] 17:29:04:553 Servidor Kernel/(9012:9012): Estructuras corto plazo creadas 
+
+[INFO] 17:29:04:553 Servidor Kernel/(9012:9012): Estructuras mediano plazo creadas 
+
+[INFO] 17:29:04:553 Servidor Kernel/(9012:9012): Kernel listo para recibir al modulo cliente
+[INFO] 17:29:12:062 Servidor Kernel/(9012:9029): Me llego el tamanio y las instrucciones
+
+[INFO] 17:31:53:309 Servidor Kernel/(9128:9128): Estructuras plan largo plazo creadas 
+
+[INFO] 17:31:53:311 Servidor Kernel/(9128:9128): Estructuras corto plazo creadas 
+
+[INFO] 17:31:53:312 Servidor Kernel/(9128:9128): Estructuras mediano plazo creadas 
+
+[INFO] 17:31:53:313 Servidor Kernel/(9128:9128): Kernel listo para recibir al modulo cliente
+[INFO] 17:31:58:539 Servidor Kernel/(9128:9146): Me llego el tamanio y las instrucciones
+
+[INFO] 17:34:31:092 Servidor Kernel/(9212:9212): Estructuras plan largo plazo creadas 
+
+[INFO] 17:34:31:097 Servidor Kernel/(9212:9212): Estructuras corto plazo creadas 
+
+[INFO] 17:34:31:097 Servidor Kernel/(9212:9212): Estructuras mediano plazo creadas 
+
+[INFO] 17:34:31:098 Servidor Kernel/(9212:9212): Kernel listo para recibir al modulo cliente
+[INFO] 17:34:40:078 Servidor Kernel/(9212:9245): Me llego el tamanio y las instrucciones
+
+[INFO] 17:34:40:085 Servidor Kernel/(9212:9245): PID[0] ingresa a NEW 
+
+[INFO] 17:34:40:085 Servidor Kernel/(9212:9214): PID[0] ingresa a READY desde NEW 
+
+[INFO] 17:34:40:086 Servidor Kernel/(9212:9215): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:34:40:086 Servidor Kernel/(9212:9215): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:34:40:087 Servidor Kernel/(9212:9215): Inicio la planificacion SRT 
+
+[INFO] 17:34:40:087 Servidor Kernel/(9212:9215): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 17:34:40:087 Servidor Kernel/(9212:9215): PID[0] ingresa a EXEC
+
+[INFO] 17:34:40:087 Servidor Kernel/(9212:9216): PID[0] sale de EXEC
+
+[INFO] 17:41:35:366 Servidor Kernel/(9431:9431): Estructuras plan largo plazo creadas 
+
+[INFO] 17:41:35:369 Servidor Kernel/(9431:9431): Estructuras corto plazo creadas 
+
+[INFO] 17:41:35:370 Servidor Kernel/(9431:9431): Estructuras mediano plazo creadas 
+
+[INFO] 17:41:35:370 Servidor Kernel/(9431:9431): Kernel listo para recibir al modulo cliente
+[INFO] 17:41:43:558 Servidor Kernel/(9431:9459): Me llego el tamanio y las instrucciones
+
+[INFO] 17:41:43:571 Servidor Kernel/(9431:9459): PID[0] ingresa a NEW 
+
+[INFO] 17:41:43:571 Servidor Kernel/(9431:9433): PID[0] ingresa a READY desde NEW 
+
+[INFO] 17:41:43:572 Servidor Kernel/(9431:9434): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:41:43:575 Servidor Kernel/(9431:9434): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:41:43:576 Servidor Kernel/(9431:9434): Inicio la planificacion SRT 
+
+[INFO] 17:41:43:576 Servidor Kernel/(9431:9434): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 17:41:43:577 Servidor Kernel/(9431:9434): PID[0] ingresa a EXEC
+
+[INFO] 17:41:43:577 Servidor Kernel/(9431:9435): PID[0] sale de EXEC
+
+[INFO] 17:43:25:792 Servidor Kernel/(9797:9797): Estructuras plan largo plazo creadas 
+
+[INFO] 17:43:25:796 Servidor Kernel/(9797:9797): Estructuras corto plazo creadas 
+
+[INFO] 17:43:25:797 Servidor Kernel/(9797:9797): Estructuras mediano plazo creadas 
+
+[INFO] 17:43:25:798 Servidor Kernel/(9797:9797): Kernel listo para recibir al modulo cliente
+[INFO] 17:43:37:616 Servidor Kernel/(9797:9824): Me llego el tamanio y las instrucciones
+
+[INFO] 17:43:37:617 Servidor Kernel/(9797:9824): PID[0] ingresa a NEW 
+
+[INFO] 17:43:37:617 Servidor Kernel/(9797:9799): PID[0] ingresa a READY desde NEW 
+
+[INFO] 17:43:37:620 Servidor Kernel/(9797:9800): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:43:37:621 Servidor Kernel/(9797:9800): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:43:37:623 Servidor Kernel/(9797:9800): Inicio la planificacion SRT 
+
+[INFO] 17:43:37:623 Servidor Kernel/(9797:9800): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 17:43:37:624 Servidor Kernel/(9797:9800): PID[0] ingresa a EXEC
+
+[INFO] 17:43:37:625 Servidor Kernel/(9797:9801): PID[0] sale de EXEC
+
+[INFO] 17:43:37:627 Servidor Kernel/(9797:9801): PCB enviada cpu para ejecucion
+[INFO] 17:43:37:649 Servidor Kernel/(9797:9801): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 17:43:37:649 Servidor Kernel/(9797:9801): [1] Ultima instruccion ejecutada
+[INFO] 17:43:37:649 Servidor Kernel/(9797:9801): PID[0] Entra en BLOCKED 
+
+[INFO] 17:43:37:650 Servidor Kernel/(9797:9802): PID[0] sale de BLOCKED 
+
+[INFO] 17:43:37:650 Servidor Kernel/(9797:9802): PID[0] ejecuta IO 
+
+[INFO] 17:43:37:652 Servidor Kernel/(9797:9802): Proceso no supero el tiempo mas bloqueo, ejecutar solo IO 
+
+[INFO] 17:43:37:753 Servidor Kernel/(9797:9802): Ingresa a READY desde IO 
+
+[INFO] 17:43:37:753 Servidor Kernel/(9797:9800): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:43:37:753 Servidor Kernel/(9797:9800): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 17:43:37:754 Servidor Kernel/(9797:9800): Inicio la planificacion SRT 
+
+[INFO] 17:43:37:754 Servidor Kernel/(9797:9800): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 17:43:37:756 Servidor Kernel/(9797:9800): PID[0] ingresa a EXEC
+
+[INFO] 17:43:37:761 Servidor Kernel/(9797:9801): PID[0] sale de EXEC
+
+[INFO] 17:43:37:764 Servidor Kernel/(9797:9801): PCB enviada cpu para ejecucion
+[INFO] 17:43:37:764 Servidor Kernel/(9797:9801): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 17:43:37:764 Servidor Kernel/(9797:9801): [5] Ultima instruccion ejecutada
+[INFO] 17:43:37:765 Servidor Kernel/(9797:9801): PID[0] Entra en EXIT 
+
+[INFO] 17:43:37:765 Servidor Kernel/(9797:9798): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 17:43:37:765 Servidor Kernel/(9797:9798): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 17:43:37:765 Servidor Kernel/(9797:9798): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 17:43:37:766 Servidor Kernel/(9797:9798): No se pudo eliminar memoria de PID[0]
+
+[INFO] 17:43:37:766 Servidor Kernel/(9797:9798): Enviando a consola que finalizo el proceso
+

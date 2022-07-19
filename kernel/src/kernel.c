@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
+    cargar_configuracion("/media/sf_Shared/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
 
     kernel_logger_info = log_create("kernel.log", "Servidor Kernel", 1, LOG_LEVEL_INFO);
 
@@ -16,8 +16,8 @@ int main(void)
 
     //conexion cpu
 
-//    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
-//    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
+    socket_dispatch = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_dispatch);
+    socket_interrupt = crear_conexion(config_valores_kernel.ip_cpu, config_valores_kernel.puerto_cpu_interrupt);
 
     log_info(kernel_logger_info, "Kernel conectado con cpu \n");
 
@@ -172,4 +172,3 @@ int atender_clientes_kernel(int socket_servidor){
 
 	return 0;
 }
-

@@ -42,6 +42,7 @@ int main(int argc, char **argv){
 
 //	Enviar paquete
 
+	printf("\nTAMANIO DE INSTRUCCIONES: %d\n", list_size(instrucciones));
 	enviar_paquete(paquete_instrucciones, server_fd);
 	log_info(consola_logger, "Paquete con tamanio e instrucciones enviado correctamente.\n");
 
@@ -51,7 +52,7 @@ int main(int argc, char **argv){
 	if(respuesta_kernel != FINALIZAR_CONSOLA) {
 			log_error(consola_logger, "Error al finalizar consola \n");
 		}
-	log_info(consola_logger, "TFinalizo el proceso, terminando programa.\n");
+	log_info(consola_logger, "Finalizo el proceso, terminando programa.\n");
 	terminar_programa(server_fd, consola_logger, config);
 
 
