@@ -38,3 +38,21 @@
 
 [INFO] 16:16:39:348 Servidor Memoria/(9514:9514): Se conecto un cliente 
 
+[INFO] 19:38:47:166 Servidor Memoria/(20454:20454): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 19:38:47:167 Servidor Memoria/(20454:20454): Memoria lista para recibir al modulo cliente 
+
+[INFO] 19:38:50:886 Servidor Memoria/(20454:20454): Se conecto un cliente 
+
+[INFO] 19:38:50:886 Servidor Memoria/(20454:20456): me llego el handshake de cpu 
+
+[INFO] 19:38:50:888 Servidor Memoria/(20454:20456): hanshake enviado a cpu 
+
+[INFO] 19:39:28:996 Servidor Memoria/(20454:20454): Se conecto un cliente 
+
+[INFO] 19:39:29:003 Servidor Memoria/(20454:20549): me llego el handshake de cpu 
+
+[INFO] 19:39:29:004 Servidor Memoria/(20454:20549): hanshake enviado a cpu 
+
+[INFO] 19:39:31:966 Servidor Memoria/(20454:20454): Se conecto un cliente 
+

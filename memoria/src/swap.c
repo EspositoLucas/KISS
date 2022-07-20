@@ -1,17 +1,25 @@
 #include "swap.h"
 
 char* armarPath(int idProceso){
+
 	char* swap =strcat(string_itoa(idProceso),".swap");
 	puts(swap);
 	char* barra = "/" ;
-	char* path= malloc(100);
-	char*barra_swap =malloc(100);
-	barra_swap = strcat(barra,swap);
-	path=strcat(pathSwap,barra_swap);
+
+	char* path ;
+	if((path = malloc(strlen(pathSwap)+strlen(barra)+ strlen(swap)+1)) != NULL){
+	    path[0] = '\0';   // ensures the memory is an empty string
+	    strcat(path,pathSwap);
+	    strcat(path,barra);
+	    strcat(path,swap);
+	} else {
+	    puts("Fallo el malloc");
+	}
+	puts(path);
 	return path;
 }
 
-void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
+void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea una sola vez
 	int fd;
 	char* path=armarPath((int)idProceso);
 	if((fd=open(path,O_TRUNC|O_CREAT|O_EXCL,S_IROTH|S_IWOTH))==-1){
@@ -20,7 +28,7 @@ void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
 	} else {
 		log_info(memoria_logger,"Se creo el archivo swap del proceso: %d\n",idProceso);
 	}
-	ftruncate(fd,idProceso); // pongo el truncate porque el ayudante me dijo que no funcionaba sino el mmap y unmap
+	ftruncate(fd,tamanio_proceso); // pongo el truncate porque el ayudante me dijo que no funcionaba sino el mmap y unmap
 
 	// hacer el mmap para que quede siempre abierto
 
@@ -28,6 +36,7 @@ void crearSwap(uint32_t idProceso){ // el swap se crea una sola vez
 	archivos_swap* archivo= malloc(sizeof(archivo));
 	archivo->pid = idProceso;
 	archivo->archivo = archivo_swap;
+	archivo->fd = fd;
 	list_add(archivos,archivo);
 
 }
@@ -38,8 +47,8 @@ void eliminarSwap(pcb* pcb){
 	pthread_mutex_lock(&mutex_lista_archivo);
 	archivos_swap* archivo = (archivos_swap*)list_remove_by_condition(archivos,archivos_con_pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
-	munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
-	close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
+	//munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
+	//close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
 	if(remove(armarPath(pcb->id_proceso))==-1){
 		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
 		exit(-1);

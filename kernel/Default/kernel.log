@@ -886,3 +886,21 @@
 
 [INFO] 16:16:44:577 Servidor Kernel/(9557:9563): PID[0] sale de EXEC
 
+[INFO] 19:39:31:963 Servidor Kernel/(20550:20550): Archivo de configuracion cargada 
+
+[INFO] 19:39:31:966 Servidor Kernel/(20550:20550): Kernel conectado con cpu 
+
+[INFO] 19:39:31:966 Servidor Kernel/(20550:20550): Kernel conectado con memoria 
+
+[INFO] 19:39:31:967 Servidor Kernel/(20550:20550): Servidor creado 
+
+[INFO] 19:39:31:967 Servidor Kernel/(20550:20550): Estructuras largo plazo creadas 
+
+[INFO] 19:39:31:967 Servidor Kernel/(20550:20550): Estructuras corto plazo creadas 
+
+[INFO] 19:39:31:967 Servidor Kernel/(20550:20550): Estructuras mediano plazo creadas 
+
+[INFO] 19:39:31:968 Servidor Kernel/(20550:20550): Planificacion iniciada 
+
+[INFO] 19:39:31:968 Servidor Kernel/(20550:20550): Kernel listo para recibir al modulo cliente 
+

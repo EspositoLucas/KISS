@@ -37,11 +37,30 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	log_info(kernel_logger_info, "envio a memoria mensaje para inicializar estructuras del proceso \n");
 	//printf("tamanio_proceso %"PRIu32"\n",pcb->tamanio_proceso);
 	eliminar_paquete(paquete);
+	while(1){
+		int codigo = recibir_operacion_nuevo(socket_fd);
+		switch(codigo){
+				case PAQUETE:
+					log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
+					t_list* valores = recibir_paquete(socket_fd);
 
-	pcb = recibirPcb(socket_fd);
-	log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida \n ");
-	return pcb;
- }
+					pcb->valor_tabla_paginas = *(uint32_t*) list_remove(valores,0);
+					list_destroy(valores);
+
+					log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida \n ");
+					return pcb;
+				case -1:
+					            log_error(kernel_logger_info, "Fallo la comunicacion. Abortando \n");
+					            exit(30);
+			 	default:
+			          log_warning(kernel_logger_info, "Operacion desconocida \n");
+			          break;
+
+			  	}
+		}
+	}
+
+
 
  op_code esperar_respuesta_memoria(int socket_memoria) {
  	op_code codigo;

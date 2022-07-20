@@ -103,7 +103,7 @@ void finalizarPcb(void){
   	proceso = list_remove(colaExit, 0);
   	pthread_mutex_unlock(&mutex_exit);
   	log_info(kernel_logger_info, "[EXIT]Sale de EXIT y Finaliza el  pcb de ID: %d\n", proceso->pcb-> id_proceso);
-	enviar_pcb_a_memoria(proceso->pcb, socket_memoria,LIBERAR_ESTRUCTURAS);
+	enviarPcb(socket_memoria,proceso->pcb);
 	log_info(kernel_logger_info, "Enviando a memoria liberar estructuras del proceso \n");
 	op_code codigo = esperar_respuesta_memoria(socket_memoria);
 	log_info(kernel_logger_info, "Respuesta memoria de estructuras liberadas del proceso recibida \n");

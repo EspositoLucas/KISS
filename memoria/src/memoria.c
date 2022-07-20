@@ -45,6 +45,8 @@ int atender_clientes_memoria(int socket_servidor){
 
 void manejo_conexiones(int socket_cliente){
 
+	while(1){
+
 	int codigo_operacion = recibir_operacion_nuevo(socket_cliente);
 	t_list* valores;
 	uint32_t tabla,entrada1,entrada2,marco;
@@ -133,20 +135,23 @@ void manejo_conexiones(int socket_cliente){
 			indice_de_tabla2++;
 		}
 		//crea el swap
-		crearSwap(pcb_recibido->id_proceso);
+		crearSwap(pcb_recibido->id_proceso,pcb_recibido->tamanio_proceso);
 		log_info(memoria_logger,"Swap creado \n");
 		//Envia el num de tabla de la primera pag de 2 nivel del proceso
 		t_paquete* paquete_ini = crear_paquete();
 		agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
 		enviar_paquete(paquete_ini,socket_cliente);
 		log_info(memoria_logger,"Numero tabla de paginas de 2 nivel del proceso enviado a kernel \n");
-		free(paquete_ini);
+		eliminar_paquete(paquete_ini);
 		break;
-	case LIBERAR_ESTRUCTURAS: ; // finalizar proceso
+	case PCB: ; // finalizar proceso
+		log_info(memoria_logger, "Me llego pedido liberar estructuras del proceso \n");
+		op_code codigo_pcb = ESTRUCTURAS_LIBERADAS;
 		pcb* pcb=recibirPcb(socket_cliente);
 		liberarTodosLosMarcos(pcb->id_proceso);
 		// eliminar swap - poner funcion
 		eliminarSwap(pcb);
+		enviar_datos(socket_cliente, &codigo_pcb, sizeof(op_code)) ;
 		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso \n");
 		break;
 	case SUSPENDER_PROCESO:
@@ -158,6 +163,8 @@ void manejo_conexiones(int socket_cliente){
 		break;
 	default:break;
 	}
+
+}
 }
 
 ///------------------------------INICIALIZAR MEMORIA----------------------------

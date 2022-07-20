@@ -28,7 +28,7 @@ typedef struct
 //FUNCIONES
 
 char* armarPath(int );
-void crearSwap(uint32_t );
+void crearSwap(uint32_t,uint32_t );
 void eliminarSwap(pcb* );
 void suspender_proceso(int ) ;
 bool modificados(t_p_2* );
