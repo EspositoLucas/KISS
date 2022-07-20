@@ -1,1 +1,7 @@
+/Default/* 
 /Debug/
+
+!/Default/memoria.config
+!/Default/config_pruebas
+!/Default/makefile
+

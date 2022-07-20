@@ -1,2 +1,3 @@
-/Debug/
-/Default/
+/Debug/*
+
+!/Debug/makefile

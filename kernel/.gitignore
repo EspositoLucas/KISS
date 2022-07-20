@@ -1,6 +1,5 @@
 /Default/* 
 /Debug/
 
-!/Default/cpu.config
-!/Default/makefile
+!/Default/kernel.config
 !/Default/config_pruebas
