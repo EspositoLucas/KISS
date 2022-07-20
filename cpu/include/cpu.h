@@ -46,6 +46,6 @@ void ejecutarEXIT(pcb*);
 void* interrupt(void* interrupt);
 int checkInterrupt();
 void cargar_config();
-void*conexion_inicial_memoria(void*);
+void*conexion_inicial_memoria();
 
 #endif

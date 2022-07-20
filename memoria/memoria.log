@@ -1,0 +1,616 @@
+[INFO] 15:56:21:228 Servidor Memoria/(8542:8542): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:56:23:432 Servidor Memoria/(8542:8542): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:57:42:656 Servidor Memoria/(8632:8632): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:57:42:657 Servidor Memoria/(8632:8632): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:59:43:409 Servidor Memoria/(8849:8849): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:59:43:410 Servidor Memoria/(8849:8849): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:02:34:249 Servidor Memoria/(8987:8987): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:02:34:252 Servidor Memoria/(8987:8987): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:05:47:749 Servidor Memoria/(9111:9111): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:05:47:751 Servidor Memoria/(9111:9111): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:11:16:903 Servidor Memoria/(9285:9285): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:11:16:904 Servidor Memoria/(9285:9285): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:13:24:859 Servidor Memoria/(9358:9358): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:13:27:857 Servidor Memoria/(9358:9358): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:14:03:528 Servidor Memoria/(9415:9415): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:14:06:207 Servidor Memoria/(9415:9415): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:15:09:936 Servidor Memoria/(9415:9415): Se conecto un cliente 
+
+[INFO] 16:20:31:730 Servidor Memoria/(9729:9729): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:20:31:731 Servidor Memoria/(9729:9729): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:20:37:713 Servidor Memoria/(9729:9729): Se conecto un cliente 
+
+[INFO] 16:20:49:246 Servidor Memoria/(9729:9747): me llego el handshake de cpu 
+
+[INFO] 16:20:49:248 Servidor Memoria/(9729:9747): hanshake enviado a cpu 
+
+[INFO] 16:21:27:626 Servidor Memoria/(9729:9729): Se conecto un cliente 
+
+[INFO] 16:23:14:018 Servidor Memoria/(9874:9874): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:23:14:019 Servidor Memoria/(9874:9874): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:23:25:966 Servidor Memoria/(9874:9874): Se conecto un cliente 
+
+[INFO] 16:23:37:557 Servidor Memoria/(9874:9900): me llego el handshake de cpu 
+
+[INFO] 16:23:37:559 Servidor Memoria/(9874:9900): hanshake enviado a cpu 
+
+[INFO] 16:23:57:729 Servidor Memoria/(9874:9874): Se conecto un cliente 
+
+[INFO] 16:28:25:986 Servidor Memoria/(10149:10149): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:28:25:991 Servidor Memoria/(10149:10149): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:28:33:281 Servidor Memoria/(10149:10149): Se conecto un cliente 
+
+[INFO] 16:28:41:410 Servidor Memoria/(10149:10163): me llego el handshake de cpu 
+
+[INFO] 16:28:41:413 Servidor Memoria/(10149:10163): hanshake enviado a cpu 
+
+[INFO] 16:28:52:127 Servidor Memoria/(10149:10149): Se conecto un cliente 
+
+[INFO] 16:28:56:757 Servidor Memoria/(10149:10203): Inicializando estructuras 
+
+[INFO] 16:28:56:757 Servidor Memoria/(10149:10203): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 16:30:15:329 Servidor Memoria/(10254:10254): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:30:18:021 Servidor Memoria/(10254:10254): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:30:40:931 Servidor Memoria/(10254:10254): Se conecto un cliente 
+
+[INFO] 16:30:40:935 Servidor Memoria/(10254:10254): Se conecto un cliente 
+
+[INFO] 16:30:40:945 Servidor Memoria/(10254:10315): me llego el handshake de cpu 
+
+[INFO] 16:30:40:946 Servidor Memoria/(10254:10315): hanshake enviado a cpu 
+
+[INFO] 16:30:40:949 Servidor Memoria/(10254:10316): Inicializando estructuras 
+
+[INFO] 16:30:40:950 Servidor Memoria/(10254:10316): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 16:31:52:229 Servidor Memoria/(10394:10394): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:32:14:674 Servidor Memoria/(10433:10433): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:32:17:857 Servidor Memoria/(10433:10433): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:32:34:468 Servidor Memoria/(10433:10433): Se conecto un cliente 
+
+[INFO] 16:32:34:470 Servidor Memoria/(10433:10433): Se conecto un cliente 
+
+[INFO] 16:32:34:472 Servidor Memoria/(10433:10495): me llego el handshake de cpu 
+
+[INFO] 16:32:34:475 Servidor Memoria/(10433:10495): hanshake enviado a cpu 
+
+[INFO] 16:32:34:478 Servidor Memoria/(10433:10496): Inicializando estructuras 
+
+[INFO] 16:32:34:478 Servidor Memoria/(10433:10496): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 16:32:34:479 Servidor Memoria/(10433:10496): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 16:33:59:237 Servidor Memoria/(10527:10527): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:34:16:349 Servidor Memoria/(10527:10527): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:34:22:815 Servidor Memoria/(10527:10527): Se conecto un cliente 
+
+[INFO] 16:34:22:820 Servidor Memoria/(10527:10558): me llego el handshake de cpu 
+
+[INFO] 16:34:22:822 Servidor Memoria/(10527:10558): hanshake enviado a cpu 
+
+[INFO] 16:34:26:732 Servidor Memoria/(10527:10527): Se conecto un cliente 
+
+[INFO] 16:34:31:236 Servidor Memoria/(10527:10572): Inicializando estructuras 
+
+[INFO] 16:34:31:236 Servidor Memoria/(10527:10572): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 16:34:31:236 Servidor Memoria/(10527:10572): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 16:43:13:907 Servidor Memoria/(10819:10819): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:43:15:820 Servidor Memoria/(10819:10819): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:43:20:216 Servidor Memoria/(10819:10819): Se conecto un cliente 
+
+[INFO] 16:43:20:224 Servidor Memoria/(10819:10853): me llego el handshake de cpu 
+
+[INFO] 16:43:20:225 Servidor Memoria/(10819:10853): hanshake enviado a cpu 
+
+[INFO] 16:43:22:912 Servidor Memoria/(10819:10819): Se conecto un cliente 
+
+[INFO] 16:43:27:203 Servidor Memoria/(10819:10868): Inicializando estructuras 
+
+[INFO] 16:43:27:203 Servidor Memoria/(10819:10868): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 16:43:27:203 Servidor Memoria/(10819:10868): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 16:59:52:738 Servidor Memoria/(11725:11725): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 16:59:55:831 Servidor Memoria/(11725:11725): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:00:02:363 Servidor Memoria/(11725:11725): Se conecto un cliente 
+
+[INFO] 17:00:02:374 Servidor Memoria/(11725:11761): me llego el handshake de cpu 
+
+[INFO] 17:00:02:376 Servidor Memoria/(11725:11761): hanshake enviado a cpu 
+
+[INFO] 17:00:07:275 Servidor Memoria/(11725:11725): Se conecto un cliente 
+
+[INFO] 17:00:12:661 Servidor Memoria/(11725:11783): Inicializando estructuras 
+
+[INFO] 17:00:12:661 Servidor Memoria/(11725:11783): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:00:12:661 Servidor Memoria/(11725:11783): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:03:16:795 Servidor Memoria/(11923:11923): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:03:19:224 Servidor Memoria/(11923:11923): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:03:24:022 Servidor Memoria/(11923:11923): Se conecto un cliente 
+
+[INFO] 17:03:24:036 Servidor Memoria/(11923:11954): me llego el handshake de cpu 
+
+[INFO] 17:03:24:037 Servidor Memoria/(11923:11954): hanshake enviado a cpu 
+
+[INFO] 17:03:29:481 Servidor Memoria/(11923:11923): Se conecto un cliente 
+
+[INFO] 17:04:57:034 Servidor Memoria/(12095:12095): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:04:59:463 Servidor Memoria/(12095:12095): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:05:04:426 Servidor Memoria/(12095:12095): Se conecto un cliente 
+
+[INFO] 17:05:04:450 Servidor Memoria/(12095:12125): me llego el handshake de cpu 
+
+[INFO] 17:05:04:452 Servidor Memoria/(12095:12125): hanshake enviado a cpu 
+
+[INFO] 17:05:11:259 Servidor Memoria/(12095:12095): Se conecto un cliente 
+
+[INFO] 17:05:16:396 Servidor Memoria/(12095:12137): Inicializando estructuras 
+
+[INFO] 17:05:16:396 Servidor Memoria/(12095:12137): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:05:16:397 Servidor Memoria/(12095:12137): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:07:13:665 Servidor Memoria/(12254:12254): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:07:17:221 Servidor Memoria/(12254:12254): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:07:23:018 Servidor Memoria/(12254:12254): Se conecto un cliente 
+
+[INFO] 17:07:23:030 Servidor Memoria/(12254:12282): me llego el handshake de cpu 
+
+[INFO] 17:07:23:031 Servidor Memoria/(12254:12282): hanshake enviado a cpu 
+
+[INFO] 17:07:26:868 Servidor Memoria/(12254:12254): Se conecto un cliente 
+
+[INFO] 17:07:33:814 Servidor Memoria/(12254:12298): Inicializando estructuras 
+
+[INFO] 17:07:33:814 Servidor Memoria/(12254:12298): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:07:33:814 Servidor Memoria/(12254:12298): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:10:19:841 Servidor Memoria/(12426:12426): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:10:22:426 Servidor Memoria/(12426:12426): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:10:27:782 Servidor Memoria/(12426:12426): Se conecto un cliente 
+
+[INFO] 17:10:27:790 Servidor Memoria/(12426:12456): me llego el handshake de cpu 
+
+[INFO] 17:10:27:794 Servidor Memoria/(12426:12456): hanshake enviado a cpu 
+
+[INFO] 17:10:34:032 Servidor Memoria/(12426:12426): Se conecto un cliente 
+
+[INFO] 17:10:36:774 Servidor Memoria/(12426:12470): Inicializando estructuras 
+
+[INFO] 17:10:36:774 Servidor Memoria/(12426:12470): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:10:36:774 Servidor Memoria/(12426:12470): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:11:49:374 Servidor Memoria/(12588:12588): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:11:51:771 Servidor Memoria/(12588:12588): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:11:57:901 Servidor Memoria/(12588:12588): Se conecto un cliente 
+
+[INFO] 17:11:57:915 Servidor Memoria/(12588:12617): me llego el handshake de cpu 
+
+[INFO] 17:11:57:917 Servidor Memoria/(12588:12617): hanshake enviado a cpu 
+
+[INFO] 17:12:01:426 Servidor Memoria/(12588:12588): Se conecto un cliente 
+
+[INFO] 17:12:05:916 Servidor Memoria/(12588:12632): Inicializando estructuras 
+
+[INFO] 17:12:05:916 Servidor Memoria/(12588:12632): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:12:05:916 Servidor Memoria/(12588:12632): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:15:03:437 Servidor Memoria/(12787:12787): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:15:06:097 Servidor Memoria/(12787:12787): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:15:11:301 Servidor Memoria/(12787:12787): Se conecto un cliente 
+
+[INFO] 17:15:11:309 Servidor Memoria/(12787:12815): me llego el handshake de cpu 
+
+[INFO] 17:15:11:310 Servidor Memoria/(12787:12815): hanshake enviado a cpu 
+
+[INFO] 17:15:14:706 Servidor Memoria/(12787:12787): Se conecto un cliente 
+
+[INFO] 17:15:21:802 Servidor Memoria/(12787:12836): Inicializando estructuras 
+
+[INFO] 17:15:21:802 Servidor Memoria/(12787:12836): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:15:21:802 Servidor Memoria/(12787:12836): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:21:44:083 Servidor Memoria/(13128:13128): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:21:48:506 Servidor Memoria/(13128:13128): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:21:59:172 Servidor Memoria/(13128:13128): Se conecto un cliente 
+
+[INFO] 17:21:59:182 Servidor Memoria/(13128:13159): me llego el handshake de cpu 
+
+[INFO] 17:21:59:184 Servidor Memoria/(13128:13159): hanshake enviado a cpu 
+
+[INFO] 17:22:04:133 Servidor Memoria/(13128:13128): Se conecto un cliente 
+
+[INFO] 17:22:12:669 Servidor Memoria/(13128:13189): Inicializando estructuras 
+
+[INFO] 17:22:12:669 Servidor Memoria/(13128:13189): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:22:12:669 Servidor Memoria/(13128:13189): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:24:41:328 Servidor Memoria/(13324:13324): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:24:43:640 Servidor Memoria/(13324:13324): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:24:48:311 Servidor Memoria/(13324:13324): Se conecto un cliente 
+
+[INFO] 17:24:48:320 Servidor Memoria/(13324:13354): me llego el handshake de cpu 
+
+[INFO] 17:24:48:322 Servidor Memoria/(13324:13354): hanshake enviado a cpu 
+
+[INFO] 17:24:52:531 Servidor Memoria/(13324:13324): Se conecto un cliente 
+
+[INFO] 17:24:56:797 Servidor Memoria/(13324:13370): Inicializando estructuras 
+
+[INFO] 17:24:56:797 Servidor Memoria/(13324:13370): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:24:56:798 Servidor Memoria/(13324:13370): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:28:48:387 Servidor Memoria/(13531:13531): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:28:51:621 Servidor Memoria/(13531:13531): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:28:58:780 Servidor Memoria/(13531:13531): Se conecto un cliente 
+
+[INFO] 17:28:58:792 Servidor Memoria/(13531:13563): me llego el handshake de cpu 
+
+[INFO] 17:28:58:794 Servidor Memoria/(13531:13563): hanshake enviado a cpu 
+
+[INFO] 17:29:02:197 Servidor Memoria/(13531:13531): Se conecto un cliente 
+
+[INFO] 17:29:04:899 Servidor Memoria/(13531:13578): Inicializando estructuras 
+
+[INFO] 17:29:04:899 Servidor Memoria/(13531:13578): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:29:04:899 Servidor Memoria/(13531:13578): Mayor cantidad de entradas en tabla de primer nivel que las permitidas 
+
+[INFO] 17:31:17:141 Servidor Memoria/(13719:13719): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:31:19:061 Servidor Memoria/(13719:13719): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:31:23:236 Servidor Memoria/(13719:13719): Se conecto un cliente 
+
+[INFO] 17:31:23:254 Servidor Memoria/(13719:13748): me llego el handshake de cpu 
+
+[INFO] 17:31:23:256 Servidor Memoria/(13719:13748): hanshake enviado a cpu 
+
+[INFO] 17:31:30:737 Servidor Memoria/(13719:13719): Se conecto un cliente 
+
+[INFO] 17:31:35:082 Servidor Memoria/(13719:13769): Inicializando estructuras 
+
+[INFO] 17:31:35:082 Servidor Memoria/(13719:13769): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:31:35:082 Servidor Memoria/(13719:13769): tabla segundo nivel creada 
+
+[INFO] 17:31:35:082 Servidor Memoria/(13719:13769): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:31:35:082 Servidor Memoria/(13719:13769): tabla segundo nivel creada 
+
+[INFO] 17:31:35:083 Servidor Memoria/(13719:13769): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:31:35:083 Servidor Memoria/(13719:13769): tabla segundo nivel creada 
+
+[INFO] 17:31:35:083 Servidor Memoria/(13719:13769): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:31:35:083 Servidor Memoria/(13719:13769): tabla segundo nivel creada 
+
+[INFO] 17:31:35:083 Servidor Memoria/(13719:13769): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:36:32:064 Servidor Memoria/(14032:14032): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:36:58:772 Servidor Memoria/(14117:14117): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:37:01:741 Servidor Memoria/(14117:14117): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:37:07:198 Servidor Memoria/(14117:14117): Se conecto un cliente 
+
+[INFO] 17:37:07:219 Servidor Memoria/(14117:14150): me llego el handshake de cpu 
+
+[INFO] 17:37:07:222 Servidor Memoria/(14117:14150): hanshake enviado a cpu 
+
+[INFO] 17:37:12:547 Servidor Memoria/(14117:14117): Se conecto un cliente 
+
+[INFO] 17:37:16:930 Servidor Memoria/(14117:14164): Inicializando estructuras 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): tabla segundo nivel creada 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): tabla segundo nivel creada 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): tabla segundo nivel creada 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): tabla segundo nivel creada 
+
+[INFO] 17:37:16:931 Servidor Memoria/(14117:14164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:47:41:917 Servidor Memoria/(14475:14475): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:47:44:604 Servidor Memoria/(14475:14475): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:47:50:493 Servidor Memoria/(14475:14475): Se conecto un cliente 
+
+[INFO] 17:47:50:503 Servidor Memoria/(14475:14506): me llego el handshake de cpu 
+
+[INFO] 17:47:50:507 Servidor Memoria/(14475:14506): hanshake enviado a cpu 
+
+[INFO] 17:47:54:051 Servidor Memoria/(14475:14475): Se conecto un cliente 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): Inicializando estructuras 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): tabla segundo nivel creada 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): tabla segundo nivel creada 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): tabla segundo nivel creada 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): tabla segundo nivel creada 
+
+[INFO] 17:47:57:204 Servidor Memoria/(14475:14522): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:36:309 Servidor Memoria/(14622:14622): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:49:38:456 Servidor Memoria/(14622:14622): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:49:42:602 Servidor Memoria/(14622:14622): Se conecto un cliente 
+
+[INFO] 17:49:42:610 Servidor Memoria/(14622:14652): me llego el handshake de cpu 
+
+[INFO] 17:49:42:614 Servidor Memoria/(14622:14652): hanshake enviado a cpu 
+
+[INFO] 17:49:48:575 Servidor Memoria/(14622:14622): Se conecto un cliente 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): Inicializando estructuras 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): tabla segundo nivel creada 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): tabla segundo nivel creada 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): tabla segundo nivel creada 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): tabla segundo nivel creada 
+
+[INFO] 17:49:55:236 Servidor Memoria/(14622:14666): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:53:51:834 Servidor Memoria/(14883:14883): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:53:54:428 Servidor Memoria/(14883:14883): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:53:58:788 Servidor Memoria/(14883:14883): Se conecto un cliente 
+
+[INFO] 17:53:58:800 Servidor Memoria/(14883:14913): me llego el handshake de cpu 
+
+[INFO] 17:53:58:801 Servidor Memoria/(14883:14913): hanshake enviado a cpu 
+
+[INFO] 17:54:02:880 Servidor Memoria/(14883:14883): Se conecto un cliente 
+
+[INFO] 17:54:06:340 Servidor Memoria/(14883:14927): Inicializando estructuras 
+
+[INFO] 17:54:06:340 Servidor Memoria/(14883:14927): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:54:06:340 Servidor Memoria/(14883:14927): tabla segundo nivel creada 
+
+[INFO] 17:54:06:341 Servidor Memoria/(14883:14927): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:54:06:341 Servidor Memoria/(14883:14927): tabla segundo nivel creada 
+
+[INFO] 17:54:06:341 Servidor Memoria/(14883:14927): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:54:06:341 Servidor Memoria/(14883:14927): tabla segundo nivel creada 
+
+[INFO] 17:54:06:341 Servidor Memoria/(14883:14927): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:54:06:341 Servidor Memoria/(14883:14927): tabla segundo nivel creada 
+
+[INFO] 17:54:06:341 Servidor Memoria/(14883:14927): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:56:51:982 Servidor Memoria/(15043:15043): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:56:54:728 Servidor Memoria/(15043:15043): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:56:58:635 Servidor Memoria/(15043:15043): Se conecto un cliente 
+
+[INFO] 17:56:58:646 Servidor Memoria/(15043:15075): me llego el handshake de cpu 
+
+[INFO] 17:56:58:648 Servidor Memoria/(15043:15075): hanshake enviado a cpu 
+
+[INFO] 17:57:03:241 Servidor Memoria/(15043:15043): Se conecto un cliente 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): Inicializando estructuras 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): tabla segundo nivel creada 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): tabla segundo nivel creada 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): tabla segundo nivel creada 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): tabla segundo nivel creada 
+
+[INFO] 17:57:06:953 Servidor Memoria/(15043:15089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:59:32:066 Servidor Memoria/(15206:15206): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 17:59:34:446 Servidor Memoria/(15206:15206): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:59:39:909 Servidor Memoria/(15206:15206): Se conecto un cliente 
+
+[INFO] 17:59:39:918 Servidor Memoria/(15206:15237): me llego el handshake de cpu 
+
+[INFO] 17:59:39:919 Servidor Memoria/(15206:15237): hanshake enviado a cpu 
+
+[INFO] 17:59:42:626 Servidor Memoria/(15206:15206): Se conecto un cliente 
+
+[INFO] 17:59:46:978 Servidor Memoria/(15206:15251): Inicializando estructuras 
+
+[INFO] 17:59:46:979 Servidor Memoria/(15206:15251): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:59:46:979 Servidor Memoria/(15206:15251): tabla segundo nivel creada 
+
+[INFO] 17:59:46:979 Servidor Memoria/(15206:15251): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:59:46:979 Servidor Memoria/(15206:15251): tabla segundo nivel creada 
+
+[INFO] 17:59:46:979 Servidor Memoria/(15206:15251): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:59:46:979 Servidor Memoria/(15206:15251): tabla segundo nivel creada 
+
+[INFO] 17:59:46:980 Servidor Memoria/(15206:15251): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:59:46:981 Servidor Memoria/(15206:15251): tabla segundo nivel creada 
+
+[INFO] 17:59:46:982 Servidor Memoria/(15206:15251): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:00:49:685 Servidor Memoria/(15339:15339): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 18:01:13:570 Servidor Memoria/(15427:15427): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 18:01:41:812 Servidor Memoria/(15520:15520): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 18:01:44:719 Servidor Memoria/(15520:15520): Memoria lista para recibir al modulo cliente 
+
+[INFO] 18:01:50:218 Servidor Memoria/(15520:15520): Se conecto un cliente 
+
+[INFO] 18:01:50:226 Servidor Memoria/(15520:15549): me llego el handshake de cpu 
+
+[INFO] 18:01:50:228 Servidor Memoria/(15520:15549): hanshake enviado a cpu 
+
+[INFO] 18:01:53:123 Servidor Memoria/(15520:15520): Se conecto un cliente 
+
+[INFO] 18:01:55:730 Servidor Memoria/(15520:15563): Inicializando estructuras 
+
+[INFO] 18:01:55:730 Servidor Memoria/(15520:15563): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): tabla segundo nivel creada 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): tabla segundo nivel creada 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): tabla segundo nivel creada 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): tabla segundo nivel creada 
+
+[INFO] 18:01:55:731 Servidor Memoria/(15520:15563): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:04:43:408 Servidor Memoria/(15683:15683): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 18:05:08:973 Servidor Memoria/(15772:15772): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 18:05:11:449 Servidor Memoria/(15772:15772): Memoria lista para recibir al modulo cliente 
+
+[INFO] 18:05:15:540 Servidor Memoria/(15772:15772): Se conecto un cliente 
+
+[INFO] 18:05:15:546 Servidor Memoria/(15772:15800): me llego el handshake de cpu 
+
+[INFO] 18:05:15:548 Servidor Memoria/(15772:15800): hanshake enviado a cpu 
+
+[INFO] 18:05:18:619 Servidor Memoria/(15772:15772): Se conecto un cliente 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): Inicializando estructuras 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): tabla segundo nivel creada 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): tabla segundo nivel creada 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): tabla segundo nivel creada 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): tabla segundo nivel creada 
+
+[INFO] 18:05:21:652 Servidor Memoria/(15772:15815): numero de tabla de segundo nivel pasado a la de primer nivel 
+

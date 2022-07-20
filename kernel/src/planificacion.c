@@ -85,7 +85,7 @@ void transicion_admitir_por_prioridad(void) {
 			pthread_mutex_lock(&mutex_new);
 			proceso = list_remove(colaNew,list_size(colaNew) -1 );
 			pthread_mutex_unlock(&mutex_new);
-			//pcb = obtener_entrada_tabla_de_pagina(socket_memoria,pcb); // lo comento hasta que funcione memoria
+			proceso->pcb = obtener_entrada_tabla_de_pagina(socket_memoria,proceso->pcb); // lo comento hasta que funcione memoria
 			log_info(kernel_logger_info, "PID[%d] ingresa a READY desde NEW \n", proceso->pcb->id_proceso);
 		}
 

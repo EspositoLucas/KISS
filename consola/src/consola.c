@@ -12,6 +12,7 @@ int main(int argc, char **argv){
 //	Inicializacion
 
 	int tamanio_proceso = atoi(argv[1]);
+	printf("tamanio_proceso %d\n",tamanio_proceso);
 
 //	Logging consola
 
@@ -30,7 +31,7 @@ int main(int argc, char **argv){
 //	Serializacion y agregar a paquete
 
 	t_paquete *paquete_instrucciones = crear_paquete_con_codigo_de_operacion(PAQUETE_CONSOLA);
-	agregar_entero_a_paquete(paquete_instrucciones, tamanio_proceso);
+	agregar_a_paquete(paquete_instrucciones, &tamanio_proceso,sizeof(int));
 	serializar_instrucciones(instrucciones, paquete_instrucciones);
 
 	log_info(consola_logger, "instrucciones serializadas\n");

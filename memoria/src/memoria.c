@@ -30,10 +30,13 @@ int atender_clientes_memoria(int socket_servidor){
 	int socket_cliente = esperar_cliente(socket_servidor); // se conecta primero cpu
 
 	if(socket_cliente != -1){
+		log_info(memoria_logger, "Se conecto un cliente \n");
 		pthread_t hilo_cliente;
 		pthread_create(&hilo_cliente, NULL, (void*) manejo_conexiones, (void *)socket_cliente);
 		pthread_detach(hilo_cliente);
 		return 1;
+	}else {
+		log_error(memoria_logger, "Error al escuchar clientes... Finalizando servidor \n"); // log para fallo de comunicaciones
 	}
 	return 0;
 }
@@ -96,6 +99,7 @@ void manejo_conexiones(int socket_cliente){
 		//Recibe el pcb del proceso para iniciar estructuras
 		pcb* pcb_recibido=recibirPcb(socket_cliente);
 		log_info(memoria_logger, "recibi pcb de kernel para inicializar estructuras \n");
+		printf("valor tamanio_proceso %"PRIu32"\n",pcb_recibido->tamanio_proceso);
 		//Averiguamos cuantas pags ocupa el proceso
 		int cantidad_de_pags=pags_proceso(pcb_recibido->tamanio_proceso,config_valores_memoria.tam_pagina);
 
@@ -103,7 +107,7 @@ void manejo_conexiones(int socket_cliente){
 		uint32_t cantidad_de_tp2=(uint32_t)tp2_proceso(cantidad_de_pags,config_valores_memoria.entradas_por_tabla);
 
 		//Veo cual es el tamanio de la pag de 1 nivel (que tambien nos sirve para averiguar el proximo indice a usar)
-		uint32_t valorTP1=*(uint32_t*)list_size(tabla_de_pagina_1_nivel); // aca no calcula el TAMANIO de la tp1 en vez de la PAGINA??
+		uint32_t valorTP1=(uint32_t)list_size(tabla_de_pagina_1_nivel); // aca no calcula el TAMANIO de la tp1 en vez de la PAGINA??
 
 		//No pueden haber mas entradas q las permitidas
 		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
@@ -319,24 +323,16 @@ void traducir_operandos(void* stream,uint32_t* operando1,uint32_t* operando2){
 	memcpy(&operando2,stream+sizeof(uint32_t),sizeof(uint32_t));
 }
 int pags_proceso(uint32_t tamanio_proc,int tamanio_pag){
-	int entero=((int)tamanio_proc)/tamanio_pag;
-	int resto=((int)tamanio_proc)%tamanio_pag;
-	if(resto!=0){
-		return entero+1;
-	}
-	else{
-		return entero;
-	}
+	printf("valor tamanio_proc %d \n",(int)tamanio_proc);
+	printf("valor tamanio_pag %d \n",tamanio_pag);
+	double entero=((double)tamanio_proc)/(double)tamanio_pag;
+	printf("valor entero %0.2f \n",ceil(entero));
+	return (int)ceil(entero);
 }
 int tp2_proceso(int pags,int entradas_tabla){
-	int entero=pags/entradas_tabla;
-	int resto=pags % entradas_tabla;
-	if(resto!=0){
-		return entero+1;
-	}
-	else{
-		return entero;
-	}
+	double entero=(double)pags/(double)entradas_tabla;
+	printf("valor entero %0.2f \n",ceil(entero));
+	return (int)ceil(entero);
 }
 ///-----------MANEJO DE MARCOS----------------
 

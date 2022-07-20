@@ -99,7 +99,10 @@ t_consola *deserializar_consola(int  socket_cliente) {
 
 	t_list *datos = recibir_paquete(socket_cliente);
   	t_consola *consola = malloc(sizeof(t_consola));
+  	int aux = *(int*)list_get(datos,0);
+  	printf("tamanio_proceso %d\n",aux);
   	consola->tamanio_proceso = *(uint32_t *)list_remove(datos, 0);
+  	printf("tamanio_proceso %"PRIu32"\n",consola->tamanio_proceso);
   	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos));
   	return consola;
 }

@@ -11,7 +11,8 @@
 #include "sockets.h"
 #include "manejodetabla.h"
 #include "swap.h"
-
+#include <math.h>
+#include "inttypes.h"
 
 
 // STRUCTS/ENUMS

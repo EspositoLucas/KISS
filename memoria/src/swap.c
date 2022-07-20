@@ -1,8 +1,13 @@
 #include "swap.h"
 
 char* armarPath(int idProceso){
-	char* path=string_new();
-	path=strcat(pathSwap,strcat("/",strcat(string_itoa(idProceso),".swap")));
+	char* swap =strcat(string_itoa(idProceso),".swap");
+	puts(swap);
+	char* barra = "/" ;
+	char* path= malloc(100);
+	char*barra_swap =malloc(100);
+	barra_swap = strcat(barra,swap);
+	path=strcat(pathSwap,barra_swap);
 	return path;
 }
 

@@ -10,6 +10,7 @@
 #include "log_config.h"
 #include "sockets.h"
 #include "planificacion.h"
+#include "inttypes.h"
 
 
 t_log *kernel_logger_info;

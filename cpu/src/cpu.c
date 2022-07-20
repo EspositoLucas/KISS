@@ -23,11 +23,20 @@ int main()
 	char* ip_memoria=config_valores_cpu.ip_memoria;
 	char* puerto_memoria=config_valores_cpu.puerto_memoria;
 
+	socket_memoria=crear_conexion(ip_memoria,puerto_memoria);
 	///HANDSHAKE
 
-	/*pthread_t conexion_memoria_i;
-	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,&config_valores_cpu.puerto_memoria);//INICIA EL HILO DE CONEXION INICIAL CON MEMORIA (HANDSHAKE)
-	pthread_join(conexion_memoria_i,NULL);//ESPERA A RECIBIR EL HANDSHAKE PARA SEGUIR*/
+//	pthread_t conexion_memoria_i;
+//	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,&config_valores_cpu.puerto_memoria);//INICIA EL HILO DE CONEXION INICIAL CON MEMORIA (HANDSHAKE)
+//	pthread_join(conexion_memoria_i,NULL);//ESPERA A RECIBIR EL HANDSHAKE PARA SEGUIR
+
+	pthread_t conexion_memoria_i;
+	conexion_t* datos=malloc(sizeof(conexion_t));
+	datos->ip=config_valores_cpu.ip_memoria;
+	datos->puerto=config_valores_cpu.puerto_memoria;
+	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,NULL);//INICIA EL HILO DE CONEXION INICIAL CON MEMORIA (HANDSHAKE)
+	//pthread_join(conexion_memoria_i,NULL);//ESPERA A RECIBIR EL HANDSHAKE PARA SEGUIR
+
 
 	//INTERRUPCIONES
 	pthread_t manejoInterrupciones;
@@ -278,9 +287,8 @@ while(1){
 return NULL;
 }
 ///CONEXION A MEMORIA: HANDSHAKE
-void* conexion_inicial_memoria(void* datos){
-	conexion_t* cpu=datos;
-	socket_memoria=crear_conexion(cpu->ip,cpu->puerto);
+void* conexion_inicial_memoria(){
+
 	pedir_handshake(socket_memoria);
 	log_info(cpu_logger, "Pedido de handshake enviado \n");
 	int codigo_memoria;
@@ -288,8 +296,9 @@ void* conexion_inicial_memoria(void* datos){
 		codigo_memoria=recibir_operacion(socket_memoria);
 		switch(codigo_memoria){
 			case PAQUETE:
-				configuracion_tabla=recibir_handshake(socket_memoria);
 				log_info(cpu_logger,"Recibi configuracion por handshake \n");
+				configuracion_tabla=recibir_handshake(socket_memoria);
+				//log_info(cpu_logger,"Recibi configuracion por handshake \n");
 				return NULL;
 			break;
 			case -1:

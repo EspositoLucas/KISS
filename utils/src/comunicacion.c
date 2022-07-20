@@ -477,14 +477,17 @@ pcb* deserializar_pcb(void* stream) {
 
 //HANDSHAKE
 void pedir_handshake(int socket_memoria){
-	t_paquete *paquete = malloc(sizeof(t_paquete));
-	char* mensaje_handshake="HANDSHAKE";
+//	t_paquete *paquete = malloc(sizeof(t_paquete));
+//	char* mensaje_handshake="HANDSHAKE";
 
-	   paquete->codigo_operacion = HANDSHAKE;
-	    paquete->buffer = malloc(sizeof(t_buffer));
-	    agregar_a_paquete(paquete,mensaje_handshake,strlen(mensaje_handshake) + 1);
-	    enviar_paquete(paquete,socket_memoria);
-	    eliminar_paquete(paquete);
+	   op_code codigo = HANDSHAKE;
+//	    paquete->buffer = malloc(sizeof(t_buffer));
+//	    agregar_a_paquete(paquete,mensaje_handshake,strlen(mensaje_handshake) + 1);
+//	    enviar_paquete(paquete,socket_memoria);
+//	    eliminar_paquete(paquete);
+	   enviar_datos(socket_memoria, &codigo, sizeof(op_code));
+
+
 }
 t_handshake* recibir_handshake(int socket_memoria){
 	t_handshake* han=malloc(sizeof(t_handshake));

@@ -35,6 +35,7 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	armarPaquete(paquete,pcb);
 	enviar_paquete(paquete, socket_fd);
 	log_info(kernel_logger_info, "envio a memoria mensaje para inicializar estructuras del proceso \n");
+	//printf("tamanio_proceso %"PRIu32"\n",pcb->tamanio_proceso);
 	eliminar_paquete(paquete);
 
 	pcb = recibirPcb(socket_fd);

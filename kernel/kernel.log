@@ -112,3 +112,833 @@
 
 [INFO] 16:20:01:738 Servidor Kernel/(6031:6123): Consola deserializada, entro a armar pcb
 
+[INFO] 16:14:23:961 Servidor Kernel/(9465:9465): Archivo de configuracion cargada 
+
+[INFO] 16:14:23:966 Servidor Kernel/(9465:9465): Kernel conectado con cpu 
+
+[INFO] 16:14:23:967 Servidor Kernel/(9465:9465): Kernel conectado con memoria 
+
+[INFO] 16:14:23:968 Servidor Kernel/(9465:9465): Servidor creado 
+
+[INFO] 16:14:23:969 Servidor Kernel/(9465:9465): Estructuras largo plazo creadas 
+
+[INFO] 16:14:23:970 Servidor Kernel/(9465:9465): Estructuras corto plazo creadas 
+
+[INFO] 16:14:23:971 Servidor Kernel/(9465:9465): Estructuras mediano plazo creadas 
+
+[INFO] 16:14:23:972 Servidor Kernel/(9465:9465): Planificacion iniciada 
+
+[INFO] 16:14:23:972 Servidor Kernel/(9465:9465): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:15:23:658 Servidor Kernel/(9465:9509): Me llego el tamanio y las instrucciones
+
+[INFO] 16:15:23:659 Servidor Kernel/(9465:9509): Consola deserializada, entro a armar pcb
+
+[INFO] 16:15:23:659 Servidor Kernel/(9465:9509): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:15:23:659 Servidor Kernel/(9465:9509): PID[0] ingresa a NEW 
+
+[INFO] 16:15:23:660 Servidor Kernel/(9465:9472): PID[0] ingresa a READY desde NEW 
+
+[INFO] 16:15:23:660 Servidor Kernel/(9465:9473): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:15:23:660 Servidor Kernel/(9465:9473): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:15:23:661 Servidor Kernel/(9465:9473): Inicio la planificacion SRT 
+
+[INFO] 16:15:23:661 Servidor Kernel/(9465:9473): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 16:15:23:661 Servidor Kernel/(9465:9473): PID[0] ingresa a EXEC
+
+[INFO] 16:15:23:661 Servidor Kernel/(9465:9474): PID[0] sale de EXEC
+
+[INFO] 16:21:27:620 Servidor Kernel/(9785:9785): Archivo de configuracion cargada 
+
+[INFO] 16:21:27:623 Servidor Kernel/(9785:9785): Kernel conectado con cpu 
+
+[INFO] 16:21:27:626 Servidor Kernel/(9785:9785): Kernel conectado con memoria 
+
+[INFO] 16:21:27:627 Servidor Kernel/(9785:9785): Servidor creado 
+
+[INFO] 16:21:27:628 Servidor Kernel/(9785:9785): Estructuras largo plazo creadas 
+
+[INFO] 16:21:27:629 Servidor Kernel/(9785:9785): Estructuras corto plazo creadas 
+
+[INFO] 16:21:27:629 Servidor Kernel/(9785:9785): Estructuras mediano plazo creadas 
+
+[INFO] 16:21:27:630 Servidor Kernel/(9785:9785): Planificacion iniciada 
+
+[INFO] 16:21:27:630 Servidor Kernel/(9785:9785): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:21:37:991 Servidor Kernel/(9785:9812): Me llego el tamanio y las instrucciones
+
+[INFO] 16:21:37:991 Servidor Kernel/(9785:9812): Consola deserializada, entro a armar pcb
+
+[INFO] 16:21:37:992 Servidor Kernel/(9785:9812): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:21:37:993 Servidor Kernel/(9785:9812): PID[0] ingresa a NEW 
+
+[INFO] 16:21:37:994 Servidor Kernel/(9785:9795): PID[0] ingresa a READY desde NEW 
+
+[INFO] 16:21:37:994 Servidor Kernel/(9785:9796): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:21:37:994 Servidor Kernel/(9785:9796): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:21:37:994 Servidor Kernel/(9785:9796): Inicio la planificacion SRT 
+
+[INFO] 16:21:37:994 Servidor Kernel/(9785:9796): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 16:21:37:994 Servidor Kernel/(9785:9796): PID[0] ingresa a EXEC
+
+[INFO] 16:21:37:994 Servidor Kernel/(9785:9797): PID[0] sale de EXEC
+
+[INFO] 16:23:57:726 Servidor Kernel/(9950:9950): Archivo de configuracion cargada 
+
+[INFO] 16:23:57:729 Servidor Kernel/(9950:9950): Kernel conectado con cpu 
+
+[INFO] 16:23:57:729 Servidor Kernel/(9950:9950): Kernel conectado con memoria 
+
+[INFO] 16:23:57:730 Servidor Kernel/(9950:9950): Servidor creado 
+
+[INFO] 16:23:57:730 Servidor Kernel/(9950:9950): Estructuras largo plazo creadas 
+
+[INFO] 16:23:57:732 Servidor Kernel/(9950:9950): Estructuras corto plazo creadas 
+
+[INFO] 16:23:57:732 Servidor Kernel/(9950:9950): Estructuras mediano plazo creadas 
+
+[INFO] 16:23:57:732 Servidor Kernel/(9950:9950): Planificacion iniciada 
+
+[INFO] 16:23:57:732 Servidor Kernel/(9950:9950): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:24:04:345 Servidor Kernel/(9950:9975): Me llego el tamanio y las instrucciones
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9975): Consola deserializada, entro a armar pcb
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9975): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9975): PID[0] ingresa a NEW 
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9958): PID[0] ingresa a READY desde NEW 
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9959): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9959): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9959): Inicio la planificacion SRT 
+
+[INFO] 16:24:04:346 Servidor Kernel/(9950:9959): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 16:24:04:347 Servidor Kernel/(9950:9959): PID[0] ingresa a EXEC
+
+[INFO] 16:24:04:347 Servidor Kernel/(9950:9960): PID[0] sale de EXEC
+
+[INFO] 16:24:04:347 Servidor Kernel/(9950:9960): PCB enviada cpu para ejecucion
+[INFO] 16:24:39:265 Servidor Kernel/(9950:9960): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 16:24:39:270 Servidor Kernel/(9950:9960): [1] Ultima instruccion ejecutada
+[INFO] 16:24:39:270 Servidor Kernel/(9950:9960): PID[0] Entra en BLOCKED 
+
+[INFO] 16:24:39:271 Servidor Kernel/(9950:9961): PID[0] sale de BLOCKED 
+
+[INFO] 16:24:39:271 Servidor Kernel/(9950:9961): PID[0] ejecuta IO 
+
+[INFO] 16:24:39:272 Servidor Kernel/(9950:9961): Proceso no supero el tiempo mas bloqueo, ejecutar solo IO 
+
+[INFO] 16:24:39:374 Servidor Kernel/(9950:9961): Ingresa a READY desde IO 
+
+[INFO] 16:24:39:374 Servidor Kernel/(9950:9959): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:24:39:375 Servidor Kernel/(9950:9959): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 16:24:39:376 Servidor Kernel/(9950:9959): Inicio la planificacion SRT 
+
+[INFO] 16:24:39:377 Servidor Kernel/(9950:9959): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 16:24:39:378 Servidor Kernel/(9950:9959): PID[0] ingresa a EXEC
+
+[INFO] 16:24:39:379 Servidor Kernel/(9950:9960): PID[0] sale de EXEC
+
+[INFO] 16:24:39:380 Servidor Kernel/(9950:9960): PCB enviada cpu para ejecucion
+[INFO] 16:25:20:115 Servidor Kernel/(9950:9960): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 16:25:20:115 Servidor Kernel/(9950:9960): [5] Ultima instruccion ejecutada
+[INFO] 16:25:20:116 Servidor Kernel/(9950:9960): PID[0] Entra en EXIT 
+
+[INFO] 16:25:20:116 Servidor Kernel/(9950:9957): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 16:25:20:116 Servidor Kernel/(9950:9957): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 16:25:20:390 Servidor Kernel/(9950:9957): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 16:25:20:390 Servidor Kernel/(9950:9957): No se pudo eliminar memoria de PID[0]
+
+[INFO] 16:25:20:390 Servidor Kernel/(9950:9957): Enviando a consola que finalizo el proceso
+
+[INFO] 16:28:52:124 Servidor Kernel/(10195:10195): Archivo de configuracion cargada 
+
+[INFO] 16:28:52:127 Servidor Kernel/(10195:10195): Kernel conectado con cpu 
+
+[INFO] 16:28:52:127 Servidor Kernel/(10195:10195): Kernel conectado con memoria 
+
+[INFO] 16:28:52:129 Servidor Kernel/(10195:10195): Servidor creado 
+
+[INFO] 16:28:52:130 Servidor Kernel/(10195:10195): Estructuras largo plazo creadas 
+
+[INFO] 16:28:52:132 Servidor Kernel/(10195:10195): Estructuras corto plazo creadas 
+
+[INFO] 16:28:52:132 Servidor Kernel/(10195:10195): Estructuras mediano plazo creadas 
+
+[INFO] 16:28:52:132 Servidor Kernel/(10195:10195): Planificacion iniciada 
+
+[INFO] 16:28:52:132 Servidor Kernel/(10195:10195): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:28:56:756 Servidor Kernel/(10195:10222): Me llego el tamanio y las instrucciones
+
+[INFO] 16:28:56:757 Servidor Kernel/(10195:10222): Consola deserializada, entro a armar pcb
+
+[INFO] 16:28:56:757 Servidor Kernel/(10195:10222): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:28:56:757 Servidor Kernel/(10195:10222): PID[0] ingresa a NEW 
+
+[INFO] 16:28:56:757 Servidor Kernel/(10195:10205): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 16:30:28:048 Servidor Kernel/(10291:10291): Archivo de configuracion cargada 
+
+[INFO] 16:30:28:051 Servidor Kernel/(10291:10291): Kernel conectado con cpu 
+
+[INFO] 16:30:28:051 Servidor Kernel/(10291:10291): Kernel conectado con memoria 
+
+[INFO] 16:30:28:053 Servidor Kernel/(10291:10291): Servidor creado 
+
+[INFO] 16:30:28:054 Servidor Kernel/(10291:10291): Estructuras largo plazo creadas 
+
+[INFO] 16:30:28:055 Servidor Kernel/(10291:10291): Estructuras corto plazo creadas 
+
+[INFO] 16:30:28:055 Servidor Kernel/(10291:10291): Estructuras mediano plazo creadas 
+
+[INFO] 16:30:28:055 Servidor Kernel/(10291:10291): Planificacion iniciada 
+
+[INFO] 16:30:28:055 Servidor Kernel/(10291:10291): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:30:34:220 Servidor Kernel/(10291:10314): Me llego el tamanio y las instrucciones
+
+[INFO] 16:30:34:225 Servidor Kernel/(10291:10314): Consola deserializada, entro a armar pcb
+
+[INFO] 16:30:34:226 Servidor Kernel/(10291:10314): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:30:34:227 Servidor Kernel/(10291:10314): PID[0] ingresa a NEW 
+
+[INFO] 16:30:34:227 Servidor Kernel/(10291:10297): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 16:32:29:185 Servidor Kernel/(10469:10469): Archivo de configuracion cargada 
+
+[INFO] 16:32:29:186 Servidor Kernel/(10469:10469): Kernel conectado con cpu 
+
+[INFO] 16:32:29:186 Servidor Kernel/(10469:10469): Kernel conectado con memoria 
+
+[INFO] 16:32:29:187 Servidor Kernel/(10469:10469): Servidor creado 
+
+[INFO] 16:32:29:187 Servidor Kernel/(10469:10469): Estructuras largo plazo creadas 
+
+[INFO] 16:32:29:187 Servidor Kernel/(10469:10469): Estructuras corto plazo creadas 
+
+[INFO] 16:32:29:187 Servidor Kernel/(10469:10469): Estructuras mediano plazo creadas 
+
+[INFO] 16:32:29:188 Servidor Kernel/(10469:10469): Planificacion iniciada 
+
+[INFO] 16:32:29:188 Servidor Kernel/(10469:10469): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:32:32:936 Servidor Kernel/(10469:10494): Me llego el tamanio y las instrucciones
+
+[INFO] 16:32:32:937 Servidor Kernel/(10469:10494): Consola deserializada, entro a armar pcb
+
+[INFO] 16:32:32:938 Servidor Kernel/(10469:10494): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:32:32:938 Servidor Kernel/(10469:10494): PID[0] ingresa a NEW 
+
+[INFO] 16:32:32:939 Servidor Kernel/(10469:10476): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 16:34:26:730 Servidor Kernel/(10566:10566): Archivo de configuracion cargada 
+
+[INFO] 16:34:26:732 Servidor Kernel/(10566:10566): Kernel conectado con cpu 
+
+[INFO] 16:34:26:732 Servidor Kernel/(10566:10566): Kernel conectado con memoria 
+
+[INFO] 16:34:26:733 Servidor Kernel/(10566:10566): Servidor creado 
+
+[INFO] 16:34:26:735 Servidor Kernel/(10566:10566): Estructuras largo plazo creadas 
+
+[INFO] 16:34:26:735 Servidor Kernel/(10566:10566): Estructuras corto plazo creadas 
+
+[INFO] 16:34:26:735 Servidor Kernel/(10566:10566): Estructuras mediano plazo creadas 
+
+[INFO] 16:34:26:736 Servidor Kernel/(10566:10566): Planificacion iniciada 
+
+[INFO] 16:34:26:736 Servidor Kernel/(10566:10566): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:34:31:228 Servidor Kernel/(10566:10590): Me llego el tamanio y las instrucciones
+
+[INFO] 16:34:31:229 Servidor Kernel/(10566:10590): Consola deserializada, entro a armar pcb
+
+[INFO] 16:34:31:235 Servidor Kernel/(10566:10590): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:34:31:235 Servidor Kernel/(10566:10590): PID[0] ingresa a NEW 
+
+[INFO] 16:34:31:235 Servidor Kernel/(10566:10574): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 16:43:22:910 Servidor Kernel/(10860:10860): Archivo de configuracion cargada 
+
+[INFO] 16:43:22:911 Servidor Kernel/(10860:10860): Kernel conectado con cpu 
+
+[INFO] 16:43:22:912 Servidor Kernel/(10860:10860): Kernel conectado con memoria 
+
+[INFO] 16:43:22:914 Servidor Kernel/(10860:10860): Servidor creado 
+
+[INFO] 16:43:22:915 Servidor Kernel/(10860:10860): Estructuras largo plazo creadas 
+
+[INFO] 16:43:22:915 Servidor Kernel/(10860:10860): Estructuras corto plazo creadas 
+
+[INFO] 16:43:22:916 Servidor Kernel/(10860:10860): Estructuras mediano plazo creadas 
+
+[INFO] 16:43:22:916 Servidor Kernel/(10860:10860): Planificacion iniciada 
+
+[INFO] 16:43:22:918 Servidor Kernel/(10860:10860): Kernel listo para recibir al modulo cliente 
+
+[INFO] 16:43:27:200 Servidor Kernel/(10860:10892): Me llego el tamanio y las instrucciones
+
+[INFO] 16:43:27:201 Servidor Kernel/(10860:10892): Consola deserializada, entro a armar pcb
+
+[INFO] 16:43:27:201 Servidor Kernel/(10860:10892): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 16:43:27:202 Servidor Kernel/(10860:10892): PID[0] ingresa a NEW 
+
+[INFO] 16:43:27:203 Servidor Kernel/(10860:10870): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:00:07:274 Servidor Kernel/(11777:11777): Archivo de configuracion cargada 
+
+[INFO] 17:00:07:275 Servidor Kernel/(11777:11777): Kernel conectado con cpu 
+
+[INFO] 17:00:07:276 Servidor Kernel/(11777:11777): Kernel conectado con memoria 
+
+[INFO] 17:00:07:282 Servidor Kernel/(11777:11777): Servidor creado 
+
+[INFO] 17:00:07:283 Servidor Kernel/(11777:11777): Estructuras largo plazo creadas 
+
+[INFO] 17:00:07:284 Servidor Kernel/(11777:11777): Estructuras corto plazo creadas 
+
+[INFO] 17:00:07:285 Servidor Kernel/(11777:11777): Estructuras mediano plazo creadas 
+
+[INFO] 17:00:07:285 Servidor Kernel/(11777:11777): Planificacion iniciada 
+
+[INFO] 17:00:07:285 Servidor Kernel/(11777:11777): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:00:12:658 Servidor Kernel/(11777:11809): Me llego el tamanio y las instrucciones
+
+[INFO] 17:00:12:659 Servidor Kernel/(11777:11809): Consola deserializada, entro a armar pcb
+
+[INFO] 17:00:12:659 Servidor Kernel/(11777:11809): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:00:12:660 Servidor Kernel/(11777:11809): PID[0] ingresa a NEW 
+
+[INFO] 17:00:12:661 Servidor Kernel/(11777:11785): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:03:29:480 Servidor Kernel/(11962:11962): Archivo de configuracion cargada 
+
+[INFO] 17:03:29:481 Servidor Kernel/(11962:11962): Kernel conectado con cpu 
+
+[INFO] 17:03:29:481 Servidor Kernel/(11962:11962): Kernel conectado con memoria 
+
+[INFO] 17:03:29:488 Servidor Kernel/(11962:11962): Servidor creado 
+
+[INFO] 17:03:29:489 Servidor Kernel/(11962:11962): Estructuras largo plazo creadas 
+
+[INFO] 17:03:29:489 Servidor Kernel/(11962:11962): Estructuras corto plazo creadas 
+
+[INFO] 17:03:29:489 Servidor Kernel/(11962:11962): Estructuras mediano plazo creadas 
+
+[INFO] 17:03:29:489 Servidor Kernel/(11962:11962): Planificacion iniciada 
+
+[INFO] 17:03:29:489 Servidor Kernel/(11962:11962): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:03:33:243 Servidor Kernel/(11962:11987): Me llego el tamanio y las instrucciones
+
+[INFO] 17:03:33:245 Servidor Kernel/(11962:11987): Consola deserializada, entro a armar pcb
+
+[INFO] 17:03:33:246 Servidor Kernel/(11962:11987): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:03:33:247 Servidor Kernel/(11962:11987): PID[0] ingresa a NEW 
+
+[INFO] 17:05:11:258 Servidor Kernel/(12131:12131): Archivo de configuracion cargada 
+
+[INFO] 17:05:11:259 Servidor Kernel/(12131:12131): Kernel conectado con cpu 
+
+[INFO] 17:05:11:259 Servidor Kernel/(12131:12131): Kernel conectado con memoria 
+
+[INFO] 17:05:11:266 Servidor Kernel/(12131:12131): Servidor creado 
+
+[INFO] 17:05:11:267 Servidor Kernel/(12131:12131): Estructuras largo plazo creadas 
+
+[INFO] 17:05:11:267 Servidor Kernel/(12131:12131): Estructuras corto plazo creadas 
+
+[INFO] 17:05:11:267 Servidor Kernel/(12131:12131): Estructuras mediano plazo creadas 
+
+[INFO] 17:05:11:268 Servidor Kernel/(12131:12131): Planificacion iniciada 
+
+[INFO] 17:05:11:268 Servidor Kernel/(12131:12131): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:05:16:395 Servidor Kernel/(12131:12157): Me llego el tamanio y las instrucciones
+
+[INFO] 17:05:16:395 Servidor Kernel/(12131:12157): Consola deserializada, entro a armar pcb
+
+[INFO] 17:05:16:395 Servidor Kernel/(12131:12157): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:05:16:396 Servidor Kernel/(12131:12157): PID[0] ingresa a NEW 
+
+[INFO] 17:05:16:396 Servidor Kernel/(12131:12139): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:07:26:866 Servidor Kernel/(12292:12292): Archivo de configuracion cargada 
+
+[INFO] 17:07:26:868 Servidor Kernel/(12292:12292): Kernel conectado con cpu 
+
+[INFO] 17:07:26:868 Servidor Kernel/(12292:12292): Kernel conectado con memoria 
+
+[INFO] 17:07:26:876 Servidor Kernel/(12292:12292): Servidor creado 
+
+[INFO] 17:07:26:876 Servidor Kernel/(12292:12292): Estructuras largo plazo creadas 
+
+[INFO] 17:07:26:878 Servidor Kernel/(12292:12292): Estructuras corto plazo creadas 
+
+[INFO] 17:07:26:878 Servidor Kernel/(12292:12292): Estructuras mediano plazo creadas 
+
+[INFO] 17:07:26:878 Servidor Kernel/(12292:12292): Planificacion iniciada 
+
+[INFO] 17:07:26:879 Servidor Kernel/(12292:12292): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:07:33:813 Servidor Kernel/(12292:12317): Me llego el tamanio y las instrucciones
+
+[INFO] 17:07:33:813 Servidor Kernel/(12292:12317): Consola deserializada, entro a armar pcb
+
+[INFO] 17:07:33:813 Servidor Kernel/(12292:12317): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:07:33:813 Servidor Kernel/(12292:12317): PID[0] ingresa a NEW 
+
+[INFO] 17:07:33:814 Servidor Kernel/(12292:12300): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:10:34:030 Servidor Kernel/(12464:12464): Archivo de configuracion cargada 
+
+[INFO] 17:10:34:031 Servidor Kernel/(12464:12464): Kernel conectado con cpu 
+
+[INFO] 17:10:34:032 Servidor Kernel/(12464:12464): Kernel conectado con memoria 
+
+[INFO] 17:10:34:037 Servidor Kernel/(12464:12464): Servidor creado 
+
+[INFO] 17:10:34:038 Servidor Kernel/(12464:12464): Estructuras largo plazo creadas 
+
+[INFO] 17:10:34:038 Servidor Kernel/(12464:12464): Estructuras corto plazo creadas 
+
+[INFO] 17:10:34:038 Servidor Kernel/(12464:12464): Estructuras mediano plazo creadas 
+
+[INFO] 17:10:34:038 Servidor Kernel/(12464:12464): Planificacion iniciada 
+
+[INFO] 17:10:34:039 Servidor Kernel/(12464:12464): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:10:36:773 Servidor Kernel/(12464:12489): Me llego el tamanio y las instrucciones
+
+[INFO] 17:10:36:774 Servidor Kernel/(12464:12489): Consola deserializada, entro a armar pcb
+
+[INFO] 17:10:36:774 Servidor Kernel/(12464:12489): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:10:36:774 Servidor Kernel/(12464:12489): PID[0] ingresa a NEW 
+
+[INFO] 17:10:36:774 Servidor Kernel/(12464:12472): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:12:01:424 Servidor Kernel/(12626:12626): Archivo de configuracion cargada 
+
+[INFO] 17:12:01:425 Servidor Kernel/(12626:12626): Kernel conectado con cpu 
+
+[INFO] 17:12:01:426 Servidor Kernel/(12626:12626): Kernel conectado con memoria 
+
+[INFO] 17:12:01:431 Servidor Kernel/(12626:12626): Servidor creado 
+
+[INFO] 17:12:01:432 Servidor Kernel/(12626:12626): Estructuras largo plazo creadas 
+
+[INFO] 17:12:01:432 Servidor Kernel/(12626:12626): Estructuras corto plazo creadas 
+
+[INFO] 17:12:01:437 Servidor Kernel/(12626:12626): Estructuras mediano plazo creadas 
+
+[INFO] 17:12:01:438 Servidor Kernel/(12626:12626): Planificacion iniciada 
+
+[INFO] 17:12:01:442 Servidor Kernel/(12626:12626): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:12:05:915 Servidor Kernel/(12626:12650): Me llego el tamanio y las instrucciones
+
+[INFO] 17:12:05:915 Servidor Kernel/(12626:12650): Consola deserializada, entro a armar pcb
+
+[INFO] 17:12:05:915 Servidor Kernel/(12626:12650): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:12:05:915 Servidor Kernel/(12626:12650): PID[0] ingresa a NEW 
+
+[INFO] 17:12:05:915 Servidor Kernel/(12626:12634): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:15:14:705 Servidor Kernel/(12830:12830): Archivo de configuracion cargada 
+
+[INFO] 17:15:14:706 Servidor Kernel/(12830:12830): Kernel conectado con cpu 
+
+[INFO] 17:15:14:706 Servidor Kernel/(12830:12830): Kernel conectado con memoria 
+
+[INFO] 17:15:14:715 Servidor Kernel/(12830:12830): Servidor creado 
+
+[INFO] 17:15:14:716 Servidor Kernel/(12830:12830): Estructuras largo plazo creadas 
+
+[INFO] 17:15:14:716 Servidor Kernel/(12830:12830): Estructuras corto plazo creadas 
+
+[INFO] 17:15:14:717 Servidor Kernel/(12830:12830): Estructuras mediano plazo creadas 
+
+[INFO] 17:15:14:717 Servidor Kernel/(12830:12830): Planificacion iniciada 
+
+[INFO] 17:15:14:718 Servidor Kernel/(12830:12830): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:15:21:801 Servidor Kernel/(12830:12855): Me llego el tamanio y las instrucciones
+
+[INFO] 17:15:21:801 Servidor Kernel/(12830:12855): Consola deserializada, entro a armar pcb
+
+[INFO] 17:15:21:802 Servidor Kernel/(12830:12855): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:15:21:802 Servidor Kernel/(12830:12855): PID[0] ingresa a NEW 
+
+[INFO] 17:15:21:802 Servidor Kernel/(12830:12838): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:22:04:131 Servidor Kernel/(13182:13182): Archivo de configuracion cargada 
+
+[INFO] 17:22:04:133 Servidor Kernel/(13182:13182): Kernel conectado con cpu 
+
+[INFO] 17:22:04:133 Servidor Kernel/(13182:13182): Kernel conectado con memoria 
+
+[INFO] 17:22:04:140 Servidor Kernel/(13182:13182): Servidor creado 
+
+[INFO] 17:22:04:141 Servidor Kernel/(13182:13182): Estructuras largo plazo creadas 
+
+[INFO] 17:22:04:141 Servidor Kernel/(13182:13182): Estructuras corto plazo creadas 
+
+[INFO] 17:22:04:141 Servidor Kernel/(13182:13182): Estructuras mediano plazo creadas 
+
+[INFO] 17:22:04:141 Servidor Kernel/(13182:13182): Planificacion iniciada 
+
+[INFO] 17:22:04:141 Servidor Kernel/(13182:13182): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:22:12:668 Servidor Kernel/(13182:13207): Me llego el tamanio y las instrucciones
+
+[INFO] 17:22:12:668 Servidor Kernel/(13182:13207): Consola deserializada, entro a armar pcb
+
+[INFO] 17:22:12:668 Servidor Kernel/(13182:13207): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:22:12:668 Servidor Kernel/(13182:13207): PID[0] ingresa a NEW 
+
+[INFO] 17:22:12:668 Servidor Kernel/(13182:13191): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:24:52:529 Servidor Kernel/(13364:13364): Archivo de configuracion cargada 
+
+[INFO] 17:24:52:531 Servidor Kernel/(13364:13364): Kernel conectado con cpu 
+
+[INFO] 17:24:52:531 Servidor Kernel/(13364:13364): Kernel conectado con memoria 
+
+[INFO] 17:24:52:535 Servidor Kernel/(13364:13364): Servidor creado 
+
+[INFO] 17:24:52:536 Servidor Kernel/(13364:13364): Estructuras largo plazo creadas 
+
+[INFO] 17:24:52:536 Servidor Kernel/(13364:13364): Estructuras corto plazo creadas 
+
+[INFO] 17:24:52:536 Servidor Kernel/(13364:13364): Estructuras mediano plazo creadas 
+
+[INFO] 17:24:52:536 Servidor Kernel/(13364:13364): Planificacion iniciada 
+
+[INFO] 17:24:52:536 Servidor Kernel/(13364:13364): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:24:56:796 Servidor Kernel/(13364:13390): Me llego el tamanio y las instrucciones
+
+[INFO] 17:24:56:797 Servidor Kernel/(13364:13390): Consola deserializada, entro a armar pcb
+
+[INFO] 17:24:56:797 Servidor Kernel/(13364:13390): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:24:56:797 Servidor Kernel/(13364:13390): PID[0] ingresa a NEW 
+
+[INFO] 17:24:56:797 Servidor Kernel/(13364:13372): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:29:02:196 Servidor Kernel/(13572:13572): Archivo de configuracion cargada 
+
+[INFO] 17:29:02:197 Servidor Kernel/(13572:13572): Kernel conectado con cpu 
+
+[INFO] 17:29:02:197 Servidor Kernel/(13572:13572): Kernel conectado con memoria 
+
+[INFO] 17:29:02:205 Servidor Kernel/(13572:13572): Servidor creado 
+
+[INFO] 17:29:02:206 Servidor Kernel/(13572:13572): Estructuras largo plazo creadas 
+
+[INFO] 17:29:02:206 Servidor Kernel/(13572:13572): Estructuras corto plazo creadas 
+
+[INFO] 17:29:02:206 Servidor Kernel/(13572:13572): Estructuras mediano plazo creadas 
+
+[INFO] 17:29:02:206 Servidor Kernel/(13572:13572): Planificacion iniciada 
+
+[INFO] 17:29:02:206 Servidor Kernel/(13572:13572): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:29:04:898 Servidor Kernel/(13572:13597): Me llego el tamanio y las instrucciones
+
+[INFO] 17:29:04:898 Servidor Kernel/(13572:13597): Consola deserializada, entro a armar pcb
+
+[INFO] 17:29:04:899 Servidor Kernel/(13572:13597): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:29:04:899 Servidor Kernel/(13572:13597): PID[0] ingresa a NEW 
+
+[INFO] 17:29:04:899 Servidor Kernel/(13572:13580): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:31:30:736 Servidor Kernel/(13763:13763): Archivo de configuracion cargada 
+
+[INFO] 17:31:30:737 Servidor Kernel/(13763:13763): Kernel conectado con cpu 
+
+[INFO] 17:31:30:737 Servidor Kernel/(13763:13763): Kernel conectado con memoria 
+
+[INFO] 17:31:30:743 Servidor Kernel/(13763:13763): Servidor creado 
+
+[INFO] 17:31:30:743 Servidor Kernel/(13763:13763): Estructuras largo plazo creadas 
+
+[INFO] 17:31:30:744 Servidor Kernel/(13763:13763): Estructuras corto plazo creadas 
+
+[INFO] 17:31:30:745 Servidor Kernel/(13763:13763): Estructuras mediano plazo creadas 
+
+[INFO] 17:31:30:746 Servidor Kernel/(13763:13763): Planificacion iniciada 
+
+[INFO] 17:31:30:746 Servidor Kernel/(13763:13763): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:31:35:082 Servidor Kernel/(13763:13787): Me llego el tamanio y las instrucciones
+
+[INFO] 17:31:35:082 Servidor Kernel/(13763:13787): Consola deserializada, entro a armar pcb
+
+[INFO] 17:31:35:082 Servidor Kernel/(13763:13787): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:31:35:082 Servidor Kernel/(13763:13787): PID[0] ingresa a NEW 
+
+[INFO] 17:31:35:082 Servidor Kernel/(13763:13771): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:37:12:545 Servidor Kernel/(14158:14158): Archivo de configuracion cargada 
+
+[INFO] 17:37:12:547 Servidor Kernel/(14158:14158): Kernel conectado con cpu 
+
+[INFO] 17:37:12:547 Servidor Kernel/(14158:14158): Kernel conectado con memoria 
+
+[INFO] 17:37:12:552 Servidor Kernel/(14158:14158): Servidor creado 
+
+[INFO] 17:37:12:553 Servidor Kernel/(14158:14158): Estructuras largo plazo creadas 
+
+[INFO] 17:37:12:554 Servidor Kernel/(14158:14158): Estructuras corto plazo creadas 
+
+[INFO] 17:37:12:555 Servidor Kernel/(14158:14158): Estructuras mediano plazo creadas 
+
+[INFO] 17:37:12:555 Servidor Kernel/(14158:14158): Planificacion iniciada 
+
+[INFO] 17:37:12:555 Servidor Kernel/(14158:14158): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:37:16:930 Servidor Kernel/(14158:14183): Me llego el tamanio y las instrucciones
+
+[INFO] 17:37:16:930 Servidor Kernel/(14158:14183): Consola deserializada, entro a armar pcb
+
+[INFO] 17:37:16:930 Servidor Kernel/(14158:14183): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:37:16:930 Servidor Kernel/(14158:14183): PID[0] ingresa a NEW 
+
+[INFO] 17:37:16:930 Servidor Kernel/(14158:14166): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:47:54:047 Servidor Kernel/(14515:14515): Archivo de configuracion cargada 
+
+[INFO] 17:47:54:050 Servidor Kernel/(14515:14515): Kernel conectado con cpu 
+
+[INFO] 17:47:54:051 Servidor Kernel/(14515:14515): Kernel conectado con memoria 
+
+[INFO] 17:47:54:053 Servidor Kernel/(14515:14515): Servidor creado 
+
+[INFO] 17:47:54:055 Servidor Kernel/(14515:14515): Estructuras largo plazo creadas 
+
+[INFO] 17:47:54:056 Servidor Kernel/(14515:14515): Estructuras corto plazo creadas 
+
+[INFO] 17:47:54:057 Servidor Kernel/(14515:14515): Estructuras mediano plazo creadas 
+
+[INFO] 17:47:54:058 Servidor Kernel/(14515:14515): Planificacion iniciada 
+
+[INFO] 17:47:54:058 Servidor Kernel/(14515:14515): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:47:57:203 Servidor Kernel/(14515:14540): Me llego el tamanio y las instrucciones
+
+[INFO] 17:47:57:203 Servidor Kernel/(14515:14540): Consola deserializada, entro a armar pcb
+
+[INFO] 17:47:57:203 Servidor Kernel/(14515:14540): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:47:57:203 Servidor Kernel/(14515:14540): PID[0] ingresa a NEW 
+
+[INFO] 17:47:57:204 Servidor Kernel/(14515:14524): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:49:48:574 Servidor Kernel/(14660:14660): Archivo de configuracion cargada 
+
+[INFO] 17:49:48:575 Servidor Kernel/(14660:14660): Kernel conectado con cpu 
+
+[INFO] 17:49:48:576 Servidor Kernel/(14660:14660): Kernel conectado con memoria 
+
+[INFO] 17:49:48:581 Servidor Kernel/(14660:14660): Servidor creado 
+
+[INFO] 17:49:48:581 Servidor Kernel/(14660:14660): Estructuras largo plazo creadas 
+
+[INFO] 17:49:48:582 Servidor Kernel/(14660:14660): Estructuras corto plazo creadas 
+
+[INFO] 17:49:48:582 Servidor Kernel/(14660:14660): Estructuras mediano plazo creadas 
+
+[INFO] 17:49:48:582 Servidor Kernel/(14660:14660): Planificacion iniciada 
+
+[INFO] 17:49:48:582 Servidor Kernel/(14660:14660): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:49:55:235 Servidor Kernel/(14660:14684): Me llego el tamanio y las instrucciones
+
+[INFO] 17:49:55:235 Servidor Kernel/(14660:14684): Consola deserializada, entro a armar pcb
+
+[INFO] 17:49:55:235 Servidor Kernel/(14660:14684): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:49:55:235 Servidor Kernel/(14660:14684): PID[0] ingresa a NEW 
+
+[INFO] 17:49:55:236 Servidor Kernel/(14660:14668): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:54:02:878 Servidor Kernel/(14921:14921): Archivo de configuracion cargada 
+
+[INFO] 17:54:02:879 Servidor Kernel/(14921:14921): Kernel conectado con cpu 
+
+[INFO] 17:54:02:880 Servidor Kernel/(14921:14921): Kernel conectado con memoria 
+
+[INFO] 17:54:02:883 Servidor Kernel/(14921:14921): Servidor creado 
+
+[INFO] 17:54:02:884 Servidor Kernel/(14921:14921): Estructuras largo plazo creadas 
+
+[INFO] 17:54:02:884 Servidor Kernel/(14921:14921): Estructuras corto plazo creadas 
+
+[INFO] 17:54:02:885 Servidor Kernel/(14921:14921): Estructuras mediano plazo creadas 
+
+[INFO] 17:54:02:885 Servidor Kernel/(14921:14921): Planificacion iniciada 
+
+[INFO] 17:54:02:885 Servidor Kernel/(14921:14921): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:54:06:339 Servidor Kernel/(14921:14947): Me llego el tamanio y las instrucciones
+
+[INFO] 17:54:06:339 Servidor Kernel/(14921:14947): Consola deserializada, entro a armar pcb
+
+[INFO] 17:54:06:340 Servidor Kernel/(14921:14947): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:54:06:340 Servidor Kernel/(14921:14947): PID[0] ingresa a NEW 
+
+[INFO] 17:54:06:340 Servidor Kernel/(14921:14929): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:57:03:237 Servidor Kernel/(15083:15083): Archivo de configuracion cargada 
+
+[INFO] 17:57:03:240 Servidor Kernel/(15083:15083): Kernel conectado con cpu 
+
+[INFO] 17:57:03:241 Servidor Kernel/(15083:15083): Kernel conectado con memoria 
+
+[INFO] 17:57:03:242 Servidor Kernel/(15083:15083): Servidor creado 
+
+[INFO] 17:57:03:243 Servidor Kernel/(15083:15083): Estructuras largo plazo creadas 
+
+[INFO] 17:57:03:244 Servidor Kernel/(15083:15083): Estructuras corto plazo creadas 
+
+[INFO] 17:57:03:246 Servidor Kernel/(15083:15083): Estructuras mediano plazo creadas 
+
+[INFO] 17:57:03:247 Servidor Kernel/(15083:15083): Planificacion iniciada 
+
+[INFO] 17:57:03:248 Servidor Kernel/(15083:15083): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:57:06:952 Servidor Kernel/(15083:15108): Me llego el tamanio y las instrucciones
+
+[INFO] 17:57:06:952 Servidor Kernel/(15083:15108): Consola deserializada, entro a armar pcb
+
+[INFO] 17:57:06:952 Servidor Kernel/(15083:15108): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:57:06:952 Servidor Kernel/(15083:15108): PID[0] ingresa a NEW 
+
+[INFO] 17:57:06:953 Servidor Kernel/(15083:15091): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 17:59:42:624 Servidor Kernel/(15245:15245): Archivo de configuracion cargada 
+
+[INFO] 17:59:42:626 Servidor Kernel/(15245:15245): Kernel conectado con cpu 
+
+[INFO] 17:59:42:626 Servidor Kernel/(15245:15245): Kernel conectado con memoria 
+
+[INFO] 17:59:42:627 Servidor Kernel/(15245:15245): Servidor creado 
+
+[INFO] 17:59:42:627 Servidor Kernel/(15245:15245): Estructuras largo plazo creadas 
+
+[INFO] 17:59:42:632 Servidor Kernel/(15245:15245): Estructuras corto plazo creadas 
+
+[INFO] 17:59:42:633 Servidor Kernel/(15245:15245): Estructuras mediano plazo creadas 
+
+[INFO] 17:59:42:634 Servidor Kernel/(15245:15245): Planificacion iniciada 
+
+[INFO] 17:59:42:635 Servidor Kernel/(15245:15245): Kernel listo para recibir al modulo cliente 
+
+[INFO] 17:59:46:974 Servidor Kernel/(15245:15269): Me llego el tamanio y las instrucciones
+
+[INFO] 17:59:46:976 Servidor Kernel/(15245:15269): Consola deserializada, entro a armar pcb
+
+[INFO] 17:59:46:976 Servidor Kernel/(15245:15269): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 17:59:46:976 Servidor Kernel/(15245:15269): PID[0] ingresa a NEW 
+
+[INFO] 17:59:46:978 Servidor Kernel/(15245:15253): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 18:01:53:119 Servidor Kernel/(15557:15557): Archivo de configuracion cargada 
+
+[INFO] 18:01:53:122 Servidor Kernel/(15557:15557): Kernel conectado con cpu 
+
+[INFO] 18:01:53:123 Servidor Kernel/(15557:15557): Kernel conectado con memoria 
+
+[INFO] 18:01:53:124 Servidor Kernel/(15557:15557): Servidor creado 
+
+[INFO] 18:01:53:125 Servidor Kernel/(15557:15557): Estructuras largo plazo creadas 
+
+[INFO] 18:01:53:127 Servidor Kernel/(15557:15557): Estructuras corto plazo creadas 
+
+[INFO] 18:01:53:127 Servidor Kernel/(15557:15557): Estructuras mediano plazo creadas 
+
+[INFO] 18:01:53:128 Servidor Kernel/(15557:15557): Planificacion iniciada 
+
+[INFO] 18:01:53:129 Servidor Kernel/(15557:15557): Kernel listo para recibir al modulo cliente 
+
+[INFO] 18:01:55:727 Servidor Kernel/(15557:15581): Me llego el tamanio y las instrucciones
+
+[INFO] 18:01:55:728 Servidor Kernel/(15557:15581): Consola deserializada, entro a armar pcb
+
+[INFO] 18:01:55:728 Servidor Kernel/(15557:15581): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 18:01:55:729 Servidor Kernel/(15557:15581): PID[0] ingresa a NEW 
+
+[INFO] 18:01:55:730 Servidor Kernel/(15557:15565): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 18:05:18:617 Servidor Kernel/(15809:15809): Archivo de configuracion cargada 
+
+[INFO] 18:05:18:619 Servidor Kernel/(15809:15809): Kernel conectado con cpu 
+
+[INFO] 18:05:18:619 Servidor Kernel/(15809:15809): Kernel conectado con memoria 
+
+[INFO] 18:05:18:623 Servidor Kernel/(15809:15809): Servidor creado 
+
+[INFO] 18:05:18:624 Servidor Kernel/(15809:15809): Estructuras largo plazo creadas 
+
+[INFO] 18:05:18:624 Servidor Kernel/(15809:15809): Estructuras corto plazo creadas 
+
+[INFO] 18:05:18:624 Servidor Kernel/(15809:15809): Estructuras mediano plazo creadas 
+
+[INFO] 18:05:18:624 Servidor Kernel/(15809:15809): Planificacion iniciada 
+
+[INFO] 18:05:18:624 Servidor Kernel/(15809:15809): Kernel listo para recibir al modulo cliente 
+
+[INFO] 18:05:21:651 Servidor Kernel/(15809:15836): Me llego el tamanio y las instrucciones
+
+[INFO] 18:05:21:651 Servidor Kernel/(15809:15836): Consola deserializada, entro a armar pcb
+
+[INFO] 18:05:21:651 Servidor Kernel/(15809:15836): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 18:05:21:651 Servidor Kernel/(15809:15836): PID[0] ingresa a NEW 
+
+[INFO] 18:05:21:652 Servidor Kernel/(15809:15817): envio a memoria mensaje para inicializar estructuras del proceso 
+

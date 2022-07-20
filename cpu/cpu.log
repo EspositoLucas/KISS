@@ -16,3 +16,531 @@
 
 [INFO] 16:40:27:378 Servidor CPU/(6821:6821): Se creo hilo para recibir interrupciones 
 
+[INFO] 15:56:42:226 Servidor CPU/(8577:8577): Hilo de interrupciones creado 
+
+[INFO] 15:56:42:228 Servidor CPU/(8577:8577): Tlb creada 
+
+[INFO] 15:56:42:228 Servidor CPU/(8577:8577): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:56:42:229 Servidor CPU/(8577:8586): CPU listo para recibir interrupciones 
+
+[INFO] 15:58:14:568 Servidor CPU/(8609:8654): CPU listo para recibir interrupciones 
+
+[INFO] 15:58:48:488 Servidor CPU/(8609:8609): Hilo de interrupciones creado 
+
+[INFO] 15:59:57:099 Servidor CPU/(8831:8873): Pedido de handshake enviado 
+
+[INFO] 16:03:07:149 Servidor CPU/(8971:9012): Pedido de handshake enviado 
+
+[INFO] 16:08:07:292 Servidor CPU/(9097:9135): Pedido de handshake enviado 
+
+[INFO] 16:08:07:293 Servidor CPU/(9097:9135): Recibi configuracion por handshake 
+
+[INFO] 16:11:56:628 Servidor CPU/(9257:9316): Pedido de handshake enviado 
+
+[INFO] 16:11:56:629 Servidor CPU/(9257:9316): Recibi configuracion por handshake 
+
+[INFO] 16:13:37:087 Servidor CPU/(9381:9381): Hilo de interrupciones creado 
+
+[INFO] 16:13:37:088 Servidor CPU/(9381:9381): Tlb creada 
+
+[INFO] 16:13:37:090 Servidor CPU/(9381:9381): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:13:37:090 Servidor CPU/(9381:9388): CPU listo para recibir interrupciones 
+
+[INFO] 16:13:37:101 Servidor CPU/(9381:9387): Pedido de handshake enviado 
+
+[INFO] 16:13:37:102 Servidor CPU/(9381:9387): Recibi configuracion por handshake 
+
+[INFO] 16:14:17:150 Servidor CPU/(9439:9439): Hilo de interrupciones creado 
+
+[INFO] 16:14:17:151 Servidor CPU/(9439:9439): Tlb creada 
+
+[INFO] 16:14:17:153 Servidor CPU/(9439:9439): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:14:17:153 Servidor CPU/(9439:9446): CPU listo para recibir interrupciones 
+
+[INFO] 16:14:17:163 Servidor CPU/(9439:9445): Pedido de handshake enviado 
+
+[INFO] 16:14:17:164 Servidor CPU/(9439:9445): Recibi configuracion por handshake 
+
+[INFO] 16:20:49:246 Servidor CPU/(9714:9755): Pedido de handshake enviado 
+
+[INFO] 16:20:49:668 Servidor CPU/(9714:9755): Recibi configuracion por handshake 
+
+[INFO] 16:21:04:667 Servidor CPU/(9714:9761): CPU listo para recibir interrupciones 
+
+[INFO] 16:21:04:668 Servidor CPU/(9714:9714): Hilo de interrupciones creado 
+
+[INFO] 16:21:09:000 Servidor CPU/(9714:9714): Tlb creada 
+
+[INFO] 16:21:15:954 Servidor CPU/(9714:9714): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:21:54:330 Servidor CPU/(9714:9761): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 16:22:06:246 Servidor CPU/(9714:9761): Fallo la comunicacion. Abortando 
+
+[ERROR] 16:22:30:993 Servidor CPU/(9714:9714): Fallo la comunicacion. Abortando 
+
+[INFO] 16:23:37:557 Servidor CPU/(9860:9919): Pedido de handshake enviado 
+
+[INFO] 16:23:38:334 Servidor CPU/(9860:9919): Recibi configuracion por handshake 
+
+[INFO] 16:23:42:726 Servidor CPU/(9860:9925): CPU listo para recibir interrupciones 
+
+[INFO] 16:23:42:727 Servidor CPU/(9860:9860): Hilo de interrupciones creado 
+
+[INFO] 16:23:44:243 Servidor CPU/(9860:9860): Tlb creada 
+
+[INFO] 16:23:50:531 Servidor CPU/(9860:9860): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:24:13:124 Servidor CPU/(9860:9925): Se conecto Kernel al puerto interrupt 
+
+[INFO] 16:24:36:386 Servidor CPU/(9860:9860): Recibi PCB de Id: 0 
+
+[INFO] 16:24:39:251 Servidor CPU/(9860:9860): Se creo hilo para recibir interrupciones 
+
+[INFO] 16:24:39:253 Servidor CPU/(9860:9860): Se ejecuto instruccion NO-OP 
+
+[INFO] 16:24:39:255 Servidor CPU/(9860:9860): Se ejecuto instruccion NO-OP 
+
+[INFO] 16:24:39:258 Servidor CPU/(9860:9860): Se ejecuto instruccion NO-OP 
+
+[INFO] 16:24:39:261 Servidor CPU/(9860:9860): Se ejecuto instruccion NO-OP 
+
+[INFO] 16:24:39:263 Servidor CPU/(9860:9860): Se ejecuto instruccion NO-OP 
+
+[INFO] 16:24:39:264 Servidor CPU/(9860:9860): Se ejecuto instruccion I/O 
+
+[INFO] 16:25:18:528 Servidor CPU/(9860:9860): Recibi PCB de Id: 0 
+
+[INFO] 16:25:20:114 Servidor CPU/(9860:9860): Se creo hilo para recibir interrupciones 
+
+[INFO] 16:25:20:115 Servidor CPU/(9860:9860): Se ejecuto instruccion EXIT 
+
+[INFO] 16:28:41:410 Servidor CPU/(10126:10172): Pedido de handshake enviado 
+
+[INFO] 16:28:41:869 Servidor CPU/(10126:10172): Recibi configuracion por handshake 
+
+[INFO] 16:28:43:894 Servidor CPU/(10126:10177): CPU listo para recibir interrupciones 
+
+[INFO] 16:28:43:895 Servidor CPU/(10126:10126): Hilo de interrupciones creado 
+
+[INFO] 16:28:44:910 Servidor CPU/(10126:10126): Tlb creada 
+
+[INFO] 16:28:47:360 Servidor CPU/(10126:10126): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:30:23:852 Servidor CPU/(10278:10278): Hilo de interrupciones creado 
+
+[INFO] 16:30:23:854 Servidor CPU/(10278:10278): Tlb creada 
+
+[INFO] 16:30:23:854 Servidor CPU/(10278:10278): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:30:23:862 Servidor CPU/(10278:10285): CPU listo para recibir interrupciones 
+
+[INFO] 16:30:23:863 Servidor CPU/(10278:10284): Pedido de handshake enviado 
+
+[INFO] 16:30:28:051 Servidor CPU/(10278:10285): Se conecto Kernel al puerto interrupt 
+
+[INFO] 16:30:40:946 Servidor CPU/(10278:10284): Recibi configuracion por handshake 
+
+[ERROR] 16:31:10:888 Servidor CPU/(10278:10285): Fallo la comunicacion. Abortando 
+
+[ERROR] 16:31:10:888 Servidor CPU/(10278:10278): Fallo la comunicacion. Abortando 
+
+[INFO] 16:32:25:092 Servidor CPU/(10456:10456): Hilo de interrupciones creado 
+
+[INFO] 16:32:25:093 Servidor CPU/(10456:10456): Tlb creada 
+
+[INFO] 16:32:25:093 Servidor CPU/(10456:10456): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:32:25:098 Servidor CPU/(10456:10462): CPU listo para recibir interrupciones 
+
+[INFO] 16:32:25:098 Servidor CPU/(10456:10461): Pedido de handshake enviado 
+
+[INFO] 16:32:29:186 Servidor CPU/(10456:10462): Se conecto Kernel al puerto interrupt 
+
+[INFO] 16:32:34:475 Servidor CPU/(10456:10461): Recibi configuracion por handshake 
+
+[ERROR] 16:32:34:768 Servidor CPU/(10456:10462): Fallo la comunicacion. Abortando 
+
+[ERROR] 16:32:34:768 Servidor CPU/(10456:10456): Fallo la comunicacion. Abortando 
+
+[INFO] 16:34:22:815 Servidor CPU/(10550:10550): Hilo de interrupciones creado 
+
+[INFO] 16:34:22:817 Servidor CPU/(10550:10550): Tlb creada 
+
+[INFO] 16:34:22:817 Servidor CPU/(10550:10550): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:34:22:820 Servidor CPU/(10550:10557): CPU listo para recibir interrupciones 
+
+[INFO] 16:34:22:820 Servidor CPU/(10550:10556): Pedido de handshake enviado 
+
+[INFO] 16:34:22:822 Servidor CPU/(10550:10556): Recibi configuracion por handshake 
+
+[INFO] 16:34:26:732 Servidor CPU/(10550:10557): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 16:34:31:527 Servidor CPU/(10550:10557): Fallo la comunicacion. Abortando 
+
+[ERROR] 16:34:31:527 Servidor CPU/(10550:10550): Fallo la comunicacion. Abortando 
+
+[INFO] 16:43:20:216 Servidor CPU/(10845:10845): Hilo de interrupciones creado 
+
+[INFO] 16:43:20:217 Servidor CPU/(10845:10845): Tlb creada 
+
+[INFO] 16:43:20:218 Servidor CPU/(10845:10845): CPU listo para recibir al modulo cliente 
+
+[INFO] 16:43:20:223 Servidor CPU/(10845:10852): CPU listo para recibir interrupciones 
+
+[INFO] 16:43:20:224 Servidor CPU/(10845:10851): Pedido de handshake enviado 
+
+[INFO] 16:43:20:227 Servidor CPU/(10845:10851): Recibi configuracion por handshake 
+
+[INFO] 16:43:22:911 Servidor CPU/(10845:10852): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 16:43:27:505 Servidor CPU/(10845:10852): Fallo la comunicacion. Abortando 
+
+[ERROR] 16:43:27:506 Servidor CPU/(10845:10845): Fallo la comunicacion. Abortando 
+
+[INFO] 17:00:02:364 Servidor CPU/(11755:11755): Hilo de interrupciones creado 
+
+[INFO] 17:00:02:370 Servidor CPU/(11755:11755): Tlb creada 
+
+[INFO] 17:00:02:371 Servidor CPU/(11755:11755): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:00:02:373 Servidor CPU/(11755:11763): CPU listo para recibir interrupciones 
+
+[INFO] 17:00:02:374 Servidor CPU/(11755:11762): Pedido de handshake enviado 
+
+[INFO] 17:00:02:376 Servidor CPU/(11755:11762): Recibi configuracion por handshake 
+
+[INFO] 17:00:07:275 Servidor CPU/(11755:11763): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:00:12:939 Servidor CPU/(11755:11763): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:00:12:939 Servidor CPU/(11755:11755): Fallo la comunicacion. Abortando 
+
+[INFO] 17:03:24:022 Servidor CPU/(11945:11945): Hilo de interrupciones creado 
+
+[INFO] 17:03:24:024 Servidor CPU/(11945:11945): Tlb creada 
+
+[INFO] 17:03:24:028 Servidor CPU/(11945:11945): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:03:24:035 Servidor CPU/(11945:11953): CPU listo para recibir interrupciones 
+
+[INFO] 17:03:24:036 Servidor CPU/(11945:11952): Pedido de handshake enviado 
+
+[INFO] 17:03:24:042 Servidor CPU/(11945:11952): Recibi configuracion por handshake 
+
+[INFO] 17:03:29:481 Servidor CPU/(11945:11953): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:03:33:541 Servidor CPU/(11945:11953): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:03:33:541 Servidor CPU/(11945:11945): Fallo la comunicacion. Abortando 
+
+[INFO] 17:05:04:426 Servidor CPU/(12117:12117): Hilo de interrupciones creado 
+
+[INFO] 17:05:04:439 Servidor CPU/(12117:12117): Tlb creada 
+
+[INFO] 17:05:04:440 Servidor CPU/(12117:12117): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:05:04:444 Servidor CPU/(12117:12124): CPU listo para recibir interrupciones 
+
+[INFO] 17:05:04:450 Servidor CPU/(12117:12123): Pedido de handshake enviado 
+
+[INFO] 17:05:04:453 Servidor CPU/(12117:12123): Recibi configuracion por handshake 
+
+[INFO] 17:05:11:259 Servidor CPU/(12117:12124): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:05:16:672 Servidor CPU/(12117:12124): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:05:16:672 Servidor CPU/(12117:12117): Fallo la comunicacion. Abortando 
+
+[INFO] 17:07:23:018 Servidor CPU/(12276:12276): Hilo de interrupciones creado 
+
+[INFO] 17:07:23:019 Servidor CPU/(12276:12276): Tlb creada 
+
+[INFO] 17:07:23:019 Servidor CPU/(12276:12276): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:07:23:019 Servidor CPU/(12276:12284): CPU listo para recibir interrupciones 
+
+[INFO] 17:07:23:029 Servidor CPU/(12276:12283): Pedido de handshake enviado 
+
+[INFO] 17:07:23:031 Servidor CPU/(12276:12283): Recibi configuracion por handshake 
+
+[INFO] 17:07:26:867 Servidor CPU/(12276:12284): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:07:34:100 Servidor CPU/(12276:12284): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:07:34:100 Servidor CPU/(12276:12276): Fallo la comunicacion. Abortando 
+
+[INFO] 17:10:27:782 Servidor CPU/(12450:12450): Hilo de interrupciones creado 
+
+[INFO] 17:10:27:787 Servidor CPU/(12450:12450): Tlb creada 
+
+[INFO] 17:10:27:787 Servidor CPU/(12450:12450): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:10:27:790 Servidor CPU/(12450:12458): CPU listo para recibir interrupciones 
+
+[INFO] 17:10:27:790 Servidor CPU/(12450:12457): Pedido de handshake enviado 
+
+[INFO] 17:10:27:794 Servidor CPU/(12450:12457): Recibi configuracion por handshake 
+
+[INFO] 17:10:34:031 Servidor CPU/(12450:12458): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:10:37:010 Servidor CPU/(12450:12458): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:10:37:010 Servidor CPU/(12450:12450): Fallo la comunicacion. Abortando 
+
+[INFO] 17:11:57:902 Servidor CPU/(12611:12611): Hilo de interrupciones creado 
+
+[INFO] 17:11:57:908 Servidor CPU/(12611:12611): Tlb creada 
+
+[INFO] 17:11:57:908 Servidor CPU/(12611:12611): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:11:57:910 Servidor CPU/(12611:12619): CPU listo para recibir interrupciones 
+
+[INFO] 17:11:57:915 Servidor CPU/(12611:12618): Pedido de handshake enviado 
+
+[INFO] 17:11:57:917 Servidor CPU/(12611:12618): Recibi configuracion por handshake 
+
+[INFO] 17:12:01:425 Servidor CPU/(12611:12619): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:12:06:170 Servidor CPU/(12611:12619): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:12:06:171 Servidor CPU/(12611:12611): Fallo la comunicacion. Abortando 
+
+[INFO] 17:15:11:301 Servidor CPU/(12809:12809): Hilo de interrupciones creado 
+
+[INFO] 17:15:11:306 Servidor CPU/(12809:12809): Tlb creada 
+
+[INFO] 17:15:11:307 Servidor CPU/(12809:12809): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:15:11:309 Servidor CPU/(12809:12817): CPU listo para recibir interrupciones 
+
+[INFO] 17:15:11:309 Servidor CPU/(12809:12816): Pedido de handshake enviado 
+
+[INFO] 17:15:11:310 Servidor CPU/(12809:12816): Recibi configuracion por handshake 
+
+[INFO] 17:15:14:706 Servidor CPU/(12809:12817): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:15:22:039 Servidor CPU/(12809:12817): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:15:22:039 Servidor CPU/(12809:12809): Fallo la comunicacion. Abortando 
+
+[INFO] 17:21:59:172 Servidor CPU/(13150:13150): Hilo de interrupciones creado 
+
+[INFO] 17:21:59:178 Servidor CPU/(13150:13150): Tlb creada 
+
+[INFO] 17:21:59:180 Servidor CPU/(13150:13150): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:21:59:181 Servidor CPU/(13150:13158): CPU listo para recibir interrupciones 
+
+[INFO] 17:21:59:182 Servidor CPU/(13150:13157): Pedido de handshake enviado 
+
+[INFO] 17:21:59:184 Servidor CPU/(13150:13157): Recibi configuracion por handshake 
+
+[INFO] 17:22:04:133 Servidor CPU/(13150:13158): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:22:12:931 Servidor CPU/(13150:13158): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:22:12:931 Servidor CPU/(13150:13150): Fallo la comunicacion. Abortando 
+
+[INFO] 17:24:48:312 Servidor CPU/(13348:13348): Hilo de interrupciones creado 
+
+[INFO] 17:24:48:318 Servidor CPU/(13348:13348): Tlb creada 
+
+[INFO] 17:24:48:318 Servidor CPU/(13348:13348): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:24:48:319 Servidor CPU/(13348:13356): CPU listo para recibir interrupciones 
+
+[INFO] 17:24:48:320 Servidor CPU/(13348:13355): Pedido de handshake enviado 
+
+[INFO] 17:24:48:323 Servidor CPU/(13348:13355): Recibi configuracion por handshake 
+
+[INFO] 17:24:52:531 Servidor CPU/(13348:13356): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:24:57:045 Servidor CPU/(13348:13356): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:24:57:045 Servidor CPU/(13348:13348): Fallo la comunicacion. Abortando 
+
+[INFO] 17:28:58:780 Servidor CPU/(13555:13555): Hilo de interrupciones creado 
+
+[INFO] 17:28:58:783 Servidor CPU/(13555:13555): Tlb creada 
+
+[INFO] 17:28:58:785 Servidor CPU/(13555:13555): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:28:58:790 Servidor CPU/(13555:13562): CPU listo para recibir interrupciones 
+
+[INFO] 17:28:58:792 Servidor CPU/(13555:13561): Pedido de handshake enviado 
+
+[INFO] 17:28:58:794 Servidor CPU/(13555:13561): Recibi configuracion por handshake 
+
+[INFO] 17:29:02:197 Servidor CPU/(13555:13562): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:29:05:178 Servidor CPU/(13555:13562): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:29:05:178 Servidor CPU/(13555:13555): Fallo la comunicacion. Abortando 
+
+[INFO] 17:31:23:236 Servidor CPU/(13742:13742): Hilo de interrupciones creado 
+
+[INFO] 17:31:23:241 Servidor CPU/(13742:13742): Tlb creada 
+
+[INFO] 17:31:23:241 Servidor CPU/(13742:13742): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:31:23:246 Servidor CPU/(13742:13750): CPU listo para recibir interrupciones 
+
+[INFO] 17:31:23:254 Servidor CPU/(13742:13749): Pedido de handshake enviado 
+
+[INFO] 17:31:23:256 Servidor CPU/(13742:13749): Recibi configuracion por handshake 
+
+[INFO] 17:31:30:737 Servidor CPU/(13742:13750): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:35:34:910 Servidor CPU/(13742:13750): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:35:34:910 Servidor CPU/(13742:13742): Fallo la comunicacion. Abortando 
+
+[INFO] 17:37:07:199 Servidor CPU/(14142:14142): Hilo de interrupciones creado 
+
+[INFO] 17:37:07:208 Servidor CPU/(14142:14142): Tlb creada 
+
+[INFO] 17:37:07:211 Servidor CPU/(14142:14142): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:37:07:215 Servidor CPU/(14142:14149): CPU listo para recibir interrupciones 
+
+[INFO] 17:37:07:219 Servidor CPU/(14142:14148): Pedido de handshake enviado 
+
+[INFO] 17:37:07:222 Servidor CPU/(14142:14148): Recibi configuracion por handshake 
+
+[INFO] 17:37:12:547 Servidor CPU/(14142:14149): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:38:31:378 Servidor CPU/(14142:14149): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:38:31:379 Servidor CPU/(14142:14142): Fallo la comunicacion. Abortando 
+
+[INFO] 17:47:50:493 Servidor CPU/(14500:14500): Hilo de interrupciones creado 
+
+[INFO] 17:47:50:497 Servidor CPU/(14500:14500): Tlb creada 
+
+[INFO] 17:47:50:498 Servidor CPU/(14500:14500): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:47:50:503 Servidor CPU/(14500:14508): CPU listo para recibir interrupciones 
+
+[INFO] 17:47:50:503 Servidor CPU/(14500:14507): Pedido de handshake enviado 
+
+[INFO] 17:47:50:507 Servidor CPU/(14500:14507): Recibi configuracion por handshake 
+
+[INFO] 17:47:54:050 Servidor CPU/(14500:14508): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:48:22:261 Servidor CPU/(14500:14508): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:48:22:261 Servidor CPU/(14500:14500): Fallo la comunicacion. Abortando 
+
+[INFO] 17:49:42:602 Servidor CPU/(14646:14646): Hilo de interrupciones creado 
+
+[INFO] 17:49:42:607 Servidor CPU/(14646:14646): Tlb creada 
+
+[INFO] 17:49:42:608 Servidor CPU/(14646:14646): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:49:42:609 Servidor CPU/(14646:14654): CPU listo para recibir interrupciones 
+
+[INFO] 17:49:42:610 Servidor CPU/(14646:14653): Pedido de handshake enviado 
+
+[INFO] 17:49:42:614 Servidor CPU/(14646:14653): Recibi configuracion por handshake 
+
+[INFO] 17:49:48:575 Servidor CPU/(14646:14654): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:50:58:276 Servidor CPU/(14646:14654): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:50:58:276 Servidor CPU/(14646:14646): Fallo la comunicacion. Abortando 
+
+[INFO] 17:53:58:789 Servidor CPU/(14907:14907): Hilo de interrupciones creado 
+
+[INFO] 17:53:58:793 Servidor CPU/(14907:14907): Tlb creada 
+
+[INFO] 17:53:58:795 Servidor CPU/(14907:14907): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:53:58:796 Servidor CPU/(14907:14915): CPU listo para recibir interrupciones 
+
+[INFO] 17:53:58:799 Servidor CPU/(14907:14914): Pedido de handshake enviado 
+
+[INFO] 17:53:58:801 Servidor CPU/(14907:14914): Recibi configuracion por handshake 
+
+[INFO] 17:54:02:879 Servidor CPU/(14907:14915): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:55:34:589 Servidor CPU/(14907:14915): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:55:34:589 Servidor CPU/(14907:14907): Fallo la comunicacion. Abortando 
+
+[INFO] 17:56:58:635 Servidor CPU/(15069:15069): Hilo de interrupciones creado 
+
+[INFO] 17:56:58:637 Servidor CPU/(15069:15069): Tlb creada 
+
+[INFO] 17:56:58:637 Servidor CPU/(15069:15069): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:56:58:641 Servidor CPU/(15069:15077): CPU listo para recibir interrupciones 
+
+[INFO] 17:56:58:646 Servidor CPU/(15069:15076): Pedido de handshake enviado 
+
+[INFO] 17:56:58:648 Servidor CPU/(15069:15076): Recibi configuracion por handshake 
+
+[INFO] 17:57:03:240 Servidor CPU/(15069:15077): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:57:56:601 Servidor CPU/(15069:15077): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:57:56:601 Servidor CPU/(15069:15069): Fallo la comunicacion. Abortando 
+
+[INFO] 17:59:39:910 Servidor CPU/(15231:15231): Hilo de interrupciones creado 
+
+[INFO] 17:59:39:911 Servidor CPU/(15231:15231): Tlb creada 
+
+[INFO] 17:59:39:911 Servidor CPU/(15231:15231): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:59:39:911 Servidor CPU/(15231:15239): CPU listo para recibir interrupciones 
+
+[INFO] 17:59:39:917 Servidor CPU/(15231:15238): Pedido de handshake enviado 
+
+[INFO] 17:59:39:920 Servidor CPU/(15231:15238): Recibi configuracion por handshake 
+
+[INFO] 17:59:42:626 Servidor CPU/(15231:15239): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 18:00:16:158 Servidor CPU/(15231:15239): Fallo la comunicacion. Abortando 
+
+[ERROR] 18:00:16:158 Servidor CPU/(15231:15231): Fallo la comunicacion. Abortando 
+
+[INFO] 18:01:50:218 Servidor CPU/(15543:15543): Hilo de interrupciones creado 
+
+[INFO] 18:01:50:224 Servidor CPU/(15543:15543): Tlb creada 
+
+[INFO] 18:01:50:225 Servidor CPU/(15543:15543): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:01:50:226 Servidor CPU/(15543:15551): CPU listo para recibir interrupciones 
+
+[INFO] 18:01:50:227 Servidor CPU/(15543:15550): Pedido de handshake enviado 
+
+[INFO] 18:01:50:228 Servidor CPU/(15543:15550): Recibi configuracion por handshake 
+
+[INFO] 18:01:53:122 Servidor CPU/(15543:15551): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 18:03:49:425 Servidor CPU/(15543:15551): Fallo la comunicacion. Abortando 
+
+[ERROR] 18:03:49:425 Servidor CPU/(15543:15543): Fallo la comunicacion. Abortando 
+
+[INFO] 18:05:15:540 Servidor CPU/(15794:15794): Hilo de interrupciones creado 
+
+[INFO] 18:05:15:542 Servidor CPU/(15794:15794): Tlb creada 
+
+[INFO] 18:05:15:542 Servidor CPU/(15794:15794): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:05:15:545 Servidor CPU/(15794:15802): CPU listo para recibir interrupciones 
+
+[INFO] 18:05:15:546 Servidor CPU/(15794:15801): Pedido de handshake enviado 
+
+[INFO] 18:05:15:548 Servidor CPU/(15794:15801): Recibi configuracion por handshake 
+
+[INFO] 18:05:18:619 Servidor CPU/(15794:15802): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 18:06:42:100 Servidor CPU/(15794:15802): Fallo la comunicacion. Abortando 
+
+[ERROR] 18:06:42:100 Servidor CPU/(15794:15794): Fallo la comunicacion. Abortando 
+
