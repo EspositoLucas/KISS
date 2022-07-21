@@ -39,7 +39,7 @@ t_list *paginas_por_proceso(int );
 t_list* sortear_segun_marco(t_list*);
 bool marcosMin(void* ,void * );
 void eliminar_entrada_tp1(pcb*);
-int* indice_tabla_tp2(tabla_de_segundo_nivel* tp2);
+uint32_t* indice_tabla_tp2(tabla_de_segundo_nivel* tp2);
 
 
 

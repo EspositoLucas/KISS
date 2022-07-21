@@ -334,29 +334,35 @@ void eliminar_entrada_tp1(pcb* pcb){
 	pthread_mutex_unlock(&mutex_numero_tabla_2p);
 	t_list* tablas_proceso = (t_list*)list_filter(lista_tablas_segundo_nivel,condicion_misma_numero_p_id);
 	printf("tamanio_tabla_proceso %d \n",list_size(tablas_proceso));
-	t_list*indices_proceso= (t_list*)list_map(tablas_proceso,(void*)indice_tabla_tp2);
-	printf("tamanio_tabla_proceso %d \n",list_size(indices_proceso));
+	t_list*indices_proceso= (t_list*)list_map(tablas_proceso,indice_tabla_tp2);
+	printf("tamanio_indice_proceso %d \n",list_size(indices_proceso));
+
+	printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
 
 	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel);i++){
+		printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
 		indicador = false;
 		t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
 		for(int j=0 ; j<list_size(indices_proceso);j++){
-			uint32_t aux_indice = *(uint32_t*)list_get(indices_proceso,j);
-
+			//uint32_t aux_indice = *(uint32_t*)list_get(indices_proceso,j);
+			uint32_t aux_indice = list_get(indices_proceso,j);
 			if(aux_indice == aux->numero_de_tabla2 ){
 				indicador = true ;
 			}
 
+
 		}
 		if(indicador){
 			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
+			printf("tamanio tabla primer nivel antes de borrar %d \n",list_size(tabla_de_pagina_1_nivel));
 			list_remove_and_destroy_element(tabla_de_pagina_1_nivel, i, free);
+			printf("tamanio tabla primer nivel despues de borrar %d \n",list_size(tabla_de_pagina_1_nivel));
 			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
 		}
 	}
 
 }
 
-int* indice_tabla_tp2(tabla_de_segundo_nivel* tp2){
+uint32_t* indice_tabla_tp2(tabla_de_segundo_nivel* tp2){
 	return tp2->id_tabla;
 }
