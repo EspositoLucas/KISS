@@ -2428,3 +2428,82 @@
 
 [INFO] 23:41:51:378 Servidor Kernel/(25489:25501): Enviando a memoria para suspender proceso 
 
+[INFO] 13:18:30:863 Servidor Kernel/(27810:27810): Archivo de configuracion cargada 
+
+[INFO] 13:18:30:864 Servidor Kernel/(27810:27810): Kernel conectado con cpu 
+
+[INFO] 13:18:30:865 Servidor Kernel/(27810:27810): Kernel conectado con memoria 
+
+[INFO] 13:18:30:865 Servidor Kernel/(27810:27810): Servidor creado 
+
+[INFO] 13:18:30:865 Servidor Kernel/(27810:27810): Estructuras largo plazo creadas 
+
+[INFO] 13:18:30:865 Servidor Kernel/(27810:27810): Estructuras corto plazo creadas 
+
+[INFO] 13:18:30:865 Servidor Kernel/(27810:27810): Estructuras mediano plazo creadas 
+
+[INFO] 13:18:30:865 Servidor Kernel/(27810:27810): Planificacion iniciada 
+
+[INFO] 13:18:30:866 Servidor Kernel/(27810:27810): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:31:28:675 Servidor Kernel/(28916:28916): Archivo de configuracion cargada 
+
+[INFO] 13:31:28:675 Servidor Kernel/(28916:28916): Kernel conectado con cpu 
+
+[INFO] 13:31:28:676 Servidor Kernel/(28916:28916): Kernel conectado con memoria 
+
+[INFO] 13:31:28:676 Servidor Kernel/(28916:28916): Servidor creado 
+
+[INFO] 13:31:28:676 Servidor Kernel/(28916:28916): Estructuras largo plazo creadas 
+
+[INFO] 13:31:28:677 Servidor Kernel/(28916:28916): Estructuras corto plazo creadas 
+
+[INFO] 13:31:28:677 Servidor Kernel/(28916:28916): Estructuras mediano plazo creadas 
+
+[INFO] 13:31:28:677 Servidor Kernel/(28916:28916): Planificacion iniciada 
+
+[INFO] 13:31:28:677 Servidor Kernel/(28916:28916): Kernel listo para recibir al modulo cliente 
+
+[INFO] 13:31:33:101 Servidor Kernel/(28916:28941): Me llego el tamanio y las instrucciones
+
+[INFO] 13:31:33:101 Servidor Kernel/(28916:28941): Consola deserializada, entro a armar pcb
+
+[INFO] 13:31:33:101 Servidor Kernel/(28916:28941): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 13:31:33:101 Servidor Kernel/(28916:28941): PID[0] ingresa a NEW 
+
+[INFO] 13:31:33:101 Servidor Kernel/(28916:28924): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28924): Recibi paquete PCB de memoria 
+ 
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28924): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28924): PID[0] ingresa a READY desde NEW 
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28925): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28925): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28925): Inicio la planificacion SRT 
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28925): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28925): PID[0] ingresa a EXEC
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28926): PID[0] sale de EXEC
+
+[INFO] 13:31:33:106 Servidor Kernel/(28916:28926): PCB enviada cpu para ejecucion
+[INFO] 13:31:33:118 Servidor Kernel/(28916:28926): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 13:31:33:118 Servidor Kernel/(28916:28926): [1] Ultima instruccion ejecutada
+[INFO] 13:31:33:118 Servidor Kernel/(28916:28926): PID[0] Entra en BLOCKED 
+
+[INFO] 13:31:33:118 Servidor Kernel/(28916:28927): PID[0] sale de BLOCKED 
+
+[INFO] 13:31:33:118 Servidor Kernel/(28916:28927): PID[0] ejecuta IO 
+
+[INFO] 13:31:33:118 Servidor Kernel/(28916:28927): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 13:31:33:319 Servidor Kernel/(28916:28927): iniciar IO antes de suspender 
+
+[INFO] 13:31:33:319 Servidor Kernel/(28916:28927): Enviando a memoria para suspender proceso 
+

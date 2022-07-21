@@ -21,8 +21,7 @@ int main(int argc, char **argv){
 
 //	Configuracion
 
-	t_config* config = cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/consola/cfg/consola.config");
-
+	t_config* config = cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/consola/cfg/consola.config");
 //	Parseo
 
 	t_list *instrucciones = parsear_instrucciones(argv[2]);

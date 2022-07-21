@@ -1600,3 +1600,47 @@
 
 [INFO] 23:41:51:378 Servidor Memoria/(25448:25496): me llego mensaje para suspender proceso 
 
+[INFO] 13:22:02:450 Servidor Memoria/(28011:28011): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 13:22:02:451 Servidor Memoria/(28011:28011): Memoria lista para recibir al modulo cliente 
+
+[INFO] 13:31:18:649 Servidor Memoria/(28872:28872): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 13:31:21:351 Servidor Memoria/(28872:28872): Memoria lista para recibir al modulo cliente 
+
+[INFO] 13:31:25:764 Servidor Memoria/(28872:28872): Se conecto un cliente 
+
+[INFO] 13:31:25:779 Servidor Memoria/(28872:28907): me llego el handshake de cpu 
+
+[INFO] 13:31:25:780 Servidor Memoria/(28872:28907): hanshake enviado a cpu 
+
+[INFO] 13:31:28:676 Servidor Memoria/(28872:28872): Se conecto un cliente 
+
+[INFO] 13:31:33:101 Servidor Memoria/(28872:28922): Inicializando estructuras 
+
+[INFO] 13:31:33:101 Servidor Memoria/(28872:28922): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 13:31:33:105 Servidor Memoria/(28872:28922): tabla segundo nivel creada 
+
+[INFO] 13:31:33:105 Servidor Memoria/(28872:28922): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:31:33:105 Servidor Memoria/(28872:28922): tabla segundo nivel creada 
+
+[INFO] 13:31:33:105 Servidor Memoria/(28872:28922): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:31:33:105 Servidor Memoria/(28872:28922): tabla segundo nivel creada 
+
+[INFO] 13:31:33:105 Servidor Memoria/(28872:28922): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:31:33:106 Servidor Memoria/(28872:28922): tabla segundo nivel creada 
+
+[INFO] 13:31:33:106 Servidor Memoria/(28872:28922): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:31:33:106 Servidor Memoria/(28872:28922): Se creo el archivo swap del proceso: 0
+
+[INFO] 13:31:33:106 Servidor Memoria/(28872:28922): Swap creado 
+
+[INFO] 13:31:33:106 Servidor Memoria/(28872:28922): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 13:31:33:319 Servidor Memoria/(28872:28922): me llego mensaje para suspender proceso 
+

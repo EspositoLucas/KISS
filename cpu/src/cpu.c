@@ -315,7 +315,7 @@ void* conexion_inicial_memoria(){
 ///CARGAR CONFIGURACION A CPU
 
 void cargar_config(){
-	config= iniciar_config("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/cpu/Default/cpu.config");
+	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/cpu.config");
 
 	config_valores_cpu.ip_cpu=config_get_string_value(config,"IP_CPU");
 	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");
