@@ -47,8 +47,9 @@ int main(int argc, char **argv){
 	log_info(consola_logger, "Paquete con tamanio e instrucciones enviado correctamente.\n");
 
 //	Terminar programa
-
+	log_info(consola_logger, "respuesta kernel a recibir.\n");
 	op_code respuesta_kernel = recibir_operacion_nuevo(server_fd);
+	log_info(consola_logger, "respuesta kernel recibida.\n");
 	if(respuesta_kernel != FINALIZAR_CONSOLA) {
 			log_error(consola_logger, "Error al finalizar consola \n");
 		}

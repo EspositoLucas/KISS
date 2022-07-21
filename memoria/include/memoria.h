@@ -49,12 +49,16 @@ t_list* marcos;
 //SEMAFOROS
 
 pthread_mutex_t mutex_comparador_pid;
+pthread_mutex_t mutex_comparador_indice;
 pthread_mutex_t mutex_comparador;
 pthread_mutex_t mutex_marcos;
 pthread_mutex_t mutex_memoria_usuario;
 pthread_mutex_t mutex_lista_archivo;
 pthread_mutex_t mutex_comparador_archivo_pid;
 pthread_mutex_t mutex_archivo_swap;
+pthread_mutex_t mutex_numero_tabla_2p;
+pthread_mutex_t mutex_tabla_pagina_primer_nivel;
+pthread_mutex_t mutex_tabla_pagina_segundo_nivel;
 
 //FUNCIONES
 

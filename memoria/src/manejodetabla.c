@@ -1,5 +1,7 @@
 #include "manejodetabla.h"
 
+bool indicador ;
+
 //------------------------ACCESO A PRIMERA TABLA------------------------
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	int entradafinal=(int)(tabla+entrada);
@@ -250,8 +252,8 @@ t_list *paginas_por_proceso(int pid){
 }
 
 
-bool condicion_misma_numero_p_id(void* tabla){
-	return ((tabla_de_segundo_nivel *)tabla)->p_id == numero_tabla_2p; // ver con que se compara el p_id
+bool condicion_misma_numero_p_id( tabla_de_segundo_nivel* tabla){
+	return tabla->p_id == numero_tabla_2p; // ver con que se compara el p_id
 
 }
 
@@ -268,13 +270,17 @@ bool pagConIgualPid(tabla_de_segundo_nivel* tab){
 	return tab->p_id==pid_comparador;
 }
 
+bool pagConIgualIndice(t_p_1* tab){
+	return tab->numero_de_tabla2== indice_comparador;
+}
+
 t_list* paginasEnMemoria(uint32_t pid){
 
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list *lista_pags_en_mem = list_create();
-	t_list* tablas_del_proceso=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	t_list* tablas_del_proceso=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	for(int i=0;i<list_size(tablas_del_proceso);i++){
 		tabla_de_segundo_nivel* aux=(tabla_de_segundo_nivel*)list_get(tablas_del_proceso,i);
 		t_list* pags_en_memoria=(t_list*)list_filter(aux->lista_paginas,pagina_con_presencia);
@@ -303,7 +309,7 @@ t_list* pagsDeUnProceso(uint32_t pid){
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
-	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	for(int i=0;i<list_size(tablas);i++){
 		tabla_de_segundo_nivel* aux=(tabla_de_segundo_nivel*)list_get(tablas,i);
 		for(int j=0;j<list_size(aux->lista_paginas);j++){
@@ -319,4 +325,38 @@ t_list* pagsDeUnProceso(uint32_t pid){
 		}
 	}
 	return paginas;
+}
+
+void eliminar_entrada_tp1(pcb* pcb){
+	pthread_mutex_lock(&mutex_numero_tabla_2p);
+	numero_tabla_2p = pcb->id_proceso;
+	printf("id_proceso %d \n",pcb->id_proceso);
+	pthread_mutex_unlock(&mutex_numero_tabla_2p);
+	t_list* tablas_proceso = (t_list*)list_filter(lista_tablas_segundo_nivel,condicion_misma_numero_p_id);
+	printf("tamanio_tabla_proceso %d \n",list_size(tablas_proceso));
+	t_list*indices_proceso= (t_list*)list_map(tablas_proceso,(void*)indice_tabla_tp2);
+	printf("tamanio_tabla_proceso %d \n",list_size(indices_proceso));
+
+	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel);i++){
+		indicador = false;
+		t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
+		for(int j=0 ; j<list_size(indices_proceso);j++){
+			uint32_t aux_indice = *(uint32_t*)list_get(indices_proceso,j);
+
+			if(aux_indice == aux->numero_de_tabla2 ){
+				indicador = true ;
+			}
+
+		}
+		if(indicador){
+			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
+			list_remove_and_destroy_element(tabla_de_pagina_1_nivel, i, free);
+			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
+		}
+	}
+
+}
+
+int* indice_tabla_tp2(tabla_de_segundo_nivel* tp2){
+	return tp2->id_tabla;
 }

@@ -1326,3 +1326,921 @@
 
 [ERROR] 13:31:49:206 Servidor CPU/(28901:28901): Fallo la comunicacion. Abortando 
 
+[INFO] 14:42:51:315 Servidor CPU/(29893:29893): Hilo de interrupciones creado 
+
+[INFO] 14:42:51:315 Servidor CPU/(29893:29893): Tlb creada 
+
+[INFO] 14:42:51:318 Servidor CPU/(29893:29893): CPU listo para recibir al modulo cliente 
+
+[INFO] 14:42:51:318 Servidor CPU/(29893:29906): CPU listo para recibir interrupciones 
+
+[INFO] 14:42:51:325 Servidor CPU/(29893:29905): Pedido de handshake enviado 
+
+[INFO] 14:42:51:330 Servidor CPU/(29893:29905): Recibi configuracion por handshake 
+
+[INFO] 14:42:54:626 Servidor CPU/(29893:29906): Se conecto Kernel al puerto interrupt 
+
+[INFO] 14:42:57:515 Servidor CPU/(29893:29893): Recibi PCB de Id: 0 
+
+[INFO] 14:42:57:515 Servidor CPU/(29893:29893): Se creo hilo para recibir interrupciones 
+
+[INFO] 14:42:57:517 Servidor CPU/(29893:29893): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:42:57:518 Servidor CPU/(29893:29893): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:42:57:520 Servidor CPU/(29893:29893): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:42:57:521 Servidor CPU/(29893:29893): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:42:57:523 Servidor CPU/(29893:29893): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:42:57:523 Servidor CPU/(29893:29893): Se ejecuto instruccion I/O 
+
+[ERROR] 14:43:38:220 Servidor CPU/(29893:29906): Fallo la comunicacion. Abortando 
+
+[ERROR] 14:43:38:220 Servidor CPU/(29893:29893): Fallo la comunicacion. Abortando 
+
+[INFO] 14:46:23:738 Servidor CPU/(30394:30394): Hilo de interrupciones creado 
+
+[INFO] 14:46:23:738 Servidor CPU/(30394:30394): Tlb creada 
+
+[INFO] 14:46:23:738 Servidor CPU/(30394:30394): CPU listo para recibir al modulo cliente 
+
+[INFO] 14:46:23:739 Servidor CPU/(30394:30403): CPU listo para recibir interrupciones 
+
+[INFO] 14:46:23:745 Servidor CPU/(30394:30402): Pedido de handshake enviado 
+
+[INFO] 14:46:23:750 Servidor CPU/(30394:30402): Recibi configuracion por handshake 
+
+[INFO] 14:46:26:165 Servidor CPU/(30394:30403): Se conecto Kernel al puerto interrupt 
+
+[INFO] 14:46:28:720 Servidor CPU/(30394:30394): Recibi PCB de Id: 0 
+
+[INFO] 14:46:28:720 Servidor CPU/(30394:30394): Se creo hilo para recibir interrupciones 
+
+[INFO] 14:46:28:722 Servidor CPU/(30394:30394): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:46:28:723 Servidor CPU/(30394:30394): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:46:28:724 Servidor CPU/(30394:30394): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:46:28:726 Servidor CPU/(30394:30394): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:46:28:727 Servidor CPU/(30394:30394): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:46:28:727 Servidor CPU/(30394:30394): Se ejecuto instruccion I/O 
+
+[ERROR] 14:49:03:322 Servidor CPU/(30394:30403): Fallo la comunicacion. Abortando 
+
+[ERROR] 14:49:03:322 Servidor CPU/(30394:30394): Fallo la comunicacion. Abortando 
+
+[INFO] 14:50:41:445 Servidor CPU/(30738:30738): Hilo de interrupciones creado 
+
+[INFO] 14:50:41:445 Servidor CPU/(30738:30738): Tlb creada 
+
+[INFO] 14:50:41:446 Servidor CPU/(30738:30738): CPU listo para recibir al modulo cliente 
+
+[INFO] 14:50:41:446 Servidor CPU/(30738:30746): CPU listo para recibir interrupciones 
+
+[INFO] 14:50:41:451 Servidor CPU/(30738:30745): Pedido de handshake enviado 
+
+[INFO] 14:50:41:456 Servidor CPU/(30738:30745): Recibi configuracion por handshake 
+
+[INFO] 14:50:47:032 Servidor CPU/(30738:30746): Se conecto Kernel al puerto interrupt 
+
+[INFO] 14:50:49:057 Servidor CPU/(30738:30738): Recibi PCB de Id: 0 
+
+[INFO] 14:50:49:058 Servidor CPU/(30738:30738): Se creo hilo para recibir interrupciones 
+
+[INFO] 14:50:49:059 Servidor CPU/(30738:30738): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:50:49:061 Servidor CPU/(30738:30738): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:50:49:062 Servidor CPU/(30738:30738): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:50:49:063 Servidor CPU/(30738:30738): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:50:49:065 Servidor CPU/(30738:30738): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:50:49:065 Servidor CPU/(30738:30738): Se ejecuto instruccion I/O 
+
+[INFO] 14:56:31:984 Servidor CPU/(30962:30962): Hilo de interrupciones creado 
+
+[INFO] 14:56:31:984 Servidor CPU/(30962:30962): Tlb creada 
+
+[INFO] 14:56:31:985 Servidor CPU/(30962:30962): CPU listo para recibir al modulo cliente 
+
+[INFO] 14:56:31:985 Servidor CPU/(30962:30970): CPU listo para recibir interrupciones 
+
+[INFO] 14:56:32:001 Servidor CPU/(30962:30969): Pedido de handshake enviado 
+
+[INFO] 14:56:32:002 Servidor CPU/(30962:30969): Recibi configuracion por handshake 
+
+[INFO] 14:56:34:679 Servidor CPU/(30962:30970): Se conecto Kernel al puerto interrupt 
+
+[INFO] 14:56:37:685 Servidor CPU/(30962:30962): Recibi PCB de Id: 0 
+
+[INFO] 14:56:37:685 Servidor CPU/(30962:30962): Se creo hilo para recibir interrupciones 
+
+[INFO] 14:56:37:687 Servidor CPU/(30962:30962): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:56:37:688 Servidor CPU/(30962:30962): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:56:37:689 Servidor CPU/(30962:30962): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:56:37:690 Servidor CPU/(30962:30962): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:56:37:692 Servidor CPU/(30962:30962): Se ejecuto instruccion NO-OP 
+
+[INFO] 14:56:37:692 Servidor CPU/(30962:30962): Se ejecuto instruccion I/O 
+
+[ERROR] 14:57:11:888 Servidor CPU/(30962:30970): Fallo la comunicacion. Abortando 
+
+[ERROR] 14:57:11:888 Servidor CPU/(30962:30962): Fallo la comunicacion. Abortando 
+
+[INFO] 15:05:56:224 Servidor CPU/(31218:31218): Hilo de interrupciones creado 
+
+[INFO] 15:05:56:224 Servidor CPU/(31218:31218): Tlb creada 
+
+[INFO] 15:05:56:224 Servidor CPU/(31218:31218): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:05:56:224 Servidor CPU/(31218:31227): CPU listo para recibir interrupciones 
+
+[INFO] 15:05:56:234 Servidor CPU/(31218:31226): Pedido de handshake enviado 
+
+[INFO] 15:05:56:236 Servidor CPU/(31218:31226): Recibi configuracion por handshake 
+
+[INFO] 15:05:58:998 Servidor CPU/(31218:31227): Se conecto Kernel al puerto interrupt 
+
+[INFO] 15:06:01:840 Servidor CPU/(31218:31218): Recibi PCB de Id: 0 
+
+[INFO] 15:06:01:840 Servidor CPU/(31218:31218): Se creo hilo para recibir interrupciones 
+
+[INFO] 15:06:01:842 Servidor CPU/(31218:31218): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:06:01:843 Servidor CPU/(31218:31218): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:06:01:844 Servidor CPU/(31218:31218): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:06:01:846 Servidor CPU/(31218:31218): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:06:01:848 Servidor CPU/(31218:31218): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:06:01:848 Servidor CPU/(31218:31218): Se ejecuto instruccion I/O 
+
+[ERROR] 15:06:04:972 Servidor CPU/(31218:31227): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:06:04:972 Servidor CPU/(31218:31218): Fallo la comunicacion. Abortando 
+
+[INFO] 15:06:41:716 Servidor CPU/(31329:31329): Hilo de interrupciones creado 
+
+[INFO] 15:06:41:717 Servidor CPU/(31329:31329): Tlb creada 
+
+[INFO] 15:06:41:719 Servidor CPU/(31329:31329): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:06:41:719 Servidor CPU/(31329:31337): CPU listo para recibir interrupciones 
+
+[INFO] 15:06:41:724 Servidor CPU/(31329:31336): Pedido de handshake enviado 
+
+[INFO] 15:06:41:726 Servidor CPU/(31329:31336): Recibi configuracion por handshake 
+
+[INFO] 15:06:44:296 Servidor CPU/(31329:31337): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 15:06:44:302 Servidor CPU/(31329:31337): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:06:44:302 Servidor CPU/(31329:31329): Fallo la comunicacion. Abortando 
+
+[INFO] 15:10:09:409 Servidor CPU/(31464:31464): Hilo de interrupciones creado 
+
+[INFO] 15:10:09:409 Servidor CPU/(31464:31464): Tlb creada 
+
+[INFO] 15:10:09:409 Servidor CPU/(31464:31464): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:10:09:409 Servidor CPU/(31464:31473): CPU listo para recibir interrupciones 
+
+[INFO] 15:10:09:415 Servidor CPU/(31464:31472): Pedido de handshake enviado 
+
+[INFO] 15:10:09:420 Servidor CPU/(31464:31472): Recibi configuracion por handshake 
+
+[INFO] 15:10:12:120 Servidor CPU/(31464:31473): Se conecto Kernel al puerto interrupt 
+
+[INFO] 15:10:14:463 Servidor CPU/(31464:31464): Recibi PCB de Id: 0 
+
+[INFO] 15:10:14:464 Servidor CPU/(31464:31464): Se creo hilo para recibir interrupciones 
+
+[INFO] 15:10:14:466 Servidor CPU/(31464:31464): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:10:14:467 Servidor CPU/(31464:31464): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:10:14:468 Servidor CPU/(31464:31464): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:10:14:470 Servidor CPU/(31464:31464): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:10:14:471 Servidor CPU/(31464:31464): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:10:14:471 Servidor CPU/(31464:31464): Se ejecuto instruccion I/O 
+
+[ERROR] 15:10:17:612 Servidor CPU/(31464:31473): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:10:17:612 Servidor CPU/(31464:31464): Fallo la comunicacion. Abortando 
+
+[INFO] 15:10:51:238 Servidor CPU/(31551:31551): Hilo de interrupciones creado 
+
+[INFO] 15:10:51:238 Servidor CPU/(31551:31551): Tlb creada 
+
+[INFO] 15:10:51:238 Servidor CPU/(31551:31551): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:10:51:239 Servidor CPU/(31551:31559): CPU listo para recibir interrupciones 
+
+[INFO] 15:10:51:244 Servidor CPU/(31551:31558): Pedido de handshake enviado 
+
+[INFO] 15:10:51:245 Servidor CPU/(31551:31558): Recibi configuracion por handshake 
+
+[INFO] 15:10:56:564 Servidor CPU/(31551:31559): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 15:10:56:569 Servidor CPU/(31551:31559): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:10:56:569 Servidor CPU/(31551:31551): Fallo la comunicacion. Abortando 
+
+[INFO] 15:15:12:184 Servidor CPU/(31777:31777): Hilo de interrupciones creado 
+
+[INFO] 15:15:12:184 Servidor CPU/(31777:31777): Tlb creada 
+
+[INFO] 15:15:12:189 Servidor CPU/(31777:31777): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:15:12:192 Servidor CPU/(31777:31785): CPU listo para recibir interrupciones 
+
+[INFO] 15:15:12:192 Servidor CPU/(31777:31784): Pedido de handshake enviado 
+
+[INFO] 15:15:12:194 Servidor CPU/(31777:31784): Recibi configuracion por handshake 
+
+[INFO] 15:15:15:298 Servidor CPU/(31777:31785): Se conecto Kernel al puerto interrupt 
+
+[INFO] 15:15:19:266 Servidor CPU/(31777:31777): Recibi PCB de Id: 0 
+
+[INFO] 15:15:19:266 Servidor CPU/(31777:31777): Se creo hilo para recibir interrupciones 
+
+[INFO] 15:15:19:268 Servidor CPU/(31777:31777): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:15:19:271 Servidor CPU/(31777:31777): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:15:19:272 Servidor CPU/(31777:31777): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:15:19:273 Servidor CPU/(31777:31777): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:15:19:275 Servidor CPU/(31777:31777): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:15:19:275 Servidor CPU/(31777:31777): Se ejecuto instruccion I/O 
+
+[ERROR] 15:15:22:528 Servidor CPU/(31777:31785): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:15:22:528 Servidor CPU/(31777:31777): Fallo la comunicacion. Abortando 
+
+[INFO] 15:16:02:389 Servidor CPU/(31865:31865): Hilo de interrupciones creado 
+
+[INFO] 15:16:02:389 Servidor CPU/(31865:31865): Tlb creada 
+
+[INFO] 15:16:02:389 Servidor CPU/(31865:31865): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:16:02:389 Servidor CPU/(31865:31873): CPU listo para recibir interrupciones 
+
+[INFO] 15:16:02:399 Servidor CPU/(31865:31872): Pedido de handshake enviado 
+
+[INFO] 15:16:02:401 Servidor CPU/(31865:31872): Recibi configuracion por handshake 
+
+[INFO] 15:16:06:333 Servidor CPU/(31865:31873): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 15:16:06:337 Servidor CPU/(31865:31873): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:16:06:337 Servidor CPU/(31865:31865): Fallo la comunicacion. Abortando 
+
+[INFO] 15:19:45:610 Servidor CPU/(32087:32087): Hilo de interrupciones creado 
+
+[INFO] 15:19:45:611 Servidor CPU/(32087:32087): Tlb creada 
+
+[INFO] 15:19:45:611 Servidor CPU/(32087:32087): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:19:45:611 Servidor CPU/(32087:32095): CPU listo para recibir interrupciones 
+
+[INFO] 15:19:45:617 Servidor CPU/(32087:32094): Pedido de handshake enviado 
+
+[INFO] 15:19:45:618 Servidor CPU/(32087:32094): Recibi configuracion por handshake 
+
+[INFO] 15:20:14:882 Servidor CPU/(32087:32095): Se conecto Kernel al puerto interrupt 
+
+[INFO] 15:20:28:136 Servidor CPU/(32087:32087): Recibi PCB de Id: 0 
+
+[INFO] 15:20:28:137 Servidor CPU/(32087:32087): Se creo hilo para recibir interrupciones 
+
+[INFO] 15:20:28:139 Servidor CPU/(32087:32087): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:20:28:140 Servidor CPU/(32087:32087): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:20:28:141 Servidor CPU/(32087:32087): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:20:28:143 Servidor CPU/(32087:32087): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:20:28:144 Servidor CPU/(32087:32087): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:20:28:144 Servidor CPU/(32087:32087): Se ejecuto instruccion I/O 
+
+[ERROR] 15:20:31:308 Servidor CPU/(32087:32095): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:20:31:308 Servidor CPU/(32087:32087): Fallo la comunicacion. Abortando 
+
+[INFO] 15:21:24:871 Servidor CPU/(32233:32233): Hilo de interrupciones creado 
+
+[INFO] 15:21:24:871 Servidor CPU/(32233:32233): Tlb creada 
+
+[INFO] 15:21:24:871 Servidor CPU/(32233:32233): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:21:24:872 Servidor CPU/(32233:32241): CPU listo para recibir interrupciones 
+
+[INFO] 15:21:24:875 Servidor CPU/(32233:32240): Pedido de handshake enviado 
+
+[INFO] 15:21:24:877 Servidor CPU/(32233:32240): Recibi configuracion por handshake 
+
+[INFO] 15:21:27:561 Servidor CPU/(32233:32241): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 15:21:27:565 Servidor CPU/(32233:32241): Fallo la comunicacion. Abortando 
+
+[ERROR] 15:21:27:566 Servidor CPU/(32233:32233): Fallo la comunicacion. Abortando 
+
+[INFO] 15:27:41:072 Servidor CPU/(32541:32541): Hilo de interrupciones creado 
+
+[INFO] 15:27:41:072 Servidor CPU/(32541:32541): Tlb creada 
+
+[INFO] 15:27:41:073 Servidor CPU/(32541:32541): CPU listo para recibir al modulo cliente 
+
+[INFO] 15:27:41:076 Servidor CPU/(32541:32549): CPU listo para recibir interrupciones 
+
+[INFO] 15:27:41:078 Servidor CPU/(32541:32548): Pedido de handshake enviado 
+
+[INFO] 15:27:41:080 Servidor CPU/(32541:32548): Recibi configuracion por handshake 
+
+[INFO] 15:27:43:939 Servidor CPU/(32541:32549): Se conecto Kernel al puerto interrupt 
+
+[INFO] 15:27:46:202 Servidor CPU/(32541:32541): Recibi PCB de Id: 0 
+
+[INFO] 15:27:46:202 Servidor CPU/(32541:32541): Se creo hilo para recibir interrupciones 
+
+[INFO] 15:27:46:204 Servidor CPU/(32541:32541): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:27:46:205 Servidor CPU/(32541:32541): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:27:46:206 Servidor CPU/(32541:32541): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:27:46:208 Servidor CPU/(32541:32541): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:27:46:210 Servidor CPU/(32541:32541): Se ejecuto instruccion NO-OP 
+
+[INFO] 15:27:46:210 Servidor CPU/(32541:32541): Se ejecuto instruccion I/O 
+
+[INFO] 17:31:35:277 Servidor CPU/(5457:5457): Hilo de interrupciones creado 
+
+[INFO] 17:31:35:278 Servidor CPU/(5457:5457): Tlb creada 
+
+[INFO] 17:32:49:959 Servidor CPU/(5674:5674): Hilo de interrupciones creado 
+
+[INFO] 17:32:49:959 Servidor CPU/(5674:5674): Tlb creada 
+
+[INFO] 17:33:39:516 Servidor CPU/(5895:5895): Hilo de interrupciones creado 
+
+[INFO] 17:33:39:516 Servidor CPU/(5895:5895): Tlb creada 
+
+[INFO] 17:33:39:516 Servidor CPU/(5895:5895): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:33:39:516 Servidor CPU/(5895:5903): CPU listo para recibir interrupciones 
+
+[INFO] 17:33:39:524 Servidor CPU/(5895:5902): Pedido de handshake enviado 
+
+[INFO] 17:33:39:526 Servidor CPU/(5895:5902): Recibi configuracion por handshake 
+
+[INFO] 17:33:46:046 Servidor CPU/(5895:5903): Se conecto Kernel al puerto interrupt 
+
+[INFO] 17:33:51:729 Servidor CPU/(5895:5895): Recibi PCB de Id: 0 
+
+[INFO] 17:33:51:729 Servidor CPU/(5895:5895): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:33:51:731 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:51:732 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:51:735 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:51:736 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:51:738 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:51:738 Servidor CPU/(5895:5895): Se ejecuto instruccion I/O 
+
+[INFO] 17:33:54:742 Servidor CPU/(5895:5895): Recibi PCB de Id: 0 
+
+[INFO] 17:33:54:743 Servidor CPU/(5895:5895): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:33:54:744 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:54:746 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:54:747 Servidor CPU/(5895:5895): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:33:54:747 Servidor CPU/(5895:5895): Se ejecuto instruccion EXIT 
+
+[INFO] 17:38:20:107 Servidor CPU/(6200:6200): Hilo de interrupciones creado 
+
+[INFO] 17:38:20:107 Servidor CPU/(6200:6200): Tlb creada 
+
+[INFO] 17:38:20:107 Servidor CPU/(6200:6200): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:38:20:108 Servidor CPU/(6200:6208): CPU listo para recibir interrupciones 
+
+[INFO] 17:38:20:112 Servidor CPU/(6200:6207): Pedido de handshake enviado 
+
+[INFO] 17:38:20:116 Servidor CPU/(6200:6207): Recibi configuracion por handshake 
+
+[INFO] 17:38:23:926 Servidor CPU/(6200:6208): Se conecto Kernel al puerto interrupt 
+
+[INFO] 17:38:28:842 Servidor CPU/(6200:6200): Recibi PCB de Id: 0 
+
+[INFO] 17:38:28:842 Servidor CPU/(6200:6200): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:38:28:844 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:28:845 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:28:847 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:28:848 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:28:850 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:28:851 Servidor CPU/(6200:6200): Se ejecuto instruccion I/O 
+
+[INFO] 17:38:31:856 Servidor CPU/(6200:6200): Recibi PCB de Id: 0 
+
+[INFO] 17:38:31:856 Servidor CPU/(6200:6200): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:38:31:857 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:31:860 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:31:861 Servidor CPU/(6200:6200): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:38:31:861 Servidor CPU/(6200:6200): Se ejecuto instruccion EXIT 
+
+[INFO] 17:41:21:691 Servidor CPU/(6478:6478): Hilo de interrupciones creado 
+
+[INFO] 17:41:21:691 Servidor CPU/(6478:6478): Tlb creada 
+
+[INFO] 17:41:21:691 Servidor CPU/(6478:6478): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:41:21:695 Servidor CPU/(6478:6486): CPU listo para recibir interrupciones 
+
+[INFO] 17:41:21:698 Servidor CPU/(6478:6485): Pedido de handshake enviado 
+
+[INFO] 17:41:21:700 Servidor CPU/(6478:6485): Recibi configuracion por handshake 
+
+[INFO] 17:41:24:303 Servidor CPU/(6478:6486): Se conecto Kernel al puerto interrupt 
+
+[INFO] 17:41:26:797 Servidor CPU/(6478:6478): Recibi PCB de Id: 0 
+
+[INFO] 17:41:26:797 Servidor CPU/(6478:6478): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:41:26:800 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:26:802 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:26:804 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:26:806 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:26:807 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:26:807 Servidor CPU/(6478:6478): Se ejecuto instruccion I/O 
+
+[INFO] 17:41:29:813 Servidor CPU/(6478:6478): Recibi PCB de Id: 0 
+
+[INFO] 17:41:29:813 Servidor CPU/(6478:6478): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:41:29:815 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:29:816 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:29:818 Servidor CPU/(6478:6478): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:41:29:818 Servidor CPU/(6478:6478): Se ejecuto instruccion EXIT 
+
+[INFO] 17:45:09:861 Servidor CPU/(6838:6838): Hilo de interrupciones creado 
+
+[INFO] 17:45:09:861 Servidor CPU/(6838:6838): Tlb creada 
+
+[INFO] 17:45:09:861 Servidor CPU/(6838:6838): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:45:09:861 Servidor CPU/(6838:6846): CPU listo para recibir interrupciones 
+
+[INFO] 17:45:09:866 Servidor CPU/(6838:6845): Pedido de handshake enviado 
+
+[INFO] 17:45:09:868 Servidor CPU/(6838:6845): Recibi configuracion por handshake 
+
+[INFO] 17:45:12:507 Servidor CPU/(6838:6846): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 17:45:15:149 Servidor CPU/(6838:6846): Fallo la comunicacion. Abortando 
+
+[ERROR] 17:45:15:149 Servidor CPU/(6838:6838): Fallo la comunicacion. Abortando 
+
+[INFO] 17:46:21:431 Servidor CPU/(7062:7062): Hilo de interrupciones creado 
+
+[INFO] 17:46:21:431 Servidor CPU/(7062:7062): Tlb creada 
+
+[INFO] 17:46:21:432 Servidor CPU/(7062:7062): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:46:21:432 Servidor CPU/(7062:7070): CPU listo para recibir interrupciones 
+
+[INFO] 17:46:21:437 Servidor CPU/(7062:7069): Pedido de handshake enviado 
+
+[INFO] 17:46:21:439 Servidor CPU/(7062:7069): Recibi configuracion por handshake 
+
+[INFO] 17:46:23:702 Servidor CPU/(7062:7070): Se conecto Kernel al puerto interrupt 
+
+[INFO] 17:46:27:236 Servidor CPU/(7062:7062): Recibi PCB de Id: 0 
+
+[INFO] 17:46:27:236 Servidor CPU/(7062:7062): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:46:27:238 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:27:240 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:27:242 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:27:243 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:27:244 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:27:244 Servidor CPU/(7062:7062): Se ejecuto instruccion I/O 
+
+[INFO] 17:46:30:249 Servidor CPU/(7062:7062): Recibi PCB de Id: 0 
+
+[INFO] 17:46:30:249 Servidor CPU/(7062:7062): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:46:30:250 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:30:252 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:30:253 Servidor CPU/(7062:7062): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:46:30:253 Servidor CPU/(7062:7062): Se ejecuto instruccion EXIT 
+
+[INFO] 17:53:16:745 Servidor CPU/(7398:7398): Hilo de interrupciones creado 
+
+[INFO] 17:53:16:745 Servidor CPU/(7398:7398): Tlb creada 
+
+[INFO] 17:53:16:746 Servidor CPU/(7398:7398): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:53:16:746 Servidor CPU/(7398:7406): CPU listo para recibir interrupciones 
+
+[INFO] 17:53:16:750 Servidor CPU/(7398:7405): Pedido de handshake enviado 
+
+[INFO] 17:53:16:752 Servidor CPU/(7398:7405): Recibi configuracion por handshake 
+
+[INFO] 17:53:19:476 Servidor CPU/(7398:7406): Se conecto Kernel al puerto interrupt 
+
+[INFO] 17:53:21:478 Servidor CPU/(7398:7398): Recibi PCB de Id: 0 
+
+[INFO] 17:53:21:478 Servidor CPU/(7398:7398): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:53:21:480 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:21:481 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:21:483 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:21:484 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:21:485 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:21:485 Servidor CPU/(7398:7398): Se ejecuto instruccion I/O 
+
+[INFO] 17:53:24:490 Servidor CPU/(7398:7398): Recibi PCB de Id: 0 
+
+[INFO] 17:53:24:490 Servidor CPU/(7398:7398): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:53:24:492 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:24:493 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:24:494 Servidor CPU/(7398:7398): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:53:24:494 Servidor CPU/(7398:7398): Se ejecuto instruccion EXIT 
+
+[INFO] 17:57:01:799 Servidor CPU/(7724:7724): Hilo de interrupciones creado 
+
+[INFO] 17:57:01:799 Servidor CPU/(7724:7724): Tlb creada 
+
+[INFO] 17:57:01:800 Servidor CPU/(7724:7724): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:57:01:802 Servidor CPU/(7724:7732): CPU listo para recibir interrupciones 
+
+[INFO] 17:57:01:804 Servidor CPU/(7724:7731): Pedido de handshake enviado 
+
+[INFO] 17:57:01:806 Servidor CPU/(7724:7731): Recibi configuracion por handshake 
+
+[INFO] 17:57:04:417 Servidor CPU/(7724:7732): Se conecto Kernel al puerto interrupt 
+
+[INFO] 17:57:08:414 Servidor CPU/(7724:7724): Recibi PCB de Id: 0 
+
+[INFO] 17:57:08:414 Servidor CPU/(7724:7724): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:57:08:416 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:08:417 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:08:418 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:08:420 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:08:422 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:08:422 Servidor CPU/(7724:7724): Se ejecuto instruccion I/O 
+
+[INFO] 17:57:11:426 Servidor CPU/(7724:7724): Recibi PCB de Id: 0 
+
+[INFO] 17:57:11:426 Servidor CPU/(7724:7724): Se creo hilo para recibir interrupciones 
+
+[INFO] 17:57:11:427 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:11:429 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:11:431 Servidor CPU/(7724:7724): Se ejecuto instruccion NO-OP 
+
+[INFO] 17:57:11:431 Servidor CPU/(7724:7724): Se ejecuto instruccion EXIT 
+
+[INFO] 17:59:59:024 Servidor CPU/(7990:7990): Hilo de interrupciones creado 
+
+[INFO] 17:59:59:024 Servidor CPU/(7990:7990): Tlb creada 
+
+[INFO] 17:59:59:025 Servidor CPU/(7990:7990): CPU listo para recibir al modulo cliente 
+
+[INFO] 17:59:59:029 Servidor CPU/(7990:7998): CPU listo para recibir interrupciones 
+
+[INFO] 17:59:59:029 Servidor CPU/(7990:7997): Pedido de handshake enviado 
+
+[INFO] 17:59:59:031 Servidor CPU/(7990:7997): Recibi configuracion por handshake 
+
+[INFO] 18:00:01:982 Servidor CPU/(7990:7998): Se conecto Kernel al puerto interrupt 
+
+[INFO] 18:00:04:807 Servidor CPU/(7990:7990): Recibi PCB de Id: 0 
+
+[INFO] 18:00:04:807 Servidor CPU/(7990:7990): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:00:04:808 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:04:810 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:04:811 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:04:813 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:04:815 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:04:815 Servidor CPU/(7990:7990): Se ejecuto instruccion I/O 
+
+[INFO] 18:00:07:822 Servidor CPU/(7990:7990): Recibi PCB de Id: 0 
+
+[INFO] 18:00:07:822 Servidor CPU/(7990:7990): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:00:07:823 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:07:824 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:07:826 Servidor CPU/(7990:7990): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:00:07:826 Servidor CPU/(7990:7990): Se ejecuto instruccion EXIT 
+
+[INFO] 18:01:52:885 Servidor CPU/(8275:8275): Hilo de interrupciones creado 
+
+[INFO] 18:01:52:885 Servidor CPU/(8275:8275): Tlb creada 
+
+[INFO] 18:01:52:885 Servidor CPU/(8275:8275): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:01:52:889 Servidor CPU/(8275:8283): CPU listo para recibir interrupciones 
+
+[INFO] 18:01:52:891 Servidor CPU/(8275:8282): Pedido de handshake enviado 
+
+[INFO] 18:01:52:893 Servidor CPU/(8275:8282): Recibi configuracion por handshake 
+
+[INFO] 18:01:54:904 Servidor CPU/(8275:8283): Se conecto Kernel al puerto interrupt 
+
+[INFO] 18:01:57:297 Servidor CPU/(8275:8275): Recibi PCB de Id: 0 
+
+[INFO] 18:01:57:297 Servidor CPU/(8275:8275): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:01:57:299 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:01:57:301 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:01:57:303 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:01:57:305 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:01:57:307 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:01:57:307 Servidor CPU/(8275:8275): Se ejecuto instruccion I/O 
+
+[INFO] 18:02:00:312 Servidor CPU/(8275:8275): Recibi PCB de Id: 0 
+
+[INFO] 18:02:00:312 Servidor CPU/(8275:8275): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:02:00:313 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:02:00:315 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:02:00:317 Servidor CPU/(8275:8275): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:02:00:317 Servidor CPU/(8275:8275): Se ejecuto instruccion EXIT 
+
+[INFO] 18:04:38:944 Servidor CPU/(8734:8734): Hilo de interrupciones creado 
+
+[INFO] 18:04:38:947 Servidor CPU/(8734:8734): Tlb creada 
+
+[INFO] 18:04:38:948 Servidor CPU/(8734:8734): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:04:38:948 Servidor CPU/(8734:8742): CPU listo para recibir interrupciones 
+
+[INFO] 18:04:38:958 Servidor CPU/(8734:8741): Pedido de handshake enviado 
+
+[INFO] 18:04:38:960 Servidor CPU/(8734:8741): Recibi configuracion por handshake 
+
+[INFO] 18:04:41:540 Servidor CPU/(8734:8742): Se conecto Kernel al puerto interrupt 
+
+[INFO] 18:04:44:566 Servidor CPU/(8734:8734): Recibi PCB de Id: 0 
+
+[INFO] 18:04:44:566 Servidor CPU/(8734:8734): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:04:44:567 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:44:569 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:44:571 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:44:573 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:44:575 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:44:575 Servidor CPU/(8734:8734): Se ejecuto instruccion I/O 
+
+[INFO] 18:04:47:581 Servidor CPU/(8734:8734): Recibi PCB de Id: 0 
+
+[INFO] 18:04:47:582 Servidor CPU/(8734:8734): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:04:47:583 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:47:585 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:47:586 Servidor CPU/(8734:8734): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:04:47:587 Servidor CPU/(8734:8734): Se ejecuto instruccion EXIT 
+
+[INFO] 18:09:18:257 Servidor CPU/(9072:9072): Hilo de interrupciones creado 
+
+[INFO] 18:09:18:257 Servidor CPU/(9072:9072): Tlb creada 
+
+[INFO] 18:09:18:258 Servidor CPU/(9072:9072): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:09:18:258 Servidor CPU/(9072:9080): CPU listo para recibir interrupciones 
+
+[INFO] 18:09:18:267 Servidor CPU/(9072:9079): Pedido de handshake enviado 
+
+[INFO] 18:09:18:268 Servidor CPU/(9072:9079): Recibi configuracion por handshake 
+
+[INFO] 18:09:20:671 Servidor CPU/(9072:9080): Se conecto Kernel al puerto interrupt 
+
+[INFO] 18:09:24:580 Servidor CPU/(9072:9072): Recibi PCB de Id: 0 
+
+[INFO] 18:09:24:580 Servidor CPU/(9072:9072): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:09:24:582 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:24:583 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:24:585 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:24:587 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:24:588 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:24:588 Servidor CPU/(9072:9072): Se ejecuto instruccion I/O 
+
+[INFO] 18:09:27:594 Servidor CPU/(9072:9072): Recibi PCB de Id: 0 
+
+[INFO] 18:09:27:594 Servidor CPU/(9072:9072): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:09:27:595 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:27:596 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:27:598 Servidor CPU/(9072:9072): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:09:27:598 Servidor CPU/(9072:9072): Se ejecuto instruccion EXIT 
+
+[INFO] 18:20:12:193 Servidor CPU/(9456:9456): Hilo de interrupciones creado 
+
+[INFO] 18:20:12:193 Servidor CPU/(9456:9456): Tlb creada 
+
+[INFO] 18:20:12:198 Servidor CPU/(9456:9456): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:20:12:200 Servidor CPU/(9456:9464): CPU listo para recibir interrupciones 
+
+[INFO] 18:20:12:200 Servidor CPU/(9456:9463): Pedido de handshake enviado 
+
+[INFO] 18:20:12:202 Servidor CPU/(9456:9463): Recibi configuracion por handshake 
+
+[INFO] 18:20:14:294 Servidor CPU/(9456:9464): Se conecto Kernel al puerto interrupt 
+
+[INFO] 18:20:17:723 Servidor CPU/(9456:9456): Recibi PCB de Id: 0 
+
+[INFO] 18:20:17:723 Servidor CPU/(9456:9456): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:20:17:725 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:17:727 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:17:728 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:17:729 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:17:731 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:17:731 Servidor CPU/(9456:9456): Se ejecuto instruccion I/O 
+
+[INFO] 18:20:20:735 Servidor CPU/(9456:9456): Recibi PCB de Id: 0 
+
+[INFO] 18:20:20:736 Servidor CPU/(9456:9456): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:20:20:737 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:20:738 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:20:740 Servidor CPU/(9456:9456): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:20:20:740 Servidor CPU/(9456:9456): Se ejecuto instruccion EXIT 
+
+[INFO] 18:23:01:463 Servidor CPU/(9723:9723): Hilo de interrupciones creado 
+
+[INFO] 18:23:01:463 Servidor CPU/(9723:9723): Tlb creada 
+
+[INFO] 18:23:01:463 Servidor CPU/(9723:9723): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:23:01:477 Servidor CPU/(9723:9731): CPU listo para recibir interrupciones 
+
+[INFO] 18:23:01:477 Servidor CPU/(9723:9730): Pedido de handshake enviado 
+
+[INFO] 18:23:01:478 Servidor CPU/(9723:9730): Recibi configuracion por handshake 
+
+[INFO] 18:23:04:544 Servidor CPU/(9723:9731): Se conecto Kernel al puerto interrupt 
+
+[ERROR] 18:23:08:824 Servidor CPU/(9723:9731): Fallo la comunicacion. Abortando 
+
+[ERROR] 18:23:08:825 Servidor CPU/(9723:9723): Fallo la comunicacion. Abortando 
+
+[INFO] 18:24:26:043 Servidor CPU/(10019:10019): Hilo de interrupciones creado 
+
+[INFO] 18:24:26:043 Servidor CPU/(10019:10019): Tlb creada 
+
+[INFO] 18:24:26:043 Servidor CPU/(10019:10019): CPU listo para recibir al modulo cliente 
+
+[INFO] 18:24:26:045 Servidor CPU/(10019:10027): CPU listo para recibir interrupciones 
+
+[INFO] 18:24:26:052 Servidor CPU/(10019:10026): Pedido de handshake enviado 
+
+[INFO] 18:24:26:054 Servidor CPU/(10019:10026): Recibi configuracion por handshake 
+
+[INFO] 18:24:28:233 Servidor CPU/(10019:10027): Se conecto Kernel al puerto interrupt 
+
+[INFO] 18:24:30:994 Servidor CPU/(10019:10019): Recibi PCB de Id: 0 
+
+[INFO] 18:24:30:995 Servidor CPU/(10019:10019): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:24:30:996 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:30:997 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:30:999 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:31:000 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:31:001 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:31:001 Servidor CPU/(10019:10019): Se ejecuto instruccion I/O 
+
+[INFO] 18:24:34:007 Servidor CPU/(10019:10019): Recibi PCB de Id: 0 
+
+[INFO] 18:24:34:007 Servidor CPU/(10019:10019): Se creo hilo para recibir interrupciones 
+
+[INFO] 18:24:34:008 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:34:010 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:34:012 Servidor CPU/(10019:10019): Se ejecuto instruccion NO-OP 
+
+[INFO] 18:24:34:012 Servidor CPU/(10019:10019): Se ejecuto instruccion EXIT 
+

@@ -93,7 +93,7 @@ void escribirPagEnSwap(t_p_2* pag){
 void escribirPaginasModificadas(pcb* pcb){
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
 
-	asignarAlArchivo(pcb->id_proceso);
+	//asignarAlArchivo(pcb->id_proceso);
 
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=list_get(paginasProc,i);

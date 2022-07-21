@@ -110,7 +110,7 @@ void manejo_conexiones(int socket_cliente){
 
 		//Veo cual es el tamanio de la pag de 1 nivel (que tambien nos sirve para averiguar el proximo indice a usar)
 		uint32_t valorTP1=(uint32_t)list_size(tabla_de_pagina_1_nivel); // aca no calcula el TAMANIO de la tp1 en vez de la PAGINA??
-
+		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		//No pueden haber mas entradas q las permitidas
 		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
 			log_info(memoria_logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas \n");
@@ -125,6 +125,7 @@ void manejo_conexiones(int socket_cliente){
 			tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
 			nueva_tabla->id_tabla = indice_de_tabla2;
 			nueva_tabla->lista_paginas = inicializar_tabla_segundo_nivel();
+			nueva_tabla->p_id = pcb_recibido->id_proceso;
 			log_info(memoria_logger,"tabla segundo nivel creada \n");
 			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
 			entrada_en_tp1->indice=valorTP1+i;
@@ -149,6 +150,9 @@ void manejo_conexiones(int socket_cliente){
 		op_code codigo_pcb = ESTRUCTURAS_LIBERADAS;
 		pcb* pcb=recibirPcb(socket_cliente);
 		liberarTodosLosMarcos(pcb->id_proceso);
+		log_info(memoria_logger,"Se liberaron los marcos del proceso\n");
+		eliminar_entrada_tp1(pcb);
+		log_info(memoria_logger,"Se libero entrada tp1 del proceso \n");
 		// eliminar swap - poner funcion
 		eliminarSwap(pcb);
 		enviar_datos(socket_cliente, &codigo_pcb, sizeof(op_code)) ;
@@ -173,18 +177,21 @@ void inicializar_memoria(){
 	memoria_usuario=malloc(sizeof(config_valores_memoria.tam_memoria));
 	tabla_de_pagina_1_nivel=list_create();
 	lista_tablas_segundo_nivel = list_create();
-	lista_de_tablas_de_pagina_2_nivel = list_create();
 	inicializar_marcos();
 	algoritmo_memoria=obtener_algoritmo();
 	indice_de_tabla2=0;
 	pathSwap=config_valores_memoria.path_swap;
 	archivos= list_create();
 	pthread_mutex_init(&mutex_comparador_pid,NULL);
+	pthread_mutex_init(&mutex_comparador_indice,NULL);
 	pthread_mutex_init(&mutex_comparador,NULL);
 	pthread_mutex_init(&mutex_marcos,NULL);
 	pthread_mutex_init(&mutex_memoria_usuario,NULL);
 	pthread_mutex_init(&mutex_comparador_archivo_pid,NULL);
 	pthread_mutex_init(&mutex_archivo_swap,NULL);
+	pthread_mutex_init(&mutex_tabla_pagina_primer_nivel,NULL);
+	pthread_mutex_init(&mutex_tabla_pagina_segundo_nivel,NULL);
+
 	printf("Memoria inicializada\n");
 }
 int get_marco(int marco){
@@ -216,7 +223,7 @@ void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
-	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
 	pagina->p=algo;
@@ -227,7 +234,7 @@ void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
-	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
 	pagina->u=algo;
@@ -238,7 +245,7 @@ void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
-	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
 	pagina->m=algo;
@@ -249,7 +256,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
-	t_list* tablas=(t_list*)list_filter(lista_de_tablas_de_pagina_2_nivel,pagConIgualPid);
+	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*) list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha,numeroPagEnTabla);
 	pagina->puntero_indice=algo;

@@ -8,6 +8,8 @@ t_list* lista_de_tablas_de_pagina_2_nivel;
 int indice_de_tabla2;
 uint32_t numero_tabla_2p;
 int pid_comparador;
+int indice_comparador;
+
 //FUNCIONES
 
 bool posicion_vacia(t_p_1*);
@@ -24,7 +26,7 @@ uint32_t  obtenerPaginaClockM(t_list*, uint32_t);
 uint32_t  obtenerPaginaAReemplazar(uint32_t);
 
 bool condicion_misma_numero_tabla(void* );
-bool condicion_misma_numero_p_id(void*);
+bool condicion_misma_numero_p_id( tabla_de_segundo_nivel* );
 bool pagina_con_presencia(void*);
 bool pagina_con_modificado(t_p_2 *pagina);
 bool pagConIgualPid(tabla_de_segundo_nivel* );
@@ -36,6 +38,8 @@ t_list* paginasEnMemoria(uint32_t );
 t_list *paginas_por_proceso(int );
 t_list* sortear_segun_marco(t_list*);
 bool marcosMin(void* ,void * );
+void eliminar_entrada_tp1(pcb*);
+int* indice_tabla_tp2(tabla_de_segundo_nivel* tp2);
 
 
 
