@@ -28,11 +28,11 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	} else {
 		log_info(memoria_logger,"Se creo el archivo swap del proceso: %d\n",idProceso);
 	}
-	ftruncate(fd,tamanio_proceso); // pongo el truncate porque el ayudante me dijo que no funcionaba sino el mmap y unmap
+	ftruncate(fd,tamanio_proceso);
 
 	// hacer el mmap para que quede siempre abierto
 
-	archivo_swap = mmap(NULL,idProceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
+	archivo_swap = mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
 	archivos_swap* archivo= malloc(sizeof(archivo));
 	archivo->pid = idProceso;
 	archivo->archivo = archivo_swap;
@@ -65,7 +65,7 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 
 	pcb* pcb = recibirPcb(socket_cliente);
 
-	asignarAlArchivo(pcb->id_proceso);
+	//asignarAlArchivo(pcb->id_proceso);
 
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 

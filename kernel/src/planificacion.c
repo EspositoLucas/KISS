@@ -292,7 +292,7 @@ void estadoBlockeado(void){
  void transicion_suspender(proceso *proceso) {
 
  	proceso->pcb->estado_proceso = LISTO_SUSPENDIDO;
-	enviar_pcb_a_memoria(proceso->pcb, socket_memoria, SUSPENDER_PCB);
+	enviar_pcb_a_memoria(proceso->pcb, socket_memoria, SUSPENDER_PROCESO);
 	log_info(kernel_logger_info, "Enviando a memoria para suspender proceso \n");
 	proceso->pcb = recibirPcb(socket_memoria);
  	op_code codigo = esperar_respuesta_memoria(socket_memoria);

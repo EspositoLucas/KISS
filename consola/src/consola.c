@@ -21,7 +21,7 @@ int main(int argc, char **argv){
 
 //	Configuracion
 
-	t_config* config = cargar_configuracion("cfg/consola.config");
+	t_config* config = cargar_configuracion("/home/utnso/shared/TP/tp-2022-1c-Ubunteam/consola/cfg/consola.config");
 
 //	Parseo
 
@@ -133,10 +133,10 @@ void serializar_instrucciones(t_list *instrucciones, t_paquete *paquete){
 		agregar_a_paquete(paquete, &(instr->parametro1), sizeof(uint32_t));
 		agregar_a_paquete(paquete, &(instr->parametro2), sizeof(uint32_t));
 	}
-	unsigned char *stream = (unsigned char *)paquete->buffer->stream; //Para debuggear
-    for(int i=0 ; i<paquete->buffer->stream_size;i++){
-    	printf("%02X ",stream[i]);
-    }
+//	unsigned char *stream = (unsigned char *)paquete->buffer->stream; //Para debuggear
+//    for(int i=0 ; i<paquete->buffer->stream_size;i++){
+//    	printf("%02X ",stream[i]);
+//    }
 
 }
 
