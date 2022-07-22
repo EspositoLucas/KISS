@@ -22,7 +22,8 @@ char* armarPath(int idProceso){
 void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea una sola vez
 	int fd;
 	char* path=armarPath((int)idProceso);
-	if((fd=open(path,O_TRUNC|O_CREAT|O_EXCL,S_IROTH|S_IWOTH))==-1){
+	printf("tamanio proceso %d\n",tamanio_proceso);
+	if((fd=open(path,O_CREAT|O_EXCL|O_RDWR,S_IRUSR|S_IWUSR))==-1){
 		log_info(memoria_logger,"Error al crear el archivo swap del proceso: %d\n",idProceso);
 		exit(-1);
 	} else {
@@ -33,6 +34,7 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	// hacer el mmap para que quede siempre abierto
 
 	archivo_swap = mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
+	printf("tamanio archivo swap %d\n",sizeof(archivo_swap));
 	archivos_swap* archivo= malloc(sizeof(archivos_swap));
 	archivo->pid = idProceso;
 	archivo->archivo = archivo_swap;

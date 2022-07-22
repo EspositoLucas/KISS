@@ -418,7 +418,7 @@ int ocuparMarcoLibre(uint32_t pid){
 	pthread_mutex_lock(&mutex_marcos);
 	marquito* marco_libre=list_find(marcos,estaLibre);
 	marco_libre->pid=pid;
-	pthread_mutex_lock(&mutex_marcos);
+	pthread_mutex_unlock(&mutex_marcos);
 	return marco_libre->numero_de_marco;
 }
 

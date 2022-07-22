@@ -48,7 +48,10 @@ uint32_t obtener_segunda_tabla(uint32_t primera_tabla, uint32_t entrada_tabla_1)
 		int size;
 		switch(codigo_op){
 		case PAQUETE:
-					segunda_tabla=(uint32_t)recibir_stream(&size,socket_memoria);
+					log_info(cpu_logger,"a punto de recibir paquete valores \n");
+					t_list* valores = recibir_paquete(socket_memoria);
+					segunda_tabla=*(uint32_t*)list_remove(valores,0);
+					printf("\n valor segunda tabla en obtener segunda tabla %"PRIu32" \n",segunda_tabla);
 		        	log_info(cpu_logger,"Recibi valor de segunda tabla \n");
 		        	return segunda_tabla;
 		            break;

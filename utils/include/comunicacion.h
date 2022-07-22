@@ -17,6 +17,7 @@
 #include "pthread.h"
 #include "semaphore.h"
 #include "sockets.h"
+#include "inttypes.h"
 
 // STRUCTS/ENUMS
 

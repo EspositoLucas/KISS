@@ -11,7 +11,7 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 //------------------------ACCESO A SEGUNDA TABLA----------------------------
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	tabla_de_segundo_nivel*tabla_elegida=list_get(lista_tablas_segundo_nivel,tabla);
-	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida,entrada);
+	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida->lista_paginas,entrada);
 
 	if(pagina->p){
 		log_info(memoria_logger,"Pagina presente en memoria, no hay page fault \n");
@@ -22,9 +22,14 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		log_info(memoria_logger,"Page Fault, buscar marco libre \n");
 		usleep(config_valores_memoria.retardo_swap); //retardo swap
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
+			log_info(memoria_logger,"antes de ocupar marco libre  \n");
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
+			log_info(memoria_logger,"despues de ocupar marco libre  \n");
 			pagina->p=true;
+			log_info(memoria_logger,"antes de asignar al archivo  \n");
 			asignarAlArchivo(tabla_elegida->p_id);
+			log_info(memoria_logger,"despues de asignar al archivo  \n");
+			log_info(memoria_logger,"antes de tarer pagina swap  \n");
 			void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
 			log_info(memoria_logger,"pagina traida de swap \n");
 			escribirPagEnMemoria(paginaTraida,pagina->marco);//la escribe en memoria
