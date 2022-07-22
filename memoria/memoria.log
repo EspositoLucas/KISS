@@ -3276,3 +3276,1013 @@
 
 [INFO] 12:59:01:103 Servidor Memoria/(25479:25539): Se elimino swap y liberaron las estructuras del proceso 
 
+[INFO] 13:50:36:246 Servidor Memoria/(26949:26949): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 13:50:45:224 Servidor Memoria/(26949:26949): Memoria lista para recibir al modulo cliente 
+
+[INFO] 13:50:51:089 Servidor Memoria/(26949:26949): Se conecto un cliente 
+
+[INFO] 13:50:51:094 Servidor Memoria/(26949:26995): me llego el handshake de cpu 
+
+[INFO] 13:50:51:096 Servidor Memoria/(26949:26995): hanshake enviado a cpu 
+
+[INFO] 13:51:10:681 Servidor Memoria/(26949:26949): Se conecto un cliente 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): Inicializando estructuras 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): Se creo el archivo swap del proceso: 0
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): Swap creado 
+
+[INFO] 13:51:15:444 Servidor Memoria/(26949:27036): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 13:51:15:652 Servidor Memoria/(26949:27036): me llego mensaje para suspender proceso 
+
+[INFO] 13:51:15:657 Servidor Memoria/(26949:27036): Proceso suspendido 
+
+[INFO] 13:51:18:463 Servidor Memoria/(26949:27036): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 13:51:18:464 Servidor Memoria/(26949:27036): Se liberaron los marcos del proceso
+
+[INFO] 13:51:18:465 Servidor Memoria/(26949:27036): Se libero entrada tp1 del proceso 
+
+[INFO] 13:51:18:465 Servidor Memoria/(26949:27036): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 13:51:18:466 Servidor Memoria/(26949:27036): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): Inicializando estructuras 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:40:031 Servidor Memoria/(26949:27036): tabla segundo nivel creada 
+
+[INFO] 13:51:40:032 Servidor Memoria/(26949:27036): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 13:51:40:032 Servidor Memoria/(26949:27036): Se creo el archivo swap del proceso: 1
+
+[INFO] 13:51:40:032 Servidor Memoria/(26949:27036): Swap creado 
+
+[INFO] 13:51:40:032 Servidor Memoria/(26949:27036): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:11:04:077 Servidor Memoria/(27472:27472): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 14:11:06:569 Servidor Memoria/(27472:27472): Memoria lista para recibir al modulo cliente 
+
+[INFO] 14:11:10:283 Servidor Memoria/(27472:27472): Se conecto un cliente 
+
+[INFO] 14:11:10:291 Servidor Memoria/(27472:27513): me llego el handshake de cpu 
+
+[INFO] 14:11:10:292 Servidor Memoria/(27472:27513): hanshake enviado a cpu 
+
+[INFO] 14:11:13:630 Servidor Memoria/(27472:27472): Se conecto un cliente 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): Inicializando estructuras 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:11:18:991 Servidor Memoria/(27472:27529): Se creo el archivo swap del proceso: 0
+
+[INFO] 14:11:18:992 Servidor Memoria/(27472:27529): Swap creado 
+
+[INFO] 14:11:18:992 Servidor Memoria/(27472:27529): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:11:19:205 Servidor Memoria/(27472:27529): me llego mensaje para suspender proceso 
+
+[INFO] 14:11:19:207 Servidor Memoria/(27472:27529): Proceso suspendido 
+
+[INFO] 14:11:22:014 Servidor Memoria/(27472:27529): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 14:11:22:015 Servidor Memoria/(27472:27529): Se liberaron los marcos del proceso
+
+[INFO] 14:11:22:015 Servidor Memoria/(27472:27529): Se libero entrada tp1 del proceso 
+
+[INFO] 14:11:22:016 Servidor Memoria/(27472:27529): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 14:11:22:016 Servidor Memoria/(27472:27529): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): Inicializando estructuras 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): tabla segundo nivel creada 
+
+[INFO] 14:12:15:234 Servidor Memoria/(27472:27529): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:12:15:235 Servidor Memoria/(27472:27529): Se creo el archivo swap del proceso: 1
+
+[INFO] 14:12:15:235 Servidor Memoria/(27472:27529): Swap creado 
+
+[INFO] 14:12:15:235 Servidor Memoria/(27472:27529): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:17:42:968 Servidor Memoria/(27954:27954): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 14:17:55:472 Servidor Memoria/(27954:27954): Memoria lista para recibir al modulo cliente 
+
+[INFO] 14:18:16:303 Servidor Memoria/(27954:27954): Se conecto un cliente 
+
+[INFO] 14:18:16:307 Servidor Memoria/(27954:27990): me llego el handshake de cpu 
+
+[INFO] 14:18:16:309 Servidor Memoria/(27954:27990): hanshake enviado a cpu 
+
+[INFO] 14:18:25:621 Servidor Memoria/(27954:27954): Se conecto un cliente 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): Inicializando estructuras 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): tabla segundo nivel creada 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): tabla segundo nivel creada 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): tabla segundo nivel creada 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): tabla segundo nivel creada 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): Se creo el archivo swap del proceso: 0
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): Swap creado 
+
+[INFO] 14:18:48:244 Servidor Memoria/(27954:28006): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:18:48:455 Servidor Memoria/(27954:28006): me llego mensaje para suspender proceso 
+
+[INFO] 14:18:48:457 Servidor Memoria/(27954:28006): Proceso suspendido 
+
+[INFO] 14:18:51:264 Servidor Memoria/(27954:28006): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 14:18:51:264 Servidor Memoria/(27954:28006): Se liberaron los marcos del proceso
+
+[INFO] 14:18:51:264 Servidor Memoria/(27954:28006): Se libero entrada tp1 del proceso 
+
+[INFO] 14:18:51:265 Servidor Memoria/(27954:28006): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 14:18:51:267 Servidor Memoria/(27954:28006): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 14:24:45:462 Servidor Memoria/(28279:28279): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 14:24:47:845 Servidor Memoria/(28279:28279): Memoria lista para recibir al modulo cliente 
+
+[INFO] 14:24:52:237 Servidor Memoria/(28279:28279): Se conecto un cliente 
+
+[INFO] 14:24:52:242 Servidor Memoria/(28279:28315): me llego el handshake de cpu 
+
+[INFO] 14:24:52:246 Servidor Memoria/(28279:28315): hanshake enviado a cpu 
+
+[INFO] 14:25:00:418 Servidor Memoria/(28279:28279): Se conecto un cliente 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): Inicializando estructuras 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): Se creo el archivo swap del proceso: 0
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): Swap creado 
+
+[INFO] 14:25:14:237 Servidor Memoria/(28279:28331): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:25:14:447 Servidor Memoria/(28279:28331): me llego mensaje para suspender proceso 
+
+[INFO] 14:25:14:449 Servidor Memoria/(28279:28331): Proceso suspendido 
+
+[INFO] 14:25:17:257 Servidor Memoria/(28279:28331): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 14:25:17:257 Servidor Memoria/(28279:28331): Se liberaron los marcos del proceso
+
+[INFO] 14:25:17:258 Servidor Memoria/(28279:28331): Se libero entrada tp1 del proceso 
+
+[INFO] 14:25:17:258 Servidor Memoria/(28279:28331): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 14:25:17:263 Servidor Memoria/(28279:28331): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): Inicializando estructuras 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): tabla segundo nivel creada 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): Se creo el archivo swap del proceso: 1
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): Swap creado 
+
+[INFO] 14:26:12:906 Servidor Memoria/(28279:28331): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:27:33:924 Servidor Memoria/(28569:28569): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 14:28:04:939 Servidor Memoria/(28660:28660): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 14:28:07:821 Servidor Memoria/(28660:28660): Memoria lista para recibir al modulo cliente 
+
+[INFO] 14:28:32:901 Servidor Memoria/(28660:28660): Se conecto un cliente 
+
+[INFO] 14:28:32:908 Servidor Memoria/(28660:28695): me llego el handshake de cpu 
+
+[INFO] 14:28:32:910 Servidor Memoria/(28660:28695): hanshake enviado a cpu 
+
+[INFO] 14:28:36:043 Servidor Memoria/(28660:28660): Se conecto un cliente 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): Inicializando estructuras 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:28:38:954 Servidor Memoria/(28660:28712): Se creo el archivo swap del proceso: 0
+
+[INFO] 14:28:38:955 Servidor Memoria/(28660:28712): Swap creado 
+
+[INFO] 14:28:38:955 Servidor Memoria/(28660:28712): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:28:39:163 Servidor Memoria/(28660:28712): me llego mensaje para suspender proceso 
+
+[INFO] 14:28:39:165 Servidor Memoria/(28660:28712): Proceso suspendido 
+
+[INFO] 14:28:41:971 Servidor Memoria/(28660:28712): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 14:28:41:971 Servidor Memoria/(28660:28712): Se liberaron los marcos del proceso
+
+[INFO] 14:28:41:972 Servidor Memoria/(28660:28712): Se libero entrada tp1 del proceso 
+
+[INFO] 14:28:41:972 Servidor Memoria/(28660:28712): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 14:28:41:974 Servidor Memoria/(28660:28712): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): Inicializando estructuras 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): tabla segundo nivel creada 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:29:29:470 Servidor Memoria/(28660:28712): Se creo el archivo swap del proceso: 1
+
+[INFO] 14:29:29:471 Servidor Memoria/(28660:28712): Swap creado 
+
+[INFO] 14:29:29:471 Servidor Memoria/(28660:28712): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:33:24:582 Servidor Memoria/(28963:28963): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 14:33:27:509 Servidor Memoria/(28963:28963): Memoria lista para recibir al modulo cliente 
+
+[INFO] 14:33:31:965 Servidor Memoria/(28963:28963): Se conecto un cliente 
+
+[INFO] 14:33:31:969 Servidor Memoria/(28963:28997): me llego el handshake de cpu 
+
+[INFO] 14:33:31:971 Servidor Memoria/(28963:28997): hanshake enviado a cpu 
+
+[INFO] 14:33:36:128 Servidor Memoria/(28963:28963): Se conecto un cliente 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): Inicializando estructuras 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:33:39:065 Servidor Memoria/(28963:29015): Se creo el archivo swap del proceso: 0
+
+[INFO] 14:33:39:066 Servidor Memoria/(28963:29015): Swap creado 
+
+[INFO] 14:33:39:066 Servidor Memoria/(28963:29015): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:33:39:279 Servidor Memoria/(28963:29015): me llego mensaje para suspender proceso 
+
+[INFO] 14:33:39:282 Servidor Memoria/(28963:29015): Proceso suspendido 
+
+[INFO] 14:33:42:088 Servidor Memoria/(28963:29015): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 14:33:42:088 Servidor Memoria/(28963:29015): Se liberaron los marcos del proceso
+
+[INFO] 14:33:42:090 Servidor Memoria/(28963:29015): Se libero entrada tp1 del proceso 
+
+[INFO] 14:33:42:090 Servidor Memoria/(28963:29015): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 14:33:42:092 Servidor Memoria/(28963:29015): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): Inicializando estructuras 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): tabla segundo nivel creada 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): Se creo el archivo swap del proceso: 1
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): Swap creado 
+
+[INFO] 14:34:35:676 Servidor Memoria/(28963:29015): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:57:27:621 Servidor Memoria/(30369:30369): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 14:57:30:372 Servidor Memoria/(30369:30369): Memoria lista para recibir al modulo cliente 
+
+[INFO] 14:57:49:822 Servidor Memoria/(30369:30369): Se conecto un cliente 
+
+[INFO] 14:57:49:829 Servidor Memoria/(30369:30418): me llego el handshake de cpu 
+
+[INFO] 14:57:49:830 Servidor Memoria/(30369:30418): hanshake enviado a cpu 
+
+[INFO] 14:57:52:459 Servidor Memoria/(30369:30369): Se conecto un cliente 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): Inicializando estructuras 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:58:00:569 Servidor Memoria/(30369:30436): Se creo el archivo swap del proceso: 0
+
+[INFO] 14:58:00:570 Servidor Memoria/(30369:30436): Swap creado 
+
+[INFO] 14:58:00:570 Servidor Memoria/(30369:30436): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 14:58:00:782 Servidor Memoria/(30369:30436): me llego mensaje para suspender proceso 
+
+[INFO] 14:58:00:784 Servidor Memoria/(30369:30436): Proceso suspendido 
+
+[INFO] 14:58:03:589 Servidor Memoria/(30369:30436): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 14:58:03:589 Servidor Memoria/(30369:30436): Se liberaron los marcos del proceso
+
+[INFO] 14:58:03:590 Servidor Memoria/(30369:30436): Se libero entrada tp1 del proceso 
+
+[INFO] 14:58:03:591 Servidor Memoria/(30369:30436): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 14:58:03:591 Servidor Memoria/(30369:30436): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): Inicializando estructuras 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): tabla segundo nivel creada 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 14:59:20:152 Servidor Memoria/(30369:30436): Se creo el archivo swap del proceso: 1
+
+[INFO] 14:59:20:153 Servidor Memoria/(30369:30436): Swap creado 
+
+[INFO] 14:59:20:153 Servidor Memoria/(30369:30436): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:05:51:044 Servidor Memoria/(30746:30746): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:05:53:261 Servidor Memoria/(30746:30746): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:05:58:626 Servidor Memoria/(30746:30746): Se conecto un cliente 
+
+[INFO] 15:05:58:631 Servidor Memoria/(30746:30782): me llego el handshake de cpu 
+
+[INFO] 15:05:58:633 Servidor Memoria/(30746:30782): hanshake enviado a cpu 
+
+[INFO] 15:06:00:634 Servidor Memoria/(30746:30746): Se conecto un cliente 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): Inicializando estructuras 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:06:07:376 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:06:07:377 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:06:07:377 Servidor Memoria/(30746:30798): Se creo el archivo swap del proceso: 0
+
+[INFO] 15:06:07:377 Servidor Memoria/(30746:30798): Swap creado 
+
+[INFO] 15:06:07:377 Servidor Memoria/(30746:30798): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:06:07:593 Servidor Memoria/(30746:30798): me llego mensaje para suspender proceso 
+
+[INFO] 15:06:07:595 Servidor Memoria/(30746:30798): Proceso suspendido 
+
+[INFO] 15:06:10:401 Servidor Memoria/(30746:30798): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 15:06:10:401 Servidor Memoria/(30746:30798): Se liberaron los marcos del proceso
+
+[INFO] 15:06:10:402 Servidor Memoria/(30746:30798): Se libero entrada tp1 del proceso 
+
+[INFO] 15:06:10:402 Servidor Memoria/(30746:30798): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 15:06:10:404 Servidor Memoria/(30746:30798): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): Inicializando estructuras 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): tabla segundo nivel creada 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): Se creo el archivo swap del proceso: 1
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): Swap creado 
+
+[INFO] 15:07:00:239 Servidor Memoria/(30746:30798): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:09:21:392 Servidor Memoria/(31013:31013): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:09:23:866 Servidor Memoria/(31013:31013): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:09:28:019 Servidor Memoria/(31013:31013): Se conecto un cliente 
+
+[INFO] 15:09:28:024 Servidor Memoria/(31013:31052): me llego el handshake de cpu 
+
+[INFO] 15:09:28:026 Servidor Memoria/(31013:31052): hanshake enviado a cpu 
+
+[INFO] 15:09:29:669 Servidor Memoria/(31013:31013): Se conecto un cliente 
+
+[INFO] 15:09:32:084 Servidor Memoria/(31013:31069): Inicializando estructuras 
+
+[INFO] 15:09:32:084 Servidor Memoria/(31013:31069): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): Se creo el archivo swap del proceso: 0
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): Swap creado 
+
+[INFO] 15:09:32:085 Servidor Memoria/(31013:31069): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:09:32:292 Servidor Memoria/(31013:31069): me llego mensaje para suspender proceso 
+
+[INFO] 15:09:32:295 Servidor Memoria/(31013:31069): Proceso suspendido 
+
+[INFO] 15:09:35:101 Servidor Memoria/(31013:31069): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 15:09:35:101 Servidor Memoria/(31013:31069): Se liberaron los marcos del proceso
+
+[INFO] 15:09:35:102 Servidor Memoria/(31013:31069): Se libero entrada tp1 del proceso 
+
+[INFO] 15:09:35:102 Servidor Memoria/(31013:31069): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 15:09:35:104 Servidor Memoria/(31013:31069): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 15:10:03:657 Servidor Memoria/(31013:31069): Inicializando estructuras 
+
+[INFO] 15:10:03:657 Servidor Memoria/(31013:31069): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:10:03:657 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:10:03:657 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:10:03:657 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:10:03:657 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:10:03:658 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:10:03:658 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:10:03:658 Servidor Memoria/(31013:31069): tabla segundo nivel creada 
+
+[INFO] 15:10:03:658 Servidor Memoria/(31013:31069): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:10:03:658 Servidor Memoria/(31013:31069): Se creo el archivo swap del proceso: 1
+
+[INFO] 15:10:03:658 Servidor Memoria/(31013:31069): Swap creado 
+
+[INFO] 15:10:03:658 Servidor Memoria/(31013:31069): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:19:25:976 Servidor Memoria/(31458:31458): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:19:28:475 Servidor Memoria/(31458:31458): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:19:32:103 Servidor Memoria/(31458:31458): Se conecto un cliente 
+
+[INFO] 15:19:32:109 Servidor Memoria/(31458:31497): me llego el handshake de cpu 
+
+[INFO] 15:19:32:111 Servidor Memoria/(31458:31497): hanshake enviado a cpu 
+
+[INFO] 15:19:36:816 Servidor Memoria/(31458:31458): Se conecto un cliente 
+
+[INFO] 15:19:56:195 Servidor Memoria/(31458:31523): Inicializando estructuras 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): tabla segundo nivel creada 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): tabla segundo nivel creada 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): tabla segundo nivel creada 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): tabla segundo nivel creada 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): Se creo el archivo swap del proceso: 0
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): Swap creado 
+
+[INFO] 15:19:56:196 Servidor Memoria/(31458:31523): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:25:35:465 Servidor Memoria/(31774:31774): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:25:43:231 Servidor Memoria/(31774:31774): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:25:48:560 Servidor Memoria/(31774:31774): Se conecto un cliente 
+
+[INFO] 15:25:48:571 Servidor Memoria/(31774:31814): me llego el handshake de cpu 
+
+[INFO] 15:25:48:574 Servidor Memoria/(31774:31814): hanshake enviado a cpu 
+
+[INFO] 15:25:59:655 Servidor Memoria/(31774:31774): Se conecto un cliente 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): Inicializando estructuras 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:26:03:467 Servidor Memoria/(31774:31831): Se creo el archivo swap del proceso: 0
+
+[INFO] 15:26:03:468 Servidor Memoria/(31774:31831): Swap creado 
+
+[INFO] 15:26:03:468 Servidor Memoria/(31774:31831): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:26:03:675 Servidor Memoria/(31774:31831): me llego mensaje para suspender proceso 
+
+[INFO] 15:26:03:678 Servidor Memoria/(31774:31831): Proceso suspendido 
+
+[INFO] 15:26:06:485 Servidor Memoria/(31774:31831): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 15:26:06:485 Servidor Memoria/(31774:31831): Se liberaron los marcos del proceso
+
+[INFO] 15:26:06:486 Servidor Memoria/(31774:31831): Se libero entrada tp1 del proceso 
+
+[INFO] 15:26:06:487 Servidor Memoria/(31774:31831): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 15:26:06:488 Servidor Memoria/(31774:31831): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 15:27:58:186 Servidor Memoria/(31774:31831): Inicializando estructuras 
+
+[INFO] 15:27:58:186 Servidor Memoria/(31774:31831): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): tabla segundo nivel creada 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): Se creo el archivo swap del proceso: 1
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): Swap creado 
+
+[INFO] 15:27:58:187 Servidor Memoria/(31774:31831): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:31:48:627 Servidor Memoria/(32105:32105): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:31:51:187 Servidor Memoria/(32105:32105): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:31:56:340 Servidor Memoria/(32105:32105): Se conecto un cliente 
+
+[INFO] 15:31:56:345 Servidor Memoria/(32105:32142): me llego el handshake de cpu 
+
+[INFO] 15:31:56:346 Servidor Memoria/(32105:32142): hanshake enviado a cpu 
+
+[INFO] 15:32:04:985 Servidor Memoria/(32105:32105): Se conecto un cliente 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): Inicializando estructuras 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): tabla segundo nivel creada 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): tabla segundo nivel creada 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): tabla segundo nivel creada 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): tabla segundo nivel creada 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): Se creo el archivo swap del proceso: 0
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): Swap creado 
+
+[INFO] 15:32:10:296 Servidor Memoria/(32105:32164): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:32:46:905 Servidor Memoria/(32206:32206): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:32:49:622 Servidor Memoria/(32206:32206): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:32:52:899 Servidor Memoria/(32206:32206): Se conecto un cliente 
+
+[INFO] 15:32:52:907 Servidor Memoria/(32206:32237): me llego el handshake de cpu 
+
+[INFO] 15:32:52:910 Servidor Memoria/(32206:32237): hanshake enviado a cpu 
+
+[INFO] 15:33:00:609 Servidor Memoria/(32206:32206): Se conecto un cliente 
+
+[INFO] 15:33:46:991 Servidor Memoria/(32360:32360): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 15:33:49:069 Servidor Memoria/(32360:32360): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:33:52:662 Servidor Memoria/(32360:32360): Se conecto un cliente 
+
+[INFO] 15:33:52:668 Servidor Memoria/(32360:32392): me llego el handshake de cpu 
+
+[INFO] 15:33:52:671 Servidor Memoria/(32360:32392): hanshake enviado a cpu 
+
+[INFO] 15:33:55:487 Servidor Memoria/(32360:32360): Se conecto un cliente 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): Inicializando estructuras 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): tabla segundo nivel creada 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): tabla segundo nivel creada 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): tabla segundo nivel creada 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): tabla segundo nivel creada 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:33:59:594 Servidor Memoria/(32360:32409): Se creo el archivo swap del proceso: 0
+
+[INFO] 15:33:59:595 Servidor Memoria/(32360:32409): Swap creado 
+
+[INFO] 15:33:59:595 Servidor Memoria/(32360:32409): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:50:10:729 Servidor Memoria/(4223:4223): Memoria lista para recibir al modulo cliente 
+
+[INFO] 15:50:15:432 Servidor Memoria/(4223:4223): Se conecto un cliente 
+
+[INFO] 15:50:15:441 Servidor Memoria/(4223:4289): me llego el handshake de cpu 
+
+[INFO] 15:50:15:442 Servidor Memoria/(4223:4289): hanshake enviado a cpu 
+
+[INFO] 15:50:18:896 Servidor Memoria/(4223:4223): Se conecto un cliente 
+
+[INFO] 15:50:22:336 Servidor Memoria/(4223:4336): Inicializando estructuras 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): tabla segundo nivel creada 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): tabla segundo nivel creada 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): tabla segundo nivel creada 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): tabla segundo nivel creada 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): Se creo el archivo swap del proceso: 0
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): Swap creado 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4289): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 15:50:22:337 Servidor Memoria/(4223:4336): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 15:50:22:338 Servidor Memoria/(4223:4289): entrada segundo nivel enviado a cpu 
+
+[INFO] 16:02:06:039 Servidor Memoria/(4871:4871): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:02:22:602 Servidor Memoria/(4871:4871): Se conecto un cliente 
+
+[INFO] 16:02:22:619 Servidor Memoria/(4871:4925): me llego el handshake de cpu 
+
+[INFO] 16:02:22:620 Servidor Memoria/(4871:4925): hanshake enviado a cpu 
+
+[INFO] 16:02:25:958 Servidor Memoria/(4871:4871): Se conecto un cliente 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): Inicializando estructuras 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): tabla segundo nivel creada 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): tabla segundo nivel creada 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): tabla segundo nivel creada 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): tabla segundo nivel creada 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:02:29:201 Servidor Memoria/(4871:4939): Se creo el archivo swap del proceso: 0
+
+[INFO] 16:02:29:202 Servidor Memoria/(4871:4939): Swap creado 
+
+[INFO] 16:02:29:202 Servidor Memoria/(4871:4925): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 16:02:29:202 Servidor Memoria/(4871:4939): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 16:02:29:204 Servidor Memoria/(4871:4925): entrada segundo nivel enviado a cpu 
+
+[INFO] 16:28:27:203 Servidor Memoria/(5840:5840): Memoria lista para recibir al modulo cliente 
+
+[INFO] 16:28:44:372 Servidor Memoria/(5840:5840): Se conecto un cliente 
+
+[INFO] 16:28:44:379 Servidor Memoria/(5840:5879): me llego el handshake de cpu 
+
+[INFO] 16:28:44:380 Servidor Memoria/(5840:5879): hanshake enviado a cpu 
+
+[INFO] 16:28:46:872 Servidor Memoria/(5840:5840): Se conecto un cliente 
+
+[INFO] 16:28:55:021 Servidor Memoria/(5840:5893): Inicializando estructuras 
+
+[INFO] 16:28:55:021 Servidor Memoria/(5840:5893): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 16:28:55:021 Servidor Memoria/(5840:5893): tabla segundo nivel creada 
+
+[INFO] 16:28:55:021 Servidor Memoria/(5840:5893): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:28:55:021 Servidor Memoria/(5840:5893): tabla segundo nivel creada 
+
+[INFO] 16:28:55:021 Servidor Memoria/(5840:5893): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5893): tabla segundo nivel creada 
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5893): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5893): tabla segundo nivel creada 
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5893): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5893): Se creo el archivo swap del proceso: 0
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5893): Swap creado 
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5879): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 16:28:55:022 Servidor Memoria/(5840:5893): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 16:28:55:024 Servidor Memoria/(5840:5879): entrada segundo nivel enviado a cpu 
+
+[INFO] 16:28:55:024 Servidor Memoria/(5840:5879): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 16:28:55:024 Servidor Memoria/(5840:5879): paquete recibido (mmu) 
+
+[INFO] 16:28:55:025 Servidor Memoria/(5840:5879): valor tabla (mmu) 
+
+[INFO] 16:28:55:025 Servidor Memoria/(5840:5879): valor entrada2 (mmu) 
+

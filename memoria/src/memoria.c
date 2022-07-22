@@ -84,13 +84,18 @@ void manejo_conexiones(int socket_cliente){
 	case MARCO:
 		log_info(memoria_logger,"me llego un pedido de marco de cpu (mmu) \n");
 		valores=recibir_paquete(socket_cliente);
+		log_info(memoria_logger,"paquete recibido (mmu) \n");
 		tabla=*(uint32_t*)list_get(valores,0);
+		log_info(memoria_logger,"valor tabla (mmu) \n");
 		entrada2=*(uint32_t*)list_get(valores,1);
+		log_info(memoria_logger,"valor entrada2 (mmu) \n");
 		marco= devolver_marco(tabla, entrada2);
+		log_info(memoria_logger,"valor marco (mmu) \n");
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_marco= crear_paquete();
 		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
 		enviar_paquete(paquete_marco,socket_cliente);
+		log_info(memoria_logger,"paquete marco(mmu) \n");
 		log_info(memoria_logger,"marco enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
@@ -139,11 +144,15 @@ void manejo_conexiones(int socket_cliente){
 		crearSwap(pcb_recibido->id_proceso,pcb_recibido->tamanio_proceso);
 		log_info(memoria_logger,"Swap creado \n");
 		//Envia el num de tabla de la primera pag de 2 nivel del proceso
-		t_paquete* paquete_ini = crear_paquete();
-		agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
-		enviar_paquete(paquete_ini,socket_cliente);
+		//t_paquete* paquete_ini = crear_paquete();
+		//agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
+		//agregaAPaquete(paquete_ini,&valorTP1,sizeof(uint32_t));
+		printf("valor tp1 %"PRIu32" \n",valorTP1);
+		//enviar_paquete(paquete_ini,socket_cliente);
+		enviar_datos(socket_cliente,&valorTP1,sizeof(uint32_t));
+		printf("valor socket %d \n",socket_cliente);
 		log_info(memoria_logger,"Numero tabla de paginas de 2 nivel del proceso enviado a kernel \n");
-		eliminar_paquete(paquete_ini);
+		//eliminar_paquete(paquete_ini);
 		break;
 	case PCB: ; // finalizar proceso
 		log_info(memoria_logger, "Me llego pedido liberar estructuras del proceso \n");
@@ -263,7 +272,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");

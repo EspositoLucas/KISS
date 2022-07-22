@@ -22,7 +22,7 @@ void crear_tlb(){
 
 ///--------------BUSCAR EN LA TLB-----------------
 
-uint32_t buscar_en_la_tlb(uint32_t pagina){
+int buscar_en_la_tlb(uint32_t pagina){
 	pagina_a_buscar=pagina;
 	if(list_any_satisfy(tlb->lista,pagina_se_encuentra_en_tlb)){
 		log_info(cpu_logger, "Se encontro la pagina en la TLB \n");

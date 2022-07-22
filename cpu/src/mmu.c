@@ -10,15 +10,16 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 	uint32_t offset =  direccion_logica - num_pagina * configuracion_tabla->tam_pagina ;
 	log_info(cpu_logger,"Direccion logica %d : [%d|%d|%d] \n",direccion_logica,entrada_tabla_1,entrada_tabla_2,offset);
 
-	uint32_t marco=buscar_en_la_tlb(num_pagina);
+	int marco=buscar_en_la_tlb(num_pagina);
 
 	if(marco==-1){ //SITUACION DE TLB MISS
 		//USO DE FUNCIONES PARA TENER LOS VALORES
-
+		log_info(cpu_logger,"Antes de entrar a segunda tabla \n");
 		uint32_t segunda_tabla=obtener_segunda_tabla(primera_tabla,entrada_tabla_1);
-		marco=obtener_marco(segunda_tabla, entrada_tabla_2);
+		log_info(cpu_logger,"despues de entrar a segunda tabla \n");
+		marco=(int)obtener_marco(segunda_tabla, entrada_tabla_2);
 		traduccion_t* trad=malloc(sizeof(traduccion_t));
-		trad->marco=marco;
+		trad->marco=(uint32_t)marco;
 		trad->pagina=num_pagina;
 		tlb_miss(trad);
 	}
@@ -37,13 +38,16 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 //PRIMER ACCESO A MEMORIA
 
 uint32_t obtener_segunda_tabla(uint32_t primera_tabla, uint32_t entrada_tabla_1){
+	log_info(cpu_logger,"antes de pedir tabla \n");
 	pedir_tabla_pagina(socket_memoria,primera_tabla,entrada_tabla_1);
+	log_info(cpu_logger,"despues de pedir tabla \n");
 	uint32_t segunda_tabla;
 	while(1){
-		int codigo_op=recibir_operacion(socket_memoria);
+		int codigo_op=recibir_operacion_nuevo(socket_memoria);
+		printf("op code memoria obtener segunda tabla %d\n",socket_memoria);
 		int size;
 		switch(codigo_op){
-		case TABLA:
+		case PAQUETE:
 					segunda_tabla=(uint32_t)recibir_stream(&size,socket_memoria);
 		        	log_info(cpu_logger,"Recibi valor de segunda tabla \n");
 		        	return segunda_tabla;
@@ -65,7 +69,7 @@ uint32_t obtener_marco(uint32_t segunda_tabla, uint32_t entrada_tabla_2){
 	uint32_t marco;
 	pedir_marco(socket_memoria,segunda_tabla,entrada_tabla_2);
 	while(1){
-			int codigo_op=recibir_operacion(socket_memoria);
+			int codigo_op=recibir_operacion_nuevo(socket_memoria);
 			t_list* valores;
 			int size;
 			switch(codigo_op){

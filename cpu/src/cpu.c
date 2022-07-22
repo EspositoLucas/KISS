@@ -149,17 +149,18 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
-	agregar_entero_a_paquete(paquete,READ);
-	agregar_entero_a_paquete(paquete,dir_fisica);
+	agregar_a_paquete(paquete,READ,sizeof(op_code));
+	agregar_a_paquete(paquete,dir_fisica,sizeof(uint32_t));
+
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de lectura enviado \n");
-	free(paquete);
+	eliminar_paquete(paquete);
 
 	int i=0;
 	int size;
 	uint32_t valor_leido;
 	while(1){
-		int cod_op = recibir_operacion(socket_memoria);
+		int cod_op = recibir_operacion_nuevo(socket_memoria);
 		switch (cod_op){
 		case PAQUETE:
 			valor_leido=(uint32_t)recibir_stream(&size,socket_memoria);
@@ -183,15 +184,15 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
-	agregar_entero_a_paquete(paquete,WRITE);
-	agregar_entero_a_paquete(paquete,dir_fisica);
-	agregar_entero_a_paquete(paquete,valor);
+	agregar_a_paquete(paquete,WRITE,sizeof(op_code));
+	agregar_a_paquete(paquete,dir_fisica,sizeof(uint32_t));
+	agregar_a_paquete(paquete,valor,sizeof(uint32_t));
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de escritura enviado \n");
-	free(paquete);
+	eliminar_paquete(paquete);
 
 	while(1){
-		int cod_op = recibir_operacion(socket_memoria);
+		int cod_op = recibir_operacion_nuevo(socket_memoria);
 		switch (cod_op){
 		case ESCRITURA_OK:
 			log_info(cpu_logger, "Se escribio exitosamente en la memoria \n");
@@ -215,15 +216,15 @@ void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
 	log_info(cpu_logger, "Traducciones exitosas \n");
 	t_paquete* paquete=crear_paquete();
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
-	agregar_entero_a_paquete(paquete,COPY);
-	agregar_entero_a_paquete(paquete,dir_fisica_destino);
-	agregar_entero_a_paquete(paquete,dir_fisica_origen);
+	agregar_a_paquete(paquete,COPY,sizeof(op_code));
+	agregar_a_paquete(paquete,dir_fisica_destino,sizeof(uint32_t));
+	agregar_a_paquete(paquete,dir_fisica_origen,sizeof(uint32_t));
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de copia enviado \n");
-	free(paquete);
+	eliminar_paquete(paquete);
 
 	while(1){
-		int cod_op = recibir_operacion(socket_memoria);
+		int cod_op = recibir_operacion_nuevo(socket_memoria);
 		switch (cod_op){
 		case ESCRITURA_OK:
 			log_info(cpu_logger, "Se escribio exitosamente en la memoria \n");
@@ -266,7 +267,7 @@ log_info(cpu_logger, "CPU listo para recibir interrupciones \n");
 int cliente_fd = esperar_cliente(server_fd);
 log_info(cpu_logger,"Se conecto Kernel al puerto interrupt \n");
 while(1){
-	int cod_op = recibir_operacion(cliente_fd);
+	int cod_op = recibir_operacion_nuevo(cliente_fd);
 	switch (cod_op){
 		case MENSAJE:
 			log_info(cpu_logger,"Peticion de interrupcion recibida \n");
@@ -293,7 +294,7 @@ void* conexion_inicial_memoria(){
 	log_info(cpu_logger, "Pedido de handshake enviado \n");
 	int codigo_memoria;
 	while(1){
-		codigo_memoria=recibir_operacion(socket_memoria);
+		codigo_memoria=recibir_operacion_nuevo(socket_memoria);
 		switch(codigo_memoria){
 			case PAQUETE:
 				log_info(cpu_logger,"Recibi configuracion por handshake \n");
@@ -315,7 +316,7 @@ void* conexion_inicial_memoria(){
 ///CARGAR CONFIGURACION A CPU
 
 void cargar_config(){
-	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/cpu.config");
+	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/config_pruebas/prueba_memoria/cpu.config");
 
 	config_valores_cpu.ip_cpu=config_get_string_value(config,"IP_CPU");
 	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");

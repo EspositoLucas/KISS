@@ -33,34 +33,45 @@ void inciar_planificacion(){
 pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	t_paquete *paquete = crear_paquete_con_codigo_de_operacion(INICIALIZAR_ESTRUCTURAS);
 	armarPaquete(paquete,pcb);
+	printf("valor socket %d \n",socket_fd);
 	enviar_paquete(paquete, socket_fd);
 	log_info(kernel_logger_info, "envio a memoria mensaje para inicializar estructuras del proceso \n");
 	//printf("tamanio_proceso %"PRIu32"\n",pcb->tamanio_proceso);
 	eliminar_paquete(paquete);
-	while(1){
-		int codigo = recibir_operacion_nuevo(socket_fd);
-		switch(codigo){
-				case PAQUETE:
-					log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
-					t_list* valores = recibir_paquete(socket_fd);
-					// ver que no se recibe bien paquete al conectar otra consola
-					printf("valor tabla \n");
-					//pcb->valor_tabla_paginas = *(uint32_t*) list_remove(valores,0);
-					pcb->valor_tabla_paginas = list_remove(valores,0);
-					printf("valor tabla recibido %d \n",pcb->valor_tabla_paginas);
-					list_destroy(valores);
+	uint32_t valorTP1;
+	printf("antes de recibir paquete de memoria  \n");
+	recibir_datos(socket_fd,&valorTP1,sizeof(uint32_t));
+	pcb->valor_tabla_paginas = valorTP1;
+	printf("valor tabla recibido  %"PRIu32" \n",pcb->valor_tabla_paginas);
+	log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
+	return pcb;
 
-					log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida \n ");
-					return pcb;
-				case -1:
-					            log_error(kernel_logger_info, "Fallo la comunicacion. Abortando \n");
-					            exit(30);
-			 	default:
-			          log_warning(kernel_logger_info, "Operacion desconocida \n");
-			          break;
-
-			  	}
-		}
+//	while(1){
+//		int codigo = recibir_operacion_nuevo(socket_fd);
+//		switch(codigo){
+//				case PAQUETE:
+//					printf("antes de recibir paquete de memoria  \n");
+//					t_list* valores = recibir_paquete(socket_fd);
+//					log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
+//					// ver que no se recibe bien paquete al conectar otra consola
+//					printf("valor tabla \n");
+//					//pcb->valor_tabla_paginas = *(uint32_t*) list_remove(valores,0);
+//					//pcb->valor_tabla_paginas = list_remove(valores,0);
+//					pcb->valor_tabla_paginas = *(uint32_t*)list_get(valores,0);
+//					printf("valor tabla recibido %d \n",pcb->valor_tabla_paginas);
+//					list_destroy(valores);
+//
+//					log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida \n ");
+//					return pcb;
+//				case -1:
+//					            log_error(kernel_logger_info, "Fallo la comunicacion. Abortando \n");
+//					            exit(30);
+//			 	default:
+//			          log_warning(kernel_logger_info, "Operacion desconocida \n");
+//			          break;
+//
+//			  	}
+//		}
 	}
 
 

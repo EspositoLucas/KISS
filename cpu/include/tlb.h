@@ -7,7 +7,7 @@
 
 int obtener_algoritmo();
 void crear_tlb();
-uint32_t buscar_en_la_tlb(uint32_t pagina);
+int buscar_en_la_tlb(uint32_t pagina);
 void tlb_hit(traduccion_t*);
 void tlb_miss(traduccion_t*);
 void agregar_a_tlb_menor_a_entradas(traduccion_t*);
