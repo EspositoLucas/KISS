@@ -3224,3 +3224,55 @@
 
 [INFO] 23:59:04:063 Servidor Memoria/(22836:22880): Se elimino swap y liberaron las estructuras del proceso 
 
+[INFO] 12:58:40:605 Servidor Memoria/(25479:25479): El algoritmo de planificacion elegido es CLOCK-M.
+
+[INFO] 12:58:43:078 Servidor Memoria/(25479:25479): Memoria lista para recibir al modulo cliente 
+
+[INFO] 12:58:51:417 Servidor Memoria/(25479:25479): Se conecto un cliente 
+
+[INFO] 12:58:51:422 Servidor Memoria/(25479:25522): me llego el handshake de cpu 
+
+[INFO] 12:58:51:423 Servidor Memoria/(25479:25522): hanshake enviado a cpu 
+
+[INFO] 12:58:54:713 Servidor Memoria/(25479:25479): Se conecto un cliente 
+
+[INFO] 12:58:58:080 Servidor Memoria/(25479:25539): Inicializando estructuras 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): tabla segundo nivel creada 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): tabla segundo nivel creada 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): tabla segundo nivel creada 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): tabla segundo nivel creada 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): Se creo el archivo swap del proceso: 0
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): Swap creado 
+
+[INFO] 12:58:58:081 Servidor Memoria/(25479:25539): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 12:58:58:290 Servidor Memoria/(25479:25539): me llego mensaje para suspender proceso 
+
+[INFO] 12:58:58:292 Servidor Memoria/(25479:25539): Proceso suspendido 
+
+[INFO] 12:59:01:099 Servidor Memoria/(25479:25539): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 12:59:01:099 Servidor Memoria/(25479:25539): Se liberaron los marcos del proceso
+
+[INFO] 12:59:01:099 Servidor Memoria/(25479:25539): Se libero entrada tp1 del proceso 
+
+[INFO] 12:59:01:100 Servidor Memoria/(25479:25539): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 12:59:01:103 Servidor Memoria/(25479:25539): Se elimino swap y liberaron las estructuras del proceso 
+

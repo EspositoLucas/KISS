@@ -2570,3 +2570,19 @@
 
 [INFO] 23:59:04:060 Consola/(22893:22893): Finalizo el proceso, terminando programa.
 
+[INFO] 12:58:58:079 Consola/(25551:25551): Iniciando consola
+
+[INFO] 12:58:58:079 Consola/(25551:25551): Instrucciones parseadas correctamente
+
+[INFO] 12:58:58:080 Consola/(25551:25551): instrucciones serializadas
+
+[INFO] 12:58:58:080 Consola/(25551:25551): Conexion exitosa con kernel.
+
+[INFO] 12:58:58:080 Consola/(25551:25551): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 12:58:58:080 Consola/(25551:25551): respuesta kernel a recibir.
+
+[INFO] 12:59:01:099 Consola/(25551:25551): respuesta kernel recibida.
+
+[INFO] 12:59:01:099 Consola/(25551:25551): Finalizo el proceso, terminando programa.
+

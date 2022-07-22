@@ -40,32 +40,55 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	list_add(archivos,archivo);
 
 }
-void eliminarSwap(pcb* pcb){
-	pthread_mutex_lock(&mutex_comparador_archivo_pid);
-	comparador_archivo=pcb->id_proceso;
-	pthread_mutex_unlock(&mutex_comparador_archivo_pid);
+// VERSION SIN FUNCION NESTED
+
+//void eliminarSwap(pcb* pcb){
+//	pthread_mutex_lock(&mutex_comparador_archivo_pid);
+//	comparador_archivo=pcb->id_proceso;
+//	pthread_mutex_unlock(&mutex_comparador_archivo_pid);
+//	pthread_mutex_lock(&mutex_lista_archivo);
+//	archivos_swap* archivo = (archivos_swap*)list_remove_by_condition(archivos,archivos_con_pid);
+//	pthread_mutex_unlock(&mutex_lista_archivo);
+//	//munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
+//	//close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
+//	if(remove(armarPath(pcb->id_proceso))==-1){
+//		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
+//		exit(-1);
+//	} else {
+//		log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
+//	}
+//}
+//bool archivos_con_pid(uint32_t pid) {
+//	return comparador_archivo == pid;
+//}
+
+
+// VERSION CON FUNCION NESTED
+
+void eliminarSwap(pcb* pcb) {
+        bool archivos_con_pid(archivos_swap* un_archivo) {
+            return un_archivo->pid == pcb->id_proceso;
+        }
 	pthread_mutex_lock(&mutex_lista_archivo);
 	archivos_swap* archivo = (archivos_swap*)list_remove_by_condition(archivos,archivos_con_pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
-	//munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
-	//close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
-	if(remove(armarPath(pcb->id_proceso))==-1){
-		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
-		exit(-1);
-	} else {
-		log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
-	}
+
+		munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
+		close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
+		if(remove(armarPath(pcb->id_proceso))==-1){
+			log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
+			exit(-1);
+		} else {
+			log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
+		}
 }
 
-bool archivos_con_pid(uint32_t pid) {
-	return comparador_archivo == pid;
-}
 
 void suspender_proceso(int socket_cliente) { // aca hay que desasignar las paginas del proceso en los marcos en los que están asignadas y escribir en swap si el bit de modificado es 1
 
 	pcb* pcb = recibirPcb(socket_cliente);
 
-	//asignarAlArchivo(pcb->id_proceso);
+	asignarAlArchivo(pcb->id_proceso);
 
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
@@ -90,10 +113,11 @@ void escribirPagEnSwap(t_p_2* pag){
 	log_info(memoria_logger,"Se escribio pagina en swap \n");
 }
 
+
 void escribirPaginasModificadas(pcb* pcb){
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
 
-	//asignarAlArchivo(pcb->id_proceso);
+	asignarAlArchivo(pcb->id_proceso);
 
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=list_get(paginasProc,i);
@@ -114,6 +138,9 @@ void* traerPaginaDeSwap(uint32_t numPag){
 }
 
 void asignarAlArchivo(uint32_t pid) {
+	 bool archivos_con_pid(archivos_swap* un_archivo) {
+	            return un_archivo->pid == pid;
+	        }
 	pthread_mutex_lock(&mutex_lista_archivo);
 	archivos_swap* archivo = (archivos_swap*)list_find(archivos,archivos_con_pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
