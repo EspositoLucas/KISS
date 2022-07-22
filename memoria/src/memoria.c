@@ -93,13 +93,13 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"valor marco (mmu) \n");
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_marco= crear_paquete();
+		paquete_marco->codigo_operacion = MARCO;
 		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
 		enviar_paquete(paquete_marco,socket_cliente);
 		log_info(memoria_logger,"paquete marco(mmu) \n");
 		log_info(memoria_logger,"marco enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
-		// falta algoritmo
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
 		log_info(memoria_logger, "Inicializando estructuras \n");

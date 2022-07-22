@@ -12,6 +12,7 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	tabla_de_segundo_nivel*tabla_elegida=list_get(lista_tablas_segundo_nivel,tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida->lista_paginas,entrada);
+	uint32_t indice_tabla_en_swap;
 
 	if(pagina->p){
 		log_info(memoria_logger,"Pagina presente en memoria, no hay page fault \n");
@@ -29,8 +30,11 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 			log_info(memoria_logger,"antes de asignar al archivo  \n");
 			asignarAlArchivo(tabla_elegida->p_id);
 			log_info(memoria_logger,"despues de asignar al archivo  \n");
-			log_info(memoria_logger,"antes de tarer pagina swap  \n");
-			void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
+			log_info(memoria_logger,"indice_tabla_en_swap  \n");
+			indice_tabla_en_swap =devolverNroTablaEnSwap(tabla_elegida->p_id,tabla);
+			printf("valor indice_tabla_en_swap %"PRIu32" \n",indice_tabla_en_swap);
+			log_info(memoria_logger,"antes de traer pagina swap  \n");
+			void* paginaTraida=traerPaginaDeSwap(pagina->indice + indice_tabla_en_swap * config_valores_memoria.entradas_por_tabla);//trae la pagina desde el swap
 			log_info(memoria_logger,"pagina traida de swap \n");
 			escribirPagEnMemoria(paginaTraida,pagina->marco);//la escribe en memoria
 			log_info(memoria_logger,"Se escribio y reemplazo pagina traida de swap en memoria \n");
@@ -392,4 +396,22 @@ void eliminar_entrada_tp1(pcb* pcb){
 
 uint32_t* indice_tabla_tp2(tabla_de_segundo_nivel* tp2){
 	return tp2->id_tabla;
+}
+
+uint32_t devolverNroTablaEnSwap(uint32_t pid,uint32_t tabla){
+
+		pthread_mutex_lock(&mutex_comparador_pid);
+		pid_comparador=pid;
+		pthread_mutex_unlock(&mutex_comparador_pid);
+		t_list* tablas_del_proceso=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
+
+		for(uint32_t i = 0 ; i<list_size(tablas_del_proceso);i++){
+			tabla_de_segundo_nivel* aux = (tabla_de_segundo_nivel*)list_get(tablas_del_proceso,i);
+			if(aux->id_tabla == tabla){
+				return i ;
+			}
+
+		}
+		exit(30);
+
 }

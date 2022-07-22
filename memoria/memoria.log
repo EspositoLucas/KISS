@@ -4768,3 +4768,555 @@
 
 [INFO] 17:23:54:860 Servidor Memoria/(9291:9327): antes de tarer pagina swap  
 
+[INFO] 17:49:37:996 Servidor Memoria/(9806:9806): Memoria lista para recibir al modulo cliente 
+
+[INFO] 17:49:47:694 Servidor Memoria/(9806:9806): Se conecto un cliente 
+
+[INFO] 17:49:47:708 Servidor Memoria/(9806:9843): me llego el handshake de cpu 
+
+[INFO] 17:49:47:711 Servidor Memoria/(9806:9843): hanshake enviado a cpu 
+
+[INFO] 17:49:49:766 Servidor Memoria/(9806:9806): Se conecto un cliente 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): Inicializando estructuras 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): tabla segundo nivel creada 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): tabla segundo nivel creada 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): tabla segundo nivel creada 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): tabla segundo nivel creada 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 17:49:51:414 Servidor Memoria/(9806:9857): Se creo el archivo swap del proceso: 0
+
+[INFO] 17:49:51:415 Servidor Memoria/(9806:9857): Swap creado 
+
+[INFO] 17:49:51:416 Servidor Memoria/(9806:9843): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 17:49:51:416 Servidor Memoria/(9806:9857): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 17:49:51:417 Servidor Memoria/(9806:9843): entrada segundo nivel enviado a cpu 
+
+[INFO] 17:49:51:418 Servidor Memoria/(9806:9843): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 17:49:51:418 Servidor Memoria/(9806:9843): paquete recibido (mmu) 
+
+[INFO] 17:49:51:418 Servidor Memoria/(9806:9843): valor tabla (mmu) 
+
+[INFO] 17:49:51:418 Servidor Memoria/(9806:9843): valor entrada2 (mmu) 
+
+[INFO] 17:49:51:418 Servidor Memoria/(9806:9843): Page Fault, buscar marco libre 
+
+[INFO] 17:49:51:423 Servidor Memoria/(9806:9843): antes de ocupar marco libre  
+
+[INFO] 17:49:51:423 Servidor Memoria/(9806:9843): despues de ocupar marco libre  
+
+[INFO] 17:49:51:424 Servidor Memoria/(9806:9843): antes de asignar al archivo  
+
+[INFO] 17:49:51:424 Servidor Memoria/(9806:9843): despues de asignar al archivo  
+
+[INFO] 17:49:51:424 Servidor Memoria/(9806:9843): antes de tarer pagina swap  
+
+[INFO] 18:24:08:333 Servidor Memoria/(10756:10756): Memoria lista para recibir al modulo cliente 
+
+[INFO] 18:24:11:789 Servidor Memoria/(10756:10756): Se conecto un cliente 
+
+[INFO] 18:24:11:795 Servidor Memoria/(10756:10800): me llego el handshake de cpu 
+
+[INFO] 18:24:11:798 Servidor Memoria/(10756:10800): hanshake enviado a cpu 
+
+[INFO] 18:24:13:948 Servidor Memoria/(10756:10756): Se conecto un cliente 
+
+[INFO] 18:24:16:059 Servidor Memoria/(10756:10816): Inicializando estructuras 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): tabla segundo nivel creada 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): tabla segundo nivel creada 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): tabla segundo nivel creada 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): tabla segundo nivel creada 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:24:16:060 Servidor Memoria/(10756:10816): Se creo el archivo swap del proceso: 0
+
+[INFO] 18:24:16:061 Servidor Memoria/(10756:10816): Swap creado 
+
+[INFO] 18:24:16:061 Servidor Memoria/(10756:10800): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 18:24:16:061 Servidor Memoria/(10756:10816): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 18:24:16:063 Servidor Memoria/(10756:10800): entrada segundo nivel enviado a cpu 
+
+[INFO] 18:24:16:063 Servidor Memoria/(10756:10800): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 18:24:16:063 Servidor Memoria/(10756:10800): paquete recibido (mmu) 
+
+[INFO] 18:24:16:064 Servidor Memoria/(10756:10800): valor tabla (mmu) 
+
+[INFO] 18:24:16:064 Servidor Memoria/(10756:10800): valor entrada2 (mmu) 
+
+[INFO] 18:24:16:064 Servidor Memoria/(10756:10800): Page Fault, buscar marco libre 
+
+[INFO] 18:24:16:069 Servidor Memoria/(10756:10800): antes de ocupar marco libre  
+
+[INFO] 18:24:16:069 Servidor Memoria/(10756:10800): despues de ocupar marco libre  
+
+[INFO] 18:24:16:069 Servidor Memoria/(10756:10800): antes de asignar al archivo  
+
+[INFO] 18:24:16:069 Servidor Memoria/(10756:10800): despues de asignar al archivo  
+
+[INFO] 18:24:16:070 Servidor Memoria/(10756:10800): indice_tabla_en_swap  
+
+[INFO] 18:24:16:070 Servidor Memoria/(10756:10800): antes de traer pagina swap  
+
+[INFO] 18:32:07:563 Servidor Memoria/(11040:11040): Memoria lista para recibir al modulo cliente 
+
+[INFO] 18:32:14:688 Servidor Memoria/(11040:11040): Se conecto un cliente 
+
+[INFO] 18:32:14:693 Servidor Memoria/(11040:11073): me llego el handshake de cpu 
+
+[INFO] 18:32:14:694 Servidor Memoria/(11040:11073): hanshake enviado a cpu 
+
+[INFO] 18:32:18:176 Servidor Memoria/(11040:11040): Se conecto un cliente 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): Inicializando estructuras 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): tabla segundo nivel creada 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): tabla segundo nivel creada 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): tabla segundo nivel creada 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): tabla segundo nivel creada 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:32:22:166 Servidor Memoria/(11040:11089): Error al crear el archivo swap del proceso: 0
+
+[INFO] 18:34:00:134 Servidor Memoria/(11175:11175): Memoria lista para recibir al modulo cliente 
+
+[INFO] 18:34:11:531 Servidor Memoria/(11175:11175): Se conecto un cliente 
+
+[INFO] 18:34:11:543 Servidor Memoria/(11175:11214): me llego el handshake de cpu 
+
+[INFO] 18:34:11:545 Servidor Memoria/(11175:11214): hanshake enviado a cpu 
+
+[INFO] 18:34:18:113 Servidor Memoria/(11175:11175): Se conecto un cliente 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): Inicializando estructuras 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): tabla segundo nivel creada 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): tabla segundo nivel creada 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): tabla segundo nivel creada 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): tabla segundo nivel creada 
+
+[INFO] 18:34:22:046 Servidor Memoria/(11175:11228): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:34:22:047 Servidor Memoria/(11175:11228): Se creo el archivo swap del proceso: 0
+
+[INFO] 18:34:22:047 Servidor Memoria/(11175:11228): Swap creado 
+
+[INFO] 18:34:22:047 Servidor Memoria/(11175:11214): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 18:34:22:047 Servidor Memoria/(11175:11228): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 18:34:22:048 Servidor Memoria/(11175:11214): entrada segundo nivel enviado a cpu 
+
+[INFO] 18:34:22:048 Servidor Memoria/(11175:11214): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 18:34:22:048 Servidor Memoria/(11175:11214): paquete recibido (mmu) 
+
+[INFO] 18:34:22:048 Servidor Memoria/(11175:11214): valor tabla (mmu) 
+
+[INFO] 18:34:22:049 Servidor Memoria/(11175:11214): valor entrada2 (mmu) 
+
+[INFO] 18:34:22:049 Servidor Memoria/(11175:11214): Page Fault, buscar marco libre 
+
+[INFO] 18:34:22:054 Servidor Memoria/(11175:11214): antes de ocupar marco libre  
+
+[INFO] 18:34:22:054 Servidor Memoria/(11175:11214): despues de ocupar marco libre  
+
+[INFO] 18:34:22:054 Servidor Memoria/(11175:11214): antes de asignar al archivo  
+
+[INFO] 18:34:22:054 Servidor Memoria/(11175:11214): despues de asignar al archivo  
+
+[INFO] 18:34:22:054 Servidor Memoria/(11175:11214): indice_tabla_en_swap  
+
+[INFO] 18:34:22:054 Servidor Memoria/(11175:11214): antes de traer pagina swap  
+
+[INFO] 18:38:26:997 Servidor Memoria/(11345:11345): Memoria lista para recibir al modulo cliente 
+
+[INFO] 18:38:32:340 Servidor Memoria/(11345:11345): Se conecto un cliente 
+
+[INFO] 18:38:32:344 Servidor Memoria/(11345:11392): me llego el handshake de cpu 
+
+[INFO] 18:38:32:345 Servidor Memoria/(11345:11392): hanshake enviado a cpu 
+
+[INFO] 18:38:37:988 Servidor Memoria/(11345:11345): Se conecto un cliente 
+
+[INFO] 18:38:42:008 Servidor Memoria/(11345:11407): Inicializando estructuras 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): tabla segundo nivel creada 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): tabla segundo nivel creada 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): tabla segundo nivel creada 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): tabla segundo nivel creada 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): Se creo el archivo swap del proceso: 0
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): Swap creado 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11392): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 18:38:42:009 Servidor Memoria/(11345:11407): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 18:38:42:011 Servidor Memoria/(11345:11392): entrada segundo nivel enviado a cpu 
+
+[INFO] 18:38:42:011 Servidor Memoria/(11345:11392): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 18:38:42:012 Servidor Memoria/(11345:11392): paquete recibido (mmu) 
+
+[INFO] 18:38:42:012 Servidor Memoria/(11345:11392): valor tabla (mmu) 
+
+[INFO] 18:38:42:012 Servidor Memoria/(11345:11392): valor entrada2 (mmu) 
+
+[INFO] 18:38:42:012 Servidor Memoria/(11345:11392): Page Fault, buscar marco libre 
+
+[INFO] 18:38:42:017 Servidor Memoria/(11345:11392): antes de ocupar marco libre  
+
+[INFO] 18:38:42:017 Servidor Memoria/(11345:11392): despues de ocupar marco libre  
+
+[INFO] 18:38:42:017 Servidor Memoria/(11345:11392): antes de asignar al archivo  
+
+[INFO] 18:38:42:017 Servidor Memoria/(11345:11392): despues de asignar al archivo  
+
+[INFO] 18:38:42:017 Servidor Memoria/(11345:11392): indice_tabla_en_swap  
+
+[INFO] 18:38:42:017 Servidor Memoria/(11345:11392): antes de traer pagina swap  
+
+[INFO] 18:58:24:797 Servidor Memoria/(11724:11724): Memoria lista para recibir al modulo cliente 
+
+[INFO] 18:58:28:756 Servidor Memoria/(11724:11724): Se conecto un cliente 
+
+[INFO] 18:58:28:761 Servidor Memoria/(11724:11768): me llego el handshake de cpu 
+
+[INFO] 18:58:28:764 Servidor Memoria/(11724:11768): hanshake enviado a cpu 
+
+[INFO] 18:58:33:248 Servidor Memoria/(11724:11724): Se conecto un cliente 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): Inicializando estructuras 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): tabla segundo nivel creada 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): tabla segundo nivel creada 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): tabla segundo nivel creada 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): tabla segundo nivel creada 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 18:58:37:716 Servidor Memoria/(11724:11783): Error al crear el archivo swap del proceso: 0
+
+[INFO] 19:00:05:347 Servidor Memoria/(12075:12075): Memoria lista para recibir al modulo cliente 
+
+[INFO] 19:00:10:153 Servidor Memoria/(12075:12075): Se conecto un cliente 
+
+[INFO] 19:00:10:158 Servidor Memoria/(12075:12106): me llego el handshake de cpu 
+
+[INFO] 19:00:10:159 Servidor Memoria/(12075:12106): hanshake enviado a cpu 
+
+[INFO] 19:00:17:023 Servidor Memoria/(12075:12075): Se conecto un cliente 
+
+[INFO] 19:00:28:483 Servidor Memoria/(12075:12121): Inicializando estructuras 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): tabla segundo nivel creada 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): tabla segundo nivel creada 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): tabla segundo nivel creada 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): tabla segundo nivel creada 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:00:28:484 Servidor Memoria/(12075:12121): Error al crear el archivo swap del proceso: 0
+
+[INFO] 19:01:50:151 Servidor Memoria/(12385:12385): Memoria lista para recibir al modulo cliente 
+
+[INFO] 19:01:56:408 Servidor Memoria/(12385:12385): Se conecto un cliente 
+
+[INFO] 19:01:56:412 Servidor Memoria/(12385:12417): me llego el handshake de cpu 
+
+[INFO] 19:01:56:413 Servidor Memoria/(12385:12417): hanshake enviado a cpu 
+
+[INFO] 19:01:58:566 Servidor Memoria/(12385:12385): Se conecto un cliente 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): Inicializando estructuras 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): tabla segundo nivel creada 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): tabla segundo nivel creada 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): tabla segundo nivel creada 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): tabla segundo nivel creada 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:02:01:247 Servidor Memoria/(12385:12431): Se creo el archivo swap del proceso: 0
+
+[INFO] 19:02:01:248 Servidor Memoria/(12385:12431): Swap creado 
+
+[INFO] 19:02:01:248 Servidor Memoria/(12385:12417): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 19:02:01:248 Servidor Memoria/(12385:12431): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 19:02:01:250 Servidor Memoria/(12385:12417): entrada segundo nivel enviado a cpu 
+
+[INFO] 19:02:01:250 Servidor Memoria/(12385:12417): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 19:02:01:251 Servidor Memoria/(12385:12417): paquete recibido (mmu) 
+
+[INFO] 19:02:01:251 Servidor Memoria/(12385:12417): valor tabla (mmu) 
+
+[INFO] 19:02:01:251 Servidor Memoria/(12385:12417): valor entrada2 (mmu) 
+
+[INFO] 19:02:01:251 Servidor Memoria/(12385:12417): Page Fault, buscar marco libre 
+
+[INFO] 19:02:01:256 Servidor Memoria/(12385:12417): antes de ocupar marco libre  
+
+[INFO] 19:02:01:256 Servidor Memoria/(12385:12417): despues de ocupar marco libre  
+
+[INFO] 19:02:01:256 Servidor Memoria/(12385:12417): antes de asignar al archivo  
+
+[INFO] 19:02:01:256 Servidor Memoria/(12385:12417): despues de asignar al archivo  
+
+[INFO] 19:02:01:257 Servidor Memoria/(12385:12417): indice_tabla_en_swap  
+
+[INFO] 19:02:01:257 Servidor Memoria/(12385:12417): antes de traer pagina swap  
+
+[INFO] 19:18:22:909 Servidor Memoria/(13195:13195): Memoria lista para recibir al modulo cliente 
+
+[INFO] 19:18:35:830 Servidor Memoria/(13195:13195): Se conecto un cliente 
+
+[INFO] 19:18:35:836 Servidor Memoria/(13195:13232): me llego el handshake de cpu 
+
+[INFO] 19:18:35:839 Servidor Memoria/(13195:13232): hanshake enviado a cpu 
+
+[INFO] 19:18:41:763 Servidor Memoria/(13195:13195): Se conecto un cliente 
+
+[INFO] 19:18:47:248 Servidor Memoria/(13195:13245): Inicializando estructuras 
+
+[INFO] 19:18:47:248 Servidor Memoria/(13195:13245): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): tabla segundo nivel creada 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): tabla segundo nivel creada 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): tabla segundo nivel creada 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): tabla segundo nivel creada 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): Se creo el archivo swap del proceso: 0
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): Swap creado 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13232): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 19:18:47:249 Servidor Memoria/(13195:13245): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 19:18:47:251 Servidor Memoria/(13195:13232): entrada segundo nivel enviado a cpu 
+
+[INFO] 19:18:47:252 Servidor Memoria/(13195:13232): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 19:18:47:252 Servidor Memoria/(13195:13232): paquete recibido (mmu) 
+
+[INFO] 19:18:47:252 Servidor Memoria/(13195:13232): valor tabla (mmu) 
+
+[INFO] 19:18:47:252 Servidor Memoria/(13195:13232): valor entrada2 (mmu) 
+
+[INFO] 19:18:47:252 Servidor Memoria/(13195:13232): Page Fault, buscar marco libre 
+
+[INFO] 19:18:47:257 Servidor Memoria/(13195:13232): antes de ocupar marco libre  
+
+[INFO] 19:18:47:257 Servidor Memoria/(13195:13232): despues de ocupar marco libre  
+
+[INFO] 19:18:47:257 Servidor Memoria/(13195:13232): antes de asignar al archivo  
+
+[INFO] 19:18:47:257 Servidor Memoria/(13195:13232): despues de asignar al archivo  
+
+[INFO] 19:18:47:257 Servidor Memoria/(13195:13232): indice_tabla_en_swap  
+
+[INFO] 19:18:47:257 Servidor Memoria/(13195:13232): antes de traer pagina swap  
+
+[INFO] 19:18:47:263 Servidor Memoria/(13195:13232): pagina traida de swap 
+
+[INFO] 19:18:47:263 Servidor Memoria/(13195:13232): Se escribio y reemplazo pagina traida de swap en memoria 
+
+[INFO] 19:18:47:263 Servidor Memoria/(13195:13232): Se obtuvo pagina a reemplazar 
+
+[INFO] 19:18:47:263 Servidor Memoria/(13195:13232): valor marco (mmu) 
+
+[INFO] 19:18:47:264 Servidor Memoria/(13195:13232): paquete marco(mmu) 
+
+[INFO] 19:18:47:265 Servidor Memoria/(13195:13232): marco enviado a cpu 
+
+[INFO] 19:22:28:212 Servidor Memoria/(13455:13455): Memoria lista para recibir al modulo cliente 
+
+[INFO] 19:22:31:294 Servidor Memoria/(13455:13455): Se conecto un cliente 
+
+[INFO] 19:22:31:302 Servidor Memoria/(13455:13490): me llego el handshake de cpu 
+
+[INFO] 19:22:31:304 Servidor Memoria/(13455:13490): hanshake enviado a cpu 
+
+[INFO] 19:22:35:512 Servidor Memoria/(13455:13455): Se conecto un cliente 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): Inicializando estructuras 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): tabla segundo nivel creada 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): tabla segundo nivel creada 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): tabla segundo nivel creada 
+
+[INFO] 19:22:37:208 Servidor Memoria/(13455:13507): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:22:37:209 Servidor Memoria/(13455:13507): tabla segundo nivel creada 
+
+[INFO] 19:22:37:209 Servidor Memoria/(13455:13507): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 19:22:37:209 Servidor Memoria/(13455:13507): Se creo el archivo swap del proceso: 0
+
+[INFO] 19:22:37:209 Servidor Memoria/(13455:13507): Swap creado 
+
+[INFO] 19:22:37:209 Servidor Memoria/(13455:13490): me llego un pedido de entrada a segunda tabla de cpu (mmu) 
+
+[INFO] 19:22:37:209 Servidor Memoria/(13455:13507): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 19:22:37:212 Servidor Memoria/(13455:13490): entrada segundo nivel enviado a cpu 
+
+[INFO] 19:22:37:212 Servidor Memoria/(13455:13490): me llego un pedido de marco de cpu (mmu) 
+
+[INFO] 19:22:37:212 Servidor Memoria/(13455:13490): paquete recibido (mmu) 
+
+[INFO] 19:22:37:212 Servidor Memoria/(13455:13490): valor tabla (mmu) 
+
+[INFO] 19:22:37:212 Servidor Memoria/(13455:13490): valor entrada2 (mmu) 
+
+[INFO] 19:22:37:212 Servidor Memoria/(13455:13490): Page Fault, buscar marco libre 
+
+[INFO] 19:22:37:217 Servidor Memoria/(13455:13490): antes de ocupar marco libre  
+
+[INFO] 19:22:37:217 Servidor Memoria/(13455:13490): despues de ocupar marco libre  
+
+[INFO] 19:22:37:217 Servidor Memoria/(13455:13490): antes de asignar al archivo  
+
+[INFO] 19:22:37:217 Servidor Memoria/(13455:13490): despues de asignar al archivo  
+
+[INFO] 19:22:37:218 Servidor Memoria/(13455:13490): indice_tabla_en_swap  
+
+[INFO] 19:22:37:218 Servidor Memoria/(13455:13490): antes de traer pagina swap  
+
+[INFO] 19:22:37:223 Servidor Memoria/(13455:13490): pagina traida de swap 
+
+[INFO] 19:22:37:223 Servidor Memoria/(13455:13490): Se escribio y reemplazo pagina traida de swap en memoria 
+
+[INFO] 19:22:37:223 Servidor Memoria/(13455:13490): Se obtuvo pagina a reemplazar 
+
+[INFO] 19:22:37:223 Servidor Memoria/(13455:13490): valor marco (mmu) 
+
+[INFO] 19:22:37:224 Servidor Memoria/(13455:13490): paquete marco(mmu) 
+
+[INFO] 19:22:37:224 Servidor Memoria/(13455:13490): marco enviado a cpu 
+

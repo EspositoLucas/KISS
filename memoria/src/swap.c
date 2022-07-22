@@ -33,12 +33,19 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 
 	// hacer el mmap para que quede siempre abierto
 
-	archivo_swap = mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
-	printf("tamanio archivo swap %d\n",sizeof(archivo_swap));
+	archivo_swap = mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ, MAP_FILE|MAP_SHARED,fd,0);
+	if (archivo_swap == MAP_FAILED)
+		    {
+		        close(fd);
+		        perror("Error mmapping the file");
+		      //  exit(EXIT_FAILURE);
+		    }
+	printf("tamanio archivo swap %d\n",archivo_swap);
 	archivos_swap* archivo= malloc(sizeof(archivos_swap));
 	archivo->pid = idProceso;
 	archivo->archivo = archivo_swap;
 	archivo->fd = fd;
+	printf("tamanio del swap : %d",sizeof(archivo));
 	list_add(archivos,archivo);
 
 }
@@ -134,7 +141,8 @@ void escribirPaginasModificadas(pcb* pcb){
 
 void* traerPaginaDeSwap(uint32_t numPag){
 	usleep(config_valores_memoria.retardo_swap);
-	void* pag=malloc(sizeof(config_valores_memoria.tam_pagina));
+	void* pag=malloc(config_valores_memoria.tam_pagina);
+
 	memcpy(pag,archivo_swap + get_marco(numPag),config_valores_memoria.tam_pagina);
 	return pag;
 }
