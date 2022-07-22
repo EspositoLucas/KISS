@@ -337,28 +337,50 @@ void eliminar_entrada_tp1(pcb* pcb){
 	t_list*indices_proceso= (t_list*)list_map(tablas_proceso,indice_tabla_tp2);
 	printf("tamanio_indice_proceso %d \n",list_size(indices_proceso));
 
-	printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
+	for(int k = 0 ; k<list_size(indices_proceso);k++){
+			uint32_t aux = list_get(indices_proceso,k);
+			printf("valor de entrada %d \n",aux);
+		}
 
-	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel);i++){
-		printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
+
+	printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
+	int contador = 0 ;
+
+	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel)+ contador;i++){
+		//printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
 		indicador = false;
-		t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
+		//t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
+		//t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
+		t_p_1* aux;
+		if(i==0){
+			 aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
+		}else{
+			 aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i-contador);
+		}
+		printf("valor tp1 %d \n",i);
 		for(int j=0 ; j<list_size(indices_proceso);j++){
+			//printf("tamanio indices_proceso %d \n",list_size(indices_proceso));
 			//uint32_t aux_indice = *(uint32_t*)list_get(indices_proceso,j);
 			uint32_t aux_indice = list_get(indices_proceso,j);
+			printf("valor aux indice %d \n",aux_indice);
+			printf("valor aux_numero_tabla 2 %d \n",aux->numero_de_tabla2);
 			if(aux_indice == aux->numero_de_tabla2 ){
 				indicador = true ;
 			}
 
 
 		}
+
 		if(indicador){
 			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
 			printf("tamanio tabla primer nivel antes de borrar %d \n",list_size(tabla_de_pagina_1_nivel));
-			list_remove_and_destroy_element(tabla_de_pagina_1_nivel, i, free);
+			list_remove_and_destroy_element(tabla_de_pagina_1_nivel, i-contador, free);
+			//void* basura = list_remove(tabla_de_pagina_1_nivel,i);
 			printf("tamanio tabla primer nivel despues de borrar %d \n",list_size(tabla_de_pagina_1_nivel));
 			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
 		}
+
+		contador++;
 	}
 
 }

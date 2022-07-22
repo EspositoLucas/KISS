@@ -43,8 +43,11 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 				case PAQUETE:
 					log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
 					t_list* valores = recibir_paquete(socket_fd);
-
-					pcb->valor_tabla_paginas = *(uint32_t*) list_remove(valores,0);
+					// ver que no se recibe bien paquete al conectar otra consola
+					printf("valor tabla \n");
+					//pcb->valor_tabla_paginas = *(uint32_t*) list_remove(valores,0);
+					pcb->valor_tabla_paginas = list_remove(valores,0);
+					printf("valor tabla recibido %d \n",pcb->valor_tabla_paginas);
 					list_destroy(valores);
 
 					log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida \n ");

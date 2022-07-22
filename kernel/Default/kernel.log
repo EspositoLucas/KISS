@@ -3576,3 +3576,1596 @@
 [INFO] 20:17:09:221 Servidor Kernel/(14465:14470): [5] Ultima instruccion ejecutada
 [INFO] 20:17:09:221 Servidor Kernel/(14465:14470): PID[1] Entra en EXIT 
 
+[INFO] 22:44:49:694 Servidor Kernel/(18025:18025): Archivo de configuracion cargada 
+
+[INFO] 22:44:49:694 Servidor Kernel/(18025:18025): Kernel conectado con cpu 
+
+[INFO] 22:44:49:695 Servidor Kernel/(18025:18025): Kernel conectado con memoria 
+
+[INFO] 22:44:49:695 Servidor Kernel/(18025:18025): Servidor creado 
+
+[INFO] 22:44:49:695 Servidor Kernel/(18025:18025): Estructuras largo plazo creadas 
+
+[INFO] 22:44:49:695 Servidor Kernel/(18025:18025): Estructuras corto plazo creadas 
+
+[INFO] 22:44:49:695 Servidor Kernel/(18025:18025): Estructuras mediano plazo creadas 
+
+[INFO] 22:44:49:696 Servidor Kernel/(18025:18025): Planificacion iniciada 
+
+[INFO] 22:44:49:696 Servidor Kernel/(18025:18025): Kernel listo para recibir al modulo cliente 
+
+[INFO] 22:44:49:696 Servidor Kernel/(18025:18032): PID[-1217533952] antes de suspended ready 
+
+[INFO] 22:44:51:622 Servidor Kernel/(18025:18034): Me llego el tamanio y las instrucciones
+
+[INFO] 22:44:51:622 Servidor Kernel/(18025:18034): Consola deserializada, entro a armar pcb
+
+[INFO] 22:44:51:622 Servidor Kernel/(18025:18034): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 22:44:51:622 Servidor Kernel/(18025:18034): PID[0] ingresa a NEW 
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18028): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18028): Recibi paquete PCB de memoria 
+ 
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18028): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18028): PID[0] ingresa a READY desde NEW 
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18029): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18029): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18029): Inicio la planificacion SRT 
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18029): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18029): PID[0] ingresa a EXEC
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18030): PID[0] sale de EXEC
+
+[INFO] 22:44:51:623 Servidor Kernel/(18025:18030): PCB enviada cpu para ejecucion
+[INFO] 22:44:51:634 Servidor Kernel/(18025:18030): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:44:51:634 Servidor Kernel/(18025:18030): [1] Ultima instruccion ejecutada
+[INFO] 22:44:51:634 Servidor Kernel/(18025:18030): PID[0] Entra en BLOCKED 
+
+[INFO] 22:44:51:634 Servidor Kernel/(18025:18031): PID[0] sale de BLOCKED 
+
+[INFO] 22:44:51:634 Servidor Kernel/(18025:18031): PID[0] ejecuta IO 
+
+[INFO] 22:44:51:634 Servidor Kernel/(18025:18031): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 22:44:51:835 Servidor Kernel/(18025:18031): iniciar IO antes de suspender 
+
+[INFO] 22:44:51:835 Servidor Kernel/(18025:18031): Enviando a memoria para suspender proceso 
+
+[INFO] 22:44:51:837 Servidor Kernel/(18025:18031): respuesta de suspension de memoria recibida 
+
+[INFO] 22:44:51:837 Servidor Kernel/(18025:18031): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 22:44:51:837 Servidor Kernel/(18025:18031): Proceso suspendido, iniciar IO restante
+
+[INFO] 22:44:54:637 Servidor Kernel/(18025:18031): Proceso hizo IO restante
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18031): PID[0] apunto de suspended ready 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18032): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18032): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18032): PID[0] antes de suspended ready 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18028): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18029): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18029): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18029): Inicio la planificacion SRT 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18029): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18029): PID[0] ingresa a EXEC
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18030): PID[0] sale de EXEC
+
+[INFO] 22:44:54:638 Servidor Kernel/(18025:18030): PCB enviada cpu para ejecucion
+[INFO] 22:44:54:642 Servidor Kernel/(18025:18030): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:44:54:642 Servidor Kernel/(18025:18030): [5] Ultima instruccion ejecutada
+[INFO] 22:44:54:642 Servidor Kernel/(18025:18030): PID[0] Entra en EXIT 
+
+[INFO] 22:44:54:642 Servidor Kernel/(18025:18027): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 22:44:54:642 Servidor Kernel/(18025:18027): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 22:44:54:642 Servidor Kernel/(18025:18027): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 22:44:54:642 Servidor Kernel/(18025:18027): No se pudo eliminar memoria de PID[0]
+
+[INFO] 22:44:54:642 Servidor Kernel/(18025:18027): Enviando a consola que finalizo el proceso
+
+[INFO] 22:47:36:333 Servidor Kernel/(18436:18436): Archivo de configuracion cargada 
+
+[INFO] 22:47:36:334 Servidor Kernel/(18436:18436): Kernel conectado con cpu 
+
+[INFO] 22:47:36:334 Servidor Kernel/(18436:18436): Kernel conectado con memoria 
+
+[INFO] 22:47:36:335 Servidor Kernel/(18436:18436): Servidor creado 
+
+[INFO] 22:47:36:335 Servidor Kernel/(18436:18436): Estructuras largo plazo creadas 
+
+[INFO] 22:47:36:335 Servidor Kernel/(18436:18436): Estructuras corto plazo creadas 
+
+[INFO] 22:47:36:335 Servidor Kernel/(18436:18436): Estructuras mediano plazo creadas 
+
+[INFO] 22:47:36:335 Servidor Kernel/(18436:18436): Planificacion iniciada 
+
+[INFO] 22:47:36:335 Servidor Kernel/(18436:18436): Kernel listo para recibir al modulo cliente 
+
+[INFO] 22:47:36:335 Servidor Kernel/(18436:18443): PID[-1217476608] antes de suspended ready 
+
+[INFO] 22:47:38:766 Servidor Kernel/(18436:18445): Me llego el tamanio y las instrucciones
+
+[INFO] 22:47:38:767 Servidor Kernel/(18436:18445): Consola deserializada, entro a armar pcb
+
+[INFO] 22:47:38:767 Servidor Kernel/(18436:18445): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 22:47:38:767 Servidor Kernel/(18436:18445): PID[0] ingresa a NEW 
+
+[INFO] 22:47:38:767 Servidor Kernel/(18436:18439): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18439): Recibi paquete PCB de memoria 
+ 
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18439): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18439): PID[0] ingresa a READY desde NEW 
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18440): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18440): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18440): Inicio la planificacion SRT 
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18440): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18440): PID[0] ingresa a EXEC
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18441): PID[0] sale de EXEC
+
+[INFO] 22:47:38:768 Servidor Kernel/(18436:18441): PCB enviada cpu para ejecucion
+[INFO] 22:47:38:776 Servidor Kernel/(18436:18441): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:47:38:776 Servidor Kernel/(18436:18441): [1] Ultima instruccion ejecutada
+[INFO] 22:47:38:776 Servidor Kernel/(18436:18441): PID[0] Entra en BLOCKED 
+
+[INFO] 22:47:38:776 Servidor Kernel/(18436:18442): PID[0] sale de BLOCKED 
+
+[INFO] 22:47:38:776 Servidor Kernel/(18436:18442): PID[0] ejecuta IO 
+
+[INFO] 22:47:38:776 Servidor Kernel/(18436:18442): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 22:47:38:976 Servidor Kernel/(18436:18442): iniciar IO antes de suspender 
+
+[INFO] 22:47:38:976 Servidor Kernel/(18436:18442): Enviando a memoria para suspender proceso 
+
+[INFO] 22:47:38:979 Servidor Kernel/(18436:18442): respuesta de suspension de memoria recibida 
+
+[INFO] 22:47:38:979 Servidor Kernel/(18436:18442): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 22:47:38:979 Servidor Kernel/(18436:18442): Proceso suspendido, iniciar IO restante
+
+[INFO] 22:47:41:779 Servidor Kernel/(18436:18442): Proceso hizo IO restante
+
+[INFO] 22:47:41:779 Servidor Kernel/(18436:18442): PID[0] apunto de suspended ready 
+
+[INFO] 22:47:41:779 Servidor Kernel/(18436:18443): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 22:47:41:779 Servidor Kernel/(18436:18443): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 22:47:41:779 Servidor Kernel/(18436:18443): PID[0] antes de suspended ready 
+
+[INFO] 22:47:41:779 Servidor Kernel/(18436:18439): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 22:47:41:780 Servidor Kernel/(18436:18440): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:47:41:780 Servidor Kernel/(18436:18440): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:47:41:780 Servidor Kernel/(18436:18440): Inicio la planificacion SRT 
+
+[INFO] 22:47:41:780 Servidor Kernel/(18436:18440): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:47:41:780 Servidor Kernel/(18436:18440): PID[0] ingresa a EXEC
+
+[INFO] 22:47:41:780 Servidor Kernel/(18436:18441): PID[0] sale de EXEC
+
+[INFO] 22:47:41:780 Servidor Kernel/(18436:18441): PCB enviada cpu para ejecucion
+[INFO] 22:47:41:784 Servidor Kernel/(18436:18441): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:47:41:784 Servidor Kernel/(18436:18441): [5] Ultima instruccion ejecutada
+[INFO] 22:47:41:784 Servidor Kernel/(18436:18441): PID[0] Entra en EXIT 
+
+[INFO] 22:47:41:784 Servidor Kernel/(18436:18438): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 22:47:41:784 Servidor Kernel/(18436:18438): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 22:47:41:784 Servidor Kernel/(18436:18438): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 22:47:41:784 Servidor Kernel/(18436:18438): No se pudo eliminar memoria de PID[0]
+
+[INFO] 22:47:41:784 Servidor Kernel/(18436:18438): Enviando a consola que finalizo el proceso
+
+[INFO] 22:53:33:780 Servidor Kernel/(18743:18743): Archivo de configuracion cargada 
+
+[INFO] 22:53:33:781 Servidor Kernel/(18743:18743): Kernel conectado con cpu 
+
+[INFO] 22:53:33:781 Servidor Kernel/(18743:18743): Kernel conectado con memoria 
+
+[INFO] 22:53:33:782 Servidor Kernel/(18743:18743): Servidor creado 
+
+[INFO] 22:53:33:782 Servidor Kernel/(18743:18743): Estructuras largo plazo creadas 
+
+[INFO] 22:53:33:782 Servidor Kernel/(18743:18743): Estructuras corto plazo creadas 
+
+[INFO] 22:53:33:782 Servidor Kernel/(18743:18743): Estructuras mediano plazo creadas 
+
+[INFO] 22:53:33:782 Servidor Kernel/(18743:18743): Planificacion iniciada 
+
+[INFO] 22:53:33:782 Servidor Kernel/(18743:18743): Kernel listo para recibir al modulo cliente 
+
+[INFO] 22:53:33:782 Servidor Kernel/(18743:18750): PID[-1217841152] antes de suspended ready 
+
+[INFO] 22:53:35:357 Servidor Kernel/(18743:18752): Me llego el tamanio y las instrucciones
+
+[INFO] 22:53:35:358 Servidor Kernel/(18743:18752): Consola deserializada, entro a armar pcb
+
+[INFO] 22:53:35:358 Servidor Kernel/(18743:18752): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 22:53:35:358 Servidor Kernel/(18743:18752): PID[0] ingresa a NEW 
+
+[INFO] 22:53:35:358 Servidor Kernel/(18743:18746): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18746): Recibi paquete PCB de memoria 
+ 
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18746): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18746): PID[0] ingresa a READY desde NEW 
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18747): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18747): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18747): Inicio la planificacion SRT 
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18747): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18747): PID[0] ingresa a EXEC
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18748): PID[0] sale de EXEC
+
+[INFO] 22:53:35:359 Servidor Kernel/(18743:18748): PCB enviada cpu para ejecucion
+[INFO] 22:53:35:367 Servidor Kernel/(18743:18748): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:53:35:367 Servidor Kernel/(18743:18748): [1] Ultima instruccion ejecutada
+[INFO] 22:53:35:367 Servidor Kernel/(18743:18748): PID[0] Entra en BLOCKED 
+
+[INFO] 22:53:35:367 Servidor Kernel/(18743:18749): PID[0] sale de BLOCKED 
+
+[INFO] 22:53:35:367 Servidor Kernel/(18743:18749): PID[0] ejecuta IO 
+
+[INFO] 22:53:35:367 Servidor Kernel/(18743:18749): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 22:53:35:567 Servidor Kernel/(18743:18749): iniciar IO antes de suspender 
+
+[INFO] 22:53:35:567 Servidor Kernel/(18743:18749): Enviando a memoria para suspender proceso 
+
+[INFO] 22:53:35:570 Servidor Kernel/(18743:18749): respuesta de suspension de memoria recibida 
+
+[INFO] 22:53:35:570 Servidor Kernel/(18743:18749): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 22:53:35:570 Servidor Kernel/(18743:18749): Proceso suspendido, iniciar IO restante
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18749): Proceso hizo IO restante
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18749): PID[0] apunto de suspended ready 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18750): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18750): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18750): PID[0] antes de suspended ready 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18746): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18747): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18747): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18747): Inicio la planificacion SRT 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18747): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18747): PID[0] ingresa a EXEC
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18748): PID[0] sale de EXEC
+
+[INFO] 22:53:38:370 Servidor Kernel/(18743:18748): PCB enviada cpu para ejecucion
+[INFO] 22:53:38:375 Servidor Kernel/(18743:18748): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:53:38:375 Servidor Kernel/(18743:18748): [5] Ultima instruccion ejecutada
+[INFO] 22:53:38:375 Servidor Kernel/(18743:18748): PID[0] Entra en EXIT 
+
+[INFO] 22:53:38:375 Servidor Kernel/(18743:18745): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 22:53:38:375 Servidor Kernel/(18743:18745): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 22:53:38:376 Servidor Kernel/(18743:18745): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 22:53:38:376 Servidor Kernel/(18743:18745): No se pudo eliminar memoria de PID[0]
+
+[INFO] 22:53:38:376 Servidor Kernel/(18743:18745): Enviando a consola que finalizo el proceso
+
+[INFO] 22:57:58:732 Servidor Kernel/(19246:19246): Archivo de configuracion cargada 
+
+[INFO] 22:57:58:733 Servidor Kernel/(19246:19246): Kernel conectado con cpu 
+
+[INFO] 22:57:58:733 Servidor Kernel/(19246:19246): Kernel conectado con memoria 
+
+[INFO] 22:57:58:733 Servidor Kernel/(19246:19246): Servidor creado 
+
+[INFO] 22:57:58:733 Servidor Kernel/(19246:19246): Estructuras largo plazo creadas 
+
+[INFO] 22:57:58:733 Servidor Kernel/(19246:19246): Estructuras corto plazo creadas 
+
+[INFO] 22:57:58:734 Servidor Kernel/(19246:19246): Estructuras mediano plazo creadas 
+
+[INFO] 22:57:58:734 Servidor Kernel/(19246:19246): Planificacion iniciada 
+
+[INFO] 22:57:58:734 Servidor Kernel/(19246:19246): Kernel listo para recibir al modulo cliente 
+
+[INFO] 22:57:58:734 Servidor Kernel/(19246:19253): PID[-1217959936] antes de suspended ready 
+
+[INFO] 22:58:01:453 Servidor Kernel/(19246:19255): Me llego el tamanio y las instrucciones
+
+[INFO] 22:58:01:453 Servidor Kernel/(19246:19255): Consola deserializada, entro a armar pcb
+
+[INFO] 22:58:01:453 Servidor Kernel/(19246:19255): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 22:58:01:453 Servidor Kernel/(19246:19255): PID[0] ingresa a NEW 
+
+[INFO] 22:58:01:453 Servidor Kernel/(19246:19249): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19249): Recibi paquete PCB de memoria 
+ 
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19249): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19249): PID[0] ingresa a READY desde NEW 
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19250): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19250): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19250): Inicio la planificacion SRT 
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19250): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19250): PID[0] ingresa a EXEC
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19251): PID[0] sale de EXEC
+
+[INFO] 22:58:01:454 Servidor Kernel/(19246:19251): PCB enviada cpu para ejecucion
+[INFO] 22:58:01:462 Servidor Kernel/(19246:19251): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:58:01:462 Servidor Kernel/(19246:19251): [1] Ultima instruccion ejecutada
+[INFO] 22:58:01:462 Servidor Kernel/(19246:19251): PID[0] Entra en BLOCKED 
+
+[INFO] 22:58:01:462 Servidor Kernel/(19246:19252): PID[0] sale de BLOCKED 
+
+[INFO] 22:58:01:462 Servidor Kernel/(19246:19252): PID[0] ejecuta IO 
+
+[INFO] 22:58:01:462 Servidor Kernel/(19246:19252): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 22:58:01:663 Servidor Kernel/(19246:19252): iniciar IO antes de suspender 
+
+[INFO] 22:58:01:663 Servidor Kernel/(19246:19252): Enviando a memoria para suspender proceso 
+
+[INFO] 22:58:01:665 Servidor Kernel/(19246:19252): respuesta de suspension de memoria recibida 
+
+[INFO] 22:58:01:665 Servidor Kernel/(19246:19252): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 22:58:01:665 Servidor Kernel/(19246:19252): Proceso suspendido, iniciar IO restante
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19252): Proceso hizo IO restante
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19252): PID[0] apunto de suspended ready 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19253): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19253): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19253): PID[0] antes de suspended ready 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19249): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19250): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19250): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19250): Inicio la planificacion SRT 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19250): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19250): PID[0] ingresa a EXEC
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19251): PID[0] sale de EXEC
+
+[INFO] 22:58:04:467 Servidor Kernel/(19246:19251): PCB enviada cpu para ejecucion
+[INFO] 22:58:04:472 Servidor Kernel/(19246:19251): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 22:58:04:472 Servidor Kernel/(19246:19251): [5] Ultima instruccion ejecutada
+[INFO] 22:58:04:472 Servidor Kernel/(19246:19251): PID[0] Entra en EXIT 
+
+[INFO] 22:58:04:472 Servidor Kernel/(19246:19248): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 22:58:04:473 Servidor Kernel/(19246:19248): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 22:58:04:473 Servidor Kernel/(19246:19248): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 22:58:04:473 Servidor Kernel/(19246:19248): No se pudo eliminar memoria de PID[0]
+
+[INFO] 22:58:04:473 Servidor Kernel/(19246:19248): Enviando a consola que finalizo el proceso
+
+[INFO] 23:04:06:411 Servidor Kernel/(19648:19648): Archivo de configuracion cargada 
+
+[INFO] 23:04:06:412 Servidor Kernel/(19648:19648): Kernel conectado con cpu 
+
+[INFO] 23:04:06:412 Servidor Kernel/(19648:19648): Kernel conectado con memoria 
+
+[INFO] 23:04:06:412 Servidor Kernel/(19648:19648): Servidor creado 
+
+[INFO] 23:04:06:413 Servidor Kernel/(19648:19648): Estructuras largo plazo creadas 
+
+[INFO] 23:04:06:413 Servidor Kernel/(19648:19648): Estructuras corto plazo creadas 
+
+[INFO] 23:04:06:413 Servidor Kernel/(19648:19648): Estructuras mediano plazo creadas 
+
+[INFO] 23:04:06:413 Servidor Kernel/(19648:19648): Planificacion iniciada 
+
+[INFO] 23:04:06:413 Servidor Kernel/(19648:19648): Kernel listo para recibir al modulo cliente 
+
+[INFO] 23:04:06:413 Servidor Kernel/(19648:19655): PID[-1217751040] antes de suspended ready 
+
+[INFO] 23:04:07:781 Servidor Kernel/(19648:19657): Me llego el tamanio y las instrucciones
+
+[INFO] 23:04:07:781 Servidor Kernel/(19648:19657): Consola deserializada, entro a armar pcb
+
+[INFO] 23:04:07:781 Servidor Kernel/(19648:19657): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 23:04:07:781 Servidor Kernel/(19648:19657): PID[0] ingresa a NEW 
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19651): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19651): Recibi paquete PCB de memoria 
+ 
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19651): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19651): PID[0] ingresa a READY desde NEW 
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19652): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19652): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19652): Inicio la planificacion SRT 
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19652): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19652): PID[0] ingresa a EXEC
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19653): PID[0] sale de EXEC
+
+[INFO] 23:04:07:782 Servidor Kernel/(19648:19653): PCB enviada cpu para ejecucion
+[INFO] 23:04:07:791 Servidor Kernel/(19648:19653): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:04:07:791 Servidor Kernel/(19648:19653): [1] Ultima instruccion ejecutada
+[INFO] 23:04:07:791 Servidor Kernel/(19648:19653): PID[0] Entra en BLOCKED 
+
+[INFO] 23:04:07:791 Servidor Kernel/(19648:19654): PID[0] sale de BLOCKED 
+
+[INFO] 23:04:07:791 Servidor Kernel/(19648:19654): PID[0] ejecuta IO 
+
+[INFO] 23:04:07:791 Servidor Kernel/(19648:19654): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 23:04:07:992 Servidor Kernel/(19648:19654): iniciar IO antes de suspender 
+
+[INFO] 23:04:07:992 Servidor Kernel/(19648:19654): Enviando a memoria para suspender proceso 
+
+[INFO] 23:04:07:995 Servidor Kernel/(19648:19654): respuesta de suspension de memoria recibida 
+
+[INFO] 23:04:07:995 Servidor Kernel/(19648:19654): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 23:04:07:995 Servidor Kernel/(19648:19654): Proceso suspendido, iniciar IO restante
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19654): Proceso hizo IO restante
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19654): PID[0] apunto de suspended ready 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19655): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19655): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19655): PID[0] antes de suspended ready 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19651): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19652): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19652): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19652): Inicio la planificacion SRT 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19652): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19652): PID[0] ingresa a EXEC
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19653): PID[0] sale de EXEC
+
+[INFO] 23:04:10:795 Servidor Kernel/(19648:19653): PCB enviada cpu para ejecucion
+[INFO] 23:04:10:800 Servidor Kernel/(19648:19653): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:04:10:800 Servidor Kernel/(19648:19653): [5] Ultima instruccion ejecutada
+[INFO] 23:04:10:800 Servidor Kernel/(19648:19653): PID[0] Entra en EXIT 
+
+[INFO] 23:04:10:800 Servidor Kernel/(19648:19650): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 23:04:10:800 Servidor Kernel/(19648:19650): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 23:04:10:801 Servidor Kernel/(19648:19650): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 23:04:10:801 Servidor Kernel/(19648:19650): No se pudo eliminar memoria de PID[0]
+
+[INFO] 23:04:10:801 Servidor Kernel/(19648:19650): Enviando a consola que finalizo el proceso
+
+[INFO] 23:07:32:974 Servidor Kernel/(20008:20008): Archivo de configuracion cargada 
+
+[INFO] 23:07:32:974 Servidor Kernel/(20008:20008): Kernel conectado con cpu 
+
+[INFO] 23:07:32:975 Servidor Kernel/(20008:20008): Kernel conectado con memoria 
+
+[INFO] 23:07:32:975 Servidor Kernel/(20008:20008): Servidor creado 
+
+[INFO] 23:07:32:975 Servidor Kernel/(20008:20008): Estructuras largo plazo creadas 
+
+[INFO] 23:07:32:975 Servidor Kernel/(20008:20008): Estructuras corto plazo creadas 
+
+[INFO] 23:07:32:975 Servidor Kernel/(20008:20008): Estructuras mediano plazo creadas 
+
+[INFO] 23:07:32:976 Servidor Kernel/(20008:20008): Planificacion iniciada 
+
+[INFO] 23:07:32:976 Servidor Kernel/(20008:20008): Kernel listo para recibir al modulo cliente 
+
+[INFO] 23:07:32:976 Servidor Kernel/(20008:20015): PID[-1217886208] antes de suspended ready 
+
+[INFO] 23:07:35:044 Servidor Kernel/(20008:20017): Me llego el tamanio y las instrucciones
+
+[INFO] 23:07:35:044 Servidor Kernel/(20008:20017): Consola deserializada, entro a armar pcb
+
+[INFO] 23:07:35:044 Servidor Kernel/(20008:20017): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 23:07:35:044 Servidor Kernel/(20008:20017): PID[0] ingresa a NEW 
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20011): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20011): Recibi paquete PCB de memoria 
+ 
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20011): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20011): PID[0] ingresa a READY desde NEW 
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20012): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20012): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20012): Inicio la planificacion SRT 
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20012): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20012): PID[0] ingresa a EXEC
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20013): PID[0] sale de EXEC
+
+[INFO] 23:07:35:045 Servidor Kernel/(20008:20013): PCB enviada cpu para ejecucion
+[INFO] 23:07:35:055 Servidor Kernel/(20008:20013): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:07:35:055 Servidor Kernel/(20008:20013): [1] Ultima instruccion ejecutada
+[INFO] 23:07:35:055 Servidor Kernel/(20008:20013): PID[0] Entra en BLOCKED 
+
+[INFO] 23:07:35:055 Servidor Kernel/(20008:20014): PID[0] sale de BLOCKED 
+
+[INFO] 23:07:35:055 Servidor Kernel/(20008:20014): PID[0] ejecuta IO 
+
+[INFO] 23:07:35:055 Servidor Kernel/(20008:20014): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 23:07:35:255 Servidor Kernel/(20008:20014): iniciar IO antes de suspender 
+
+[INFO] 23:07:35:255 Servidor Kernel/(20008:20014): Enviando a memoria para suspender proceso 
+
+[INFO] 23:07:35:258 Servidor Kernel/(20008:20014): respuesta de suspension de memoria recibida 
+
+[INFO] 23:07:35:258 Servidor Kernel/(20008:20014): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 23:07:35:258 Servidor Kernel/(20008:20014): Proceso suspendido, iniciar IO restante
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20014): Proceso hizo IO restante
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20014): PID[0] apunto de suspended ready 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20015): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20015): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20015): PID[0] antes de suspended ready 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20011): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20012): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20012): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20012): Inicio la planificacion SRT 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20012): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20012): PID[0] ingresa a EXEC
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20013): PID[0] sale de EXEC
+
+[INFO] 23:07:38:059 Servidor Kernel/(20008:20013): PCB enviada cpu para ejecucion
+[INFO] 23:07:38:064 Servidor Kernel/(20008:20013): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:07:38:064 Servidor Kernel/(20008:20013): [5] Ultima instruccion ejecutada
+[INFO] 23:07:38:064 Servidor Kernel/(20008:20013): PID[0] Entra en EXIT 
+
+[INFO] 23:07:38:064 Servidor Kernel/(20008:20010): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 23:07:38:064 Servidor Kernel/(20008:20010): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 23:07:38:064 Servidor Kernel/(20008:20010): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 23:07:38:064 Servidor Kernel/(20008:20010): No se pudo eliminar memoria de PID[0]
+
+[INFO] 23:07:38:064 Servidor Kernel/(20008:20010): Enviando a consola que finalizo el proceso
+
+[INFO] 23:15:02:459 Servidor Kernel/(20385:20385): Archivo de configuracion cargada 
+
+[INFO] 23:15:02:459 Servidor Kernel/(20385:20385): Kernel conectado con cpu 
+
+[INFO] 23:15:02:459 Servidor Kernel/(20385:20385): Kernel conectado con memoria 
+
+[INFO] 23:15:02:460 Servidor Kernel/(20385:20385): Servidor creado 
+
+[INFO] 23:15:02:460 Servidor Kernel/(20385:20385): Estructuras largo plazo creadas 
+
+[INFO] 23:15:02:460 Servidor Kernel/(20385:20385): Estructuras corto plazo creadas 
+
+[INFO] 23:15:02:460 Servidor Kernel/(20385:20385): Estructuras mediano plazo creadas 
+
+[INFO] 23:15:02:460 Servidor Kernel/(20385:20385): Planificacion iniciada 
+
+[INFO] 23:15:02:460 Servidor Kernel/(20385:20385): Kernel listo para recibir al modulo cliente 
+
+[INFO] 23:15:02:460 Servidor Kernel/(20385:20392): PID[-1217558528] antes de suspended ready 
+
+[INFO] 23:15:03:771 Servidor Kernel/(20385:20394): Me llego el tamanio y las instrucciones
+
+[INFO] 23:15:03:771 Servidor Kernel/(20385:20394): Consola deserializada, entro a armar pcb
+
+[INFO] 23:15:03:772 Servidor Kernel/(20385:20394): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 23:15:03:772 Servidor Kernel/(20385:20394): PID[0] ingresa a NEW 
+
+[INFO] 23:15:03:772 Servidor Kernel/(20385:20388): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20388): Recibi paquete PCB de memoria 
+ 
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20388): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20388): PID[0] ingresa a READY desde NEW 
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20389): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20389): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20389): Inicio la planificacion SRT 
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20389): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20389): PID[0] ingresa a EXEC
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20390): PID[0] sale de EXEC
+
+[INFO] 23:15:03:773 Servidor Kernel/(20385:20390): PCB enviada cpu para ejecucion
+[INFO] 23:15:03:780 Servidor Kernel/(20385:20390): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:15:03:780 Servidor Kernel/(20385:20390): [1] Ultima instruccion ejecutada
+[INFO] 23:15:03:780 Servidor Kernel/(20385:20390): PID[0] Entra en BLOCKED 
+
+[INFO] 23:15:03:780 Servidor Kernel/(20385:20391): PID[0] sale de BLOCKED 
+
+[INFO] 23:15:03:780 Servidor Kernel/(20385:20391): PID[0] ejecuta IO 
+
+[INFO] 23:15:03:780 Servidor Kernel/(20385:20391): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 23:15:03:981 Servidor Kernel/(20385:20391): iniciar IO antes de suspender 
+
+[INFO] 23:15:03:981 Servidor Kernel/(20385:20391): Enviando a memoria para suspender proceso 
+
+[INFO] 23:15:03:984 Servidor Kernel/(20385:20391): respuesta de suspension de memoria recibida 
+
+[INFO] 23:15:03:984 Servidor Kernel/(20385:20391): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 23:15:03:984 Servidor Kernel/(20385:20391): Proceso suspendido, iniciar IO restante
+
+[INFO] 23:15:06:784 Servidor Kernel/(20385:20391): Proceso hizo IO restante
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20391): PID[0] apunto de suspended ready 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20392): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20392): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20392): PID[0] antes de suspended ready 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20388): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20389): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20389): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20389): Inicio la planificacion SRT 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20389): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20389): PID[0] ingresa a EXEC
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20390): PID[0] sale de EXEC
+
+[INFO] 23:15:06:785 Servidor Kernel/(20385:20390): PCB enviada cpu para ejecucion
+[INFO] 23:15:06:788 Servidor Kernel/(20385:20390): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:15:06:788 Servidor Kernel/(20385:20390): [5] Ultima instruccion ejecutada
+[INFO] 23:15:06:789 Servidor Kernel/(20385:20390): PID[0] Entra en EXIT 
+
+[INFO] 23:15:06:789 Servidor Kernel/(20385:20387): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 23:15:06:789 Servidor Kernel/(20385:20387): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 23:15:06:789 Servidor Kernel/(20385:20387): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 23:15:06:789 Servidor Kernel/(20385:20387): No se pudo eliminar memoria de PID[0]
+
+[INFO] 23:15:06:789 Servidor Kernel/(20385:20387): Enviando a consola que finalizo el proceso
+
+[INFO] 23:24:28:018 Servidor Kernel/(20585:20585): Archivo de configuracion cargada 
+
+[INFO] 23:24:28:018 Servidor Kernel/(20585:20585): Kernel conectado con cpu 
+
+[INFO] 23:24:28:018 Servidor Kernel/(20585:20585): Kernel conectado con memoria 
+
+[INFO] 23:24:28:019 Servidor Kernel/(20585:20585): Servidor creado 
+
+[INFO] 23:24:28:019 Servidor Kernel/(20585:20585): Estructuras largo plazo creadas 
+
+[INFO] 23:24:28:019 Servidor Kernel/(20585:20585): Estructuras corto plazo creadas 
+
+[INFO] 23:24:28:019 Servidor Kernel/(20585:20585): Estructuras mediano plazo creadas 
+
+[INFO] 23:24:28:019 Servidor Kernel/(20585:20585): Planificacion iniciada 
+
+[INFO] 23:24:28:019 Servidor Kernel/(20585:20585): Kernel listo para recibir al modulo cliente 
+
+[INFO] 23:24:28:019 Servidor Kernel/(20585:20592): PID[-1217656832] antes de suspended ready 
+
+[INFO] 23:24:33:443 Servidor Kernel/(20585:20594): Me llego el tamanio y las instrucciones
+
+[INFO] 23:24:33:443 Servidor Kernel/(20585:20594): Consola deserializada, entro a armar pcb
+
+[INFO] 23:24:33:444 Servidor Kernel/(20585:20594): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 23:24:33:444 Servidor Kernel/(20585:20594): PID[0] ingresa a NEW 
+
+[INFO] 23:24:33:444 Servidor Kernel/(20585:20588): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20588): Recibi paquete PCB de memoria 
+ 
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20588): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20588): PID[0] ingresa a READY desde NEW 
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20589): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20589): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20589): Inicio la planificacion SRT 
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20589): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20589): PID[0] ingresa a EXEC
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20590): PID[0] sale de EXEC
+
+[INFO] 23:24:33:445 Servidor Kernel/(20585:20590): PCB enviada cpu para ejecucion
+[INFO] 23:24:33:452 Servidor Kernel/(20585:20590): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:24:33:452 Servidor Kernel/(20585:20590): [1] Ultima instruccion ejecutada
+[INFO] 23:24:33:452 Servidor Kernel/(20585:20590): PID[0] Entra en BLOCKED 
+
+[INFO] 23:24:33:452 Servidor Kernel/(20585:20591): PID[0] sale de BLOCKED 
+
+[INFO] 23:24:33:452 Servidor Kernel/(20585:20591): PID[0] ejecuta IO 
+
+[INFO] 23:24:33:452 Servidor Kernel/(20585:20591): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 23:24:33:652 Servidor Kernel/(20585:20591): iniciar IO antes de suspender 
+
+[INFO] 23:24:33:652 Servidor Kernel/(20585:20591): Enviando a memoria para suspender proceso 
+
+[INFO] 23:24:33:654 Servidor Kernel/(20585:20591): respuesta de suspension de memoria recibida 
+
+[INFO] 23:24:33:654 Servidor Kernel/(20585:20591): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 23:24:33:654 Servidor Kernel/(20585:20591): Proceso suspendido, iniciar IO restante
+
+[INFO] 23:24:36:454 Servidor Kernel/(20585:20591): Proceso hizo IO restante
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20591): PID[0] apunto de suspended ready 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20592): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20592): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20592): PID[0] antes de suspended ready 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20588): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20589): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20589): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20589): Inicio la planificacion SRT 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20589): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20589): PID[0] ingresa a EXEC
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20590): PID[0] sale de EXEC
+
+[INFO] 23:24:36:455 Servidor Kernel/(20585:20590): PCB enviada cpu para ejecucion
+[INFO] 23:24:36:459 Servidor Kernel/(20585:20590): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:24:36:459 Servidor Kernel/(20585:20590): [5] Ultima instruccion ejecutada
+[INFO] 23:24:36:460 Servidor Kernel/(20585:20590): PID[0] Entra en EXIT 
+
+[INFO] 23:24:36:460 Servidor Kernel/(20585:20587): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 23:24:36:460 Servidor Kernel/(20585:20587): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 23:24:36:460 Servidor Kernel/(20585:20587): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 23:24:36:460 Servidor Kernel/(20585:20587): No se pudo eliminar memoria de PID[0]
+
+[INFO] 23:24:36:460 Servidor Kernel/(20585:20587): Enviando a consola que finalizo el proceso
+
+[INFO] 23:39:24:528 Servidor Kernel/(21074:21074): Archivo de configuracion cargada 
+
+[INFO] 23:39:24:529 Servidor Kernel/(21074:21074): Kernel conectado con cpu 
+
+[INFO] 23:39:24:529 Servidor Kernel/(21074:21074): Kernel conectado con memoria 
+
+[INFO] 23:39:24:529 Servidor Kernel/(21074:21074): Servidor creado 
+
+[INFO] 23:39:24:529 Servidor Kernel/(21074:21074): Estructuras largo plazo creadas 
+
+[INFO] 23:39:24:530 Servidor Kernel/(21074:21074): Estructuras corto plazo creadas 
+
+[INFO] 23:39:24:530 Servidor Kernel/(21074:21074): Estructuras mediano plazo creadas 
+
+[INFO] 23:39:24:530 Servidor Kernel/(21074:21074): Planificacion iniciada 
+
+[INFO] 23:39:24:530 Servidor Kernel/(21074:21074): Kernel listo para recibir al modulo cliente 
+
+[INFO] 23:39:24:530 Servidor Kernel/(21074:21081): PID[-1217841152] antes de suspended ready 
+
+[INFO] 23:39:25:961 Servidor Kernel/(21074:21083): Me llego el tamanio y las instrucciones
+
+[INFO] 23:39:25:961 Servidor Kernel/(21074:21083): Consola deserializada, entro a armar pcb
+
+[INFO] 23:39:25:962 Servidor Kernel/(21074:21083): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 23:39:25:962 Servidor Kernel/(21074:21083): PID[0] ingresa a NEW 
+
+[INFO] 23:39:25:962 Servidor Kernel/(21074:21077): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 23:39:25:962 Servidor Kernel/(21074:21077): Recibi paquete PCB de memoria 
+ 
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21077): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21077): PID[0] ingresa a READY desde NEW 
+
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21078): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21078): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21078): Inicio la planificacion SRT 
+
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21078): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21078): PID[0] ingresa a EXEC
+
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21079): PID[0] sale de EXEC
+
+[INFO] 23:39:25:963 Servidor Kernel/(21074:21079): PCB enviada cpu para ejecucion
+[INFO] 23:39:25:971 Servidor Kernel/(21074:21079): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:39:25:971 Servidor Kernel/(21074:21079): [1] Ultima instruccion ejecutada
+[INFO] 23:39:25:971 Servidor Kernel/(21074:21079): PID[0] Entra en BLOCKED 
+
+[INFO] 23:39:25:971 Servidor Kernel/(21074:21080): PID[0] sale de BLOCKED 
+
+[INFO] 23:39:25:971 Servidor Kernel/(21074:21080): PID[0] ejecuta IO 
+
+[INFO] 23:39:25:971 Servidor Kernel/(21074:21080): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 23:39:26:171 Servidor Kernel/(21074:21080): iniciar IO antes de suspender 
+
+[INFO] 23:39:26:171 Servidor Kernel/(21074:21080): Enviando a memoria para suspender proceso 
+
+[INFO] 23:39:26:174 Servidor Kernel/(21074:21080): respuesta de suspension de memoria recibida 
+
+[INFO] 23:39:26:174 Servidor Kernel/(21074:21080): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 23:39:26:174 Servidor Kernel/(21074:21080): Proceso suspendido, iniciar IO restante
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21080): Proceso hizo IO restante
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21080): PID[0] apunto de suspended ready 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21081): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21081): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21081): PID[0] antes de suspended ready 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21077): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21078): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21078): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21078): Inicio la planificacion SRT 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21078): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21078): PID[0] ingresa a EXEC
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21079): PID[0] sale de EXEC
+
+[INFO] 23:39:28:974 Servidor Kernel/(21074:21079): PCB enviada cpu para ejecucion
+[INFO] 23:39:28:979 Servidor Kernel/(21074:21079): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 23:39:28:979 Servidor Kernel/(21074:21079): [5] Ultima instruccion ejecutada
+[INFO] 23:39:28:979 Servidor Kernel/(21074:21079): PID[0] Entra en EXIT 
+
+[INFO] 23:39:28:979 Servidor Kernel/(21074:21076): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 23:39:28:979 Servidor Kernel/(21074:21076): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 23:39:28:979 Servidor Kernel/(21074:21076): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 23:39:28:979 Servidor Kernel/(21074:21076): No se pudo eliminar memoria de PID[0]
+
+[INFO] 23:39:28:979 Servidor Kernel/(21074:21076): Enviando a consola que finalizo el proceso
+
+[INFO] 00:01:35:998 Servidor Kernel/(23135:23135): Archivo de configuracion cargada 
+
+[INFO] 00:01:35:998 Servidor Kernel/(23135:23135): Kernel conectado con cpu 
+
+[INFO] 00:01:35:999 Servidor Kernel/(23135:23135): Kernel conectado con memoria 
+
+[INFO] 00:01:35:999 Servidor Kernel/(23135:23135): Servidor creado 
+
+[INFO] 00:01:35:999 Servidor Kernel/(23135:23135): Estructuras largo plazo creadas 
+
+[INFO] 00:01:35:999 Servidor Kernel/(23135:23135): Estructuras corto plazo creadas 
+
+[INFO] 00:01:36:000 Servidor Kernel/(23135:23135): Estructuras mediano plazo creadas 
+
+[INFO] 00:01:36:000 Servidor Kernel/(23135:23135): Planificacion iniciada 
+
+[INFO] 00:01:36:000 Servidor Kernel/(23135:23135): Kernel listo para recibir al modulo cliente 
+
+[INFO] 00:01:36:000 Servidor Kernel/(23135:23142): PID[-1218271232] antes de suspended ready 
+
+[INFO] 00:01:38:531 Servidor Kernel/(23135:23144): Me llego el tamanio y las instrucciones
+
+[INFO] 00:01:38:531 Servidor Kernel/(23135:23144): Consola deserializada, entro a armar pcb
+
+[INFO] 00:01:38:532 Servidor Kernel/(23135:23144): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:01:38:532 Servidor Kernel/(23135:23144): PID[0] ingresa a NEW 
+
+[INFO] 00:01:38:532 Servidor Kernel/(23135:23138): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23138): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23138): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23138): PID[0] ingresa a READY desde NEW 
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23139): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23139): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23139): Inicio la planificacion SRT 
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23139): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23139): PID[0] ingresa a EXEC
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23140): PID[0] sale de EXEC
+
+[INFO] 00:01:38:533 Servidor Kernel/(23135:23140): PCB enviada cpu para ejecucion
+[INFO] 00:01:38:541 Servidor Kernel/(23135:23140): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:01:38:542 Servidor Kernel/(23135:23140): [1] Ultima instruccion ejecutada
+[INFO] 00:01:38:542 Servidor Kernel/(23135:23140): PID[0] Entra en BLOCKED 
+
+[INFO] 00:01:38:542 Servidor Kernel/(23135:23141): PID[0] sale de BLOCKED 
+
+[INFO] 00:01:38:542 Servidor Kernel/(23135:23141): PID[0] ejecuta IO 
+
+[INFO] 00:01:38:542 Servidor Kernel/(23135:23141): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 00:01:38:743 Servidor Kernel/(23135:23141): iniciar IO antes de suspender 
+
+[INFO] 00:01:38:743 Servidor Kernel/(23135:23141): Enviando a memoria para suspender proceso 
+
+[INFO] 00:01:38:746 Servidor Kernel/(23135:23141): respuesta de suspension de memoria recibida 
+
+[INFO] 00:01:38:746 Servidor Kernel/(23135:23141): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 00:01:38:746 Servidor Kernel/(23135:23141): Proceso suspendido, iniciar IO restante
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23141): Proceso hizo IO restante
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23141): PID[0] apunto de suspended ready 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23142): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23142): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23142): PID[0] antes de suspended ready 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23138): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23139): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23139): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23139): Inicio la planificacion SRT 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23139): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23139): PID[0] ingresa a EXEC
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23140): PID[0] sale de EXEC
+
+[INFO] 00:01:41:547 Servidor Kernel/(23135:23140): PCB enviada cpu para ejecucion
+[INFO] 00:01:41:552 Servidor Kernel/(23135:23140): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:01:41:552 Servidor Kernel/(23135:23140): [5] Ultima instruccion ejecutada
+[INFO] 00:01:41:552 Servidor Kernel/(23135:23140): PID[0] Entra en EXIT 
+
+[INFO] 00:01:41:552 Servidor Kernel/(23135:23137): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 00:01:41:552 Servidor Kernel/(23135:23137): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 00:01:41:553 Servidor Kernel/(23135:23137): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 00:01:41:553 Servidor Kernel/(23135:23137): No se pudo eliminar memoria de PID[0]
+
+[INFO] 00:01:41:553 Servidor Kernel/(23135:23137): Enviando a consola que finalizo el proceso
+
+[INFO] 00:01:54:150 Servidor Kernel/(23135:23148): Me llego el tamanio y las instrucciones
+
+[INFO] 00:01:54:150 Servidor Kernel/(23135:23148): Consola deserializada, entro a armar pcb
+
+[INFO] 00:01:54:151 Servidor Kernel/(23135:23148): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:01:54:151 Servidor Kernel/(23135:23148): PID[1] ingresa a NEW 
+
+[INFO] 00:01:54:151 Servidor Kernel/(23135:23138): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:01:54:151 Servidor Kernel/(23135:23138): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:13:38:260 Servidor Kernel/(23645:23645): Archivo de configuracion cargada 
+
+[INFO] 00:13:38:260 Servidor Kernel/(23645:23645): Kernel conectado con cpu 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23645): Kernel conectado con memoria 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23645): Servidor creado 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23645): Estructuras largo plazo creadas 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23645): Estructuras corto plazo creadas 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23645): Estructuras mediano plazo creadas 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23645): Planificacion iniciada 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23645): Kernel listo para recibir al modulo cliente 
+
+[INFO] 00:13:38:261 Servidor Kernel/(23645:23652): PID[-1218304000] antes de suspended ready 
+
+[INFO] 00:13:45:437 Servidor Kernel/(23645:23654): Me llego el tamanio y las instrucciones
+
+[INFO] 00:13:45:437 Servidor Kernel/(23645:23654): Consola deserializada, entro a armar pcb
+
+[INFO] 00:13:45:437 Servidor Kernel/(23645:23654): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23654): PID[0] ingresa a NEW 
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23648): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23648): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23648): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23648): PID[0] ingresa a READY desde NEW 
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23649): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23649): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23649): Inicio la planificacion SRT 
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23649): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23649): PID[0] ingresa a EXEC
+
+[INFO] 00:13:45:438 Servidor Kernel/(23645:23650): PID[0] sale de EXEC
+
+[INFO] 00:13:45:439 Servidor Kernel/(23645:23650): PCB enviada cpu para ejecucion
+[INFO] 00:13:45:447 Servidor Kernel/(23645:23650): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:13:45:447 Servidor Kernel/(23645:23650): [1] Ultima instruccion ejecutada
+[INFO] 00:13:45:447 Servidor Kernel/(23645:23650): PID[0] Entra en BLOCKED 
+
+[INFO] 00:13:45:447 Servidor Kernel/(23645:23651): PID[0] sale de BLOCKED 
+
+[INFO] 00:13:45:447 Servidor Kernel/(23645:23651): PID[0] ejecuta IO 
+
+[INFO] 00:13:45:447 Servidor Kernel/(23645:23651): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 00:13:45:647 Servidor Kernel/(23645:23651): iniciar IO antes de suspender 
+
+[INFO] 00:13:45:647 Servidor Kernel/(23645:23651): Enviando a memoria para suspender proceso 
+
+[INFO] 00:13:45:649 Servidor Kernel/(23645:23651): respuesta de suspension de memoria recibida 
+
+[INFO] 00:13:45:649 Servidor Kernel/(23645:23651): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 00:13:45:649 Servidor Kernel/(23645:23651): Proceso suspendido, iniciar IO restante
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23651): Proceso hizo IO restante
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23651): PID[0] apunto de suspended ready 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23652): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23652): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23652): PID[0] antes de suspended ready 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23648): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23649): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23649): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23649): Inicio la planificacion SRT 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23649): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23649): PID[0] ingresa a EXEC
+
+[INFO] 00:13:48:449 Servidor Kernel/(23645:23650): PID[0] sale de EXEC
+
+[INFO] 00:13:48:450 Servidor Kernel/(23645:23650): PCB enviada cpu para ejecucion
+[INFO] 00:13:48:454 Servidor Kernel/(23645:23650): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:13:48:454 Servidor Kernel/(23645:23650): [5] Ultima instruccion ejecutada
+[INFO] 00:13:48:454 Servidor Kernel/(23645:23650): PID[0] Entra en EXIT 
+
+[INFO] 00:13:48:454 Servidor Kernel/(23645:23647): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 00:13:48:454 Servidor Kernel/(23645:23647): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 00:13:48:454 Servidor Kernel/(23645:23647): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 00:13:48:454 Servidor Kernel/(23645:23647): No se pudo eliminar memoria de PID[0]
+
+[INFO] 00:13:48:455 Servidor Kernel/(23645:23647): Enviando a consola que finalizo el proceso
+
+[INFO] 00:13:58:453 Servidor Kernel/(23645:23659): Me llego el tamanio y las instrucciones
+
+[INFO] 00:13:58:453 Servidor Kernel/(23645:23659): Consola deserializada, entro a armar pcb
+
+[INFO] 00:13:58:453 Servidor Kernel/(23645:23659): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:13:58:454 Servidor Kernel/(23645:23659): PID[1] ingresa a NEW 
+
+[INFO] 00:13:58:454 Servidor Kernel/(23645:23648): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:13:58:454 Servidor Kernel/(23645:23648): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:17:12:700 Servidor Kernel/(23939:23939): Archivo de configuracion cargada 
+
+[INFO] 00:17:12:701 Servidor Kernel/(23939:23939): Kernel conectado con cpu 
+
+[INFO] 00:17:12:701 Servidor Kernel/(23939:23939): Kernel conectado con memoria 
+
+[INFO] 00:17:12:701 Servidor Kernel/(23939:23939): Servidor creado 
+
+[INFO] 00:17:12:701 Servidor Kernel/(23939:23939): Estructuras largo plazo creadas 
+
+[INFO] 00:17:12:702 Servidor Kernel/(23939:23939): Estructuras corto plazo creadas 
+
+[INFO] 00:17:12:702 Servidor Kernel/(23939:23939): Estructuras mediano plazo creadas 
+
+[INFO] 00:17:12:702 Servidor Kernel/(23939:23939): Planificacion iniciada 
+
+[INFO] 00:17:12:702 Servidor Kernel/(23939:23939): Kernel listo para recibir al modulo cliente 
+
+[INFO] 00:17:12:702 Servidor Kernel/(23939:23946): PID[-1218082816] antes de suspended ready 
+
+[INFO] 00:17:14:797 Servidor Kernel/(23939:23950): Me llego el tamanio y las instrucciones
+
+[INFO] 00:17:14:797 Servidor Kernel/(23939:23950): Consola deserializada, entro a armar pcb
+
+[INFO] 00:17:14:797 Servidor Kernel/(23939:23950): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23950): PID[0] ingresa a NEW 
+
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23942): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23942): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23942): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23942): PID[0] ingresa a READY desde NEW 
+
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23943): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23943): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:17:14:798 Servidor Kernel/(23939:23943): Inicio la planificacion SRT 
+
+[INFO] 00:17:14:799 Servidor Kernel/(23939:23943): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:17:14:799 Servidor Kernel/(23939:23943): PID[0] ingresa a EXEC
+
+[INFO] 00:17:14:799 Servidor Kernel/(23939:23944): PID[0] sale de EXEC
+
+[INFO] 00:17:14:799 Servidor Kernel/(23939:23944): PCB enviada cpu para ejecucion
+[INFO] 00:17:14:809 Servidor Kernel/(23939:23944): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:17:14:809 Servidor Kernel/(23939:23944): [1] Ultima instruccion ejecutada
+[INFO] 00:17:14:809 Servidor Kernel/(23939:23944): PID[0] Entra en BLOCKED 
+
+[INFO] 00:17:14:809 Servidor Kernel/(23939:23945): PID[0] sale de BLOCKED 
+
+[INFO] 00:17:14:809 Servidor Kernel/(23939:23945): PID[0] ejecuta IO 
+
+[INFO] 00:17:14:809 Servidor Kernel/(23939:23945): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 00:17:15:010 Servidor Kernel/(23939:23945): iniciar IO antes de suspender 
+
+[INFO] 00:17:15:010 Servidor Kernel/(23939:23945): Enviando a memoria para suspender proceso 
+
+[INFO] 00:17:15:012 Servidor Kernel/(23939:23945): respuesta de suspension de memoria recibida 
+
+[INFO] 00:17:15:012 Servidor Kernel/(23939:23945): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 00:17:15:012 Servidor Kernel/(23939:23945): Proceso suspendido, iniciar IO restante
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23945): Proceso hizo IO restante
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23945): PID[0] apunto de suspended ready 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23946): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23946): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23946): PID[0] antes de suspended ready 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23942): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23943): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23943): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23943): Inicio la planificacion SRT 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23943): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23943): PID[0] ingresa a EXEC
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23944): PID[0] sale de EXEC
+
+[INFO] 00:17:17:813 Servidor Kernel/(23939:23944): PCB enviada cpu para ejecucion
+[INFO] 00:17:17:820 Servidor Kernel/(23939:23944): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:17:17:820 Servidor Kernel/(23939:23944): [5] Ultima instruccion ejecutada
+[INFO] 00:17:17:820 Servidor Kernel/(23939:23944): PID[0] Entra en EXIT 
+
+[INFO] 00:17:17:820 Servidor Kernel/(23939:23941): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 00:17:17:820 Servidor Kernel/(23939:23941): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 00:17:17:820 Servidor Kernel/(23939:23941): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 00:17:17:820 Servidor Kernel/(23939:23941): No se pudo eliminar memoria de PID[0]
+
+[INFO] 00:17:17:820 Servidor Kernel/(23939:23941): Enviando a consola que finalizo el proceso
+
+[INFO] 00:17:24:301 Servidor Kernel/(23939:23959): Me llego el tamanio y las instrucciones
+
+[INFO] 00:17:24:301 Servidor Kernel/(23939:23959): Consola deserializada, entro a armar pcb
+
+[INFO] 00:17:24:301 Servidor Kernel/(23939:23959): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:17:24:301 Servidor Kernel/(23939:23959): PID[1] ingresa a NEW 
+
+[INFO] 00:17:24:302 Servidor Kernel/(23939:23942): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:17:24:302 Servidor Kernel/(23939:23942): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23942): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23942): PID[1] ingresa a READY desde NEW 
+
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23943): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23943): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23943): Inicio la planificacion SRT 
+
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23943): PID[1] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23943): PID[1] ingresa a EXEC
+
+[INFO] 00:17:24:304 Servidor Kernel/(23939:23944): PID[1] sale de EXEC
+
+[INFO] 00:17:24:305 Servidor Kernel/(23939:23944): PCB enviada cpu para ejecucion
+[INFO] 00:17:24:312 Servidor Kernel/(23939:23944): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:17:24:313 Servidor Kernel/(23939:23944): [5] Ultima instruccion ejecutada
+[INFO] 00:17:24:313 Servidor Kernel/(23939:23944): PID[1] Entra en EXIT 
+
+[INFO] 00:19:23:385 Servidor Kernel/(24274:24274): Archivo de configuracion cargada 
+
+[INFO] 00:19:23:386 Servidor Kernel/(24274:24274): Kernel conectado con cpu 
+
+[INFO] 00:19:23:386 Servidor Kernel/(24274:24274): Kernel conectado con memoria 
+
+[INFO] 00:19:23:386 Servidor Kernel/(24274:24274): Servidor creado 
+
+[INFO] 00:19:23:387 Servidor Kernel/(24274:24274): Estructuras largo plazo creadas 
+
+[INFO] 00:19:23:387 Servidor Kernel/(24274:24274): Estructuras corto plazo creadas 
+
+[INFO] 00:19:23:387 Servidor Kernel/(24274:24274): Estructuras mediano plazo creadas 
+
+[INFO] 00:19:23:387 Servidor Kernel/(24274:24274): Planificacion iniciada 
+
+[INFO] 00:19:23:387 Servidor Kernel/(24274:24274): Kernel listo para recibir al modulo cliente 
+
+[INFO] 00:19:23:387 Servidor Kernel/(24274:24281): PID[-1218222080] antes de suspended ready 
+
+[INFO] 00:19:28:837 Servidor Kernel/(24274:24283): Me llego el tamanio y las instrucciones
+
+[INFO] 00:19:28:837 Servidor Kernel/(24274:24283): Consola deserializada, entro a armar pcb
+
+[INFO] 00:19:28:838 Servidor Kernel/(24274:24283): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:19:28:838 Servidor Kernel/(24274:24283): PID[0] ingresa a NEW 
+
+[INFO] 00:19:28:838 Servidor Kernel/(24274:24277): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24277): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24277): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24277): PID[0] ingresa a READY desde NEW 
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24278): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24278): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24278): Inicio la planificacion SRT 
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24278): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24278): PID[0] ingresa a EXEC
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24279): PID[0] sale de EXEC
+
+[INFO] 00:19:28:839 Servidor Kernel/(24274:24279): PCB enviada cpu para ejecucion
+[INFO] 00:19:28:847 Servidor Kernel/(24274:24279): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:19:28:847 Servidor Kernel/(24274:24279): [1] Ultima instruccion ejecutada
+[INFO] 00:19:28:847 Servidor Kernel/(24274:24279): PID[0] Entra en BLOCKED 
+
+[INFO] 00:19:28:847 Servidor Kernel/(24274:24280): PID[0] sale de BLOCKED 
+
+[INFO] 00:19:28:847 Servidor Kernel/(24274:24280): PID[0] ejecuta IO 
+
+[INFO] 00:19:28:847 Servidor Kernel/(24274:24280): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 00:19:29:047 Servidor Kernel/(24274:24280): iniciar IO antes de suspender 
+
+[INFO] 00:19:29:047 Servidor Kernel/(24274:24280): Enviando a memoria para suspender proceso 
+
+[INFO] 00:19:29:049 Servidor Kernel/(24274:24280): respuesta de suspension de memoria recibida 
+
+[INFO] 00:19:29:049 Servidor Kernel/(24274:24280): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 00:19:29:049 Servidor Kernel/(24274:24280): Proceso suspendido, iniciar IO restante
+
+[INFO] 00:19:31:849 Servidor Kernel/(24274:24280): Proceso hizo IO restante
+
+[INFO] 00:19:31:849 Servidor Kernel/(24274:24280): PID[0] apunto de suspended ready 
+
+[INFO] 00:19:31:849 Servidor Kernel/(24274:24281): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 00:19:31:849 Servidor Kernel/(24274:24281): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 00:19:31:849 Servidor Kernel/(24274:24281): PID[0] antes de suspended ready 
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24277): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24278): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24278): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24278): Inicio la planificacion SRT 
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24278): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24278): PID[0] ingresa a EXEC
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24279): PID[0] sale de EXEC
+
+[INFO] 00:19:31:850 Servidor Kernel/(24274:24279): PCB enviada cpu para ejecucion
+[INFO] 00:19:31:854 Servidor Kernel/(24274:24279): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:19:31:854 Servidor Kernel/(24274:24279): [5] Ultima instruccion ejecutada
+[INFO] 00:19:31:854 Servidor Kernel/(24274:24279): PID[0] Entra en EXIT 
+
+[INFO] 00:19:31:854 Servidor Kernel/(24274:24276): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 00:19:31:854 Servidor Kernel/(24274:24276): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 00:19:31:855 Servidor Kernel/(24274:24276): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 00:19:31:855 Servidor Kernel/(24274:24276): No se pudo eliminar memoria de PID[0]
+
+[INFO] 00:19:31:855 Servidor Kernel/(24274:24276): Enviando a consola que finalizo el proceso
+
+[INFO] 00:19:36:005 Servidor Kernel/(24274:24287): Me llego el tamanio y las instrucciones
+
+[INFO] 00:19:36:005 Servidor Kernel/(24274:24287): Consola deserializada, entro a armar pcb
+
+[INFO] 00:19:36:005 Servidor Kernel/(24274:24287): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:19:36:005 Servidor Kernel/(24274:24287): PID[1] ingresa a NEW 
+
+[INFO] 00:19:36:006 Servidor Kernel/(24274:24277): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:19:36:006 Servidor Kernel/(24274:24277): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:23:19:211 Servidor Kernel/(24484:24484): Archivo de configuracion cargada 
+
+[INFO] 00:23:19:212 Servidor Kernel/(24484:24484): Kernel conectado con cpu 
+
+[INFO] 00:23:19:212 Servidor Kernel/(24484:24484): Kernel conectado con memoria 
+
+[INFO] 00:23:19:212 Servidor Kernel/(24484:24484): Servidor creado 
+
+[INFO] 00:23:19:213 Servidor Kernel/(24484:24484): Estructuras largo plazo creadas 
+
+[INFO] 00:23:19:213 Servidor Kernel/(24484:24484): Estructuras corto plazo creadas 
+
+[INFO] 00:23:19:213 Servidor Kernel/(24484:24484): Estructuras mediano plazo creadas 
+
+[INFO] 00:23:19:213 Servidor Kernel/(24484:24484): Planificacion iniciada 
+
+[INFO] 00:23:19:213 Servidor Kernel/(24484:24484): Kernel listo para recibir al modulo cliente 
+
+[INFO] 00:23:19:213 Servidor Kernel/(24484:24491): PID[-1218115584] antes de suspended ready 
+
+[INFO] 00:23:22:460 Servidor Kernel/(24484:24498): Me llego el tamanio y las instrucciones
+
+[INFO] 00:23:22:460 Servidor Kernel/(24484:24498): Consola deserializada, entro a armar pcb
+
+[INFO] 00:23:22:461 Servidor Kernel/(24484:24498): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:23:22:461 Servidor Kernel/(24484:24498): PID[0] ingresa a NEW 
+
+[INFO] 00:23:22:461 Servidor Kernel/(24484:24487): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24487): Recibi paquete PCB de memoria 
+ 
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24487): entrada de tabla de paginas de primer nivel del proceso recibida 
+ 
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24487): PID[0] ingresa a READY desde NEW 
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24488): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24488): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24488): Inicio la planificacion SRT 
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24488): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24488): PID[0] ingresa a EXEC
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24489): PID[0] sale de EXEC
+
+[INFO] 00:23:22:462 Servidor Kernel/(24484:24489): PCB enviada cpu para ejecucion
+[INFO] 00:23:22:471 Servidor Kernel/(24484:24489): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:23:22:471 Servidor Kernel/(24484:24489): [1] Ultima instruccion ejecutada
+[INFO] 00:23:22:471 Servidor Kernel/(24484:24489): PID[0] Entra en BLOCKED 
+
+[INFO] 00:23:22:471 Servidor Kernel/(24484:24490): PID[0] sale de BLOCKED 
+
+[INFO] 00:23:22:471 Servidor Kernel/(24484:24490): PID[0] ejecuta IO 
+
+[INFO] 00:23:22:471 Servidor Kernel/(24484:24490): Mandar a suspension al proceso por superar tiempo max de bloqueo 
+
+[INFO] 00:23:22:672 Servidor Kernel/(24484:24490): iniciar IO antes de suspender 
+
+[INFO] 00:23:22:672 Servidor Kernel/(24484:24490): Enviando a memoria para suspender proceso 
+
+[INFO] 00:23:22:675 Servidor Kernel/(24484:24490): respuesta de suspension de memoria recibida 
+
+[INFO] 00:23:22:675 Servidor Kernel/(24484:24490): PID[0] ingresa a SUSPENDED-BLOCKED 
+
+[INFO] 00:23:22:675 Servidor Kernel/(24484:24490): Proceso suspendido, iniciar IO restante
+
+[INFO] 00:23:25:475 Servidor Kernel/(24484:24490): Proceso hizo IO restante
+
+[INFO] 00:23:25:475 Servidor Kernel/(24484:24490): PID[0] apunto de suspended ready 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24491): PID[0] sale de SUSPENDED-BLOCKED 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24491): PID[0] ingresa a SUSPENDED-READY 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24491): PID[0] antes de suspended ready 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24487): PID[0] ingresa a READY desde SUSPENDED-READY 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24488): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24488): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24488): Inicio la planificacion SRT 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24488): PID[0] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24488): PID[0] ingresa a EXEC
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24489): PID[0] sale de EXEC
+
+[INFO] 00:23:25:476 Servidor Kernel/(24484:24489): PCB enviada cpu para ejecucion
+[INFO] 00:23:25:481 Servidor Kernel/(24484:24489): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 00:23:25:481 Servidor Kernel/(24484:24489): [5] Ultima instruccion ejecutada
+[INFO] 00:23:25:481 Servidor Kernel/(24484:24489): PID[0] Entra en EXIT 
+
+[INFO] 00:23:25:481 Servidor Kernel/(24484:24486): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 00:23:25:481 Servidor Kernel/(24484:24486): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 00:23:25:481 Servidor Kernel/(24484:24486): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[ERROR] 00:23:25:481 Servidor Kernel/(24484:24486): No se pudo eliminar memoria de PID[0]
+
+[INFO] 00:23:25:481 Servidor Kernel/(24484:24486): Enviando a consola que finalizo el proceso
+
+[INFO] 00:24:31:523 Servidor Kernel/(24484:24522): Me llego el tamanio y las instrucciones
+
+[INFO] 00:24:31:524 Servidor Kernel/(24484:24522): Consola deserializada, entro a armar pcb
+
+[INFO] 00:24:31:524 Servidor Kernel/(24484:24522): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 00:24:31:524 Servidor Kernel/(24484:24522): PID[1] ingresa a NEW 
+
+[INFO] 00:24:31:524 Servidor Kernel/(24484:24487): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 00:24:31:524 Servidor Kernel/(24484:24487): Recibi paquete PCB de memoria 
+ 

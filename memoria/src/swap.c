@@ -33,7 +33,7 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	// hacer el mmap para que quede siempre abierto
 
 	archivo_swap = mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ,MAP_SHARED,fd,0);
-	archivos_swap* archivo= malloc(sizeof(archivo));
+	archivos_swap* archivo= malloc(sizeof(archivos_swap));
 	archivo->pid = idProceso;
 	archivo->archivo = archivo_swap;
 	archivo->fd = fd;
