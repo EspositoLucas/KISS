@@ -62,7 +62,7 @@ void manejo_conexiones(int socket_cliente){
 		break;
 	case INSTRUCCION_MEMORIA:
 		log_info(memoria_logger,"me llego una instruccion de cpu \n");
-		t_list* datos = recibirPaquete(socket_cliente);
+		t_list* datos = recibir_paquete(socket_cliente);
 		manejo_instrucciones(datos,socket_cliente);
 		log_info(memoria_logger,"Instruccion de cpu ejecutada \n");
 		list_destroy(datos);
@@ -74,13 +74,15 @@ void manejo_conexiones(int socket_cliente){
 		entrada1=*(uint32_t*)list_get(valores,1);
 		entrada2 = devolver_entrada_a_segunda_tabla(tabla, entrada1);
 		usleep(config_valores_memoria.retardo_memoria);
-		t_paquete* paquete_tabla= crear_paquete();
-		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
-		enviar_paquete(paquete_tabla,socket_cliente);
+//		t_paquete* paquete_tabla= crear_paquete();
+//		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
+//		enviar_paquete(paquete_tabla,socket_cliente);
 		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+		enviar_datos(socket_cliente,&entrada2,sizeof(uint32_t));
+		printf("valor entrada tabla 2 %d \n",entrada2);
 		log_info(memoria_logger,"entrada segundo nivel enviado a cpu \n");
 		list_destroy(valores);
-		eliminar_paquete(paquete_tabla);
+//		eliminar_paquete(paquete_tabla);
 		break;
 	case MARCO:
 		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
@@ -88,12 +90,14 @@ void manejo_conexiones(int socket_cliente){
 		valores=recibir_paquete(socket_cliente);
 		log_info(memoria_logger,"paquete recibido (mmu) \n");
 		tabla=*(uint32_t*)list_get(valores,0);
+		printf("valor segunda tabla %d \n",tabla);
 		log_info(memoria_logger,"valor tabla (mmu) \n");
 		entrada2=*(uint32_t*)list_get(valores,1);
+		printf("valor entrada tabla 2 %d \n",entrada2);
 		log_info(memoria_logger,"valor entrada2 (mmu) \n");
-		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		marco= devolver_marco(tabla, entrada2);
-		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"valor marco (mmu) \n");
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_marco= crear_paquete();
@@ -104,7 +108,7 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"marco enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
-		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
 		log_info(memoria_logger, "Inicializando estructuras \n");
@@ -303,7 +307,7 @@ t_paquete* preparar_paquete_para_handshake(){
 
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
 void manejo_instrucciones(t_list* datos,int socket_cpu){
-	op_code tipo_instruccion = *(op_code*)list_get(datos,0);
+	codigo_instrucciones tipo_instruccion = *(codigo_instrucciones*)list_get(datos,0);
 	printf("valor op code %d\n",tipo_instruccion);
 	uint32_t dir_fisica;
 	uint32_t valor_leido;

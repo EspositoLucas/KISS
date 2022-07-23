@@ -248,7 +248,7 @@ int enviar_datos(int socket_fd, void *source, uint32_t size) {
 }
 
 int recibir_datos(int socket_fd, void *dest, uint32_t size) {
-	return recv(socket_fd, dest, size, MSG_WAITALL); // cuantos bytes a recibir y a donde los quiero recibir
+	return recv(socket_fd, dest, size, 0); // cuantos bytes a recibir y a donde los quiero recibir
 }
 
 

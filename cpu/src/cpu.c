@@ -148,7 +148,7 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
 	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
-	op_code codigo = READ;
+	codigo_instrucciones codigo = READ;
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
 	agregar_a_paquete(paquete,&dir_fisica,sizeof(uint32_t));
@@ -186,7 +186,7 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
 	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
-	op_code codigo = WRITE ;
+	codigo_instrucciones codigo = WRITE ;
 	log_info(cpu_logger, "paquete creado \n");
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	log_info(cpu_logger, "codigo INSTRUCCION asignado a paquete \n");
@@ -224,7 +224,7 @@ void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
 	uint32_t dir_fisica_origen=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaOrigen);
 	log_info(cpu_logger, "Traducciones exitosas \n");
 	t_paquete* paquete=crear_paquete();
-	op_code codigo = COPY ;
+	codigo_instrucciones codigo = COPY ;
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
 	agregar_a_paquete(paquete,&dir_fisica_destino,sizeof(uint32_t));
