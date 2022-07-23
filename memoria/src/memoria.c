@@ -298,16 +298,17 @@ t_paquete* preparar_paquete_para_handshake(){
 
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
 void manejo_instrucciones(t_list* datos,int socket_cpu){
-	op_code tipo_instruccion = (op_code) list_get(datos,0);
-	printf("valor op code %d/n",tipo_instruccion);
+	op_code tipo_instruccion = *(op_code*)list_get(datos,0);
+	printf("valor op code %d\n",tipo_instruccion);
 	uint32_t dir_fisica;
 	uint32_t valor_leido;
+	uint32_t valor_escritura;
 	op_code codigo;
 	int escritura;
 
 	switch(tipo_instruccion){
 	case READ: ;
-		dir_fisica = (uint32_t)list_get(datos,1);
+		dir_fisica = *(uint32_t*)list_get(datos,1);
 		valor_leido = leer_de_memoria(dir_fisica);
 
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de responder a cpu
@@ -318,11 +319,11 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		break;
 	case WRITE: ;
 		printf("valor antes de dir fisica \n");
-		dir_fisica = (uint32_t)list_get(datos,1);
-		printf("valor despues de dir fisica \n");
-		uint32_t valor = (uint32_t)list_get(datos,2);
-		printf("valor antes de escribir \n");
-		escritura = escribirEn(dir_fisica, valor);
+		dir_fisica = *(uint32_t*)list_get(datos,1);
+		printf("valor despues de dir fisica %d\n",dir_fisica);
+		valor_escritura = *(uint32_t*)list_get(datos,2);
+		printf("valor antes de escribir %d\n",valor_escritura);
+		escritura = escribirEn(dir_fisica, valor_escritura);
 		printf("valor depsues de dir fisica \n");
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
@@ -330,8 +331,8 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		log_info(memoria_logger,"Estado de escritura enviado a CPU \n");
 		break;
 	case COPY: ;
-		uint32_t dir_fisica_destino = (uint32_t)list_get(datos,1);
-		uint32_t dir_fisica_origen = (uint32_t)list_get(datos,2);
+		uint32_t dir_fisica_destino = *(uint32_t*)list_get(datos,1);
+		uint32_t dir_fisica_origen = *(uint32_t*)list_get(datos,2);
 
 		valor_leido = leer_de_memoria(dir_fisica_origen);
 		escritura = escribirEn(dir_fisica_destino, valor_leido);

@@ -2510,3 +2510,111 @@
 
 [INFO] 20:09:02:060 Servidor Memoria/(15822:15824): Instruccion de cpu ejecutada 
 
+[INFO] 00:12:55:784 Servidor Memoria/(21387:21387): Memoria lista para recibir al modulo cliente 
+
+[INFO] 00:12:58:152 Servidor Memoria/(21387:21387): Se conecto un cliente 
+
+[INFO] 00:13:25:572 Servidor Memoria/(21530:21530): Memoria lista para recibir al modulo cliente 
+
+[INFO] 00:13:28:090 Servidor Memoria/(21530:21530): Se conecto un cliente 
+
+[INFO] 00:13:28:091 Servidor Memoria/(21530:21532): me llego el handshake de cpu 
+
+[INFO] 00:13:28:092 Servidor Memoria/(21530:21532): hanshake enviado a cpu 
+
+[INFO] 00:13:30:400 Servidor Memoria/(21530:21530): Se conecto un cliente 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): Inicializando estructuras 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): tabla segundo nivel creada 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): tabla segundo nivel creada 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): tabla segundo nivel creada 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): tabla segundo nivel creada 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:14:17:650 Servidor Memoria/(21530:21536): Error al crear el archivo swap del proceso: 0
+
+[INFO] 00:19:42:992 Servidor Memoria/(21824:21824): Memoria lista para recibir al modulo cliente 
+
+[INFO] 00:19:44:816 Servidor Memoria/(21824:21824): Se conecto un cliente 
+
+[INFO] 00:19:44:817 Servidor Memoria/(21824:21826): me llego el handshake de cpu 
+
+[INFO] 00:19:44:818 Servidor Memoria/(21824:21826): hanshake enviado a cpu 
+
+[INFO] 00:19:51:712 Servidor Memoria/(21824:21824): Se conecto un cliente 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): Inicializando estructuras 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:19:54:835 Servidor Memoria/(21824:21832): Se creo el archivo swap del proceso: 0
+
+[INFO] 00:19:54:836 Servidor Memoria/(21824:21832): Swap creado 
+
+[INFO] 00:19:54:836 Servidor Memoria/(21824:21832): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+
+[INFO] 00:19:57:848 Servidor Memoria/(21824:21832): Me llego pedido liberar estructuras del proceso 
+
+[INFO] 00:19:57:849 Servidor Memoria/(21824:21832): Se liberaron los marcos del proceso
+
+[INFO] 00:19:57:849 Servidor Memoria/(21824:21832): Se libero entrada tp1 del proceso 
+
+[INFO] 00:19:57:850 Servidor Memoria/(21824:21832): Se borro con exito el archivo swap del proceso: 0
+
+[INFO] 00:19:57:850 Servidor Memoria/(21824:21832): Se elimino swap y liberaron las estructuras del proceso 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): Inicializando estructuras 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): recibi pcb de kernel para inicializar estructuras 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): tabla segundo nivel creada 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): numero de tabla de segundo nivel pasado a la de primer nivel 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): Se creo el archivo swap del proceso: 1
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): Swap creado 
+
+[INFO] 00:23:20:347 Servidor Memoria/(21824:21832): Numero tabla de paginas de 2 nivel del proceso enviado a kernel 
+

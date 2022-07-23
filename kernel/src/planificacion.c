@@ -105,7 +105,9 @@ void finalizarPcb(void){
   	log_info(kernel_logger_info, "[EXIT]Sale de EXIT y Finaliza el  pcb de ID: %d\n", proceso->pcb-> id_proceso);
 	enviarPcb(socket_memoria,proceso->pcb);
 	log_info(kernel_logger_info, "Enviando a memoria liberar estructuras del proceso \n");
-	op_code codigo = esperar_respuesta_memoria(socket_memoria);
+	//op_code codigo = esperar_respuesta_memoria(socket_memoria);
+	//op_code codigo = recibir_datos(socket_memoria,&codigo,sizeof(op_code));
+	op_code codigo = recibir_operacion_nuevo(socket_memoria);;
 	printf("codigo %d \n",codigo);
 	log_info(kernel_logger_info, "Respuesta memoria de estructuras liberadas del proceso recibida \n");
 	if(codigo != ESTRUCTURAS_LIBERADAS) {
