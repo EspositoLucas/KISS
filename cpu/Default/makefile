@@ -29,7 +29,7 @@ all: cpu
 cpu: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc -L"/home/utnso/tp-2022-1c-Ubunteam/utils/Debug" -o "cpu" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc -L"/home/utnso/tp-2022-1c-Ubunteam/utils/Debug" -pthread -o "cpu" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

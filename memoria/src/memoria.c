@@ -328,6 +328,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
+		printf("valor opcode: %d \n",codigo);
 		log_info(memoria_logger,"Estado de escritura enviado a CPU \n");
 		break;
 	case COPY: ;
