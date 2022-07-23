@@ -5427,3 +5427,49 @@
 [INFO] 16:24:03:462 Servidor Kernel/(5651:5656): PID[0] sale de EXEC
 
 [INFO] 16:24:03:462 Servidor Kernel/(5651:5656): PCB enviada cpu para ejecucion
+[INFO] 20:08:55:184 Servidor Kernel/(15827:15827): Archivo de configuracion cargada 
+
+[INFO] 20:08:55:184 Servidor Kernel/(15827:15827): Kernel conectado con cpu 
+
+[INFO] 20:08:55:185 Servidor Kernel/(15827:15827): Kernel conectado con memoria 
+
+[INFO] 20:08:55:185 Servidor Kernel/(15827:15827): Servidor creado 
+
+[INFO] 20:08:55:185 Servidor Kernel/(15827:15827): Estructuras largo plazo creadas 
+
+[INFO] 20:08:55:185 Servidor Kernel/(15827:15827): Estructuras corto plazo creadas 
+
+[INFO] 20:08:55:185 Servidor Kernel/(15827:15827): Estructuras mediano plazo creadas 
+
+[INFO] 20:08:55:185 Servidor Kernel/(15827:15827): Planificacion iniciada 
+
+[INFO] 20:08:55:185 Servidor Kernel/(15827:15827): Kernel listo para recibir al modulo cliente 
+
+[INFO] 20:08:55:186 Servidor Kernel/(15827:15834): PID[-1218140160] antes de suspended ready 
+
+[INFO] 20:09:02:043 Servidor Kernel/(15827:15836): Me llego el tamanio y las instrucciones
+
+[INFO] 20:09:02:044 Servidor Kernel/(15827:15836): Consola deserializada, entro a armar pcb
+
+[INFO] 20:09:02:044 Servidor Kernel/(15827:15836): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 20:09:02:044 Servidor Kernel/(15827:15836): PID[0] ingresa a NEW 
+
+[INFO] 20:09:02:044 Servidor Kernel/(15827:15830): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15830): Recibi paquete PCB de memoria 
+ 
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15830): PID[0] ingresa a READY desde NEW 
+
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15831): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15831): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15831): Inicio la planificacion FIFO
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15831): PID[0] sale de READY para plan FIFO 
+
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15831): PID[0] ingresa a EXEC
+
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15832): PID[0] sale de EXEC
+
+[INFO] 20:09:02:045 Servidor Kernel/(15827:15832): PCB enviada cpu para ejecucion

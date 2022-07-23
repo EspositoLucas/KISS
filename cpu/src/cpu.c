@@ -148,9 +148,10 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
 	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
+	op_code codigo = READ;
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
-	agregar_a_paquete(paquete,READ,sizeof(op_code));
-	agregar_a_paquete(paquete,dir_fisica,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
+	agregar_a_paquete(paquete,&dir_fisica,sizeof(uint32_t));
 
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de lectura enviado \n");
@@ -183,10 +184,15 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	uint32_t dir_fisica=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogica);
 	log_info(cpu_logger, "Traduccion exitosa \n");
 	t_paquete* paquete=crear_paquete();
+	op_code codigo = WRITE ;
+	log_info(cpu_logger, "paquete creado \n");
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
-	agregar_a_paquete(paquete,WRITE,sizeof(op_code));
-	agregar_a_paquete(paquete,dir_fisica,sizeof(uint32_t));
-	agregar_a_paquete(paquete,valor,sizeof(uint32_t));
+	log_info(cpu_logger, "codigo INSTRUCCION asignado a paquete \n");
+	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
+	log_info(cpu_logger, "codigo WRITE agregado a paquete \n");
+	agregar_a_paquete(paquete,&dir_fisica,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&valor,sizeof(uint32_t));
+	log_info(cpu_logger, " paquete antes de enviar \n");
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de escritura enviado \n");
 	eliminar_paquete(paquete);
@@ -215,10 +221,11 @@ void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
 	uint32_t dir_fisica_origen=traducir_dir_logica(pcb->valor_tabla_paginas,dirLogicaOrigen);
 	log_info(cpu_logger, "Traducciones exitosas \n");
 	t_paquete* paquete=crear_paquete();
+	op_code codigo = COPY ;
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
-	agregar_a_paquete(paquete,COPY,sizeof(op_code));
-	agregar_a_paquete(paquete,dir_fisica_destino,sizeof(uint32_t));
-	agregar_a_paquete(paquete,dir_fisica_origen,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
+	agregar_a_paquete(paquete,&dir_fisica_destino,sizeof(uint32_t));
+	agregar_a_paquete(paquete,&dir_fisica_origen,sizeof(uint32_t));
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de copia enviado \n");
 	eliminar_paquete(paquete);

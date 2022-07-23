@@ -1046,3 +1046,21 @@
 
 [INFO] 16:24:03:797 Consola/(5659:5659): Finalizo el proceso, terminando programa.
 
+[INFO] 20:09:02:041 Consola/(15835:15835): Iniciando consola
+
+[INFO] 20:09:02:043 Consola/(15835:15835): Instrucciones parseadas correctamente
+
+[INFO] 20:09:02:043 Consola/(15835:15835): instrucciones serializadas
+
+[INFO] 20:09:02:043 Consola/(15835:15835): Conexion exitosa con kernel.
+
+[INFO] 20:09:02:043 Consola/(15835:15835): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 20:09:02:043 Consola/(15835:15835): respuesta kernel a recibir.
+
+[INFO] 20:14:35:183 Consola/(15835:15835): respuesta kernel recibida.
+
+[ERROR] 20:14:35:183 Consola/(15835:15835): Error al finalizar consola 
+
+[INFO] 20:14:35:183 Consola/(15835:15835): Finalizo el proceso, terminando programa.
+

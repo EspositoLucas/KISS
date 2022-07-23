@@ -299,6 +299,7 @@ t_paquete* preparar_paquete_para_handshake(){
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
 void manejo_instrucciones(t_list* datos,int socket_cpu){
 	op_code tipo_instruccion = (op_code) list_get(datos,0);
+	printf("valor op code %d/n",tipo_instruccion);
 	uint32_t dir_fisica;
 	uint32_t valor_leido;
 	op_code codigo;
@@ -311,16 +312,18 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de responder a cpu
 		t_paquete* paquete=crear_paquete();
-		agregar_entero_a_paquete(paquete,valor_leido);
+		agregar_a_paquete(paquete,&valor_leido,sizeof(uint32_t));
 		enviar_paquete(paquete,socket_cpu);
 		log_info(memoria_logger,"Valor leido enviado a CPU \n");
 		break;
 	case WRITE: ;
+		printf("valor antes de dir fisica \n");
 		dir_fisica = (uint32_t)list_get(datos,1);
+		printf("valor despues de dir fisica \n");
 		uint32_t valor = (uint32_t)list_get(datos,2);
-
+		printf("valor antes de escribir \n");
 		escritura = escribirEn(dir_fisica, valor);
-
+		printf("valor depsues de dir fisica \n");
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;

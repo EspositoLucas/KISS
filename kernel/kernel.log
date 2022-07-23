@@ -8011,3 +8011,233 @@
 [INFO] 19:22:37:209 Servidor Kernel/(13499:13511): PID[0] sale de EXEC
 
 [INFO] 19:22:37:209 Servidor Kernel/(13499:13511): PCB enviada cpu para ejecucion
+[INFO] 19:47:47:823 Servidor Kernel/(14469:14469): Archivo de configuracion cargada 
+
+[INFO] 19:47:47:823 Servidor Kernel/(14469:14469): Kernel conectado con cpu 
+
+[INFO] 19:47:47:824 Servidor Kernel/(14469:14469): Kernel conectado con memoria 
+
+[INFO] 19:47:47:826 Servidor Kernel/(14469:14469): Servidor creado 
+
+[INFO] 19:47:47:826 Servidor Kernel/(14469:14469): Estructuras largo plazo creadas 
+
+[INFO] 19:47:47:826 Servidor Kernel/(14469:14469): Estructuras corto plazo creadas 
+
+[INFO] 19:47:47:826 Servidor Kernel/(14469:14469): Estructuras mediano plazo creadas 
+
+[INFO] 19:47:47:826 Servidor Kernel/(14469:14469): Planificacion iniciada 
+
+[INFO] 19:47:47:826 Servidor Kernel/(14469:14469): Kernel listo para recibir al modulo cliente 
+
+[INFO] 19:47:47:835 Servidor Kernel/(14469:14481): PID[0] antes de suspended ready 
+
+[INFO] 19:47:50:529 Servidor Kernel/(14469:14493): Me llego el tamanio y las instrucciones
+
+[INFO] 19:47:50:529 Servidor Kernel/(14469:14493): Consola deserializada, entro a armar pcb
+
+[INFO] 19:47:50:529 Servidor Kernel/(14469:14493): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 19:47:50:529 Servidor Kernel/(14469:14493): PID[0] ingresa a NEW 
+
+[INFO] 19:47:50:529 Servidor Kernel/(14469:14477): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14477): Recibi paquete PCB de memoria 
+ 
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14477): PID[0] ingresa a READY desde NEW 
+
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14478): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14478): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14478): Inicio la planificacion FIFO
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14478): PID[0] sale de READY para plan FIFO 
+
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14478): PID[0] ingresa a EXEC
+
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14479): PID[0] sale de EXEC
+
+[INFO] 19:47:50:530 Servidor Kernel/(14469:14479): PCB enviada cpu para ejecucion
+[INFO] 19:50:23:947 Servidor Kernel/(14695:14695): Archivo de configuracion cargada 
+
+[INFO] 19:50:23:948 Servidor Kernel/(14695:14695): Kernel conectado con cpu 
+
+[INFO] 19:50:23:948 Servidor Kernel/(14695:14695): Kernel conectado con memoria 
+
+[INFO] 19:50:23:949 Servidor Kernel/(14695:14695): Servidor creado 
+
+[INFO] 19:50:23:949 Servidor Kernel/(14695:14695): Estructuras largo plazo creadas 
+
+[INFO] 19:50:23:950 Servidor Kernel/(14695:14695): Estructuras corto plazo creadas 
+
+[INFO] 19:50:23:950 Servidor Kernel/(14695:14695): Estructuras mediano plazo creadas 
+
+[INFO] 19:50:23:950 Servidor Kernel/(14695:14695): Planificacion iniciada 
+
+[INFO] 19:50:23:950 Servidor Kernel/(14695:14695): Kernel listo para recibir al modulo cliente 
+
+[INFO] 19:50:23:952 Servidor Kernel/(14695:14707): PID[0] antes de suspended ready 
+
+[INFO] 19:50:29:372 Servidor Kernel/(14695:14721): Me llego el tamanio y las instrucciones
+
+[INFO] 19:50:29:372 Servidor Kernel/(14695:14721): Consola deserializada, entro a armar pcb
+
+[INFO] 19:50:29:372 Servidor Kernel/(14695:14721): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 19:50:29:372 Servidor Kernel/(14695:14721): PID[0] ingresa a NEW 
+
+[INFO] 19:50:29:372 Servidor Kernel/(14695:14703): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14703): Recibi paquete PCB de memoria 
+ 
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14703): PID[0] ingresa a READY desde NEW 
+
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14704): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14704): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14704): Inicio la planificacion FIFO
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14704): PID[0] sale de READY para plan FIFO 
+
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14704): PID[0] ingresa a EXEC
+
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14705): PID[0] sale de EXEC
+
+[INFO] 19:50:29:373 Servidor Kernel/(14695:14705): PCB enviada cpu para ejecucion
+[INFO] 19:53:02:735 Servidor Kernel/(14933:14933): Archivo de configuracion cargada 
+
+[INFO] 19:53:02:736 Servidor Kernel/(14933:14933): Kernel conectado con cpu 
+
+[INFO] 19:53:02:737 Servidor Kernel/(14933:14933): Kernel conectado con memoria 
+
+[INFO] 19:53:02:738 Servidor Kernel/(14933:14933): Servidor creado 
+
+[INFO] 19:53:02:738 Servidor Kernel/(14933:14933): Estructuras largo plazo creadas 
+
+[INFO] 19:53:02:738 Servidor Kernel/(14933:14933): Estructuras corto plazo creadas 
+
+[INFO] 19:53:02:738 Servidor Kernel/(14933:14933): Estructuras mediano plazo creadas 
+
+[INFO] 19:53:02:738 Servidor Kernel/(14933:14933): Planificacion iniciada 
+
+[INFO] 19:53:02:738 Servidor Kernel/(14933:14933): Kernel listo para recibir al modulo cliente 
+
+[INFO] 19:53:02:742 Servidor Kernel/(14933:14947): PID[0] antes de suspended ready 
+
+[INFO] 19:53:05:444 Servidor Kernel/(14933:14959): Me llego el tamanio y las instrucciones
+
+[INFO] 19:53:05:444 Servidor Kernel/(14933:14959): Consola deserializada, entro a armar pcb
+
+[INFO] 19:53:05:444 Servidor Kernel/(14933:14959): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 19:53:05:444 Servidor Kernel/(14933:14959): PID[0] ingresa a NEW 
+
+[INFO] 19:53:05:444 Servidor Kernel/(14933:14943): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14943): Recibi paquete PCB de memoria 
+ 
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14943): PID[0] ingresa a READY desde NEW 
+
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14944): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14944): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14944): Inicio la planificacion FIFO
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14944): PID[0] sale de READY para plan FIFO 
+
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14944): PID[0] ingresa a EXEC
+
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14945): PID[0] sale de EXEC
+
+[INFO] 19:53:05:446 Servidor Kernel/(14933:14945): PCB enviada cpu para ejecucion
+[INFO] 19:55:41:534 Servidor Kernel/(15229:15229): Archivo de configuracion cargada 
+
+[INFO] 19:55:41:535 Servidor Kernel/(15229:15229): Kernel conectado con cpu 
+
+[INFO] 19:55:41:536 Servidor Kernel/(15229:15229): Kernel conectado con memoria 
+
+[INFO] 19:55:41:537 Servidor Kernel/(15229:15229): Servidor creado 
+
+[INFO] 19:55:41:537 Servidor Kernel/(15229:15229): Estructuras largo plazo creadas 
+
+[INFO] 19:55:41:537 Servidor Kernel/(15229:15229): Estructuras corto plazo creadas 
+
+[INFO] 19:55:41:537 Servidor Kernel/(15229:15229): Estructuras mediano plazo creadas 
+
+[INFO] 19:55:41:537 Servidor Kernel/(15229:15229): Planificacion iniciada 
+
+[INFO] 19:55:41:537 Servidor Kernel/(15229:15229): Kernel listo para recibir al modulo cliente 
+
+[INFO] 19:55:41:540 Servidor Kernel/(15229:15241): PID[0] antes de suspended ready 
+
+[INFO] 19:55:43:577 Servidor Kernel/(15229:15253): Me llego el tamanio y las instrucciones
+
+[INFO] 19:55:43:577 Servidor Kernel/(15229:15253): Consola deserializada, entro a armar pcb
+
+[INFO] 19:55:43:577 Servidor Kernel/(15229:15253): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 19:55:43:577 Servidor Kernel/(15229:15253): PID[0] ingresa a NEW 
+
+[INFO] 19:55:43:577 Servidor Kernel/(15229:15237): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15237): Recibi paquete PCB de memoria 
+ 
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15237): PID[0] ingresa a READY desde NEW 
+
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15238): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15238): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15238): Inicio la planificacion FIFO
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15238): PID[0] sale de READY para plan FIFO 
+
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15238): PID[0] ingresa a EXEC
+
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15239): PID[0] sale de EXEC
+
+[INFO] 19:55:43:578 Servidor Kernel/(15229:15239): PCB enviada cpu para ejecucion
+[INFO] 20:06:18:789 Servidor Kernel/(15621:15621): Archivo de configuracion cargada 
+
+[INFO] 20:06:18:789 Servidor Kernel/(15621:15621): Kernel conectado con cpu 
+
+[INFO] 20:06:18:790 Servidor Kernel/(15621:15621): Kernel conectado con memoria 
+
+[INFO] 20:06:18:790 Servidor Kernel/(15621:15621): Servidor creado 
+
+[INFO] 20:06:18:790 Servidor Kernel/(15621:15621): Estructuras largo plazo creadas 
+
+[INFO] 20:06:18:790 Servidor Kernel/(15621:15621): Estructuras corto plazo creadas 
+
+[INFO] 20:06:18:790 Servidor Kernel/(15621:15621): Estructuras mediano plazo creadas 
+
+[INFO] 20:06:18:790 Servidor Kernel/(15621:15621): Planificacion iniciada 
+
+[INFO] 20:06:18:790 Servidor Kernel/(15621:15621): Kernel listo para recibir al modulo cliente 
+
+[INFO] 20:06:18:791 Servidor Kernel/(15621:15633): PID[0] antes de suspended ready 
+
+[INFO] 20:06:21:421 Servidor Kernel/(15621:15645): Me llego el tamanio y las instrucciones
+
+[INFO] 20:06:21:421 Servidor Kernel/(15621:15645): Consola deserializada, entro a armar pcb
+
+[INFO] 20:06:21:421 Servidor Kernel/(15621:15645): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 20:06:21:422 Servidor Kernel/(15621:15645): PID[0] ingresa a NEW 
+
+[INFO] 20:06:21:422 Servidor Kernel/(15621:15629): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15629): Recibi paquete PCB de memoria 
+ 
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15629): PID[0] ingresa a READY desde NEW 
+
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15630): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15630): El algoritmo de planificacion elegido es FIFO 
+
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15630): Inicio la planificacion FIFO
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15630): PID[0] sale de READY para plan FIFO 
+
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15630): PID[0] ingresa a EXEC
+
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15631): PID[0] sale de EXEC
+
+[INFO] 20:06:21:423 Servidor Kernel/(15621:15631): PCB enviada cpu para ejecucion
