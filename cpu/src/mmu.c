@@ -42,15 +42,18 @@ uint32_t obtener_segunda_tabla(uint32_t primera_tabla, uint32_t entrada_tabla_1)
 	pedir_tabla_pagina(socket_memoria,primera_tabla,entrada_tabla_1);
 	log_info(cpu_logger,"despues de pedir tabla \n");
 	uint32_t segunda_tabla;
-	while(1){
+
+		while(1) {
 		int codigo_op=recibir_operacion_nuevo(socket_memoria);
 		printf("op code memoria obtener segunda tabla %d\n",socket_memoria);
 		int size;
+		t_list* valores;
 		switch(codigo_op){
 		case PAQUETE:
 					log_info(cpu_logger,"a punto de recibir paquete valores \n");
-					t_list* valores = recibir_paquete(socket_memoria);
-					segunda_tabla=*(uint32_t*)list_remove(valores,0);
+					valores = recibirPaquete(socket_memoria);
+					printf("se recibio paquete \n");
+					segunda_tabla=*(uint32_t*)list_get(valores,0);
 					printf("\n valor segunda tabla en obtener segunda tabla %"PRIu32" \n",segunda_tabla);
 		        	log_info(cpu_logger,"Recibi valor de segunda tabla \n");
 		        	return segunda_tabla;
@@ -60,8 +63,9 @@ uint32_t obtener_segunda_tabla(uint32_t primera_tabla, uint32_t entrada_tabla_1)
 		            return (uint32_t)EXIT_FAILURE;
 		        break;
 		        default:
-		            log_warning(cpu_logger, "Operacion desconocida \n");
-		            break;
+		        	log_warning(cpu_logger, "Operacion desconocida \n");
+		        	exit(35);
+		        	break;
 		        }
 		}
 	}

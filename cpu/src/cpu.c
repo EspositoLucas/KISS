@@ -201,7 +201,7 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	log_info(cpu_logger, "Pedido de escritura enviado \n");
 	eliminar_paquete(paquete);
 
-	int cod_op = recibir_operacion_nuevo(socket_memoria);
+	int cod_op = (int)recibir_operacion_nuevo(socket_memoria);
 	printf("valor opcode: %d \n",cod_op);
 	switch (cod_op){
 		case ESCRITURA_OK:
@@ -324,7 +324,7 @@ void* conexion_inicial_memoria(){
 ///CARGAR CONFIGURACION A CPU
 
 void cargar_config(){
-	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/config_pruebas/prueba_base/cpu.config");
+	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/config_pruebas/prueba_memoria/cpu.config");
 
 	config_valores_cpu.ip_cpu=config_get_string_value(config,"IP_CPU");
 	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");

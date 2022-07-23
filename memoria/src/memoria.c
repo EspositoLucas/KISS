@@ -77,11 +77,13 @@ void manejo_conexiones(int socket_cliente){
 		t_paquete* paquete_tabla= crear_paquete();
 		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
 		enviar_paquete(paquete_tabla,socket_cliente);
+		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"entrada segundo nivel enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_tabla);
 		break;
 	case MARCO:
+		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"me llego un pedido de marco de cpu (mmu) \n");
 		valores=recibir_paquete(socket_cliente);
 		log_info(memoria_logger,"paquete recibido (mmu) \n");
@@ -89,7 +91,9 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"valor tabla (mmu) \n");
 		entrada2=*(uint32_t*)list_get(valores,1);
 		log_info(memoria_logger,"valor entrada2 (mmu) \n");
+		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		marco= devolver_marco(tabla, entrada2);
+		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"valor marco (mmu) \n");
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_marco= crear_paquete();
@@ -100,6 +104,7 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"marco enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
+		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
 		log_info(memoria_logger, "Inicializando estructuras \n");
@@ -208,7 +213,7 @@ int get_marco(int marco){
 }
 void escribirPagEnMemoria(void* pagina,uint32_t numMarco){
 	pthread_mutex_lock(&mutex_memoria_usuario);
-	memcpy(memoria_usuario + get_marco(numMarco),pagina,config_valores_memoria.tam_memoria);
+	memcpy(memoria_usuario + get_marco(numMarco),pagina,config_valores_memoria.tam_pagina);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 }
 
@@ -272,7 +277,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_base/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");
@@ -305,6 +310,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 	uint32_t valor_escritura;
 	op_code codigo;
 	int escritura;
+	printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 
 	switch(tipo_instruccion){
 	case READ: ;
