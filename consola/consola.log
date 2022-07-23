@@ -3686,3 +3686,57 @@
 
 [INFO] 00:12:20:115 Consola/(21180:21180): Finalizo el proceso, terminando programa.
 
+[INFO] 12:43:10:040 Consola/(23187:23187): Iniciando consola
+
+[INFO] 12:43:10:040 Consola/(23187:23187): Instrucciones parseadas correctamente
+
+[INFO] 12:43:10:041 Consola/(23187:23187): instrucciones serializadas
+
+[INFO] 12:43:10:041 Consola/(23187:23187): Conexion exitosa con kernel.
+
+[INFO] 12:43:10:041 Consola/(23187:23187): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 12:43:10:041 Consola/(23187:23187): respuesta kernel a recibir.
+
+[INFO] 12:53:30:751 Consola/(23187:23187): respuesta kernel recibida.
+
+[ERROR] 12:53:30:751 Consola/(23187:23187): Error al finalizar consola 
+
+[INFO] 12:53:30:751 Consola/(23187:23187): Finalizo el proceso, terminando programa.
+
+[INFO] 12:55:07:166 Consola/(23780:23780): Iniciando consola
+
+[INFO] 12:55:07:166 Consola/(23780:23780): Instrucciones parseadas correctamente
+
+[INFO] 12:55:07:166 Consola/(23780:23780): instrucciones serializadas
+
+[INFO] 12:55:07:167 Consola/(23780:23780): Conexion exitosa con kernel.
+
+[INFO] 12:55:07:167 Consola/(23780:23780): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 12:55:07:167 Consola/(23780:23780): respuesta kernel a recibir.
+
+[INFO] 12:55:56:167 Consola/(23780:23780): respuesta kernel recibida.
+
+[ERROR] 12:55:56:167 Consola/(23780:23780): Error al finalizar consola 
+
+[INFO] 12:55:56:167 Consola/(23780:23780): Finalizo el proceso, terminando programa.
+
+[INFO] 12:57:15:942 Consola/(24000:24000): Iniciando consola
+
+[INFO] 12:57:15:942 Consola/(24000:24000): Instrucciones parseadas correctamente
+
+[INFO] 12:57:15:942 Consola/(24000:24000): instrucciones serializadas
+
+[INFO] 12:57:15:943 Consola/(24000:24000): Conexion exitosa con kernel.
+
+[INFO] 12:57:15:943 Consola/(24000:24000): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 12:57:15:943 Consola/(24000:24000): respuesta kernel a recibir.
+
+[INFO] 13:08:30:844 Consola/(24000:24000): respuesta kernel recibida.
+
+[ERROR] 13:08:30:846 Consola/(24000:24000): Error al finalizar consola 
+
+[INFO] 13:08:30:846 Consola/(24000:24000): Finalizo el proceso, terminando programa.
+

@@ -1126,3 +1126,151 @@
 
 [INFO] 00:23:20:346 Consola/(21867:21867): respuesta kernel a recibir.
 
+[INFO] 13:14:08:766 Consola/(24568:24568): Iniciando consola
+
+[INFO] 13:14:08:772 Consola/(24568:24568): Instrucciones parseadas correctamente
+
+[INFO] 13:14:08:772 Consola/(24568:24568): instrucciones serializadas
+
+[INFO] 13:14:08:773 Consola/(24568:24568): Conexion exitosa con kernel.
+
+[INFO] 13:14:08:773 Consola/(24568:24568): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 13:14:08:773 Consola/(24568:24568): respuesta kernel a recibir.
+
+[INFO] 13:14:11:791 Consola/(24568:24568): respuesta kernel recibida.
+
+[INFO] 13:14:11:791 Consola/(24568:24568): Finalizo el proceso, terminando programa.
+
+[INFO] 13:14:44:526 Consola/(24595:24595): Iniciando consola
+
+[INFO] 13:14:44:532 Consola/(24595:24595): Instrucciones parseadas correctamente
+
+[INFO] 13:14:44:532 Consola/(24595:24595): instrucciones serializadas
+
+[INFO] 13:14:44:532 Consola/(24595:24595): Conexion exitosa con kernel.
+
+[INFO] 13:14:44:533 Consola/(24595:24595): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 13:14:44:533 Consola/(24595:24595): respuesta kernel a recibir.
+
+[INFO] 13:28:07:120 Consola/(24595:24595): respuesta kernel recibida.
+
+[ERROR] 13:28:07:120 Consola/(24595:24595): Error al finalizar consola 
+
+[INFO] 13:28:07:120 Consola/(24595:24595): Finalizo el proceso, terminando programa.
+
+[INFO] 13:29:30:219 Consola/(25052:25052): Iniciando consola
+
+[INFO] 13:29:30:221 Consola/(25052:25052): Instrucciones parseadas correctamente
+
+[INFO] 13:29:30:221 Consola/(25052:25052): instrucciones serializadas
+
+[INFO] 13:29:30:221 Consola/(25052:25052): Conexion exitosa con kernel.
+
+[INFO] 13:29:30:221 Consola/(25052:25052): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 13:29:30:221 Consola/(25052:25052): respuesta kernel a recibir.
+
+[INFO] 13:29:33:346 Consola/(25052:25052): respuesta kernel recibida.
+
+[ERROR] 13:29:33:346 Consola/(25052:25052): Error al finalizar consola 
+
+[INFO] 13:29:33:346 Consola/(25052:25052): Finalizo el proceso, terminando programa.
+
+[INFO] 13:31:00:155 Consola/(25298:25298): Iniciando consola
+
+[INFO] 13:31:00:156 Consola/(25298:25298): Instrucciones parseadas correctamente
+
+[INFO] 13:31:00:157 Consola/(25298:25298): instrucciones serializadas
+
+[INFO] 13:31:00:157 Consola/(25298:25298): Conexion exitosa con kernel.
+
+[INFO] 13:31:00:157 Consola/(25298:25298): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 13:31:00:157 Consola/(25298:25298): respuesta kernel a recibir.
+
+[INFO] 13:31:03:174 Consola/(25298:25298): respuesta kernel recibida.
+
+[INFO] 13:31:03:174 Consola/(25298:25298): Finalizo el proceso, terminando programa.
+
+[INFO] 13:31:41:859 Consola/(25321:25321): Iniciando consola
+
+[INFO] 13:31:41:860 Consola/(25321:25321): Instrucciones parseadas correctamente
+
+[INFO] 13:31:41:860 Consola/(25321:25321): instrucciones serializadas
+
+[INFO] 13:31:41:861 Consola/(25321:25321): Conexion exitosa con kernel.
+
+[INFO] 13:31:41:861 Consola/(25321:25321): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 13:31:41:861 Consola/(25321:25321): respuesta kernel a recibir.
+
+[INFO] 13:33:23:673 Consola/(25321:25321): respuesta kernel recibida.
+
+[ERROR] 13:33:23:673 Consola/(25321:25321): Error al finalizar consola 
+
+[INFO] 13:33:23:673 Consola/(25321:25321): Finalizo el proceso, terminando programa.
+
+[INFO] 13:34:34:820 Consola/(25738:25738): Iniciando consola
+
+[INFO] 13:34:34:821 Consola/(25738:25738): Instrucciones parseadas correctamente
+
+[INFO] 13:34:34:821 Consola/(25738:25738): instrucciones serializadas
+
+[INFO] 13:34:34:822 Consola/(25738:25738): Conexion exitosa con kernel.
+
+[INFO] 13:34:34:822 Consola/(25738:25738): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 13:34:34:822 Consola/(25738:25738): respuesta kernel a recibir.
+
+[INFO] 13:34:37:839 Consola/(25738:25738): respuesta kernel recibida.
+
+[INFO] 13:34:37:840 Consola/(25738:25738): Finalizo el proceso, terminando programa.
+
+[INFO] 13:34:41:740 Consola/(25744:25744): Iniciando consola
+
+[INFO] 13:34:41:742 Consola/(25744:25744): Instrucciones parseadas correctamente
+
+[INFO] 13:34:41:742 Consola/(25744:25744): instrucciones serializadas
+
+[INFO] 13:34:41:742 Consola/(25744:25744): Conexion exitosa con kernel.
+
+[INFO] 13:34:41:742 Consola/(25744:25744): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 13:34:41:742 Consola/(25744:25744): respuesta kernel a recibir.
+
+[INFO] 13:35:28:441 Consola/(25744:25744): respuesta kernel recibida.
+
+[ERROR] 13:35:28:448 Consola/(25744:25744): Error al finalizar consola 
+
+[INFO] 13:35:28:448 Consola/(25744:25744): Finalizo el proceso, terminando programa.
+
+[INFO] 14:20:52:873 Consola/(26470:26470): Iniciando consola
+
+[INFO] 14:20:52:875 Consola/(26470:26470): Instrucciones parseadas correctamente
+
+[INFO] 14:20:52:875 Consola/(26470:26470): instrucciones serializadas
+
+[INFO] 14:20:52:875 Consola/(26470:26470): Conexion exitosa con kernel.
+
+[INFO] 14:20:52:875 Consola/(26470:26470): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 14:20:52:875 Consola/(26470:26470): respuesta kernel a recibir.
+
+[INFO] 14:20:55:892 Consola/(26470:26470): respuesta kernel recibida.
+
+[INFO] 14:20:55:892 Consola/(26470:26470): Finalizo el proceso, terminando programa.
+
+[INFO] 14:21:38:801 Consola/(26479:26479): Iniciando consola
+
+[INFO] 14:21:38:803 Consola/(26479:26479): Instrucciones parseadas correctamente
+
+[INFO] 14:21:38:803 Consola/(26479:26479): instrucciones serializadas
+
+[INFO] 14:21:38:803 Consola/(26479:26479): Conexion exitosa con kernel.
+
+[INFO] 14:21:38:803 Consola/(26479:26479): Paquete con tamanio e instrucciones enviado correctamente.
+
+[INFO] 14:21:38:803 Consola/(26479:26479): respuesta kernel a recibir.
+

@@ -97,9 +97,11 @@ void transicion_admitir_por_prioridad(void) {
 }
 
 void finalizarPcb(void){
+	printf("proceso antes de semaforo \n");
 	sem_wait(&sem_exit);
 	proceso* proceso ;
   	pthread_mutex_lock(&mutex_exit);
+  	printf("proceso antes de salir de exit \n");
   	proceso = list_remove(colaExit, 0);
   	pthread_mutex_unlock(&mutex_exit);
   	log_info(kernel_logger_info, "[EXIT]Sale de EXIT y Finaliza el  pcb de ID: %d\n", proceso->pcb-> id_proceso);
@@ -215,7 +217,9 @@ void estadoExec(void){
 			chequear_lista_pcbs(colaExit);
 			pthread_mutex_unlock(&mutex_exit);
 			log_info(kernel_logger_info, "PID[%d] Entra en EXIT \n", proceso->pcb->id_proceso);
+			printf("proceso antes de salir de exit \n");
 			sem_post(&sem_exit); // despertar exit
+			printf("proceso antes de semaforo post exit  \n");
 			break;
 		default: // read, write o noop
 			pthread_mutex_lock(&mutex_ready);
