@@ -158,7 +158,6 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	eliminar_paquete(paquete);
 
 	int i=0;
-	int size;
 	t_list* valores;
 	uint32_t valor_leido;
 	while(1){
@@ -168,6 +167,7 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 			valores = recibir_paquete(socket_memoria);
 			valor_leido= *(uint32_t*)list_get(valores,0);
 			printf("Valor leido de memoria: %d \n",valor_leido);
+			i++;
 			break;
 		case -1:
 		     log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
@@ -201,7 +201,10 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	log_info(cpu_logger, "Pedido de escritura enviado \n");
 	eliminar_paquete(paquete);
 
-	int cod_op = (int)recibir_operacion_nuevo(socket_memoria);
+
+	//int cod_op = recibir_operacion_nuevo(socket_memoria);
+	int cod_op;
+	recibir_datos(socket_memoria,&cod_op,sizeof(op_code));
 	printf("valor opcode: %d \n",cod_op);
 	switch (cod_op){
 		case ESCRITURA_OK:
@@ -217,6 +220,8 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 			log_warning(cpu_logger, "Operacion desconocida \n");
 			break;
 	}
+
+
 }
 
 void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
@@ -233,7 +238,9 @@ void ejecutarCOPY(uint32_t dirLogicaDestino,uint32_t dirLogicaOrigen,pcb* pcb){
 	log_info(cpu_logger, "Pedido de copia enviado \n");
 	eliminar_paquete(paquete);
 
-	int cod_op = recibir_operacion_nuevo(socket_memoria);
+	//int cod_op = recibir_operacion_nuevo(socket_memoria);
+	int cod_op;
+	recibir_datos(socket_memoria,&cod_op,sizeof(op_code));
 	switch (cod_op){
 		case ESCRITURA_OK:
 			log_info(cpu_logger, "Se escribio exitosamente en la memoria \n");

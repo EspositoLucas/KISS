@@ -47,7 +47,7 @@ uint32_t obtener_segunda_tabla(uint32_t primera_tabla, uint32_t entrada_tabla_1)
 	recibir_datos(socket_memoria,&segunda_tabla,sizeof(uint32_t));
 	return segunda_tabla;
 
-//		while(1) {
+	//while(1) {
 //		int codigo_op=recibir_operacion_nuevo(socket_memoria);
 //		printf("op code memoria obtener segunda tabla %d\n",socket_memoria);
 //		int size;
@@ -81,10 +81,9 @@ uint32_t obtener_marco(uint32_t segunda_tabla, uint32_t entrada_tabla_2){
 	printf("valor segunda tabla %d \n",segunda_tabla);
 	printf("valor entrada tabla 2 %d \n",entrada_tabla_2);
 	pedir_marco(socket_memoria,segunda_tabla,entrada_tabla_2);
+	t_list* valores;
 	while(1){
 			int codigo_op=recibir_operacion_nuevo(socket_memoria);
-			t_list* valores;
-			int size;
 			switch(codigo_op){
 				case MARCO:
 					valores = recibir_paquete(socket_memoria);
