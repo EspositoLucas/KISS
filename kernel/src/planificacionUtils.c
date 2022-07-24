@@ -76,9 +76,14 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 
 
 
- op_code esperar_respuesta_memoria(int socket_memoria) {
+// op_code esperar_respuesta_memoria(int socket_memoria) {
+// 	op_code codigo;
+// 	codigo = recibir_operacion_nuevo(socket_memoria);
+// 	return codigo;
+// }
+op_code esperar_respuesta_memoria(int socket_memoria) {
  	op_code codigo;
- 	codigo = recibir_operacion_nuevo(socket_memoria);
+ 	recibir_datos(socket_memoria,&codigo,sizeof(op_code));
  	return codigo;
  }
 
