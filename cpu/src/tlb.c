@@ -7,9 +7,11 @@ uint32_t pagina_a_buscar;
 
 int obtener_algoritmo(){
 	if(string_equals_ignore_case(config_valores_cpu.reemplazo_tlb,"FIFO")){
+		log_info(cpu_logger, "Se elegio algotitmo FIFO \n");
 		return FIFO;
 	}
 	else {
+		log_info(cpu_logger, "Se elegio algotitmo LRU \n");
 		return LRU;
 	}
 }
