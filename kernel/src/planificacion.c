@@ -97,6 +97,8 @@ void transicion_admitir_por_prioridad(void) {
 }
 
 void finalizarPcb(void){
+
+	while(1) {
 	printf("proceso antes de semaforo \n");
 	sem_wait(&sem_exit);
 	proceso* proceso ;
@@ -109,7 +111,9 @@ void finalizarPcb(void){
 	log_info(kernel_logger_info, "Enviando a memoria liberar estructuras del proceso \n");
 	//op_code codigo = esperar_respuesta_memoria(socket_memoria);
 	//op_code codigo = recibir_datos(socket_memoria,&codigo,sizeof(op_code));
-	op_code codigo = recibir_operacion_nuevo(socket_memoria);;
+	//op_code codigo = recibir_operacion_nuevo(socket_memoria);
+	int codigo ;
+	recibir_datos(socket_memoria,&codigo,sizeof(op_code));
 	printf("codigo %d \n",codigo);
 	log_info(kernel_logger_info, "Respuesta memoria de estructuras liberadas del proceso recibida \n");
 	if(codigo != ESTRUCTURAS_LIBERADAS) {
@@ -118,6 +122,8 @@ void finalizarPcb(void){
 	avisarAModulo(proceso->socket,FINALIZAR_CONSOLA) ;
 	log_info(kernel_logger_info, "Enviando a consola que finalizo el proceso\n");
  	eliminar_pcb(proceso->pcb);
+
+	}
 }
 
 

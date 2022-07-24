@@ -46,7 +46,9 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	archivo->archivo = archivo_swap;
 	archivo->fd = fd;
 	printf("tamanio del swap : %d",sizeof(archivo));
+	pthread_mutex_lock(&mutex_lista_archivo);
 	list_add(archivos,archivo);
+	pthread_mutex_unlock(&mutex_lista_archivo);
 
 }
 // VERSION SIN FUNCION NESTED
@@ -152,7 +154,10 @@ void asignarAlArchivo(uint32_t pid) {
 	            return un_archivo->pid == pid;
 	        }
 	pthread_mutex_lock(&mutex_lista_archivo);
+	printf("tamanio lista archivos %d \n", list_size(archivos));
 	archivos_swap* archivo = (archivos_swap*)list_find(archivos,archivos_con_pid);
+	printf("tamanio lista archivos %d \n", list_size(archivos));
+	printf("archivo pid %d \n", archivo->pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
 
 	pthread_mutex_lock(&mutex_archivo_swap);

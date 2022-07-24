@@ -144,12 +144,12 @@ void manejo_conexiones(int socket_cliente){
 			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
 			entrada_en_tp1->indice=valorTP1+i;
 			entrada_en_tp1->numero_de_tabla2=indice_de_tabla2;
-			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
+			//pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
 			list_add(tabla_de_pagina_1_nivel,entrada_en_tp1);
-			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
-			pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
-			pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
+			//pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
+			//pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 			list_add(lista_tablas_segundo_nivel,nueva_tabla);
+			//pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
 			log_info(memoria_logger,"numero de tabla de segundo nivel pasado a la de primer nivel \n");
 			indice_de_tabla2++;
 		}
@@ -213,6 +213,7 @@ void inicializar_memoria(){
 	pthread_mutex_init(&mutex_archivo_swap,NULL);
 	pthread_mutex_init(&mutex_tabla_pagina_primer_nivel,NULL);
 	pthread_mutex_init(&mutex_tabla_pagina_segundo_nivel,NULL);
+	pthread_mutex_init(&mutex_lista_archivo,NULL);
 
 	printf("Memoria inicializada\n");
 }
@@ -289,7 +290,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_base/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");

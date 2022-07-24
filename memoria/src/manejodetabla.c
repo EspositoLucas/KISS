@@ -15,7 +15,7 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 }
 //------------------------ACCESO A SEGUNDA TABLA----------------------------
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
-	tabla_de_segundo_nivel*tabla_elegida=list_get(lista_tablas_segundo_nivel,tabla);
+	tabla_de_segundo_nivel*tabla_elegida=(tabla_de_segundo_nivel*)list_get(lista_tablas_segundo_nivel,tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida->lista_paginas,entrada);
 	uint32_t indice_tabla_en_swap;
 	printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
