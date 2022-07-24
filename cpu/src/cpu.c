@@ -7,6 +7,7 @@ pthread_mutex_t pedidofin;
 
 ///VARIABLES GLOBALES
 int parar_proceso=0;
+int ultimo_pid = -1;
 
 int main()
 {
@@ -71,6 +72,9 @@ int main()
         	parar_proceso=0;//INICIA EL CONTADOR DE PARAR PROCESO
         	pcb_recibido = recibirPcb(cliente_fd);
         	log_info(cpu_logger,"Recibi PCB de Id: %d \n",pcb_recibido->id_proceso);
+        	if(ultimo_pid != pcb_recibido->id_proceso && list_size(tlb->lista) != 0){
+        		vaciarTlb();
+        	}
         	ciclo_de_instruccion(pcb_recibido,cliente_fd);//INICIA EL CICLO DE INSTRUCCION
             break;
         case -1:
@@ -331,7 +335,7 @@ void* conexion_inicial_memoria(){
 ///CARGAR CONFIGURACION A CPU
 
 void cargar_config(){
-	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/config_pruebas/prueba_memoria/cpu.config");
+	config= iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/cpu/Default/config_pruebas/prueba_tlb_lru/cpu.config");
 
 	config_valores_cpu.ip_cpu=config_get_string_value(config,"IP_CPU");
 	config_valores_cpu.entradas_tlb=config_get_int_value(config,"ENTRADAS_TLB");

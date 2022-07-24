@@ -1,27 +1,42 @@
 #include "swap.h"
 
-char* armarPath(int idProceso){
+//char* armarPath(int idProceso){
+//
+//	char* swap =strcat(string_itoa(idProceso),".swap");
+//	puts(swap);
+//	char* barra = "/" ;
+//
+//	char* path ;
+//	if((path = malloc(strlen(pathSwap)+strlen(barra)+ strlen(swap)+1)) != NULL){
+//	    path[0] = '\0';   // ensures the memory is an empty string
+//	    strcat(path,pathSwap);
+//	    strcat(path,barra);
+//	    strcat(path,swap);
+//	} else {
+//	    puts("Fallo el malloc");
+//	}
+//	puts(path);
+//	return path;
+//}
 
-	char* swap =strcat(string_itoa(idProceso),".swap");
-	puts(swap);
-	char* barra = "/" ;
-
-	char* path ;
-	if((path = malloc(strlen(pathSwap)+strlen(barra)+ strlen(swap)+1)) != NULL){
-	    path[0] = '\0';   // ensures the memory is an empty string
-	    strcat(path,pathSwap);
-	    strcat(path,barra);
-	    strcat(path,swap);
-	} else {
-	    puts("Fallo el malloc");
-	}
-	puts(path);
-	return path;
+char* armarPath (uint32_t id) {
+    char* ruta = string_new();
+    char* numero = string_itoa(id);
+    //printf("valor config valores path swap %s \n",pathSwap);
+	string_append(&ruta, "/home/utnso/swap");
+	string_append(&ruta, "/");
+    string_append(&ruta, numero);
+    string_append(&ruta, ".swap");
+    free(numero);
+    //printf("valor config valores path swap despues append %s \n",pathSwap);
+    puts(ruta);
+    return ruta;
 }
 
 void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea una sola vez
 	int fd;
-	char* path=armarPath((int)idProceso);
+	printf("valor pathSwap %s \n",pathSwap);
+	char* path=armarPath(idProceso);
 	printf("tamanio proceso %d\n",tamanio_proceso);
 	if((fd=open(path,O_CREAT|O_EXCL|O_RDWR,S_IRUSR|S_IWUSR))==-1){
 		log_info(memoria_logger,"Error al crear el archivo swap del proceso: %d\n",idProceso);
@@ -158,8 +173,10 @@ t_list* marcosMod(t_list* marquinhos){
 void escribirPagEnSwap(t_p_2* pag){
 	usleep(config_valores_memoria.retardo_swap);
 	pthread_mutex_lock(&mutex_memoria_usuario);
+	pthread_mutex_lock(&mutex_archivo_swap);
 	memcpy(archivo_swap+get_marco(pag->indice),memoria_usuario+get_marco(pag->marco),config_valores_memoria.tam_pagina);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
+	pthread_mutex_lock(&mutex_archivo_swap);
 	log_info(memoria_logger,"Se escribio pagina en swap \n");
 }
 

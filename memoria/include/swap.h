@@ -28,7 +28,8 @@ typedef struct
 
 //FUNCIONES
 
-char* armarPath(int );
+//char* armarPath(int );
+char* armarPath(uint32_t );
 void crearSwap(uint32_t,uint32_t );
 void eliminarSwap(pcb* );
 void suspender_proceso(int ) ;
@@ -36,7 +37,7 @@ bool modificados(t_p_2* );
 t_list* marcosMod(t_list*);
 void escribirPagEnSwap(t_p_2*);
 void escribirPaginasModificadas(pcb* );
-void* traerPaginaDeSwap(uint32_t );
+void* traerPaginaDeSwap(uint32_t);
 void asignarAlArchivo(uint32_t );
 //bool archivos_con_pid(uint32_t );
 

@@ -42,7 +42,7 @@ int socket_memoria;
 
 void* memoria_usuario;
 int cantidad_de_marcos;
-char* pathSwap;
+const char* pathSwap;
 algoritmo algoritmo_memoria;
 t_list* marcos;
 

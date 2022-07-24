@@ -204,8 +204,8 @@ void inicializar_memoria(){
 	lista_tablas_segundo_nivel = list_create();
 	inicializar_marcos();
 	algoritmo_memoria=obtener_algoritmo();
+	pathSwap = config_valores_memoria.path_swap;
 	indice_de_tabla2=0;
-	pathSwap=config_valores_memoria.path_swap;
 	archivos= list_create();
 	pthread_mutex_init(&mutex_comparador_pid,NULL);
 	pthread_mutex_init(&mutex_comparador_indice,NULL);
@@ -225,7 +225,9 @@ int get_marco(int marco){
 }
 void escribirPagEnMemoria(void* pagina,uint32_t numMarco){
 	pthread_mutex_lock(&mutex_memoria_usuario);
+	printf("tamanio lista archivos %d \n", list_size(archivos));
 	memcpy(memoria_usuario + get_marco(numMarco),pagina,config_valores_memoria.tam_pagina);
+	printf("tamanio lista archivos %d \n", list_size(archivos));
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 }
 
@@ -297,7 +299,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria_clock/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_tlb/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");

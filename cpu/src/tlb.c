@@ -133,3 +133,6 @@ void* traduccionConMayorEspera(traduccion_t* trad1, traduccion_t* trad2){
 bool pagina_se_encuentra_en_tlb(traduccion_t* trad){
 	return trad->pagina==pagina_a_buscar;
 }
+void vaciarTlb(){
+	list_clean_and_destroy_elements(tlb->lista,free);
+}

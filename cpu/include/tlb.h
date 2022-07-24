@@ -18,4 +18,5 @@ traduccion_t* sumar_uno_al_turno_de_reemplazo(traduccion_t*);
 bool encontrar_fifo(traduccion_t*);
 void* traduccionConMayorEspera(traduccion_t*, traduccion_t*);
 bool pagina_se_encuentra_en_tlb(traduccion_t*);
+void vaciarTlb();
 #endif /* INCLUDE_TLB_H_ */
