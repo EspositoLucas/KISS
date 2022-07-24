@@ -6707,3 +6707,165 @@
 
 [INFO] 11:05:03:986 Servidor Kernel/(7099:7101): Enviando a consola que finalizo el proceso
 
+[INFO] 11:07:45:198 Servidor Kernel/(7373:7373): Archivo de configuracion cargada 
+
+[INFO] 11:07:45:199 Servidor Kernel/(7373:7373): Kernel conectado con cpu 
+
+[INFO] 11:07:45:199 Servidor Kernel/(7373:7373): Kernel conectado con memoria 
+
+[INFO] 11:07:45:199 Servidor Kernel/(7373:7373): Servidor creado 
+
+[INFO] 11:07:45:200 Servidor Kernel/(7373:7373): Estructuras largo plazo creadas 
+
+[INFO] 11:07:45:200 Servidor Kernel/(7373:7373): Estructuras corto plazo creadas 
+
+[INFO] 11:07:45:200 Servidor Kernel/(7373:7373): Estructuras mediano plazo creadas 
+
+[INFO] 11:07:45:200 Servidor Kernel/(7373:7373): Planificacion iniciada 
+
+[INFO] 11:07:45:200 Servidor Kernel/(7373:7373): Kernel listo para recibir al modulo cliente 
+
+[INFO] 11:07:45:200 Servidor Kernel/(7373:7380): PID[-1217447936] antes de suspended ready 
+
+[INFO] 11:08:19:760 Servidor Kernel/(7373:7386): Me llego el tamanio y las instrucciones
+
+[INFO] 11:08:19:760 Servidor Kernel/(7373:7386): Consola deserializada, entro a armar pcb
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7386): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7386): PID[0] ingresa a NEW 
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7376): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7376): Recibi paquete PCB de memoria 
+ 
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7376): PID[0] ingresa a READY desde NEW 
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7377): Inicio la planificacion FIFO
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7377): PID[0] sale de READY para plan FIFO 
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7377): PID[0] ingresa a EXEC
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7378): PID[0] sale de EXEC
+
+[INFO] 11:08:19:761 Servidor Kernel/(7373:7378): PCB enviada cpu para ejecucion
+[INFO] 11:08:19:766 Servidor Kernel/(7373:7378): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 11:08:19:766 Servidor Kernel/(7373:7378): [1] Ultima instruccion ejecutada
+[INFO] 11:08:19:766 Servidor Kernel/(7373:7378): PID[0] Entra en BLOCKED 
+
+[INFO] 11:08:19:766 Servidor Kernel/(7373:7379): PID[0] sale de BLOCKED 
+
+[INFO] 11:08:19:766 Servidor Kernel/(7373:7379): PID[0] ejecuta IO 
+
+[INFO] 11:08:19:766 Servidor Kernel/(7373:7379): Proceso no supero el tiempo mas bloqueo, ejecutar solo IO 
+
+[INFO] 11:08:24:766 Servidor Kernel/(7373:7379): Ingresa a READY desde IO 
+
+[INFO] 11:08:24:766 Servidor Kernel/(7373:7377): Inicio la planificacion FIFO
+[INFO] 11:08:24:766 Servidor Kernel/(7373:7377): PID[0] sale de READY para plan FIFO 
+
+[INFO] 11:08:24:766 Servidor Kernel/(7373:7377): PID[0] ingresa a EXEC
+
+[INFO] 11:08:24:766 Servidor Kernel/(7373:7378): PID[0] sale de EXEC
+
+[INFO] 11:08:24:766 Servidor Kernel/(7373:7378): PCB enviada cpu para ejecucion
+[INFO] 11:08:24:772 Servidor Kernel/(7373:7378): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 11:08:24:772 Servidor Kernel/(7373:7378): [5] Ultima instruccion ejecutada
+[INFO] 11:08:24:772 Servidor Kernel/(7373:7378): PID[0] Entra en EXIT 
+
+[INFO] 11:08:24:772 Servidor Kernel/(7373:7375): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 0
+
+[INFO] 11:08:24:772 Servidor Kernel/(7373:7375): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 11:08:24:773 Servidor Kernel/(7373:7375): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[INFO] 11:08:24:773 Servidor Kernel/(7373:7375): Enviando a consola que finalizo el proceso
+
+[INFO] 11:09:09:912 Servidor Kernel/(7373:7403): Me llego el tamanio y las instrucciones
+
+[INFO] 11:09:09:912 Servidor Kernel/(7373:7403): Consola deserializada, entro a armar pcb
+
+[INFO] 11:09:09:913 Servidor Kernel/(7373:7403): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 11:09:09:913 Servidor Kernel/(7373:7403): PID[1] ingresa a NEW 
+
+[INFO] 11:09:09:913 Servidor Kernel/(7373:7376): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 11:09:09:913 Servidor Kernel/(7373:7376): Recibi paquete PCB de memoria 
+ 
+[INFO] 11:09:09:914 Servidor Kernel/(7373:7376): PID[1] ingresa a READY desde NEW 
+
+[INFO] 11:09:09:914 Servidor Kernel/(7373:7377): Inicio la planificacion FIFO
+[INFO] 11:09:09:914 Servidor Kernel/(7373:7377): PID[1] sale de READY para plan FIFO 
+
+[INFO] 11:09:09:914 Servidor Kernel/(7373:7377): PID[1] ingresa a EXEC
+
+[INFO] 11:09:09:914 Servidor Kernel/(7373:7378): PID[1] sale de EXEC
+
+[INFO] 11:09:09:914 Servidor Kernel/(7373:7378): PCB enviada cpu para ejecucion
+[INFO] 11:09:09:918 Servidor Kernel/(7373:7378): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 11:09:09:918 Servidor Kernel/(7373:7378): [1] Ultima instruccion ejecutada
+[INFO] 11:09:09:918 Servidor Kernel/(7373:7378): PID[1] Entra en BLOCKED 
+
+[INFO] 11:09:09:918 Servidor Kernel/(7373:7379): PID[1] sale de BLOCKED 
+
+[INFO] 11:09:09:918 Servidor Kernel/(7373:7379): PID[1] ejecuta IO 
+
+[INFO] 11:09:09:918 Servidor Kernel/(7373:7379): Proceso no supero el tiempo mas bloqueo, ejecutar solo IO 
+
+[INFO] 11:09:14:919 Servidor Kernel/(7373:7379): Ingresa a READY desde IO 
+
+[INFO] 11:09:14:920 Servidor Kernel/(7373:7377): Inicio la planificacion FIFO
+[INFO] 11:09:14:920 Servidor Kernel/(7373:7377): PID[1] sale de READY para plan FIFO 
+
+[INFO] 11:09:14:920 Servidor Kernel/(7373:7377): PID[1] ingresa a EXEC
+
+[INFO] 11:09:14:920 Servidor Kernel/(7373:7378): PID[1] sale de EXEC
+
+[INFO] 11:09:14:920 Servidor Kernel/(7373:7378): PCB enviada cpu para ejecucion
+[INFO] 11:09:14:924 Servidor Kernel/(7373:7378): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 11:09:14:925 Servidor Kernel/(7373:7378): [5] Ultima instruccion ejecutada
+[INFO] 11:09:14:925 Servidor Kernel/(7373:7378): PID[1] Entra en EXIT 
+
+[INFO] 11:09:14:925 Servidor Kernel/(7373:7375): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 1
+
+[INFO] 11:09:14:925 Servidor Kernel/(7373:7375): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 11:09:14:925 Servidor Kernel/(7373:7375): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[INFO] 11:09:14:925 Servidor Kernel/(7373:7375): Enviando a consola que finalizo el proceso
+
+[INFO] 11:09:19:055 Servidor Kernel/(7373:7405): Me llego el tamanio y las instrucciones
+
+[INFO] 11:09:19:055 Servidor Kernel/(7373:7405): Consola deserializada, entro a armar pcb
+
+[INFO] 11:09:19:057 Servidor Kernel/(7373:7405): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 11:09:19:057 Servidor Kernel/(7373:7405): PID[2] ingresa a NEW 
+
+[INFO] 11:09:19:057 Servidor Kernel/(7373:7376): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 11:09:19:057 Servidor Kernel/(7373:7376): Recibi paquete PCB de memoria 
+ 
+[INFO] 11:09:19:057 Servidor Kernel/(7373:7376): PID[2] ingresa a READY desde NEW 
+
+[INFO] 11:09:19:058 Servidor Kernel/(7373:7377): Inicio la planificacion FIFO
+[INFO] 11:09:19:058 Servidor Kernel/(7373:7377): PID[2] sale de READY para plan FIFO 
+
+[INFO] 11:09:19:058 Servidor Kernel/(7373:7377): PID[2] ingresa a EXEC
+
+[INFO] 11:09:19:058 Servidor Kernel/(7373:7378): PID[2] sale de EXEC
+
+[INFO] 11:09:19:058 Servidor Kernel/(7373:7378): PCB enviada cpu para ejecucion
+[INFO] 11:09:19:072 Servidor Kernel/(7373:7378): PCB recibida de cpu para calcular estimaciones (SRT)
+[INFO] 11:09:19:072 Servidor Kernel/(7373:7378): [5] Ultima instruccion ejecutada
+[INFO] 11:09:19:072 Servidor Kernel/(7373:7378): PID[2] Entra en EXIT 
+
+[INFO] 11:09:19:072 Servidor Kernel/(7373:7375): [EXIT]Sale de EXIT y Finaliza el  pcb de ID: 2
+
+[INFO] 11:09:19:072 Servidor Kernel/(7373:7375): Enviando a memoria liberar estructuras del proceso 
+
+[INFO] 11:09:19:072 Servidor Kernel/(7373:7375): Respuesta memoria de estructuras liberadas del proceso recibida 
+
+[INFO] 11:09:19:072 Servidor Kernel/(7373:7375): Enviando a consola que finalizo el proceso
+
