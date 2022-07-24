@@ -9255,3 +9255,30 @@
 
 [INFO] 12:24:46:841 Servidor Kernel/(14410:14412): Enviando a consola que finalizo el proceso
 
+[INFO] 12:44:29:910 Servidor Kernel/(14410:15656): Me llego el tamanio y las instrucciones
+
+[INFO] 12:44:29:910 Servidor Kernel/(14410:15656): Consola deserializada, entro a armar pcb
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:15656): PCB armada -> agregar proceso a new y arrancar con la planificacion
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:15656): PID[5] ingresa a NEW 
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14413): envio a memoria mensaje para inicializar estructuras del proceso 
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14413): Recibi paquete PCB de memoria 
+ 
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14413): PID[5] ingresa a READY desde NEW 
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14414): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14414): El algoritmo de planificacion elegido es SRT 
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14414): Inicio la planificacion SRT 
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14414): PID[5] con menor estimacion sale de READY para plan SRT 
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14414): PID[5] ingresa a EXEC
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14415): PID[5] sale de EXEC
+
+[INFO] 12:44:29:911 Servidor Kernel/(14410:14415): PCB enviada cpu para ejecucion

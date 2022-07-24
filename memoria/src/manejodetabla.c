@@ -25,33 +25,40 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		return pagina->marco;
 	}
 	else{ // page fault
-		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+		printf("tamanio lista archivos %d \n", list_size(archivos));
+		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"Page Fault, buscar marco libre \n");
 		usleep(config_valores_memoria.retardo_swap); //retardo swap
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
 			log_info(memoria_logger,"antes de ocupar marco libre  \n");
+			printf("tamanio lista archivos %d \n", list_size(archivos));
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
 			log_info(memoria_logger,"despues de ocupar marco libre  \n");
-			printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			pagina->p=true;
 			log_info(memoria_logger,"antes de asignar al archivo  \n");
+			printf("tamanio lista archivos %d \n", list_size(archivos));
 			asignarAlArchivo(tabla_elegida->p_id);
-			printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+			printf("tamanio lista archivos %d \n", list_size(archivos));
+			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			log_info(memoria_logger,"despues de asignar al archivo  \n");
 			log_info(memoria_logger,"indice_tabla_en_swap  \n");
 			indice_tabla_en_swap =devolverNroTablaEnSwap(tabla_elegida->p_id,tabla);
-			printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
-			printf("valor indice_tabla_en_swap %"PRIu32" \n",indice_tabla_en_swap);
+			printf("tamanio lista archivos %d \n", list_size(archivos));
+			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+			//printf("valor indice_tabla_en_swap %"PRIu32" \n",indice_tabla_en_swap);
 			log_info(memoria_logger,"antes de traer pagina swap  \n");
 			void* paginaTraida=traerPaginaDeSwap(pagina->indice + indice_tabla_en_swap * config_valores_memoria.entradas_por_tabla);//trae la pagina desde el swap
-			printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+			printf("tamanio lista archivos %d \n", list_size(archivos));
+			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			log_info(memoria_logger,"pagina traida de swap \n");
 			escribirPagEnMemoria(paginaTraida,pagina->marco);//la escribe en memoria
-			printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+			printf("tamanio lista archivos %d \n", list_size(archivos));
+			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			log_info(memoria_logger,"Se escribio y reemplazo pagina traida de swap en memoria \n");
 			pagina->p=true;//pagina ahora está presente en memoria
 			log_info(memoria_logger,"Se obtuvo pagina a reemplazar \n");
-			printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			return pagina->marco;
 
 		}

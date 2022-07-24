@@ -31,26 +31,48 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	}
 	ftruncate(fd,tamanio_proceso);
 
+	printf("antes de iniciar archivo swap \n");
+	archivos_swap* archivo= malloc(sizeof(archivos_swap));
+	printf("despues de inicar archivo swap \n");
+	archivo->pid = idProceso;
+	printf("id de swap : %d \n",archivo->pid);
+	printf("archivo swap void \n");
+	archivo->fd = fd;
+	printf("fd de swap : %d \n",archivo->fd);
+	archivo->path_swap = path;
+
+
 	// hacer el mmap para que quede siempre abierto
 
-	archivo_swap = mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ, MAP_FILE|MAP_SHARED,fd,0);
-	if (archivo_swap == MAP_FAILED)
+	archivo->archivo = mmap(NULL,tamanio_proceso,PROT_WRITE|PROT_READ, MAP_FILE|MAP_SHARED,fd,0);
+	if (archivo->archivo == MAP_FAILED)
 		    {
 		        close(fd);
 		        perror("Error mmapping the file");
-		      //  exit(EXIT_FAILURE);
 		    }
-	printf("tamanio archivo swap %d\n",archivo_swap);
-	archivos_swap* archivo= malloc(sizeof(archivos_swap));
-	archivo->pid = idProceso;
-	archivo->archivo = archivo_swap;
-	archivo->fd = fd;
-	printf("tamanio del swap : %d",sizeof(archivo));
+
 	pthread_mutex_lock(&mutex_lista_archivo);
 	list_add(archivos,archivo);
 	pthread_mutex_unlock(&mutex_lista_archivo);
 
+//	printf("antes de iniciar archivo swap \n");
+//	archivos_swap* archivo= malloc(sizeof(archivos_swap));
+//	printf("despues de inicar archivo swap \n");
+//	archivo->pid = idProceso;
+//	printf("id de swap : %d \n",archivo->pid);
+//	archivo->archivo = malloc(tamanio_proceso);
+//	pthread_mutex_lock(&mutex_archivo_swap);
+//	memcpy(archivo_swap,)
+//	pthread_mutex_unlock(&mutex_archivo_swap);
+//	printf("archivo swap void \n");
+//	archivo->fd = fd;
+//	printf("fd de swap : %d \n",archivo->fd);
+//	pthread_mutex_lock(&mutex_lista_archivo);
+//	list_add(archivos,archivo);
+//	pthread_mutex_unlock(&mutex_lista_archivo);
+
 }
+
 // VERSION SIN FUNCION NESTED
 
 //void eliminarSwap(pcb* pcb){
@@ -80,18 +102,35 @@ void eliminarSwap(pcb* pcb) {
         bool archivos_con_pid(archivos_swap* un_archivo) {
             return un_archivo->pid == pcb->id_proceso;
         }
+    printf("tamanio lista archivos %d \n", list_size(archivos));
 	pthread_mutex_lock(&mutex_lista_archivo);
 	archivos_swap* archivo = (archivos_swap*)list_remove_by_condition(archivos,archivos_con_pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
 
+	printf("tamanio lista archivos %d \n", list_size(archivos));
+	printf("id de swap : %d \n",archivo->pid);
+				printf("fd de swap : %d \n",archivo->fd);
+
 		munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
+		//printf("tamanio lista archivos %d \n", list_size(archivos));
 		close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
-		if(remove(armarPath(pcb->id_proceso))==-1){
+		//printf("tamanio lista archivos %d \n", list_size(archivos));
+			printf("id de swap : %d \n",archivo->pid);
+			printf("fd de swap : %d \n",archivo->fd);
+			printf("armar path valor : %s \n",armarPath(pcb->id_proceso));
+			printf("valor path swap : %s \n",archivo->path_swap);
+//		if(remove(armarPath(pcb->id_proceso))==-1){
+//			log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
+//			exit(-1);
+//		} else {
+//			log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
+//		}
+		if(remove(archivo->path_swap)==-1){
 			log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
 			exit(-1);
-		} else {
-			log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
-		}
+			} else {
+				log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
+			}
 }
 
 
@@ -144,8 +183,9 @@ void escribirPaginasModificadas(pcb* pcb){
 void* traerPaginaDeSwap(uint32_t numPag){
 	usleep(config_valores_memoria.retardo_swap);
 	void* pag=malloc(config_valores_memoria.tam_pagina);
-
+	pthread_mutex_lock(&mutex_archivo_swap);
 	memcpy(pag,archivo_swap + get_marco(numPag),config_valores_memoria.tam_pagina);
+	pthread_mutex_unlock(&mutex_archivo_swap);
 	return pag;
 }
 

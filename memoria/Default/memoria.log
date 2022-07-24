@@ -5338,3 +5338,7 @@
 
 [INFO] 12:24:46:841 Servidor Memoria/(14391:14411): Se elimino swap y liberaron las estructuras del proceso 
 
+[INFO] 13:47:35:231 Servidor Memoria/(19034:19034): El algoritmo de planificacion elegido es CLOCK.
+
+[INFO] 13:47:35:232 Servidor Memoria/(19034:19034): Memoria lista para recibir al modulo cliente 
+
