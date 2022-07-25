@@ -1,3 +1,5 @@
 /Debug/*
 
 !/Debug/makefile
+!/Debug/*.mk
+!/Debug/*/*.mk
