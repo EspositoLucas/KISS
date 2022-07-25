@@ -233,9 +233,13 @@ void escribirPagEnMemoria(void* pagina,uint32_t numMarco){
 
 
 uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
+//	bool archivos_con_pid(archivos_swap* un_archivo) {
+//		            return un_archivo->pid == pid;
+//		        }
 	t_list* pagsEnMemoria=paginasEnMemoria(pid);
 	printf("pags en memoria  %d \n",list_size( pagsEnMemoria));
 	t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
+	//t_p_2* pagElegida=(t_p_2*)list_find(pagsEnMemoria,numPagina);
 	if(pagElegida->m){
 		asignarAlArchivo(pid);
 		log_info(memoria_logger,"Se asigno al archivo swap el pid  \n");
@@ -299,7 +303,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_tlb/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria_clock_m/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");
