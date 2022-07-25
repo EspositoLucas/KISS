@@ -59,4 +59,6 @@ dkms.conf
 **/.project
 
 # Loggers
-**.log
+./*.log
+./*/*.log
+./*/*/*.log
