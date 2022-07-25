@@ -74,6 +74,7 @@ int main()
         	log_info(cpu_logger,"Recibi PCB de Id: %d \n",pcb_recibido->id_proceso);
         	if(ultimo_pid != pcb_recibido->id_proceso && list_size(tlb->lista) != 0){
         		vaciarTlb();
+        		log_info(cpu_logger,"Se vacio TLB\n");
         	}
         	ciclo_de_instruccion(pcb_recibido,cliente_fd);//INICIA EL CICLO DE INSTRUCCION
             break;

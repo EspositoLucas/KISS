@@ -238,8 +238,8 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 //		        }
 	t_list* pagsEnMemoria=paginasEnMemoria(pid);
 	printf("pags en memoria  %d \n",list_size( pagsEnMemoria));
-	t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
-	//t_p_2* pagElegida=(t_p_2*)list_find(pagsEnMemoria,numPagina);
+	//t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
+	t_p_2* pagElegida=(t_p_2*)list_find(pagsEnMemoria,pagina_con_presencia);
 	if(pagElegida->m){
 		asignarAlArchivo(pid);
 		log_info(memoria_logger,"Se asigno al archivo swap el pid  \n");
