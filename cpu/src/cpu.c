@@ -101,6 +101,7 @@ while((int)PCB->program_counter <list_size(PCB->instrucciones)){
 	PCB->program_counter++;//ACTUALIZA EL PCB
 	if(checkInterrupt()==1){//SE FIJA QUE NO HAYA PEDIDO DE PARAR EL PROCESO ANTES DE SEGUIR CON EL CICLO DE INSTRUCCION
 		enviarPcb(socket_kernel,PCB);
+		ultimo_pid = PCB->id_proceso;
 		printf("Envio pcb devuelta al kernel \n");
 		return NULL;
 	}
