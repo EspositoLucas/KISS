@@ -199,7 +199,7 @@ void manejo_conexiones(int socket_cliente){
 ///------------------------------INICIALIZAR MEMORIA----------------------------
 
 void inicializar_memoria(){
-	memoria_usuario=malloc(sizeof(config_valores_memoria.tam_memoria));
+	memoria_usuario=malloc(config_valores_memoria.tam_memoria);
 	tabla_de_pagina_1_nivel=list_create();
 	lista_tablas_segundo_nivel = list_create();
 	inicializar_marcos();
