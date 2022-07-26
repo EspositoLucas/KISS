@@ -74,7 +74,6 @@ void manejo_conexiones(int socket_cliente){
 		entrada1=*(uint32_t*)list_get(valores,1);
 		entrada2 = devolver_entrada_a_segunda_tabla(tabla, entrada1);
 		usleep(config_valores_memoria.retardo_memoria);
-		printf("tamanio lista archivos TABLA %d \n", list_size(archivos));
 //		t_paquete* paquete_tabla= crear_paquete();
 //		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
 //		enviar_paquete(paquete_tabla,socket_cliente);
@@ -138,12 +137,12 @@ void manejo_conexiones(int socket_cliente){
 			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
 			entrada_en_tp1->indice=valorTP1+i;
 			entrada_en_tp1->numero_de_tabla2=indice_de_tabla2;
-			//pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
+			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
 			list_add(tabla_de_pagina_1_nivel,entrada_en_tp1);
-			//pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
-			//pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
+			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
+			pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 			list_add(lista_tablas_segundo_nivel,nueva_tabla);
-			//pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
+			pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
 			log_info(memoria_logger,"numero de tabla de segundo nivel pasado a la de primer nivel \n");
 			indice_de_tabla2++;
 		}
@@ -209,16 +208,14 @@ void inicializar_memoria(){
 	pthread_mutex_init(&mutex_tabla_pagina_segundo_nivel,NULL);
 	pthread_mutex_init(&mutex_lista_archivo,NULL);
 
-	printf("Memoria inicializada\n");
+	log_info(memoria_logger, "Memoria inicializada \n");
 }
 int get_marco(int marco){
 	return marco*config_valores_memoria.tam_pagina;
 }
 void escribirPagEnMemoria(void* pagina,uint32_t numMarco){
 	pthread_mutex_lock(&mutex_memoria_usuario);
-	printf("tamanio lista archivos %d \n", list_size(archivos));
 	memcpy(memoria_usuario + get_marco(numMarco),pagina,config_valores_memoria.tam_pagina);
-	printf("tamanio lista archivos %d \n", list_size(archivos));
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 }
 
@@ -243,9 +240,9 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 		msync(archivo_swap,pid,MS_SYNC);
 	}
 	cambiarPdePagina(numPagina,pid,0);
-	printf("se cambio P de pagina \n");
+	printf("se cambio P de pagina con valor %d \n",pagElegida->p);
 	cambiarMdePagina(numPagina,pid,0);
-	printf("se cambio M de pagina \n");
+	printf("se cambio M de pagina con valor %d \n",pagElegida->m);
 	return pagElegida->marco;
 }
 ///---------------------MODIFICAR TABLA DE PAGINAS---------------------------------
@@ -353,7 +350,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		valor_escritura = *(uint32_t*)list_get(datos,2);
 		printf("valor antes de escribir %d\n",valor_escritura);
 		escritura = escribirEn(dir_fisica, valor_escritura);
-		printf("valor depsues de dir fisica \n");
+		printf("valor depsues de escribir dir fisica \n");
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
@@ -382,15 +379,15 @@ void traducir_operandos(void* stream,uint32_t* operando1,uint32_t* operando2){
 	memcpy(&operando2,stream+sizeof(uint32_t),sizeof(uint32_t));
 }
 int pags_proceso(uint32_t tamanio_proc,int tamanio_pag){
-	printf("valor tamanio_proc %d \n",(int)tamanio_proc);
-	printf("valor tamanio_pag %d \n",tamanio_pag);
+	//printf("valor tamanio_proc %d \n",(int)tamanio_proc);
+	//printf("valor tamanio_pag %d \n",tamanio_pag);
 	double entero=((double)tamanio_proc)/(double)tamanio_pag;
-	printf("valor entero %0.2f \n",ceil(entero));
+	//printf("valor entero %0.2f \n",ceil(entero));
 	return (int)ceil(entero);
 }
 int tp2_proceso(int pags,int entradas_tabla){
 	double entero=(double)pags/(double)entradas_tabla;
-	printf("valor entero %0.2f \n",ceil(entero));
+	//printf("valor entero %0.2f \n",ceil(entero));
 	return (int)ceil(entero);
 }
 ///-----------MANEJO DE MARCOS----------------

@@ -7,9 +7,7 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	uint32_t entradafinal=tabla+entrada;
 	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel);i++){
 		t_p_1* aux =  (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
-		printf("valor tp1 %d \n",aux->numero_de_tabla2);
 	}
-	printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 	t_p_1* tabla_1 =  (t_p_1*)list_get(tabla_de_pagina_1_nivel,entradafinal);
 	return tabla_1->numero_de_tabla2;
 }
@@ -19,7 +17,6 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida->lista_paginas,entrada);
 	printf("pagina a usar para reemplazo  %d \n",pagina->indice);
 	uint32_t indice_tabla_en_swap;
-	printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 	if(pagina->p){
 		log_info(memoria_logger,"Pagina presente en memoria, no hay page fault \n");
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria

@@ -22,13 +22,11 @@
 char* armarPath (uint32_t id) {
     char* ruta = string_new();
     char* numero = string_itoa(id);
-    //printf("valor config valores path swap %s \n",pathSwap);
 	string_append(&ruta, "/home/utnso/swap");
 	string_append(&ruta, "/");
     string_append(&ruta, numero);
     string_append(&ruta, ".swap");
     free(numero);
-    //printf("valor config valores path swap despues append %s \n",pathSwap);
     puts(ruta);
     return ruta;
 }
@@ -46,14 +44,9 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	}
 	ftruncate(fd,tamanio_proceso);
 
-	printf("antes de iniciar archivo swap \n");
 	archivos_swap* archivo= malloc(sizeof(archivos_swap));
-	printf("despues de inicar archivo swap \n");
 	archivo->pid = idProceso;
-	printf("id de swap : %d \n",archivo->pid);
-	printf("archivo swap void \n");
 	archivo->fd = fd;
-	printf("fd de swap : %d \n",archivo->fd);
 	archivo->path_swap = path;
 
 
@@ -77,23 +70,14 @@ void eliminarSwap(pcb* pcb) {
         bool archivos_con_pid(archivos_swap* un_archivo) {
             return un_archivo->pid == pcb->id_proceso;
         }
-    printf("tamanio lista archivos %d \n", list_size(archivos));
 	pthread_mutex_lock(&mutex_lista_archivo);
 	archivos_swap* archivo = (archivos_swap*)list_remove_by_condition(archivos,archivos_con_pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
 
-	printf("tamanio lista archivos %d \n", list_size(archivos));
-	printf("id de swap : %d \n",archivo->pid);
-				printf("fd de swap : %d \n",archivo->fd);
 
 		munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
-		//printf("tamanio lista archivos %d \n", list_size(archivos));
 		close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
-		//printf("tamanio lista archivos %d \n", list_size(archivos));
-			printf("id de swap : %d \n",archivo->pid);
-			printf("fd de swap : %d \n",archivo->fd);
-			printf("armar path valor : %s \n",armarPath(pcb->id_proceso));
-			printf("valor path swap : %s \n",archivo->path_swap);
+
 //		if(remove(armarPath(pcb->id_proceso))==-1){
 //			log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
 //			exit(-1);
@@ -177,10 +161,7 @@ void asignarAlArchivo(uint32_t pid) {
 	            return un_archivo->pid == pid;
 	        }
 	pthread_mutex_lock(&mutex_lista_archivo);
-	printf("tamanio lista archivos %d \n", list_size(archivos));
 	archivos_swap* archivo = (archivos_swap*)list_find(archivos,archivos_con_pid);
-	printf("tamanio lista archivos %d \n", list_size(archivos));
-	printf("archivo pid %d \n", archivo->pid);
 	pthread_mutex_unlock(&mutex_lista_archivo);
 
 	pthread_mutex_lock(&mutex_archivo_swap);
