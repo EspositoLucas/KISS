@@ -27,9 +27,6 @@ int main()
 	socket_memoria=crear_conexion(ip_memoria,puerto_memoria);
 	///HANDSHAKE
 
-//	pthread_t conexion_memoria_i;
-//	pthread_create(&conexion_memoria_i,NULL,conexion_inicial_memoria,&config_valores_cpu.puerto_memoria);//INICIA EL HILO DE CONEXION INICIAL CON MEMORIA (HANDSHAKE)
-//	pthread_join(conexion_memoria_i,NULL);//ESPERA A RECIBIR EL HANDSHAKE PARA SEGUIR
 
 	pthread_t conexion_memoria_i;
 	conexion_t* datos=malloc(sizeof(conexion_t));
@@ -53,9 +50,7 @@ int main()
 	log_info(cpu_logger, "Tlb creada \n");
 
 	///CREA LA CONEXION CON EL KERNEL
-	/*puts(config_valores_cpu.ip_cpu);
-	puts(config_valores_cpu.puerto_escucha_dispatch);
-	puts(config_valores_cpu.puerto_escucha_interrupt);*/
+
 	int server_fd = iniciar_servidor(ip,puerto_dispatch);
     log_info(cpu_logger, "CPU listo para recibir al modulo cliente \n");
     int cliente_fd = esperar_cliente(server_fd);

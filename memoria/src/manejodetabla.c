@@ -461,3 +461,4 @@ uint32_t devolverNroTablaEnSwap(uint32_t pid,uint32_t tabla){
 		exit(30);
 
 }
+

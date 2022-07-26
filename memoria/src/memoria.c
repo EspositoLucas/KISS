@@ -254,18 +254,42 @@ void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	printf("tamanio tablas despues filtrar %d \n", list_size(tablas));
-	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+
+	tabla_de_segundo_nivel* averiguaIndice;
+	    uint32_t indice;
+	    for (int i=0;i<list_size(tablas);i++){
+	        averiguaIndice=list_get(tablas,i);
+	        if(averiguaIndice->id_tabla==numTabla){
+	            indice=i;
+	            break;
+	        }
+	    }
+	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+	    tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->p=algo;
 }
+
+
 void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
+
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
 	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+	tabla_de_segundo_nivel* averiguaIndice;
+		    uint32_t indice;
+		    for (int i=0;i<list_size(tablas);i++){
+		        averiguaIndice=list_get(tablas,i);
+		        if(averiguaIndice->id_tabla==numTabla){
+		            indice=i;
+		            break;
+		        }
+		    }
+	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+    tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->u=algo;
 	printf(" bit uso pagina reemplazada  %d \n",pagina->u);
@@ -278,18 +302,39 @@ void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+	tabla_de_segundo_nivel* averiguaIndice;
+			    uint32_t indice;
+			    for (int i=0;i<list_size(tablas);i++){
+			        averiguaIndice=list_get(tablas,i);
+			        if(averiguaIndice->id_tabla==numTabla){
+			            indice=i;
+			            break;
+			        }
+			    }
+	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->m=algo;
 }
 void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
+
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
 	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+	tabla_de_segundo_nivel* averiguaIndice;
+			    uint32_t indice;
+			    for (int i=0;i<list_size(tablas);i++){
+			        averiguaIndice=list_get(tablas,i);
+			        if(averiguaIndice->id_tabla==numTabla){
+			            indice=i;
+			            break;
+			        }
+			    }
+	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
 	printf("indice tablinha %d\n",tablinha->id_tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	printf(" pagina %d\n",pagina->indice);
@@ -382,6 +427,10 @@ int pags_proceso(uint32_t tamanio_proc,int tamanio_pag){
 	//printf("valor tamanio_proc %d \n",(int)tamanio_proc);
 	//printf("valor tamanio_pag %d \n",tamanio_pag);
 	double entero=((double)tamanio_proc)/(double)tamanio_pag;
+	if((tamanio_proc % tamanio_pag) > 0){
+		entero++;
+
+	}
 	//printf("valor entero %0.2f \n",ceil(entero));
 	return (int)ceil(entero);
 }
@@ -390,6 +439,7 @@ int tp2_proceso(int pags,int entradas_tabla){
 	//printf("valor entero %0.2f \n",ceil(entero));
 	return (int)ceil(entero);
 }
+
 ///-----------MANEJO DE MARCOS----------------
 
 //Cree una estructura llamada marquito, que tiene numero de marco y el pid del proceso que lo ocupa

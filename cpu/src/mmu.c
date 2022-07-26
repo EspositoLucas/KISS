@@ -30,6 +30,8 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 	//CALCULO DE DIRECCION FISICA
 
 	uint32_t direccion_fisica=marco*configuracion_tabla->tam_pagina+offset;
+	printf("valor marco %d \n", marco);
+	printf("valor offset %d \n", marco);
 	log_info(cpu_logger,"Direccion fisica traducida: %d \n",direccion_fisica);
 
 	return direccion_fisica;
