@@ -70,48 +70,8 @@ void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea 
 	list_add(archivos,archivo);
 	pthread_mutex_unlock(&mutex_lista_archivo);
 
-//	printf("antes de iniciar archivo swap \n");
-//	archivos_swap* archivo= malloc(sizeof(archivos_swap));
-//	printf("despues de inicar archivo swap \n");
-//	archivo->pid = idProceso;
-//	printf("id de swap : %d \n",archivo->pid);
-//	archivo->archivo = malloc(tamanio_proceso);
-//	pthread_mutex_lock(&mutex_archivo_swap);
-//	memcpy(archivo_swap,)
-//	pthread_mutex_unlock(&mutex_archivo_swap);
-//	printf("archivo swap void \n");
-//	archivo->fd = fd;
-//	printf("fd de swap : %d \n",archivo->fd);
-//	pthread_mutex_lock(&mutex_lista_archivo);
-//	list_add(archivos,archivo);
-//	pthread_mutex_unlock(&mutex_lista_archivo);
 
 }
-
-// VERSION SIN FUNCION NESTED
-
-//void eliminarSwap(pcb* pcb){
-//	pthread_mutex_lock(&mutex_comparador_archivo_pid);
-//	comparador_archivo=pcb->id_proceso;
-//	pthread_mutex_unlock(&mutex_comparador_archivo_pid);
-//	pthread_mutex_lock(&mutex_lista_archivo);
-//	archivos_swap* archivo = (archivos_swap*)list_remove_by_condition(archivos,archivos_con_pid);
-//	pthread_mutex_unlock(&mutex_lista_archivo);
-//	//munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
-//	//close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
-//	if(remove(armarPath(pcb->id_proceso))==-1){
-//		log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
-//		exit(-1);
-//	} else {
-//		log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
-//	}
-//}
-//bool archivos_con_pid(uint32_t pid) {
-//	return comparador_archivo == pid;
-//}
-
-
-// VERSION CON FUNCION NESTED
 
 void eliminarSwap(pcb* pcb) {
         bool archivos_con_pid(archivos_swap* un_archivo) {
@@ -175,6 +135,8 @@ void escribirPagEnSwap(t_p_2* pag){
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	pthread_mutex_lock(&mutex_archivo_swap);
 	memcpy(archivo_swap+get_marco(pag->indice),memoria_usuario+get_marco(pag->marco),config_valores_memoria.tam_pagina);
+	printf("valor indice pag %d \n",pag->indice);
+	printf("valor marco pag %d \n",pag->indice);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 	pthread_mutex_lock(&mutex_archivo_swap);
 	log_info(memoria_logger,"Se escribio pagina en swap \n");
@@ -187,7 +149,7 @@ void escribirPaginasModificadas(pcb* pcb){
 	asignarAlArchivo(pcb->id_proceso);
 
 	for(int i=0;i<list_size(paginasProc);i++){
-		t_p_2* pag=list_get(paginasProc,i);
+		t_p_2* pag=(t_p_2*)list_get(paginasProc,i);
 		escribirPagEnSwap(pag);
 		msync(archivo_swap,pcb->tamanio_proceso,MS_SYNC);
 		cambiarMdePagina(pag->indice,pcb->id_proceso,0);

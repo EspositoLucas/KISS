@@ -23,43 +23,24 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	if(pagina->p){
 		log_info(memoria_logger,"Pagina presente en memoria, no hay page fault \n");
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria
+		pagina->u = 1;
+		printf("valor bit uso pagina %d \n",pagina->u);
 		return pagina->marco;
 	}
 	else{ // page fault
-		//printf("tamanio lista archivos %d \n", list_size(archivos));
-		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"Page Fault, buscar marco libre \n");
 		usleep(config_valores_memoria.retardo_swap); //retardo swap
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
-			//log_info(memoria_logger,"antes de ocupar marco libre  \n");
-			//printf("tamanio lista archivos %d \n", list_size(archivos));
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
-			//log_info(memoria_logger,"despues de ocupar marco libre  \n");
-			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			pagina->p=true;
-			//log_info(memoria_logger,"antes de asignar al archivo  \n");
-			//printf("tamanio lista archivos %d \n", list_size(archivos));
 			asignarAlArchivo(tabla_elegida->p_id);
-			//printf("tamanio lista archivos %d \n", list_size(archivos));
-			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
-			//log_info(memoria_logger,"despues de asignar al archivo  \n");
-			//log_info(memoria_logger,"indice_tabla_en_swap  \n");
 			indice_tabla_en_swap =devolverNroTablaEnSwap(tabla_elegida->p_id,tabla);
-			//printf("tamanio lista archivos %d \n", list_size(archivos));
-			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
-			//printf("valor indice_tabla_en_swap %"PRIu32" \n",indice_tabla_en_swap);
 			log_info(memoria_logger,"antes de traer pagina swap  \n");
 			void* paginaTraida=traerPaginaDeSwap(pagina->indice + indice_tabla_en_swap * config_valores_memoria.entradas_por_tabla);//trae la pagina desde el swap
-			//printf("tamanio lista archivos %d \n", list_size(archivos));
-			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			log_info(memoria_logger,"pagina traida de swap \n");
 			escribirPagEnMemoria(paginaTraida,pagina->marco);//la escribe en memoria
-			//printf("tamanio lista archivos %d \n", list_size(archivos));
-			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			log_info(memoria_logger,"Se escribio y reemplazo pagina traida de swap en memoria \n");
 			pagina->p=true;//pagina ahora está presente en memoria
-			//log_info(memoria_logger,"Se obtuvo pagina a reemplazar \n");
-			//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 			return pagina->marco;
 
 		}
@@ -150,13 +131,55 @@ algoritmo obtener_algoritmo(){
 }
 
 
+//uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
+//
+//    t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
+//    t_p_2* aux;
+//    t_p_2* siguiente;
+//    uint32_t numeroPaginaInicial=pagina->indice;
+//    uint32_t indice=numeroPaginaInicial;
+//    pagina->puntero_indice=0;
+//    while(1){
+//    for (int i =indice ; i < list_size(lista); i++){
+//        aux = list_get(lista, i);
+//        if (aux->u == 0){
+//            if(i==list_size(lista)-1){
+//                siguiente=list_get(lista, 0);
+//            }else{
+//                siguiente=list_get(lista, i);
+//            }
+//            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+//            printf(" bit uso pagina reemplazada  %d \n",aux->u);
+//            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
+//            //siguiente->puntero_indice=1;
+//             return aux->indice;
+//        } else {
+//        	cambiarUdePagina(aux->indice,pid,false);
+//        	 printf(" bit uso pagina reemplazada  %d \n",aux->u);
+//        	 printf(" bit modificado pagina reemplazada  %d \n",aux->m);
+//            //aux->u = 0;
+//        }
+//    }
+//    indice=0;
+//    }
+//    return numeroPaginaInicial;
+//}
+
 uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
 
     t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
+    uint32_t numeroPaginaInicial=pagina->indice;
+    t_p_2* averiguaIndice;
+    uint32_t indice;
+    for (int i=0;i<list_size(lista);i++){
+        averiguaIndice=list_get(lista,i);
+        if(averiguaIndice->indice==pagina->indice){
+            indice=i;
+            break;
+        }
+    }
     t_p_2* aux;
     t_p_2* siguiente;
-    uint32_t numeroPaginaInicial=pagina->indice;
-    uint32_t indice=numeroPaginaInicial;
     pagina->puntero_indice=0;
     while(1){
     for (int i =indice ; i < list_size(lista); i++){
@@ -171,7 +194,7 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
             //siguiente->puntero_indice=1;
              return aux->indice;
         } else {
-        	cambiarUdePagina(aux->indice,pid,false);
+            cambiarUdePagina(aux->indice,pid,false);
             //aux->u = 0;
         }
     }
@@ -180,6 +203,8 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
     return numeroPaginaInicial;
 }
 
+
+
 bool punteroEnUno(t_p_2* pagina){
     return pagina->puntero_indice==1;
 }
@@ -187,12 +212,21 @@ bool punteroEnUno(t_p_2* pagina){
 
 uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
 
+
     t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
     t_p_2* aux;
     t_p_2* siguiente;
     uint32_t numeroPaginaInicial=pagina->indice;
-    uint32_t indice=numeroPaginaInicial;
+    t_p_2* averiguaIndice;
+    uint32_t indice;
     pagina->puntero_indice=0;
+    	for (int i=0;i<list_size(lista);i++){
+            averiguaIndice=list_get(lista,i);
+            if(averiguaIndice->indice==pagina->indice){
+                indice=i;
+                break;
+            }
+        }
 
     while(1){
     for (int i =indice ; i < list_size(lista); i++){
@@ -204,6 +238,8 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
                 siguiente=list_get(lista, i);
             }
             cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+            printf(" bit uso pagina reemplazada  %d \n",aux->u);
+            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
             //siguiente->puntero_indice=1;
              return aux->indice;
         }
@@ -217,6 +253,8 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
                     siguiente=list_get(lista, i);
                 }
                 siguiente->puntero_indice=1;
+                printf(" bit uso pagina reemplazada  %d \n",aux->u);
+                printf(" bit modificado pagina reemplazada  %d \n",aux->m);
                  return aux->indice;
             }
         }
@@ -361,24 +399,18 @@ t_list* pagsDeUnProceso(uint32_t pid){
 void eliminar_entrada_tp1(pcb* pcb){
 	pthread_mutex_lock(&mutex_numero_tabla_2p);
 	numero_tabla_2p = pcb->id_proceso;
-	printf("id_proceso %d \n",pcb->id_proceso);
 	pthread_mutex_unlock(&mutex_numero_tabla_2p);
 	t_list* tablas_proceso = (t_list*)list_filter(lista_tablas_segundo_nivel,condicion_misma_numero_p_id);
-	printf("tamanio_tabla_proceso %d \n",list_size(tablas_proceso));
 	t_list*indices_proceso= (t_list*)list_map(tablas_proceso,indice_tabla_tp2);
-	printf("tamanio_indice_proceso %d \n",list_size(indices_proceso));
 
 	for(int k = 0 ; k<list_size(indices_proceso);k++){
 			uint32_t aux = list_get(indices_proceso,k);
-			printf("valor de entrada %d \n",aux);
 		}
 
 
-	printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
 	int contador = 0 ;
 
 	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel)+ contador;i++){
-		//printf("tamanio tabla primer nivel %d \n",list_size(tabla_de_pagina_1_nivel));
 		indicador = false;
 		//t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
 		//t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
@@ -393,8 +425,6 @@ void eliminar_entrada_tp1(pcb* pcb){
 			//printf("tamanio indices_proceso %d \n",list_size(indices_proceso));
 			//uint32_t aux_indice = *(uint32_t*)list_get(indices_proceso,j);
 			uint32_t aux_indice = list_get(indices_proceso,j);
-			printf("valor aux indice %d \n",aux_indice);
-			printf("valor aux_numero_tabla 2 %d \n",aux->numero_de_tabla2);
 			if(aux_indice == aux->numero_de_tabla2 ){
 				indicador = true ;
 			}
@@ -404,10 +434,7 @@ void eliminar_entrada_tp1(pcb* pcb){
 
 		if(indicador){
 			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
-			printf("tamanio tabla primer nivel antes de borrar %d \n",list_size(tabla_de_pagina_1_nivel));
 			list_remove_and_destroy_element(tabla_de_pagina_1_nivel, i-contador, free);
-			//void* basura = list_remove(tabla_de_pagina_1_nivel,i);
-			printf("tamanio tabla primer nivel despues de borrar %d \n",list_size(tabla_de_pagina_1_nivel));
 			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
 		}
 

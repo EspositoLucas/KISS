@@ -78,29 +78,21 @@ void manejo_conexiones(int socket_cliente){
 //		t_paquete* paquete_tabla= crear_paquete();
 //		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
 //		enviar_paquete(paquete_tabla,socket_cliente);
-		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		enviar_datos(socket_cliente,&entrada2,sizeof(uint32_t));
-		//printf("valor entrada tabla 2 %d \n",entrada2);
 		log_info(memoria_logger,"entrada segundo nivel enviado a cpu \n");
 		list_destroy(valores);
 //		eliminar_paquete(paquete_tabla);
 		break;
 	case MARCO:
-		printf("tamanio lista archivos MARCO %d \n", list_size(archivos));
-		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"me llego un pedido de marco de cpu (mmu) \n");
 		valores=recibir_paquete(socket_cliente);
 		log_info(memoria_logger,"paquete recibido (mmu) \n");
 		tabla=*(uint32_t*)list_get(valores,0);
-		printf("valor segunda tabla %d \n",tabla);
 		log_info(memoria_logger,"valor tabla (mmu) \n");
 		entrada2=*(uint32_t*)list_get(valores,1);
-		printf("valor entrada tabla 2 %d \n",entrada2);
 		log_info(memoria_logger,"valor entrada2 (mmu) \n");
-		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
-		printf("tamanio lista archivos %d \n", list_size(archivos));
 		marco= devolver_marco(tabla, entrada2);
-		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+		printf("valor marco de devolver marco %d \n",marco);
 		log_info(memoria_logger,"valor marco (mmu) \n");
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_marco= crear_paquete();
@@ -111,7 +103,6 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"marco enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
-		//printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
 		log_info(memoria_logger, "Inicializando estructuras \n");
@@ -279,6 +270,8 @@ void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->u=algo;
+	printf(" bit uso pagina reemplazada  %d \n",pagina->u);
+	printf(" pagina reemplazada  %d \n",pagina->indice);
 }
 void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
@@ -298,12 +291,12 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	printf("tamanio listas_tablas_segundo_nivel %d\n",list_size(tablas));
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	printf("indice tablinha %d\n",tablinha->id_tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	printf(" pagina %d\n",pagina->indice);
 	pagina->puntero_indice=algo;
+	printf(" bit puntero pagina reemplazada  %d \n",pagina->puntero_indice);
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
@@ -334,13 +327,11 @@ t_paquete* preparar_paquete_para_handshake(){
 ///------------MANEJO DE INSTRUCCIONES DE MEMORIA---------------
 void manejo_instrucciones(t_list* datos,int socket_cpu){
 	codigo_instrucciones tipo_instruccion = *(codigo_instrucciones*)list_get(datos,0);
-	printf("valor op code %d\n",tipo_instruccion);
 	uint32_t dir_fisica;
 	uint32_t valor_leido;
 	uint32_t valor_escritura;
 	op_code codigo;
 	int escritura;
-	printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 
 	switch(tipo_instruccion){
 	case READ: ;
@@ -351,6 +342,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		t_paquete* paquete=crear_paquete();
 		agregar_a_paquete(paquete,&valor_leido,sizeof(uint32_t));
 		enviar_paquete(paquete,socket_cpu);
+		printf("valor leido %d \n ",valor_leido);
 		log_info(memoria_logger,"Valor leido enviado a CPU \n");
 		break;
 	case WRITE: ;
@@ -364,17 +356,17 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
-		printf("tamanio lista archivos WRITE %d \n", list_size(archivos));
-		printf("valor opcode: %d \n",codigo);
 		log_info(memoria_logger,"Estado de escritura enviado a CPU \n");
 		break;
 	case COPY: ;
 		uint32_t dir_fisica_destino = *(uint32_t*)list_get(datos,1);
+		printf("valor dir fisica destino %d \n ",dir_fisica_destino);
 		uint32_t dir_fisica_origen = *(uint32_t*)list_get(datos,2);
+		printf("valor dir fisica origen %d \n ",dir_fisica_origen);
 
 		valor_leido = leer_de_memoria(dir_fisica_origen);
+		printf("valor leido %d \n ",valor_leido);
 		escritura = escribirEn(dir_fisica_destino, valor_leido);
-
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
@@ -485,7 +477,9 @@ void liberarTodosLosMarcos(uint32_t pid){
 
 uint32_t leer_de_memoria(uint32_t dir_fisica){
 	uint32_t valor_leido_memoria = 0;
+	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(&valor_leido_memoria,memoria_usuario + dir_fisica,sizeof(uint32_t));
+	pthread_mutex_unlock(&mutex_memoria_usuario);
 	log_info(memoria_logger,"Lectura satisfactoria \n");
 	return valor_leido_memoria;
 }
@@ -497,6 +491,7 @@ int escribirEn(uint32_t dir_fisica, uint32_t valor){
 	}
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
+	printf("valor escritura copy %d \n ",valor);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 	log_info(memoria_logger,"Escritura satisfactoria \n");
 	return 1;
