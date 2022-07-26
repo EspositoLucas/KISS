@@ -136,7 +136,7 @@ void escribirPagEnSwap(t_p_2* pag){
 	pthread_mutex_lock(&mutex_archivo_swap);
 	memcpy(archivo_swap+get_marco(pag->indice),memoria_usuario+get_marco(pag->marco),config_valores_memoria.tam_pagina);
 	printf("valor indice pag %d \n",pag->indice);
-	printf("valor marco pag %d \n",pag->indice);
+	printf("valor marco pag %d \n",pag->marco);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 	pthread_mutex_lock(&mutex_archivo_swap);
 	log_info(memoria_logger,"Se escribio pagina en swap \n");
@@ -156,6 +156,10 @@ void escribirPaginasModificadas(pcb* pcb){
 		log_info(memoria_logger,"Se escribio pagina modificada en swap \n");
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
 		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap \n");
+		pag->u = 0;
+		pag->m = 0 ;
+		pag->p = 0;
+		log_info(memoria_logger,"Se setean de la pag modificada los bits de p,u y m en 0 \n");
 	}
 }
 

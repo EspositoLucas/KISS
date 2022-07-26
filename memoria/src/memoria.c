@@ -256,6 +256,7 @@ void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
+	printf("tamanio tablas despues filtrar %d \n", list_size(tablas));
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->p=algo;
@@ -491,7 +492,7 @@ int escribirEn(uint32_t dir_fisica, uint32_t valor){
 	}
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
-	printf("valor escritura copy %d \n ",valor);
+	printf("valor escritura %d \n ",valor);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 	log_info(memoria_logger,"Escritura satisfactoria \n");
 	return 1;
