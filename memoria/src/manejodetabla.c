@@ -12,8 +12,13 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	tabla_de_segundo_nivel*tabla_elegida=(tabla_de_segundo_nivel*)list_get(lista_tablas_segundo_nivel,tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida->lista_paginas,entrada);
+	t_list* pagsEnMemAux = paginasEnMemoria(tabla_elegida->p_id);
+	for(int i = 0 ; i < list_size(pagsEnMemAux); i++){
+		t_p_2* aux = (t_p_2*)list_get(pagsEnMemAux,i);
+		printf("pag en memoria %d \n",aux->indice);
+	}
 	printf("pagina a usar para reemplazo  %d \n",pagina->indice);
-	uint32_t indice_tabla_en_swap;
+	uint32_t indice_tabla_en_swap = devolverNroTablaEnSwap(tabla_elegida->p_id,tabla_elegida->id_tabla);;
 	if(pagina->p){
 		log_info(memoria_logger,"Pagina presente en memoria, no hay page fault \n");
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria
@@ -28,7 +33,6 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
 			pagina->p=true;
 			asignarAlArchivo(tabla_elegida->p_id);
-			indice_tabla_en_swap =devolverNroTablaEnSwap(tabla_elegida->p_id,tabla);
 			log_info(memoria_logger,"antes de traer pagina swap  \n");
 			void* paginaTraida=traerPaginaDeSwap(pagina->indice + indice_tabla_en_swap * config_valores_memoria.entradas_por_tabla);//trae la pagina desde el swap
 			log_info(memoria_logger,"pagina traida de swap \n");
@@ -41,13 +45,13 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"Cant max de marcos del proceso ocupados,obtener pagina reemplazar \n");
 		uint32_t numPagAReemplazar=obtenerPaginaAReemplazar(tabla_elegida->p_id);
-		printf("pagina reemplazada  %d \n",numPagAReemplazar);
+		printf("pagina a reemplazar  %d \n",numPagAReemplazar);
 		log_info(memoria_logger,"Se obtuvo pagina a reemplazar \n");
 		uint32_t marcoAUsar=escribirModificaciones(numPagAReemplazar,tabla_elegida->p_id);//Veo que marco voy a usar para traer la pagina
 		log_info(memoria_logger,"Se escribio pagina modificada en swap \n");															 //Si la pag reemplazada tiene m=1 => la escribo en swap, además, se le pone p=0
 		pagina->marco=marcoAUsar;
 		asignarAlArchivo(tabla_elegida->p_id);
-		void* paginaTraida=traerPaginaDeSwap(pagina->indice);//trae la pagina desde el swap
+		void* paginaTraida=traerPaginaDeSwap(pagina->indice + indice_tabla_en_swap * config_valores_memoria.entradas_por_tabla);//trae la pagina desde el swap
 		log_info(memoria_logger,"pagina traida de swap \n");
 		//asignarAlArchivo(tabla_elegida->p_id);
 		escribirPagEnMemoria(paginaTraida,marcoAUsar);//la escribe en memoria, reemplazando a la anterior
@@ -82,20 +86,28 @@ uint32_t  obtenerPaginaAReemplazar(uint32_t pid){
 	uint32_t pagina_reemplazo = 0;
 
 	t_list* tabla_marcos = paginasEnMemoria(pid);
+
 	if(list_all_satisfy(tabla_marcos,tienePunteroEnCero)) {
 		t_p_2* pag_aux = (t_p_2*)list_get(tabla_marcos,0);
 		pag_aux->puntero_indice = 1;
+		printf("indice pag aux %d \n",pag_aux->indice);
 	}
+	for(int i = 0 ; i < list_size(tabla_marcos); i++){
+			t_p_2* aux = (t_p_2*)list_get(tabla_marcos,i);
+			printf("pag en memoria antes de algoritmo %d \n",aux->indice);
+		}
  		switch(algoritmo_memoria){
  		case CLOCK:
  			pagina_reemplazo = obtenerPaginaClock(tabla_marcos,pid);
+ 			log_info(memoria_logger,"pagina reemplazada %d en CLOCK  del proceso %d\n",pagina_reemplazo,pid);
  			break;
  		case CLOCK_M:
  			pagina_reemplazo = obtenerPaginaClockM(tabla_marcos,pid);
+ 			log_info(memoria_logger,"pagina reemplazada %d en CLOCK-M  del proceso %d\n",pagina_reemplazo,pid);
  			break;
  		default:break;
  		}
-
+ 		printf("pag reemplazada despues de algoritmo %d \n",pagina_reemplazo);
  	return pagina_reemplazo;
  }
 
@@ -174,7 +186,7 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
     }
     t_p_2* aux;
     t_p_2* siguiente;
-    pagina->puntero_indice=0;
+    cambiarPunterodePagina(pagina->indice,pid,0);
 
     while(1){
     for (int i =indice ; i < list_size(lista); i++){
@@ -183,14 +195,12 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
             if(i==list_size(lista)-1){
                 siguiente=list_get(lista, 0);
             }else{
-                siguiente=list_get(lista, i);
+                siguiente=list_get(lista, i + 1);
             }
             cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-            //siguiente->puntero_indice=1;
              return aux->indice;
         } else {
             cambiarUdePagina(aux->indice,pid,false);
-            //aux->u = 0;
         }
     }
     indice=0;

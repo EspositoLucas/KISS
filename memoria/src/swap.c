@@ -102,16 +102,18 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
 	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir paginas modificadas
-
+	printf("antes de escribir pags modificadas \n");
 	escribirPaginasModificadas(pcb);
-
+	printf("despues de escribir pags modificadas \n");
+	liberarMemoriaUsuario(pcb->id_proceso);
+	log_info(memoria_logger,"Se libero memoria usuario del proceso %d \n",pcb->id_proceso);
 
 }
 bool modificados(t_p_2* marq){
 	return marq->m;
 }
 t_list* marcosMod(t_list* marquinhos){
-	t_list* modificado=list_filter(marquinhos,modificados);
+	t_list* modificado=(t_list*)list_filter(marquinhos,modificados);
 	return modificado;
 }
 void escribirPagEnSwap(t_p_2* pag){
@@ -122,16 +124,19 @@ void escribirPagEnSwap(t_p_2* pag){
 	printf("valor indice pag %d \n",pag->indice);
 	printf("valor marco pag %d \n",pag->marco);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
-	pthread_mutex_lock(&mutex_archivo_swap);
+	pthread_mutex_unlock(&mutex_archivo_swap);
 	log_info(memoria_logger,"Se escribio pagina en swap \n");
 }
 
 
 void escribirPaginasModificadas(pcb* pcb){
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
-
+	printf("tamanio paginasEnMemoria %d \n", list_size(paginasEnMemoria(pcb->id_proceso)));
+	printf("tamanio paginasProc %d \n", list_size(paginasProc));
+	printf("antes de asignar archivo\n");
 	asignarAlArchivo(pcb->id_proceso);
-
+	printf("despues de asignar archivo\n");
+	printf("tamanio paginasProc %d \n", list_size(paginasProc));
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=(t_p_2*)list_get(paginasProc,i);
 		escribirPagEnSwap(pag);

@@ -97,6 +97,9 @@ void cambiarPdePagina(uint32_t,uint32_t ,bool );
 void cambiarUdePagina(uint32_t ,uint32_t ,bool );
 void cambiarMdePagina(uint32_t ,uint32_t ,bool);
 void cambiarPunterodePagina(uint32_t ,uint32_t ,bool );
+void cambiarMarcoModificadoAUno(uint32_t );
+void liberarMemoriaUsuario(uint32_t );
+void limpiarMarco(uint32_t);
 
 
 
