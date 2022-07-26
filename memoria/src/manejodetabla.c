@@ -5,9 +5,6 @@ bool indicador ;
 //------------------------ACCESO A PRIMERA TABLA------------------------
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	uint32_t entradafinal=tabla+entrada;
-	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel);i++){
-		t_p_1* aux =  (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
-	}
 	t_p_1* tabla_1 =  (t_p_1*)list_get(tabla_de_pagina_1_nivel,entradafinal);
 	return tabla_1->numero_de_tabla2;
 }
@@ -167,7 +164,7 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
     t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
     uint32_t numeroPaginaInicial=pagina->indice;
     t_p_2* averiguaIndice;
-    uint32_t indice;
+    uint32_t indice = 0 ;
     for (int i=0;i<list_size(lista);i++){
         averiguaIndice=list_get(lista,i);
         if(averiguaIndice->indice==pagina->indice){
@@ -178,6 +175,7 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
     t_p_2* aux;
     t_p_2* siguiente;
     pagina->puntero_indice=0;
+
     while(1){
     for (int i =indice ; i < list_size(lista); i++){
         aux = list_get(lista, i);
@@ -215,7 +213,7 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
     t_p_2* siguiente;
     uint32_t numeroPaginaInicial=pagina->indice;
     t_p_2* averiguaIndice;
-    uint32_t indice;
+    uint32_t indice = 0;
     pagina->puntero_indice=0;
     	for (int i=0;i<list_size(lista);i++){
             averiguaIndice=list_get(lista,i);
