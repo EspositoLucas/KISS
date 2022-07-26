@@ -255,17 +255,7 @@ void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	printf("tamanio tablas despues filtrar %d \n", list_size(tablas));
 
-	tabla_de_segundo_nivel* averiguaIndice;
-	    uint32_t indice;
-	    for (int i=0;i<list_size(tablas);i++){
-	        averiguaIndice=list_get(tablas,i);
-	        if(averiguaIndice->id_tabla==numTabla){
-	            indice=i;
-	            break;
-	        }
-	    }
-	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
-	    tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->p=algo;
 }
@@ -278,18 +268,10 @@ void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
+
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	tabla_de_segundo_nivel* averiguaIndice;
-		    uint32_t indice;
-		    for (int i=0;i<list_size(tablas);i++){
-		        averiguaIndice=list_get(tablas,i);
-		        if(averiguaIndice->id_tabla==numTabla){
-		            indice=i;
-		            break;
-		        }
-		    }
-	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
-    tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
+
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->u=algo;
 	printf(" bit uso pagina reemplazada  %d \n",pagina->u);
@@ -302,17 +284,8 @@ void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	tabla_de_segundo_nivel* averiguaIndice;
-			    uint32_t indice;
-			    for (int i=0;i<list_size(tablas);i++){
-			        averiguaIndice=list_get(tablas,i);
-			        if(averiguaIndice->id_tabla==numTabla){
-			            indice=i;
-			            break;
-			        }
-			    }
-	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
-	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
+
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->m=algo;
 }
@@ -323,18 +296,9 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
+
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	tabla_de_segundo_nivel* averiguaIndice;
-			    uint32_t indice;
-			    for (int i=0;i<list_size(tablas);i++){
-			        averiguaIndice=list_get(tablas,i);
-			        if(averiguaIndice->id_tabla==numTabla){
-			            indice=i;
-			            break;
-			        }
-			    }
-	//tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
-	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,indice);
+	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	printf("indice tablinha %d\n",tablinha->id_tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	printf(" pagina %d\n",pagina->indice);

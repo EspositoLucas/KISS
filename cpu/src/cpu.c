@@ -153,7 +153,7 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
 	agregar_a_paquete(paquete,&dir_fisica,sizeof(uint32_t));
-
+	printf("valor dir_fisica %d\n",dir_fisica);
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de lectura enviado \n");
 	eliminar_paquete(paquete);

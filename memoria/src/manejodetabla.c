@@ -86,7 +86,7 @@ uint32_t  obtenerPaginaAReemplazar(uint32_t pid){
 
 	t_list* tabla_marcos = paginasEnMemoria(pid);
 	if(list_all_satisfy(tabla_marcos,tienePunteroEnCero)) {
-		t_p_2* pag_aux = list_get(tabla_marcos,0);
+		t_p_2* pag_aux = (t_p_2*)list_get(tabla_marcos,0);
 		pag_aux->puntero_indice = 1;
 	}
  		switch(algoritmo_memoria){
@@ -358,7 +358,7 @@ t_list* paginasEnMemoria(uint32_t pid){
 			pagReal->p=pagEnMemoria->p;
 			pagReal->puntero_indice=pagEnMemoria->puntero_indice;
 			pagReal->u=pagEnMemoria->u;
-			pagReal->indice=pagEnMemoria->indice+10*i;
+			pagReal->indice=pagEnMemoria->indice+config_valores_memoria.entradas_por_tabla*i;
 			list_add(lista_pags_en_mem,pagReal);
 		}
 	}

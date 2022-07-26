@@ -28,7 +28,7 @@ int buscar_en_la_tlb(uint32_t pagina){
 	pagina_a_buscar=pagina;
 	if(list_any_satisfy(tlb->lista,pagina_se_encuentra_en_tlb)){
 		log_info(cpu_logger, "Se encontro la pagina en la TLB \n");
-		traduccion_t* traduccion=list_find(tlb->lista,pagina_se_encuentra_en_tlb);
+		traduccion_t* traduccion=(traduccion_t*)list_find(tlb->lista,pagina_se_encuentra_en_tlb);
 		tlb_hit(traduccion);
 		return traduccion->marco;
 	}

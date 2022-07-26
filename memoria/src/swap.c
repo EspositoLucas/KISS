@@ -140,9 +140,8 @@ void escribirPaginasModificadas(pcb* pcb){
 		log_info(memoria_logger,"Se escribio pagina modificada en swap \n");
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
 		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap \n");
-		pag->u = 0;
-		pag->m = 0 ;
-		pag->p = 0;
+		cambiarUdePagina(pag->indice,pcb->id_proceso,0);
+		cambiarPdePagina(pag->indice,pcb->id_proceso,0);
 		log_info(memoria_logger,"Se setean de la pag modificada los bits de p,u y m en 0 \n");
 	}
 }
