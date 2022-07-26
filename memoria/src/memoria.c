@@ -4,7 +4,7 @@ int comparador;
 
 int main(void) {
 
-    memoria_logger = log_create("memoria.log", "Servidor Memoria", 1, LOG_LEVEL_INFO);
+    memoria_logger = log_create("/home/utnso/tp-2022-1c-Ubunteam/memoria/memoria.log", "Servidor Memoria", 1, LOG_LEVEL_INFO);
 
 
     ///CARGAR LA CONFIGURACION

@@ -12,7 +12,7 @@ int ultimo_pid = -1;
 int main()
 {
 
-	cpu_logger = log_create("cpu.log", "Servidor CPU", 1, LOG_LEVEL_INFO);
+	cpu_logger = log_create("/home/utnso/tp-2022-1c-Ubunteam/cpu/cpu.log", "Servidor CPU", 1, LOG_LEVEL_INFO);
 	pcb* pcb_recibido=malloc(sizeof(pcb));
 	pthread_mutex_init(&pedidofin,NULL);//INICIA EL MUTEX QUE ENGLOBA A parar_proceso
 
