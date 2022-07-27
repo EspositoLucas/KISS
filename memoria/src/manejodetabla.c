@@ -185,6 +185,14 @@ bool punteroEnUno(t_p_2* pagina){
 
 uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
 
+	printf("ADENTRO DE ALGORITMO CLOCK M\n");
+
+    printf("Printeo paginas a analizar para el reemplazo con n de pagina, u, m y si es puntero\n");
+    for (int i = 0; i < list_size(lista); i++){
+    	t_p_2* auxiliar = (t_p_2*)list_get(lista,i);
+    	printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", auxiliar->indice, auxiliar->u,auxiliar->m,auxiliar->puntero_indice);
+    }
+
 
     t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
     t_p_2* aux;
@@ -194,31 +202,32 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
     uint32_t indice = 0;
     cambiarPunterodePagina(pagina->indice,pid,0);
 
-    	for (int i=0;i<list_size(lista);i++){
-            averiguaIndice=list_get(lista,i);
-            if(averiguaIndice->indice==pagina->indice){
-                indice=i;
-                break;
-            }
-        }
+    for (int i=0;i<list_size(lista);i++){
+    	averiguaIndice=list_get(lista,i);
+    	if(averiguaIndice->indice==pagina->indice){
+    		indice=i;
+    		break;
+    	}
+    }
+
+    printf("Posicion en la lista de la pagina con el puntero: %d\n", indice);
 
     while(1){
-    for (int i =indice ; i < list_size(lista); i++){
-        aux = list_get(lista, i);
-        if (aux->u == 0 && aux->m == 0){
-            if(i==list_size(lista)-1){
-                siguiente=list_get(lista, 0);
-            }else{
-                siguiente=list_get(lista, i +1);
-            }
-            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-            printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
-            printf(" bit uso pagina reemplazada  %d \n",aux->u);
-            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
-             return aux->indice;
-        }
-    }
-    for (int i =0 ; i < indice; i++){
+    	for (int i =indice ; i < list_size(lista); i++){
+    		aux = list_get(lista, i);
+    		if (aux->u == 0 && aux->m == 0){
+    			if(i==list_size(lista)-1){
+    				siguiente=list_get(lista, 0);
+    			}else{
+    				siguiente=list_get(lista, i +1);
+    			}
+    			cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+                printf("Pagina elegida para ser reemplaza [%d] U: %d, M: %d, Puntero: %d", aux->indice, aux->u, aux->m, aux->puntero_indice);
+    			return aux->indice;
+    		}
+    	}
+
+    	for (int i =0 ; i < indice; i++){
             aux = list_get(lista, i);
             if (aux->u == 0 && aux->m == 0){
                 if(i==list_size(lista)-1){
@@ -227,50 +236,44 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
                     siguiente=list_get(lista, i +1);
                 }
                 cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-                printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
-                printf(" bit uso pagina reemplazada  %d \n",aux->u);
-                printf(" bit modificado pagina reemplazada  %d \n",aux->m);
+                printf("Pagina elegida para ser reemplaza [%d] U: %d, M: %d, Puntero: %d", aux->indice, aux->u, aux->m, aux->puntero_indice);
                  return aux->indice;
             }
-        }
+    	}
 
-    for(int i= indice ; i< list_size(lista);i++){
-    	aux = list_get(lista, i);
-    	        if (aux->u == 0 && aux->m ){
-    	            if(i==list_size(lista)-1){
-    	                siguiente=list_get(lista, 0);
-    	            }else{
-    	                siguiente=list_get(lista, i +1);
-    	            }
-    	            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-    	            printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
-    	            printf(" bit uso pagina reemplazada  %d \n",aux->u);
-    	            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
-    	            return aux->indice;
-    	        }else {
-    	        	cambiarUdePagina(aux->indice,pid,false);
-    	        }
-    }
+    	for(int i= indice ; i< list_size(lista);i++){
+    		aux = list_get(lista, i);
+    	    if (aux->u == 0 && aux->m ){
+    	    	if(i==list_size(lista)-1){
+    	    		siguiente=list_get(lista, 0);
+    	    	}else{
+    	    		siguiente=list_get(lista, i +1);
+    	    	}
+    	        cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+                printf("Pagina elegida para ser reemplaza [%d] U: %d, M: %d, Puntero: %d", aux->indice, aux->u, aux->m, aux->puntero_indice);
+    	        return aux->indice;
+    	    }else {
+    	    	cambiarUdePagina(aux->indice,pid,false);
+    	    	printf("Bit U de pagina [%d] cambiado a false\n", aux->indice);
+    	    }
+    	}
 
-    for(int i= 0 ; i< indice;i++){
-        	aux = list_get(lista, i);
-        	        if (aux->u == 0 && aux->m ){
-        	            if(i==list_size(lista)-1){
-        	                siguiente=list_get(lista, 0);
-        	            }else{
-        	                siguiente=list_get(lista, i +1);
-        	            }
-        	            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-        	            printf(" bit uso pagina reemplazada  %d \n",aux->u);
-        	            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
-        	            return aux->indice;
-        	        }else {
-        	        	cambiarUdePagina(aux->indice,pid,false);
-        	        	printf(" bit uso pagina reemplazada  %d \n",aux->u);
-        	        }
-        }
-
-    }
+    	for(int i= 0 ; i< indice;i++){
+    		aux = list_get(lista, i);
+        	if (aux->u == 0 && aux->m ){
+        		if(i==list_size(lista)-1){
+        			siguiente=list_get(lista, 0);
+        		}else{
+        			siguiente=list_get(lista, i +1);
+        		}
+        		cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+                printf("Pagina elegida para ser reemplaza [%d] U: %d, M: %d, Puntero: %d", aux->indice, aux->u, aux->m, aux->puntero_indice);
+        	    return aux->indice;
+        	}else {
+        		cambiarUdePagina(aux->indice,pid,false);
+    	    	printf("Bit U de pagina [%d] cambiado a false\n", aux->indice);
+        	}
+    	}
     return numeroPaginaInicial;
 }
 
