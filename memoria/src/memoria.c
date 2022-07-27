@@ -313,7 +313,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_tlb/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_plan/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");
@@ -514,7 +514,7 @@ uint32_t leer_de_memoria(uint32_t dir_fisica){
 
 int escribirEn(uint32_t dir_fisica, uint32_t valor){
 	if(dir_fisica > config_valores_memoria.tam_memoria) {
-		log_info(memoria_logger,"Escritura insatisfactoria \n");
+		log_error(memoria_logger,"Escritura insatisfactoria \n");
 		return 0;
 	}
 	pthread_mutex_lock(&mutex_memoria_usuario);

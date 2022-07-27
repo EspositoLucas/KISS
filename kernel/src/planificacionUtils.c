@@ -3,6 +3,7 @@
 //--------------------------------------------------- FUNCIONES PLANIFICACION -------------------------------
 
 void inciar_planificacion(){
+	iniciar_timer();
 	iniciar_planificador_largo_plazo();
 	log_info(kernel_logger_info, "Estructuras largo plazo creadas \n");
 	iniciar_planificador_corto_plazo();
@@ -96,9 +97,9 @@ op_code esperar_respuesta_memoria(int socket_memoria) {
  }
 
  void timer(void *data) {
-	 tiempo = 0;
+	tiempo = 0;
  	while(1) {
- 		sleep(1);
+ 		usleep(1);
  		pthread_mutex_lock(&mutex_timer);
  		tiempo++;
  		pthread_mutex_unlock(&mutex_timer);
@@ -179,7 +180,6 @@ proceso* obtenerSiguienteFIFO(){
 proceso* obtenerSiguienteSRT(){
 
 	log_info(kernel_logger_info, "Inicio la planificacion SRT \n");
- 	asignarEstimacionesAProcesos();
  	proceso* procesoElegido = elegirElDeMenorEstimacion();
  	log_info(kernel_logger_info, "PID[%d] con menor estimacion sale de READY para plan SRT \n", procesoElegido->pcb->id_proceso);
  	return procesoElegido;
@@ -187,7 +187,14 @@ proceso* obtenerSiguienteSRT(){
 
 proceso* elegirElDeMenorEstimacion(){
 
+
 	int tamanioReady = list_size(colaReady);
+
+	for(int i = 0; i < tamanioReady; i++){
+			proceso* procesoAux = list_get(colaReady,i);
+			printf("PID[%d] con estimacion: %f \n", procesoAux->pcb->id_proceso, procesoAux->pcb->estimacion_rafaga);
+	}
+
 	proceso* procesoSeleccionado;
 	proceso* procesoAux = list_get(colaReady,0);
 	int indiceElegido = 0;
@@ -216,17 +223,19 @@ void asignarEstimacionesAProcesos(){
 
 void calculoEstimacionProceso(proceso *proceso){
 	float alfa = config_valores_kernel.alfa;
-	float estimacionInicial = config_valores_kernel.estimacion_inicial;
+	float estimacionInicial = proceso->pcb->estimacion_rafaga;
 	float realAnterior = proceso->pcb->rafaga_anterior;
 	float nuevaEstimacion = alfa * realAnterior + (1 - alfa) * estimacionInicial;
 	proceso->pcb->estimacion_rafaga = nuevaEstimacion;
+	printf("Rafaga anterior de la PCB: %d \n",proceso->pcb->rafaga_anterior);
+	log_info(kernel_logger_info, "Nueva estimacion del pid[%d]: %f",proceso->pcb->id_proceso, proceso->pcb->estimacion_rafaga);
+
 }
 
 void interrumpir_cpu(){
-	t_paquete *paqueteAEnviar = crear_paquete_con_codigo_de_operacion(INTERRUPCION);
-	enviar_paquete(paqueteAEnviar, socket_interrupt);
+	op_code codigo = MENSAJE;
+	enviar_datos(socket_interrupt, &codigo, sizeof(codigo));
 	log_info(kernel_logger_info, "Se envia mensaje de interrupcion a cpu \n");
-	eliminar_paquete(paqueteAEnviar);
 
 }
 

@@ -17,6 +17,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 	pcb->instrucciones = list_duplicate(consola->instrucciones);
 	pcb->program_counter = 0;
 	pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
+	printf("Estimacion incial de config valores kernel: %f\n", config_valores_kernel.estimacion_inicial);
 	pcb->tiempo_de_bloqueo = 0;
 	pcb->rafaga_anterior = 0;
 	pcb->instrucciones = consola->instrucciones;
@@ -117,6 +118,7 @@ void finalizarPcb(void){
 	avisarAModulo(proceso->socket,FINALIZAR_CONSOLA) ;
 	log_info(kernel_logger_info, "Enviando a consola que finalizo el proceso\n");
  	eliminar_pcb(proceso->pcb);
+ 	sem_post(&sem_grado_multiprogramacion);
 
 	}
 }
@@ -181,7 +183,7 @@ void estadoExec(void){
 		proceso_ejecutando = 1;
 		pthread_mutex_unlock(&mutex_exec);
 		log_info(kernel_logger_info, "PID[%d] sale de EXEC\n", proceso->pcb->id_proceso);
-		uint32_t inicio_cpu = get_time(); // logueo el tiempo en el que se va
+		int inicio_cpu = get_time(); // logueo el tiempo en el que se va
 
 		enviarPcb(socket_dispatch, proceso->pcb);
 		log_info(kernel_logger_info, "PCB enviada cpu para ejecucion");
@@ -189,12 +191,15 @@ void estadoExec(void){
 		proceso->pcb = recibirPcb(socket_dispatch);
 
 		log_info(kernel_logger_info, "PCB recibida de cpu para calcular estimaciones (SRT)");
-		uint32_t finalizacion_cpu = get_time();
+		int finalizacion_cpu = get_time();
 		pthread_mutex_lock(&mutex_exec);
 		proceso_ejecutando = 0;
 		pthread_mutex_unlock(&mutex_exec);
 
-		proceso->pcb->rafaga_anterior = inicio_cpu - finalizacion_cpu;
+		printf("El tiempo de inicio de cpu es: %d y el tiempo de fin %d\n", inicio_cpu, finalizacion_cpu);
+
+		proceso->pcb->rafaga_anterior = finalizacion_cpu - inicio_cpu;
+		calculoEstimacionProceso(proceso);
 
 		instruccion *instruccion_ejecutada = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1)); // agarro la instruccion ya ejecutada por cpu
 		log_info(kernel_logger_info, "PID[%d] Ultima instruccion ejecutada: %d",proceso->pcb->id_proceso,instruccion_ejecutada->codigo);
@@ -316,7 +321,6 @@ void estadoBlockeado(void){
  	list_add(colaSuspendedBlocked, proceso);
  	pthread_mutex_unlock(&mutex_suspended_blocked);
  	log_info(kernel_logger_info, "PID[%d] ingresa a SUSPENDED-BLOCKED \n", proceso->pcb->id_proceso);
- 	sem_post(&sem_grado_multiprogramacion);
  }
 
 void estado_suspended_ready(void ) {

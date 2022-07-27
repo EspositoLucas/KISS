@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/config_pruebas/prueba_memoria/kernel.config");
+    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/config_pruebas/prueba_plan_srt/kernel.config");
 
     kernel_logger_info = log_create("/home/utnso/tp-2022-1c-Ubunteam/kernel/kernel.log", "Servidor Kernel", 1, LOG_LEVEL_INFO);
 
@@ -68,8 +68,8 @@ void cargar_configuracion(char* path) {
       config_valores_kernel.puerto_cpu_interrupt = config_get_string_value(config, "PUERTO_CPU_INTERRUPT");
       config_valores_kernel.ip_kernel = config_get_string_value(config, "IP_KERNEL");
       config_valores_kernel.puerto_escucha = config_get_string_value(config, "PUERTO_ESCUCHA");
-      config_valores_kernel.estimacion_inicial = config_get_int_value(config, "GRADO_MULTIPROGRAMACION");
-      config_valores_kernel.grado_multiprogramacion = config_get_int_value(config, "ESTIMACION_INICIAL");
+      config_valores_kernel.estimacion_inicial = config_get_int_value(config, "ESTIMACION_INICIAL");
+      config_valores_kernel.grado_multiprogramacion = config_get_int_value(config, "GRADO_MULTIPROGRAMACION");
       config_valores_kernel.tiempo_maximo_bloqueado = config_get_int_value(config, "TIEMPO_MAXIMO_BLOQUEADO");
       config_valores_kernel.alfa = config_get_double_value(config, "ALFA");
 

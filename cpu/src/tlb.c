@@ -56,6 +56,10 @@ void tlb_hit(traduccion_t* traduccion){
 ///NO SE ENCONTRO EN EL TLB
 
 void tlb_miss(traduccion_t* traduccion){
+	for(int i = 0 ; i < list_size(tlb->lista) ;i++){
+		traduccion_t* pag = (traduccion_t*) list_get(tlb->lista,i);
+		printf("Pagina tlb en la posicion %d : %d \n",i,pag->pagina);
+	}
 	if(list_size(tlb->lista)<config_valores_cpu.entradas_tlb){
 		agregar_a_tlb_menor_a_entradas(traduccion);
 	}
