@@ -137,40 +137,6 @@ algoritmo obtener_algoritmo(){
 }
 
 
-//uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
-//
-//    t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
-//    t_p_2* aux;
-//    t_p_2* siguiente;
-//    uint32_t numeroPaginaInicial=pagina->indice;
-//    uint32_t indice=numeroPaginaInicial;
-//    pagina->puntero_indice=0;
-//    while(1){
-//    for (int i =indice ; i < list_size(lista); i++){
-//        aux = list_get(lista, i);
-//        if (aux->u == 0){
-//            if(i==list_size(lista)-1){
-//                siguiente=list_get(lista, 0);
-//            }else{
-//                siguiente=list_get(lista, i);
-//            }
-//            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-//            printf(" bit uso pagina reemplazada  %d \n",aux->u);
-//            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
-//            //siguiente->puntero_indice=1;
-//             return aux->indice;
-//        } else {
-//        	cambiarUdePagina(aux->indice,pid,false);
-//        	 printf(" bit uso pagina reemplazada  %d \n",aux->u);
-//        	 printf(" bit modificado pagina reemplazada  %d \n",aux->m);
-//            //aux->u = 0;
-//        }
-//    }
-//    indice=0;
-//    }
-//    return numeroPaginaInicial;
-//}
-
 uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
 
     t_p_2* pagina=(t_p_2*) list_find(lista,punteroEnUno);
@@ -198,9 +164,11 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
                 siguiente=list_get(lista, i + 1);
             }
             cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+            printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
              return aux->indice;
         } else {
             cambiarUdePagina(aux->indice,pid,false);
+            printf(" bit uso pagina reemplazada  %d \n",aux->u);
         }
     }
     indice=0;
@@ -224,7 +192,8 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
     uint32_t numeroPaginaInicial=pagina->indice;
     t_p_2* averiguaIndice;
     uint32_t indice = 0;
-    pagina->puntero_indice=0;
+    cambiarPunterodePagina(pagina->indice,pid,0);
+
     	for (int i=0;i<list_size(lista);i++){
             averiguaIndice=list_get(lista,i);
             if(averiguaIndice->indice==pagina->indice){
@@ -240,12 +209,12 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
             if(i==list_size(lista)-1){
                 siguiente=list_get(lista, 0);
             }else{
-                siguiente=list_get(lista, i);
+                siguiente=list_get(lista, i +1);
             }
             cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+            printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
             printf(" bit uso pagina reemplazada  %d \n",aux->u);
             printf(" bit modificado pagina reemplazada  %d \n",aux->m);
-            //siguiente->puntero_indice=1;
              return aux->indice;
         }
     }
@@ -255,9 +224,10 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
                 if(i==list_size(lista)-1){
                     siguiente=list_get(lista, 0);
                 }else{
-                    siguiente=list_get(lista, i);
+                    siguiente=list_get(lista, i +1);
                 }
-                siguiente->puntero_indice=1;
+                cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
+                printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
                 printf(" bit uso pagina reemplazada  %d \n",aux->u);
                 printf(" bit modificado pagina reemplazada  %d \n",aux->m);
                  return aux->indice;
@@ -270,14 +240,15 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
     	            if(i==list_size(lista)-1){
     	                siguiente=list_get(lista, 0);
     	            }else{
-    	                siguiente=list_get(lista, i);
+    	                siguiente=list_get(lista, i +1);
     	            }
     	            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-    	            //siguiente->puntero_indice=1;
+    	            printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
+    	            printf(" bit uso pagina reemplazada  %d \n",aux->u);
+    	            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
     	            return aux->indice;
     	        }else {
     	        	cambiarUdePagina(aux->indice,pid,false);
-    	        	//aux->u = 0;
     	        }
     }
 
@@ -287,14 +258,15 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
         	            if(i==list_size(lista)-1){
         	                siguiente=list_get(lista, 0);
         	            }else{
-        	                siguiente=list_get(lista, i);
+        	                siguiente=list_get(lista, i +1);
         	            }
         	            cambiarPunterodePagina(siguiente->puntero_indice,pid,true);
-        	            //siguiente->puntero_indice=1;
+        	            printf(" bit uso pagina reemplazada  %d \n",aux->u);
+        	            printf(" bit modificado pagina reemplazada  %d \n",aux->m);
         	            return aux->indice;
         	        }else {
         	        	cambiarUdePagina(aux->indice,pid,false);
-        	        	//aux->u = 0;
+        	        	printf(" bit uso pagina reemplazada  %d \n",aux->u);
         	        }
         }
 
