@@ -278,8 +278,7 @@ void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->u=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	printf(" bit uso pagina reemplazada  %d \n",pagina->u);
-	printf(" pagina reemplazada  %d \n",pagina->indice);
+	printf(" bit uso %d de pagina %d de tabla numero %d dentro algoritmo  \n",pagina->u,pagina->indice,tablinha->id_tabla);
 }
 void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
@@ -294,6 +293,7 @@ void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->m=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
+	printf(" bit modificada %d de pagina de tabla global %d dentro algoritmo  \n",pagina->m,pagina->indice);
 }
 void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 
@@ -305,13 +305,11 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
-	printf("indice tablinha %d\n",tablinha->id_tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
-	printf(" pagina %d\n",pagina->indice);
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->puntero_indice=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	printf(" bit puntero pagina reemplazada  %d \n",pagina->puntero_indice);
+	printf(" bit puntero %d de pagina de tabla global de tabla global %d dentro algoritmo  \n",pagina->puntero_indice,pagina->indice);
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
@@ -369,9 +367,6 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		printf("valor antes de escribir %d\n",valor_escritura);
 		escritura = escribirEn(dir_fisica, valor_escritura);
 		printf("valor despues de escribir dir fisica \n");
-		printf("antes de cambiar bit M de marco \n");
-		cambiarMarcoModificadoAUno(dir_fisica);
-		printf(" bit M de marco cambiado \n");
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
@@ -492,6 +487,14 @@ void liberarMarco(uint32_t marcoALiberar){
 //Libera todos los marcos ocupados por el proceso
 
 void liberarTodosLosMarcos(uint32_t pid){
+
+	printf("ANTES DE LIBERAR TODOS LOS MARCOS, PRINTEO EL ESTADO FINAL DE LOS MARCOS DEL PROCESO\n");
+	t_list* auxiliar = paginasEnMemoria(pid);
+	for (int i = 0; i < list_size(auxiliar); i++){
+		t_p_2* aux = list_get(auxiliar,i);
+		printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+	}
+
 	t_list* marc=marcosPid(pid);
 	for(int i=0;i<list_size(marc);i++){
 		marquito*marcoALiberar=(marquito*)list_get(marc,i);
@@ -504,6 +507,7 @@ uint32_t leer_de_memoria(uint32_t dir_fisica){
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(&valor_leido_memoria,memoria_usuario + dir_fisica,sizeof(uint32_t));
 	pthread_mutex_unlock(&mutex_memoria_usuario);
+	cambiarMarcoUsoAUno(dir_fisica);
 	log_info(memoria_logger,"Lectura satisfactoria \n");
 	return valor_leido_memoria;
 }
@@ -517,6 +521,8 @@ int escribirEn(uint32_t dir_fisica, uint32_t valor){
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
 	printf("valor escritura %d \n ",valor);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
+	cambiarMarcoUsoAUno(dir_fisica);
+	cambiarMarcoModificadoAUno(dir_fisica);
 	log_info(memoria_logger,"Escritura satisfactoria \n");
 	return 1;
 }
@@ -547,7 +553,25 @@ void cambiarMarcoModificadoAUno(uint32_t dir_fisica){
 	t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
 
 	cambiarMdePagina(paginaM->indice,aux->pid,1);
-	printf("Se cambio bit M de pagina \n");
+	printf("valor bit modificado despues de escribir en dir fisica %d \n",paginaM->m);
+
+}
+void cambiarMarcoUsoAUno(uint32_t dir_fisica){
+
+	uint32_t marco = (int)floor((double)dir_fisica / (double)config_valores_memoria.tam_pagina) ;
+	bool marcoConMismoIndice(marquito* m){
+				return m->numero_de_marco == marco;
+			}
+	marquito* aux  = (marquito*)list_find(marcos,marcoConMismoIndice);
+
+	t_list* pagsEnM = (t_list*)paginasEnMemoria(aux->pid);
+
+	bool pagConMismoMarco(t_p_2* pagina){
+					return pagina->marco == marco;
+				}
+	t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
+
+	cambiarUdePagina(paginaM->indice,aux->pid,1);
 
 }
 
