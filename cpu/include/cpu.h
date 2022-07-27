@@ -12,9 +12,6 @@
 #include "sockets.h"
 #include "tlb.h"
 
-#define IP_CPU "0.0.0.0"
-#define PUERTO_CPU "8001"
-
 t_config *config;
 int socket_memoria;
 t_handshake* configuracion_tabla;
