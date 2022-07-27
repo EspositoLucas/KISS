@@ -33,16 +33,15 @@ void inciar_planificacion(){
 pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	t_paquete *paquete = crear_paquete_con_codigo_de_operacion(INICIALIZAR_ESTRUCTURAS);
 	armarPaquete(paquete,pcb);
-	printf("valor socket %d \n",socket_fd);
 	enviar_paquete(paquete, socket_fd);
-	log_info(kernel_logger_info, "envio a memoria mensaje para inicializar estructuras del proceso \n");
+	log_info(kernel_logger_info, "Envio mensaje a memoria para inicializar estructuras del proceso \n");
 	//printf("tamanio_proceso %"PRIu32"\n",pcb->tamanio_proceso);
 	eliminar_paquete(paquete);
 	uint32_t valorTP1;
-	printf("antes de recibir paquete de memoria  \n");
+//	printf("antes de recibir paquete de memoria  \n");
 	recibir_datos(socket_fd,&valorTP1,sizeof(uint32_t));
 	pcb->valor_tabla_paginas = valorTP1;
-	printf("valor tabla recibido  %"PRIu32" \n",pcb->valor_tabla_paginas);
+//	printf("valor tabla recibido  %"PRIu32" \n",pcb->valor_tabla_paginas);
 	log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
 	return pcb;
 
@@ -226,7 +225,7 @@ void calculoEstimacionProceso(proceso *proceso){
 void interrumpir_cpu(){
 	t_paquete *paqueteAEnviar = crear_paquete_con_codigo_de_operacion(INTERRUPCION);
 	enviar_paquete(paqueteAEnviar, socket_interrupt);
-	log_info(kernel_logger_info, "se envia mensaje de interrupcion a cpu \n");
+	log_info(kernel_logger_info, "Se envia mensaje de interrupcion a cpu \n");
 	eliminar_paquete(paqueteAEnviar);
 
 }

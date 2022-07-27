@@ -12,7 +12,6 @@ int main(int argc, char **argv){
 //	Inicializacion
 
 	int tamanio_proceso = atoi(argv[1]);
-	printf("tamanio_proceso %d\n",tamanio_proceso);
 
 //	Logging consola
 
@@ -33,7 +32,7 @@ int main(int argc, char **argv){
 	agregar_a_paquete(paquete_instrucciones, &tamanio_proceso,sizeof(int));
 	serializar_instrucciones(instrucciones, paquete_instrucciones);
 
-	log_info(consola_logger, "instrucciones serializadas\n");
+	log_info(consola_logger, "Instrucciones y tamanio de proceso serializados\n");
 
 //	Conexion servidor
 
@@ -168,7 +167,7 @@ char *leer_archivo(char *unPath)
         perror("Error leyendo el archivo.\n") ;
     }
 
-    printf("\n%s", cadena);
+//    printf("\n%s", cadena);
     fclose(archivo);
     printf("\nSe ha leido el archivo de pseudocodigo correctamente.\n");
     return cadena;

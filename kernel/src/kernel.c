@@ -124,17 +124,12 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  	case PAQUETE_CONSOLA:
 	  		log_info(kernel_logger_info, "Me llego el tamanio y las instrucciones\n");
 	  		consola = deserializar_consola(socket_cliente);
-	  		log_info(kernel_logger_info, "Consola deserializada, entro a armar pcb\n");
-	  		printf("Hago malloc proceso \n");
+	  		log_info(kernel_logger_info, "Consola deserializada, se arma el PCB\n");
 	  		proceso* proceso = malloc(sizeof(proceso)) ;
-	  		printf("Hago malloc pcb\n");
 	  		proceso->pcb = malloc(sizeof(pcb));
-	  		printf("Entro a crear estructura pcb\n");
 	  		proceso->pcb = crear_estructura_pcb(consola);
-	  		printf("Agrego pcb a proceso\n");
 	  		proceso->socket = socket_cliente;
-	  		printf("Agrego socket a proceso \n");
-	  		log_info(kernel_logger_info, "PCB armada -> agregar proceso a new y arrancar con la planificacion\n");
+	  		log_info(kernel_logger_info, "PCB id[%d] armada -> agregar proceso a new y arrancar con la planificacion\n",proceso->pcb->id_proceso);
 	  		agregarANewPcb(proceso);
 
 	  		break;

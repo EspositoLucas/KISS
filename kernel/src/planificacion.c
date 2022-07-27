@@ -21,8 +21,6 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 	pcb->rafaga_anterior = 0;
 	pcb->instrucciones = consola->instrucciones;
 
-	printf("Retorno pcb\n");
-
 	return pcb;
 }
 
@@ -99,11 +97,9 @@ void transicion_admitir_por_prioridad(void) {
 void finalizarPcb(void){
 
 	while(1) {
-	printf("proceso antes de semaforo \n");
 	sem_wait(&sem_exit);
 	proceso* proceso ;
   	pthread_mutex_lock(&mutex_exit);
-  	printf("proceso antes de salir de exit \n");
   	proceso = list_remove(colaExit, 0);
   	pthread_mutex_unlock(&mutex_exit);
   	log_info(kernel_logger_info, "[EXIT]Sale de EXIT y Finaliza el  pcb de ID: %d\n", proceso->pcb-> id_proceso);
@@ -114,7 +110,6 @@ void finalizarPcb(void){
 	//op_code codigo = recibir_operacion_nuevo(socket_memoria);
 	//op_code codigo ;
 	//recibir_datos(socket_memoria,&codigo,sizeof(op_code));
-	printf("codigo %d \n",codigo);
 	log_info(kernel_logger_info, "Respuesta memoria de estructuras liberadas del proceso recibida \n");
 	if(codigo != ESTRUCTURAS_LIBERADAS) {
 		log_error(kernel_logger_info, "No se pudo eliminar memoria de PID[%d]\n", proceso->pcb->id_proceso);
@@ -202,7 +197,7 @@ void estadoExec(void){
 		proceso->pcb->rafaga_anterior = inicio_cpu - finalizacion_cpu;
 
 		instruccion *instruccion_ejecutada = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1)); // agarro la instruccion ya ejecutada por cpu
-		log_info(kernel_logger_info, "[%d] Ultima instruccion ejecutada",instruccion_ejecutada->codigo);
+		log_info(kernel_logger_info, "PID[%d] Ultima instruccion ejecutada: %d",proceso->pcb->id_proceso,instruccion_ejecutada->codigo);
 
 		switch(instruccion_ejecutada->codigo){
 		case IO:
@@ -222,7 +217,7 @@ void estadoExec(void){
 			list_add(colaExit, proceso);
 			chequear_lista_pcbs(colaExit);
 			pthread_mutex_unlock(&mutex_exit);
-			log_info(kernel_logger_info, "PID[%d] Entra en EXIT \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] Entra a EXIT \n", proceso->pcb->id_proceso);
 			printf("proceso antes de salir de exit \n");
 			sem_post(&sem_exit); // despertar exit
 			printf("proceso antes de semaforo post exit  \n");
@@ -232,7 +227,7 @@ void estadoExec(void){
 			proceso->pcb->estado_proceso = LISTO;
 			list_add(colaReady, proceso);
 			pthread_mutex_unlock(&mutex_ready);
-			log_info(kernel_logger_info, "PID[%d] Entra en READY \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] Entra a READY \n", proceso->pcb->id_proceso);
 			sem_post(&sem_desalojo);
 			sem_post(&sem_ready);
 			break;
@@ -253,12 +248,12 @@ void estadoBlockeado(void){
 		pthread_mutex_unlock(&mutex_blocked);
 		log_info(kernel_logger_info, "PID[%d] sale de BLOCKED \n", proceso->pcb->id_proceso);
 
-		chequear_lista_pcbs(colaBlocked);
+//		chequear_lista_pcbs(colaBlocked);
 		log_info(kernel_logger_info, "PID[%d] ejecuta IO \n", proceso->pcb->id_proceso);
 		uint32_t tiempoQueLLevaEnBlock = get_time() - proceso->tiempo_inicio_bloqueo;
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
-			log_info(kernel_logger_info, "Mandar a suspension al proceso por superar tiempo max de bloqueo \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] suspendido por superar tiempo max de bloqueo \n", proceso->pcb->id_proceso);
 			transicion_suspender(proceso); //suspender para mediano plazo
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
 			sem_post(&sem_suspended_ready);
@@ -267,21 +262,21 @@ void estadoBlockeado(void){
 			log_info(kernel_logger_info, "Mandar a suspension al proceso por superar tiempo max de bloqueo \n", proceso->pcb->id_proceso);
 			uint32_t tiempoIOAntesDeSuspender = tiempoMaxDeBloqueo - tiempoQueLLevaEnBlock;
 			ejecutarIO(tiempoIOAntesDeSuspender); // ejecutar hasta que sea necesario suspender
-			log_info(kernel_logger_info, "iniciar IO antes de suspender \n");
+			log_info(kernel_logger_info, "PID[%d] ejecutar io antes de suspender \n",proceso->pcb->id_proceso);
 			transicion_suspender(proceso); //suspender para mediano plazo
-			log_info(kernel_logger_info, "Proceso suspendido, iniciar IO restante\n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] suspendido, iniciar IO restante\n", proceso->pcb->id_proceso);
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
-			log_info(kernel_logger_info, "Proceso hizo IO restante\n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] hizo IO restante\n", proceso->pcb->id_proceso);
 			sem_post(&sem_suspended_ready);
-			log_info(kernel_logger_info, "PID[%d] apunto de suspended ready \n", proceso->pcb->id_proceso);
+//			log_info(kernel_logger_info, "PID[%d] apunto de suspended ready \n", proceso->pcb->id_proceso);
 
 		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
-			log_info(kernel_logger_info, "Proceso no supero el tiempo mas bloqueo, ejecutar solo IO \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] no supero el tiempo mas bloqueo, ejecutar solo IO \n", proceso->pcb->id_proceso);
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
 			pthread_mutex_lock(&mutex_ready);
 			list_add(colaReady,proceso);
 			pthread_mutex_unlock(&mutex_ready);
-			log_info(kernel_logger_info, "Ingresa a READY desde IO \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] ingresa a READY desde IO \n", proceso->pcb->id_proceso);
 			sem_post(&sem_ready);
 		}
 	}
@@ -313,7 +308,7 @@ void estadoBlockeado(void){
 	log_info(kernel_logger_info, "Enviando a memoria para suspender proceso \n");
 	//proceso->pcb = recibirPcb(socket_memoria);
  	op_code codigo = esperar_respuesta_memoria(socket_memoria);
- 	log_info(kernel_logger_info, "respuesta de suspension de memoria recibida \n");
+ 	log_info(kernel_logger_info, "Respuesta de suspension de memoria recibida \n");
  	if(codigo != ESPACIO_PCB_LIBERADO) {
  		log_error(kernel_logger_info, "No se pudo liberar la memoria de PID[%d] \n", proceso->pcb->id_proceso);
  	}
@@ -327,7 +322,7 @@ void estadoBlockeado(void){
 void estado_suspended_ready(void ) {
 
 	while(1) {
-		log_info(kernel_logger_info, "PID[%d] antes de suspended ready \n");
+//		log_info(kernel_logger_info, "PID[%d] antes de suspended ready \n");
 		sem_wait(&sem_suspended_ready);
 		pthread_mutex_lock(&mutex_suspended_blocked);
 		proceso *proceso= list_remove(colaSuspendedBlocked,list_size(colaSuspendedBlocked) -1 );
