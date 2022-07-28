@@ -148,7 +148,12 @@ void manejo_conexiones(int socket_cliente){
 		pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
 		list_add(lista_tabla_de_pagina_1_nivel,tabla_primer_nivel);
 		pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
-
+		contador_por_pid* contador = malloc(sizeof(contador_por_pid));
+		contador->contadorPF = 0;
+		contador->contadorAccesoSwap =0;
+		pthread_mutex_lock(&mutex_contador_pid);
+		list_add_in_index(contador_pid,pcb_recibido->id_proceso,contador);
+		pthread_mutex_unlock(&mutex_contador_pid);
 		//crea el swap
 		crearSwap(pcb_recibido->id_proceso,pcb_recibido->tamanio_proceso);
 		log_info(memoria_logger,"Swap creado \n");
@@ -168,6 +173,8 @@ void manejo_conexiones(int socket_cliente){
 		liberarMemoriaUsuario(pcb->id_proceso);
 		enviar_datos(socket_cliente, &codigo_pcb, sizeof(op_code)) ;
 		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso \n");
+		log_info(memoria_logger,"Contador Page Fault del proceso: %d \n",contador->contadorPF);
+		log_info(memoria_logger,"Contador Acceso a Swap del proceso: %d \n",contador->contadorAccesoSwap);
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(memoria_logger,"me llego mensaje para suspender proceso \n");
@@ -193,6 +200,7 @@ void inicializar_memoria(){
 	pathSwap = config_valores_memoria.path_swap;
 	indice_de_tabla2=0;
 	archivos= list_create();
+	contador_pid = list_create();
 	pthread_mutex_init(&mutex_comparador_pid,NULL);
 	pthread_mutex_init(&mutex_comparador_indice,NULL);
 	pthread_mutex_init(&mutex_comparador,NULL);
@@ -203,6 +211,7 @@ void inicializar_memoria(){
 	pthread_mutex_init(&mutex_tabla_pagina_primer_nivel,NULL);
 	pthread_mutex_init(&mutex_tabla_pagina_segundo_nivel,NULL);
 	pthread_mutex_init(&mutex_lista_archivo,NULL);
+	pthread_mutex_init(&mutex_contador_pid,NULL);
 
 	log_info(memoria_logger, "Memoria inicializada \n");
 }
@@ -229,6 +238,10 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 	//t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
 	t_p_2* pagElegida=(t_p_2*)list_find(pagsEnMemoria,pagina_con_igual_indice);
 	if(pagElegida->m){
+		pthread_mutex_lock(&mutex_contador_pid);
+		contador_por_pid* contador  = (contador_por_pid*)list_get(contador_pid,pid);
+		pthread_mutex_unlock(&mutex_contador_pid);
+		contador->contadorAccesoSwap +=1 ;
 		asignarAlArchivo(pid);
 		log_info(memoria_logger,"Se asigno al archivo swap el pid  \n");
 		escribirPagEnSwap(pagElegida);
@@ -315,7 +328,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria_clock_m/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");
@@ -550,12 +563,18 @@ void cambiarMarcoModificadoAUno(uint32_t dir_fisica){
 	t_list* pagsEnM = (t_list*)paginasEnMemoria(aux->pid);
 
 	bool pagConMismoMarco(t_p_2* pagina){
-					return pagina->marco == marco;
-				}
-	t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
 
-	cambiarMdePagina(paginaM->indice,aux->pid,1);
-	printf("valor bit modificado despues de escribir en dir fisica %d \n",paginaM->m);
+					return pagina->marco == marco;
+
+	}
+					if(list_size(pagsEnM) > 0){
+							t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
+
+								cambiarMdePagina(paginaM->indice,aux->pid,1);
+								printf("valor bit modificado despues de escribir en dir fisica %d \n",paginaM->m);
+						}
+
+
 
 }
 void cambiarMarcoUsoAUno(uint32_t dir_fisica){
@@ -581,11 +600,6 @@ void cambiarMarcoUsoAUno(uint32_t dir_fisica){
 
 	if(list_size(pagsEnM) > 0){
 		t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
-			printf("valor paginaM indice %d \n",paginaM->indice);
-			printf("valor paginaM marco %d \n",paginaM->marco);
-			printf("valor paginaM bit uso %d \n",paginaM->u);
-			printf("valor paginaM bit mod %d \n",paginaM->m);
-			printf("valor paginaM bit p %d \n",paginaM->p);
 
 			cambiarUdePagina(paginaM->indice,aux->pid,1);
 	}

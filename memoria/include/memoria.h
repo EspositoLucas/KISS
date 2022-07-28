@@ -31,6 +31,12 @@
  	char* path_swap;
  } arch_config;
 
+ typedef struct  // archivo de configuracion memoria
+  {
+  	uint32_t contadorPF;
+  	uint32_t contadorAccesoSwap;
+
+  } contador_por_pid;
 
 t_list* lista_tabla_de_pagina_1_nivel;
 t_log* memoria_logger ;
@@ -39,12 +45,13 @@ arch_config config_valores_memoria;
 
 //VARIABLES
 int socket_memoria;
-
 void* memoria_usuario;
 int cantidad_de_marcos;
 const char* pathSwap;
 algoritmo algoritmo_memoria;
 t_list* marcos;
+t_list* contador_pid;
+
 
 //SEMAFOROS
 
@@ -59,6 +66,7 @@ pthread_mutex_t mutex_archivo_swap;
 pthread_mutex_t mutex_numero_tabla_2p;
 pthread_mutex_t mutex_tabla_pagina_primer_nivel;
 pthread_mutex_t mutex_tabla_pagina_segundo_nivel;
+pthread_mutex_t mutex_contador_pid;
 
 //FUNCIONES
 

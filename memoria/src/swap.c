@@ -128,6 +128,7 @@ t_list* marcosMod(t_list* marquinhos){
 	return modificado;
 }
 void escribirPagEnSwap(t_p_2* pag){
+
 	usleep(config_valores_memoria.retardo_swap);
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	pthread_mutex_lock(&mutex_archivo_swap);
@@ -149,6 +150,10 @@ void escribirPaginasModificadas(pcb* pcb){
 	//printf("despues de asignar archivo\n");
 	//printf("tamanio paginasProc %d \n", list_size(paginasProc));
 	for(int i=0;i<list_size(paginasProc);i++){
+		pthread_mutex_lock(&mutex_contador_pid);
+		contador_por_pid* contador  = (contador_por_pid*)list_get(contador_pid,pcb->id_proceso);
+		pthread_mutex_unlock(&mutex_contador_pid);
+		contador->contadorAccesoSwap +=1 ;
 		t_p_2* pag=(t_p_2*)list_get(paginasProc,i);
 		escribirPagEnSwap(pag);
 		msync(archivo_swap,pcb->tamanio_proceso,MS_SYNC);

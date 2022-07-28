@@ -19,6 +19,7 @@ void inicializar_tabla_primer_nivel();
 t_list* inicializar_tabla_segundo_nivel();
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t,uint32_t);
 uint32_t devolver_marco(uint32_t,uint32_t );
+void sumarValorPuntero(uint32_t* puntero,int cantidad);
 
 algoritmo obtener_algoritmo();
 uint32_t obtenerPaginaClock(t_list*,uint32_t);

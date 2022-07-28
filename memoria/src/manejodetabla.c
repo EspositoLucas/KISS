@@ -8,6 +8,12 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	t_p_1* tabla_1 = (t_p_1*)list_get(tabla_primer_nivel_proceso,entrada);
 	return tabla_1->numero_de_tabla2;
 }
+
+void sumarValorPuntero(uint32_t* puntero,int cantidad) {
+
+	puntero += cantidad ;
+
+}
 //------------------------ACCESO A SEGUNDA TABLA----------------------------
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	tabla_de_segundo_nivel*tabla_elegida=(tabla_de_segundo_nivel*)list_get(lista_tablas_segundo_nivel,tabla);
@@ -28,6 +34,10 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	}
 	else{ // page fault
 		log_info(memoria_logger,"Page Fault, buscar marco libre \n");
+		pthread_mutex_lock(&mutex_contador_pid);
+		contador_por_pid* contador  = (contador_por_pid*)list_get(contador_pid,tabla_elegida->p_id);
+		pthread_mutex_unlock(&mutex_contador_pid);
+		contador->contadorPF +=1 ;
 		usleep(config_valores_memoria.retardo_swap); //retardo swap
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
