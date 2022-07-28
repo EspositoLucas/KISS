@@ -142,9 +142,8 @@ void escribirPaginasModificadas(pcb* pcb){
 	printf("cant de pags en memoria %d \n",list_size(paginasProc));
 
 	printf("ANTES DE LIBERAR TODOS LOS MARCOS, PRINTEO EL ESTADO FINAL DE LOS MARCOS DEL PROCESO\n");
-		t_list* auxiliar = paginasProc(pcb->id_proceso);
-		for (int i = 0; i < list_size(auxiliar); i++){
-			t_p_2* aux = list_get(auxiliar,i);
+		for (int i = 0; i < list_size(paginasProc); i++){
+			t_p_2* aux = list_get(paginasProc,i);
 			printf("Pagina numero: %d, U: %d, M: %d, Puntero : %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
 		}
 	asignarAlArchivo(pcb->id_proceso);
