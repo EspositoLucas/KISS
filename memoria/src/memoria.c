@@ -173,8 +173,8 @@ void manejo_conexiones(int socket_cliente){
 		liberarMemoriaUsuario(pcb->id_proceso);
 		enviar_datos(socket_cliente, &codigo_pcb, sizeof(op_code)) ;
 		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso \n");
-		log_info(memoria_logger,"Contador Page Fault del proceso: %d \n",contador->contadorPF);
-		log_info(memoria_logger,"Contador Acceso a Swap del proceso: %d \n",contador->contadorAccesoSwap);
+		log_info(memoria_logger,"Contador Page Fault del proceso %d tiene en total %d PF \n",contador->contadorPF,pcb->id_proceso);
+		log_info(memoria_logger,"Contador Acceso a Swap del proceso  %d  tiene en total %d Accesos a Swap \n",contador->contadorAccesoSwap,pcb->id_proceso);
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(memoria_logger,"me llego mensaje para suspender proceso \n");
@@ -234,14 +234,13 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 	        }
 
 	t_list* pagsEnMemoria=paginasEnMemoria(pid);
-	printf("pags en memoria  %d \n",list_size( pagsEnMemoria));
 	//t_p_2* pagElegida=(t_p_2*)list_get(pagsEnMemoria,numPagina);
 	t_p_2* pagElegida=(t_p_2*)list_find(pagsEnMemoria,pagina_con_igual_indice);
 	if(pagElegida->m){
 		pthread_mutex_lock(&mutex_contador_pid);
 		contador_por_pid* contador  = (contador_por_pid*)list_get(contador_pid,pid);
-		pthread_mutex_unlock(&mutex_contador_pid);
 		contador->contadorAccesoSwap +=1 ;
+		pthread_mutex_unlock(&mutex_contador_pid);
 		asignarAlArchivo(pid);
 		log_info(memoria_logger,"Se asigno al archivo swap el pid  \n");
 		escribirPagEnSwap(pagElegida);
@@ -574,11 +573,6 @@ void cambiarMarcoUsoAUno(uint32_t dir_fisica){
 
 	t_list* pagsEnM = (t_list*)paginasEnMemoria(aux->pid);
 
-	for(int i = 0 ; i < list_size(pagsEnM); i++){
-				t_p_2* aux = (t_p_2*)list_get(pagsEnM,i);
-				printf("pag en memoria antes de hacer el list find %d \n",aux->indice);
-			}
-	printf("tamanio pags en Memoria %d \n",list_size(pagsEnM));
 
 	bool pagConMismoMarco(t_p_2* pagina){
 					return pagina->marco == marco;
@@ -597,13 +591,10 @@ void cambiarMarcoUsoAUno(uint32_t dir_fisica){
 
 void liberarMemoriaUsuario(uint32_t pid) {
 	t_list* pagsEnMemoria = paginasEnMemoria(pid);
-	printf("tamanio pags en memoria %d \n",list_size(pagsEnMemoria));
 
 	for(int i =0 ;i<list_size(pagsEnMemoria);i++){
 		t_p_2* aux = (t_p_2*)list_get(pagsEnMemoria,i);
-		printf("tamanio pags en memoria %d \n",list_size(pagsEnMemoria));
 		limpiarMarco(aux->marco);
-		printf("tamanio pags en memoria %d \n",list_size(pagsEnMemoria));
 	}
 
 }

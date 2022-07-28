@@ -102,19 +102,9 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
 	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir paginas modificadas
-	printf("antes de escribir pags modificadas \n");
-	t_list* auxiliar = paginasEnMemoria(pcb->id_proceso);
-				for (int i = 0; i < list_size(auxiliar); i++){
-					t_p_2* aux = list_get(auxiliar,i);
-					printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
-				}
+
 	escribirPaginasModificadas(pcb);
-	printf("despues de escribir pags modificadas \n");
-	t_list* auxiliar_2 = paginasEnMemoria(pcb->id_proceso);
-			for (int i = 0; i < list_size(auxiliar_2); i++){
-				t_p_2* aux = list_get(auxiliar_2,i);
-				printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
-			}
+
 	liberarMemoriaUsuario(pcb->id_proceso);
 
 	log_info(memoria_logger,"Se libero memoria usuario del proceso %d \n",pcb->id_proceso);
@@ -148,8 +138,8 @@ void escribirPaginasModificadas(pcb* pcb){
 	for(int i=0;i<list_size(paginasProc);i++){
 		pthread_mutex_lock(&mutex_contador_pid);
 		contador_por_pid* contador  = (contador_por_pid*)list_get(contador_pid,pcb->id_proceso);
-		pthread_mutex_unlock(&mutex_contador_pid);
 		contador->contadorAccesoSwap +=1 ;
+		pthread_mutex_unlock(&mutex_contador_pid);
 		t_p_2* pag=(t_p_2*)list_get(paginasProc,i);
 		escribirPagEnSwap(pag);
 		msync(archivo_swap,pcb->tamanio_proceso,MS_SYNC);

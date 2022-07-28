@@ -35,8 +35,8 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		log_info(memoria_logger,"Page Fault, buscar marco libre \n");
 		pthread_mutex_lock(&mutex_contador_pid);
 		contador_por_pid* contador  = (contador_por_pid*)list_get(contador_pid,tabla_elegida->p_id);
-		pthread_mutex_unlock(&mutex_contador_pid);
 		contador->contadorPF +=1 ;
+		pthread_mutex_unlock(&mutex_contador_pid);
 		usleep(config_valores_memoria.retardo_swap); //retardo swap
 		if(cantidadUsadaMarcos(tabla_elegida->p_id)<config_valores_memoria.marcos_por_proceso){//si el proceso todavía no uso la cantidad máxima de marcos por proceso
 			pagina->marco=ocuparMarcoLibre(tabla_elegida->p_id);//busca un marco libre y se lo asigna ala pagina
