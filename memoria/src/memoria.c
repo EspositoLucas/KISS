@@ -104,10 +104,10 @@ void manejo_conexiones(int socket_cliente){
 		eliminar_paquete(paquete_marco);
 		break;
 	case INICIALIZAR_ESTRUCTURAS:
-		log_info(memoria_logger, "Inicializando estructuras \n");
+		log_info(memoria_logger, "Inicializando estructuras  \n");
 		//Recibe el pcb del proceso para iniciar estructuras
 		pcb* pcb_recibido=recibirPcb(socket_cliente);
-		log_info(memoria_logger, "recibi pcb de kernel para inicializar estructuras \n");
+		log_info(memoria_logger, "recibi pcb de id %d desde kernel para inicializar estructuras \n",pcb_recibido->id_proceso);
 		printf("valor tamanio_proceso %"PRIu32"\n",pcb_recibido->tamanio_proceso);
 		//Averiguamos cuantas pags ocupa el proceso
 		int cantidad_de_pags=pags_proceso(pcb_recibido->tamanio_proceso,config_valores_memoria.tam_pagina);
@@ -133,7 +133,7 @@ void manejo_conexiones(int socket_cliente){
 			nueva_tabla->id_tabla = indice_de_tabla2;
 			nueva_tabla->lista_paginas = inicializar_tabla_segundo_nivel();
 			nueva_tabla->p_id = pcb_recibido->id_proceso;
-			log_info(memoria_logger,"tabla segundo nivel creada \n");
+			log_info(memoria_logger,"tabla segundo nivel del proceso %d creada \n",pcb_recibido->id_proceso);
 			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
 			entrada_en_tp1->indice=i;
 			entrada_en_tp1->numero_de_tabla2=indice_de_tabla2;
@@ -249,9 +249,7 @@ uint32_t escribirModificaciones(uint32_t numPagina,uint32_t pid){
 		msync(archivo_swap,pid,MS_SYNC);
 	}
 	cambiarPdePagina(numPagina,pid,0);
-	printf("se cambio P de pagina con valor %d \n",pagElegida->p);
 	cambiarMdePagina(numPagina,pid,0);
-	printf("se cambio M de pagina con valor %d \n",pagElegida->m);
 	return pagElegida->marco;
 }
 ///---------------------MODIFICAR TABLA DE PAGINAS---------------------------------
