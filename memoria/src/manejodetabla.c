@@ -4,8 +4,8 @@ bool indicador ;
 
 //------------------------ACCESO A PRIMERA TABLA------------------------
 uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
-	uint32_t entradafinal=tabla+entrada;
-	t_p_1* tabla_1 =  (t_p_1*)list_get(tabla_de_pagina_1_nivel,entradafinal);
+	t_list* tabla_primer_nivel_proceso = (t_list*)list_get(lista_tabla_de_pagina_1_nivel,tabla);
+	t_p_1* tabla_1 = (t_p_1*)list_get(tabla_primer_nivel_proceso,entrada);
 	return tabla_1->numero_de_tabla2;
 }
 //------------------------ACCESO A SEGUNDA TABLA----------------------------
@@ -42,7 +42,6 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 			return pagina->marco;
 
 		}
-		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
 		log_info(memoria_logger,"Cant max de marcos del proceso ocupados,obtener pagina reemplazar \n");
 		uint32_t numPagAReemplazar=obtenerPaginaAReemplazar(tabla_elegida->p_id);
 		printf("pagina a reemplazar  %d \n",numPagAReemplazar);
@@ -386,52 +385,7 @@ t_list* pagsDeUnProceso(uint32_t pid){
 	return paginas;
 }
 
-void eliminar_entrada_tp1(pcb* pcb){
-	pthread_mutex_lock(&mutex_numero_tabla_2p);
-	numero_tabla_2p = pcb->id_proceso;
-	pthread_mutex_unlock(&mutex_numero_tabla_2p);
-	t_list* tablas_proceso = (t_list*)list_filter(lista_tablas_segundo_nivel,condicion_misma_numero_p_id);
-	t_list*indices_proceso= (t_list*)list_map(tablas_proceso,indice_tabla_tp2);
 
-	for(int k = 0 ; k<list_size(indices_proceso);k++){
-			uint32_t aux = list_get(indices_proceso,k);
-		}
-
-
-	int contador = 0 ;
-
-	for(int i = 0 ; i<list_size(tabla_de_pagina_1_nivel)+ contador;i++){
-		indicador = false;
-		//t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
-		//t_p_1* aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
-		t_p_1* aux;
-		if(i==0){
-			 aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i);
-		}else{
-			 aux = (t_p_1*)list_get(tabla_de_pagina_1_nivel,i-contador);
-		}
-		printf("valor tp1 %d \n",i);
-		for(int j=0 ; j<list_size(indices_proceso);j++){
-			//printf("tamanio indices_proceso %d \n",list_size(indices_proceso));
-			//uint32_t aux_indice = *(uint32_t*)list_get(indices_proceso,j);
-			uint32_t aux_indice = list_get(indices_proceso,j);
-			if(aux_indice == aux->numero_de_tabla2 ){
-				indicador = true ;
-			}
-
-
-		}
-
-		if(indicador){
-			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
-			list_remove_and_destroy_element(tabla_de_pagina_1_nivel, i-contador, free);
-			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
-		}
-
-		contador++;
-	}
-
-}
 
 uint32_t* indice_tabla_tp2(tabla_de_segundo_nivel* tp2){
 	return tp2->id_tabla;

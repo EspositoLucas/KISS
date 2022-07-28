@@ -7,7 +7,7 @@ int main(void)
 {
     
 
-    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/config_pruebas/prueba_plan_srt/kernel.config");
+    cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/config_pruebas/prueba_memoria/kernel.config");
 
     kernel_logger_info = log_create("/home/utnso/tp-2022-1c-Ubunteam/kernel/kernel.log", "Servidor Kernel", 1, LOG_LEVEL_INFO);
 

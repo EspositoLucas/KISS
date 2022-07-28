@@ -116,17 +116,17 @@ void manejo_conexiones(int socket_cliente){
 		uint32_t cantidad_de_tp2=(uint32_t)tp2_proceso(cantidad_de_pags,config_valores_memoria.entradas_por_tabla);
 
 		//Veo cual es el tamanio de la pag de 1 nivel (que tambien nos sirve para averiguar el proximo indice a usar)
-		uint32_t valorTP1=(uint32_t)list_size(tabla_de_pagina_1_nivel); // aca no calcula el TAMANIO de la tp1 en vez de la PAGINA??
-		printf("cant tablas de pagina  %d \n",list_size(tabla_de_pagina_1_nivel));
+		uint32_t valorTP1=(uint32_t)list_size(lista_tabla_de_pagina_1_nivel); // aca no calcula el TAMANIO de la tp1 en vez de la PAGINA??
 		//No pueden haber mas entradas q las permitidas
-		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
-			log_info(memoria_logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas \n");
-			exit(34);
-		}
+//		if(valorTP1+cantidad_de_tp2-1>config_valores_memoria.entradas_por_tabla){
+//			log_error(memoria_logger,"Mayor cantidad de entradas en tabla de primer nivel que las permitidas \n");
+//			exit(34);
+//		}
 
 		//Cargo el num de tabla de la primera pag de 2 nivel del proceso ya que las demas seran contiguas
 		pcb_recibido->valor_tabla_paginas=valorTP1;
 
+		t_list* tabla_primer_nivel = list_create();
 		//crear tabla de segundo nivel, pasar su numero de tabla a la de primer nivel
 		for(uint32_t i=0;i<cantidad_de_tp2;i++){
 			tabla_de_segundo_nivel* nueva_tabla = malloc(sizeof(tabla_de_segundo_nivel));
@@ -135,30 +135,27 @@ void manejo_conexiones(int socket_cliente){
 			nueva_tabla->p_id = pcb_recibido->id_proceso;
 			log_info(memoria_logger,"tabla segundo nivel creada \n");
 			t_p_1* entrada_en_tp1=malloc(sizeof(t_p_1));
-			entrada_en_tp1->indice=valorTP1+i;
+			entrada_en_tp1->indice=i;
 			entrada_en_tp1->numero_de_tabla2=indice_de_tabla2;
-			pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
-			list_add(tabla_de_pagina_1_nivel,entrada_en_tp1);
-			pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
+			list_add(tabla_primer_nivel,entrada_en_tp1);
 			pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 			list_add(lista_tablas_segundo_nivel,nueva_tabla);
 			pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
 			log_info(memoria_logger,"numero de tabla de segundo nivel pasado a la de primer nivel \n");
 			indice_de_tabla2++;
 		}
+
+		pthread_mutex_lock(&mutex_tabla_pagina_primer_nivel);
+		list_add(lista_tabla_de_pagina_1_nivel,tabla_primer_nivel);
+		pthread_mutex_unlock(&mutex_tabla_pagina_primer_nivel);
+
 		//crea el swap
 		crearSwap(pcb_recibido->id_proceso,pcb_recibido->tamanio_proceso);
 		log_info(memoria_logger,"Swap creado \n");
-		//Envia el num de tabla de la primera pag de 2 nivel del proceso
-		//t_paquete* paquete_ini = crear_paquete();
-		//agregar_a_paquete(paquete_ini,&valorTP1,sizeof(uint32_t));
-		//agregaAPaquete(paquete_ini,&valorTP1,sizeof(uint32_t));
 		printf("valor tp1 %"PRIu32" \n",valorTP1);
-		//enviar_paquete(paquete_ini,socket_cliente);
 		enviar_datos(socket_cliente,&valorTP1,sizeof(uint32_t));
 		printf("valor socket %d \n",socket_cliente);
 		log_info(memoria_logger,"Numero tabla de paginas de 2 nivel del proceso enviado a kernel \n");
-		//eliminar_paquete(paquete_ini);
 		break;
 	case PCB: ; // finalizar proceso
 		log_info(memoria_logger, "Me llego pedido liberar estructuras del proceso \n");
@@ -166,8 +163,6 @@ void manejo_conexiones(int socket_cliente){
 		pcb* pcb=recibirPcb(socket_cliente);
 		liberarTodosLosMarcos(pcb->id_proceso);
 		log_info(memoria_logger,"Se liberaron los marcos del proceso\n");
-		eliminar_entrada_tp1(pcb);
-		log_info(memoria_logger,"Se libero entrada tp1 del proceso \n");
 		// eliminar swap - poner funcion
 		eliminarSwap(pcb);
 		liberarMemoriaUsuario(pcb->id_proceso);
@@ -191,7 +186,7 @@ void manejo_conexiones(int socket_cliente){
 
 void inicializar_memoria(){
 	memoria_usuario=malloc(config_valores_memoria.tam_memoria);
-	tabla_de_pagina_1_nivel=list_create();
+	lista_tabla_de_pagina_1_nivel=list_create();
 	lista_tablas_segundo_nivel = list_create();
 	inicializar_marcos();
 	algoritmo_memoria=obtener_algoritmo();
@@ -313,7 +308,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_plan/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria_clock_m/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");

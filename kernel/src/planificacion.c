@@ -321,6 +321,7 @@ void estadoBlockeado(void){
  	list_add(colaSuspendedBlocked, proceso);
  	pthread_mutex_unlock(&mutex_suspended_blocked);
  	log_info(kernel_logger_info, "PID[%d] ingresa a SUSPENDED-BLOCKED \n", proceso->pcb->id_proceso);
+ 	sem_post(&sem_grado_multiprogramacion);
  }
 
 void estado_suspended_ready(void ) {

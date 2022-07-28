@@ -32,7 +32,7 @@
  } arch_config;
 
 
-t_list* tabla_de_pagina_1_nivel;
+t_list* lista_tabla_de_pagina_1_nivel;
 t_log* memoria_logger ;
 
 arch_config config_valores_memoria;
