@@ -103,9 +103,20 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 
 	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir paginas modificadas
 	printf("antes de escribir pags modificadas \n");
+	t_list* auxiliar = paginasEnMemoria(pcb->id_proceso);
+				for (int i = 0; i < list_size(auxiliar); i++){
+					t_p_2* aux = list_get(auxiliar,i);
+					printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+				}
 	escribirPaginasModificadas(pcb);
 	printf("despues de escribir pags modificadas \n");
+	t_list* auxiliar_2 = paginasEnMemoria(pcb->id_proceso);
+			for (int i = 0; i < list_size(auxiliar_2); i++){
+				t_p_2* aux = list_get(auxiliar_2,i);
+				printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+			}
 	liberarMemoriaUsuario(pcb->id_proceso);
+
 	log_info(memoria_logger,"Se libero memoria usuario del proceso %d \n",pcb->id_proceso);
 
 }
@@ -132,18 +143,29 @@ void escribirPagEnSwap(t_p_2* pag){
 void escribirPaginasModificadas(pcb* pcb){
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
 	printf("tamanio paginasEnMemoria %d \n", list_size(paginasEnMemoria(pcb->id_proceso)));
-	printf("tamanio paginasProc %d \n", list_size(paginasProc));
-	printf("antes de asignar archivo\n");
+	//printf("tamanio paginasProc %d \n", list_size(paginasProc));
+	//printf("antes de asignar archivo\n");
 	asignarAlArchivo(pcb->id_proceso);
-	printf("despues de asignar archivo\n");
-	printf("tamanio paginasProc %d \n", list_size(paginasProc));
+	//printf("despues de asignar archivo\n");
+	//printf("tamanio paginasProc %d \n", list_size(paginasProc));
 	for(int i=0;i<list_size(paginasProc);i++){
 		t_p_2* pag=(t_p_2*)list_get(paginasProc,i);
 		escribirPagEnSwap(pag);
 		msync(archivo_swap,pcb->tamanio_proceso,MS_SYNC);
 		cambiarMdePagina(pag->indice,pcb->id_proceso,0);
 		log_info(memoria_logger,"Se escribio pagina modificada en swap \n");
+		t_list* auxiliar = paginasEnMemoria(pcb->id_proceso);
+						for (int i = 0; i < list_size(auxiliar); i++){
+							t_p_2* aux = list_get(auxiliar,i);
+							printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+						}
 		liberarMarco(pag->marco); // despues de escribir la pag, libero el marco de esa pagina
+		printf("auxiliar 2 tamanio pags en memoria \n");
+		t_list* auxiliar_2 = paginasEnMemoria(pcb->id_proceso);
+						for (int i = 0; i < list_size(auxiliar_2); i++){
+							t_p_2* aux = list_get(auxiliar_2,i);
+							printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+						}
 		log_info(memoria_logger,"Se libero el marco de la pagina modificada en swap \n");
 		cambiarUdePagina(pag->indice,pcb->id_proceso,0);
 		cambiarPdePagina(pag->indice,pcb->id_proceso,0);

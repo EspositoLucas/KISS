@@ -196,7 +196,7 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
     printf("Printeo paginas a analizar para el reemplazo con n de pagina, u, m y si es puntero\n");
     for (int i = 0; i < list_size(lista); i++){
     	t_p_2* auxiliar = (t_p_2*)list_get(lista,i);
-    	printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", auxiliar->indice, auxiliar->u,auxiliar->m,auxiliar->puntero_indice);
+    	printf("Pagina numero: %d, U: %d, M: %d, Puntero: %d\n", auxiliar->indice, auxiliar->u,auxiliar->m,auxiliar->puntero_indice);
     }
 
 

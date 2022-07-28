@@ -259,21 +259,28 @@ void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 
 
 void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
-
+	//printf("antes de numeroPagEnTabla \n");
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
+	//printf("valor numeroPagEnTabla %d \n", numeroPagEnTabla);
+	//printf("antes de numTabla \n");
 	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
+	//printf("valor numTabla %d \n", numTabla);
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
-
+	//printf("antes de filtrar tablas de segundo nivel  \n");
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-
+	//printf("despues de filtrar tablas de segundo nivel  \n");
+	//printf("antes de hacer list get de tablas \n");
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
+	//printf("despues de hacer list get de tablas \n");
+	//printf("antes de hacer list get de tablinha \n");
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
+	//printf("despues de hacer list get de tablinha \n");
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->u=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	printf(" bit uso %d de pagina %d de tabla numero %d dentro algoritmo  \n",pagina->u,pagina->indice,tablinha->id_tabla);
+	//printf(" bit uso %d de pagina %d de tabla numero %d dentro algoritmo  \n",pagina->u,pagina->indice,tablinha->id_tabla);
 }
 void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
@@ -308,7 +315,7 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){
-	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_integral/memoria.config");
+	t_config* config=iniciar_config("/home/utnso/tp-2022-1c-Ubunteam/memoria/Default/config_pruebas/prueba_memoria_clock_m/memoria.config");
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");
@@ -487,7 +494,7 @@ void liberarTodosLosMarcos(uint32_t pid){
 	t_list* auxiliar = paginasEnMemoria(pid);
 	for (int i = 0; i < list_size(auxiliar); i++){
 		t_p_2* aux = list_get(auxiliar,i);
-		printf("Pagina numero: %d, U: %d, M: %d, P: %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+		printf("Pagina numero: %d, U: %d, M: %d, Puntero : %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
 	}
 
 	t_list* marc=marcosPid(pid);
@@ -558,15 +565,31 @@ void cambiarMarcoUsoAUno(uint32_t dir_fisica){
 				return m->numero_de_marco == marco;
 			}
 	marquito* aux  = (marquito*)list_find(marcos,marcoConMismoIndice);
+	printf("pid marco aux %d \n", aux->pid);
 
 	t_list* pagsEnM = (t_list*)paginasEnMemoria(aux->pid);
+
+	for(int i = 0 ; i < list_size(pagsEnM); i++){
+				t_p_2* aux = (t_p_2*)list_get(pagsEnM,i);
+				printf("pag en memoria antes de hacer el list find %d \n",aux->indice);
+			}
+	printf("tamanio pags en Memoria %d \n",list_size(pagsEnM));
 
 	bool pagConMismoMarco(t_p_2* pagina){
 					return pagina->marco == marco;
 				}
-	t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
 
-	cambiarUdePagina(paginaM->indice,aux->pid,1);
+	if(list_size(pagsEnM) > 0){
+		t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
+			printf("valor paginaM indice %d \n",paginaM->indice);
+			printf("valor paginaM marco %d \n",paginaM->marco);
+			printf("valor paginaM bit uso %d \n",paginaM->u);
+			printf("valor paginaM bit mod %d \n",paginaM->m);
+			printf("valor paginaM bit p %d \n",paginaM->p);
+
+			cambiarUdePagina(paginaM->indice,aux->pid,1);
+	}
+
 
 }
 
@@ -574,10 +597,13 @@ void cambiarMarcoUsoAUno(uint32_t dir_fisica){
 
 void liberarMemoriaUsuario(uint32_t pid) {
 	t_list* pagsEnMemoria = paginasEnMemoria(pid);
+	printf("tamanio pags en memoria %d \n",list_size(pagsEnMemoria));
 
 	for(int i =0 ;i<list_size(pagsEnMemoria);i++){
 		t_p_2* aux = (t_p_2*)list_get(pagsEnMemoria,i);
+		printf("tamanio pags en memoria %d \n",list_size(pagsEnMemoria));
 		limpiarMarco(aux->marco);
+		printf("tamanio pags en memoria %d \n",list_size(pagsEnMemoria));
 	}
 
 }
