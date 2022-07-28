@@ -272,28 +272,18 @@ void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 
 
 void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
-	//printf("antes de numeroPagEnTabla \n");
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
-	//printf("valor numeroPagEnTabla %d \n", numeroPagEnTabla);
-	//printf("antes de numTabla \n");
 	uint32_t numTabla=numPagina/config_valores_memoria.entradas_por_tabla;
-	//printf("valor numTabla %d \n", numTabla);
 	pthread_mutex_lock(&mutex_comparador_pid);
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
-	//printf("antes de filtrar tablas de segundo nivel  \n");
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	//printf("despues de filtrar tablas de segundo nivel  \n");
-	//printf("antes de hacer list get de tablas \n");
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
-	//printf("despues de hacer list get de tablas \n");
-	//printf("antes de hacer list get de tablinha \n");
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
-	//printf("despues de hacer list get de tablinha \n");
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->u=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	//printf(" bit uso %d de pagina %d de tabla numero %d dentro algoritmo  \n",pagina->u,pagina->indice,tablinha->id_tabla);
+	printf(" bit uso %d de pagina de tabla global %d dentro algoritmo  \n",pagina->u,pagina->indice);
 }
 void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
@@ -308,7 +298,7 @@ void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->m=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	printf(" bit modificada %d de pagina de tabla global %d dentro algoritmo  \n",pagina->m,pagina->indice);
+	printf(" bit modificado %d de pagina de tabla global %d dentro algoritmo  \n",pagina->m,pagina->indice);
 }
 void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 
@@ -371,17 +361,15 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		t_paquete* paquete=crear_paquete();
 		agregar_a_paquete(paquete,&valor_leido,sizeof(uint32_t));
 		enviar_paquete(paquete,socket_cpu);
-		printf("valor leido %d \n ",valor_leido);
+		printf("valor leido de memoria %d \n ",valor_leido);
 		log_info(memoria_logger,"Valor leido enviado a CPU \n");
 		break;
 	case WRITE: ;
-		printf("valor antes de dir fisica \n");
 		dir_fisica = *(uint32_t*)list_get(datos,1);
-		printf("valor despues de dir fisica %d\n",dir_fisica);
+		printf("valor dir fisica WRITE %d\n",dir_fisica);
 		valor_escritura = *(uint32_t*)list_get(datos,2);
-		printf("valor antes de escribir %d\n",valor_escritura);
+		printf("valor antes de escribir en dir fisica %d\n",valor_escritura);
 		escritura = escribirEn(dir_fisica, valor_escritura);
-		printf("valor despues de escribir dir fisica \n");
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
@@ -394,7 +382,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		printf("valor dir fisica origen %d \n ",dir_fisica_origen);
 
 		valor_leido = leer_de_memoria(dir_fisica_origen);
-		printf("valor leido %d \n ",valor_leido);
+		printf("valor leido de memoria %d \n ",valor_leido);
 		escritura = escribirEn(dir_fisica_destino, valor_leido);
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);

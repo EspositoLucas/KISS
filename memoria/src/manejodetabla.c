@@ -29,7 +29,6 @@ uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 		log_info(memoria_logger,"Pagina presente en memoria, no hay page fault \n");
 		usleep(config_valores_memoria.retardo_memoria); // retardo memoria por el page fault y hay que ir al archivo a buscar la pagina y cargarla en memoria
 		pagina->u = 1;
-		printf("valor bit uso pagina %d \n",pagina->u);
 		return pagina->marco;
 	}
 	else{ // page fault
@@ -179,12 +178,11 @@ uint32_t obtenerPaginaClock(t_list* lista,uint32_t pid){
                 siguiente=list_get(lista, i + 1);
             }
             cambiarPunterodePagina(siguiente->indice,pid,true);
-            printf(" bit puntero pagina reemplazada  %d \n",aux->puntero_indice);
              return aux->indice;
         } else {
             cambiarUdePagina(aux->indice,pid,false);
             aux->u = 0 ;
-            printf(" bit uso %d de pagina aux %d dentro algoritmo  \n",aux->u,aux->indice);
+            printf("Bit U de pagina aux [%d] cambiado a 0 \n", aux->indice);
         }
     }
     indice=0;
@@ -271,7 +269,7 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
     	    }else {
     	    	cambiarUdePagina(aux->indice,pid,false);
     	    	aux->u = 0 ;
-    	    	printf("Bit U de pagina aux [%d] cambiado a false\n", aux->indice);
+    	    	printf("Bit U de pagina aux [%d] cambiado a 0 \n", aux->indice);
     	    }
     	}
 
@@ -289,7 +287,7 @@ uint32_t obtenerPaginaClockM(t_list* lista,uint32_t pid){
         	}else {
         		cambiarUdePagina(aux->indice,pid,false);
         		aux->u = 0 ;
-    	    	printf("Bit U de pagina aux [%d] cambiado a false\n", aux->indice);
+    	    	printf("Bit U de pagina aux [%d] cambiado a 0\n", aux->indice);
         	}
     	}
    }
