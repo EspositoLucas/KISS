@@ -9,11 +9,7 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 	return tabla_1->numero_de_tabla2;
 }
 
-void sumarValorPuntero(uint32_t* puntero,int cantidad) {
 
-	puntero += cantidad ;
-
-}
 //------------------------ACCESO A SEGUNDA TABLA----------------------------
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	tabla_de_segundo_nivel*tabla_elegida=(tabla_de_segundo_nivel*)list_get(lista_tablas_segundo_nivel,tabla);
