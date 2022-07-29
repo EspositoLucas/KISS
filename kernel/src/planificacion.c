@@ -1,7 +1,8 @@
 #include "planificacion.h"
 
 int proceso_ejecutando;
-
+int socket ;
+int tiempo_inicio_bloqueo;
 //................................. LARGO PLAZO.........................................................................................
 
 // CREAR PCB
@@ -157,10 +158,15 @@ void iniciar_planificador_corto_plazo(void) {
  		if(algoritmo == SRT){
  			if(proceso_ejecutando == 1){
  				interrumpir_cpu();
- 				pcb* pcb_recibido = recibirPcb(socket_dispatch);
+ 				proceso* proceso = malloc(sizeof(proceso));
+ 				proceso->pcb = recibirPcb(socket_dispatch);
+ 				log_info(kernel_logger_info, "PCB recibida de cpu despues de interrumpir \n)");
+ 				proceso->socket = socket;
+ 				proceso->tiempo_inicio_bloqueo = tiempo_inicio_bloqueo;
  				pthread_mutex_lock(&mutex_ready);
- 				list_add(colaReady, pcb_recibido);
+ 				list_add(colaReady, proceso);
  				pthread_mutex_unlock(&mutex_ready);
+ 				log_info(kernel_logger_info, "PID[%d] ingresa a READY despues de interrupcion \n", proceso->pcb->id_proceso);
  			}
  		}
 
@@ -182,6 +188,8 @@ void estadoExec(void){
 		pthread_mutex_lock(&mutex_exec);
 
 		proceso* proceso = list_remove(colaExec,0);
+		socket =proceso->socket;
+		tiempo_inicio_bloqueo = proceso->tiempo_inicio_bloqueo;
 
 		proceso_ejecutando = 1;
 		pthread_mutex_unlock(&mutex_exec);
@@ -193,7 +201,7 @@ void estadoExec(void){
 		op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
 		proceso->pcb = recibirPcb(socket_dispatch);
 
-		log_info(kernel_logger_info, "PCB recibida de cpu para calcular estimaciones (SRT)");
+		log_info(kernel_logger_info, "PCB recibida de cpu para calcular estimaciones (SRT) \n");
 		int finalizacion_cpu = get_time();
 		pthread_mutex_lock(&mutex_exec);
 		proceso_ejecutando = 0;
