@@ -12,9 +12,8 @@ int main(void) {
 
 
     inicializar_memoria();
-    printf("Por iniciar servidor\n");
     int server_fd = iniciar_servidor(config_valores_memoria.ip_memoria,config_valores_memoria.puerto_escucha);
-    printf("Servidor creado\n");
+    log_info(memoria_logger,"Servidor creado\n");
     log_info(memoria_logger, "Memoria lista para recibir al modulo cliente \n");
 
     while(atender_clientes_memoria(server_fd));
@@ -91,8 +90,7 @@ void manejo_conexiones(int socket_cliente){
 		entrada2=*(uint32_t*)list_get(valores,1);
 		log_info(memoria_logger,"valor entrada2 (mmu) \n");
 		marco= devolver_marco(tabla, entrada2);
-		printf("valor marco de devolver marco %d \n",marco);
-		log_info(memoria_logger,"valor marco (mmu) \n");
+		log_info(memoria_logger,"valor marco (mmu) \n",marco);
 		usleep(config_valores_memoria.retardo_memoria);
 		t_paquete* paquete_marco= crear_paquete();
 		paquete_marco->codigo_operacion = MARCO;
@@ -361,14 +359,13 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		t_paquete* paquete=crear_paquete();
 		agregar_a_paquete(paquete,&valor_leido,sizeof(uint32_t));
 		enviar_paquete(paquete,socket_cpu);
-		printf("valor leido de memoria %d \n ",valor_leido);
+		log_info(memoria_logger,"valor leido de memoria %d \n ",valor_leido);
 		log_info(memoria_logger,"Valor leido enviado a CPU \n");
 		break;
 	case WRITE: ;
 		dir_fisica = *(uint32_t*)list_get(datos,1);
-		printf("valor dir fisica WRITE %d\n",dir_fisica);
+		log_info(memoria_logger,"valor dir fisica WRITE %d\n",dir_fisica);
 		valor_escritura = *(uint32_t*)list_get(datos,2);
-		printf("valor antes de escribir en dir fisica %d\n",valor_escritura);
 		escritura = escribirEn(dir_fisica, valor_escritura);
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
@@ -377,12 +374,12 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		break;
 	case COPY: ;
 		uint32_t dir_fisica_destino = *(uint32_t*)list_get(datos,1);
-		printf("valor dir fisica destino %d \n ",dir_fisica_destino);
+		log_info(memoria_logger,"valor dir fisica destino %d \n ",dir_fisica_destino);
 		uint32_t dir_fisica_origen = *(uint32_t*)list_get(datos,2);
-		printf("valor dir fisica origen %d \n ",dir_fisica_origen);
+		log_info(memoria_logger,"valor dir fisica origen %d \n ",dir_fisica_origen);
 
 		valor_leido = leer_de_memoria(dir_fisica_origen);
-		printf("valor leido de memoria %d \n ",valor_leido);
+		log_info(memoria_logger,"valor leido de memoria %d \n ",valor_leido);
 		escritura = escribirEn(dir_fisica_destino, valor_leido);
 		codigo = codigoEscritura(escritura);
 		usleep(config_valores_memoria.retardo_memoria);
@@ -398,19 +395,15 @@ void traducir_operandos(void* stream,uint32_t* operando1,uint32_t* operando2){
 	memcpy(&operando2,stream+sizeof(uint32_t),sizeof(uint32_t));
 }
 int pags_proceso(uint32_t tamanio_proc,int tamanio_pag){
-	//printf("valor tamanio_proc %d \n",(int)tamanio_proc);
-	//printf("valor tamanio_pag %d \n",tamanio_pag);
 	double entero=((double)tamanio_proc)/(double)tamanio_pag;
 	if((tamanio_proc % tamanio_pag) > 0){
 		entero++;
 
 	}
-	//printf("valor entero %0.2f \n",ceil(entero));
 	return (int)ceil(entero);
 }
 int tp2_proceso(int pags,int entradas_tabla){
 	double entero=(double)pags/(double)entradas_tabla;
-	//printf("valor entero %0.2f \n",ceil(entero));
 	return (int)ceil(entero);
 }
 
@@ -491,11 +484,11 @@ void liberarMarco(uint32_t marcoALiberar){
 
 void liberarTodosLosMarcos(uint32_t pid){
 
-	printf("ANTES DE LIBERAR TODOS LOS MARCOS, PRINTEO EL ESTADO FINAL DE LOS MARCOS DEL PROCESO\n");
+	log_info(memoria_logger," Estado Final del proceso: %d antes de liberar estructuras\n",pid);
 	t_list* auxiliar = paginasEnMemoria(pid);
 	for (int i = 0; i < list_size(auxiliar); i++){
 		t_p_2* aux = list_get(auxiliar,i);
-		printf("Pagina numero: %d, U: %d, M: %d, Puntero : %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+		log_info(memoria_logger,"Pagina numero: %d, U: %d, M: %d, Puntero : %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
 	}
 
 	t_list* marc=marcosPid(pid);
@@ -522,7 +515,7 @@ int escribirEn(uint32_t dir_fisica, uint32_t valor){
 	}
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	memcpy(memoria_usuario + dir_fisica, &valor, sizeof(uint32_t));
-	printf("valor escritura %d \n ",valor);
+	log_info(memoria_logger,"valor escritura %d \n ",valor);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 	cambiarMarcoUsoAUno(dir_fisica);
 	cambiarMarcoModificadoAUno(dir_fisica);
@@ -559,7 +552,6 @@ void cambiarMarcoModificadoAUno(uint32_t dir_fisica){
 							t_p_2* paginaM = (t_p_2*)list_find(pagsEnM,pagConMismoMarco);
 
 								cambiarMdePagina(paginaM->indice,aux->pid,1);
-								printf("valor bit modificado despues de escribir en dir fisica %d \n",paginaM->m);
 						}
 
 
@@ -572,8 +564,6 @@ void cambiarMarcoUsoAUno(uint32_t dir_fisica){
 				return m->numero_de_marco == marco;
 			}
 	marquito* aux  = (marquito*)list_find(marcos,marcoConMismoIndice);
-	printf("pid marco aux %d \n", aux->pid);
-
 	t_list* pagsEnM = (t_list*)paginasEnMemoria(aux->pid);
 
 

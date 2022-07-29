@@ -139,13 +139,7 @@ void escribirPagEnSwap(t_p_2* pag){
 
 void escribirPaginasModificadas(pcb* pcb){
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
-	printf("cant de pags en memoria %d \n",list_size(paginasProc));
 
-	printf("ANTES DE LIBERAR TODOS LOS MARCOS, PRINTEO EL ESTADO FINAL DE LOS MARCOS DEL PROCESO\n");
-		for (int i = 0; i < list_size(paginasProc); i++){
-			t_p_2* aux = list_get(paginasProc,i);
-			printf("Pagina numero: %d, U: %d, M: %d, Puntero : %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
-		}
 	asignarAlArchivo(pcb->id_proceso);
 	printf("Se asigno al archivo swap el archivo del pid %d \n|",pcb->id_proceso);
 	for(int i=0;i<list_size(paginasProc);i++){

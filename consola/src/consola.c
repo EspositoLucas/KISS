@@ -15,7 +15,7 @@ int main(int argc, char **argv){
 
 //	Logging consola
 
-	consola_logger = iniciar_logger("consola.log", "Consola", 1, LOG_LEVEL_INFO);
+	consola_logger = iniciar_logger("/home/utnso/tp-2022-1c-Ubunteam/consola/consola.log", "Consola", 1, LOG_LEVEL_INFO);
 	log_info(consola_logger,"Iniciando consola\n");
 
 //	Configuracion
