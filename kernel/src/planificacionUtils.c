@@ -99,7 +99,7 @@ op_code esperar_respuesta_memoria(int socket_memoria) {
  void timer(void *data) {
 	tiempo = 0;
  	while(1) {
- 		usleep(1);
+ 		usleep(1*1000);
  		pthread_mutex_lock(&mutex_timer);
  		tiempo++;
  		pthread_mutex_unlock(&mutex_timer);
