@@ -157,7 +157,10 @@ void iniciar_planificador_corto_plazo(void) {
  		if(algoritmo == SRT){
  			if(proceso_ejecutando == 1){
  				interrumpir_cpu();
- 				sem_wait(&sem_desalojo);
+ 				pcb* pcb_recibido = recibirPcb(socket_dispatch);
+ 				pthread_mutex_lock(&mutex_ready);
+ 				list_add(colaReady, pcb_recibido);
+ 				pthread_mutex_unlock(&mutex_ready);
  			}
  		}
 

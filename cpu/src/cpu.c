@@ -289,7 +289,8 @@ log_info(cpu_logger, "CPU listo para recibir interrupciones \n");
 int cliente_fd = esperar_cliente(server_fd);
 log_info(cpu_logger,"Se conecto Kernel al puerto interrupt \n");
 while(1){
-	int cod_op = recibir_operacion_nuevo(cliente_fd);
+	int cod_op ;
+	recibir_datos(cliente_fd,&cod_op,sizeof(int));
 	switch (cod_op){
 		case MENSAJE:
 			log_info(cpu_logger,"Peticion de interrupcion recibida \n");
