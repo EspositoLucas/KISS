@@ -3,6 +3,7 @@
 int proceso_ejecutando;
 int socket_proceso_exec ;
 int tiempo_inicio_bloqueo;
+bool interrupcion;
 //................................. LARGO PLAZO.........................................................................................
 
 // CREAR PCB
@@ -134,10 +135,12 @@ void iniciar_planificador_corto_plazo(void) {
 	pthread_mutex_init(&mutex_ready, NULL);
 	pthread_mutex_init(&mutex_blocked, NULL);
 	pthread_mutex_init(&mutex_exec, NULL);
+	pthread_mutex_init(&mutex_interrupcion, NULL);
 	sem_init(&sem_ready, 0, 0);
 	sem_init(&sem_exec, 0, 0);
 	sem_init(&sem_blocked, 0, 0);
 	sem_init(&sem_desalojo, 0, 0);
+	sem_init(&semHayParaEjecutar, 0 ,1);
 	colaReady = list_create();
 	colaExec = list_create();
 	colaBlocked = list_create();
@@ -154,27 +157,24 @@ void iniciar_planificador_corto_plazo(void) {
  void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
+ 		sem_wait(&semHayParaEjecutar);
  		algoritmo algoritmo = obtener_algoritmo();
+ 		printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
  		if(algoritmo == SRT){
- 			if(proceso_ejecutando == 1){
+			pthread_mutex_lock(&mutex_exec);
+ 			if(proceso_ejecutando){
+ 				pthread_mutex_unlock(&mutex_exec);
  				interrumpir_cpu();
- 				printf("antes de recibir operacion de cpu interrupcion \n");
- 				op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
- 				printf("depsues de recibir operacion de cpu interrupcion con valor %d \n",respuesta_cpu);
- 				proceso* proceso = malloc(sizeof(proceso));
- 				proceso->pcb = recibirPcb(socket_dispatch);
- 				printf("se recibio pcb \n");
- 				log_info(kernel_logger_info, "PCB recibida de cpu despues de interrumpir \n)");
- 				proceso->socket = socket_proceso_exec;
- 				proceso->tiempo_inicio_bloqueo = tiempo_inicio_bloqueo;
- 				pthread_mutex_lock(&mutex_ready);
- 				list_add(colaReady, proceso);
- 				pthread_mutex_unlock(&mutex_ready);
- 				log_info(kernel_logger_info, "PID[%d] ingresa a READY despues de interrupcion \n", proceso->pcb->id_proceso);
+ 		 		pthread_mutex_lock(&mutex_interrupcion);
+ 				interrupcion = true;
+ 		 		pthread_mutex_unlock(&mutex_interrupcion);
+ 				sem_wait(&sem_desalojo); // solo si la lista no es vacia
+ 			} else {
+ 				pthread_mutex_unlock(&mutex_exec);
  			}
  		}
 
- 		chequear_lista_pcbs(colaReady);
+// 		chequear_lista_pcbs(colaReady);
 
  		proceso* siguiente_proceso = obtenerSiguienteReady();
  		pthread_mutex_lock(&mutex_exec);
@@ -190,12 +190,10 @@ void estadoExec(void){
 	while(1){
 		sem_wait(&sem_exec);
 		pthread_mutex_lock(&mutex_exec);
-
 		proceso* proceso = list_remove(colaExec,0);
+		proceso_ejecutando = 1;
 		socket_proceso_exec =proceso->socket;
 		tiempo_inicio_bloqueo = proceso->tiempo_inicio_bloqueo;
-
-		proceso_ejecutando = 1;
 		pthread_mutex_unlock(&mutex_exec);
 		log_info(kernel_logger_info, "PID[%d] sale de EXEC\n", proceso->pcb->id_proceso);
 		int inicio_cpu = get_time(); // logueo el tiempo en el que se va
@@ -205,11 +203,26 @@ void estadoExec(void){
 		op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
 		proceso->pcb = recibirPcb(socket_dispatch);
 
-		log_info(kernel_logger_info, "PCB recibida de cpu para calcular estimaciones (SRT) \n");
 		int finalizacion_cpu = get_time();
-		pthread_mutex_lock(&mutex_exec);
-		proceso_ejecutando = 0;
-		pthread_mutex_unlock(&mutex_exec);
+
+		if(interrupcion){
+			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - finalizacion_cpu - inicio_cpu;
+			pthread_mutex_lock(&mutex_exec);
+			proceso_ejecutando = 0;
+			pthread_mutex_unlock(&mutex_exec);
+			pthread_mutex_lock(&mutex_ready);
+			list_add(colaReady,proceso);
+			pthread_mutex_unlock(&mutex_ready);
+			log_info(kernel_logger_info, "PID[%d] ingresa a READY despues de interrupcion \n", proceso->pcb->id_proceso);
+			pthread_mutex_lock(&mutex_interrupcion);
+			interrupcion = false;
+		 	pthread_mutex_unlock(&mutex_interrupcion);
+			sem_post(&sem_desalojo);
+			//sem_post(&sem_ready);
+			continue;
+		}
+
+		log_info(kernel_logger_info, "PCB recibida de cpu para calcular estimaciones (SRT) \n");
 
 		log_info(kernel_logger_info,"El tiempo de inicio de cpu es: %d y el tiempo de fin %d\n", inicio_cpu, finalizacion_cpu);
 
@@ -221,11 +234,13 @@ void estadoExec(void){
 
 		switch(instruccion_ejecutada->codigo){
 		case IO:
-
 			pthread_mutex_lock(&mutex_blocked);
 			proceso->pcb->estado_proceso = BLOQUEADO;
 			proceso->tiempo_inicio_bloqueo = get_time();
 			printf("Tiempo que el pid[%d] ingresa a la cola de blocked: %d\n",proceso->pcb->id_proceso, proceso->tiempo_inicio_bloqueo);
+			pthread_mutex_lock(&mutex_exec);
+			proceso_ejecutando = 0;
+			pthread_mutex_unlock(&mutex_exec);
 			list_add(colaBlocked, proceso);
 			chequear_lista_pcbs(colaBlocked);
 			pthread_mutex_unlock(&mutex_blocked);
@@ -235,6 +250,9 @@ void estadoExec(void){
 		case EXIT:
 			pthread_mutex_lock(&mutex_exit);
 			proceso->pcb->estado_proceso = FINALIZADO;
+			pthread_mutex_lock(&mutex_exec);
+			proceso_ejecutando = 0;
+			pthread_mutex_unlock(&mutex_exec);
 			list_add(colaExit, proceso);
 			chequear_lista_pcbs(colaExit);
 			pthread_mutex_unlock(&mutex_exit);
@@ -246,15 +264,19 @@ void estadoExec(void){
 		default: // read, write o noop
 			pthread_mutex_lock(&mutex_ready);
 			proceso->pcb->estado_proceso = LISTO;
+			pthread_mutex_lock(&mutex_exec);
+			proceso_ejecutando = 0;
+			pthread_mutex_unlock(&mutex_exec);
 			list_add(colaReady, proceso);
 			pthread_mutex_unlock(&mutex_ready);
 			log_info(kernel_logger_info, "PID[%d] Entra a READY \n", proceso->pcb->id_proceso);
-			sem_post(&sem_desalojo);
 			sem_post(&sem_ready);
 			break;
 		}
 
-}
+		sem_post(&semHayParaEjecutar);
+
+	}
 
 }
 

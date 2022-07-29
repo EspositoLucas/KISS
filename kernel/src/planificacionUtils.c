@@ -213,13 +213,13 @@ proceso* elegirElDeMenorEstimacion(){
 	return procesoSeleccionado;
 }
 
-void asignarEstimacionesAProcesos(){
- 	int tamanioReady = list_size(colaReady);
-	for(int i = 0; i < tamanioReady; i++){
-		proceso* proceso = list_get(colaReady,i);
-		calculoEstimacionProceso(proceso);
-	};
-}  //revisar bien esta funcion
+//void asignarEstimacionesAProcesos(){
+// 	int tamanioReady = list_size(colaReady);
+//	for(int i = 0; i < tamanioReady; i++){
+//		proceso* proceso = list_get(colaReady,i);
+//		calculoEstimacionProceso(proceso);
+//	};
+//}  //revisar bien esta funcion
 
 void calculoEstimacionProceso(proceso *proceso){
 	float alfa = config_valores_kernel.alfa;
