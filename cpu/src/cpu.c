@@ -138,6 +138,8 @@ log_info(cpu_logger, "Se ejecuto instruccion NO-OP \n");
 
 void ejecutarIO(int tiempo,pcb* PCB){
 PCB->tiempo_de_bloqueo=(double)tiempo;
+printf("Tiempo de bloqueo del pid[%d] es: %d",PCB->id_proceso, PCB->tiempo_de_bloqueo);
+
 PCB->estado_proceso=BLOQUEADO;
 pthread_mutex_lock(&pedidofin);
 parar_proceso++;
