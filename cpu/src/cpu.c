@@ -111,6 +111,7 @@ void decode(instruccion* instruccion,pcb* PCB){//IDENTIFICA EL TIPO DE INSTRUCCI
 			ejecutarNO_OP();
 			break;
 		case IO:
+			printf("Printeo param 1 de instruccion IO: %d\n", instruccion->parametro1);
 			ejecutarIO(instruccion->parametro1,PCB);
 			break;
 		case EXIT:
@@ -137,8 +138,10 @@ log_info(cpu_logger, "Se ejecuto instruccion NO-OP \n");
 }
 
 void ejecutarIO(int tiempo,pcb* PCB){
+
 PCB->tiempo_de_bloqueo=(double)tiempo;
-printf("Tiempo de bloqueo del pid[%d] es: %d",PCB->id_proceso, PCB->tiempo_de_bloqueo);
+printf("Variable tiempo que llega por parametro a ejecutarIO es: %d\n", tiempo);
+printf("Tiempo de bloqueo del pid[%d] es: %d\n",PCB->id_proceso, PCB->tiempo_de_bloqueo);
 
 PCB->estado_proceso=BLOQUEADO;
 pthread_mutex_lock(&pedidofin);
