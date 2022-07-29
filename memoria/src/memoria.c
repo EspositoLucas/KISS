@@ -166,13 +166,16 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger, "Me llego pedido liberar estructuras del proceso \n");
 		op_code codigo_pcb = ESTRUCTURAS_LIBERADAS;
 		pcb* pcb=recibirPcb(socket_cliente);
+		pthread_mutex_lock(&mutex_contador_pid);
 		contador_por_pid* aux  = (contador_por_pid*)list_get(contador_pid,pcb->id_proceso);
+		pthread_mutex_unlock(&mutex_contador_pid);
 		liberarTodosLosMarcos(pcb->id_proceso);
 		log_info(memoria_logger,"Se liberaron los marcos del proceso\n");
 		// eliminar swap - poner funcion
 		eliminarSwap(pcb);
 		liberarMemoriaUsuario(pcb->id_proceso);
-		enviar_datos(socket_cliente, &codigo_pcb, sizeof(op_code)) ;		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso \n");
+		enviar_datos(socket_cliente, &codigo_pcb, sizeof(op_code)) ;
+		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso \n");
 		log_info(memoria_logger,"Contador Page Fault del proceso %d tiene en total %d PF \n",pcb->id_proceso,aux->contadorPF);
 		log_info(memoria_logger,"Contador Acceso a Swap del proceso  %d  tiene en total %d Accesos a Swap \n",pcb->id_proceso,aux->contadorAccesoSwap);
 		break;

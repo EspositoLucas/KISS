@@ -276,7 +276,7 @@ void estadoBlockeado(void){
 //			log_info(kernel_logger_info, "PID[%d] apunto de suspended ready \n", proceso->pcb->id_proceso);
 
 		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
-			log_info(kernel_logger_info, "PID[%d] no supero el tiempo mas bloqueo, ejecutar solo IO \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] no supero el tiempo max bloqueo, ejecutar solo IO \n", proceso->pcb->id_proceso);
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
 			pthread_mutex_lock(&mutex_ready);
 			list_add(colaReady,proceso);
