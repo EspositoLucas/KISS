@@ -53,7 +53,7 @@ void manejo_conexiones(int socket_cliente){
 	switch(codigo_operacion){
 	case HANDSHAKE:
 		log_info(memoria_logger,"me llego el handshake de cpu \n");
-		usleep(config_valores_memoria.retardo_memoria);
+		usleep(config_valores_memoria.retardo_memoria * 1000);
 		t_paquete* handshake=preparar_paquete_para_handshake();
 		enviar_paquete(handshake,socket_cliente);
 		log_info(memoria_logger,"hanshake enviado a cpu \n");
@@ -72,7 +72,7 @@ void manejo_conexiones(int socket_cliente){
 		tabla=*(uint32_t*)list_get(valores,0);
 		entrada1=*(uint32_t*)list_get(valores,1);
 		entrada2 = devolver_entrada_a_segunda_tabla(tabla, entrada1);
-		usleep(config_valores_memoria.retardo_memoria);
+		usleep(config_valores_memoria.retardo_memoria * 1000);
 //		t_paquete* paquete_tabla= crear_paquete();
 //		agregar_a_paquete(paquete_tabla,&entrada2,sizeof(uint32_t));
 //		enviar_paquete(paquete_tabla,socket_cliente);
@@ -91,7 +91,7 @@ void manejo_conexiones(int socket_cliente){
 		log_info(memoria_logger,"valor entrada2 (mmu) \n");
 		marco= devolver_marco(tabla, entrada2);
 		log_info(memoria_logger,"valor marco (mmu) \n",marco);
-		usleep(config_valores_memoria.retardo_memoria);
+		usleep(config_valores_memoria.retardo_memoria * 1000);
 		t_paquete* paquete_marco= crear_paquete();
 		paquete_marco->codigo_operacion = MARCO;
 		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
@@ -355,7 +355,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 
 		valor_leido = leer_de_memoria(dir_fisica);
 
-		usleep(config_valores_memoria.retardo_memoria); // retardo memoria antes de responder a cpu
+		usleep(config_valores_memoria.retardo_memoria *1000); // retardo memoria antes de responder a cpu
 		t_paquete* paquete=crear_paquete();
 		agregar_a_paquete(paquete,&valor_leido,sizeof(uint32_t));
 		enviar_paquete(paquete,socket_cpu);
@@ -368,7 +368,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		valor_escritura = *(uint32_t*)list_get(datos,2);
 		escritura = escribirEn(dir_fisica, valor_escritura);
 		codigo = codigoEscritura(escritura);
-		usleep(config_valores_memoria.retardo_memoria);
+		usleep(config_valores_memoria.retardo_memoria * 1000);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
 		log_info(memoria_logger,"Estado de escritura enviado a CPU \n");
 		break;
@@ -382,7 +382,7 @@ void manejo_instrucciones(t_list* datos,int socket_cpu){
 		log_info(memoria_logger,"valor leido de memoria %d \n ",valor_leido);
 		escritura = escribirEn(dir_fisica_destino, valor_leido);
 		codigo = codigoEscritura(escritura);
-		usleep(config_valores_memoria.retardo_memoria);
+		usleep(config_valores_memoria.retardo_memoria * 1000);
 		enviar_datos(socket_cpu, &codigo, sizeof(op_code)) ;
 		log_info(memoria_logger,"Estado de escritura enviado a CPU \n");
 		break;
