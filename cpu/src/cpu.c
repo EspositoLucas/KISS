@@ -134,6 +134,7 @@ void decode(instruccion* instruccion,pcb* PCB){//IDENTIFICA EL TIPO DE INSTRUCCI
 
 void ejecutarNO_OP(){
 usleep(config_valores_cpu.retardo_NOOP);
+printf("Tiempo de retardo del retardo de noop: %d\n",config_valores_cpu.retardo_NOOP);
 log_info(cpu_logger, "Se ejecuto instruccion NO-OP \n");
 }
 

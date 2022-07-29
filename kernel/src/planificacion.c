@@ -210,6 +210,7 @@ void estadoExec(void){
 			pthread_mutex_lock(&mutex_blocked);
 			proceso->pcb->estado_proceso = BLOQUEADO;
 			proceso->tiempo_inicio_bloqueo = get_time();
+			printf("Tiempo que el pid[%d] ingresa a la cola de blocked: %d\n",proceso->pcb->id_proceso, proceso->tiempo_inicio_bloqueo);
 			list_add(colaBlocked, proceso);
 			chequear_lista_pcbs(colaBlocked);
 			pthread_mutex_unlock(&mutex_blocked);
@@ -251,10 +252,11 @@ void estadoBlockeado(void){
 		proceso* proceso = list_remove(colaBlocked,0);
 		pthread_mutex_unlock(&mutex_blocked);
 		log_info(kernel_logger_info, "PID[%d] sale de BLOCKED \n", proceso->pcb->id_proceso);
-
+		int tiempo_que_sale_de_block = get_time();
+		printf("El tiempo que el pid[%d] sale de la cola blocked es: %d\n",proceso->pcb->id_proceso, tiempo_que_sale_de_block);
 //		chequear_lista_pcbs(colaBlocked);
 		log_info(kernel_logger_info, "PID[%d] ejecuta IO \n", proceso->pcb->id_proceso);
-		uint32_t tiempoQueLLevaEnBlock = get_time() - proceso->tiempo_inicio_bloqueo;
+		int tiempoQueLLevaEnBlock =  tiempo_que_sale_de_block - proceso->tiempo_inicio_bloqueo;
 		printf("Tiempo que el pid[%d] lleva en block: %d y el tiempo de io que tiene que hacer de las instrucciones: %f \n", proceso->pcb->id_proceso, tiempoQueLLevaEnBlock, proceso->pcb->tiempo_de_bloqueo);
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada

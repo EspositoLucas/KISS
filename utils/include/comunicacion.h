@@ -94,7 +94,7 @@ typedef struct {
 typedef struct{
 	int socket;
 	pcb *pcb;
-	uint32_t tiempo_inicio_bloqueo;
+	int tiempo_inicio_bloqueo;
  }proceso;
 
 t_log *logger;
