@@ -255,7 +255,7 @@ void estadoBlockeado(void){
 //		chequear_lista_pcbs(colaBlocked);
 		log_info(kernel_logger_info, "PID[%d] ejecuta IO \n", proceso->pcb->id_proceso);
 		uint32_t tiempoQueLLevaEnBlock = get_time() - proceso->tiempo_inicio_bloqueo;
-		printf("Tiempo que el pid[] lleva en block: y el tiempo de io que tiene que hacer de las instrucciones: ", proceso->pcb->id_proceso, proceso->tiempo_inicio_bloqueo, proceso->pcb->tiempo_de_bloqueo);
+		printf("Tiempo que el pid[%d] lleva en block: %d y el tiempo de io que tiene que hacer de las instrucciones: %d \n", proceso->pcb->id_proceso, proceso->tiempo_inicio_bloqueo, proceso->pcb->tiempo_de_bloqueo);
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
 			log_info(kernel_logger_info, "PID[%d] suspendido por superar tiempo max de bloqueo \n", proceso->pcb->id_proceso);
