@@ -96,7 +96,7 @@ void transicion_admitir_por_prioridad(void) {
 		list_add(colaReady, proceso);
 		pthread_mutex_unlock(&mutex_ready);
 		algoritmo algoritmo = obtener_algoritmo();
-		printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
+		//printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
 
 		if(algoritmo == SRT){
 			 pthread_mutex_lock(&mutex_exec);
@@ -107,7 +107,6 @@ void transicion_admitir_por_prioridad(void) {
 		 				 interrupcion = true;
 		 				 pthread_mutex_unlock(&mutex_interrupcion);
 		 				interrumpir_cpu();
-		 				sem_wait(&sem_desalojo); // solo si la lista no es vacia
 		 			} else {
 		 				printf("NO HAY PROCESO EJECUTANDO \n" );
 		 				pthread_mutex_unlock(&mutex_exec);
@@ -156,8 +155,7 @@ void iniciar_planificador_corto_plazo(void) {
 	sem_init(&sem_ready, 0, 0);
 	sem_init(&sem_exec, 0, 0);
 	sem_init(&sem_blocked, 0, 0);
-	sem_init(&sem_desalojo, 0, 0);
-	sem_init(&semHayParaEjecutar, 0 ,1);
+	sem_init(&sem_desalojo, 0, 1);
 	colaReady = list_create();
 	colaExec = list_create();
 	colaBlocked = list_create();
@@ -174,6 +172,9 @@ void iniciar_planificador_corto_plazo(void) {
  void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
+ 		printf("SE HIZO SEM WAIT READY \n");
+ 		sem_wait(&sem_desalojo); // solo si la lista no es vacia
+ 		printf("SE HIZO SEM WAIT DESALOJO \n");
 
  		proceso* siguiente_proceso = obtenerSiguienteReady();
  		pthread_mutex_lock(&mutex_exec);
@@ -243,7 +244,7 @@ void estadoExec(void){
 			proceso->tiempo_inicio_bloqueo = get_time();
 			printf("Tiempo que el pid[%d] ingresa a la cola de blocked: %d\n",proceso->pcb->id_proceso, proceso->tiempo_inicio_bloqueo);
 			pthread_mutex_lock(&mutex_exec);
-			proceso_ejecutando = 0;
+			//proceso_ejecutando = 0;
 			pthread_mutex_unlock(&mutex_exec);
 			list_add(colaBlocked, proceso);
 			chequear_lista_pcbs(colaBlocked);
@@ -255,7 +256,7 @@ void estadoExec(void){
 			pthread_mutex_lock(&mutex_exit);
 			proceso->pcb->estado_proceso = FINALIZADO;
 			pthread_mutex_lock(&mutex_exec);
-			proceso_ejecutando = 0;
+			//proceso_ejecutando = 0;
 			pthread_mutex_unlock(&mutex_exec);
 			list_add(colaExit, proceso);
 			chequear_lista_pcbs(colaExit);
@@ -269,7 +270,7 @@ void estadoExec(void){
 			pthread_mutex_lock(&mutex_ready);
 			proceso->pcb->estado_proceso = LISTO;
 			pthread_mutex_lock(&mutex_exec);
-			proceso_ejecutando = 0;
+			//proceso_ejecutando = 0;
 			pthread_mutex_unlock(&mutex_exec);
 			list_add(colaReady, proceso);
 			pthread_mutex_unlock(&mutex_ready);
@@ -278,6 +279,7 @@ void estadoExec(void){
 			break;
 		}
 
+		sem_post(&sem_desalojo);
 		//sem_post(&semHayParaEjecutar);
 
 	}
