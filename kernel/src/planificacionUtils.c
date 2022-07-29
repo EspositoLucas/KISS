@@ -240,7 +240,7 @@ void interrumpir_cpu(){
 }
 
 void ejecutarIO(uint32_t tiempoIO){
-	usleep(tiempoIO);
+	usleep(tiempoIO * 1000);
 }
 
 

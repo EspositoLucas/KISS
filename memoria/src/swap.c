@@ -101,7 +101,7 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 
 	//chequeo bit modificado de las paginas y las escribo en swap si esta en 1
 
-	usleep(config_valores_memoria.retardo_swap); // retardo swap antes de escribir paginas modificadas
+	usleep(config_valores_memoria.retardo_swap * 1000); // retardo swap antes de escribir paginas modificadas
 
 	printf("ANTES DE LIBERAR TODOS LOS MARCOS, PRINTEO EL ESTADO FINAL DE LOS MARCOS DEL PROCESO\n");
 		t_list* auxiliar = paginasEnMemoria(pcb->id_proceso);
@@ -125,7 +125,7 @@ t_list* marcosMod(t_list* marquinhos){
 }
 void escribirPagEnSwap(t_p_2* pag){
 
-	usleep(config_valores_memoria.retardo_swap);
+	usleep(config_valores_memoria.retardo_swap * 1000);
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	pthread_mutex_lock(&mutex_archivo_swap);
 	memcpy(archivo_swap+get_marco(pag->indice),memoria_usuario+get_marco(pag->marco),config_valores_memoria.tam_pagina);
@@ -163,7 +163,7 @@ void escribirPaginasModificadas(pcb* pcb){
 }
 
 void* traerPaginaDeSwap(uint32_t numPag){
-	usleep(config_valores_memoria.retardo_swap);
+	usleep(config_valores_memoria.retardo_swap* 1000);
 	void* pag=malloc(config_valores_memoria.tam_pagina);
 	pthread_mutex_lock(&mutex_archivo_swap);
 	memcpy(pag,archivo_swap + get_marco(numPag),config_valores_memoria.tam_pagina);
