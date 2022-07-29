@@ -141,7 +141,7 @@ void ejecutarIO(int tiempo,pcb* PCB){
 
 PCB->tiempo_de_bloqueo=(double)tiempo;
 printf("Variable tiempo que llega por parametro a ejecutarIO es: %d\n", tiempo);
-printf("Tiempo de bloqueo del pid[%d] es: %d\n",PCB->id_proceso, PCB->tiempo_de_bloqueo);
+printf("Tiempo de bloqueo del pid[%d] es: %f\n",PCB->id_proceso, PCB->tiempo_de_bloqueo);
 
 PCB->estado_proceso=BLOQUEADO;
 pthread_mutex_lock(&pedidofin);
