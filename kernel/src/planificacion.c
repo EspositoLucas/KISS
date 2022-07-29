@@ -90,9 +90,29 @@ void transicion_admitir_por_prioridad(void) {
 			log_info(kernel_logger_info, "PID[%d] ingresa a READY desde NEW \n", proceso->pcb->id_proceso);
 		}
 
+
+
 		pthread_mutex_lock(&mutex_ready);  //Se agrega a Ready el proceso
 		list_add(colaReady, proceso);
 		pthread_mutex_unlock(&mutex_ready);
+		algoritmo algoritmo = obtener_algoritmo();
+		printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
+
+		if(algoritmo == SRT){
+			 pthread_mutex_lock(&mutex_exec);
+			 printf("VALOR PROCESO_EJECUTANDO %d \n ",proceso_ejecutando );
+		 			if(proceso_ejecutando){
+		 				pthread_mutex_unlock(&mutex_exec);
+		 				pthread_mutex_lock(&mutex_interrupcion);
+		 				 interrupcion = true;
+		 				 pthread_mutex_unlock(&mutex_interrupcion);
+		 				interrumpir_cpu();
+		 				sem_wait(&sem_desalojo); // solo si la lista no es vacia
+		 			} else {
+		 				printf("NO HAY PROCESO EJECUTANDO \n" );
+		 				pthread_mutex_unlock(&mutex_exec);
+		 			}
+		 		}
 		sem_post(&sem_ready);
 	}
 }
@@ -154,26 +174,6 @@ void iniciar_planificador_corto_plazo(void) {
  void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
- 		//sem_wait(&semHayParaEjecutar);
- 		algoritmo algoritmo = obtener_algoritmo();
- 		printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
- 		if(algoritmo == SRT){
-			pthread_mutex_lock(&mutex_exec);
-			printf("VALOR PROCESO_EJECUTANDO %d \n ",proceso_ejecutando );
- 			if(proceso_ejecutando){
- 				pthread_mutex_unlock(&mutex_exec);
- 				pthread_mutex_lock(&mutex_interrupcion);
- 				 interrupcion = true;
- 				 pthread_mutex_unlock(&mutex_interrupcion);
- 				interrumpir_cpu();
- 				sem_wait(&sem_desalojo); // solo si la lista no es vacia
- 			} else {
- 				printf("NO HAY PROCESO EJECUTANDO \N" );
- 				pthread_mutex_unlock(&mutex_exec);
- 			}
- 		}
-
-// 		chequear_lista_pcbs(colaReady);
 
  		proceso* siguiente_proceso = obtenerSiguienteReady();
  		pthread_mutex_lock(&mutex_exec);
@@ -200,6 +200,10 @@ void estadoExec(void){
 		enviarPcb(socket_dispatch, proceso->pcb);
 		log_info(kernel_logger_info, "PCB enviada cpu para ejecucion");
 		op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
+
+		pthread_mutex_lock(&mutex_exec);
+		proceso_ejecutando = 0;
+		pthread_mutex_unlock(&mutex_exec);
 		proceso->pcb = recibirPcb(socket_dispatch);
 
 		int finalizacion_cpu = get_time();
@@ -207,9 +211,6 @@ void estadoExec(void){
 		instruccion *instruccion_exec = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1));
 		if(interrupcion && instruccion_exec->codigo != IO && instruccion_exec->codigo != EXIT  ){
 			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - (finalizacion_cpu - inicio_cpu);
-			pthread_mutex_lock(&mutex_exec);
-			proceso_ejecutando = 0;
-			pthread_mutex_unlock(&mutex_exec);
 			pthread_mutex_lock(&mutex_ready);
 			list_add(colaReady,proceso);
 			pthread_mutex_unlock(&mutex_ready);
