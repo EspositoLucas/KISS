@@ -108,7 +108,7 @@ op_code esperar_respuesta_memoria(int socket_memoria) {
 
  uint32_t get_time() {
  	pthread_mutex_lock(&mutex_timer);
- 	uint32_t tiempo_actual = tiempo * 1000;
+ 	uint32_t tiempo_actual = tiempo;
  	pthread_mutex_unlock(&mutex_timer);
  	return tiempo_actual;
  }
@@ -240,7 +240,7 @@ void interrumpir_cpu(){
 }
 
 void ejecutarIO(uint32_t tiempoIO){
-	usleep(tiempoIO * 1000);
+	usleep(tiempoIO);
 }
 
 
