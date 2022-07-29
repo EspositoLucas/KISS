@@ -72,7 +72,7 @@ void iniciar_planificador_largo_plazo(void) {
 void transicion_admitir_por_prioridad(void) {
 
 	while(1) {
-		sem_wait(&sem_admitir); // IDEM ANTERIOR
+		sem_wait(&sem_admitir);
 		sem_wait(&sem_grado_multiprogramacion);
 		proceso* proceso;
 
@@ -109,10 +109,7 @@ void finalizarPcb(void){
 	enviarPcb(socket_memoria,proceso->pcb);
 	log_info(kernel_logger_info, "Enviando a memoria liberar estructuras del proceso \n");
 	op_code codigo = esperar_respuesta_memoria(socket_memoria);
-	//op_code codigo = recibir_datos(socket_memoria,&codigo,sizeof(op_code));
-	//op_code codigo = recibir_operacion_nuevo(socket_memoria);
-	//op_code codigo ;
-	//recibir_datos(socket_memoria,&codigo,sizeof(op_code));
+
 	log_info(kernel_logger_info, "Respuesta memoria de estructuras liberadas del proceso recibida \n");
 	if(codigo != ESTRUCTURAS_LIBERADAS) {
 		log_error(kernel_logger_info, "No se pudo eliminar memoria de PID[%d]\n", proceso->pcb->id_proceso);
@@ -157,19 +154,21 @@ void iniciar_planificador_corto_plazo(void) {
  void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
- 		sem_wait(&semHayParaEjecutar);
+ 		//sem_wait(&semHayParaEjecutar);
  		algoritmo algoritmo = obtener_algoritmo();
  		printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
  		if(algoritmo == SRT){
 			pthread_mutex_lock(&mutex_exec);
+			printf("VALOR PROCESO_EJECUTANDO %d \n ",proceso_ejecutando );
  			if(proceso_ejecutando){
  				pthread_mutex_unlock(&mutex_exec);
+ 				pthread_mutex_lock(&mutex_interrupcion);
+ 				 interrupcion = true;
+ 				 pthread_mutex_unlock(&mutex_interrupcion);
  				interrumpir_cpu();
- 		 		pthread_mutex_lock(&mutex_interrupcion);
- 				interrupcion = true;
- 		 		pthread_mutex_unlock(&mutex_interrupcion);
  				sem_wait(&sem_desalojo); // solo si la lista no es vacia
  			} else {
+ 				printf("NO HAY PROCESO EJECUTANDO \N" );
  				pthread_mutex_unlock(&mutex_exec);
  			}
  		}
@@ -204,9 +203,10 @@ void estadoExec(void){
 		proceso->pcb = recibirPcb(socket_dispatch);
 
 		int finalizacion_cpu = get_time();
-
-		if(interrupcion){
-			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - finalizacion_cpu - inicio_cpu;
+		printf("VALOR INTERRUPCION %d \n ", interrupcion);
+		instruccion *instruccion_exec = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1));
+		if(interrupcion && instruccion_exec->codigo != IO && instruccion_exec->codigo != EXIT  ){
+			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - (finalizacion_cpu - inicio_cpu);
 			pthread_mutex_lock(&mutex_exec);
 			proceso_ejecutando = 0;
 			pthread_mutex_unlock(&mutex_exec);
@@ -218,9 +218,12 @@ void estadoExec(void){
 			interrupcion = false;
 		 	pthread_mutex_unlock(&mutex_interrupcion);
 			sem_post(&sem_desalojo);
-			//sem_post(&sem_ready);
 			continue;
+		}else {
+			interrupcion = false;
+			sem_post(&sem_desalojo);
 		}
+
 
 		log_info(kernel_logger_info, "PCB recibida de cpu para calcular estimaciones (SRT) \n");
 
@@ -274,7 +277,7 @@ void estadoExec(void){
 			break;
 		}
 
-		sem_post(&semHayParaEjecutar);
+		//sem_post(&semHayParaEjecutar);
 
 	}
 
