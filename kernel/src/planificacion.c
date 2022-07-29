@@ -158,8 +158,12 @@ void iniciar_planificador_corto_plazo(void) {
  		if(algoritmo == SRT){
  			if(proceso_ejecutando == 1){
  				interrumpir_cpu();
+ 				printf("antes de recibir operacion de cpu interrupcion \n");
+ 				op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
+ 				printf("depsues de recibir operacion de cpu interrupcion con valor %d \n",respuesta_cpu);
  				proceso* proceso = malloc(sizeof(proceso));
  				proceso->pcb = recibirPcb(socket_dispatch);
+ 				printf("se recibio pcb \n");
  				log_info(kernel_logger_info, "PCB recibida de cpu despues de interrumpir \n)");
  				proceso->socket = socket_proceso_exec;
  				proceso->tiempo_inicio_bloqueo = tiempo_inicio_bloqueo;
