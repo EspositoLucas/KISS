@@ -192,7 +192,7 @@ proceso* elegirElDeMenorEstimacion(){
 
 	for(int i = 0; i < tamanioReady; i++){
 			proceso* procesoAux = list_get(colaReady,i);
-			printf("PID[%d] con estimacion: %f \n", procesoAux->pcb->id_proceso, procesoAux->pcb->estimacion_rafaga);
+			log_info(kernel_logger_info,"PID[%d] con estimacion: %f \n", procesoAux->pcb->id_proceso, procesoAux->pcb->estimacion_rafaga);
 	}
 
 	proceso* procesoSeleccionado;
