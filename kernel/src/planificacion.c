@@ -1,7 +1,7 @@
 #include "planificacion.h"
 
 int proceso_ejecutando;
-int socket ;
+int socket_proceso_exec ;
 int tiempo_inicio_bloqueo;
 //................................. LARGO PLAZO.........................................................................................
 
@@ -161,7 +161,7 @@ void iniciar_planificador_corto_plazo(void) {
  				proceso* proceso = malloc(sizeof(proceso));
  				proceso->pcb = recibirPcb(socket_dispatch);
  				log_info(kernel_logger_info, "PCB recibida de cpu despues de interrumpir \n)");
- 				proceso->socket = socket;
+ 				proceso->socket = socket_proceso_exec;
  				proceso->tiempo_inicio_bloqueo = tiempo_inicio_bloqueo;
  				pthread_mutex_lock(&mutex_ready);
  				list_add(colaReady, proceso);
@@ -188,7 +188,7 @@ void estadoExec(void){
 		pthread_mutex_lock(&mutex_exec);
 
 		proceso* proceso = list_remove(colaExec,0);
-		socket =proceso->socket;
+		socket_proceso_exec =proceso->socket;
 		tiempo_inicio_bloqueo = proceso->tiempo_inicio_bloqueo;
 
 		proceso_ejecutando = 1;
