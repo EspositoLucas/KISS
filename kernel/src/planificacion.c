@@ -173,7 +173,9 @@ void iniciar_planificador_corto_plazo(void) {
  	while(1){
  		sem_wait(&sem_ready);
 		log_info(kernel_logger_info,"SE HACE UN SEM WAIT READY");
- 		sem_wait(&sem_desalojo); // solo si la lista no es vacia
+		if(obtener_algoritmo()==SRT){
+			sem_wait(&sem_desalojo); // solo si la lista no es vacia
+		}
 		log_info(kernel_logger_info,"SE HACE UN SEM WAIT DESALOJO");
 		pthread_mutex_lock(&mutex_ready);
 		if(list_is_empty(colaReady)){
