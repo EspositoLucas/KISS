@@ -23,6 +23,7 @@
 
 // FUNCIONES
 
+proceso* procesoAux;
 
 //Largo Plazo
 

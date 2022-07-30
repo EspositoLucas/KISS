@@ -63,7 +63,7 @@ void iniciar_planificador_largo_plazo(void) {
  	   chequear_lista_pcbs(colaNew);
 
  	pthread_mutex_unlock(&mutex_new);
-
+ 	log_info(kernel_logger_info,"SE HACE UN SEM POST ADMITIR");
  	sem_post(&sem_admitir);
  }
 
@@ -73,6 +73,7 @@ void transicion_admitir_por_prioridad(void) {
 
 	while(1) {
 		sem_wait(&sem_admitir);
+		log_info(kernel_logger_info,"SE HACE UN SEM WAIT ADMITIR");
 		sem_wait(&sem_grado_multiprogramacion);
 		proceso* proceso;
 
@@ -100,11 +101,11 @@ void transicion_admitir_por_prioridad(void) {
 
 		if(algoritmo == SRT){
 			 pthread_mutex_lock(&mutex_exec);
-			 printf("VALOR PROCESO_EJECUTANDO %d \n ",proceso_ejecutando );
-		 			if(proceso_ejecutando){
+			 log_info(kernel_logger_info,"VALOR PROCESO_EJECUTANDO %d \n ",list_size(colaExec) );
+		 			if(!list_is_empty(colaExec)){
 		 				pthread_mutex_unlock(&mutex_exec);
 		 				pthread_mutex_lock(&mutex_interrupcion);
-		 				 interrupcion = true;
+		 				 interrupcion = 1;
 		 				 pthread_mutex_unlock(&mutex_interrupcion);
 		 				interrumpir_cpu();
 		 			} else {
@@ -112,6 +113,7 @@ void transicion_admitir_por_prioridad(void) {
 		 				pthread_mutex_unlock(&mutex_exec);
 		 			}
 		 		}
+		log_info(kernel_logger_info,"SE HACE UN SEM POST READY DESPUES DE ADMITIR POR PRIORIDAD");
 		sem_post(&sem_ready);
 	}
 }
@@ -172,15 +174,15 @@ void iniciar_planificador_corto_plazo(void) {
  void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
- 		printf("SE HIZO SEM WAIT READY \n");
+		log_info(kernel_logger_info,"SE HACE UN SEM WAIT READY");
  		sem_wait(&sem_desalojo); // solo si la lista no es vacia
- 		printf("SE HIZO SEM WAIT DESALOJO \n");
-
+		log_info(kernel_logger_info,"SE HACE UN SEM WAIT DESALOJO");
  		proceso* siguiente_proceso = obtenerSiguienteReady();
  		pthread_mutex_lock(&mutex_exec);
  		list_add(colaExec, siguiente_proceso);
  		pthread_mutex_unlock(&mutex_exec);
  		log_info(kernel_logger_info, "PID[%d] ingresa a EXEC\n", siguiente_proceso->pcb->id_proceso);
+		log_info(kernel_logger_info,"SE HACE UN SEM POST EXEC");
  		sem_post(&sem_exec);
  	}
  }
@@ -189,26 +191,21 @@ void iniciar_planificador_corto_plazo(void) {
 void estadoExec(void){
 	while(1){
 		sem_wait(&sem_exec);
+		log_info(kernel_logger_info,"SE HACE UN SEM WAIT EXEC");
 		pthread_mutex_lock(&mutex_exec);
-		proceso* proceso = list_remove(colaExec,0);
-		proceso_ejecutando = 1;
-		socket_proceso_exec =proceso->socket;
-		tiempo_inicio_bloqueo = proceso->tiempo_inicio_bloqueo;
+		proceso* proceso = list_get(colaExec,0);
 		pthread_mutex_unlock(&mutex_exec);
-		log_info(kernel_logger_info, "PID[%d] sale de EXEC\n", proceso->pcb->id_proceso);
+//		log_info(kernel_logger_info, "PID[%d] sale de EXEC\n", proceso->pcb->id_proceso);
 		int inicio_cpu = get_time(); // logueo el tiempo en el que se va
 
 		enviarPcb(socket_dispatch, proceso->pcb);
 		log_info(kernel_logger_info, "PCB enviada cpu para ejecucion");
 		op_code respuesta_cpu = recibir_operacion_nuevo(socket_dispatch);
 
-		pthread_mutex_lock(&mutex_exec);
-		proceso_ejecutando = 0;
-		pthread_mutex_unlock(&mutex_exec);
 		proceso->pcb = recibirPcb(socket_dispatch);
 
 		int finalizacion_cpu = get_time();
-		printf("VALOR INTERRUPCION %d \n ", interrupcion);
+		log_info(kernel_logger_info,"VALOR INTERRUPCION %d \n ", interrupcion);
 		instruccion *instruccion_exec = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1));
 		if(interrupcion && instruccion_exec->codigo != IO && instruccion_exec->codigo != EXIT  ){
 			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - (finalizacion_cpu - inicio_cpu);
@@ -216,13 +213,15 @@ void estadoExec(void){
 			list_add(colaReady,proceso);
 			pthread_mutex_unlock(&mutex_ready);
 			log_info(kernel_logger_info, "PID[%d] ingresa a READY despues de interrupcion \n", proceso->pcb->id_proceso);
-			pthread_mutex_lock(&mutex_interrupcion);
-			interrupcion = false;
-		 	pthread_mutex_unlock(&mutex_interrupcion);
+			pthread_mutex_lock(&mutex_exec);
+			procesoAux = list_remove(colaExec,0);
+			pthread_mutex_unlock(&mutex_exec);
+			log_info(kernel_logger_info,"SE HACE UN SEM POST DESALOJO");
 			sem_post(&sem_desalojo);
 			continue;
-		}else {
-			interrupcion = false;
+		}else{
+			interrupcion = 0;
+			log_info(kernel_logger_info,"SE HACE UN SEM POST DESALOJO");
 			sem_post(&sem_desalojo);
 		}
 
@@ -237,6 +236,10 @@ void estadoExec(void){
 		instruccion *instruccion_ejecutada = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1)); // agarro la instruccion ya ejecutada por cpu
 		log_info(kernel_logger_info, "PID[%d] Ultima instruccion ejecutada: %d",proceso->pcb->id_proceso,instruccion_ejecutada->codigo);
 
+		pthread_mutex_lock(&mutex_exec);
+		procesoAux = list_remove(colaExec,0);
+		pthread_mutex_unlock(&mutex_exec);
+
 		switch(instruccion_ejecutada->codigo){
 		case IO:
 			pthread_mutex_lock(&mutex_blocked);
@@ -249,7 +252,8 @@ void estadoExec(void){
 			list_add(colaBlocked, proceso);
 			chequear_lista_pcbs(colaBlocked);
 			pthread_mutex_unlock(&mutex_blocked);
-			log_info(kernel_logger_info, "PID[%d] Entra en BLOCKED \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] Sale de EXEC y entra en BLOCKED \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info,"SE HACE UN SEM POST BLOCKED");
 			sem_post(&sem_blocked); // despertar bloqueado
 			break;
 		case EXIT:
@@ -261,8 +265,9 @@ void estadoExec(void){
 			list_add(colaExit, proceso);
 			chequear_lista_pcbs(colaExit);
 			pthread_mutex_unlock(&mutex_exit);
-			log_info(kernel_logger_info, "PID[%d] Entra a EXIT \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] Sale de EXEC y entra a EXIT \n", proceso->pcb->id_proceso);
 			printf("proceso antes de salir de exit \n");
+			log_info(kernel_logger_info,"SE HACE UN SEM POST EXIT");
 			sem_post(&sem_exit); // despertar exit
 			printf("proceso antes de semaforo post exit  \n");
 			break;
@@ -274,12 +279,13 @@ void estadoExec(void){
 			pthread_mutex_unlock(&mutex_exec);
 			list_add(colaReady, proceso);
 			pthread_mutex_unlock(&mutex_ready);
-			log_info(kernel_logger_info, "PID[%d] Entra a READY \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info, "PID[%d] Sale de Exec y entra a READY \n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info,"SE HACE UN SEM POST READY EN EL CASE DE R,W O NOOP");
 			sem_post(&sem_ready);
 			break;
 		}
-
-		sem_post(&sem_desalojo);
+//		log_info(kernel_logger_info,"SE HACE UN SEM POST DESALOJO");
+//		sem_post(&sem_desalojo);
 		//sem_post(&semHayParaEjecutar);
 
 	}
@@ -290,6 +296,7 @@ void estadoBlockeado(void){
 
 	while(1){
 		sem_wait(&sem_blocked);
+		log_info(kernel_logger_info,"SE HACE UN SEM WAIT BLOCKED");
 		uint32_t tiempoMaxDeBloqueo = config_valores_kernel.tiempo_maximo_bloqueado;
 		pthread_mutex_lock(&mutex_blocked);
 		proceso* proceso = list_remove(colaBlocked,0);
@@ -306,6 +313,7 @@ void estadoBlockeado(void){
 			log_info(kernel_logger_info, "PID[%d] suspendido por superar tiempo max de bloqueo \n", proceso->pcb->id_proceso);
 			transicion_suspender(proceso); //suspender para mediano plazo
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo);
+			log_info(kernel_logger_info,"SE HACE UN SEM POST SUSPENDED READY");
 			sem_post(&sem_suspended_ready);
 
 		} else if (tiempoQueLLevaEnBlock + proceso->pcb->tiempo_de_bloqueo > tiempoMaxDeBloqueo){ // suspendo en el medio
@@ -317,6 +325,7 @@ void estadoBlockeado(void){
 			log_info(kernel_logger_info, "PID[%d] suspendido, iniciar IO restante\n", proceso->pcb->id_proceso);
 			ejecutarIO(proceso->pcb->tiempo_de_bloqueo - tiempoIOAntesDeSuspender); // ejecuto el io restante
 			log_info(kernel_logger_info, "PID[%d] hizo IO restante\n", proceso->pcb->id_proceso);
+			log_info(kernel_logger_info,"SE HACE UN SEM POST SUSPENDED READY");
 			sem_post(&sem_suspended_ready);
 
 		} else { // la ejecucion de io + el tiempo que lleva en block es menor al tiempo max de blockeo
@@ -326,6 +335,22 @@ void estadoBlockeado(void){
 			list_add(colaReady,proceso);
 			pthread_mutex_unlock(&mutex_ready);
 			log_info(kernel_logger_info, "PID[%d] ingresa a READY desde IO \n", proceso->pcb->id_proceso);
+
+			algoritmo algo = obtener_algoritmo();
+			if(algo == SRT){
+				pthread_mutex_lock(&mutex_exec);
+				log_info(kernel_logger_info,"VALOR PROCESO_EJECUTANDO %d \n ",list_size(colaExec));
+				if(!list_is_empty(colaExec)){
+			 		pthread_mutex_unlock(&mutex_exec);
+			 		pthread_mutex_lock(&mutex_interrupcion);
+			 		interrupcion = 1;
+			 		pthread_mutex_unlock(&mutex_interrupcion);
+			 		interrumpir_cpu();
+			 	} else {
+			 		pthread_mutex_unlock(&mutex_exec);
+			 	}
+			}
+			log_info(kernel_logger_info,"SE HACE UN SEM POST READY CUANDO EL IO NO SUPERA AL TIEMPO MAX DE BLOQUEO");
 			sem_post(&sem_ready);
 		}
 	}
@@ -381,6 +406,7 @@ void estado_suspended_ready(void ) {
  		pthread_mutex_unlock(&mutex_suspended_ready);
 
  		log_info(kernel_logger_info, "PID[%d] ingresa a SUSPENDED-READY \n", proceso->pcb->id_proceso);
+		log_info(kernel_logger_info,"SE HACE UN SEM POST ADMITIR");
  		sem_post(&sem_admitir);
 	}
 }
