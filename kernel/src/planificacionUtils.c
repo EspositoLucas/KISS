@@ -243,7 +243,22 @@ void ejecutarIO(uint32_t tiempoIO){
 	usleep(tiempoIO * 1000);
 }
 
-
+void transicion_interrupcion(){
+	algoritmo algo = obtener_algoritmo();
+				if(algo == SRT){
+					pthread_mutex_lock(&mutex_exec);
+					log_info(kernel_logger_info,"VALOR PROCESO_EJECUTANDO %d \n ",list_size(colaExec));
+					if(!list_is_empty(colaExec)){
+				 		pthread_mutex_unlock(&mutex_exec);
+				 		pthread_mutex_lock(&mutex_interrupcion);
+				 		interrupcion = 1;
+				 		pthread_mutex_unlock(&mutex_interrupcion);
+				 		interrumpir_cpu();
+				 	} else {
+				 		pthread_mutex_unlock(&mutex_exec);
+				 	}
+				}
+}
 
 //..................................... INICIALIZACIONES BASE............................................................................
 

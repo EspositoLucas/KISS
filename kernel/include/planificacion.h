@@ -19,11 +19,15 @@
 #include "sockets.h"
 #include "planificacionUtils.h"
 
-
+//VARIABLES
+proceso* procesoAux;
+int proceso_ejecutando;
+int socket_proceso_exec ;
+int tiempo_inicio_bloqueo;
+bool interrupcion;
 
 // FUNCIONES
 
-proceso* procesoAux;
 
 //Largo Plazo
 

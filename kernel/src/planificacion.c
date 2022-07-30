@@ -1,9 +1,6 @@
 #include "planificacion.h"
 
-int proceso_ejecutando;
-int socket_proceso_exec ;
-int tiempo_inicio_bloqueo;
-bool interrupcion;
+
 //................................. LARGO PLAZO.........................................................................................
 
 // CREAR PCB
@@ -336,20 +333,7 @@ void estadoBlockeado(void){
 			pthread_mutex_unlock(&mutex_ready);
 			log_info(kernel_logger_info, "PID[%d] ingresa a READY desde IO \n", proceso->pcb->id_proceso);
 
-			algoritmo algo = obtener_algoritmo();
-			if(algo == SRT){
-				pthread_mutex_lock(&mutex_exec);
-				log_info(kernel_logger_info,"VALOR PROCESO_EJECUTANDO %d \n ",list_size(colaExec));
-				if(!list_is_empty(colaExec)){
-			 		pthread_mutex_unlock(&mutex_exec);
-			 		pthread_mutex_lock(&mutex_interrupcion);
-			 		interrupcion = 1;
-			 		pthread_mutex_unlock(&mutex_interrupcion);
-			 		interrumpir_cpu();
-			 	} else {
-			 		pthread_mutex_unlock(&mutex_exec);
-			 	}
-			}
+			transicion_interrupcion();
 			log_info(kernel_logger_info,"SE HACE UN SEM POST READY CUANDO EL IO NO SUPERA AL TIEMPO MAX DE BLOQUEO");
 			sem_post(&sem_ready);
 		}
