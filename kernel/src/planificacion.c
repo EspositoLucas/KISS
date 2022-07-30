@@ -93,23 +93,24 @@ void transicion_admitir_por_prioridad(void) {
 		pthread_mutex_lock(&mutex_ready);  //Se agrega a Ready el proceso
 		list_add(colaReady, proceso);
 		pthread_mutex_unlock(&mutex_ready);
-		algoritmo algoritmo = obtener_algoritmo();
-		//printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
-
-		if(algoritmo == SRT){
-			 pthread_mutex_lock(&mutex_exec);
-			 log_info(kernel_logger_info,"VALOR PROCESO_EJECUTANDO %d \n ",list_size(colaExec) );
-		 			if(!list_is_empty(colaExec)){
-		 				pthread_mutex_unlock(&mutex_exec);
-		 				pthread_mutex_lock(&mutex_interrupcion);
-		 				 interrupcion = 1;
-		 				 pthread_mutex_unlock(&mutex_interrupcion);
-		 				interrumpir_cpu();
-		 			} else {
-		 				printf("NO HAY PROCESO EJECUTANDO \n" );
-		 				pthread_mutex_unlock(&mutex_exec);
-		 			}
-		 		}
+		transicion_interrupcion();
+//		algoritmo algoritmo = obtener_algoritmo();
+//		//printf("HAY O NO UN PROCESO EJECUTANDO CUANDO SE DESPIERTA READY: %d\n",proceso_ejecutando);
+//
+//		if(algoritmo == SRT){
+//			 pthread_mutex_lock(&mutex_exec);
+//			 log_info(kernel_logger_info,"VALOR PROCESO_EJECUTANDO %d \n ",list_size(colaExec) );
+//		 			if(!list_is_empty(colaExec)){
+//		 				pthread_mutex_unlock(&mutex_exec);
+//		 				pthread_mutex_lock(&mutex_interrupcion);
+//		 				 interrupcion = 1;
+//		 				 pthread_mutex_unlock(&mutex_interrupcion);
+//		 				interrumpir_cpu();
+//		 			} else {
+//		 				printf("NO HAY PROCESO EJECUTANDO \n" );
+//		 				pthread_mutex_unlock(&mutex_exec);
+//		 			}
+//		 		}
 		log_info(kernel_logger_info,"SE HACE UN SEM POST READY DESPUES DE ADMITIR POR PRIORIDAD");
 		sem_post(&sem_ready);
 	}
@@ -174,6 +175,12 @@ void iniciar_planificador_corto_plazo(void) {
 		log_info(kernel_logger_info,"SE HACE UN SEM WAIT READY");
  		sem_wait(&sem_desalojo); // solo si la lista no es vacia
 		log_info(kernel_logger_info,"SE HACE UN SEM WAIT DESALOJO");
+		pthread_mutex_lock(&mutex_ready);
+		if(list_is_empty(colaReady)){
+			pthread_mutex_unlock(&mutex_ready);
+			continue;
+		}
+		pthread_mutex_unlock(&mutex_ready);
  		proceso* siguiente_proceso = obtenerSiguienteReady();
  		pthread_mutex_lock(&mutex_exec);
  		list_add(colaExec, siguiente_proceso);
@@ -267,6 +274,7 @@ void estadoExec(void){
 			log_info(kernel_logger_info,"SE HACE UN SEM POST EXIT");
 			sem_post(&sem_exit); // despertar exit
 			printf("proceso antes de semaforo post exit  \n");
+			sem_post(&sem_ready);
 			break;
 		default: // read, write o noop
 			pthread_mutex_lock(&mutex_ready);
@@ -279,10 +287,11 @@ void estadoExec(void){
 			log_info(kernel_logger_info, "PID[%d] Sale de Exec y entra a READY \n", proceso->pcb->id_proceso);
 			log_info(kernel_logger_info,"SE HACE UN SEM POST READY EN EL CASE DE R,W O NOOP");
 			sem_post(&sem_ready);
+			sem_post(&sem_desalojo);
 			break;
 		}
 //		log_info(kernel_logger_info,"SE HACE UN SEM POST DESALOJO");
-//		sem_post(&sem_desalojo);
+		//sem_post(&sem_desalojo);
 		//sem_post(&semHayParaEjecutar);
 
 	}
