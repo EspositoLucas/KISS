@@ -100,7 +100,6 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	t_list *datos = recibir_paquete(socket_cliente);
   	t_consola *consola = malloc(sizeof(t_consola));
   	consola->tamanio_proceso = *(uint32_t *)list_remove(datos, 0);
-  	printf("tamanio_proceso %"PRIu32"\n",consola->tamanio_proceso);
   	consola->instrucciones = deserializar_instrucciones(datos, list_size(datos));
   	return consola;
 }
@@ -146,7 +145,7 @@ t_consola *deserializar_consola(int  socket_cliente) {
   void chequear_lista_pcbs(t_list*lista){
       for (int i= 0 ; i < list_size(lista) ;i++){
           proceso* proceso = list_get(lista, i);
-          printf("PCB ID: %d\n",proceso->pcb->id_proceso);
+          log_info(kernel_logger_info,"PCB ID: %d\n",proceso->pcb->id_proceso);
       }
   }
 

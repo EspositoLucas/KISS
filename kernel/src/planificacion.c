@@ -60,7 +60,6 @@ void iniciar_planificador_largo_plazo(void) {
  	   chequear_lista_pcbs(colaNew);
 
  	pthread_mutex_unlock(&mutex_new);
- 	log_info(kernel_logger_info,"SE HACE UN SEM POST ADMITIR");
  	sem_post(&sem_admitir);
  }
 
@@ -187,7 +186,6 @@ void estadoExec(void){
 		proceso->pcb = recibirPcb(socket_dispatch);
 
 		int finalizacion_cpu = get_time();
-		log_info(kernel_logger_info,"VALOR INTERRUPCION %d \n ", interrupcion);
 		instruccion *instruccion_exec = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1));
 		if(interrupcion && instruccion_exec->codigo != IO && instruccion_exec->codigo != EXIT  ){
 			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - (finalizacion_cpu - inicio_cpu);
@@ -245,7 +243,6 @@ void estadoExec(void){
 			chequear_lista_pcbs(colaExit);
 			pthread_mutex_unlock(&mutex_exit);
 			log_info(kernel_logger_info, "PID[%d] Sale de EXEC y entra a EXIT \n", proceso->pcb->id_proceso);
-			log_info(kernel_logger_info,"SE HACE UN SEM POST EXIT");
 			sem_post(&sem_exit); // despertar exit
 			sem_post(&sem_ready);
 			break;
@@ -278,7 +275,7 @@ void estadoBlockeado(void){
 		pthread_mutex_unlock(&mutex_blocked);
 		log_info(kernel_logger_info, "PID[%d] sale de BLOCKED \n", proceso->pcb->id_proceso);
 		int tiempo_que_sale_de_block = get_time();
-		printf("El tiempo que el pid[%d] sale de la cola blocked es: %d\n",proceso->pcb->id_proceso, tiempo_que_sale_de_block);
+		log_info(kernel_logger_info,"El tiempo que el pid[%d] sale de la cola blocked es: %d\n",proceso->pcb->id_proceso, tiempo_que_sale_de_block);
 //		chequear_lista_pcbs(colaBlocked);
 		log_info(kernel_logger_info, "PID[%d] ejecuta IO \n", proceso->pcb->id_proceso);
 		int tiempoQueLLevaEnBlock =  tiempo_que_sale_de_block - proceso->tiempo_inicio_bloqueo;

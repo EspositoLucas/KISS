@@ -36,13 +36,11 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	armarPaquete(paquete,pcb);
 	enviar_paquete(paquete, socket_fd);
 	log_info(kernel_logger_info, "Envio mensaje a memoria para inicializar estructuras del proceso \n");
-	//printf("tamanio_proceso %"PRIu32"\n",pcb->tamanio_proceso);
 	eliminar_paquete(paquete);
 	uint32_t valorTP1;
-//	printf("antes de recibir paquete de memoria  \n");
 	recibir_datos(socket_fd,&valorTP1,sizeof(uint32_t));
 	pcb->valor_tabla_paginas = valorTP1;
-//	printf("valor tabla recibido  %"PRIu32" \n",pcb->valor_tabla_paginas);
+	log_info(kernel_logger_info,"valor tabla recibido  %"PRIu32" \n",pcb->valor_tabla_paginas);
 	log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
 	return pcb;
 
@@ -128,7 +126,6 @@ proceso* obtenerSiguienteReady(){
  		}
 
  	}
-// 	printf("proceso a ejecutar: %d\n", procesoSeleccionado->pcb->id_proceso);
  	return procesoSeleccionado;
  }
 
