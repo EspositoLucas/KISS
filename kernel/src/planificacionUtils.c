@@ -219,7 +219,17 @@ void transicion_interrupcion(){
 
 //..................................... DESTRUCCIONES............................................................................
 
+void finalizar_kernel(){
+	 log_info(logger,"Finalizando el modulo Kernel");
+	 log_destroy(kernel_logger_info);
+	 close(server_fd);
+	 close(socket_memoria);
+	 close(socket_dispatch);
+	 close(socket_interrupt);
 
+	 destruir_semaforos();
+	 destruir_listas();
+}
 
 // SEMAFOROS
 
@@ -233,6 +243,15 @@ void transicion_interrupcion(){
  	pthread_mutex_destroy(&mutex_exit);
  	pthread_mutex_destroy(&mutex_suspended_blocked);
  	pthread_mutex_destroy(&mutex_suspended_ready);
+ 	pthread_mutex_destroy(&mutex_generador_id);
+ 	sem_destroy(&sem_ready);
+ 	sem_destroy(&sem_blocked);
+ 	sem_destroy(&sem_desalojo);
+ 	sem_destroy(&sem_suspended_ready);
+ 	sem_destroy(&sem_admitir);
+ 	sem_destroy(&sem_exec);
+ 	sem_destroy(&sem_grado_multiprogramacion);
+ 	sem_destroy(&sem_exit);
 
 
  }

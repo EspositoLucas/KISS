@@ -42,6 +42,7 @@ proceso* obtenerSiguienteFIFO();
 proceso* obtenerSiguienteReady();
 void ejecutarIO(uint32_t);
 void transicion_interrupcion();
+void finalizar_kernel();
 
 
 // VARIABLES

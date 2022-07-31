@@ -40,6 +40,8 @@ int main(void)
 
     while(atender_clientes_kernel(server_fd));
 
+    //finalizar_kernel();
+
     return EXIT_SUCCESS;
 }
 
@@ -149,7 +151,6 @@ t_consola *deserializar_consola(int  socket_cliente) {
       }
   }
 
-  //
 
 int atender_clientes_kernel(int socket_servidor){
 
