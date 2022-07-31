@@ -46,41 +46,7 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
 	return pcb;
 
-//	while(1){
-//		int codigo = recibir_operacion_nuevo(socket_fd);
-//		switch(codigo){
-//				case PAQUETE:
-//					printf("antes de recibir paquete de memoria  \n");
-//					t_list* valores = recibir_paquete(socket_fd);
-//					log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
-//					// ver que no se recibe bien paquete al conectar otra consola
-//					printf("valor tabla \n");
-//					//pcb->valor_tabla_paginas = *(uint32_t*) list_remove(valores,0);
-//					//pcb->valor_tabla_paginas = list_remove(valores,0);
-//					pcb->valor_tabla_paginas = *(uint32_t*)list_get(valores,0);
-//					printf("valor tabla recibido %d \n",pcb->valor_tabla_paginas);
-//					list_destroy(valores);
-//
-//					log_info(kernel_logger_info, "entrada de tabla de paginas de primer nivel del proceso recibida \n ");
-//					return pcb;
-//				case -1:
-//					            log_error(kernel_logger_info, "Fallo la comunicacion. Abortando \n");
-//					            exit(30);
-//			 	default:
-//			          log_warning(kernel_logger_info, "Operacion desconocida \n");
-//			          break;
-//
-//			  	}
-//		}
-	}
 
-
-
-// op_code esperar_respuesta_memoria(int socket_memoria) {
-// 	op_code codigo;
-// 	codigo = recibir_operacion_nuevo(socket_memoria);
-// 	return codigo;
-// }
 op_code esperar_respuesta_memoria(int socket_memoria) {
  	op_code codigo;
  	recibir_datos(socket_memoria,&codigo,sizeof(op_code));
@@ -213,13 +179,6 @@ proceso* elegirElDeMenorEstimacion(){
 	return procesoSeleccionado;
 }
 
-//void asignarEstimacionesAProcesos(){
-// 	int tamanioReady = list_size(colaReady);
-//	for(int i = 0; i < tamanioReady; i++){
-//		proceso* proceso = list_get(colaReady,i);
-//		calculoEstimacionProceso(proceso);
-//	};
-//}  //revisar bien esta funcion
 
 void calculoEstimacionProceso(proceso *proceso){
 	float alfa = config_valores_kernel.alfa;
@@ -227,7 +186,7 @@ void calculoEstimacionProceso(proceso *proceso){
 	float realAnterior = proceso->pcb->rafaga_anterior;
 	float nuevaEstimacion = alfa * realAnterior + (1 - alfa) * estimacionInicial;
 	proceso->pcb->estimacion_rafaga = nuevaEstimacion;
-	printf("Rafaga anterior de la PCB: %d \n",proceso->pcb->rafaga_anterior);
+	log_info(kernel_logger_info,"Rafaga anterior de la PCB: %d \n",proceso->pcb->rafaga_anterior);
 	log_info(kernel_logger_info, "Nueva estimacion del pid[%d]: %f",proceso->pcb->id_proceso, proceso->pcb->estimacion_rafaga);
 
 }
@@ -247,14 +206,13 @@ void transicion_interrupcion(){
 	algoritmo algo = obtener_algoritmo();
 
 					pthread_mutex_lock(&mutex_exec);
-					log_info(kernel_logger_info,"VALOR PROCESO_EJECUTANDO %d \n ",list_size(colaExec));
+					log_info(kernel_logger_info," Cant Procesos Ejecutando %d \n ",list_size(colaExec));
 					if(algo == SRT && !list_is_empty(colaExec)){
 				 		pthread_mutex_unlock(&mutex_exec);
 				 		pthread_mutex_lock(&mutex_interrupcion);
 				 		interrupcion = 1;
 				 		pthread_mutex_unlock(&mutex_interrupcion);
 				 		interrumpir_cpu();
-				 		//sem_wait(&sem_desalojo);
 				 	} else {
 				 		pthread_mutex_unlock(&mutex_exec);
 				 	}
