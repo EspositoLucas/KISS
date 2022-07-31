@@ -44,5 +44,7 @@ void* interrupt(void* interrupt);
 int checkInterrupt();
 void cargar_config();
 void*conexion_inicial_memoria();
+void finalizar_cpu();
+void sighandler(int);
 
 #endif

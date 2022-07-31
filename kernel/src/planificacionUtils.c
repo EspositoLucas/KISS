@@ -220,15 +220,15 @@ void transicion_interrupcion(){
 //..................................... DESTRUCCIONES............................................................................
 
 void finalizar_kernel(){
-	 log_info(logger,"Finalizando el modulo Kernel");
+	 log_info(kernel_logger_info,"Finalizando el modulo Kernel");
 	 log_destroy(kernel_logger_info);
+	 destruir_semaforos();
+	 destruir_listas();
 	 liberar_conexion(server_fd);
 	 liberar_conexion(socket_memoria);
 	 liberar_conexion(socket_dispatch);
 	 liberar_conexion(socket_interrupt);
 
-	 destruir_semaforos();
-	 destruir_listas();
 }
 
 // SEMAFOROS
@@ -253,7 +253,6 @@ void finalizar_kernel(){
  	sem_destroy(&sem_grado_multiprogramacion);
  	sem_destroy(&sem_exit);
 
-
  }
 
 
@@ -261,17 +260,10 @@ void finalizar_kernel(){
 
  void destruir_listas(void){
 
- 	destruirListaYElementos(colaNew);
- 	destruirListaYElementos(colaReady);
- 	destruirListaYElementos(colaExec);
- 	destruirListaYElementos(colaBlocked);
- 	destruirListaYElementos(colaExit);
+ 	list_destroy_and_destroy_elements(colaNew, free);
+ 	list_destroy_and_destroy_elements(colaReady, free);
+ 	list_destroy_and_destroy_elements(colaExec, free);
+ 	list_destroy_and_destroy_elements(colaBlocked, free);
+ 	list_destroy_and_destroy_elements(colaExit, free);
 
  }
-
- void destruirListaYElementos(t_list* unaLista){
-     list_clean_and_destroy_elements(unaLista, free);
-     list_destroy(unaLista);
- }
-
-

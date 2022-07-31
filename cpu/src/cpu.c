@@ -1,9 +1,13 @@
 #include <cpu.h>
 
 
+void sighandler(int s) {
+	finalizar_cpu();
+	exit(0);
+}
+
 ///SEMAFOROS
 pthread_mutex_t pedidofin;
-
 
 ///VARIABLES GLOBALES
 int parar_proceso=0;
@@ -11,7 +15,7 @@ int ultimo_pid = -1;
 
 int main()
 {
-
+	signal(SIGINT, sighandler);
 	cpu_logger = log_create("/home/utnso/tp-2022-1c-Ubunteam/cpu/cpu.log", "Servidor CPU", 1, LOG_LEVEL_INFO);
 	pcb* pcb_recibido=malloc(sizeof(pcb));
 	pthread_mutex_init(&pedidofin,NULL);//INICIA EL MUTEX QUE ENGLOBA A parar_proceso
@@ -81,7 +85,6 @@ int main()
             break;
         }
     }
-    //finalizar_cpu();
     return EXIT_SUCCESS;
 }
 

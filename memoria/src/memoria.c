@@ -1,9 +1,15 @@
 #include "memoria.h"
 
+void sighandler(int s) {
+	finalizar_memoria();
+	exit(0);
+}
+
 int comparador;
 
 int main(void) {
 
+    signal(SIGINT, sighandler);
     memoria_logger = log_create("/home/utnso/tp-2022-1c-Ubunteam/memoria/memoria.log", "Servidor Memoria", 1, LOG_LEVEL_INFO);
 
 
@@ -17,7 +23,6 @@ int main(void) {
     log_info(memoria_logger, "Memoria lista para recibir al modulo cliente \n");
 
     while(atender_clientes_memoria(server_fd));
-    //finalizar_memoria();
 	return EXIT_SUCCESS;
 }
 

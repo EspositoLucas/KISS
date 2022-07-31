@@ -2,10 +2,14 @@
 
 //.................................. INICIO_KERNEL.............................................................................................
 
+void sighandler(int s) {
+    finalizar_kernel();
+    exit(0);
+}
 
 int main(void)
 {
-    
+    signal(SIGINT, sighandler);
 
     cargar_configuracion("/home/utnso/tp-2022-1c-Ubunteam/kernel/Default/kernel.config");
 
@@ -39,8 +43,6 @@ int main(void)
 
 
     while(atender_clientes_kernel(server_fd));
-
-    //finalizar_kernel();
 
     return EXIT_SUCCESS;
 }
