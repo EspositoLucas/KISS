@@ -109,6 +109,7 @@ void cambiarMarcoModificadoAUno(uint32_t );
 void cambiarMarcoUsoAUno(uint32_t );
 void liberarMemoriaUsuario(uint32_t );
 void limpiarMarco(uint32_t);
+void finalizar_memoria();
 
 
 

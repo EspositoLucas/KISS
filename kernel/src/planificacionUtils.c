@@ -222,10 +222,10 @@ void transicion_interrupcion(){
 void finalizar_kernel(){
 	 log_info(logger,"Finalizando el modulo Kernel");
 	 log_destroy(kernel_logger_info);
-	 close(server_fd);
-	 close(socket_memoria);
-	 close(socket_dispatch);
-	 close(socket_interrupt);
+	 liberar_conexion(server_fd);
+	 liberar_conexion(socket_memoria);
+	 liberar_conexion(socket_dispatch);
+	 liberar_conexion(socket_interrupt);
 
 	 destruir_semaforos();
 	 destruir_listas();

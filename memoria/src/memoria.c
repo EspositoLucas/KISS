@@ -17,7 +17,7 @@ int main(void) {
     log_info(memoria_logger, "Memoria lista para recibir al modulo cliente \n");
 
     while(atender_clientes_memoria(server_fd));
-
+    //finalizar_memoria();
 	return EXIT_SUCCESS;
 }
 
@@ -592,5 +592,10 @@ void limpiarMarco(uint32_t nroMarco){
 	   free(buf);
 }
 
+void finalizar_memoria(){
+	log_info(memoria_logger,"Finalizando el modulo Memoria");
+	log_destroy(memoria_logger);
+	liberar_conexion(socket_memoria);
+}
 
 

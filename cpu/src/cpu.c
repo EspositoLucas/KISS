@@ -81,6 +81,7 @@ int main()
             break;
         }
     }
+    //finalizar_cpu();
     return EXIT_SUCCESS;
 }
 
@@ -347,4 +348,11 @@ void cargar_config(){
 	config_valores_cpu.puerto_escucha_dispatch=config_get_string_value(config,"PUERTO_ESCUCHA_DISPATCH");
 	config_valores_cpu.puerto_escucha_interrupt=config_get_string_value(config,"PUERTO_ESCUCHA_INTERRUPT");//LEE Y GUARDA LA CONFIGURACION DESDE cpu.cfg
 
+}
+
+void finalizar_cpu(){
+	log_info(cpu_logger,"Finalizando el modulo CPU");
+	log_destroy(cpu_logger);
+	config_destroy(config);
+	liberar_conexion(socket_memoria);
 }
