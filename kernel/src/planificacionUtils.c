@@ -46,7 +46,7 @@ pcb* obtener_entrada_tabla_de_pagina(int socket_fd,pcb* pcb) {
 	log_info(kernel_logger_info, "Recibi paquete PCB de memoria \n ");
 	return pcb;
 
-
+}
 op_code esperar_respuesta_memoria(int socket_memoria) {
  	op_code codigo;
  	recibir_datos(socket_memoria,&codigo,sizeof(op_code));
@@ -218,36 +218,6 @@ void transicion_interrupcion(){
 				 	}
 }
 
-//..................................... INICIALIZACIONES BASE............................................................................
-
-// LISTAS
-
- void inicializar_listas(void){
-
- 	colaNew =list_create();
- 	colaReady = list_create();
- 	colaExec = list_create();
- 	colaBlocked = list_create();
- 	colaSuspendedBlocked = list_create();
- 	colaSuspendedReady=list_create();
- 	colaExit = list_create();
- }
-
-
-// SEMAFOROS
-
- void inicializar_semaforos(void){
-
- 	pthread_mutex_init(&mutex_suspended_ready, NULL);
- 	pthread_mutex_init(&mutex_suspended_blocked, NULL);
- 	pthread_mutex_init(&mutex_new, NULL);
- 	pthread_mutex_init(&mutex_ready, NULL);
- 	pthread_mutex_init(&mutex_blocked, NULL);
- 	pthread_mutex_init(&mutex_exec, NULL);
- 	pthread_mutex_init(&mutex_exit, NULL);
-
-
- }
 
 
 //..................................... DESTRUCCIONES............................................................................
@@ -287,4 +257,5 @@ void transicion_interrupcion(){
      list_clean_and_destroy_elements(unaLista, free);
      list_destroy(unaLista);
  }
+
 

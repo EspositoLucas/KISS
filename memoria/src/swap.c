@@ -1,23 +1,5 @@
 #include "swap.h"
 
-//char* armarPath(int idProceso){
-//
-//	char* swap =strcat(string_itoa(idProceso),".swap");
-//	puts(swap);
-//	char* barra = "/" ;
-//
-//	char* path ;
-//	if((path = malloc(strlen(pathSwap)+strlen(barra)+ strlen(swap)+1)) != NULL){
-//	    path[0] = '\0';   // ensures the memory is an empty string
-//	    strcat(path,pathSwap);
-//	    strcat(path,barra);
-//	    strcat(path,swap);
-//	} else {
-//	    puts("Fallo el malloc");
-//	}
-//	puts(path);
-//	return path;
-//}
 
 char* armarPath (uint32_t id) {
     char* ruta = string_new();
@@ -33,9 +15,7 @@ char* armarPath (uint32_t id) {
 
 void crearSwap(uint32_t idProceso,uint32_t tamanio_proceso){ // el swap se crea una sola vez
 	int fd;
-	printf("valor pathSwap %s \n",pathSwap);
 	char* path=armarPath(idProceso);
-	printf("tamanio proceso %d\n",tamanio_proceso);
 	if((fd=open(path,O_CREAT|O_EXCL|O_RDWR,S_IRUSR|S_IWUSR))==-1){
 		log_info(memoria_logger,"Error al crear el archivo swap del proceso: %d\n",idProceso);
 		exit(-1);
@@ -78,12 +58,6 @@ void eliminarSwap(pcb* pcb) {
 		munmap(archivo->archivo,pcb->tamanio_proceso); // una vez que se escribio en swap y libero el espacio, ahi recien se hace el free del mmap
 		close(archivo->fd); // cierro el archivo swap una vez que s etermino de liberar el archivo swap con el munmap
 
-//		if(remove(armarPath(pcb->id_proceso))==-1){
-//			log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
-//			exit(-1);
-//		} else {
-//			log_info(memoria_logger,"Se borro con exito el archivo swap del proceso: %d\n",pcb->id_proceso);
-//		}
 		if(remove(archivo->path_swap)==-1){
 			log_info(memoria_logger,"Error al borrar el archivo swap del proceso: %d\n",pcb->id_proceso);
 			exit(-1);
@@ -103,11 +77,11 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 
 	usleep(config_valores_memoria.retardo_swap * 1000); // retardo swap antes de escribir paginas modificadas
 
-	printf("ANTES DE LIBERAR TODOS LOS MARCOS, PRINTEO EL ESTADO FINAL DE LOS MARCOS DEL PROCESO\n");
+	log_info(memoria_logger,"Estado del proceso 5dantes de supender\n",pcb->id_proceso);
 		t_list* auxiliar = paginasEnMemoria(pcb->id_proceso);
 		for (int i = 0; i < list_size(auxiliar); i++){
 			t_p_2* aux = list_get(auxiliar,i);
-			printf("Pagina numero: %d, U: %d, M: %d, Puntero : %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
+			log_info(memoria_logger,"Pagina numero: %d, U: %d, M: %d, Puntero : %d\n", aux->indice, aux->u,aux->m,aux->puntero_indice);
 		}
 	escribirPaginasModificadas(pcb);
 
@@ -129,8 +103,6 @@ void escribirPagEnSwap(t_p_2* pag){
 	pthread_mutex_lock(&mutex_memoria_usuario);
 	pthread_mutex_lock(&mutex_archivo_swap);
 	memcpy(archivo_swap+get_marco(pag->indice),memoria_usuario+get_marco(pag->marco),config_valores_memoria.tam_pagina);
-	printf("valor indice pag %d \n",pag->indice);
-	printf("valor marco pag %d \n",pag->marco);
 	pthread_mutex_unlock(&mutex_memoria_usuario);
 	pthread_mutex_unlock(&mutex_archivo_swap);
 	log_info(memoria_logger,"Se escribio pagina en swap \n");
@@ -141,7 +113,7 @@ void escribirPaginasModificadas(pcb* pcb){
 	t_list* paginasProc=marcosMod(paginasEnMemoria(pcb->id_proceso));
 
 	asignarAlArchivo(pcb->id_proceso);
-	printf("Se asigno al archivo swap el archivo del pid %d \n|",pcb->id_proceso);
+	log_info(memoria_logger,"Se asigno al archivo swap el archivo del pid %d \n|",pcb->id_proceso);
 	for(int i=0;i<list_size(paginasProc);i++){
 		pthread_mutex_lock(&mutex_contador_pid);
 		contador_por_pid* contador  = (contador_por_pid*)list_get(contador_pid,pcb->id_proceso);

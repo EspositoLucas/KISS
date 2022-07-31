@@ -54,12 +54,11 @@ int main()
 	int server_fd = iniciar_servidor(ip,puerto_dispatch);
     log_info(cpu_logger, "CPU listo para recibir al modulo cliente \n");
     int cliente_fd = esperar_cliente(server_fd);
-    printf("Se conecto un cliente por dispatch\n");
+    log_info(cpu_logger,"Se conecto un cliente por dispatch\n");
 
 
     while (1)
     {
-    	printf("Miro el op code \n");
         int cod_op = recibir_operacion_nuevo(cliente_fd);
         switch (cod_op)
         {
@@ -97,7 +96,7 @@ while((int)PCB->program_counter <list_size(PCB->instrucciones)){
 	if(checkInterrupt()==1){//SE FIJA QUE NO HAYA PEDIDO DE PARAR EL PROCESO ANTES DE SEGUIR CON EL CICLO DE INSTRUCCION
 		enviarPcb(socket_kernel,PCB);
 		ultimo_pid = PCB->id_proceso;
-		printf("Envio pcb devuelta al kernel \n");
+		log_info(cpu_logger,"Envio pcb devuelta al kernel \n");
 		return NULL;
 	}
 }
@@ -111,7 +110,6 @@ void decode(instruccion* instruccion,pcb* PCB){//IDENTIFICA EL TIPO DE INSTRUCCI
 			ejecutarNO_OP();
 			break;
 		case IO:
-			printf("Printeo param 1 de instruccion IO: %d\n", instruccion->parametro1);
 			ejecutarIO(instruccion->parametro1,PCB);
 			break;
 		case EXIT:
@@ -134,15 +132,15 @@ void decode(instruccion* instruccion,pcb* PCB){//IDENTIFICA EL TIPO DE INSTRUCCI
 
 void ejecutarNO_OP(){
 usleep(config_valores_cpu.retardo_NOOP* 1000);
-printf("Tiempo de retardo del retardo de noop: %d\n",config_valores_cpu.retardo_NOOP);
+log_info(cpu_logger,"Tiempo de retardo del retardo de noop: %d\n",config_valores_cpu.retardo_NOOP);
 log_info(cpu_logger, "Se ejecuto instruccion NO-OP \n");
 }
 
 void ejecutarIO(int tiempo,pcb* PCB){
 
 PCB->tiempo_de_bloqueo=(double)tiempo;
-printf("Variable tiempo que llega por parametro a ejecutarIO es: %d\n", tiempo);
-printf("Tiempo de bloqueo del pid[%d] es: %f\n",PCB->id_proceso, PCB->tiempo_de_bloqueo);
+log_info(cpu_logger,"Variable tiempo que llega por parametro a ejecutarIO es: %d\n", tiempo);
+log_info(cpu_logger,"Tiempo de bloqueo del pid[%d] es: %f\n",PCB->id_proceso, PCB->tiempo_de_bloqueo);
 
 PCB->estado_proceso=BLOQUEADO;
 pthread_mutex_lock(&pedidofin);
@@ -159,7 +157,7 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 	paquete->codigo_operacion=INSTRUCCION_MEMORIA;
 	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
 	agregar_a_paquete(paquete,&dir_fisica,sizeof(uint32_t));
-	printf("valor dir_fisica %d\n",dir_fisica);
+	log_info(cpu_logger,"valor dir_fisica de instruuccion READ %d\n",dir_fisica);
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de lectura enviado \n");
 	eliminar_paquete(paquete);
@@ -173,7 +171,7 @@ void ejecutarREAD(uint32_t dirLogica,pcb* pcb){
 		case PAQUETE:
 			valores = recibir_paquete(socket_memoria);
 			valor_leido= *(uint32_t*)list_get(valores,0);
-			printf("Valor leido de memoria: %d \n",valor_leido);
+			log_info(cpu_logger,"Valor leido de memoria: %d \n",valor_leido);
 			i++;
 			break;
 		case -1:
@@ -200,9 +198,9 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	agregar_a_paquete(paquete,&codigo,sizeof(codigo));
 	log_info(cpu_logger, "codigo WRITE agregado a paquete \n");
 	agregar_a_paquete(paquete,&dir_fisica,sizeof(uint32_t));
-	printf("valor dir_fisica %d\n",dir_fisica);
+	log_info(cpu_logger,"valor dir_fisica de instruccion WRITE %d\n",dir_fisica);
 	agregar_a_paquete(paquete,&valor,sizeof(uint32_t));
-	printf("valor escritura %d\n",valor);
+	log_info("valor escritura %d\n",valor);
 	log_info(cpu_logger, " paquete antes de enviar \n");
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de escritura enviado \n");
@@ -212,7 +210,6 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	//int cod_op = recibir_operacion_nuevo(socket_memoria);
 	int cod_op;
 	recibir_datos(socket_memoria,&cod_op,sizeof(op_code));
-	printf("valor opcode: %d \n",cod_op);
 	switch (cod_op){
 		case ESCRITURA_OK:
 			log_info(cpu_logger, "Se escribio exitosamente en la memoria \n");

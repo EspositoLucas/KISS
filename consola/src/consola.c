@@ -41,7 +41,7 @@ int main(int argc, char **argv){
 
 //	Enviar paquete
 
-	printf("\nTAMANIO DE INSTRUCCIONES: %d\n", list_size(instrucciones));
+	log_info(consola_logger,"\n Tamanio Instrucciones: %d\n", list_size(instrucciones));
 	enviar_paquete(paquete_instrucciones, server_fd);
 	log_info(consola_logger, "Paquete con tamanio e instrucciones enviado correctamente.\n");
 
@@ -132,10 +132,6 @@ void serializar_instrucciones(t_list *instrucciones, t_paquete *paquete){
 		agregar_a_paquete(paquete, &(instr->parametro1), sizeof(uint32_t));
 		agregar_a_paquete(paquete, &(instr->parametro2), sizeof(uint32_t));
 	}
-//	unsigned char *stream = (unsigned char *)paquete->buffer->stream; //Para debuggear
-//    for(int i=0 ; i<paquete->buffer->stream_size;i++){
-//    	printf("%02X ",stream[i]);
-//    }
 
 }
 
@@ -167,9 +163,8 @@ char *leer_archivo(char *unPath)
         perror("Error leyendo el archivo.\n") ;
     }
 
-//    printf("\n%s", cadena);
     fclose(archivo);
-    printf("\nSe ha leido el archivo de pseudocodigo correctamente.\n");
+    log_info(consola_logger,"\nSe ha leido el archivo de pseudocodigo correctamente.\n");
     return cadena;
 }
 

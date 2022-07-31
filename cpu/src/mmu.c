@@ -14,10 +14,8 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 
 	if(marco==-1){ //SITUACION DE TLB MISS
 		//USO DE FUNCIONES PARA TENER LOS VALORES
-		log_info(cpu_logger,"Antes de entrar a segunda tabla \n");
 		uint32_t segunda_tabla=obtener_segunda_tabla(primera_tabla,entrada_tabla_1);
-		printf("valor segunda tabla %d \n",segunda_tabla);
-		log_info(cpu_logger,"despues de entrar a segunda tabla \n");
+		log_info(cpu_logger,"valor entrada segunda tabla %d \n",segunda_tabla);
 		marco=(int)obtener_marco(segunda_tabla, entrada_tabla_2);
 		traduccion_t* trad=malloc(sizeof(traduccion_t));
 		trad->marco=(uint32_t)marco;
@@ -30,8 +28,8 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 	//CALCULO DE DIRECCION FISICA
 
 	uint32_t direccion_fisica=marco*configuracion_tabla->tam_pagina+offset;
-	printf("valor marco %d \n", marco);
-	printf("valor offset %d \n", offset);
+	log_info("valor marco %d \n", marco);
+	log_info("valor offset %d \n", offset);
 	log_info(cpu_logger,"Direccion fisica traducida: %d \n",direccion_fisica);
 
 	return direccion_fisica;
@@ -41,47 +39,18 @@ uint32_t traducir_dir_logica(uint32_t primera_tabla, uint32_t direccion_logica){
 //PRIMER ACCESO A MEMORIA
 
 uint32_t obtener_segunda_tabla(uint32_t primera_tabla, uint32_t entrada_tabla_1){
-	log_info(cpu_logger,"antes de pedir tabla \n");
 	pedir_tabla_pagina(socket_memoria,primera_tabla,entrada_tabla_1);
-	log_info(cpu_logger,"despues de pedir tabla \n");
 	uint32_t segunda_tabla = 0;
 
 	recibir_datos(socket_memoria,&segunda_tabla,sizeof(uint32_t));
 	return segunda_tabla;
 
-	//while(1) {
-//		int codigo_op=recibir_operacion_nuevo(socket_memoria);
-//		printf("op code memoria obtener segunda tabla %d\n",socket_memoria);
-//		int size;
-//		t_list* valores;
-//		switch(codigo_op){
-//		case PAQUETE:
-//					log_info(cpu_logger,"a punto de recibir paquete valores \n");
-//					//valores = recibir_paquete(socket_memoria);
-//					printf("se recibio paquete \n");
-//					segunda_tabla=*(uint32_t*)list_get(valores,0);
-//					printf("\n valor segunda tabla en obtener segunda tabla %"PRIu32" \n",segunda_tabla);
-//		        	log_info(cpu_logger,"Recibi valor de segunda tabla \n");
-//		        	return segunda_tabla;
-//		            break;
-//		        case -1:
-//		            log_error(cpu_logger, "Fallo la comunicacion. Abortando \n");
-//		            return (uint32_t)EXIT_FAILURE;
-//		        break;
-//		        default:
-//		        	log_warning(cpu_logger, "Operacion desconocida \n");
-//		        	exit(35);
-//		        	break;
-//		        }
-//	}
 	}
 
 //SEGUNDO ACCESO A MEMORIA
 
 uint32_t obtener_marco(uint32_t segunda_tabla, uint32_t entrada_tabla_2){
 	uint32_t marco;
-	printf("valor segunda tabla %d \n",segunda_tabla);
-	printf("valor entrada tabla 2 %d \n",entrada_tabla_2);
 	pedir_marco(socket_memoria,segunda_tabla,entrada_tabla_2);
 	t_list* valores;
 	while(1){

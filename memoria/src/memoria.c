@@ -84,11 +84,11 @@ void manejo_conexiones(int socket_cliente){
 	case MARCO:
 		log_info(memoria_logger,"me llego un pedido de marco de cpu (mmu) \n");
 		valores=recibir_paquete(socket_cliente);
-		log_info(memoria_logger,"paquete recibido (mmu) \n");
+		log_info(memoria_logger,"paquete con tabla, entrada segundo nivel y marco recibido (mmu) \n");
 		tabla=*(uint32_t*)list_get(valores,0);
 		log_info(memoria_logger,"valor tabla (mmu) \n");
 		entrada2=*(uint32_t*)list_get(valores,1);
-		log_info(memoria_logger,"valor entrada2 (mmu) \n");
+		log_info(memoria_logger,"valor entrada segundo nivel (mmu) \n");
 		marco= devolver_marco(tabla, entrada2);
 		log_info(memoria_logger,"valor marco (mmu) \n",marco);
 		usleep(config_valores_memoria.retardo_memoria * 1000);
@@ -96,7 +96,6 @@ void manejo_conexiones(int socket_cliente){
 		paquete_marco->codigo_operacion = MARCO;
 		agregar_a_paquete(paquete_marco,&marco,sizeof(uint32_t));
 		enviar_paquete(paquete_marco,socket_cliente);
-		log_info(memoria_logger,"paquete marco(mmu) \n");
 		log_info(memoria_logger,"marco enviado a cpu \n");
 		list_destroy(valores);
 		eliminar_paquete(paquete_marco);
@@ -106,7 +105,7 @@ void manejo_conexiones(int socket_cliente){
 		//Recibe el pcb del proceso para iniciar estructuras
 		pcb* pcb_recibido=recibirPcb(socket_cliente);
 		log_info(memoria_logger, "recibi pcb de id %d desde kernel para inicializar estructuras \n",pcb_recibido->id_proceso);
-		printf("valor tamanio_proceso %"PRIu32"\n",pcb_recibido->tamanio_proceso);
+		log_info("valor tamanio_proceso recibido %"PRIu32"\n",pcb_recibido->tamanio_proceso);
 		//Averiguamos cuantas pags ocupa el proceso
 		int cantidad_de_pags=pags_proceso(pcb_recibido->tamanio_proceso,config_valores_memoria.tam_pagina);
 
@@ -155,9 +154,7 @@ void manejo_conexiones(int socket_cliente){
 		//crea el swap
 		crearSwap(pcb_recibido->id_proceso,pcb_recibido->tamanio_proceso);
 		log_info(memoria_logger,"Swap creado \n");
-		printf("valor tp1 %"PRIu32" \n",valorTP1);
 		enviar_datos(socket_cliente,&valorTP1,sizeof(uint32_t));
-		printf("valor socket %d \n",socket_cliente);
 		log_info(memoria_logger,"Numero tabla de paginas de 2 nivel del proceso enviado a kernel \n");
 		break;
 	case PCB: ; // finalizar proceso
@@ -260,12 +257,10 @@ void cambiarPdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pid_comparador=pid;
 	pthread_mutex_unlock(&mutex_comparador_pid);
 	t_list* tablas=(t_list*)list_filter(lista_tablas_segundo_nivel,pagConIgualPid);
-	printf("tamanio tablas despues filtrar %d \n", list_size(tablas));
 
 	tabla_de_segundo_nivel* tablinha=(tabla_de_segundo_nivel*)list_get(tablas,numTabla);
 	t_p_2* pagina=(t_p_2*)list_get(tablinha->lista_paginas,numeroPagEnTabla);
 	pagina->p=algo;
-	printf(" bit presencia pagina reemplazada  %d \n",pagina->p);
 }
 
 
@@ -281,7 +276,6 @@ void cambiarUdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->u=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	printf(" bit uso %d de pagina de tabla global %d dentro algoritmo  \n",pagina->u,pagina->indice);
 }
 void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	uint32_t numeroPagEnTabla=(numPagina)%((uint32_t)config_valores_memoria.entradas_por_tabla);
@@ -296,7 +290,6 @@ void cambiarMdePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->m=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	printf(" bit modificado %d de pagina de tabla global %d dentro algoritmo  \n",pagina->m,pagina->indice);
 }
 void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 
@@ -312,7 +305,6 @@ void cambiarPunterodePagina(uint32_t numPagina,uint32_t pid,bool algo){
 	pthread_mutex_lock(&mutex_tabla_pagina_segundo_nivel);
 	pagina->puntero_indice=algo;
 	pthread_mutex_unlock(&mutex_tabla_pagina_segundo_nivel);
-	printf(" bit puntero %d de pagina de tabla global de tabla global %d dentro algoritmo  \n",pagina->puntero_indice,pagina->indice);
 }
 ///--------------CARGA DE CONFIGURACION----------------------
 void cargar_configuracion(){

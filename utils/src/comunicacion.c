@@ -47,9 +47,6 @@ void enviar_mensaje(char *mensaje, int socket_cliente) //TP0
 
     void *a_enviar = serializar_paquete_con_bytes(paquete,bytes);
 
-    for(int i = 0 ; i<bytes; i++){
-    	printf("%02x ",((char*) a_enviar)[i]);
-    }
     send(socket_cliente, a_enviar, bytes, 0);
 
     free(a_enviar);
@@ -222,7 +219,6 @@ t_paquete* recibe_paquete(int socket){
 	stream = recibir_stream(&size, socket);
 	unsigned char* otro_stream = (unsigned char*)(stream);
 	memcpy(&paquete->buffer->stream_size, &size, sizeof(int));
-	printf("%s \n",otro_stream);
 	paquete->buffer->stream = malloc(size);
 	memcpy(paquete->buffer->stream, stream, size);
 

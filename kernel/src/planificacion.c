@@ -16,7 +16,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 	pcb->instrucciones = list_duplicate(consola->instrucciones);
 	pcb->program_counter = 0;
 	pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
-	printf("Estimacion incial de config valores kernel: %f\n", config_valores_kernel.estimacion_inicial);
+	log_info(kernel_logger_info,"Estimacion incial de config valores kernel: %f\n", config_valores_kernel.estimacion_inicial);
 	pcb->tiempo_de_bloqueo = 0;
 	pcb->rafaga_anterior = 0;
 	pcb->instrucciones = consola->instrucciones;
@@ -93,7 +93,6 @@ void transicion_admitir_por_prioridad(void) {
 		list_add(colaReady, proceso);
 		pthread_mutex_unlock(&mutex_ready);
 		transicion_interrupcion();
-		log_info(kernel_logger_info,"SE HACE UN SEM POST READY DESPUES DE ADMITIR POR PRIORIDAD");
 		sem_post(&sem_ready);
 	}
 }
