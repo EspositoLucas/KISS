@@ -13,7 +13,7 @@
 #include <commons/config.h>
 #include <pthread.h>
 #include <unistd.h>
-#include <time.h>
+#include <sys/time.h>
 #include "comunicacion.h"
 #include "log_config.h"
 #include "sockets.h"
@@ -78,7 +78,7 @@ uint32_t generador_de_id;
  uint32_t tiempo;
  void inciar_timer();
  void timer();
- uint32_t get_time();
+ long long get_time();
 
 
 // Planificador Corto Plazo

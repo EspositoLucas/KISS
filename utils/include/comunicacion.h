@@ -94,7 +94,7 @@ typedef struct {
 typedef struct{
 	int socket;
 	pcb *pcb;
-	int tiempo_inicio_bloqueo;
+	long long tiempo_inicio_bloqueo;
  }proceso;
 
 t_log *logger;

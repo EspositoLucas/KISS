@@ -177,7 +177,7 @@ void estadoExec(void){
 		pthread_mutex_lock(&mutex_exec);
 		proceso* proceso = list_get(colaExec,0);
 		pthread_mutex_unlock(&mutex_exec);
-		int inicio_cpu = get_time(); // logueo el tiempo en el que se va
+		long long inicio_cpu = get_time(); // logueo el tiempo en el que se va
 
 		enviarPcb(socket_dispatch, proceso->pcb);
 		log_info(kernel_logger_info, "PCB enviada cpu para ejecucion");
@@ -185,7 +185,7 @@ void estadoExec(void){
 
 		proceso->pcb = recibirPcb(socket_dispatch);
 
-		int finalizacion_cpu = get_time();
+		long long finalizacion_cpu = get_time();
 		instruccion *instruccion_exec = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1));
 		if(interrupcion && instruccion_exec->codigo != IO && instruccion_exec->codigo != EXIT  ){
 			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - (finalizacion_cpu - inicio_cpu);
@@ -274,7 +274,7 @@ void estadoBlockeado(void){
 		proceso* proceso = list_remove(colaBlocked,0);
 		pthread_mutex_unlock(&mutex_blocked);
 		log_info(kernel_logger_info, "PID[%d] sale de BLOCKED \n", proceso->pcb->id_proceso);
-		int tiempo_que_sale_de_block = get_time();
+		long long tiempo_que_sale_de_block = get_time();
 		log_info(kernel_logger_info,"El tiempo que el pid[%d] sale de la cola blocked es: %d\n",proceso->pcb->id_proceso, tiempo_que_sale_de_block);
 //		chequear_lista_pcbs(colaBlocked);
 		log_info(kernel_logger_info, "PID[%d] ejecuta IO \n", proceso->pcb->id_proceso);

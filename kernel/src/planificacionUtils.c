@@ -3,7 +3,7 @@
 //--------------------------------------------------- FUNCIONES PLANIFICACION -------------------------------
 
 void inciar_planificacion(){
-	iniciar_timer();
+	//iniciar_timer();
 	iniciar_planificador_largo_plazo();
 	log_info(kernel_logger_info, "Estructuras largo plazo creadas \n");
 	iniciar_planificador_corto_plazo();
@@ -63,21 +63,27 @@ op_code esperar_respuesta_memoria(int socket_memoria) {
  void timer(void *data) {
 	tiempo = 0;
  	while(1) {
- 		usleep(1*1000);
+ 		usleep(1000);
  		pthread_mutex_lock(&mutex_timer);
  		tiempo++;
  		pthread_mutex_unlock(&mutex_timer);
  	}
  }
 
- uint32_t get_time() {
- 	pthread_mutex_lock(&mutex_timer);
+/*uint32_t get_time() {
+	pthread_mutex_lock(&mutex_timer);
  	uint32_t tiempo_actual = tiempo;
  	pthread_mutex_unlock(&mutex_timer);
  	return tiempo_actual;
- }
+}*/
 
-
+long long get_time() {
+    struct timeval te;
+    gettimeofday(&te, NULL); // get current time
+    long long milliseconds = te.tv_sec*1000LL + te.tv_usec/1000; // calculate milliseconds
+    // printf("milliseconds: %lld\n", milliseconds);
+    return milliseconds;
+}
 
 // --------------------------------------------------- FUNCIONES CORTO PLAZO ----------------------------------------------------------
 
@@ -244,6 +250,8 @@ void finalizar_kernel(){
  	pthread_mutex_destroy(&mutex_suspended_blocked);
  	pthread_mutex_destroy(&mutex_suspended_ready);
  	pthread_mutex_destroy(&mutex_generador_id);
+	pthread_mutex_destroy(&mutex_interrupcion);
+	pthread_mutex_destroy(&mutex_timer);
  	sem_destroy(&sem_ready);
  	sem_destroy(&sem_blocked);
  	sem_destroy(&sem_desalojo);
@@ -264,6 +272,8 @@ void finalizar_kernel(){
  	list_destroy_and_destroy_elements(colaReady, free);
  	list_destroy_and_destroy_elements(colaExec, free);
  	list_destroy_and_destroy_elements(colaBlocked, free);
+	list_destroy_and_destroy_elements(colaSuspendedBlocked, free);
+	list_destroy_and_destroy_elements(colaSuspendedReady, free);
  	list_destroy_and_destroy_elements(colaExit, free);
 
  }
