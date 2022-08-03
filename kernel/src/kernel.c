@@ -132,7 +132,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		log_info(kernel_logger_info, "Consola deserializada, se arma el PCB\n");
 	  		proceso* proceso = malloc(sizeof(proceso)) ;
 	  		proceso->pcb = malloc(sizeof(pcb));
+			pthread_mutex_lock(&mutex_consola);
 	  		proceso->pcb = crear_estructura_pcb(consola);
+			pthread_mutex_unlock(&mutex_consola);
 	  		proceso->socket = socket_cliente;
 	  		log_info(kernel_logger_info, "PCB id[%d] armada -> agregar proceso a new y arrancar con la planificacion\n",proceso->pcb->id_proceso);
 	  		agregarANewPcb(proceso);

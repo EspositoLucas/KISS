@@ -188,7 +188,9 @@ void estadoExec(void){
 
 		long long finalizacion_cpu = get_time();
 		instruccion *instruccion_exec = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1));
+		pthread_mutex_lock(&mutex_interrupcion);
 		if(interrupcion && instruccion_exec->codigo != IO && instruccion_exec->codigo != EXIT  ){
+			pthread_mutex_unlock(&mutex_interrupcion);
 			proceso->pcb->estimacion_rafaga = proceso->pcb->estimacion_rafaga - (finalizacion_cpu - inicio_cpu);
 			pthread_mutex_lock(&mutex_ready);
 			list_add(colaReady,proceso);
@@ -200,6 +202,7 @@ void estadoExec(void){
 			sem_post(&sem_desalojo);
 			continue;
 		}else{
+			pthread_mutex_unlock(&mutex_interrupcion);
 			pthread_mutex_lock(&mutex_interrupcion);
 			interrupcion = 0;
 			pthread_mutex_unlock(&mutex_interrupcion);

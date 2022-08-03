@@ -113,11 +113,16 @@ algoritmo obtener_algoritmo(){
 proceso* obtenerSiguienteReady(){
 	proceso* procesoSeleccionado;
 	int tamanioReady;
+
+	pthread_mutex_lock(&mutex_ready);
  	tamanioReady = list_size(colaReady);
+	pthread_mutex_unlock(&mutex_ready);
+
  	int gradoMultiprogramacion = config_valores_kernel.grado_multiprogramacion;
  	algoritmo algoritmo = obtener_algoritmo();
- 	int ejecutando = list_size(colaExec);
-
+ 	pthread_mutex_lock(&mutex_exec);
+	int ejecutando = list_size(colaExec);
+	pthread_mutex_unlock(&mutex_exec);
  	chequear_lista_pcbs(colaReady);
 
  	if (tamanioReady > 0 && ejecutando < gradoMultiprogramacion){
@@ -158,9 +163,9 @@ proceso* obtenerSiguienteSRT(){
 
 proceso* elegirElDeMenorEstimacion(){
 
-
+	pthread_mutex_lock(&mutex_ready);
 	int tamanioReady = list_size(colaReady);
-
+	pthread_mutex_unlock(&mutex_ready);
 	for(int i = 0; i < tamanioReady; i++){
 		pthread_mutex_lock(&mutex_ready);
 		proceso* procesoAux = list_get(colaReady,i);
@@ -217,17 +222,17 @@ void ejecutarIO(uint32_t tiempoIO){
 
 void transicion_interrupcion(){
 	algoritmo algo = obtener_algoritmo();
-
-					pthread_mutex_lock(&mutex_exec);
-					log_info(kernel_logger_info," Cant Procesos Ejecutando %d \n ",list_size(colaExec));
-					if(algo == SRT && !list_is_empty(colaExec)){
-				 		pthread_mutex_unlock(&mutex_exec);
-				 		pthread_mutex_lock(&mutex_interrupcion);
-				 		interrupcion = 1;
-				 		pthread_mutex_unlock(&mutex_interrupcion);
-				 		interrumpir_cpu();
-				 	} else {
-				 		pthread_mutex_unlock(&mutex_exec);
+	
+	pthread_mutex_lock(&mutex_exec);
+	log_info(kernel_logger_info," Cant Procesos Ejecutando %d \n ",list_size(colaExec));
+	if(algo == SRT && !list_is_empty(colaExec)){
+		pthread_mutex_unlock(&mutex_exec);
+		pthread_mutex_lock(&mutex_interrupcion);
+		interrupcion = 1;
+		pthread_mutex_unlock(&mutex_interrupcion);
+		interrumpir_cpu();
+	} else {
+		pthread_mutex_unlock(&mutex_exec);
 				 	}
 }
 
