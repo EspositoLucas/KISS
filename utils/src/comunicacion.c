@@ -217,7 +217,6 @@ t_paquete* recibe_paquete(int socket){
 	t_paquete* paquete=crear_paquete_con_codigo_de_operacion(codigo);
 
 	stream = recibir_stream(&size, socket);
-	unsigned char* otro_stream = (unsigned char*)(stream);
 	memcpy(&paquete->buffer->stream_size, &size, sizeof(int));
 	paquete->buffer->stream = malloc(size);
 	memcpy(paquete->buffer->stream, stream, size);

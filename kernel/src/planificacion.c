@@ -213,7 +213,7 @@ void estadoExec(void){
 
 		log_info(kernel_logger_info, "PCB recibida de cpu para calcular estimaciones (SRT) \n");
 
-		log_info(kernel_logger_info,"El tiempo de inicio de cpu es: %d y el tiempo de fin %d\n", inicio_cpu, finalizacion_cpu);
+		log_info(kernel_logger_info,"El tiempo de inicio de cpu es: %lli y el tiempo de fin %lli\n", inicio_cpu, finalizacion_cpu);
 
 		proceso->pcb->rafaga_anterior = finalizacion_cpu - inicio_cpu;
 		calculoEstimacionProceso(proceso);
@@ -230,7 +230,7 @@ void estadoExec(void){
 			pthread_mutex_lock(&mutex_blocked);
 			proceso->pcb->estado_proceso = BLOQUEADO;
 			proceso->tiempo_inicio_bloqueo = get_time();
-			log_info("kernel_logger_info,Tiempo que el pid[%d] ingresa a la cola de blocked: %d\n",proceso->pcb->id_proceso, proceso->tiempo_inicio_bloqueo);
+			log_info(kernel_logger_info, "Tiempo que el pid[%d] ingresa a la cola de blocked: %lli\n",proceso->pcb->id_proceso, proceso->tiempo_inicio_bloqueo);
 			pthread_mutex_lock(&mutex_exec);
 			//proceso_ejecutando = 0;
 			pthread_mutex_unlock(&mutex_exec);
@@ -282,11 +282,11 @@ void estadoBlockeado(void){
 		pthread_mutex_unlock(&mutex_blocked);
 		log_info(kernel_logger_info, "PID[%d] sale de BLOCKED \n", proceso->pcb->id_proceso);
 		long long tiempo_que_sale_de_block = get_time();
-		log_info(kernel_logger_info,"El tiempo que el pid[%d] sale de la cola blocked es: %d\n",proceso->pcb->id_proceso, tiempo_que_sale_de_block);
+		log_info(kernel_logger_info,"El tiempo que el pid[%d] sale de la cola blocked es: %lli\n",proceso->pcb->id_proceso, tiempo_que_sale_de_block);
 //		chequear_lista_pcbs(colaBlocked);
 		log_info(kernel_logger_info, "PID[%d] ejecuta IO \n", proceso->pcb->id_proceso);
 		int tiempoQueLLevaEnBlock =  tiempo_que_sale_de_block - proceso->tiempo_inicio_bloqueo;
-		log_info(kernel_logger_info,"Tiempo que el pid[%d] lleva en block: %d y el tiempo de io que tiene que hacer de las instrucciones: %f \n", proceso->pcb->id_proceso, tiempoQueLLevaEnBlock, proceso->pcb->tiempo_de_bloqueo);
+		log_info(kernel_logger_info,"Tiempo que el pid[%d] lleva en block: %lli y el tiempo de io que tiene que hacer de las instrucciones: %f \n", proceso->pcb->id_proceso, tiempoQueLLevaEnBlock, proceso->pcb->tiempo_de_bloqueo);
 
 		if (tiempoQueLLevaEnBlock > tiempoMaxDeBloqueo){ // suspendo de entrada
 			log_info(kernel_logger_info, "PID[%d] suspendido por superar tiempo max de bloqueo \n", proceso->pcb->id_proceso);

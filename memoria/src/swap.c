@@ -77,7 +77,7 @@ void suspender_proceso(int socket_cliente) { // aca hay que desasignar las pagin
 
 	usleep(config_valores_memoria.retardo_swap * 1000); // retardo swap antes de escribir paginas modificadas
 
-	log_info(memoria_logger,"Estado del proceso 5dantes de supender\n",pcb->id_proceso);
+	log_info(memoria_logger,"Estado del proceso antes de supender: %d\n",pcb->id_proceso);
 		t_list* auxiliar = paginasEnMemoria(pcb->id_proceso);
 		for (int i = 0; i < list_size(auxiliar); i++){
 			t_p_2* aux = list_get(auxiliar,i);

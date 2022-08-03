@@ -14,7 +14,6 @@ uint32_t devolver_entrada_a_segunda_tabla(uint32_t tabla,uint32_t entrada){
 uint32_t devolver_marco(uint32_t tabla,uint32_t entrada){
 	tabla_de_segundo_nivel*tabla_elegida=(tabla_de_segundo_nivel*)list_get(lista_tablas_segundo_nivel,tabla);
 	t_p_2* pagina=(t_p_2*)list_get(tabla_elegida->lista_paginas,entrada);
-	t_list* pagsEnMemAux = paginasEnMemoria(tabla_elegida->p_id);
 
 	log_info(memoria_logger,"pagina a usar para reemplazo  %d \n",pagina->indice);
 	uint32_t indice_tabla_en_swap = devolverNroTablaEnSwap(tabla_elegida->p_id,tabla_elegida->id_tabla);;

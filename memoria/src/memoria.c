@@ -91,11 +91,11 @@ void manejo_conexiones(int socket_cliente){
 		valores=recibir_paquete(socket_cliente);
 		log_info(memoria_logger,"paquete con tabla, entrada segundo nivel y marco recibido (mmu) \n");
 		tabla=*(uint32_t*)list_get(valores,0);
-		log_info(memoria_logger,"valor tabla (mmu) \n");
+		log_info(memoria_logger,"valor tabla (mmu): %d\n", tabla);
 		entrada2=*(uint32_t*)list_get(valores,1);
-		log_info(memoria_logger,"valor entrada segundo nivel (mmu) \n");
+		log_info(memoria_logger,"valor entrada segundo nivel (mmu): %d\n", entrada2);
 		marco= devolver_marco(tabla, entrada2);
-		log_info(memoria_logger,"valor marco (mmu) \n",marco);
+		log_info(memoria_logger,"valor marco (mmu): %d\n",marco);
 		usleep(config_valores_memoria.retardo_memoria * 1000);
 		t_paquete* paquete_marco= crear_paquete();
 		paquete_marco->codigo_operacion = MARCO;

@@ -204,7 +204,7 @@ void ejecutarWRITE(uint32_t dirLogica,uint32_t valor,pcb* pcb){
 	agregar_a_paquete(paquete,&dir_fisica,sizeof(uint32_t));
 	log_info(cpu_logger,"valor dir_fisica de instruccion WRITE %d\n",dir_fisica);
 	agregar_a_paquete(paquete,&valor,sizeof(uint32_t));
-	log_info("valor escritura %d\n",valor);
+	log_info(cpu_logger, "valor escritura %d\n",valor);
 	log_info(cpu_logger, " paquete antes de enviar \n");
 	enviar_paquete(paquete,socket_memoria);
 	log_info(cpu_logger, "Pedido de escritura enviado \n");
