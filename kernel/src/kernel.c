@@ -91,8 +91,8 @@ t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
   	for(int i = 0; i < longitud_datos; i += 3) {
   		instruccion *instruccion = malloc(sizeof(instruccion));
   		instruccion->codigo = *(codigo_instrucciones *)list_get(datos, i);
-  		instruccion->parametro1 = *(uint32_t *)list_get(datos, i + 1);
-  		instruccion->parametro2 = *(uint32_t *)list_get(datos, i + 2);
+  		instruccion->parametro1 = *(uint32_t *)list_get(datos, (i + 1));
+  		instruccion->parametro2 = *(uint32_t *)list_get(datos, (i + 2));
   		list_add(instrucciones, instruccion);
   	}
   	return instrucciones;
