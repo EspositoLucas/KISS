@@ -126,7 +126,9 @@ t_consola *deserializar_consola(int  socket_cliente) {
 	  		break;
 	  	case PAQUETE_CONSOLA:
 	  		log_info(kernel_logger_info, "Me llego el tamanio y las instrucciones\n");
-	  		consola = deserializar_consola(socket_cliente);
+	  		pthread_mutex_lock(&mutex_consola);
+			consola = deserializar_consola(socket_cliente);
+			pthread_mutex_unlock(&mutex_consola);
 	  		log_info(kernel_logger_info, "Consola deserializada, se arma el PCB\n");
 	  		proceso* proceso = malloc(sizeof(proceso)) ;
 	  		proceso->pcb = malloc(sizeof(pcb));

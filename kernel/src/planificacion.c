@@ -34,6 +34,7 @@ pcb *crear_estructura_pcb(t_consola *consola) {
 void iniciar_planificador_largo_plazo(void) {
 
 	generador_de_id = 0;
+	pthread_mutex_init(&mutex_consola,NULL);
 	pthread_mutex_init(&mutex_new, NULL);
 	pthread_mutex_init(&mutex_exit, NULL);
 	pthread_mutex_init(&mutex_generador_id, NULL);
@@ -199,7 +200,10 @@ void estadoExec(void){
 			sem_post(&sem_desalojo);
 			continue;
 		}else{
+			pthread_mutex_lock(&mutex_interrupcion);
 			interrupcion = 0;
+			pthread_mutex_unlock(&mutex_interrupcion);
+
 			sem_post(&sem_desalojo);
 		}
 
