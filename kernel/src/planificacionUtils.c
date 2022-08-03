@@ -140,7 +140,9 @@ proceso* obtenerSiguienteFIFO(){
 
 	log_info(kernel_logger_info, "Inicio la planificacion FIFO");
  	chequear_lista_pcbs(colaReady);
+	pthread_mutex_lock(&mutex_ready);
  	proceso* procesoSeleccionado = list_remove(colaReady,0);
+	pthread_mutex_unlock(&mutex_ready);
  	log_info(kernel_logger_info, "PID[%d] sale de READY para plan FIFO \n", procesoSeleccionado->pcb->id_proceso);
 	return procesoSeleccionado;
 
@@ -160,24 +162,32 @@ proceso* elegirElDeMenorEstimacion(){
 	int tamanioReady = list_size(colaReady);
 
 	for(int i = 0; i < tamanioReady; i++){
-			proceso* procesoAux = list_get(colaReady,i);
-			log_info(kernel_logger_info,"PID[%d] con estimacion: %f \n", procesoAux->pcb->id_proceso, procesoAux->pcb->estimacion_rafaga);
+		pthread_mutex_lock(&mutex_ready);
+		proceso* procesoAux = list_get(colaReady,i);
+		pthread_mutex_unlock(&mutex_ready);
+		log_info(kernel_logger_info,"PID[%d] con estimacion: %f \n", procesoAux->pcb->id_proceso, procesoAux->pcb->estimacion_rafaga);
 	}
 
 	proceso* procesoSeleccionado;
+	pthread_mutex_lock(&mutex_ready);
 	proceso* procesoAux = list_get(colaReady,0);
+	pthread_mutex_unlock(&mutex_ready);
 	int indiceElegido = 0;
 	float procesoMasCorto;
 	procesoMasCorto = procesoAux->pcb->estimacion_rafaga;
 	for(int i = 0; i < tamanioReady; i++){
+		pthread_mutex_lock(&mutex_ready);
 		proceso* procesoAux = list_get(colaReady,i);
+		pthread_mutex_unlock(&mutex_ready);
 		if(procesoMasCorto > procesoAux->pcb->estimacion_rafaga){
 			procesoMasCorto = procesoAux->pcb->estimacion_rafaga;
 			indiceElegido = i;
 		}
 	}
 
+	pthread_mutex_lock(&mutex_ready);
 	procesoSeleccionado = list_remove(colaReady,indiceElegido);
+	pthread_mutex_unlock(&mutex_ready);
 
 	return procesoSeleccionado;
 }
