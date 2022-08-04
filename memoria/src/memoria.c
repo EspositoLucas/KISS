@@ -317,7 +317,7 @@ void cargar_configuracion(){
 	config_valores_memoria.ip_memoria=config_get_string_value(config,"IP_MEMORIA");
 	config_valores_memoria.puerto_escucha=config_get_string_value(config,"PUERTO_ESCUCHA");
 	config_valores_memoria.tam_memoria=config_get_int_value(config,"TAM_MEMORIA");
-	config_valores_memoria.tam_pagina=config_get_int_value(config,"TAM_PAGINA");s
+	config_valores_memoria.tam_pagina=config_get_int_value(config,"TAM_PAGINA");
 	config_valores_memoria.entradas_por_tabla=config_get_int_value(config,"ENTRADAS_POR_TABLA");
 	config_valores_memoria.retardo_memoria=config_get_int_value(config,"RETARDO_MEMORIA");
 	config_valores_memoria.algoritmo_reemplazo=config_get_string_value(config,"ALGORITMO_REEMPLAZO");
