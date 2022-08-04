@@ -98,8 +98,8 @@ while((int)PCB->program_counter <list_size(PCB->instrucciones)){
 	decode(instruccionProxima,PCB);//DECODE (CON EXECUTE INCLUIDO)
 	PCB->program_counter++;//ACTUALIZA EL PCB
 	if(checkInterrupt()==1){//SE FIJA QUE NO HAYA PEDIDO DE PARAR EL PROCESO ANTES DE SEGUIR CON EL CICLO DE INSTRUCCION
-		enviarPcb(socket_kernel,PCB);
 		ultimo_pid = PCB->id_proceso;
+		enviarPcb(socket_kernel,PCB);
 		log_info(cpu_logger,"Envio pcb devuelta al kernel \n");
 		return NULL;
 	}

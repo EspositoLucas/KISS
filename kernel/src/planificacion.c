@@ -7,21 +7,21 @@
 
 pcb *crear_estructura_pcb(t_consola *consola) {
 
-	pcb *pcb = malloc(sizeof(pcb));
+	pcb *pcbs = malloc(sizeof(pcb));
 	pthread_mutex_lock(&mutex_generador_id);
-	pcb->id_proceso = generador_de_id;
+	pcbs->id_proceso = generador_de_id;
 	generador_de_id++;
 	pthread_mutex_unlock(&mutex_generador_id);
-	pcb->tamanio_proceso =consola->tamanio_proceso;
-	pcb->instrucciones = list_duplicate(consola->instrucciones);
-	pcb->program_counter = 0;
-	pcb->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
+	pcbs->tamanio_proceso =consola->tamanio_proceso;
+	pcbs->instrucciones = list_duplicate(consola->instrucciones);
+	pcbs->program_counter = 0;
+	pcbs->estimacion_rafaga = config_valores_kernel.estimacion_inicial;
 	log_info(kernel_logger_info,"Estimacion incial de config valores kernel: %f\n", config_valores_kernel.estimacion_inicial);
-	pcb->tiempo_de_bloqueo = 0;
-	pcb->rafaga_anterior = 0;
-	pcb->instrucciones = consola->instrucciones;
+	pcbs->tiempo_de_bloqueo = 0;
+	pcbs->rafaga_anterior = 0;
+	pcbs->instrucciones = consola->instrucciones;
 
-	return pcb;
+	return pcbs;
 }
 
 
@@ -117,6 +117,7 @@ void finalizarPcb(void){
 	avisarAModulo(proceso->socket,FINALIZAR_CONSOLA) ;
 	log_info(kernel_logger_info, "Enviando a consola que finalizo el proceso\n");
  	eliminar_pcb(proceso->pcb);
+ 	free(proceso);
  	sem_post(&sem_grado_multiprogramacion);
 
 	}
@@ -153,7 +154,7 @@ void iniciar_planificador_corto_plazo(void) {
  void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
-		if(obtener_algoritmo()==SRT){
+		if(obtener_algoritmo()==SRT && !list_is_empty(colaExec)){
 			sem_wait(&sem_desalojo); // solo si la lista no es vacia
 		}
 		pthread_mutex_lock(&mutex_ready);

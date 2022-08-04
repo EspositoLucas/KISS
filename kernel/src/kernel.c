@@ -89,11 +89,11 @@ t_list *deserializar_instrucciones(t_list *datos, uint32_t longitud_datos) {
 	t_list *instrucciones = list_create();
 
   	for(int i = 0; i < longitud_datos; i += 3) {
-  		instruccion *instruccion = malloc(sizeof(instruccion));
-  		instruccion->codigo = *(codigo_instrucciones *)list_get(datos, i);
-  		instruccion->parametro1 = *(uint32_t *)list_get(datos, i + 1);
-  		instruccion->parametro2 = *(uint32_t *)list_get(datos, i + 2);
-  		list_add(instrucciones, instruccion);
+  		instruccion *instruccions = malloc(sizeof(instruccion));
+  		instruccions->codigo = *(codigo_instrucciones *)list_get(datos, i);
+  		instruccions->parametro1 = *(int *)list_get(datos, i + 1);
+  		instruccions->parametro2 = *(int *)list_get(datos, i + 2);
+  		list_add(instrucciones, instruccions);
   	}
   	return instrucciones;
 }
@@ -130,14 +130,14 @@ t_consola *deserializar_consola(int  socket_cliente) {
 			consola = deserializar_consola(socket_cliente);
 			pthread_mutex_unlock(&mutex_consola);
 	  		log_info(kernel_logger_info, "Consola deserializada, se arma el PCB\n");
-	  		proceso* proceso = malloc(sizeof(proceso)) ;
-	  		proceso->pcb = malloc(sizeof(pcb));
+	  		proceso* procesos = malloc(sizeof(proceso));
+	  		procesos->pcb = malloc(sizeof(pcb));
 			pthread_mutex_lock(&mutex_consola);
-	  		proceso->pcb = crear_estructura_pcb(consola);
+	  		procesos->pcb = crear_estructura_pcb(consola);
 			pthread_mutex_unlock(&mutex_consola);
-	  		proceso->socket = socket_cliente;
-	  		log_info(kernel_logger_info, "PCB id[%d] armada -> agregar proceso a new y arrancar con la planificacion\n",proceso->pcb->id_proceso);
-	  		agregarANewPcb(proceso);
+	  		procesos->socket = socket_cliente;
+	  		log_info(kernel_logger_info, "PCB id[%d] armada -> agregar proceso a new y arrancar con la planificacion\n",procesos->pcb->id_proceso);
+	  		agregarANewPcb(procesos);
 
 	  		break;
 	  	case PAQUETE:

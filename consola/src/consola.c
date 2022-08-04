@@ -152,7 +152,7 @@ char *leer_archivo(char *unPath)
     int cant_elementos = ftell(archivo); // cantidad total de elementos que tiene el archivo
     rewind(archivo);                        //mover archivo al inicio del txt
 
-    char *cadena = calloc(sizeof(char) + 1, cant_elementos); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
+    char *cadena = calloc(cant_elementos+1, sizeof(char)); //arreglo dinamico de caracteres para almacenar en cadena el contenido del archivo
     if (cadena == NULL)
     {
         perror("Error en la reserva de memoria \n") ;
