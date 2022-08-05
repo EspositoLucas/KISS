@@ -177,7 +177,7 @@ void manejo_conexiones(int socket_cliente){
 		enviar_datos(socket_cliente, &codigo_pcb, sizeof(op_code)) ;
 		log_info(memoria_logger,"Se elimino swap y liberaron las estructuras del proceso \n");
 		log_info(memoria_logger,"Contador Page Fault del proceso %d tiene en total %d PF \n",pcb->id_proceso,aux->contadorPF);
-		log_info(memoria_logger,"Contador Acceso a Swap del proceso  %d  tiene en total %d Accesos a Swap \n",pcb->id_proceso,aux->contadorAccesoSwap);
+		log_info(memoria_logger,"Contador de Escritura en Swap del proceso  %d  tiene en total %d Escrituras en Swap \n",pcb->id_proceso,aux->contadorAccesoSwap);
 		break;
 	case SUSPENDER_PROCESO:
 		log_info(memoria_logger,"me llego mensaje para suspender proceso \n");

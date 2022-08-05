@@ -154,7 +154,7 @@ void iniciar_planificador_corto_plazo(void) {
  void estadoReady(void){
  	while(1){
  		sem_wait(&sem_ready);
-		if(obtener_algoritmo()==SRT && !list_is_empty(colaExec)){
+		if(obtener_algoritmo()==SRT){
 			sem_wait(&sem_desalojo); // solo si la lista no es vacia
 		}
 		pthread_mutex_lock(&mutex_ready);
@@ -179,7 +179,7 @@ void estadoExec(void){
 		pthread_mutex_lock(&mutex_exec);
 		proceso* proceso = list_get(colaExec,0);
 		pthread_mutex_unlock(&mutex_exec);
-		long long inicio_cpu = get_time(); // logueo el tiempo en el que se va
+		uint32_t inicio_cpu = get_time(); // logueo el tiempo en el que se va
 
 		enviarPcb(socket_dispatch, proceso->pcb);
 		log_info(kernel_logger_info, "PCB enviada cpu para ejecucion");
@@ -187,7 +187,7 @@ void estadoExec(void){
 
 		proceso->pcb = recibirPcb(socket_dispatch);
 
-		long long finalizacion_cpu = get_time();
+		uint32_t finalizacion_cpu = get_time();
 		instruccion *instruccion_exec = list_get(proceso->pcb->instrucciones, (proceso->pcb->program_counter - 1));
 		pthread_mutex_lock(&mutex_interrupcion);
 		if(interrupcion && instruccion_exec->codigo != IO && instruccion_exec->codigo != EXIT  ){
@@ -200,6 +200,11 @@ void estadoExec(void){
 			pthread_mutex_lock(&mutex_exec);
 			procesoAux = list_remove(colaExec,0);
 			pthread_mutex_unlock(&mutex_exec);
+			pthread_mutex_lock(&mutex_interrupcion);
+			interrupcion = 0;
+			pthread_mutex_unlock(&mutex_interrupcion);
+			
+
 			sem_post(&sem_desalojo);
 			continue;
 		}else{
@@ -282,7 +287,7 @@ void estadoBlockeado(void){
 		proceso* proceso = list_remove(colaBlocked,0);
 		pthread_mutex_unlock(&mutex_blocked);
 		log_info(kernel_logger_info, "PID[%d] sale de BLOCKED \n", proceso->pcb->id_proceso);
-		long long tiempo_que_sale_de_block = get_time();
+		uint32_t tiempo_que_sale_de_block = get_time();
 		log_info(kernel_logger_info,"El tiempo que el pid[%d] sale de la cola blocked es: %lli\n",proceso->pcb->id_proceso, tiempo_que_sale_de_block);
 //		chequear_lista_pcbs(colaBlocked);
 		log_info(kernel_logger_info, "PID[%d] ejecuta IO \n", proceso->pcb->id_proceso);

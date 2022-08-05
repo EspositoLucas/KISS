@@ -79,7 +79,7 @@ uint32_t generador_de_id;
  uint32_t tiempo;
  void inciar_timer();
  void timer();
- long long get_time();
+ uint32_t get_time();
 
 
 // Planificador Corto Plazo
