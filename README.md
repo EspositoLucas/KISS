@@ -1,4 +1,4 @@
-# Trabajo Práctico Sistemas Operativos UTN FRBA 1c2022
+# Trabajo Práctico Sistemas Operativos UTN FRBA 
 
 ## Descripción
 Sistema distribuido que emula a un sistema operativo. 
